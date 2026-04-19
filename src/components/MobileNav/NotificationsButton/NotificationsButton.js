@@ -1,4 +1,4 @@
-import useFocusStack from '../../hooks/useFocusStack'
+import useFocusStack from '../../../hooks/useFocusStack'
 import BellIcon from '../../Icons/BellIcon/BellIcon'
 import styles from './NotificationsButton.module.css'
 
