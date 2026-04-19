@@ -160,7 +160,7 @@ function Notifications({ closeNotifications }) {
         <ul aria-label="user notifications">
           {context.notifications?.map((notification, index) => 
             <li key={index}>
-              <Avatar username={notification.username} />
+              <Avatar username={notification.username} image={null} />
               <div>
                 <div>
                   <span>{notification.username}</span>
