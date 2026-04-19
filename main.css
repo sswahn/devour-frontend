@@ -263,13 +263,20 @@
 
 
 /*!*******************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/Avatar/styles.module.css ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/Avatar/Avatar.module.css ***!
   \*******************************************************************************************/
 
-.RTGieKjV1a9U28aim8Yf {
-  font-size: 35px;
-  padding-right: 5px;
-  position: relative;
+.cNFgJeNuNF741mqy3HjF {
+  align-items: center; 
+  background: none;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  padding: 10px;
+  height: 44px;
+  width: 44px;
 }
 
 /*!*************************************************************************************!*\
