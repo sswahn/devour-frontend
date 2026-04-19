@@ -1,4 +1,4 @@
-import { useRef, useEffect, createContext } from 'react'
+import { useRef, useEffect, useCallback, createContext } from 'react'
 
 const PushFocusStackContext = createContext(null)
 const PopFocusStackContext = createContext(null)
@@ -6,11 +6,11 @@ const PopFocusStackContext = createContext(null)
 function FocusStackProvider({ children }) {
   const stack = useRef([])
 
-  const push = event => {
+  const push = useCallback(event => {
     stack.current.push(event.target)
-  }
+  }, [])
   
-  const pop = () => {
+  const pop = useCallback() => {
     for (let i = stack.current.length - 1; i >= 0; i--) {
       const element = stack.current[i]
       if (document.body.contains(element)) {
@@ -19,7 +19,7 @@ function FocusStackProvider({ children }) {
         return
       }
     }
-  }
+  }, [])
 
   return (
     <FocusStackContext.Provider value={{ push, pop }}>
