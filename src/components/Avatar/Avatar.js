@@ -4,7 +4,7 @@ import useFocusStack from '../../hooks/useFocusStack'
 import Identicon from '../Identicon/Identicon'
 import styles from './Avatar.module.css'
 
-const Avatar = ({ username, image, size = 24 }) => {
+function Avatar({ username, image, size = 24 }) {
   const { openProfile } = useProfile()
   const { push } = useFocusStack()
   const avatarRef = useRef(null)
