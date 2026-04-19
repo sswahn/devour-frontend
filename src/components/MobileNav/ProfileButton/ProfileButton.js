@@ -1,12 +1,15 @@
 import useSession from '../../../hooks/useSession'
+import useFocusStack from '../../../hooks/useFocusStack'
 import UserIcon from '../../Icons/UserIcon/UserIcon'
 import styles from './ProfileButton.module.css'
 
 function ProfileButton({ profileButtonRef, openProfile }) {
   const { session } = useSession()
+  const { push } = useFocusStack()
   
   const action = async () => {
     navigator.vibrate(50)
+    push(profileButtonRef.current)
     openProfile(session.username)
   }
   
