@@ -5,13 +5,13 @@ import Identicon from '../Identicon/Identicon'
 import styles from './Avatar.module.css'
 
 const Avatar = ({ username, image, size = 24 }) => {
-  const { setProfile } = useProfile()
+  const { openProfile } = useProfile()
   const { push } = useFocusStack()
   const avatarRef = useRef(null)
   
   const action = () => {
     push(avatarRef.current)
-    setProfile(username)
+    openProfile(username)
   }
   
   const onClick = event => {
