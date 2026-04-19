@@ -1,8 +1,10 @@
+import { useRef } from 'react'
 import useFocusStack from '../../../hooks/useFocusStack'
 import PlusIcon from '../../Icons/PlusIcon/PlusIcon'
 import styles from './CameraButton.module.css'
 
-function CameraButton({ cameraButtonRef, openCamera }) {
+function CameraButton({ openCamera }) {
+  const buttonRef = useRef(null)
   const { push } = useFocusStack()
   
   const action = async () => {
@@ -28,7 +30,7 @@ function CameraButton({ cameraButtonRef, openCamera }) {
   return (
     <button 
       className={styles.cameraButton} 
-      ref={cameraButtonRef} 
+      ref={buttonRef} 
       onClick={onClick} 
       onKeyDown={onKeyDown}
       type="button" 
