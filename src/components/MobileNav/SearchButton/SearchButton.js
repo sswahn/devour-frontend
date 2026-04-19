@@ -1,13 +1,15 @@
+import { useRef } from 'react'
 import useFocusStack from '../../../hooks/useFocusStack'
 import SearchIcon from '../../Icons/SearchIcon/SearchIcon'
 import styles from './SearchButton.module.css'
 
-function SearchButton({ searchButtonRef, openSearch }) {
+function SearchButton({ openSearch }) {
+  const buttonRef = useRef(null)
   const { push } = useFocusStack()
   
   const action = async () => {
     navigator.vibrate(50)
-    push(searchButtonRef.current)
+    push(buttonRef.current)
     openSearch()
   }
   
@@ -25,7 +27,7 @@ function SearchButton({ searchButtonRef, openSearch }) {
   return (
     <button 
       className={styles.searchButton} 
-      ref={searchButtonRef} 
+      ref={buttonRef} 
       onClick={onClick} 
       onKeyDown={onKeyDown} 
       type="button" 
