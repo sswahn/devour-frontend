@@ -2,7 +2,7 @@ import { useState, useRef } from 'react'
 import useProfile from '../../hooks/useProfile'
 import useFocusStack from '../../hooks/useFocusStack'
 import Identicon from '../Identicon/Identicon'
-import styles from './styles.module.css'
+import styles from './Avatar.module.css'
 
 const Avatar = ({ username, image, openProfile, size = 24 }) => {
   const { setProfile } = useProfile()
