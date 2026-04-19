@@ -18,3 +18,8 @@
   z-index: 200;
 }
 
+.authentication button:first-of-type {
+  left: 0;
+  position: absolute;
+  top: 0;
+}
