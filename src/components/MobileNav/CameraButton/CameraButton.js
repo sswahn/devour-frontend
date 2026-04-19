@@ -1,13 +1,16 @@
+import useFocusStack from '../../../hooks/useFocusStack'
 import PlusIcon from '../../Icons/PlusIcon/PlusIcon'
 import styles from './CameraButton.module.css'
 
 function CameraButton({ cameraButtonRef, openCamera }) {
-
+  const { push } = useFocusStack()
+  
   const action = async () => {
     navigator.vibrate(50); return;
    
     // await document.getElementById('portal').requestFullscreen()
     // await screen.orientation.lock('portrait')
+    push(cameraButtonRef.current)
     openCamera()
   }
  
