@@ -18,10 +18,3 @@
   z-index: 200;
 }
 
-.authentication div:first-of-type {
-  position: absolute;
-  top: 64px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
