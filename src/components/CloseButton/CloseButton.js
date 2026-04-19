@@ -1,4 +1,4 @@
-import useFocusStack from '../../../hooks/useFocusStack'
+import useFocusStack from '../../hooks/useFocusStack'
 import ArrowLeftIcon from '../Icons/ArrowLeftIcon/ArrowLeftIcon'
 import styles from './CloseButton.module.css'
 
