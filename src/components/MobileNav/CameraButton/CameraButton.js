@@ -12,7 +12,7 @@ function CameraButton({ openCamera }) {
    
     // await document.getElementById('portal').requestFullscreen()
     // await screen.orientation.lock('portrait')
-    push(cameraButtonRef.current)
+    push(buttonRef.current)
     openCamera()
   }
  
