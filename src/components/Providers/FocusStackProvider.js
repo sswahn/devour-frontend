@@ -6,8 +6,8 @@ const PopFocusStackContext = createContext(null)
 function FocusStackProvider({ children }) {
   const stack = useRef([])
 
-  const push = useCallback(event => {
-    stack.current.push(event.target)
+  const push = useCallback(element => {
+    stack.current.push(element)
   }, [])
   
   const pop = useCallback() => {
