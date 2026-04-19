@@ -1,21 +1,16 @@
 import { useRef, useEffect, createContext } from 'react'
 
-const FocusStackContext = createContext(null)
+const PushFocusStackContext = createContext(null)
+const PopFocusStackContext = createContext(null)
 
 function FocusStackProvider({ children }) {
   const stack = useRef([])
 
-  const action = event => {
-    if (event.target.tagName === 'BUTTON') {
-      stack.current.push(event.target)
-    }
-  }
-
-  const onClick = event => {
-    action(event)
+  const push = event => {
+    stack.current.push(event.target)
   }
   
-  const restoreFocus = () => {
+  const pop = () => {
     for (let i = stack.current.length - 1; i >= 0; i--) {
       const element = stack.current[i]
       if (document.body.contains(element)) {
@@ -26,15 +21,8 @@ function FocusStackProvider({ children }) {
     }
   }
 
-  useEffect(() => {
-    document.addEventListener('click', onClick)
-    return () => {
-      document.removeEventListener('click', onClick)
-    }
-  }, [])
-
   return (
-    <FocusStackContext.Provider value={restoreFocus}>
+    <FocusStackContext.Provider value={{ push, pop }}>
       {children}
     </FocusStackContext.Provider>
   )
