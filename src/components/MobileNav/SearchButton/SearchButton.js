@@ -1,10 +1,13 @@
+import useFocusStack from '../../../hooks/useFocusStack'
 import SearchIcon from '../../Icons/SearchIcon/SearchIcon'
 import styles from './SearchButton.module.css'
 
 function SearchButton({ searchButtonRef, openSearch }) {
-
+  const { push } = useFocusStack()
+  
   const action = async () => {
     navigator.vibrate(50)
+    push(searchButtonRef.current)
     openSearch()
   }
   
