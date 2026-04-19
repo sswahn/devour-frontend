@@ -1,15 +1,17 @@
+import { useRef } from 'react'
 import useSession from '../../../hooks/useSession'
 import useFocusStack from '../../../hooks/useFocusStack'
 import UserIcon from '../../Icons/UserIcon/UserIcon'
 import styles from './ProfileButton.module.css'
 
-function ProfileButton({ profileButtonRef, openProfile }) {
+function ProfileButton({ openProfile }) {
+  const buttonRef = useRef(null)
   const { session } = useSession()
   const { push } = useFocusStack()
   
   const action = async () => {
     navigator.vibrate(50)
-    push(profileButtonRef.current)
+    push(buttonRef.current)
     openProfile(session.username)
   }
   
@@ -27,7 +29,7 @@ function ProfileButton({ profileButtonRef, openProfile }) {
   return (
     <button 
       className={styles.profileButton} 
-      ref={profileButtonRef} 
+      ref={buttonRef} 
       onClick={onClick} 
       onKeyDown={onKeyDown}
       type="button" 
