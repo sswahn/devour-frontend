@@ -161,13 +161,6 @@
   z-index: 200;
 }
 
-.kXofMQa6vzuWGHvhoZSw div:first-of-type {
-  position: absolute;
-  top: 64px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
 
 /*!*****************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/CloseButton/CloseButton.module.css ***!
