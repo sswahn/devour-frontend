@@ -1,13 +1,15 @@
+import { useRef } from 'react'
 import useFocusStack from '../../../hooks/useFocusStack'
 import BellIcon from '../../Icons/BellIcon/BellIcon'
 import styles from './NotificationsButton.module.css'
 
-function NotificationsButton({ notificationsButtonRef, openNotifications }) {
+function NotificationsButton({ openNotifications }) {
+  const buttonRef = useRef(null)
   const { push } = useFocusStack()
   
   const action = () => {
     navigator.vibrate(50)
-    push(notificationsButtonRef.current)
+    push(buttonRef.current)
     openNotifications()
   }
   
@@ -25,7 +27,7 @@ function NotificationsButton({ notificationsButtonRef, openNotifications }) {
   return (
     <button 
       className={styles.notificationsButton} 
-      ref={notificationsButtonRef} 
+      ref={buttonRef} 
       onClick={onClick} 
       onKeyDown={onKeyDown}
       type="button" 
