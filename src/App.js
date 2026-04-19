@@ -1,7 +1,6 @@
 import { StrictMode } from 'react'
 import ErrorBoundary from './ErrorBoundary'
-import { SessionProvider } from './components/Providers/SessionProvider'
-import { ProfileProvider } from './components/Providers/ProfileProvider'
+import Providers from './Providers'
 import AppRoot from './components/AppRoot/AppRoot'
 import './index.css'
 
@@ -9,11 +8,9 @@ function App() {
   return (
     <StrictMode> 
       <ErrorBoundary> 
-        <SessionProvider>
-          <ProfileProvider>
-            <AppRoot />
-          </ProfileProvider>
-        </SessionProvider>
+        <Providers>
+          <AppRoot />
+        </Providers>
       </ErrorBoundary> 
     </StrictMode>
   )
