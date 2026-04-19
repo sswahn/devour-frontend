@@ -1,11 +1,14 @@
+import useFocusStack from '../../../hooks/useFocusStack'
 import ArrowLeftIcon from '../Icons/ArrowLeftIcon/ArrowLeftIcon'
 import styles from './CloseButton.module.css'
 
 function CloseButton({ overlay, close }) {
-
+  const { pop } = useFocusStack()
+  
   const action = () => {
     navigator.vibrate(50)
     close()
+    pop()
   }
   
   const onClick = event => {
