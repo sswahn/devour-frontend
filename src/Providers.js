@@ -1,6 +1,6 @@
-import SessionProvider from './components/Providers/SessionProvider'
-import FocusTrapProvider from './components/Providers/FocusTrapProvider'
-import FocusStackProvider from './components/Providers/FocusStackProvider'
+import { SessionProvider } from './components/Providers/SessionProvider'
+import { FocusTrapProvider } from './components/Providers/FocusTrapProvider'
+import { FocusStackProvider } from './components/Providers/FocusStackProvider'
 
 function Providers({ children }) {
   return (
