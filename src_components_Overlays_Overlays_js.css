@@ -179,7 +179,7 @@
   z-index: 200;
 }
 
-.kXofMQa6vzuWGHvhoZSw button:first-of-type {
+.kXofMQa6vzuWGHvhoZSw > button:first-of-type {
   left: 0;
   position: absolute;
   top: 0;
