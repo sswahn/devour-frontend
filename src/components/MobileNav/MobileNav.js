@@ -8,10 +8,6 @@ import ProfileButton from './ProfileButton/ProfileButton'
 import styles from './MobileNav.module.css'
 
 function MobileNav({ 
-  searchButtonRef,
-  cameraButtonRef,
-  notificationsButtonRef,
-  profileButtonRef,
   openSearch,
   openCamera, 
   openNotifications, 
@@ -28,10 +24,10 @@ function MobileNav({
     <nav ref={navRef} className={styles.navigation} aria-label="primary navigation">
       <div>
         <HomeButton />  
-        <SearchButton searchButtonRef={searchButtonRef} openSearch={openSearch} />
-        <CameraButton cameraButtonRef={cameraButtonRef} openCamera={openCamera} />
-        <NotificationsButton notificationsButtonRef={notificationsButtonRef} openNotifications={openNotifications} />
-        <ProfileButton profileButtonRef={profileButtonRef} openProfile={openProfile} />
+        <SearchButton openSearch={openSearch} />
+        <CameraButton openCamera={openCamera} />
+        <NotificationsButton openNotifications={openNotifications} />
+        <ProfileButton openProfile={openProfile} />
       </div>
     </nav>
   )
