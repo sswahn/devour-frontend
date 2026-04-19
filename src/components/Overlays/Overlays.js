@@ -20,7 +20,8 @@ function Overlays({
   closeProfile 
 }) {
   
-  // Use 'Escape' key to break out of overlays:
+  // Move this to each overlay and set the eventlistener to the overlay?
+  // its no longer a switch then, but a typical onKeyDown function using 'Escape'
   const closeOverlay = event => {
     if (event.key !== 'Escape') {
       return 
