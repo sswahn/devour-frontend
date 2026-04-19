@@ -3,6 +3,8 @@ import useFocusTrap from '../../hooks/useFocusTrap'
 import EllipsisVerticalIcon from '../Icons/EllipsisVerticalIcon/EllipsisVerticalIcon'
 import styles from './Notifications.module.css'
 
+import Avatar from '../Avatar/Avatar'
+
 function Notifications({ closeNotifications }) {
   const [isOpen, setIsOpen] = useState(false)
   const focusRef = useFocusTrap()
@@ -14,11 +16,11 @@ function Notifications({ closeNotifications }) {
   
   const context = { 
     notifications: [
-      {img: '', username: 'username', text: '12345678901234567890123456', timestamp: '5 days ago' },
-      {img: '', username: 'username', text: 'testing user notification section', timestamp: '5 days ago' },
-      {img: '', username: 'username', text: 'testing user notification section', timestamp: '5 days ago' },
-      {img: '', username: 'username', text: 'testing user notification section', timestamp: '5 days ago' },
-      {img: '', username: 'username', text: 'testing user notification section', timestamp: '5 days ago' },
+      {username: 'username', text: '12345678901234567890123456', timestamp: '5 days ago' },
+      {username: 'username', text: 'testing user notification section', timestamp: '5 days ago' },
+      {username: 'username', text: 'testing user notification section', timestamp: '5 days ago' },
+      {username: 'username', text: 'testing user notification section', timestamp: '5 days ago' },
+      {username: 'username', text: 'testing user notification section', timestamp: '5 days ago' },
     ]
   }
 
@@ -158,7 +160,7 @@ function Notifications({ closeNotifications }) {
         <ul aria-label="user notifications">
           {context.notifications?.map((notification, index) => 
             <li key={index}>
-              <img src={notification.img} alt={notification.username} />
+              <Avatar username={notification.username} />
               <div>
                 <div>
                   <span>{notification.username}</span>
