@@ -10,7 +10,7 @@ function FocusStackProvider({ children }) {
     stack.current.push(element)
   }, [])
   
-  const pop = useCallback() => {
+  const pop = useCallback(() => {
     for (let i = stack.current.length - 1; i >= 0; i--) {
       const element = stack.current[i]
       if (document.body.contains(element)) {
