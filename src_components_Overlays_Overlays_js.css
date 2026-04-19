@@ -1,3 +1,21 @@
+/*!*****************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/CloseButton/CloseButton.module.css ***!
+  \*****************************************************************************************************/
+/* Close Overlay Button */
+
+.nRmVNOUPXPt07q2izPkS {
+  align-items: center; 
+  background: none;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  height: 44px;
+  justify-content: center;
+  cursor: pointer;
+  padding: 10px;
+  width: 44px;
+}
+
 /*!**************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Authentication/LoginForm/LoginForm.module.css ***!
   \**************************************************************************************************************/
@@ -161,24 +179,6 @@
   z-index: 200;
 }
 
-
-/*!*****************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/CloseButton/CloseButton.module.css ***!
-  \*****************************************************************************************************/
-/* Close Overlay Button */
-
-.nRmVNOUPXPt07q2izPkS {
-  align-items: center; 
-  background: none;
-  border: none;
-  border-radius: 50%;
-  display: flex;
-  height: 44px;
-  justify-content: center;
-  cursor: pointer;
-  padding: 10px;
-  width: 44px;
-}
 
 /*!********************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/Dropdown/DropdownButton/DropdownButton.module.css ***!
