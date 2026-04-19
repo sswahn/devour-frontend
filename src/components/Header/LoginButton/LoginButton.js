@@ -1,12 +1,13 @@
+import useFocusStack from '../../../hooks/useFocusStack'
 import RightToBracketIcon from '../../Icons/RightToBracketIcon/RightToBracketIcon'
 import styles from './LoginButton.module.css'
 
 function LoginButton({ authenticationButtonRef, openAuthentication }) {
-
+  const { push } = useFocusStack()
+  
   const action = () => {
-    console.log('openAuth fired!')
-    
     navigator.vibrate(50)
+    push(authenticationButtonRef.current)
     openAuthentication()  
   }
   
