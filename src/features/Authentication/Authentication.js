@@ -10,7 +10,7 @@ import styles from './Authentication.module.css'
 function Authentication({ closeAuthentication }) {
   return (
     <section className={styles.authentication}>
-      <CloseButton text="authentication" close={closeAuthentication} />
+      <CloseButton overlay="authentication" close={closeAuthentication} />
       <LoginForm />
       <RegistrationButton />
       <GoogleButton />
