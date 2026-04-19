@@ -18,7 +18,7 @@
   z-index: 200;
 }
 
-.authentication > button:first-of-type {
+.authentication > button:first-of-type { /* isnt aligned with form fields (id rather change the padding on fields than close button) */
   left: 8px;
   position: absolute;
   top: 8px;
