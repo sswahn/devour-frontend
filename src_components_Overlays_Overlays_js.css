@@ -179,7 +179,7 @@
   z-index: 200;
 }
 
-.kXofMQa6vzuWGHvhoZSw > button:first-of-type {
+.kXofMQa6vzuWGHvhoZSw > button:first-of-type { /* isnt aligned with form fields (id rather change the padding on fields than close button) */
   left: 8px;
   position: absolute;
   top: 8px;
