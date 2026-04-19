@@ -7,6 +7,7 @@
   display: flex;
   justify-content: center;
   cursor: pointer;
+  overflow: hidden;
   padding: 10px;
   height: 44px;
   width: 44px;
