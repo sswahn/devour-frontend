@@ -154,6 +154,7 @@
   margin: 0 auto;
   max-width: 500px;
   overflow-y: auto;
+  overscroll-behavior-y: contain;
   padding: 16px 24px;
   position: absolute;
   scrollbar-width: none;
