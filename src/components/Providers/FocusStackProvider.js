@@ -1,7 +1,6 @@
 import { useRef, useEffect, useCallback, createContext } from 'react'
 
-const PushFocusStackContext = createContext(null)
-const PopFocusStackContext = createContext(null)
+const FocusStackContext = createContext(null)
 
 function FocusStackProvider({ children }) {
   const stack = useRef([])
