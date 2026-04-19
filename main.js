@@ -71,7 +71,7 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Providers_SessionProvider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Providers/SessionProvider */ \"./src/components/Providers/SessionProvider.js\");\n/* harmony import */ var _features_Authentication_Authentication__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../features/Authentication/Authentication */ \"./src/features/Authentication/Authentication.js\");\n/* harmony import */ var _Interface_Interface__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Interface/Interface */ \"./src/components/Interface/Interface.js\");\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\n\n\n\n// not keeping this file\n// Interface loads at the app level\n// Login button on header\n// and camera has a condition, if not logged-in open login form\n\nfunction AppRoot() {\n  var session = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_Providers_SessionProvider__WEBPACK_IMPORTED_MODULE_1__.GetSessionContext);\n  return session.isAuthenticated ? /*#__PURE__*/React.createElement(_Interface_Interface__WEBPACK_IMPORTED_MODULE_3__[\"default\"], null) : /*#__PURE__*/React.createElement(_features_Authentication_Authentication__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null);\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AppRoot);\n\n//# sourceURL=webpack://devour-frontend/./src/components/AppRoot/AppRoot.js?\n}");
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _Interface_Interface__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Interface/Interface */ \"./src/components/Interface/Interface.js\");\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\n// not keeping this file\n// Interface loads at the app level\n// Login button on header\n// and camera has a condition, if not logged-in open login form\n\nfunction AppRoot() {\n  return /*#__PURE__*/React.createElement(_Interface_Interface__WEBPACK_IMPORTED_MODULE_0__[\"default\"], null);\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AppRoot);\n\n//# sourceURL=webpack://devour-frontend/./src/components/AppRoot/AppRoot.js?\n}");
 
 /***/ },
 
@@ -108,17 +108,6 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 
 /***/ },
 
-/***/ "./src/components/Icons/AppleIcon/AppleIcon.js"
-/*!*****************************************************!*\
-  !*** ./src/components/Icons/AppleIcon/AppleIcon.js ***!
-  \*****************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nfunction AppleIcon(_ref) {\n  var _ref$size = _ref.size,\n    size = _ref$size === void 0 ? 24 : _ref$size;\n  return /*#__PURE__*/React.createElement(\"svg\", {\n    xmlns: \"http://www.w3.org/2000/svg\",\n    viewBox: \"0 0 640 640\",\n    width: size,\n    height: size,\n    role: \"img\",\n    \"aria-label\": \"apple icon\"\n  }, /*#__PURE__*/React.createElement(\"path\", {\n    d: \"M447.1 332.7C446.9 296 463.5 268.3 497.1 247.9C478.3 221 449.9 206.2 412.4 203.3C376.9 200.5 338.1 224 323.9 224C308.9 224 274.5 204.3 247.5 204.3C191.7 205.2 132.4 248.8 132.4 337.5C132.4 363.7 137.2 390.8 146.8 418.7C159.6 455.4 205.8 545.4 254 543.9C279.2 543.3 297 526 329.8 526C361.6 526 378.1 543.9 406.2 543.9C454.8 543.2 496.6 461.4 508.8 424.6C443.6 393.9 447.1 334.6 447.1 332.7zM390.5 168.5C417.8 136.1 415.3 106.6 414.5 96C390.4 97.4 362.5 112.4 346.6 130.9C329.1 150.7 318.8 175.2 321 202.8C347.1 204.8 370.9 191.4 390.5 168.5z\"\n  }));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AppleIcon);\n\n//# sourceURL=webpack://devour-frontend/./src/components/Icons/AppleIcon/AppleIcon.js?\n}");
-
-/***/ },
-
 /***/ "./src/components/Icons/BellIcon/BellIcon.js"
 /*!***************************************************!*\
   !*** ./src/components/Icons/BellIcon/BellIcon.js ***!
@@ -127,17 +116,6 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 
 "use strict";
 eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nvar BellIcon = function BellIcon(_ref) {\n  var _ref$size = _ref.size,\n    size = _ref$size === void 0 ? '24px' : _ref$size;\n  return /*#__PURE__*/React.createElement(\"svg\", {\n    xmlns: \"http://www.w3.org/2000/svg\",\n    viewBox: \"0 0 448 512\",\n    height: size,\n    role: \"img\",\n    \"aria-label\": \"bell icon\"\n  }, /*#__PURE__*/React.createElement(\"path\", {\n    d: \"M224 0c-17.7 0-32 14.3-32 32V51.2C119 66 64 130.6 64 208v18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416H416c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8V208c0-77.4-55-142-128-156.8V32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z\"\n  }));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BellIcon);\n\n//# sourceURL=webpack://devour-frontend/./src/components/Icons/BellIcon/BellIcon.js?\n}");
-
-/***/ },
-
-/***/ "./src/components/Icons/GoogleIcon/GoogleIcon.js"
-/*!*******************************************************!*\
-  !*** ./src/components/Icons/GoogleIcon/GoogleIcon.js ***!
-  \*******************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nfunction GoogleIcon(_ref) {\n  var _ref$size = _ref.size,\n    size = _ref$size === void 0 ? 24 : _ref$size;\n  return /*#__PURE__*/React.createElement(\"svg\", {\n    xmlns: \"http://www.w3.org/2000/svg\",\n    viewBox: \"0 0 640 640\",\n    width: size,\n    height: size,\n    role: \"img\",\n    \"aria-label\": \"google icon\"\n  }, /*#__PURE__*/React.createElement(\"path\", {\n    d: \"M564 325.8C564 467.3 467.1 568 324 568C186.8 568 76 457.2 76 320C76 182.8 186.8 72 324 72C390.8 72 447 96.5 490.3 136.9L422.8 201.8C334.5 116.6 170.3 180.6 170.3 320C170.3 406.5 239.4 476.6 324 476.6C422.2 476.6 459 406.2 464.8 369.7L324 369.7L324 284.4L560.1 284.4C562.4 297.1 564 309.3 564 325.8z\"\n  }));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (GoogleIcon);\n\n//# sourceURL=webpack://devour-frontend/./src/components/Icons/GoogleIcon/GoogleIcon.js?\n}");
 
 /***/ },
 
@@ -380,61 +358,6 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 
 "use strict";
 eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   config: () => (/* binding */ config)\n/* harmony export */ });\nvar config = {\n  cookie: {\n    session: 'session'\n  },\n  storage: {\n    search: {\n      terms: 'searchTerms'\n    }\n  },\n  api: {\n    search: 'https://devour.social/api/v1/search',\n    turnstile: '/api/v1/turnstile',\n    posts: '/api/v1/posts',\n    test: '/api/v1/test',\n    likes: '',\n    shares: '',\n    views: '',\n    comments: '',\n    user: {\n      logout: '/api/v1/logout',\n      login: '/api/v1/login',\n      register: '/api/v1/register',\n      forgot_password: '/api/v1/forgot-password',\n      confirm_forgot_password: '/api/v1/confirm-forgot-password',\n      session: '/api/v1/session'\n    },\n    log: {\n      errors: ''\n    }\n  }\n};\n\n//# sourceURL=webpack://devour-frontend/./src/config.js?\n}");
-
-/***/ },
-
-/***/ "./src/features/Authentication/AppleButton/AppleButton.js"
-/*!****************************************************************!*\
-  !*** ./src/features/Authentication/AppleButton/AppleButton.js ***!
-  \****************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _components_Icons_AppleIcon_AppleIcon__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../components/Icons/AppleIcon/AppleIcon */ \"./src/components/Icons/AppleIcon/AppleIcon.js\");\n/* harmony import */ var _AppleButton_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AppleButton.module.css */ \"./src/features/Authentication/AppleButton/AppleButton.module.css\");\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nfunction AppleButton() {\n  var action = function action() {\n    // handle federated access with Apple\n  };\n  var onClick = function onClick(event) {\n    action();\n  };\n  var onKeyDown = function onKeyDown(event) {\n    if (event.key === 'Enter') {\n      action();\n    }\n  };\n  return /*#__PURE__*/React.createElement(\"button\", {\n    className: _AppleButton_module_css__WEBPACK_IMPORTED_MODULE_1__[\"default\"].appleButton,\n    onClick: onClick,\n    onKeyDown: onKeyDown,\n    type: \"button\",\n    \"aria-label\": \"sign in with your apple account\"\n  }, /*#__PURE__*/React.createElement(_components_Icons_AppleIcon_AppleIcon__WEBPACK_IMPORTED_MODULE_0__[\"default\"], null), /*#__PURE__*/React.createElement(\"span\", null, \"Continue with Apple\"));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AppleButton);\n\n//# sourceURL=webpack://devour-frontend/./src/features/Authentication/AppleButton/AppleButton.js?\n}");
-
-/***/ },
-
-/***/ "./src/features/Authentication/Authentication.js"
-/*!*******************************************************!*\
-  !*** ./src/features/Authentication/Authentication.js ***!
-  \*******************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _components_LoadingSpinner_LoadingSpinner__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/LoadingSpinner/LoadingSpinner */ \"./src/components/LoadingSpinner/LoadingSpinner.js\");\n/* harmony import */ var _LoginForm_LoginForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LoginForm/LoginForm */ \"./src/features/Authentication/LoginForm/LoginForm.js\");\n/* harmony import */ var _RegistrationButton_RegistrationButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./RegistrationButton/RegistrationButton */ \"./src/features/Authentication/RegistrationButton/RegistrationButton.js\");\n/* harmony import */ var _GoogleButton_GoogleButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./GoogleButton/GoogleButton */ \"./src/features/Authentication/GoogleButton/GoogleButton.js\");\n/* harmony import */ var _AppleButton_AppleButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./AppleButton/AppleButton */ \"./src/features/Authentication/AppleButton/AppleButton.js\");\n/* harmony import */ var _Authentication_module_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Authentication.module.css */ \"./src/features/Authentication/Authentication.module.css\");\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\n\n\n\n\n\nfunction Authentication(_ref) {\n  var closeAuthentication = _ref.closeAuthentication;\n  return /*#__PURE__*/React.createElement(\"section\", {\n    className: _Authentication_module_css__WEBPACK_IMPORTED_MODULE_6__[\"default\"].authentication\n  }, /*#__PURE__*/React.createElement(_LoginForm_LoginForm__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null), /*#__PURE__*/React.createElement(_RegistrationButton_RegistrationButton__WEBPACK_IMPORTED_MODULE_3__[\"default\"], null), /*#__PURE__*/React.createElement(_GoogleButton_GoogleButton__WEBPACK_IMPORTED_MODULE_4__[\"default\"], null), /*#__PURE__*/React.createElement(_AppleButton_AppleButton__WEBPACK_IMPORTED_MODULE_5__[\"default\"], null));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Authentication);\n\n//# sourceURL=webpack://devour-frontend/./src/features/Authentication/Authentication.js?\n}");
-
-/***/ },
-
-/***/ "./src/features/Authentication/GoogleButton/GoogleButton.js"
-/*!******************************************************************!*\
-  !*** ./src/features/Authentication/GoogleButton/GoogleButton.js ***!
-  \******************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _components_Icons_GoogleIcon_GoogleIcon__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../components/Icons/GoogleIcon/GoogleIcon */ \"./src/components/Icons/GoogleIcon/GoogleIcon.js\");\n/* harmony import */ var _GoogleButton_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./GoogleButton.module.css */ \"./src/features/Authentication/GoogleButton/GoogleButton.module.css\");\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nfunction GoogleButton() {\n  var action = function action() {\n    // handle federated access with Google\n  };\n  var onClick = function onClick(event) {\n    action();\n  };\n  var onKeyDown = function onKeyDown(event) {\n    if (event.key === 'Enter') {\n      action();\n    }\n  };\n  return /*#__PURE__*/React.createElement(\"button\", {\n    className: _GoogleButton_module_css__WEBPACK_IMPORTED_MODULE_1__[\"default\"].googleButton,\n    onClick: onClick,\n    onKeyDown: onKeyDown,\n    type: \"button\",\n    \"aria-label\": \"sign in with your google account\"\n  }, /*#__PURE__*/React.createElement(_components_Icons_GoogleIcon_GoogleIcon__WEBPACK_IMPORTED_MODULE_0__[\"default\"], null), /*#__PURE__*/React.createElement(\"span\", null, \"Continue with Google\"));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (GoogleButton);\n\n//# sourceURL=webpack://devour-frontend/./src/features/Authentication/GoogleButton/GoogleButton.js?\n}");
-
-/***/ },
-
-/***/ "./src/features/Authentication/LoginForm/LoginForm.js"
-/*!************************************************************!*\
-  !*** ./src/features/Authentication/LoginForm/LoginForm.js ***!
-  \************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ \"./node_modules/@babel/runtime/helpers/esm/slicedToArray.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _hooks_useSession__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../hooks/useSession */ \"./src/hooks/useSession.js\");\n/* harmony import */ var _LoginForm_module_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./LoginForm.module.css */ \"./src/features/Authentication/LoginForm/LoginForm.module.css\");\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\n\n\nfunction LoginForm() {\n  var _useSession = (0,_hooks_useSession__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(),\n    setSession = _useSession.setSession;\n  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),\n    _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(_useState, 2),\n    loading = _useState2[0],\n    setLoading = _useState2[1];\n\n  // Perform validation checks in javascript and return alert if violated.\n  // ex. username.length > 50 characters, etc. -> error out.\n\n  var onSubmit = function onSubmit(event) {\n    event.preventDefault();\n    // initiate auth call to backend\n    // response returns challenge\n    // challenge is signed by browser/device:\n    // (call navigator.credentials.get() for signature)\n    // send signature to backend for verification and tokens\n\n    // setSession({ isAuthenticated: true, ...response.message.userData})\n  };\n  return /*#__PURE__*/React.createElement(\"form\", {\n    className: _LoginForm_module_css__WEBPACK_IMPORTED_MODULE_3__[\"default\"].loginForm,\n    onSubmit: onSubmit,\n    \"aria-label\": \"login form\"\n  }, /*#__PURE__*/React.createElement(\"label\", {\n    htmlFor: \"username\"\n  }, \"Email or username:\"), /*#__PURE__*/React.createElement(\"input\", {\n    id: \"username\",\n    type: \"text\",\n    required: true,\n    autoComplete: \"username webauthn\"\n  }), /*#__PURE__*/React.createElement(\"button\", {\n    type: \"submit\"\n  }, \"Sign In\"));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LoginForm);\n\n//# sourceURL=webpack://devour-frontend/./src/features/Authentication/LoginForm/LoginForm.js?\n}");
-
-/***/ },
-
-/***/ "./src/features/Authentication/RegistrationButton/RegistrationButton.js"
-/*!******************************************************************************!*\
-  !*** ./src/features/Authentication/RegistrationButton/RegistrationButton.js ***!
-  \******************************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _RegistrationButton_module_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RegistrationButton.module.css */ \"./src/features/Authentication/RegistrationButton/RegistrationButton.module.css\");\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nfunction RegistrationButton() {\n  var action = function action() {\n    // navigation.credentials.create()\n  };\n  var onClick = function onClick(event) {\n    action();\n  };\n  var onKeyDown = function onKeyDown(event) {\n    if (event.key === 'Enter') {\n      action();\n    }\n  };\n\n  // Need to register username or email, with backend.\n  // That means another UI.\n  // Probably needs a registration success page too.\n\n  return /*#__PURE__*/React.createElement(\"button\", {\n    id: \"register-passkey\",\n    className: _RegistrationButton_module_css__WEBPACK_IMPORTED_MODULE_0__[\"default\"].registrationButton,\n    onClick: onClick,\n    onKeyDown: onKeyDown,\n    type: \"button\",\n    \"aria-label\": \"create a new account\"\n  }, \"Sign Up\");\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RegistrationButton);\n\n//# sourceURL=webpack://devour-frontend/./src/features/Authentication/RegistrationButton/RegistrationButton.js?\n}");
 
 /***/ },
 
@@ -699,61 +622,6 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 
 "use strict";
 eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// extracted by mini-css-extract-plugin\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\"searchButton\":\"iouS73xSycZpVOshef37\"});\n\n//# sourceURL=webpack://devour-frontend/./src/components/MobileNav/SearchButton/SearchButton.module.css?\n}");
-
-/***/ },
-
-/***/ "./src/features/Authentication/AppleButton/AppleButton.module.css"
-/*!************************************************************************!*\
-  !*** ./src/features/Authentication/AppleButton/AppleButton.module.css ***!
-  \************************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// extracted by mini-css-extract-plugin\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\"appleButton\":\"gd0SLQU_H_0LYCyhuG1y\"});\n\n//# sourceURL=webpack://devour-frontend/./src/features/Authentication/AppleButton/AppleButton.module.css?\n}");
-
-/***/ },
-
-/***/ "./src/features/Authentication/Authentication.module.css"
-/*!***************************************************************!*\
-  !*** ./src/features/Authentication/Authentication.module.css ***!
-  \***************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// extracted by mini-css-extract-plugin\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\"authentication\":\"kXofMQa6vzuWGHvhoZSw\"});\n\n//# sourceURL=webpack://devour-frontend/./src/features/Authentication/Authentication.module.css?\n}");
-
-/***/ },
-
-/***/ "./src/features/Authentication/GoogleButton/GoogleButton.module.css"
-/*!**************************************************************************!*\
-  !*** ./src/features/Authentication/GoogleButton/GoogleButton.module.css ***!
-  \**************************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// extracted by mini-css-extract-plugin\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\"googleButton\":\"prckt0265mpeiXlE3kxP\"});\n\n//# sourceURL=webpack://devour-frontend/./src/features/Authentication/GoogleButton/GoogleButton.module.css?\n}");
-
-/***/ },
-
-/***/ "./src/features/Authentication/LoginForm/LoginForm.module.css"
-/*!********************************************************************!*\
-  !*** ./src/features/Authentication/LoginForm/LoginForm.module.css ***!
-  \********************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// extracted by mini-css-extract-plugin\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\"loginForm\":\"DZ0S8wRAGVyW9Xa9BSBu\"});\n\n//# sourceURL=webpack://devour-frontend/./src/features/Authentication/LoginForm/LoginForm.module.css?\n}");
-
-/***/ },
-
-/***/ "./src/features/Authentication/RegistrationButton/RegistrationButton.module.css"
-/*!**************************************************************************************!*\
-  !*** ./src/features/Authentication/RegistrationButton/RegistrationButton.module.css ***!
-  \**************************************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// extracted by mini-css-extract-plugin\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\"registrationButton\":\"__CuXY8dgC7rbEFNNkzg\"});\n\n//# sourceURL=webpack://devour-frontend/./src/features/Authentication/RegistrationButton/RegistrationButton.module.css?\n}");
 
 /***/ },
 
