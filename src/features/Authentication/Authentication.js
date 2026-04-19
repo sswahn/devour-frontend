@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner'
+import CloseButton from '../../components/CloseButton/CloseButton'
 import LoginForm from './LoginForm/LoginForm'
 import RegistrationButton from './RegistrationButton/RegistrationButton'
 import GoogleButton from './GoogleButton/GoogleButton'
@@ -9,6 +10,7 @@ import styles from './Authentication.module.css'
 function Authentication({ closeAuthentication }) {
   return (
     <section className={styles.authentication}>
+      <CloseButton text="authentication" close={closeAuthentication} />
       <LoginForm />
       <RegistrationButton />
       <GoogleButton />
