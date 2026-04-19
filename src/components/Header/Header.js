@@ -29,7 +29,7 @@ const Header = ({ authenticationButtonRef, openAuthentication }) => {
         {/* Needs desktop navigation in header (basically the mobile nav buttons, no camera, and a download option. */}
 
         {session.isAuthenticated 
-          ? <Avatar username={session.username} img={null} />
+          ? <Avatar username={session.username} image={null} />
           : <LoginButton 
               authenticationButtonRef={authenticationButtonRef} 
               openAuthentication={openAuthentication} />
