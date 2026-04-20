@@ -9,7 +9,7 @@ import styles from './Profile.module.css'
 
 function Profile({ closeProfile }) {
   const { pop } = useFocusStack()
-  const focusRef = useFocusTrap()
+  const {overlayRef, focusRef} = useFocusTrap()
   const swipeData = useRef({ 
     startX: 0, 
     activeSide: null 
