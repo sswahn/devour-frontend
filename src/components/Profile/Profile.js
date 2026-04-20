@@ -32,10 +32,11 @@ function Profile({ closeProfile }) {
   }
 
   useEffect(() => {
-    if (overlayRef.current && action) {
-      setElement(overlayRef.current)
-      setMethod(action)
+    if (!overlayRef.current || !action) {
+      return
     }
+    setElement(overlayRef.current)
+    setMethod(action)
   }, [])
 
   
