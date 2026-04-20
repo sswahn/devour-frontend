@@ -50,8 +50,9 @@ function Profile({ closeProfile }) {
   }
 
   const onPointerDown = event => {
-    event.currentTarget.setPointerCapture(event.pointerId)
-    const { clientX } = event
+  const { clientX, pointerId, currentTarget } = event
+  currentTarget.setPointerCapture(pointerId)
+    
     const width = window.innerWidth
 
     if (clientX < EDGE_THRESHOLD) {
