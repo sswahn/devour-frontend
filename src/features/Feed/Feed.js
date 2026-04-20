@@ -3,7 +3,7 @@ import { config } from '../../config'
 import server from '../../utilities/server'
 import database from '@sswahn/database'
 import FeedNode from './FeedNode/FeedNode'
-import Sentinel from './components/Sentinel/Sentinel' 
+import Sentinel from './Sentinel/Sentinel' 
 import styles from './Feed.module.css'
 
 function Feed() {
