@@ -68,7 +68,7 @@ function useSwipeToClose() {
       return
     }
     
-    const translateX = activeSide === 'left' ? Math.max(0, dx) : Math.min(0, dx)
+    const translateX = activeSide === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
     overlay.element.style.transform = `translateX(${translateX}px)`
   }
 
