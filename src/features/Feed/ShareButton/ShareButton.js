@@ -1,3 +1,4 @@
+import ShareIcon from '../../../components/Icons/ShareIcon/ShareIcon'
 import styles from './ShareButton.module.css'
 
 function ShareButton() {
