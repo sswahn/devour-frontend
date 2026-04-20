@@ -68,7 +68,7 @@ function Profile({ closeProfile }) {
       currentTarget.setPointerCapture(pointerId)
       swipeData.current = { 
         startX: clientX, 
-        activeSide: clientX < EDGE_THRESHOLD ? 'left' : 'right'
+        activeSide: isLeft ? 'left' : 'right'
       }
     }
   }
