@@ -24,15 +24,28 @@ function Notifications({ closeNotifications }) {
     ]
   }
 
-  const close = bottomSheet => {
+  const close = () => {
+    const bottomSheet = bottomSheetRef.current
     bottomSheet.style.transform = '' 
     bottomSheet.addEventListener('transitionend', closeNotifications, { once: true }) 
     setIsOpen(false)
   }
 
-  const handleClose = event => {
+  const action = () => {
+    close()
+    pop()
+  }
+
+  const onClick = event => {
     if (event.target === event.currentTarget) {
-      close(bottomSheetRef.current)
+      action()
+    }
+  }
+  
+  const onKeyDown = event => {
+    if (event.key === 'Escape') {
+      event.preventDefault()
+      action() 
     }
   }
 
@@ -148,7 +161,7 @@ function Notifications({ closeNotifications }) {
   }, [])
   
   return (
-    <div id="notifications" className={styles.notifications} ref={focusRef} onClick={handleClose} tabIndex={-1} role="dialog" aria-modal="true">
+    <div id="notifications" className={styles.notifications} ref={focusRef} onClick={onClick} onKeyDown={onKeyDown} tabIndex={-1} role="dialog" aria-modal="true">
       <section ref={bottomSheetRef}  
         className={`${styles.bottomSheet} ${isOpen ? styles.open : ''}`}
         onPointerDown={handlePointerDown}
