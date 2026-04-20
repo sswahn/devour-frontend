@@ -14,6 +14,7 @@ import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 import styles from './SearchForm.module.css'
 
 function SearchForm({ closeSearch }) {
+  const { pop } = useFocusStack()
   const {overlayRef, focusRef} = useFocusTrap()
   const swipeToClose = useSwipeToClose()
   const [searchValue, setSearchValue] = useState('')
