@@ -10,32 +10,10 @@ import styles from './Profile.module.css'
 function Profile({ closeProfile }) {
   const { pop } = useFocusStack()
   const focusRef = useFocusTrap()
-
-  const [position, setPosition] = useState(0);
-  const swipeData = useRef({ startX: 0, activeSide: null });
-  const EDGE_THRESHOLD = 30; // pixels from the edge to trigger
-  const CLOSE_THRESHOLD = 150; // distance swiped to trigger close
-
-
-  /* 
-  const geoRef = useRef(null)
-  const handleLocation = event => {
-    if (event.target.position) {
-      const { latitude, longitude } = event.target.position.coords
-      alert(`Coordinates: ${latitude}, ${longitude}`)
-    } else if (event.target.error) {
-      alert(`Error: ${event.target.error.message}`)
-    }
-  }
-  useEffect(() => {
-    const geo = geoRef.current
-    geo.addEventListener('location', handleLocation)
-    return () => {
-      geo.removeEventListener('location', handleLocation)
-    }
-  }, [])
-  <geolocation ref={geoRef}></geolocation>
-  */
+  const swipeData = useRef({ 
+    startX: 0, 
+    activeSide: null 
+  })
 
   const action = () => {
     closeProfile()
@@ -59,6 +37,7 @@ function Profile({ closeProfile }) {
   const onPointerDown = event => {
     const { clientX, pointerId, currentTarget } = event
     const width = window.innerWidth
+    const EDGE_THRESHOLD = 30
     
     // Only capture if actually hitting an edge
     const isLeft = clientX < EDGE_THRESHOLD
@@ -80,6 +59,7 @@ function Profile({ closeProfile }) {
     const position = event.clientX - startX
     const absPos = Math.abs(position)
     const isCorrectDir = activeSide === 'left' ? diff > 0 : diff < 0
+    const CLOSE_THRESHOLD = 150 
     
     if (absPos > CLOSE_THRESHOLD && isCorrectDir) {
       action()
