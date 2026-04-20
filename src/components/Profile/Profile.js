@@ -103,6 +103,7 @@ function Profile({ closeProfile }) {
     
     resetPointer()
   }
+  
   const onPointerCancel = event => {
     resetPointer()
   }
@@ -115,8 +116,8 @@ function Profile({ closeProfile }) {
       onKeyDown={onKeyDown}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
-      onPointerUp={onReset}
-      onPointerCancel={onReset}
+      onPointerUp={onPointerUp}
+      onPointerCancel={onPointerCancel}
       tabIndex={-1} 
       role="dialog" 
       aria-modal="true" 
