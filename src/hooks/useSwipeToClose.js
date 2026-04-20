@@ -64,8 +64,12 @@ function useSwipeToClose() {
       reset()
       return
     }
-    const translateX = activeSide === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
-    overlay.element.style.transform = `translateX(${translateX}px)`
+
+    const raw = activeSide === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
+    const resisted = raw / (1 + Math.abs(raw) / 300)
+      
+    overlay.element.style.transition = 'none' // disable snap during drag
+    overlay.element.style.transform = `translateX(${resisted}px)`
   }
 
   const onPointerUp = event => {
