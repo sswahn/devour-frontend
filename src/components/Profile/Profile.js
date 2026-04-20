@@ -1,6 +1,7 @@
 import { useRef, useEffect } from 'react'
 import useFocusStack from '../../hooks/useFocusStack'
 import useFocusTrap from '../../hooks/useFocusTrap'
+import useSwipeToClose from '../../hooks/useSwipeToClose'
 import CloseButton from '../CloseButton/CloseButton'
 import Dropdown from '../Dropdown/Dropdown'
 import FollowButton from './FollowButton/FollowButton'
@@ -10,10 +11,13 @@ import styles from './Profile.module.css'
 function Profile({ closeProfile }) {
   const { pop } = useFocusStack()
   const {overlayRef, focusRef} = useFocusTrap()
+  const [setElement, setMethod] = useSwipeToClose()
+  /*
   const swipeData = useRef({ 
     startX: 0, 
     activeSide: null 
   })
+  */
 
   const action = () => {
     closeProfile()
@@ -27,6 +31,15 @@ function Profile({ closeProfile }) {
     }
   }
 
+  useEffect(() => {
+    if (overlayRef.current) {
+      setElement(overlayRef.current)
+      setMethod(action)
+    }
+  }, [])
+
+  
+  /*
   const resetSwipeData = () => {
     swipeData.current = { 
       startX: 0, 
@@ -69,6 +82,7 @@ function Profile({ closeProfile }) {
   const onPointerCancel = event => {
     resetSwipeData()
   }
+  */
   
   return (
     <section 
