@@ -52,6 +52,9 @@ function swipeToClose() {
   }
   
   useEffect(() => {
+    if (!elementRef.current) {
+      return
+    }
     elementRef.current.addEventListener('onPointerUp', onPointerDown)
     elementRef.current.addEventListener('onPointerDown', onPointerUp)
     elementRef.current.addEventListener('onPointerCancel', onPointerCancel)
