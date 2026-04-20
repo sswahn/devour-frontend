@@ -58,12 +58,6 @@ function SearchForm({ closeSearch }) {
     setRecentSearches(data)
   }
 
-  const loadRecentSearchTerms = () => {
-    const item = localStorage.getItem('searches')
-    if (item) {
-      setRecentSearches(JSON.parse(item) )
-    }
-  }
 
   const action = () => {
     closeSearch()
@@ -87,10 +81,6 @@ function SearchForm({ closeSearch }) {
   useEffect(() => {
     requestSearchResults()
   }, [searchValue])
-  
-  useEffect(() => {
-    loadRecentSearchTerms()
-  }, [])
 
   return (
     <search id="search" className={styles.search} ref={focusRef} onKeyDown={onKeyDown} role="dialog" aria-modal="true">
