@@ -27,6 +27,7 @@ function swipeToClose() {
  
     console.log('window.innerWidth: ', width)
     console.log('clientX: ', clientX)
+    console.log('width - EDGE_THRESHOLD: ', width - EDGE_THRESHOLD)
     
     // Only capture if actually hitting an edge
     const isLeft = clientX < EDGE_THRESHOLD
