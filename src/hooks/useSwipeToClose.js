@@ -37,7 +37,7 @@ function swipeToClose() {
   }
 
   const onPointerUp = event => {
-    console.log('onPointerUp fired!')
+    console.log('onPointerUp fired! swipeData.current: ', swipeData.current)
     
     const { activeSide, startX } = swipeData.current
     if (!activeSide) {
