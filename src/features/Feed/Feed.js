@@ -20,6 +20,8 @@ function Feed() {
     setData({ ...data, ...response.message })
   }
 
+
+  // Use smart caching, should be part of server.get()
   const loadFromStorage = async () => {
     const db = database()
     const video = await db.get('video')
