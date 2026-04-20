@@ -6,31 +6,31 @@ const selector = 'button, [href], input, select, textarea, [tabindex]:not([tabin
 
 function FocusTrapProvider({ children }) {
   const [isMounted, setIsMounted] = useState(false)
-  const ref = useRef(null)
+  const overlayRef = useRef(null)
   
   const focusRef = useCallback(node => {
     if (node !== null) {
-      ref.current = node
-      ref.current.focus()
+      overlayRef.current = node
+      overlayRef.current.focus()
       setIsMounted(true)
     } else {  
-      ref.current = null // 2. Cleanup logic (unmount)
+      overlayRef.current = null // 2. Cleanup logic (unmount)
       setIsMounted(false)
     }
   }, [])
 
   const focusLast = event => {
-    const elements = ref.current.querySelectorAll(selector)
+    const elements = overlayRef.current.querySelectorAll(selector)
     elements[elements.length - 1]?.focus()
   }
   
   const focusFirst = event => {
-    const elements = ref.current.querySelectorAll(selector)
+    const elements = overlayRef.current.querySelectorAll(selector)
     elements[0]?.focus()
   }
     
   return (
-    <FocusTrapContext.Provider value={focusRef}>
+    <FocusTrapContext.Provider value={{ overlayRef, focusRef }}>
       {isMounted && <div onFocus={focusLast} tabIndex={0}></div>}
         {children}
       {isMounted && <div onFocus={focusFirst} tabIndex={0}></div>}
