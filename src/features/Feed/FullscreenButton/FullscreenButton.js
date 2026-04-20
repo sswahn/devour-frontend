@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import useFocusStack from '../../../hooks/useFocusStack'
 import ExpandIcon from '../../../components/Icons/ExpandIcon/ExpandIcon'
-import styles './FullscreenButton.module.css'
+import styles from './FullscreenButton.module.css'
 
 function FullscreenButton({ openFeed }) {
   const { push } = useFocusStack()
