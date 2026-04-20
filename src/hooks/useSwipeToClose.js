@@ -18,6 +18,9 @@ function useSwipeToClose() {
   }
 
   const reset = element => {
+    if (element.hasPointerCapture(swipeData.current.pointerId)) {
+      element.releasePointerCapture(swipeData.current.pointerId)
+    }
     element.style.transition = 'transform 0.2s ease'
     element.style.transform = ''
     swipeData.current = { 
@@ -86,10 +89,6 @@ function useSwipeToClose() {
     const isCorrectDir = activeSide === 'left' ? deltaX > 0 : deltaX < 0
     const shouldClose = Math.abs(deltaX) > CLOSE_THRESHOLD && isCorrectDir
     
-    if (currentTarget.hasPointerCapture(id)) {
-      currentTarget.releasePointerCapture(id)
-    }
-    
     if (shouldClose) {
       overlay.method()
     }
@@ -101,9 +100,6 @@ function useSwipeToClose() {
     const { pointerId, currentTarget } = event
     if (pointerId !== id) {
       return
-    }
-    if (currentTarget.hasPointerCapture(id)) {
-      currentTarget.releasePointerCapture(id)
     }
     reset(currentTarget)
   }
