@@ -12,25 +12,11 @@ function Profile({ closeProfile }) {
   const { pop } = useFocusStack()
   const {overlayRef, focusRef} = useFocusTrap()
   const swipeToClose = useSwipeToClose()
-  /*
-  const swipeData = useRef({ 
-    startX: 0, 
-    activeSide: null 
-  })
-  */
 
   const action = () => {
     closeProfile()
     pop()
   }
-  /*
-  const onKeyDown = event => {
-    if (event.key === 'Escape') {
-      event.preventDefault()
-      action() 
-    }
-  }
-*/
   
   useEffect(() => {
     if (!overlayRef.current || !action) {
@@ -38,62 +24,12 @@ function Profile({ closeProfile }) {
     }
     swipeToClose(overlayRef.current, action)
   }, [])
-
-  
-  /*
-  const resetSwipeData = () => {
-    swipeData.current = { 
-      startX: 0, 
-      activeSide: null
-    }
-  }
-
-  const onPointerDown = event => {
-    const { clientX, pointerId, currentTarget } = event
-    const width = window.innerWidth
-    const EDGE_THRESHOLD = 30
-    
-    // Only capture if actually hitting an edge
-    const isLeft = clientX < EDGE_THRESHOLD
-    const isRight = clientX > width - EDGE_THRESHOLD
-    if (isLeft || isRight) {
-      currentTarget.setPointerCapture(pointerId)
-      swipeData.current = { 
-        startX: clientX, 
-        activeSide: isLeft ? 'left' : 'right'
-      }
-    }
-  }
-
-  const onPointerUp = event => {
-    const { activeSide, startX } = swipeData.current
-    if (!activeSide) {
-      return
-    }
-    const deltaX = event.clientX - startX
-    const isCorrectDir = activeSide === 'left' ? deltaX > 0 : deltaX < 0
-    const CLOSE_THRESHOLD = 150 
-    
-    if (Math.abs(deltaX) > CLOSE_THRESHOLD && isCorrectDir) {
-      action()
-    }
-    resetSwipeData()
-  }
-  
-  const onPointerCancel = event => {
-    resetSwipeData()
-  }
-  */
   
   return (
     <section 
       id="profile"
       className={styles.profile} 
       ref={focusRef} 
-    //  onKeyDown={onKeyDown}
-    //  onPointerDown={onPointerDown}
-    //  onPointerUp={onPointerUp}
-    //  onPointerCancel={onPointerCancel}
       tabIndex={-1} 
       role="dialog" 
       aria-modal="true" 
