@@ -20,7 +20,7 @@ function VideoOverlay({ closeFeed }) {
   return (
     <nav className={styles.videoOverlay}>
       <div> {/* top of node header */}
-        {isFullscreen && <CloseButton overlay="feed overlay" close={closeFeed} />}
+        {/* isFullscreen && <CloseButton overlay="feed overlay" close={closeFeed} /> */}
         <Dropdown />
       </div>
       <div> {/* sidebar right */}
