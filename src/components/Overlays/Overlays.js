@@ -22,34 +22,6 @@ function Overlays({
   closeNotifications, 
   closeProfile 
 }) {
-  
-  // Move this to each overlay and set the eventlistener to the overlay?
-  // its no longer a switch then, but a typical onKeyDown function using 'Escape'
-  const closeOverlay = event => {
-    if (event.key !== 'Escape') {
-      return 
-    }
-    event.preventDefault()
-    const modal = event.target.closest('[role="dialog"]')
-    switch(modal?.id) {
-      case 'search':
-        return closeSearch()
-      case 'camera':
-        return closeCamera()
-      case 'notifications':
-        return closeNotifications()
-      case 'profile':
-        return closeProfile()
-      default:
-    }
-  }
-  
-  useEffect(() => {
-   // document.addEventListener('keydown', closeOverlay)
-    return () => {
-     // document.removeEventListener('keydown', closeOverlay)
-    }
-  }, [])
 
   return createPortal(
     <FocusTrapProvider>
