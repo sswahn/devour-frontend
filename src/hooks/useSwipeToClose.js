@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 
-function swipeToClose() {
+function useSwipeToClose() {
   const [overlay, setOverlay] = useState({
     element: null,
     method: null
@@ -76,4 +76,4 @@ function swipeToClose() {
   return setOverlay
 }
 
-export default swipeToClose
+export default useSwipeToClose
