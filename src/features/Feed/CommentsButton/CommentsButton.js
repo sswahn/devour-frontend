@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import CommentsIcon from '../../../components/Icons/CommentsIcon/CommentsIcon'
+import CommentIcon from '../../../components/Icons/CommentIcon/CommentIcon'
 import styles from 'CommentsButton.module.css'
 
 function CommentsButton() {
@@ -23,7 +23,7 @@ function CommentsButton() {
   
   return (
     <button className={styles.commentsButton} onClick={onClick} onKeyDown={onKeyDown} ref={buttonRef} type="button" aria-label="leave a comment">
-      <CommentsIcon />
+      <CommentIcon />
     </button>
   )
 }
