@@ -55,13 +55,13 @@ function swipeToClose() {
     if (!elementRef.current) {
       return
     }
-    elementRef.current.addEventListener('onPointerUp', onPointerDown)
-    elementRef.current.addEventListener('onPointerDown', onPointerUp)
-    elementRef.current.addEventListener('onPointerCancel', onPointerCancel)
+    elementRef.current.addEventListener('pointerup', onPointerDown)
+    elementRef.current.addEventListener('pointerdown', onPointerUp)
+    elementRef.current.addEventListener('pointercancel', onPointerCancel)
     return () => {
-      elementRef.current.removeEventListener('onPointerUp', onPointerDown)
-      elementRef.current.removeEventListener('onPointerDown', onPointerUp)
-      elementRef.current.removeEventListener('onPointerCancel', onPointerCancel)
+      elementRef.current.removeEventListener('pointerup', onPointerDown)
+      elementRef.current.removeEventListener('pointerdown', onPointerUp)
+      elementRef.current.removeEventListener('pointercancel', onPointerCancel)
     }
   }, [])
 
