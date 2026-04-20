@@ -1,10 +1,10 @@
-import styles from './VideoOverlay.module.css'
 import CloseButton from '../../../components/CloseButton/CloseButton'
 import Dropdown from '../../../components/Dropdown/Dropdown'
 import LikeButton from '../LikeButton/LikeButton'
 import CommentsButton from '../CommentsButton/CommetsButton'
 import ShareButton from '../ShareButton/ShareButton'
 import FullscreenButton from '../FullscreenButton/FullscreenButton'
+import styles from './OverlayButtons.module.css'
 
 function VideoOverlay({ closeFeed }) {
 
