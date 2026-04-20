@@ -50,7 +50,6 @@ function Profile({ closeProfile }) {
   }
 
   const resetPointer = () => {
-    setPosition(0)
     swipeData.current = { 
       startX: 0, 
       activeSide: null, 
@@ -68,31 +67,17 @@ function Profile({ closeProfile }) {
     }
   }
 
-  const onPointerMove = event => {
-    const { activeSide, startX } = swipeData.current
-    if (!activeSide) {
-      return
-    }
-    
-    const diff = event.clientX - startX
-
-    // Only allow swiping inward from the respective edge
-    if (activeSide === 'left' && diff > 0) {
-      setPosition(diff)
-    } else if (activeSide === 'right' && diff < 0) {
-      setPosition(diff)
-    }
-  }
-
   const onPointerUp = () => {
     if (!swipeData.current.activeSide) {
       return
     }
-    
     const position = event.clientX - startX
     const absPos = Math.abs(position)
 
-    if (absPos > CLOSE_THRESHOLD) {
+   // Verify distance AND direction (must swipe inward)
+    const isCorrectDir = activeSide === 'left' ? diff > 0 : diff < 0
+    
+    if (absPos > CLOSE_THRESHOLD && isCorrectDir) {
       action()
     }
     resetPointer()
