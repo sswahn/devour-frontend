@@ -32,8 +32,6 @@ function Profile({ closeProfile }) {
   }
 
   useEffect(() => {
-    console.log('focusRef.current: ', focusRef.current)
-    console.log('overlayRef.current: ', overlayRef.current)
     if (overlayRef.current) {
       setElement(overlayRef.current)
       setMethod(action)
