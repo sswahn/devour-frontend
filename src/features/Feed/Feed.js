@@ -1,4 +1,5 @@
 import { useState, useRef, memo } from 'react'
+import { config } from '../../config'
 import server from '../../utilities/server'
 import database from '@sswahn/database'
 import FeedNode from './FeedNode/FeedNode'
@@ -12,10 +13,6 @@ function Feed() {
 
   const loadMoreData = async event => {
     const response = await server.get(`${config.api.feed}/${batchNumber}`)
-    if (!response.error) {
-      return alert(response.error)
-    }
-    
     setBatchNumber(response.message.batchNumber)
     setData({ ...data, ...response.message })
   }
