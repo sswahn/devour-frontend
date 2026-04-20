@@ -71,7 +71,7 @@ function swipeToClose() {
       overlay.element.removeEventListener('pointerdown', onPointerDown)
       overlay.element.removeEventListener('pointercancel', onPointerCancel)
     }
-  }, [overlay.element])
+  }, [overlay.element, overlay.method])
 
   return setOverlay
 }
