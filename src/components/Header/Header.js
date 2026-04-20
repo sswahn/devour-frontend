@@ -3,7 +3,6 @@ import useScrollEffect from '../../hooks/useScrollEffect'
 import useSession from '../../hooks/useSession'
 import HomeIcon from '../Icons/HomeIcon/HomeIcon'
 import DashboardButton from './DashboardButton/DashboardButton'
-import LineChartIcon from '../Icons/LineChartIcon/LineChartIcon'
 import LoginButton from './LoginButton/LoginButton'
 import styles from './Header.module.css'
 
