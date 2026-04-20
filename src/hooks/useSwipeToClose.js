@@ -75,7 +75,7 @@ function useSwipeToClose() {
     const raw = activeSide === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
     const resisted = raw / (1 + Math.abs(raw) / 300)
   
-    overlay.element.style.transform = `translateX(${resisted}px)`
+    event.currentTarget.style.transform = `translateX(${resisted}px)`
   }
 
   const onPointerUp = event => {
