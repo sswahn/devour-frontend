@@ -68,7 +68,8 @@ function Profile({ closeProfile }) {
   }
 
   const onPointerUp = () => {
-    if (!swipeData.current.activeSide) {
+    const { activeSide, startX } = swipeData.current
+    if (!activeSide) {
       return
     }
     const position = event.clientX - startX
