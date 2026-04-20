@@ -7,6 +7,7 @@ const Overlays = lazy(() => import('../Overlays/Overlays'))
 
 function Interface() {
   const [authenticationIsOpen, setAuthenticationIsOpen] = useState(false)
+  const [dashboardIsOpen, setDashboardIsOpen] = useState(false)
   const [searchIsOpen, setSearchIsOpen] = useState(false)
   const [cameraIsOpen, setCameraIsOpen] = useState(false)
   const [notificationsIsOpen, setNotificationsIsOpen] = useState(false)
@@ -14,6 +15,9 @@ function Interface() {
   
   const openAuthentication = () => setAuthenticationIsOpen(true)
   const closeAuthentication = () => setAuthenticationIsOpen(false)
+
+  const openDashboard = () => setDashboardIsOpen(true)
+  const closeDashboard = () => setDashboardIsOpen(false)
   
   const openSearch = () => setSearchIsOpen(true)
   const closeSearch = () => setSearchIsOpen(false)
@@ -29,7 +33,10 @@ function Interface() {
 
   return (
     <>
-      <Header openAuthentication={openAuthentication} />
+      <Header 
+        openAuthentication={openAuthentication} 
+        openDashboard={openDashboard}
+      />
       <Main />
       <MobileNav 
         openSearch={openSearch}
@@ -40,6 +47,7 @@ function Interface() {
       <Suspense fallback={<LoadingSpinner />}>
         <Overlays 
           authenticationIsOpen={authenticationIsOpen}
+          dashboardIsOpen={dashboardIsOpen}
           searchIsOpen={searchIsOpen} 
           cameraIsOpen={cameraIsOpen}
           notificationsIsOpen={notificationsIsOpen}
