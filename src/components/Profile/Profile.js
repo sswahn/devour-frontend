@@ -49,6 +49,15 @@ function Profile({ closeProfile }) {
     }
   }
 
+  const resetPointer = () => {
+    setPosition(0)
+    swipeData.current = { 
+      startX: 0, 
+      activeSide: null, 
+      id: null 
+    }
+  }
+
   const onPointerDown = event => {
   const { clientX, pointerId, currentTarget } = event
   currentTarget.setPointerCapture(pointerId)
