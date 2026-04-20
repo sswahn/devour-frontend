@@ -116,7 +116,7 @@ function useSwipeToClose() {
     element.addEventListener('pointercancel', onPointerCancel)
     return () => {
       element.removeEventListener('pointerup', onPointerUp)
-      element.addEventListener('pointermove', onPointerMove)
+      element.removeEventListener('pointermove', onPointerMove)
       element.removeEventListener('pointerdown', onPointerDown)
       element.removeEventListener('pointercancel', onPointerCancel)
     }
