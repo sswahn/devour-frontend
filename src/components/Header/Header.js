@@ -8,7 +8,7 @@ import styles from './Header.module.css'
 
 import Avatar from '../Avatar/Avatar'
 
-const Header = ({ authenticationButtonRef, openAuthentication }) => {
+const Header = ({ openAuthentication, openDashboard }) => {
   const { session } = useSession()
   const headerRef = useRef(null)
   const { scrollEffect } = useScrollEffect()
@@ -29,13 +29,11 @@ const Header = ({ authenticationButtonRef, openAuthentication }) => {
         <nav>
         {/* Needs desktop navigation in header (basically the mobile nav buttons, no camera, and a download option. */}
         {session.isAuthenticated && (
-          <DashboardButton />
+          <DashboardButton openDashboard={openDashboard} />
         )}
         {session.isAuthenticated 
           ? <Avatar username={session.username} image={null} />
-          : <LoginButton 
-              authenticationButtonRef={authenticationButtonRef} 
-              openAuthentication={openAuthentication} />
+          : <LoginButton openAuthentication={openAuthentication} />
         }
         </nav>
       </div>
