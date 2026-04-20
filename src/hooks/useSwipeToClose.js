@@ -40,7 +40,7 @@ function useSwipeToClose() {
     const isRight = clientX > width - EDGE_THRESHOLD
     if (isLeft || isRight) {
       currentTarget.setPointerCapture(pointerId)
-      overlay.element.style.transition = 'none' // disable snap during drag
+      currentTarget.style.transition = 'none' // disable snap during drag
       swipeData.current = { 
         startX: clientX,
         startY: clientY,
