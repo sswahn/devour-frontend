@@ -1,3 +1,21 @@
+/*!********************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/Header/DashboardButton/DashboardButton.module.css ***!
+  \********************************************************************************************************************/
+/* User Dashboard */
+
+.MI9YuuDMLrrY7RC1z4G1 {
+  align-items: center; 
+  background: none;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  padding: 10px;
+  height: 44px;
+  width: 44px;
+}
+
 /*!************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/Header/LoginButton/LoginButton.module.css ***!
   \************************************************************************************************************/
@@ -68,7 +86,11 @@
   width: 44px;
 }
 
-
+.Qp5xkmMJGKUSGJdCNCHD nav {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+}
 
 
 /*!*******************************************************************************************!*\

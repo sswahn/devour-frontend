@@ -93,7 +93,7 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nfunction DashboardButton() {\n  return /*#__PURE__*/React.createElement(\"button\", {\n    type: \"button\",\n    \"aria-label\": \"open dashboard\"\n  }, /*#__PURE__*/React.createElement(LineChartIcon, null));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DashboardButton);\n\n//# sourceURL=webpack://devour-frontend/./src/components/Header/DashboardButton/DashboardButton.js?\n}");
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _hooks_useFocusStack__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../hooks/useFocusStack */ \"./src/hooks/useFocusStack.js\");\n/* harmony import */ var _Icons_LineChartIcon_LineChartIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Icons/LineChartIcon/LineChartIcon */ \"./src/components/Icons/LineChartIcon/LineChartIcon.js\");\n/* harmony import */ var _DashboardButton_module_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DashboardButton.module.css */ \"./src/components/Header/DashboardButton/DashboardButton.module.css\");\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\n\n\nfunction DashboardButton(_ref) {\n  var openDashboard = _ref.openDashboard;\n  var _useFocusStack = (0,_hooks_useFocusStack__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(),\n    push = _useFocusStack.push;\n  var buttonRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);\n  var action = function action() {\n    openDashboard();\n    push(buttonRef.current);\n  };\n  var onClick = function onClick(event) {\n    action();\n  };\n  var onKeyDown = function onKeyDown(event) {\n    if (event.key === 'Enter') {\n      event.preventDefault();\n      action();\n    }\n  };\n  return /*#__PURE__*/React.createElement(\"button\", {\n    className: _DashboardButton_module_css__WEBPACK_IMPORTED_MODULE_3__[\"default\"].dashboardButton,\n    onClick: onClick,\n    onKeyDown: onKeyDown,\n    ref: buttonRef,\n    type: \"button\",\n    \"aria-label\": \"open dashboard\"\n  }, /*#__PURE__*/React.createElement(_Icons_LineChartIcon_LineChartIcon__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DashboardButton);\n\n//# sourceURL=webpack://devour-frontend/./src/components/Header/DashboardButton/DashboardButton.js?\n}");
 
 /***/ },
 
@@ -160,6 +160,17 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 
 "use strict";
 eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nfunction HomeIcon(_ref) {\n  var _ref$size = _ref.size,\n    size = _ref$size === void 0 ? 24 : _ref$size;\n  return /*#__PURE__*/React.createElement(\"svg\", {\n    xmlns: \"http://www.w3.org/2000/svg\",\n    viewBox: \"0 0 640 640\",\n    width: size,\n    height: size,\n    role: \"img\",\n    \"aria-label\": \"home icon\"\n  }, /*#__PURE__*/React.createElement(\"path\", {\n    d: \"M341.8 72.6C329.5 61.2 310.5 61.2 298.3 72.6L74.3 280.6C64.7 289.6 61.5 303.5 66.3 315.7C71.1 327.9 82.8 336 96 336L112 336L112 512C112 547.3 140.7 576 176 576L464 576C499.3 576 528 547.3 528 512L528 336L544 336C557.2 336 569 327.9 573.8 315.7C578.6 303.5 575.4 289.5 565.8 280.6L341.8 72.6zM304 384L336 384C362.5 384 384 405.5 384 432L384 528L256 528L256 432C256 405.5 277.5 384 304 384z\"\n  }));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (HomeIcon);\n\n//# sourceURL=webpack://devour-frontend/./src/components/Icons/HomeIcon/HomeIcon.js?\n}");
+
+/***/ },
+
+/***/ "./src/components/Icons/LineChartIcon/LineChartIcon.js"
+/*!*************************************************************!*\
+  !*** ./src/components/Icons/LineChartIcon/LineChartIcon.js ***!
+  \*************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nfunction LineChartIcon(_ref) {\n  var _ref$size = _ref.size,\n    size = _ref$size === void 0 ? 24 : _ref$size;\n  return /*#__PURE__*/React.createElement(\"svg\", {\n    xmlns: \"http://www.w3.org/2000/svg\",\n    viewBox: \"0 0 640 640\",\n    width: size,\n    height: size,\n    role: \"img\",\n    \"aria-label\": \"line chart icon\"\n  }, /*#__PURE__*/React.createElement(\"path\", {\n    d: \"M128 128C128 110.3 113.7 96 96 96C78.3 96 64 110.3 64 128L64 464C64 508.2 99.8 544 144 544L544 544C561.7 544 576 529.7 576 512C576 494.3 561.7 480 544 480L144 480C135.2 480 128 472.8 128 464L128 128zM534.6 214.6C547.1 202.1 547.1 181.8 534.6 169.3C522.1 156.8 501.8 156.8 489.3 169.3L384 274.7L326.6 217.4C314.1 204.9 293.8 204.9 281.3 217.4L185.3 313.4C172.8 325.9 172.8 346.2 185.3 358.7C197.8 371.2 218.1 371.2 230.6 358.7L304 285.3L361.4 342.7C373.9 355.2 394.2 355.2 406.7 342.7L534.7 214.7z\"\n  }));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LineChartIcon);\n\n//# sourceURL=webpack://devour-frontend/./src/components/Icons/LineChartIcon/LineChartIcon.js?\n}");
 
 /***/ },
 
@@ -523,6 +534,17 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 
 "use strict";
 eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// extracted by mini-css-extract-plugin\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\"avatar\":\"cNFgJeNuNF741mqy3HjF\"});\n\n//# sourceURL=webpack://devour-frontend/./src/components/Avatar/Avatar.module.css?\n}");
+
+/***/ },
+
+/***/ "./src/components/Header/DashboardButton/DashboardButton.module.css"
+/*!**************************************************************************!*\
+  !*** ./src/components/Header/DashboardButton/DashboardButton.module.css ***!
+  \**************************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// extracted by mini-css-extract-plugin\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\"dashboardButton\":\"MI9YuuDMLrrY7RC1z4G1\"});\n\n//# sourceURL=webpack://devour-frontend/./src/components/Header/DashboardButton/DashboardButton.module.css?\n}");
 
 /***/ },
 
