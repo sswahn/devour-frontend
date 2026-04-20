@@ -94,11 +94,14 @@ function Profile({ closeProfile }) {
   }
 
   const onPointerUp = () => {
-    const { activeSide } = swipeData.current
+    if (!swipeData.current.activeSide) {
+      return
+    }
+    
     const position = event.clientX - startX
     const absPos = Math.abs(position)
 
-    if (activeSide && absPos > CLOSE_THRESHOLD) {
+    if (absPos > CLOSE_THRESHOLD) {
       onClose(activeSide) // Close and pass which side triggered it
     }
     
