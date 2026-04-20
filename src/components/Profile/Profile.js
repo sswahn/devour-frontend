@@ -48,6 +48,23 @@ function Profile({ closeProfile }) {
       action() 
     }
   }
+
+  const onPointerDown = event => {
+    const { clientX } = event
+    const width = window.innerWidth
+
+    if (clientX < EDGE_THRESHOLD) {
+      swipeData.current = { 
+        startX: clientX, 
+        activeSide: 'left' 
+      }
+    } else if (clientX > width - EDGE_THRESHOLD) {
+      swipeData.current = { 
+        startX: clientX, 
+        activeSide: 'right' 
+      }
+    }
+  }
   
   return (
     <section 
