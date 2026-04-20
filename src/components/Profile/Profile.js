@@ -27,7 +27,7 @@ function Profile({ closeProfile }) {
     }
   }
 
-  const resetPointer = () => {
+  const resetSwipeData = () => {
     swipeData.current = { 
       startX: 0, 
       activeSide: null
@@ -64,11 +64,11 @@ function Profile({ closeProfile }) {
     if (absPos > CLOSE_THRESHOLD && isCorrectDir) {
       action()
     }
-    resetPointer()
+    resetSwipeData()
   }
   
   const onPointerCancel = event => {
-    resetPointer()
+    resetSwipeData()
   }
   
   return (
