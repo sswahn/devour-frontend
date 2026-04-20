@@ -65,6 +65,18 @@ function SearchForm({ closeSearch }) {
     }
   }
 
+  const action = () => {
+    closeSearch()
+    pop()
+  }
+
+  const onKeyDown = event => {
+    if (event.key === 'Escape') {
+      event.preventDefault()
+      action()
+    }
+  }
+
   useEffect(() => {
     if (overlayRef.current) {
       setElement(overlayRef.current)
@@ -81,7 +93,7 @@ function SearchForm({ closeSearch }) {
   }, [])
 
   return (
-    <search id="search" className={styles.search} ref={focusRef} role="dialog" aria-modal="true">
+    <search id="search" className={styles.search} ref={focusRef} onKeyDown={onKeyDown} role="dialog" aria-modal="true">
       <nav>
         <CloseButton overlay="search" close={closeSearch} />
         <Dropdown items={[
