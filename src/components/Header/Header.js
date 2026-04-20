@@ -2,6 +2,7 @@ import { useEffect, useRef  } from 'react'
 import useScrollEffect from '../../hooks/useScrollEffect'
 import useSession from '../../hooks/useSession'
 import HomeIcon from '../Icons/HomeIcon/HomeIcon'
+import LineChartIcon from '../Icons/LineChartIcon/LineChartIcon'
 import LoginButton from './LoginButton/LoginButton'
 import styles from './Header.module.css'
 
@@ -27,7 +28,11 @@ const Header = ({ authenticationButtonRef, openAuthentication }) => {
         
         <nav>
         {/* Needs desktop navigation in header (basically the mobile nav buttons, no camera, and a download option. */}
-
+        {session.isAuthenticated (
+          <button type="button" aria-label="open dashboard">
+            <LineChartIcon />
+          </button>
+        )}
         {session.isAuthenticated 
           ? <Avatar username={session.username} image={null} />
           : <LoginButton 
