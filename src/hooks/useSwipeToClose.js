@@ -1,8 +1,8 @@
-import { useRef, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 function swipeToClose() {
-  const elementRef = useRef(null)
-  const methodRef = useRef(null)
+  const [element, setElement] = useState(null)
+  const [method, setMethod] = useState(null)
   const swipeData = useRef({ 
     startX: 0, 
     activeSide: null 
@@ -52,26 +52,18 @@ function swipeToClose() {
   }
   
   useEffect(() => {
-    if (!elementRef.current) {
+    if (!element) {
       return
     }
-    elementRef.current.addEventListener('pointerup', onPointerDown)
-    elementRef.current.addEventListener('pointerdown', onPointerUp)
-    elementRef.current.addEventListener('pointercancel', onPointerCancel)
+    element.addEventListener('pointerup', onPointerDown)
+    element.addEventListener('pointerdown', onPointerUp)
+    element.addEventListener('pointercancel', onPointerCancel)
     return () => {
-      elementRef.current.removeEventListener('pointerup', onPointerDown)
-      elementRef.current.removeEventListener('pointerdown', onPointerUp)
-      elementRef.current.removeEventListener('pointercancel', onPointerCancel)
+      element.removeEventListener('pointerup', onPointerDown)
+      element.removeEventListener('pointerdown', onPointerUp)
+      element.removeEventListener('pointercancel', onPointerCancel)
     }
-  }, [])
-
-  const setElement = element => {
-    elementRef.current = element
-  }
-  
-  const setMethod = method => {
-    method.current = method
-  }
+  }, [element, method])
 
   return [setElement, setMethod]
 }
