@@ -13,7 +13,8 @@ function useSwipeToClose() {
     direction: null
   })
 
-  const resetSwipeData = () => {
+  const reset = () => {
+    overlay.element.style.transform = ''
     swipeData.current = { 
       startX: 0,
       startY: 0,
@@ -62,7 +63,7 @@ function useSwipeToClose() {
     }
 
     if (direction === 'y') {
-      resetSwipeData()
+      reset()
       return
     }
     
@@ -87,7 +88,7 @@ function useSwipeToClose() {
     if (shouldClose) {
       overlay.method()
     }
-    resetSwipeData()
+    reset()
   }
   
   const onPointerCancel = event => {
@@ -98,7 +99,7 @@ function useSwipeToClose() {
     if (event.currentTarget.hasPointerCapture(pointerId)) {
       event.currentTarget.releasePointerCapture(pointerId)
     }
-    resetSwipeData()
+    reset()
   }
   
   useEffect(() => {
