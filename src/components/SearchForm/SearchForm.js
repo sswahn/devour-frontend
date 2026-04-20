@@ -58,12 +58,17 @@ function SearchForm({ closeSearch }) {
     setRecentSearches(data)
   }
 
-
   const action = () => {
     closeSearch()
     pop()
   }
 
+  const gesture = () => {
+    if (overlayRef.current && action) {
+      swipeToClose(overlayRef.current, action)
+    }
+  }
+  
   const onKeyDown = event => {
     if (event.key === 'Escape') {
       event.preventDefault()
@@ -72,10 +77,7 @@ function SearchForm({ closeSearch }) {
   }
 
   useEffect(() => {
-    if (!overlayRef.current || !action) {
-      return
-    }
-    swipeToClose(overlayRef.current, action)
+    gesture()
   }, [])
 
   useEffect(() => {
