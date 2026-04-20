@@ -11,7 +11,7 @@ import styles from './Profile.module.css'
 function Profile({ closeProfile }) {
   const { pop } = useFocusStack()
   const {overlayRef, focusRef} = useFocusTrap()
-  const [setElement, setMethod] = useSwipeToClose()
+  const setOverlay = useSwipeToClose()
   /*
   const swipeData = useRef({ 
     startX: 0, 
@@ -32,16 +32,14 @@ function Profile({ closeProfile }) {
   }
 */
   useEffect(() => {
-    console.log('overlayRef.current: ', overlayRef.current)
-    console.log('action: ', action)
-    
     if (!overlayRef.current || !action) {
       return
     }
-    console.log('overlayRef.current: ', overlayRef.current)
-    console.log('action: ', action)
-    setElement(overlayRef.current)
-    setMethod(action)
+
+    setOverlay({
+      element: overlayRef.current,
+      method: action
+    })
   }, [])
 
   
