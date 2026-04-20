@@ -24,8 +24,6 @@ const Header = ({ openAuthentication, openDashboard }) => {
           <HomeIcon />
         </button>
         
-  {/* <Avatar username={Math.random().toString(36)} /> */}
-        
         <nav>
         {/* Needs desktop navigation in header (basically the mobile nav buttons, no camera, and a download option. */}
         {session.isAuthenticated && (
