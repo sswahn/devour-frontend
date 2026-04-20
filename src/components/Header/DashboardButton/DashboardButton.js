@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import useFocusStack from '../../../hooks/useFocusStack'
-import LineChartIcon from '../Icons/LineChartIcon/LineChartIcon'
+import LineChartIcon from '../../Icons/LineChartIcon/LineChartIcon'
 import styles from './DashboardButton.module.css'
 
 function DashboardButton({ openDashboard }) {
