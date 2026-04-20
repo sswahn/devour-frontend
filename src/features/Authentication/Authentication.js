@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import useFocusStack from '../../hooks/useFocusStack'
+import useFocusTrap from '../../hooks/useFocusTrap'
 import useSwipeToClose from '../../hooks/useSwipeToClose'
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner'
 import CloseButton from '../../components/CloseButton/CloseButton'
