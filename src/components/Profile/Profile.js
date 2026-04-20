@@ -72,7 +72,7 @@ function Profile({ closeProfile }) {
     }
   }
 
-  const onPointerUp = () => {
+  const onPointerUp = event => {
     const { activeSide, startX } = swipeData.current
     if (!activeSide) {
       return
