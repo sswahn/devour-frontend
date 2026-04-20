@@ -3,7 +3,7 @@
 /* the transparent div overlay */
 .notifications {
   backdrop-filter: blur(1px);
-  background-color: rgb(0 0 0 / 50%);
+  background-color: var(--surface-raised);
   height: 100dvh;
   left: 0;
   position: absolute;
