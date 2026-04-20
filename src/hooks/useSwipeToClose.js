@@ -72,7 +72,6 @@ function useSwipeToClose() {
       reset()
       return
     }
-
     const raw = activeSide === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
     const resisted = raw / (1 + Math.abs(raw) / 300)
   
