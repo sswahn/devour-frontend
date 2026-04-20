@@ -175,6 +175,7 @@
   position: absolute;
   scrollbar-width: none;
   top: 0;
+  touch-action: none;
   width: 100%;
   z-index: 200;
 }
