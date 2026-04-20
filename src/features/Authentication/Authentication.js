@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import useFocusStack from '../../hooks/useFocusStack'
 import useFocusTrap from '../../hooks/useFocusTrap'
 import useSwipeToClose from '../../hooks/useSwipeToClose'
@@ -10,13 +9,31 @@ import GoogleButton from './GoogleButton/GoogleButton'
 import AppleButton from './AppleButton/AppleButton'
 import styles from './Authentication.module.css'
 
-// this needs focus trap, and focus stack
-// then overlayRef can be used with swipe to close
-// also need onKeyDown Escape functionality
-
 function Authentication({ closeAuthentication }) {
+  const { pop } = useFocusStack()
+  const {overlayRef, focusRef} = useFocusTrap()
+  const swipeToClose = useSwipeToClose()
+
+  const action = () => {
+    closeAuthentication()
+    pop()
+  }
+
+  const onKeyDown = event => {
+    if (event.key === 'Escape') {
+      event.preventDefault()
+      action()
+    }
+  }
+  
+  useEffect(() => {
+    if (!overlayRef.current || !action) {
+      return
+    }
+    swipeToClose(overlayRef.current, action)
+  }, [])
   return (
-    <section className={styles.authentication}>
+    <section className={styles.authentication} ref={focusRef} onKeyDown={onKeyDown}>
       <CloseButton overlay="authentication" close={closeAuthentication} />
       <LoginForm />
       <RegistrationButton />
