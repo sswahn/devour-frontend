@@ -52,7 +52,7 @@ function swipeToClose() {
   }
   
   useEffect(() => {
-    if (!element) {
+    if (!element || !method) {
       return
     }
     element.addEventListener('pointerup', onPointerDown)
