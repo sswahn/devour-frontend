@@ -18,16 +18,12 @@ function swipeToClose() {
   }
 
   const onPointerDown = event => {
-    console.log('onPointerDown fired!')
-    
     const { clientX, pointerId, currentTarget } = event
     const width = window.innerWidth
     const EDGE_THRESHOLD = 30
-
     // Only capture if actually hitting an edge
     const isLeft = clientX < EDGE_THRESHOLD
     const isRight = clientX > width - EDGE_THRESHOLD
-
     if (isLeft || isRight) {
       currentTarget.setPointerCapture(pointerId)
       swipeData.current = { 
@@ -37,9 +33,14 @@ function swipeToClose() {
     }
   }
 
+  const onPointerMove = event => {
+    if (!swipeData.current.activeSide) {
+      return
+    }
+    // optional: live feedback, prevent scroll, etc.
+  }
+
   const onPointerUp = event => {
-    console.log('onPointerUp fired! swipeData.current: ', swipeData.current)
-    
     const { activeSide, startX } = swipeData.current
     if (!activeSide) {
       return
@@ -47,11 +48,7 @@ function swipeToClose() {
     const deltaX = event.clientX - startX
     const isCorrectDir = activeSide === 'left' ? deltaX > 0 : deltaX < 0
     const CLOSE_THRESHOLD = 150 
-
     if (Math.abs(deltaX) > CLOSE_THRESHOLD && isCorrectDir) {
-      
-      console.log('overlay.method() fired! : ', overlay.method)
-      
       overlay.method()
     }
     resetSwipeData()
@@ -65,9 +62,8 @@ function swipeToClose() {
     if (!overlay.element || !overlay.method) {
       return
     }
-    console.log('event listeners being set:')
-    
     overlay.element.addEventListener('pointerup', onPointerUp)
+    overlay.element.addEventListener('pointermove', onPointerMove)
     overlay.element.addEventListener('pointerdown', onPointerDown)
     overlay.element.addEventListener('pointercancel', onPointerCancel)
     return () => {
