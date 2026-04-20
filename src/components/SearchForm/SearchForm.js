@@ -14,7 +14,7 @@ import styles from './SearchForm.module.css'
 
 function SearchForm({ closeSearch }) {
   const {overlayRef, focusRef} = useFocusTrap()
-  const [setElement, setMethod] = useSwipeToClose()
+  const swipeToClose = useSwipeToClose()
   const [searchValue, setSearchValue] = useState('')
   const [searchResults, setSearchResults] = useState([])
   const [recentSearches, setRecentSearches] = useState([])
@@ -72,10 +72,10 @@ function SearchForm({ closeSearch }) {
   }
 
   useEffect(() => {
-    if (overlayRef.current) {
-      setElement(overlayRef.current)
-      setMethod(closeSearch)
+    if (!overlayRef.current || !closeSearch) {
+      return
     }
+    swipeToClose(overlayRef.current, closeSearch)
   }, [])
 
   useEffect(() => {
