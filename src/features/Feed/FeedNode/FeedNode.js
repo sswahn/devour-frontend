@@ -1,4 +1,5 @@
 import { memo } from 'react'
+import OverlayButtons from '../OverlayButtons/OverlayButtons'
 
 function FeedNode({ onClick, item, index, count }) {
   
@@ -24,13 +25,9 @@ function FeedNode({ onClick, item, index, count }) {
           {data.caption ?? <figcaption>{data.caption}</figcaption>}
         </figure>
       <footer>
-        
-{/*
-        <LikeButton likedByUser={item.likedByUser} /> {item.likeCount}
-        <CommentsButton /> {item.commentCount}
-        <ShareButton />
-*/}
+        // static captions, meta text, etc.
       </footer>
+      <OverlayButtons />
     </article>
   )
 }
