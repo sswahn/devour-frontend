@@ -1,4 +1,5 @@
 import { useRef, useEffect } from 'react'
+import useFocusStack from '../../hooks/useFocusStack'
 import useFocusTrap from '../../hooks/useFocusTrap'
 import CloseButton from '../CloseButton/CloseButton'
 import Dropdown from '../Dropdown/Dropdown'
@@ -7,7 +8,14 @@ import FollowStats from './FollowStats/FollowStats'
 import styles from './Profile.module.css'
 
 function Profile({ closeProfile }) {
+  const { pop } = useFocusStack()
   const focusRef = useFocusTrap()
+
+  const [position, setPosition] = useState(0);
+  const swipeData = useRef({ startX: 0, activeSide: null });
+  const EDGE_THRESHOLD = 30; // pixels from the edge to trigger
+  const CLOSE_THRESHOLD = 150; // distance swiped to trigger close
+
 
   /* 
   const geoRef = useRef(null)
@@ -30,8 +38,8 @@ function Profile({ closeProfile }) {
   */
 
   const action = () => {
-    //pop()
     closeProfile()
+    pop()
   }
   
   const onKeyDown = event => {
