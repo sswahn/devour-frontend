@@ -18,6 +18,8 @@ function swipeToClose() {
   }
 
   const onPointerDown = event => {
+    console.log('onPointerDown fired!')
+    
     const { clientX, pointerId, currentTarget } = event
     const width = window.innerWidth
     const EDGE_THRESHOLD = 30
@@ -35,6 +37,8 @@ function swipeToClose() {
   }
 
   const onPointerUp = event => {
+    console.log('onPointerUp fired!')
+    
     const { activeSide, startX } = swipeData.current
     if (!activeSide) {
       return
@@ -54,17 +58,9 @@ function swipeToClose() {
   }
   
   useEffect(() => {
-    console.log('Hook useEffect fired')
-    console.log('element: ', overlay.element)
-    console.log('method: ', overlay.method)
-    
     if (!overlay.element || !overlay.method) {
       return
     }
-
-    console.log('IN hook useEffect condition')
-    console.log('element: ', overlay.element)
-    console.log('method: ', overlay.method)
     console.log('event listeners being set:')
     
     overlay.element.addEventListener('pointerup', onPointerDown)
