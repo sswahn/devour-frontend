@@ -67,12 +67,12 @@ function swipeToClose() {
     }
     console.log('event listeners being set:')
     
-    overlay.element.addEventListener('pointerup', onPointerDown)
-    overlay.element.addEventListener('pointerdown', onPointerUp)
+    overlay.element.addEventListener('pointerup', onPointerUp)
+    overlay.element.addEventListener('pointerdown', onPointerDown)
     overlay.element.addEventListener('pointercancel', onPointerCancel)
     return () => {
-      overlay.element.removeEventListener('pointerup', onPointerDown)
-      overlay.element.removeEventListener('pointerdown', onPointerUp)
+      overlay.element.removeEventListener('pointerup', onPointerUp)
+      overlay.element.removeEventListener('pointerdown', onPointerDown)
       overlay.element.removeEventListener('pointercancel', onPointerCancel)
     }
   }, [overlay.element])
