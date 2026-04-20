@@ -28,12 +28,25 @@ function Profile({ closeProfile }) {
   }, [])
   <geolocation ref={geoRef}></geolocation>
   */
+
+  const action = () => {
+    //pop()
+    closeProfile()
+  }
+  
+  const onKeyDown = event => {
+    if (event.key === 'Escape') {
+      event.preventDefault()
+      action() 
+    }
+  }
   
   return (
     <section 
       id="profile"
       className={styles.profile} 
       ref={focusRef} 
+      onKeyDown={onKeyDown}
       tabIndex={-1} 
       role="dialog" 
       aria-modal="true" 
