@@ -43,11 +43,31 @@ function useSwipeToClose() {
   }
 
   const onPointerMove = event => {
-    const { activeSide, pointerId } = swipeData.current
+    const { startX, startY, activeSide, pointerId, direction } = swipeData.current
     if (!activeSide || event.pointerId !== pointerId) {
       return
     }
-    // optional: live feedback, prevent scroll, etc.
+
+    const deltaX = event.clientX - startX
+    const deltaY = event.clientY - startY
+
+    if (!direction) {
+      const LOCK_THRESHOLD = 8
+  
+      if (Math.abs(deltaX) < LOCK_THRESHOLD && Math.abs(deltaY) < LOCK_THRESHOLD) {
+        return
+      }
+  
+      direction = Math.abs(deltaX) > Math.abs(deltaY) ? 'x' : 'y'
+    }
+
+    if (direction === 'y') {
+      resetSwipeData()
+      return
+    }
+    
+    const translateX = activeSide === 'left' ? Math.max(0, dx) : Math.min(0, dx)
+    overlay.element.style.transform = `translateX(${translateX}px)`
   }
 
   const onPointerUp = event => {
