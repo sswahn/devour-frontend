@@ -102,9 +102,8 @@ function Profile({ closeProfile }) {
     const absPos = Math.abs(position)
 
     if (absPos > CLOSE_THRESHOLD) {
-      onClose(activeSide) // Close and pass which side triggered it
+      action()
     }
-    
     resetPointer()
   }
   
