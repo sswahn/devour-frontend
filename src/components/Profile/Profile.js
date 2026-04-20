@@ -23,14 +23,14 @@ function Profile({ closeProfile }) {
     closeProfile()
     pop()
   }
-  
+  /*
   const onKeyDown = event => {
     if (event.key === 'Escape') {
       event.preventDefault()
       action() 
     }
   }
-
+*/
   useEffect(() => {
     if (!overlayRef.current || !action) {
       return
@@ -90,7 +90,7 @@ function Profile({ closeProfile }) {
       id="profile"
       className={styles.profile} 
       ref={focusRef} 
-      onKeyDown={onKeyDown}
+    //  onKeyDown={onKeyDown}
     //  onPointerDown={onPointerDown}
     //  onPointerUp={onPointerUp}
     //  onPointerCancel={onPointerCancel}
