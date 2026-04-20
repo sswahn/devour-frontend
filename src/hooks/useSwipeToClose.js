@@ -6,8 +6,11 @@ function useSwipeToClose() {
     method: null
   })
   const swipeData = useRef({ 
-    startX: 0, 
-    activeSide: null 
+    startX: 0,
+    startY: 0,
+    activeSide: null,
+    pointerId: null,
+    direction: null
   })
 
   const resetSwipeData = () => {
