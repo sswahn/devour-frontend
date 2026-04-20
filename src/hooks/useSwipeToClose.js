@@ -13,7 +13,8 @@ function useSwipeToClose() {
   const resetSwipeData = () => {
     swipeData.current = { 
       startX: 0, 
-      activeSide: null
+      activeSide: null,
+      pointerId: null
     }
   }
 
