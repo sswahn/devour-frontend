@@ -8,6 +8,8 @@ import styles from './OverlayButtons.module.css'
 
 function VideoOverlay({ closeFeed }) {
 
+  // gets several gestures to be listed here.
+
   return (
     <nav className={styles.videoOverlay}>
       <div> {/* top of node header */}
