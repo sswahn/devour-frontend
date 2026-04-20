@@ -17,11 +17,22 @@ function Profile({ closeProfile }) {
     closeProfile()
     pop()
   }
-  
-  useEffect(() => {
+
+  const gesture = () => {
     if (overlayRef.current && action) {
       swipeToClose(overlayRef.current, action)
     }
+  }
+
+  const onKeyDown = event => {
+    if (event.key === 'Escape') {
+      event.preventDefault()
+      action()
+    }
+  }
+  
+  useEffect(() => {
+    gesture()
   }, [])
   
   return (
@@ -29,6 +40,7 @@ function Profile({ closeProfile }) {
       id="profile"
       className={styles.profile} 
       ref={focusRef} 
+      onKeyDown={onKeyDown}
       tabIndex={-1} 
       role="dialog" 
       aria-modal="true" 
