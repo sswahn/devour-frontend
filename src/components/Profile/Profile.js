@@ -35,6 +35,8 @@ function Profile({ closeProfile }) {
     if (!overlayRef.current || !action) {
       return
     }
+    console.log('overlayRef.current: ', overlayRef.current)
+    console.log('action: ', action)
     setElement(overlayRef.current)
     setMethod(action)
   }, [])
