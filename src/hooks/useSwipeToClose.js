@@ -52,10 +52,15 @@ function swipeToClose() {
   }
   
   useEffect(() => {
+    console.log('Hook useEffect fired')
+    console.log('element: ', element)
+    console.log('method: ', method)
+    
     if (!element || !method) {
       return
     }
-    
+
+    console.log('IN hook useEffect condition')
     console.log('element: ', element)
     console.log('method: ', method)
     console.log('event listeners being set:')
