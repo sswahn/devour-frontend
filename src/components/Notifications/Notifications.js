@@ -26,28 +26,28 @@ function Notifications({ closeNotifications }) {
     ]
   }
 
+  const action = () => {
+    closeNotifications()
+    pop()
+  }
+
   const close = () => {
     const bottomSheet = bottomSheetRef.current
     bottomSheet.style.transform = '' 
-    bottomSheet.addEventListener('transitionend', closeNotifications, { once: true }) 
-    setIsOpen(false)
-  }
-
-  const action = () => {
-    close()
-    pop()
+    bottomSheet.addEventListener('transitionend', action, { once: true }) 
+    setIsOpen(false) // remove?
   }
 
   const onClick = event => {
     if (event.target === event.currentTarget) {
-      action()
+      close()
     }
   }
   
   const onKeyDown = event => {
     if (event.key === 'Escape') {
       event.preventDefault()
-      action() 
+      close() 
     }
   }
 
