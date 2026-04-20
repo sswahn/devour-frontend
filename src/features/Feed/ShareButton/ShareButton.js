@@ -20,7 +20,7 @@ function ShareButton() {
   }
   
   return (
-    <button className={styles.shareButton} onClick={} onKeyDown={onKeyDown} type="button" aria-label="share this video">
+    <button className={styles.shareButton} onClick={onClick} onKeyDown={onKeyDown} type="button" aria-label="share this video">
       <ShareIcon />
     </button>
   )
