@@ -81,6 +81,22 @@ function Profile({ closeProfile }) {
       setPosition(diff)
     }
   }
+
+  const oPointerUp = () => {
+    const { activeSide } = swipeData.current
+    const absPos = Math.abs(position)
+
+    if (activeSide && absPos > CLOSE_THRESHOLD) {
+      onClose(activeSide) // Close and pass which side triggered it
+    }
+
+    // Reset
+    setPosition(0)
+    swipeData.current = { 
+      startX: 0, 
+      activeSide: null 
+    }
+  }
   
   return (
     <section 
