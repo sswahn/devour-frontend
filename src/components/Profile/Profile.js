@@ -50,6 +50,7 @@ function Profile({ closeProfile }) {
   }
 
   const onPointerDown = event => {
+    event.currentTarget.setPointerCapture(event.pointerId)
     const { clientX } = event
     const width = window.innerWidth
 
