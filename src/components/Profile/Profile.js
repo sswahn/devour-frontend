@@ -56,12 +56,11 @@ function Profile({ closeProfile }) {
     if (!activeSide) {
       return
     }
-    const diff = event.clientX - startX
-    const absPos = Math.abs(diff)
-    const isCorrectDir = activeSide === 'left' ? diff > 0 : diff < 0
+    const deltaX = event.clientX - startX
+    const isCorrectDir = activeSide === 'left' ? deltaX > 0 : deltaX < 0
     const CLOSE_THRESHOLD = 150 
     
-    if (absPos > CLOSE_THRESHOLD && isCorrectDir) {
+    if (Math.abs(deltaX) > CLOSE_THRESHOLD && isCorrectDir) {
       action()
     }
     resetSwipeData()
