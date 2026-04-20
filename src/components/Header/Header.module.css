@@ -47,5 +47,9 @@
   width: 44px;
 }
 
-
+.header nav {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+}
 
