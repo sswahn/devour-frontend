@@ -63,6 +63,13 @@ function useSwipeToClose() {
   }
   
   const onPointerCancel = event => {
+    const { pointerId } = swipeData.current
+    if (event.pointerId !== pointerId) {
+      return
+    }
+    if (event.currentTarget.hasPointerCapture(pointerId)) {
+      event.currentTarget.releasePointerCapture(pointerId)
+    }
     resetSwipeData()
   }
   
