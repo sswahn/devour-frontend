@@ -116,6 +116,7 @@ function useSwipeToClose() {
     element.addEventListener('pointerdown', onPointerDown)
     element.addEventListener('pointercancel', onPointerCancel)
     return () => {
+      element.style.willChange = ''
       element.removeEventListener('pointerup', onPointerUp)
       element.removeEventListener('pointermove', onPointerMove)
       element.removeEventListener('pointerdown', onPointerDown)
