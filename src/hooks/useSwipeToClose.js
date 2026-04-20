@@ -1,6 +1,12 @@
-import { useEffect } from 'react'
+import { useRef, useEffect } from 'react'
 
 function swipeToClose() {
+  const elementRef = useRef(null)
+  const methodRef = useRef(null)
+  const swipeData = useRef({ 
+    startX: 0, 
+    activeSide: null 
+  })
 
   const resetSwipeData = () => {
     swipeData.current = { 
@@ -36,7 +42,7 @@ function swipeToClose() {
     const CLOSE_THRESHOLD = 150 
     
     if (Math.abs(deltaX) > CLOSE_THRESHOLD && isCorrectDir) {
-      action()
+      method.current()
     }
     resetSwipeData()
   }
@@ -46,15 +52,25 @@ function swipeToClose() {
   }
   
   useEffect(() => {
-    element.addEventListener('onPointerUp', methods.up)
-    element.addEventListener('onPointerDown', methods.down)
-    element.addEventListener('onPointerCancel', methods.cancel)
+    elementRef.current.addEventListener('onPointerUp', onPointerDown)
+    elementRef.current.addEventListener('onPointerDown', onPointerUp)
+    elementRef.current.addEventListener('onPointerCancel', onPointerCancel)
     return () => {
-      
+      elementRef.current.removeEventListener('onPointerUp', onPointerDown)
+      elementRef.current.removeEventListener('onPointerDown', onPointerUp)
+      elementRef.current.removeEventListener('onPointerCancel', onPointerCancel)
     }
   }, [])
 
+  const setElement = element => {
+    elementRef.current = element
+  }
   
+  const setMethod = method => {
+    method.current = method
+  }
+
+  return [setElement, setMethod]
 }
 
 export default swipeToClose
