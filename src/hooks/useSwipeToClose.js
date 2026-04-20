@@ -24,18 +24,10 @@ function swipeToClose() {
     const width = window.innerWidth
     const EDGE_THRESHOLD = 30
 
- 
-    console.log('window.innerWidth: ', width)
-    console.log('clientX: ', clientX)
-    console.log('width - EDGE_THRESHOLD: ', width - EDGE_THRESHOLD)
-    
     // Only capture if actually hitting an edge
     const isLeft = clientX < EDGE_THRESHOLD
     const isRight = clientX > width - EDGE_THRESHOLD
 
-    console.log('isLeft: ', isLeft)
-    console.log('isRight: ', isRight)
-    
     if (isLeft || isRight) {
       currentTarget.setPointerCapture(pointerId)
       swipeData.current = { 
