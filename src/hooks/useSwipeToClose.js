@@ -44,14 +44,15 @@ function useSwipeToClose() {
   }
 
   const onPointerMove = event => {
-    const { startX, startY, activeSide, pointerId, direction } = swipeData.current
+    const { startX, startY, activeSide, pointerId } = swipeData.current
     if (!activeSide || event.pointerId !== pointerId) {
       return
     }
 
     const deltaX = event.clientX - startX
     const deltaY = event.clientY - startY
-
+    let direction = swipeData.current.direction
+    
     if (!direction) {
       const LOCK_THRESHOLD = 8
   
