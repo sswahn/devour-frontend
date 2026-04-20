@@ -19,7 +19,7 @@ function useSwipeToClose() {
 
   const reset = element => {
     const { pointerId } = swipeData.current
-    if (pointerId !== null && element.hasPointerCapture(pointerId) {
+    if (pointerId !== null && element.hasPointerCapture(pointerId)) {
       element.releasePointerCapture(pointerId)
     }
     element.style.transition = 'transform 0.2s ease'
