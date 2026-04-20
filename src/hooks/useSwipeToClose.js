@@ -108,15 +108,17 @@ function useSwipeToClose() {
     if (!overlay.element || !overlay.method) {
       return
     }
-    overlay.element.addEventListener('pointerup', onPointerUp)
-    overlay.element.addEventListener('pointermove', onPointerMove)
-    overlay.element.addEventListener('pointerdown', onPointerDown)
-    overlay.element.addEventListener('pointercancel', onPointerCancel)
+    const element = overlay.element
+    element.style.willChange = 'transform'
+    element.addEventListener('pointerup', onPointerUp)
+    element.addEventListener('pointermove', onPointerMove)
+    element.addEventListener('pointerdown', onPointerDown)
+    element.addEventListener('pointercancel', onPointerCancel)
     return () => {
-      overlay.element.removeEventListener('pointerup', onPointerUp)
-      overlay.element.addEventListener('pointermove', onPointerMove)
-      overlay.element.removeEventListener('pointerdown', onPointerDown)
-      overlay.element.removeEventListener('pointercancel', onPointerCancel)
+      element.removeEventListener('pointerup', onPointerUp)
+      element.addEventListener('pointermove', onPointerMove)
+      element.removeEventListener('pointerdown', onPointerDown)
+      element.removeEventListener('pointercancel', onPointerCancel)
     }
   }, [overlay.element, overlay.method])
 
