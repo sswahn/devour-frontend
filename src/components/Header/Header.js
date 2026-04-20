@@ -28,7 +28,7 @@ const Header = ({ authenticationButtonRef, openAuthentication }) => {
         
         <nav>
         {/* Needs desktop navigation in header (basically the mobile nav buttons, no camera, and a download option. */}
-        {session.isAuthenticated (
+        {session.isAuthenticated && (
           <button type="button" aria-label="open dashboard">
             <LineChartIcon />
           </button>
