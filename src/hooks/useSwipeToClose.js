@@ -52,7 +52,7 @@ function useSwipeToClose() {
   }
 
   const onPointerMove = event => {
-    const { startX, startY, activeSide, id: pointerId } = swipeData.current
+    const { startX, startY, activeSide, pointerId: id } = swipeData.current
     const { clientX, clientY, currentTarget, pointerId } = event
     if (!activeSide || pointerId !== id) {
       return
