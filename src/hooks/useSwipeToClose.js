@@ -28,13 +28,15 @@ function useSwipeToClose() {
       currentTarget.setPointerCapture(pointerId)
       swipeData.current = { 
         startX: clientX, 
-        activeSide: isLeft ? 'left' : 'right'
+        activeSide: isLeft ? 'left' : 'right',
+        pointerId
       }
     }
   }
 
   const onPointerMove = event => {
-    if (!swipeData.current.activeSide) {
+    const { activeSide, pointerId } = swipeData.current
+    if (!activeSide || event.pointerId !== pointerId) {
       return
     }
     // optional: live feedback, prevent scroll, etc.
