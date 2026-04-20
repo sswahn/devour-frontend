@@ -14,6 +14,7 @@ function useSwipeToClose() {
   })
 
   const reset = () => {
+    overlay.element.style.transition = 'transform 0.2s ease'
     overlay.element.style.transform = ''
     swipeData.current = { 
       startX: 0,
