@@ -46,6 +46,10 @@ function swipeToClose() {
     const deltaX = event.clientX - startX
     const isCorrectDir = activeSide === 'left' ? deltaX > 0 : deltaX < 0
     const CLOSE_THRESHOLD = 150 
+
+    console.log('startX: ', startX)
+    console.log('deltaX: ', deltaX)
+    console.log('isCorrectDir: ', isCorrectDir)
     
     if (Math.abs(deltaX) > CLOSE_THRESHOLD && isCorrectDir) {
       console.log('overlay.method() fired! : ', overlay.method)
