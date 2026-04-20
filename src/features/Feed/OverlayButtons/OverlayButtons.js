@@ -8,7 +8,14 @@ import styles from './OverlayButtons.module.css'
 
 function VideoOverlay({ closeFeed }) {
 
-  // gets several gestures to be listed here.
+  // several gestures to be listed here.
+  // check with gpt about existing gesture standards
+  // but something like the following: 
+
+  // double tap: like
+  // long press: open comment
+  // side swipe: share
+  // velocity up: fullscreen
 
   return (
     <nav className={styles.videoOverlay}>
