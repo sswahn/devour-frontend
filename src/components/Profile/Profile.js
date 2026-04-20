@@ -52,8 +52,7 @@ function Profile({ closeProfile }) {
   const resetPointer = () => {
     swipeData.current = { 
       startX: 0, 
-      activeSide: null, 
-      id: null 
+      activeSide: null
     }
   }
 
@@ -80,8 +79,6 @@ function Profile({ closeProfile }) {
     }
     const position = event.clientX - startX
     const absPos = Math.abs(position)
-
-   // Verify distance AND direction (must swipe inward)
     const isCorrectDir = activeSide === 'left' ? diff > 0 : diff < 0
     
     if (absPos > CLOSE_THRESHOLD && isCorrectDir) {
@@ -101,7 +98,6 @@ function Profile({ closeProfile }) {
       ref={focusRef} 
       onKeyDown={onKeyDown}
       onPointerDown={onPointerDown}
-      onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
       onPointerCancel={onPointerCancel}
       tabIndex={-1} 
