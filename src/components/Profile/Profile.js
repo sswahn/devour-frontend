@@ -56,8 +56,8 @@ function Profile({ closeProfile }) {
     if (!activeSide) {
       return
     }
-    const position = event.clientX - startX
-    const absPos = Math.abs(position)
+    const diff = event.clientX - startX
+    const absPos = Math.abs(diff)
     const isCorrectDir = activeSide === 'left' ? diff > 0 : diff < 0
     const CLOSE_THRESHOLD = 150 
     
