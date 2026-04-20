@@ -90,9 +90,9 @@ function Profile({ closeProfile }) {
       className={styles.profile} 
       ref={focusRef} 
       onKeyDown={onKeyDown}
-      onPointerDown={onPointerDown}
-      onPointerUp={onPointerUp}
-      onPointerCancel={onPointerCancel}
+    //  onPointerDown={onPointerDown}
+    //  onPointerUp={onPointerUp}
+    //  onPointerCancel={onPointerCancel}
       tabIndex={-1} 
       role="dialog" 
       aria-modal="true" 
