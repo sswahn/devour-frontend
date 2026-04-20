@@ -60,16 +60,16 @@ function Profile({ closeProfile }) {
 
   const onPointerDown = event => {
     const { clientX, pointerId, currentTarget } = event
-    currentTarget.setPointerCapture(pointerId)
-    
     const width = window.innerWidth
 
     if (clientX < EDGE_THRESHOLD) {
+      currentTarget.setPointerCapture(pointerId)
       swipeData.current = { 
         startX: clientX, 
         activeSide: 'left' 
       }
     } else if (clientX > width - EDGE_THRESHOLD) {
+      currentTarget.setPointerCapture(pointerId)
       swipeData.current = { 
         startX: clientX, 
         activeSide: 'right' 
