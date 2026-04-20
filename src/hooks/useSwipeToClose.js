@@ -49,8 +49,14 @@ function useSwipeToClose() {
     }
     const deltaX = event.clientX - startX
     const isCorrectDir = activeSide === 'left' ? deltaX > 0 : deltaX < 0
+    const shouldClose = Math.abs(deltaX) > CLOSE_THRESHOLD && isCorrectDir
     const CLOSE_THRESHOLD = 150 
-    if (Math.abs(deltaX) > CLOSE_THRESHOLD && isCorrectDir) {
+
+    if (event.currentTarget.hasPointerCapture(pointerId)) {
+      event.currentTarget.releasePointerCapture(pointerId)
+    }
+    
+    if (shouldClose) {
       overlay.method()
     }
     resetSwipeData()
