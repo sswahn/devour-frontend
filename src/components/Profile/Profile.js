@@ -59,8 +59,8 @@ function Profile({ closeProfile }) {
   }
 
   const onPointerDown = event => {
-  const { clientX, pointerId, currentTarget } = event
-  currentTarget.setPointerCapture(pointerId)
+    const { clientX, pointerId, currentTarget } = event
+    currentTarget.setPointerCapture(pointerId)
     
     const width = window.innerWidth
 
@@ -93,20 +93,18 @@ function Profile({ closeProfile }) {
     }
   }
 
-  const oPointerUp = () => {
+  const onPointerUp = () => {
     const { activeSide } = swipeData.current
     const absPos = Math.abs(position)
 
     if (activeSide && absPos > CLOSE_THRESHOLD) {
       onClose(activeSide) // Close and pass which side triggered it
     }
-
-    // Reset
-    setPosition(0)
-    swipeData.current = { 
-      startX: 0, 
-      activeSide: null 
-    }
+    
+    resetPointer()
+  }
+  const onPointerCancel = event => {
+    resetPointer()
   }
   
   return (
