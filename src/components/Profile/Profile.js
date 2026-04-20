@@ -31,15 +31,18 @@ function Profile({ closeProfile }) {
     }
   }
 */
-  useEffect(() => {
+  const swipeToClose = () => {
     if (!overlayRef.current || !action) {
       return
     }
-
     setOverlay({
       element: overlayRef.current,
       method: action
     })
+  }
+  
+  useEffect(() => {
+    swipeToClose()
   }, [])
 
   
