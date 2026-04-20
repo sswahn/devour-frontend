@@ -10,8 +10,8 @@ import Avatar from '../Avatar/Avatar'
 
 const Header = ({ openAuthentication, openDashboard }) => {
   const { session } = useSession()
-  const headerRef = useRef(null)
   const { scrollEffect } = useScrollEffect()
+  const headerRef = useRef(null)
 
   useEffect(() => {
     headerRef && scrollEffect(headerRef.current, styles.hidden)
