@@ -21,7 +21,7 @@ function VideoOverlay({ closeFeed }) {
     <nav className={styles.videoOverlay}>
       <div> {/* top of node header */}
         {/* isFullscreen && <CloseButton overlay="feed overlay" close={closeFeed} /> */}
-        <Dropdown />
+        <Dropdown items={[1,2,3]} />
       </div>
       <div> {/* sidebar right */}
         <LikeButton />
