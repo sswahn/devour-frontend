@@ -86,6 +86,61 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 
 /***/ },
 
+/***/ "./src/components/CloseButton/CloseButton.js"
+/*!***************************************************!*\
+  !*** ./src/components/CloseButton/CloseButton.js ***!
+  \***************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _hooks_useFocusStack__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../hooks/useFocusStack */ \"./src/hooks/useFocusStack.js\");\n/* harmony import */ var _Icons_ArrowLeftIcon_ArrowLeftIcon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Icons/ArrowLeftIcon/ArrowLeftIcon */ \"./src/components/Icons/ArrowLeftIcon/ArrowLeftIcon.js\");\n/* harmony import */ var _CloseButton_module_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CloseButton.module.css */ \"./src/components/CloseButton/CloseButton.module.css\");\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\n\nfunction CloseButton(_ref) {\n  var overlay = _ref.overlay,\n    close = _ref.close;\n  var _useFocusStack = (0,_hooks_useFocusStack__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(),\n    pop = _useFocusStack.pop;\n  var action = function action() {\n    navigator.vibrate(50);\n    close();\n    pop();\n  };\n  var onClick = function onClick(event) {\n    action();\n  };\n  var onKeyDown = function onKeyDown(event) {\n    if (event.key === 'Enter') {\n      event.preventDefault();\n      action();\n    }\n  };\n  return /*#__PURE__*/React.createElement(\"button\", {\n    className: _CloseButton_module_css__WEBPACK_IMPORTED_MODULE_2__[\"default\"].closeButton,\n    onClick: onClick,\n    onKeyDown: onKeyDown,\n    type: \"button\",\n    \"aria-label\": \"close \".concat(overlay)\n  }, /*#__PURE__*/React.createElement(_Icons_ArrowLeftIcon_ArrowLeftIcon__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CloseButton);\n\n//# sourceURL=webpack://devour-frontend/./src/components/CloseButton/CloseButton.js?\n}");
+
+/***/ },
+
+/***/ "./src/components/Dropdown/Dropdown.js"
+/*!*********************************************!*\
+  !*** ./src/components/Dropdown/Dropdown.js ***!
+  \*********************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ \"./node_modules/@babel/runtime/helpers/esm/slicedToArray.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _DropdownButton_DropdownButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DropdownButton/DropdownButton */ \"./src/components/Dropdown/DropdownButton/DropdownButton.js\");\n/* harmony import */ var _DropdownList_DropdownList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DropdownList/DropdownList */ \"./src/components/Dropdown/DropdownList/DropdownList.js\");\n/* harmony import */ var _Dropdown_module_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Dropdown.module.css */ \"./src/components/Dropdown/Dropdown.module.css\");\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\n\n\n\nfunction Dropdown(_ref) {\n  var _ref$id = _ref.id,\n    id = _ref$id === void 0 ? 0 : _ref$id,\n    _ref$label = _ref.label,\n    label = _ref$label === void 0 ? 'dropdown' : _ref$label,\n    items = _ref.items;\n  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),\n    _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(_useState, 2),\n    isOpen = _useState2[0],\n    setIsOpen = _useState2[1];\n  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),\n    _useState4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(_useState3, 2),\n    isMounted = _useState4[0],\n    setIsMounted = _useState4[1];\n  var buttonRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);\n  var listRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);\n  var open = function open() {\n    setIsOpen(true);\n  };\n  var close = function close() {\n    listRef.current.addEventListener('transitionend', function () {\n      return setIsOpen(false);\n    }, {\n      once: true\n    });\n    setIsMounted(false);\n  };\n  var mountList = function mountList() {\n    setIsMounted(true);\n  };\n  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {\n    return function () {\n      setIsOpen(false);\n    };\n  }, []);\n  return /*#__PURE__*/React.createElement(\"div\", {\n    className: _Dropdown_module_css__WEBPACK_IMPORTED_MODULE_4__[\"default\"].dropdown\n  }, /*#__PURE__*/React.createElement(_DropdownButton_DropdownButton__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    id: id,\n    label: label,\n    isOpen: isOpen,\n    open: open,\n    close: close,\n    buttonRef: buttonRef\n  }), isOpen && /*#__PURE__*/React.createElement(_DropdownList_DropdownList__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n    id: id,\n    items: items,\n    isOpen: isOpen,\n    open: open,\n    close: close,\n    isMounted: isMounted,\n    mountList: mountList,\n    buttonRef: buttonRef,\n    listRef: listRef\n  }));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Dropdown);\n\n//# sourceURL=webpack://devour-frontend/./src/components/Dropdown/Dropdown.js?\n}");
+
+/***/ },
+
+/***/ "./src/components/Dropdown/DropdownButton/DropdownButton.js"
+/*!******************************************************************!*\
+  !*** ./src/components/Dropdown/DropdownButton/DropdownButton.js ***!
+  \******************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _Icons_EllipsisVerticalIcon_EllipsisVerticalIcon__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Icons/EllipsisVerticalIcon/EllipsisVerticalIcon */ \"./src/components/Icons/EllipsisVerticalIcon/EllipsisVerticalIcon.js\");\n/* harmony import */ var _DropdownButton_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DropdownButton.module.css */ \"./src/components/Dropdown/DropdownButton/DropdownButton.module.css\");\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nfunction DropdownButton(_ref) {\n  var id = _ref.id,\n    label = _ref.label,\n    isOpen = _ref.isOpen,\n    open = _ref.open,\n    close = _ref.close,\n    buttonRef = _ref.buttonRef;\n  var action = function action() {\n    navigator.vibrate(50);\n    isOpen ? close() : open();\n  };\n  var onClick = function onClick(event) {\n    action();\n  };\n  var onKeyDown = function onKeyDown(event) {\n    if (event.key === 'Enter') {\n      event.preventDefault();\n      action();\n    }\n  };\n  return /*#__PURE__*/React.createElement(\"button\", {\n    id: \"dropdown-button-\".concat(id),\n    className: _DropdownButton_module_css__WEBPACK_IMPORTED_MODULE_1__[\"default\"].dropdownButton,\n    ref: buttonRef,\n    onClick: onClick,\n    onKeyDown: onKeyDown,\n    type: \"button\",\n    \"aria-label\": label,\n    \"aria-haspopup\": \"menu\",\n    \"aria-expanded\": isOpen,\n    \"aria-controls\": \"dropdown-list-\".concat(id)\n  }, /*#__PURE__*/React.createElement(_Icons_EllipsisVerticalIcon_EllipsisVerticalIcon__WEBPACK_IMPORTED_MODULE_0__[\"default\"], null));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DropdownButton);\n\n//# sourceURL=webpack://devour-frontend/./src/components/Dropdown/DropdownButton/DropdownButton.js?\n}");
+
+/***/ },
+
+/***/ "./src/components/Dropdown/DropdownList/DropdownList.js"
+/*!**************************************************************!*\
+  !*** ./src/components/Dropdown/DropdownList/DropdownList.js ***!
+  \**************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _ListItemButton_ListItemButton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../ListItemButton/ListItemButton */ \"./src/components/Dropdown/ListItemButton/ListItemButton.js\");\n/* harmony import */ var _DropdownList_module_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DropdownList.module.css */ \"./src/components/Dropdown/DropdownList/DropdownList.module.css\");\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\n\nfunction DropdownList(_ref) {\n  var id = _ref.id,\n    items = _ref.items,\n    isOpen = _ref.isOpen,\n    open = _ref.open,\n    close = _ref.close,\n    isMounted = _ref.isMounted,\n    mountList = _ref.mountList,\n    buttonRef = _ref.buttonRef,\n    listRef = _ref.listRef;\n  var onMount = function onMount() {\n    if (!isMounted) {\n      mountList();\n      listRef.current.firstElementChild.firstElementChild.focus();\n    }\n  };\n  var offClickClose = function offClickClose(event) {\n    if (!listRef.current.contains(event.target) && !buttonRef.current.contains(event.target)) {\n      close(false);\n    }\n  };\n  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {\n    document.addEventListener('click', offClickClose);\n    return function () {\n      document.removeEventListener('click', offClickClose);\n    };\n  }, []);\n  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {\n    // Wait for the next repaint to transition:\n    var timer = requestAnimationFrame(onMount);\n    return function () {\n      cancelAnimationFrame(timer);\n    };\n  }, []);\n  return /*#__PURE__*/React.createElement(\"ul\", {\n    id: \"dropdown-list-\".concat(id),\n    className: \"\".concat(_DropdownList_module_css__WEBPACK_IMPORTED_MODULE_2__[\"default\"].dropdownList, \" \").concat(isMounted ? _DropdownList_module_css__WEBPACK_IMPORTED_MODULE_2__[\"default\"].open : ''),\n    ref: listRef,\n    role: \"menu\",\n    \"aria-labelledby\": \"dropdown-button-\".concat(id),\n    hidden: !isOpen\n  }, items === null || items === void 0 ? void 0 : items.map(function (item, index) {\n    return /*#__PURE__*/React.createElement(\"li\", {\n      key: index,\n      role: \"none\"\n    }, /*#__PURE__*/React.createElement(_ListItemButton_ListItemButton__WEBPACK_IMPORTED_MODULE_1__[\"default\"], {\n      buttonRef: buttonRef,\n      listRef: listRef,\n      text: item.text,\n      method: item.method,\n      close: close\n    }));\n  }));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DropdownList);\n\n//# sourceURL=webpack://devour-frontend/./src/components/Dropdown/DropdownList/DropdownList.js?\n}");
+
+/***/ },
+
+/***/ "./src/components/Dropdown/ListItemButton/ListItemButton.js"
+/*!******************************************************************!*\
+  !*** ./src/components/Dropdown/ListItemButton/ListItemButton.js ***!
+  \******************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _ListItemButton_module_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ListItemButton.module.css */ \"./src/components/Dropdown/ListItemButton/ListItemButton.module.css\");\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nfunction ListItemButton(_ref) {\n  var buttonRef = _ref.buttonRef,\n    listRef = _ref.listRef,\n    text = _ref.text,\n    method = _ref.method,\n    close = _ref.close;\n  var focusPrev = function focusPrev(button) {\n    button === listRef.current.firstElementChild.firstElementChild ? listRef.current.lastElementChild.firstElementChild.focus() : button.parentElement.previousElementSibling.firstElementChild.focus();\n  };\n  var focusNext = function focusNext(button) {\n    button === listRef.current.lastElementChild.firstElementChild ? listRef.current.firstElementChild.firstElementChild.focus() : button.parentElement.nextElementSibling.firstElementChild.focus();\n  };\n  var escape = function escape() {\n    close();\n    buttonRef.current.focus();\n  };\n  var action = function action() {\n    navigator.vibrate(50);\n    method();\n  };\n  var onClick = function onClick(event) {\n    action();\n  };\n  var onKeyDown = function onKeyDown(event) {\n    switch (event.key) {\n      case 'Enter':\n        event.preventDefault();\n        return action();\n      case 'Tab':\n        return close();\n      // Standard behavior: Close menu if user tabs out\n      case 'Escape':\n        event.stopPropagation();\n        event.preventDefault();\n        return escape();\n      // Return focus to button on close\n      case 'ArrowDown':\n        event.preventDefault();\n        return focusNext(event.target);\n      case 'ArrowUp':\n        event.preventDefault();\n        return focusPrev(event.target);\n      default:\n        return;\n    }\n  };\n  return /*#__PURE__*/React.createElement(\"button\", {\n    className: _ListItemButton_module_css__WEBPACK_IMPORTED_MODULE_0__[\"default\"].listItemButton,\n    onClick: onClick,\n    onKeyDown: onKeyDown,\n    type: \"button\",\n    role: \"menuitem\",\n    tabIndex: \"-1\"\n  }, text);\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ListItemButton);\n\n//# sourceURL=webpack://devour-frontend/./src/components/Dropdown/ListItemButton/ListItemButton.js?\n}");
+
+/***/ },
+
 /***/ "./src/components/Header/DashboardButton/DashboardButton.js"
 /*!******************************************************************!*\
   !*** ./src/components/Header/DashboardButton/DashboardButton.js ***!
@@ -119,6 +174,17 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 
 /***/ },
 
+/***/ "./src/components/Icons/ArrowLeftIcon/ArrowLeftIcon.js"
+/*!*************************************************************!*\
+  !*** ./src/components/Icons/ArrowLeftIcon/ArrowLeftIcon.js ***!
+  \*************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nfunction ArrowLeftIcon(_ref) {\n  var _ref$size = _ref.size,\n    size = _ref$size === void 0 ? 24 : _ref$size;\n  return /*#__PURE__*/React.createElement(\"svg\", {\n    xmlns: \"http://www.w3.org/2000/svg\",\n    viewBox: \"0 0 448 512\",\n    width: size,\n    height: size,\n    role: \"img\",\n    \"aria-label\": \"arrow left icon\"\n  }, /*#__PURE__*/React.createElement(\"path\", {\n    d: \"M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z\"\n  }));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ArrowLeftIcon);\n\n//# sourceURL=webpack://devour-frontend/./src/components/Icons/ArrowLeftIcon/ArrowLeftIcon.js?\n}");
+
+/***/ },
+
 /***/ "./src/components/Icons/BellIcon/BellIcon.js"
 /*!***************************************************!*\
   !*** ./src/components/Icons/BellIcon/BellIcon.js ***!
@@ -127,6 +193,61 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 
 "use strict";
 eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nvar BellIcon = function BellIcon(_ref) {\n  var _ref$size = _ref.size,\n    size = _ref$size === void 0 ? '24px' : _ref$size;\n  return /*#__PURE__*/React.createElement(\"svg\", {\n    xmlns: \"http://www.w3.org/2000/svg\",\n    viewBox: \"0 0 448 512\",\n    height: size,\n    role: \"img\",\n    \"aria-label\": \"bell icon\"\n  }, /*#__PURE__*/React.createElement(\"path\", {\n    d: \"M224 0c-17.7 0-32 14.3-32 32V51.2C119 66 64 130.6 64 208v18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416H416c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8V208c0-77.4-55-142-128-156.8V32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z\"\n  }));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BellIcon);\n\n//# sourceURL=webpack://devour-frontend/./src/components/Icons/BellIcon/BellIcon.js?\n}");
+
+/***/ },
+
+/***/ "./src/components/Icons/CommentIcon/CommentIcon.js"
+/*!*********************************************************!*\
+  !*** ./src/components/Icons/CommentIcon/CommentIcon.js ***!
+  \*********************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nfunction CommentIcon(_ref) {\n  var _ref$size = _ref.size,\n    size = _ref$size === void 0 ? 24 : _ref$size;\n  return /*#__PURE__*/React.createElement(\"svg\", {\n    xmlns: \"http://www.w3.org/2000/svg\",\n    viewBox: \"0 0 512 512\",\n    width: size,\n    height: size,\n    role: \"img\",\n    \"aria-label\": \"comment icon\"\n  }, /*#__PURE__*/React.createElement(\"path\", {\n    d: \"M512 240c0 114.9-114.6 208-256 208c-37.1 0-72.3-6.4-104.1-17.9c-11.9 8.7-31.3 20.6-54.3 30.6C73.6 471.1 44.7 480 16 480c-6.5 0-12.3-3.9-14.8-9.9c-2.5-6-1.1-12.8 3.4-17.4l0 0 0 0 0 0 0 0 .3-.3c.3-.3 .7-.7 1.3-1.4c1.1-1.2 2.8-3.1 4.9-5.7c4.1-5 9.6-12.4 15.2-21.6c10-16.6 19.5-38.4 21.4-62.9C17.7 326.8 0 285.1 0 240C0 125.1 114.6 32 256 32s256 93.1 256 208z\"\n  }));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CommentIcon);\n\n//# sourceURL=webpack://devour-frontend/./src/components/Icons/CommentIcon/CommentIcon.js?\n}");
+
+/***/ },
+
+/***/ "./src/components/Icons/EllipsisVerticalIcon/EllipsisVerticalIcon.js"
+/*!***************************************************************************!*\
+  !*** ./src/components/Icons/EllipsisVerticalIcon/EllipsisVerticalIcon.js ***!
+  \***************************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nfunction EllipsisVerticalIcon(_ref) {\n  var _ref$size = _ref.size,\n    size = _ref$size === void 0 ? 24 : _ref$size;\n  return /*#__PURE__*/React.createElement(\"svg\", {\n    xmlns: \"http://www.w3.org/2000/svg\",\n    viewBox: \"0 0 640 640\",\n    width: size,\n    height: size,\n    role: \"img\",\n    \"aria-label\": \"vertical ellipsis icon\"\n  }, /*#__PURE__*/React.createElement(\"path\", {\n    d: \"M320 208C289.1 208 264 182.9 264 152C264 121.1 289.1 96 320 96C350.9 96 376 121.1 376 152C376 182.9 350.9 208 320 208zM320 432C350.9 432 376 457.1 376 488C376 518.9 350.9 544 320 544C289.1 544 264 518.9 264 488C264 457.1 289.1 432 320 432zM376 320C376 350.9 350.9 376 320 376C289.1 376 264 350.9 264 320C264 289.1 289.1 264 320 264C350.9 264 376 289.1 376 320z\"\n  }));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EllipsisVerticalIcon);\n\n//# sourceURL=webpack://devour-frontend/./src/components/Icons/EllipsisVerticalIcon/EllipsisVerticalIcon.js?\n}");
+
+/***/ },
+
+/***/ "./src/components/Icons/ExpandIcon/ExpandIcon.js"
+/*!*******************************************************!*\
+  !*** ./src/components/Icons/ExpandIcon/ExpandIcon.js ***!
+  \*******************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nfunction ExpandIcon(_ref) {\n  var _ref$size = _ref.size,\n    size = _ref$size === void 0 ? 24 : _ref$size;\n  return /*#__PURE__*/React.createElement(\"svg\", {\n    xmlns: \"http://www.w3.org/2000/svg\",\n    viewBox: \"0 0 448 512\",\n    width: size,\n    height: size,\n    role: \"img\",\n    \"aria-label\": \"expand icon\"\n  }, /*#__PURE__*/React.createElement(\"path\", {\n    d: \"M0 180V56c0-13.3 10.7-24 24-24h124c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H64v84c0 6.6-5.4 12-12 12H12c-6.6 0-12-5.4-12-12zM288 44v40c0 6.6 5.4 12 12 12h84v84c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12V56c0-13.3-10.7-24-24-24H300c-6.6 0-12 5.4-12 12zm148 276h-40c-6.6 0-12 5.4-12 12v84h-84c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h124c13.3 0 24-10.7 24-24V332c0-6.6-5.4-12-12-12zM160 468v-40c0-6.6-5.4-12-12-12H64v-84c0-6.6-5.4-12-12-12H12c-6.6 0-12 5.4-12 12v124c0 13.3 10.7 24 24 24h124c6.6 0 12-5.4 12-12z\"\n  }));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ExpandIcon);\n\n//# sourceURL=webpack://devour-frontend/./src/components/Icons/ExpandIcon/ExpandIcon.js?\n}");
+
+/***/ },
+
+/***/ "./src/components/Icons/HeartIcon/HeartIconFill.js"
+/*!*********************************************************!*\
+  !*** ./src/components/Icons/HeartIcon/HeartIconFill.js ***!
+  \*********************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nfunction HeartIconFill(_ref) {\n  var _ref$size = _ref.size,\n    size = _ref$size === void 0 ? 24 : _ref$size;\n  return /*#__PURE__*/React.createElement(\"svg\", {\n    xmlns: \"http://www.w3.org/2000/svg\",\n    viewBox: \"0 0 640 640\",\n    width: size,\n    height: size,\n    role: \"img\",\n    \"aria-label\": \"heart icon\"\n  }, /*#__PURE__*/React.createElement(\"path\", {\n    d: \"M305 151.1L320 171.8L335 151.1C360 116.5 400.2 96 442.9 96C516.4 96 576 155.6 576 229.1L576 231.7C576 343.9 436.1 474.2 363.1 529.9C350.7 539.3 335.5 544 320 544C304.5 544 289.2 539.4 276.9 529.9C203.9 474.2 64 343.9 64 231.7L64 229.1C64 155.6 123.6 96 197.1 96C239.8 96 280 116.5 305 151.1z\"\n  }));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (HeartIconFill);\n\n//# sourceURL=webpack://devour-frontend/./src/components/Icons/HeartIcon/HeartIconFill.js?\n}");
+
+/***/ },
+
+/***/ "./src/components/Icons/HeartIcon/HeartIconStroke.js"
+/*!***********************************************************!*\
+  !*** ./src/components/Icons/HeartIcon/HeartIconStroke.js ***!
+  \***********************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nfunction HeartIconStroke(_ref) {\n  var _ref$size = _ref.size,\n    size = _ref$size === void 0 ? 24 : _ref$size;\n  return /*#__PURE__*/React.createElement(\"svg\", {\n    xmlns: \"http://www.w3.org/2000/svg\",\n    viewBox: \"0 0 640 640\",\n    width: size,\n    height: size,\n    role: \"img\",\n    \"aria-label\": \"heart icon\"\n  }, /*#__PURE__*/React.createElement(\"path\", {\n    d: \"M442.9 144C415.6 144 389.9 157.1 373.9 179.2L339.5 226.8C335 233 327.8 236.7 320.1 236.7C312.4 236.7 305.2 233 300.7 226.8L266.3 179.2C250.3 157.1 224.6 144 197.3 144C150.3 144 112.2 182.1 112.2 229.1C112.2 279 144.2 327.5 180.3 371.4C221.4 421.4 271.7 465.4 306.2 491.7C309.4 494.1 314.1 495.9 320.2 495.9C326.3 495.9 331 494.1 334.2 491.7C368.7 465.4 419 421.3 460.1 371.4C496.3 327.5 528.2 279 528.2 229.1C528.2 182.1 490.1 144 443.1 144zM335 151.1C360 116.5 400.2 96 442.9 96C516.4 96 576 155.6 576 229.1C576 297.7 533.1 358 496.9 401.9C452.8 455.5 399.6 502 363.1 529.8C350.8 539.2 335.6 543.9 320 543.9C304.4 543.9 289.2 539.2 276.9 529.8C240.4 502 187.2 455.5 143.1 402C106.9 358.1 64 297.7 64 229.1C64 155.6 123.6 96 197.1 96C239.8 96 280 116.5 305 151.1L320 171.8L335 151.1z\"\n  }));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (HeartIconStroke);\n\n//# sourceURL=webpack://devour-frontend/./src/components/Icons/HeartIcon/HeartIconStroke.js?\n}");
 
 /***/ },
 
@@ -182,6 +303,17 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 
 "use strict";
 eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nfunction SearchIcon(_ref) {\n  var _ref$size = _ref.size,\n    size = _ref$size === void 0 ? 24 : _ref$size;\n  return /*#__PURE__*/React.createElement(\"svg\", {\n    xmlns: \"http://www.w3.org/2000/svg\",\n    viewBox: \"0 0 640 640\",\n    width: size,\n    height: size,\n    role: \"img\",\n    \"aria-label\": \"search icon\"\n  }, /*#__PURE__*/React.createElement(\"path\", {\n    d: \"M480 272C480 317.9 465.1 360.3 440 394.7L566.6 521.4C579.1 533.9 579.1 554.2 566.6 566.7C554.1 579.2 533.8 579.2 521.3 566.7L394.7 440C360.3 465.1 317.9 480 272 480C157.1 480 64 386.9 64 272C64 157.1 157.1 64 272 64C386.9 64 480 157.1 480 272zM272 416C351.5 416 416 351.5 416 272C416 192.5 351.5 128 272 128C192.5 128 128 192.5 128 272C128 351.5 192.5 416 272 416z\"\n  }));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SearchIcon);\n\n//# sourceURL=webpack://devour-frontend/./src/components/Icons/SearchIcon/SearchIcon.js?\n}");
+
+/***/ },
+
+/***/ "./src/components/Icons/ShareIcon/ShareIcon.js"
+/*!*****************************************************!*\
+  !*** ./src/components/Icons/ShareIcon/ShareIcon.js ***!
+  \*****************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nfunction ShareIcon(_ref) {\n  var _ref$size = _ref.size,\n    size = _ref$size === void 0 ? 24 : _ref$size;\n  return /*#__PURE__*/React.createElement(\"svg\", {\n    xmlns: \"http://www.w3.org/2000/svg\",\n    viewBox: \"0 0 640 640\",\n    width: size,\n    height: size,\n    role: \"img\",\n    \"aria-label\": \"share icon\"\n  }, /*#__PURE__*/React.createElement(\"path\", {\n    d: \"M371.8 82.4C359.8 87.4 352 99 352 112L352 192L240 192C142.8 192 64 270.8 64 368C64 481.3 145.5 531.9 164.2 542.1C166.7 543.5 169.5 544 172.3 544C183.2 544 192 535.1 192 524.3C192 516.8 187.7 509.9 182.2 504.8C172.8 496 160 478.4 160 448.1C160 395.1 203 352.1 256 352.1L352 352.1L352 432.1C352 445 359.8 456.7 371.8 461.7C383.8 466.7 397.5 463.9 406.7 454.8L566.7 294.8C579.2 282.3 579.2 262 566.7 249.5L406.7 89.5C397.5 80.3 383.8 77.6 371.8 82.6z\"\n  }));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ShareIcon);\n\n//# sourceURL=webpack://devour-frontend/./src/components/Icons/ShareIcon/ShareIcon.js?\n}");
 
 /***/ },
 
@@ -361,6 +493,17 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 
 /***/ },
 
+/***/ "./src/features/Feed/CommentsButton/CommentsButton.js"
+/*!************************************************************!*\
+  !*** ./src/features/Feed/CommentsButton/CommentsButton.js ***!
+  \************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _hooks_useFocusStack__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../hooks/useFocusStack */ \"./src/hooks/useFocusStack.js\");\n/* harmony import */ var _components_Icons_CommentIcon_CommentIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../components/Icons/CommentIcon/CommentIcon */ \"./src/components/Icons/CommentIcon/CommentIcon.js\");\n/* harmony import */ var _CommentsButton_module_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CommentsButton.module.css */ \"./src/features/Feed/CommentsButton/CommentsButton.module.css\");\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\n\n\nfunction CommentsButton(_ref) {\n  var openComments = _ref.openComments;\n  var _useFocusStack = (0,_hooks_useFocusStack__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(),\n    push = _useFocusStack.push;\n  var buttonRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);\n  var action = function action() {\n    openComments();\n    push(buttonRef.current);\n  };\n  var onClick = function onClick(event) {\n    action();\n  };\n  var onKeyDown = function onKeyDown(event) {\n    if (event.key === 'Enter') {\n      event.preventDefault();\n      action();\n    }\n  };\n  return /*#__PURE__*/React.createElement(\"button\", {\n    className: _CommentsButton_module_css__WEBPACK_IMPORTED_MODULE_3__[\"default\"].commentsButton,\n    onClick: onClick,\n    onKeyDown: onKeyDown,\n    ref: buttonRef,\n    type: \"button\",\n    \"aria-label\": \"leave a comment\"\n  }, /*#__PURE__*/React.createElement(_components_Icons_CommentIcon_CommentIcon__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CommentsButton);\n\n//# sourceURL=webpack://devour-frontend/./src/features/Feed/CommentsButton/CommentsButton.js?\n}");
+
+/***/ },
+
 /***/ "./src/features/Feed/Feed.js"
 /*!***********************************!*\
   !*** ./src/features/Feed/Feed.js ***!
@@ -379,7 +522,40 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nfunction FeedNode(_ref) {\n  var _data$caption;\n  var onClick = _ref.onClick,\n    item = _ref.item,\n    index = _ref.index,\n    count = _ref.count;\n  var data = {\n    videoUrl: item.videoUrl || '',\n    caption: item.caption || ''\n  };\n\n  // this tabIndex etc. breaks the natural flow of the page, header gets skipped...\n\n  return /*#__PURE__*/React.createElement(\"article\", {\n    onClick: onClick,\n    tabIndex: index,\n    \"aria-posinset\": index,\n    \"aria-setsize\": count\n  }, /*#__PURE__*/React.createElement(\"header\", null), /*#__PURE__*/React.createElement(\"figure\", {\n    style: {\n      background: '#666',\n      borderRadius: '10px',\n      height: '100%',\n      width: '100%'\n    }\n  }, data.videoUrl && /*#__PURE__*/React.createElement(\"video\", {\n    ref: ref,\n    src: data.videoUrl,\n    preload: \"metadata\",\n    muted: true,\n    playsInline: true,\n    loop: true\n  }), (_data$caption = data.caption) !== null && _data$caption !== void 0 ? _data$caption : /*#__PURE__*/React.createElement(\"figcaption\", null, data.caption)), /*#__PURE__*/React.createElement(\"footer\", null));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FeedNode); // memo(FeedNode)\n\n//# sourceURL=webpack://devour-frontend/./src/features/Feed/FeedNode/FeedNode.js?\n}");
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _OverlayButtons_OverlayButtons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../OverlayButtons/OverlayButtons */ \"./src/features/Feed/OverlayButtons/OverlayButtons.js\");\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nfunction FeedNode(_ref) {\n  var _data$caption;\n  var onClick = _ref.onClick,\n    item = _ref.item,\n    index = _ref.index,\n    count = _ref.count;\n  var data = {\n    videoUrl: item.videoUrl || '',\n    caption: item.caption || ''\n  };\n\n  // this tabIndex etc. breaks the natural flow of the page, header gets skipped...\n\n  return /*#__PURE__*/React.createElement(\"article\", {\n    onClick: onClick,\n    tabIndex: index,\n    \"aria-posinset\": index,\n    \"aria-setsize\": count\n  }, /*#__PURE__*/React.createElement(\"header\", null), /*#__PURE__*/React.createElement(\"figure\", {\n    style: {\n      background: '#666',\n      borderRadius: '10px',\n      height: '100%',\n      width: '100%'\n    }\n  }, data.videoUrl && /*#__PURE__*/React.createElement(\"video\", {\n    ref: ref,\n    src: data.videoUrl,\n    preload: \"metadata\",\n    muted: true,\n    playsInline: true,\n    loop: true\n  }), (_data$caption = data.caption) !== null && _data$caption !== void 0 ? _data$caption : /*#__PURE__*/React.createElement(\"figcaption\", null, data.caption)), /*#__PURE__*/React.createElement(\"footer\", null, \"// static captions, meta text, etc.\"), /*#__PURE__*/React.createElement(_OverlayButtons_OverlayButtons__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FeedNode); // memo(FeedNode)\n\n//# sourceURL=webpack://devour-frontend/./src/features/Feed/FeedNode/FeedNode.js?\n}");
+
+/***/ },
+
+/***/ "./src/features/Feed/FullscreenButton/FullscreenButton.js"
+/*!****************************************************************!*\
+  !*** ./src/features/Feed/FullscreenButton/FullscreenButton.js ***!
+  \****************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ \"./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js\");\n/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/regenerator */ \"./node_modules/@babel/runtime/regenerator/index.js\");\n/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _hooks_useFocusStack__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../hooks/useFocusStack */ \"./src/hooks/useFocusStack.js\");\n/* harmony import */ var _components_Icons_ExpandIcon_ExpandIcon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../components/Icons/ExpandIcon/ExpandIcon */ \"./src/components/Icons/ExpandIcon/ExpandIcon.js\");\n/* harmony import */ var _FullscreenButton_module_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./FullscreenButton.module.css */ \"./src/features/Feed/FullscreenButton/FullscreenButton.module.css\");\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\n\n\n\n\nfunction FullscreenButton(_ref) {\n  var openFeed = _ref.openFeed;\n  var _useFocusStack = (0,_hooks_useFocusStack__WEBPACK_IMPORTED_MODULE_3__[\"default\"])(),\n    push = _useFocusStack.push;\n  var buttonRef = (0,react__WEBPACK_IMPORTED_MODULE_2__.useRef)(null);\n  var action = /*#__PURE__*/function () {\n    var _ref2 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(/*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee() {\n      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function (_context) {\n        while (1) switch (_context.prev = _context.next) {\n          case 0:\n            navigator.vibrate(50);\n            _context.next = 1;\n            return document.getElementById('portal').requestFullscreen();\n          case 1:\n            _context.next = 2;\n            return screen.orientation.lock('portrait');\n          case 2:\n            push(buttonRef.current);\n            openFeed();\n\n            // make sure current video focused\n          case 3:\n          case \"end\":\n            return _context.stop();\n        }\n      }, _callee);\n    }));\n    return function action() {\n      return _ref2.apply(this, arguments);\n    };\n  }();\n  var onClick = function onClick(event) {\n    action();\n  };\n  var onKeyDown = function onKeyDown(event) {\n    if (event.key === 'Enter') {\n      event.preventDefault();\n      action();\n    }\n  };\n  return /*#__PURE__*/React.createElement(\"button\", {\n    className: _FullscreenButton_module_css__WEBPACK_IMPORTED_MODULE_5__[\"default\"].fullscreenButton,\n    onClick: onClick,\n    onKeyDown: onKeyDown,\n    ref: buttonRef,\n    type: \"button\",\n    \"aria-label\": \"enter fullscreen mode\"\n  }, /*#__PURE__*/React.createElement(FullscreenIcon, null));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FullscreenButton);\n\n//# sourceURL=webpack://devour-frontend/./src/features/Feed/FullscreenButton/FullscreenButton.js?\n}");
+
+/***/ },
+
+/***/ "./src/features/Feed/LikeButton/LikeButton.js"
+/*!****************************************************!*\
+  !*** ./src/features/Feed/LikeButton/LikeButton.js ***!
+  \****************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ \"./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js\");\n/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ \"./node_modules/@babel/runtime/helpers/esm/slicedToArray.js\");\n/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/regenerator */ \"./node_modules/@babel/runtime/regenerator/index.js\");\n/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../config */ \"./src/config.js\");\n/* harmony import */ var _utilities_server__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../utilities/server */ \"./src/utilities/server.js\");\n/* harmony import */ var _components_Icons_HeartIcon_HeartIconFill__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../components/Icons/HeartIcon/HeartIconFill */ \"./src/components/Icons/HeartIcon/HeartIconFill.js\");\n/* harmony import */ var _components_Icons_HeartIcon_HeartIconStroke__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../components/Icons/HeartIcon/HeartIconStroke */ \"./src/components/Icons/HeartIcon/HeartIconStroke.js\");\n/* harmony import */ var _LikeButton_module_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./LikeButton.module.css */ \"./src/features/Feed/LikeButton/LikeButton.module.css\");\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\n\n\n\n\n\n\n\nfunction LikeButton(_ref) {\n  var likedByUser = _ref.likedByUser;\n  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(false),\n    _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(_useState, 2),\n    liked = _useState2[0],\n    setLiked = _useState2[1];\n  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(false),\n    _useState4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(_useState3, 2),\n    loading = _useState4[0],\n    setLoading = _useState4[1];\n  var action = /*#__PURE__*/function () {\n    var _ref2 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(/*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default().mark(function _callee() {\n      var request, response;\n      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default().wrap(function (_context) {\n        while (1) switch (_context.prev = _context.next) {\n          case 0:\n            navigator.vibrate(50);\n            setLiked(function (prevState) {\n              return !prevState;\n            });\n            return _context.abrupt(\"return\");\n          case 1:\n            response = _context.sent;\n            setLiked(function (prevState) {\n              return !prevState;\n            });\n            setLoading(false);\n          case 2:\n          case \"end\":\n            return _context.stop();\n        }\n      }, _callee);\n    }));\n    return function action() {\n      return _ref2.apply(this, arguments);\n    };\n  }();\n  var onClick = function onClick(event) {\n    action();\n  };\n  var onKeyDown = function onKeyDown(event) {\n    if (event.key === 'Enter') {\n      event.preventDefault();\n      action();\n    }\n  };\n  (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {\n    setLiked(likedByUser);\n  }, [likedByUser]);\n  return /*#__PURE__*/React.createElement(\"button\", {\n    className: _LikeButton_module_css__WEBPACK_IMPORTED_MODULE_8__[\"default\"].likeButton,\n    onClick: onClick,\n    onKeyDown: onKeyDown,\n    disabled: loading,\n    type: \"button\",\n    \"aria-label\": \"like this\",\n    \"aria-pressed\": liked\n  }, liked ? /*#__PURE__*/React.createElement(_components_Icons_HeartIcon_HeartIconFill__WEBPACK_IMPORTED_MODULE_6__[\"default\"], null) : /*#__PURE__*/React.createElement(_components_Icons_HeartIcon_HeartIconStroke__WEBPACK_IMPORTED_MODULE_7__[\"default\"], null));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LikeButton);\n\n//# sourceURL=webpack://devour-frontend/./src/features/Feed/LikeButton/LikeButton.js?\n}");
+
+/***/ },
+
+/***/ "./src/features/Feed/OverlayButtons/OverlayButtons.js"
+/*!************************************************************!*\
+  !*** ./src/features/Feed/OverlayButtons/OverlayButtons.js ***!
+  \************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _components_CloseButton_CloseButton__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../components/CloseButton/CloseButton */ \"./src/components/CloseButton/CloseButton.js\");\n/* harmony import */ var _components_Dropdown_Dropdown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../components/Dropdown/Dropdown */ \"./src/components/Dropdown/Dropdown.js\");\n/* harmony import */ var _LikeButton_LikeButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../LikeButton/LikeButton */ \"./src/features/Feed/LikeButton/LikeButton.js\");\n/* harmony import */ var _CommentsButton_CommentsButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../CommentsButton/CommentsButton */ \"./src/features/Feed/CommentsButton/CommentsButton.js\");\n/* harmony import */ var _ShareButton_ShareButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../ShareButton/ShareButton */ \"./src/features/Feed/ShareButton/ShareButton.js\");\n/* harmony import */ var _FullscreenButton_FullscreenButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../FullscreenButton/FullscreenButton */ \"./src/features/Feed/FullscreenButton/FullscreenButton.js\");\n/* harmony import */ var _OverlayButtons_module_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./OverlayButtons.module.css */ \"./src/features/Feed/OverlayButtons/OverlayButtons.module.css\");\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\n\n\n\n\n\nfunction VideoOverlay(_ref) {\n  var closeFeed = _ref.closeFeed;\n  // several gestures to be listed here.\n  // check with gpt about existing gesture standards\n  // but something like the following: \n\n  // double tap: like\n  // long press: open comment\n  // side swipe: share\n  // velocity up: fullscreen\n\n  return /*#__PURE__*/React.createElement(\"nav\", {\n    className: _OverlayButtons_module_css__WEBPACK_IMPORTED_MODULE_6__[\"default\"].videoOverlay\n  }, /*#__PURE__*/React.createElement(\"div\", null, \" \", isFullscreen && /*#__PURE__*/React.createElement(_components_CloseButton_CloseButton__WEBPACK_IMPORTED_MODULE_0__[\"default\"], {\n    overlay: \"feed overlay\",\n    close: closeFeed\n  }), /*#__PURE__*/React.createElement(_components_Dropdown_Dropdown__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null)), /*#__PURE__*/React.createElement(\"div\", null, \" \", /*#__PURE__*/React.createElement(_LikeButton_LikeButton__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null), /*#__PURE__*/React.createElement(_CommentsButton_CommentsButton__WEBPACK_IMPORTED_MODULE_3__[\"default\"], null), /*#__PURE__*/React.createElement(_ShareButton_ShareButton__WEBPACK_IMPORTED_MODULE_4__[\"default\"], null), /*#__PURE__*/React.createElement(_FullscreenButton_FullscreenButton__WEBPACK_IMPORTED_MODULE_5__[\"default\"], null)));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (VideoOverlay);\n\n//# sourceURL=webpack://devour-frontend/./src/features/Feed/OverlayButtons/OverlayButtons.js?\n}");
 
 /***/ },
 
@@ -391,6 +567,17 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 
 "use strict";
 eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nfunction Sentinel() {\n  // used for infinite scrolling:\n  // on visible load more data\n  return /*#__PURE__*/React.createElement(\"div\", null);\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Sentinel);\n\n//# sourceURL=webpack://devour-frontend/./src/features/Feed/Sentinel/Sentinel.js?\n}");
+
+/***/ },
+
+/***/ "./src/features/Feed/ShareButton/ShareButton.js"
+/*!******************************************************!*\
+  !*** ./src/features/Feed/ShareButton/ShareButton.js ***!
+  \******************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _components_Icons_ShareIcon_ShareIcon__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../components/Icons/ShareIcon/ShareIcon */ \"./src/components/Icons/ShareIcon/ShareIcon.js\");\n/* harmony import */ var _ShareButton_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ShareButton.module.css */ \"./src/features/Feed/ShareButton/ShareButton.module.css\");\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nfunction ShareButton() {\n  var action = function action() {\n    navigator.vibrate(50);\n    navigator.share();\n  };\n  var onClick = function onClick(event) {\n    action();\n  };\n  var onKeyDown = function onKeyDown(event) {\n    if (event.key === 'Enter') {\n      event.preventDefault();\n      action();\n    }\n  };\n  return /*#__PURE__*/React.createElement(\"button\", {\n    className: _ShareButton_module_css__WEBPACK_IMPORTED_MODULE_1__[\"default\"].shareButton,\n    onClick: onClick,\n    onKeyDown: onKeyDown,\n    type: \"button\",\n    \"aria-label\": \"share this video\"\n  }, /*#__PURE__*/React.createElement(_components_Icons_ShareIcon_ShareIcon__WEBPACK_IMPORTED_MODULE_0__[\"default\"], null));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ShareButton);\n\n//# sourceURL=webpack://devour-frontend/./src/features/Feed/ShareButton/ShareButton.js?\n}");
 
 /***/ },
 
@@ -501,6 +688,61 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 
 "use strict";
 eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// extracted by mini-css-extract-plugin\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\"avatar\":\"cNFgJeNuNF741mqy3HjF\"});\n\n//# sourceURL=webpack://devour-frontend/./src/components/Avatar/Avatar.module.css?\n}");
+
+/***/ },
+
+/***/ "./src/components/CloseButton/CloseButton.module.css"
+/*!***********************************************************!*\
+  !*** ./src/components/CloseButton/CloseButton.module.css ***!
+  \***********************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// extracted by mini-css-extract-plugin\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\"closeButton\":\"nRmVNOUPXPt07q2izPkS\"});\n\n//# sourceURL=webpack://devour-frontend/./src/components/CloseButton/CloseButton.module.css?\n}");
+
+/***/ },
+
+/***/ "./src/components/Dropdown/Dropdown.module.css"
+/*!*****************************************************!*\
+  !*** ./src/components/Dropdown/Dropdown.module.css ***!
+  \*****************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// extracted by mini-css-extract-plugin\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\"dropdown\":\"fsRjQsePCOqWh1LwmMMg\"});\n\n//# sourceURL=webpack://devour-frontend/./src/components/Dropdown/Dropdown.module.css?\n}");
+
+/***/ },
+
+/***/ "./src/components/Dropdown/DropdownButton/DropdownButton.module.css"
+/*!**************************************************************************!*\
+  !*** ./src/components/Dropdown/DropdownButton/DropdownButton.module.css ***!
+  \**************************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// extracted by mini-css-extract-plugin\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\"dropdownButton\":\"abpuI_3Na2ydJj24PSqD\"});\n\n//# sourceURL=webpack://devour-frontend/./src/components/Dropdown/DropdownButton/DropdownButton.module.css?\n}");
+
+/***/ },
+
+/***/ "./src/components/Dropdown/DropdownList/DropdownList.module.css"
+/*!**********************************************************************!*\
+  !*** ./src/components/Dropdown/DropdownList/DropdownList.module.css ***!
+  \**********************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// extracted by mini-css-extract-plugin\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\"dropdownList\":\"SaGbxhcxIln6hpTb0Klg\",\"open\":\"ANLuoq2GOx9WvRvddcjR\"});\n\n//# sourceURL=webpack://devour-frontend/./src/components/Dropdown/DropdownList/DropdownList.module.css?\n}");
+
+/***/ },
+
+/***/ "./src/components/Dropdown/ListItemButton/ListItemButton.module.css"
+/*!**************************************************************************!*\
+  !*** ./src/components/Dropdown/ListItemButton/ListItemButton.module.css ***!
+  \**************************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// extracted by mini-css-extract-plugin\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\"listItemButton\":\"OGbMvckCuIXNF7ZaS8mY\"});\n\n//# sourceURL=webpack://devour-frontend/./src/components/Dropdown/ListItemButton/ListItemButton.module.css?\n}");
 
 /***/ },
 
@@ -625,6 +867,17 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 
 /***/ },
 
+/***/ "./src/features/Feed/CommentsButton/CommentsButton.module.css"
+/*!********************************************************************!*\
+  !*** ./src/features/Feed/CommentsButton/CommentsButton.module.css ***!
+  \********************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// extracted by mini-css-extract-plugin\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\"commentsButton\":\"u93giZHNw1r8XONVVjuT\"});\n\n//# sourceURL=webpack://devour-frontend/./src/features/Feed/CommentsButton/CommentsButton.module.css?\n}");
+
+/***/ },
+
 /***/ "./src/features/Feed/Feed.module.css"
 /*!*******************************************!*\
   !*** ./src/features/Feed/Feed.module.css ***!
@@ -633,6 +886,50 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 
 "use strict";
 eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// extracted by mini-css-extract-plugin\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\"feed\":\"FXju5x6KeXy0fnVXd9I2\"});\n\n//# sourceURL=webpack://devour-frontend/./src/features/Feed/Feed.module.css?\n}");
+
+/***/ },
+
+/***/ "./src/features/Feed/FullscreenButton/FullscreenButton.module.css"
+/*!************************************************************************!*\
+  !*** ./src/features/Feed/FullscreenButton/FullscreenButton.module.css ***!
+  \************************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// extracted by mini-css-extract-plugin\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\"fullscreenButton\":\"gwFM11KfM2Zh3vK3llzI\"});\n\n//# sourceURL=webpack://devour-frontend/./src/features/Feed/FullscreenButton/FullscreenButton.module.css?\n}");
+
+/***/ },
+
+/***/ "./src/features/Feed/LikeButton/LikeButton.module.css"
+/*!************************************************************!*\
+  !*** ./src/features/Feed/LikeButton/LikeButton.module.css ***!
+  \************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// extracted by mini-css-extract-plugin\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\"likeButton\":\"tPgn6_d8EcB9qbtXe5Ke\"});\n\n//# sourceURL=webpack://devour-frontend/./src/features/Feed/LikeButton/LikeButton.module.css?\n}");
+
+/***/ },
+
+/***/ "./src/features/Feed/OverlayButtons/OverlayButtons.module.css"
+/*!********************************************************************!*\
+  !*** ./src/features/Feed/OverlayButtons/OverlayButtons.module.css ***!
+  \********************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// extracted by mini-css-extract-plugin\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\"overlayButtons\":\"sI9pfGEtFMSXC4RLfTj3\",\"overlayButton\":\"c3GTSyetGvaU4sBcsknm\"});\n\n//# sourceURL=webpack://devour-frontend/./src/features/Feed/OverlayButtons/OverlayButtons.module.css?\n}");
+
+/***/ },
+
+/***/ "./src/features/Feed/ShareButton/ShareButton.module.css"
+/*!**************************************************************!*\
+  !*** ./src/features/Feed/ShareButton/ShareButton.module.css ***!
+  \**************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// extracted by mini-css-extract-plugin\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\"shareButton\":\"QyOWKukTcDhXHdC6M19r\"});\n\n//# sourceURL=webpack://devour-frontend/./src/features/Feed/ShareButton/ShareButton.module.css?\n}");
 
 /***/ },
 
