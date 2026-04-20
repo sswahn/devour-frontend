@@ -20,6 +20,12 @@ function Authentication({ closeAuthentication }) {
     pop()
   }
 
+  const gesture = () => {
+    if (overlayRef.current && action) {
+      swipeToClose(overlayRef.current, action)
+    }
+  }
+
   const onKeyDown = event => {
     if (event.key === 'Escape') {
       event.preventDefault()
@@ -28,9 +34,7 @@ function Authentication({ closeAuthentication }) {
   }
   
   useEffect(() => {
-    if (overlayRef.current && action) {
-      swipeToClose(overlayRef.current, action)
-    }
+    gesture()
   }, [])
   
   return (
