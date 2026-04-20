@@ -32,6 +32,9 @@ function Profile({ closeProfile }) {
   }
 */
   useEffect(() => {
+    console.log('overlayRef.current: ', overlayRef.current)
+    console.log('action: ', action)
+    
     if (!overlayRef.current || !action) {
       return
     }
