@@ -109,6 +109,7 @@ function useSwipeToClose() {
     overlay.element.addEventListener('pointercancel', onPointerCancel)
     return () => {
       overlay.element.removeEventListener('pointerup', onPointerUp)
+      overlay.element.addEventListener('pointermove', onPointerMove)
       overlay.element.removeEventListener('pointerdown', onPointerDown)
       overlay.element.removeEventListener('pointercancel', onPointerCancel)
     }
