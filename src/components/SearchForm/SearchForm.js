@@ -72,10 +72,10 @@ function SearchForm({ closeSearch }) {
   }
 
   useEffect(() => {
-    if (!overlayRef.current || !closeSearch) {
+    if (!overlayRef.current || !action) {
       return
     }
-    swipeToClose(overlayRef.current, closeSearch)
+    swipeToClose(overlayRef.current, action)
   }, [])
 
   useEffect(() => {
