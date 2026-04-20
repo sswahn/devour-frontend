@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { config } from '../../config'
 import useFocusTrap from '../../hooks/useFocusTrap'
+import useSwipeToClose from '../../hooks/useSwipeToClose'
 import server from '../../utilities/server'
 import useDebounce from '../../hooks/useDebounce'
 import CloseButton from '../CloseButton/CloseButton'
@@ -12,7 +13,8 @@ import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 import styles from './SearchForm.module.css'
 
 function SearchForm({ closeSearch }) {
-  const focusRef = useFocusTrap()
+  const {overlayRef, focusRef} = useFocusTrap()
+  const [setElement, setMethod] = useSwipeToClose()
   const [searchValue, setSearchValue] = useState('')
   const [searchResults, setSearchResults] = useState([])
   const [recentSearches, setRecentSearches] = useState([])
@@ -62,6 +64,13 @@ function SearchForm({ closeSearch }) {
       setRecentSearches(JSON.parse(item) )
     }
   }
+
+  useEffect(() => {
+    if (overlayRef.current) {
+      setElement(overlayRef.current)
+      setMethod(closeSearch)
+    }
+  }, [])
 
   useEffect(() => {
     requestSearchResults()
