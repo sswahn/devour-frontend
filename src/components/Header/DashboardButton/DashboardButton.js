@@ -1,8 +1,30 @@
+import { useRef } from 'react'
+import useFocusStack from '../../../hooks/useFocusStack'
+import LineChartIcon from '../Icons/LineChartIcon/LineChartIcon'
+import styles from './DashboardButton.module.css'
 
-
-function DashboardButton() {
+function DashboardButton({ openDashboard }) {
+  const { push } = useFocusStack()
+  const buttonRef = useRef(null)
+  
+  const action = () => {
+    openDashboard()
+    push(buttonRef.current)
+  }
+  
+  const onClick = event => {
+    action()
+  }
+  
+  const onKeyDown = event => {
+    if (event.key === 'Enter') {
+      event.preventDefault()
+      action()
+    }
+  }
+  
   return (
-    <button type="button" aria-label="open dashboard">
+    <button className={styles.dashboardButton} onClick={onClick} onKeyDown={onKeyDown} ref={buttonRef} type="button" aria-label="open dashboard">
       <LineChartIcon />
     </button>
   )
