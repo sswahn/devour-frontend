@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import useFocusStack from '../../hooks/useFocusStack'
 import useFocusTrap from '../../hooks/useFocusTrap'
 import useSwipeToClose from '../../hooks/useSwipeToClose'
@@ -32,6 +33,7 @@ function Authentication({ closeAuthentication }) {
     }
     swipeToClose(overlayRef.current, action)
   }, [])
+  
   return (
     <section className={styles.authentication} ref={focusRef} onKeyDown={onKeyDown}>
       <CloseButton overlay="authentication" close={closeAuthentication} />
