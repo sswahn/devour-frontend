@@ -26,8 +26,8 @@ function useSwipeToClose() {
 
   const onPointerDown = event => {
     const { clientX, clientY, pointerId, currentTarget } = event
-    const width = window.innerWidth
     const EDGE_THRESHOLD = 35
+    const width = window.innerWidth
     // Only capture if actually hitting an edge
     const isLeft = clientX < EDGE_THRESHOLD
     const isRight = clientX > width - EDGE_THRESHOLD
@@ -48,18 +48,15 @@ function useSwipeToClose() {
     if (!activeSide || event.pointerId !== pointerId) {
       return
     }
-
     const deltaX = event.clientX - startX
     const deltaY = event.clientY - startY
     let direction = swipeData.current.direction
     
     if (!direction) {
       const LOCK_THRESHOLD = 8
-  
       if (Math.abs(deltaX) < LOCK_THRESHOLD && Math.abs(deltaY) < LOCK_THRESHOLD) {
         return
       }
-  
       direction = Math.abs(deltaX) > Math.abs(deltaY) ? 'x' : 'y'
     }
 
@@ -67,7 +64,6 @@ function useSwipeToClose() {
       reset()
       return
     }
-    
     const translateX = activeSide === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
     overlay.element.style.transform = `translateX(${translateX}px)`
   }
@@ -77,11 +73,11 @@ function useSwipeToClose() {
     if (!activeSide || event.pointerId !== pointerId) {
       return
     }
+    const CLOSE_THRESHOLD = 150 
     const deltaX = event.clientX - startX
     const isCorrectDir = activeSide === 'left' ? deltaX > 0 : deltaX < 0
     const shouldClose = Math.abs(deltaX) > CLOSE_THRESHOLD && isCorrectDir
-    const CLOSE_THRESHOLD = 150 
-
+    
     if (event.currentTarget.hasPointerCapture(pointerId)) {
       event.currentTarget.releasePointerCapture(pointerId)
     }
