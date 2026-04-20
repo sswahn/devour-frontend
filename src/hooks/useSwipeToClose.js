@@ -48,6 +48,7 @@ function swipeToClose() {
     const CLOSE_THRESHOLD = 150 
     
     if (Math.abs(deltaX) > CLOSE_THRESHOLD && isCorrectDir) {
+      console.log('overlay.method() fired! : ', overlay.method)
       overlay.method()
     }
     resetSwipeData()
