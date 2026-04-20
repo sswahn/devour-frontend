@@ -28,10 +28,9 @@ function Authentication({ closeAuthentication }) {
   }
   
   useEffect(() => {
-    if (!overlayRef.current || !action) {
-      return
+    if (overlayRef.current && action) {
+      swipeToClose(overlayRef.current, action)
     }
-    swipeToClose(overlayRef.current, action)
   }, [])
   
   return (
