@@ -1,8 +1,10 @@
 import { useState, useRef, useEffect } from 'react'
 
 function swipeToClose() {
-  const [element, setElement] = useState(null)
-  const [method, setMethod] = useState(null)
+  const [overlay, setOverlay] = useState({
+    element: null,
+    method: null
+  })
   const swipeData = useRef({ 
     startX: 0, 
     activeSide: null 
@@ -42,7 +44,7 @@ function swipeToClose() {
     const CLOSE_THRESHOLD = 150 
     
     if (Math.abs(deltaX) > CLOSE_THRESHOLD && isCorrectDir) {
-      method()
+      overlay.method()
     }
     resetSwipeData()
   }
@@ -53,29 +55,29 @@ function swipeToClose() {
   
   useEffect(() => {
     console.log('Hook useEffect fired')
-    console.log('element: ', element)
-    console.log('method: ', method)
+    console.log('element: ', overlay.element)
+    console.log('method: ', overlay.method)
     
-    if (!element || !method) {
+    if (!overlay.element || !overlay.method) {
       return
     }
 
     console.log('IN hook useEffect condition')
-    console.log('element: ', element)
-    console.log('method: ', method)
+    console.log('element: ', overlay.element)
+    console.log('method: ', overlay.method)
     console.log('event listeners being set:')
     
-    element.addEventListener('pointerup', onPointerDown)
-    element.addEventListener('pointerdown', onPointerUp)
-    element.addEventListener('pointercancel', onPointerCancel)
+    overlay.element.addEventListener('pointerup', onPointerDown)
+    overlay.element.addEventListener('pointerdown', onPointerUp)
+    overlay.element.addEventListener('pointercancel', onPointerCancel)
     return () => {
-      element.removeEventListener('pointerup', onPointerDown)
-      element.removeEventListener('pointerdown', onPointerUp)
-      element.removeEventListener('pointercancel', onPointerCancel)
+      overlay.element.removeEventListener('pointerup', onPointerDown)
+      overlay.element.removeEventListener('pointerdown', onPointerUp)
+      overlay.element.removeEventListener('pointercancel', onPointerCancel)
     }
-  }, [element, method])
+  }, [overlay])
 
-  return [setElement, setMethod]
+  return setOverlay
 }
 
 export default swipeToClose
