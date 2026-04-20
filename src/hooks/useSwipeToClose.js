@@ -51,17 +51,16 @@ function useSwipeToClose() {
     }
     const deltaX = event.clientX - startX
     const deltaY = event.clientY - startY
-    let direction = swipeData.current.direction
-    
-    if (!direction) {
+
+    if (!swipeData.current.direction) {
       const LOCK_THRESHOLD = 8
       if (Math.abs(deltaX) < LOCK_THRESHOLD && Math.abs(deltaY) < LOCK_THRESHOLD) {
         return
       }
-      direction = Math.abs(deltaX) > Math.abs(deltaY) ? 'x' : 'y'
+      swipeData.current.direction = Math.abs(deltaX) > Math.abs(deltaY) ? 'x' : 'y'
     }
 
-    if (direction === 'y') {
+    if (swipeData.current.direction === 'y') {
       reset()
       return
     }
