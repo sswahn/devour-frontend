@@ -13,6 +13,10 @@ function useSwipeToClose() {
     direction: null
   })
 
+  const swipeToClose = (element, method) => {
+    setOverlay(prev => ({ ...prev, element, method }))
+  }
+
   const reset = () => {
     if (overlay.element) {
       overlay.element.style.transition = 'transform 0.2s ease'
@@ -124,7 +128,7 @@ function useSwipeToClose() {
     }
   }, [overlay.element, overlay.method])
 
-  return setOverlay
+  return swipeToClose
 }
 
 export default useSwipeToClose
