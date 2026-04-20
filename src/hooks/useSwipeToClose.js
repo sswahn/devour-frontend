@@ -42,7 +42,7 @@ function swipeToClose() {
     const CLOSE_THRESHOLD = 150 
     
     if (Math.abs(deltaX) > CLOSE_THRESHOLD && isCorrectDir) {
-      method.current()
+      method()
     }
     resetSwipeData()
   }
@@ -55,6 +55,11 @@ function swipeToClose() {
     if (!element || !method) {
       return
     }
+    
+    console.log('element: ', element)
+    console.log('method: ', method)
+    console.log('event listeners being set:')
+    
     element.addEventListener('pointerup', onPointerDown)
     element.addEventListener('pointerdown', onPointerUp)
     element.addEventListener('pointercancel', onPointerCancel)
