@@ -1,8 +1,8 @@
 import { useState, useRef, memo } from 'react'
 import server from '../../utilities/server'
 import database from '@sswahn/database'
-import FeedNode from './FeedNode'
-import Sentinel from './Sentinel' // sentinel triggers infinite loading
+import FeedNode from './FeedNode/FeedNode'
+import Sentinel from '../../../components/Sentinel/Sentinel' 
 import styles from './Feed.module.css'
 
 function Feed() {
