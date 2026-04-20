@@ -24,7 +24,7 @@ function useSwipeToClose() {
   }
 
   const onPointerDown = event => {
-    const { clientX, pointerId, currentTarget } = event
+    const { clientX, clientY, pointerId, currentTarget } = event
     const width = window.innerWidth
     const EDGE_THRESHOLD = 35
     // Only capture if actually hitting an edge
@@ -33,9 +33,11 @@ function useSwipeToClose() {
     if (isLeft || isRight) {
       currentTarget.setPointerCapture(pointerId)
       swipeData.current = { 
-        startX: clientX, 
+        startX: clientX,
+        startY: clientY,
         activeSide: isLeft ? 'left' : 'right',
-        pointerId
+        pointerId,
+        direction: null
       }
     }
   }
