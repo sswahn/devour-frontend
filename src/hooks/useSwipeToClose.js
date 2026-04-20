@@ -52,12 +52,13 @@ function useSwipeToClose() {
   }
 
   const onPointerMove = event => {
-    const { startX, startY, activeSide, pointerId } = swipeData.current
-    if (!activeSide || event.pointerId !== pointerId) {
+    const { startX, startY, activeSide, id: pointerId } = swipeData.current
+    const { clientX, clientY, currentTarget, pointerId } = event
+    if (!activeSide || pointerId !== id) {
       return
     }
-    const deltaX = event.clientX - startX
-    const deltaY = event.clientY - startY
+    const deltaX = clientX - startX
+    const deltaY = clientY - startY
 
     if (!swipeData.current.direction) {
       const LOCK_THRESHOLD = 8
@@ -75,7 +76,7 @@ function useSwipeToClose() {
     const raw = activeSide === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
     const resisted = raw / (1 + Math.abs(raw) / 300)
   
-    event.currentTarget.style.transform = `translateX(${resisted}px)`
+    currentTarget.style.transform = `translateX(${resisted}px)`
   }
 
   const onPointerUp = event => {
