@@ -1,3 +1,4 @@
+import styles from './ShareButton.module.css'
 
 function ShareButton() {
 
@@ -23,3 +24,5 @@ function ShareButton() {
     </button>
   )
 }
+
+export default ShareButton
