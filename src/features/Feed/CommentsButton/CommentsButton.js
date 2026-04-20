@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import useFocusStack from '../../../hooks/useFocusStack'
 import CommentIcon from '../../../components/Icons/CommentIcon/CommentIcon'
-import styles from 'CommentsButton.module.css'
+import styles from './CommentsButton.module.css'
 
 function CommentsButton({ openComments }) {
   const { push } = useFocusStack()
