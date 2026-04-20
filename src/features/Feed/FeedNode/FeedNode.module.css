@@ -3,6 +3,7 @@
 .feedNode {
   contain: layout paint size;
   height: 100dvh;
+  position: relative;
   scroll-snap-align: start;
   scroll-snap-stop: always;
   width: 100%;
