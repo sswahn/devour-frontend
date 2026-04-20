@@ -69,8 +69,7 @@ function useSwipeToClose() {
     }
 
     if (swipeData.current.direction === 'y') {
-      reset()
-      return
+      return reset()
     }
     const raw = activeSide === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
     const resisted = raw / (1 + Math.abs(raw) / 300)
@@ -99,12 +98,13 @@ function useSwipeToClose() {
   }
   
   const onPointerCancel = event => {
-    const { pointerId } = swipeData.current
-    if (event.pointerId !== pointerId) {
+    const { pointerId: id } = swipeData.current
+    const { pointerId, currentTarget } = event
+    if (pointerId !== id) {
       return
     }
-    if (event.currentTarget.hasPointerCapture(pointerId)) {
-      event.currentTarget.releasePointerCapture(pointerId)
+    if (currentTarget.hasPointerCapture(id)) {
+      currentTarget.releasePointerCapture(id)
     }
     reset()
   }
