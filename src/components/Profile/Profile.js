@@ -65,6 +65,22 @@ function Profile({ closeProfile }) {
       }
     }
   }
+
+  const onPointerMove = event => {
+    const { activeSide, startX } = swipeData.current
+    if (!activeSide) {
+      return
+    }
+    
+    const diff = event.clientX - startX
+
+    // Only allow swiping inward from the respective edge
+    if (activeSide === 'left' && diff > 0) {
+      setPosition(diff)
+    } else if (activeSide === 'right' && diff < 0) {
+      setPosition(diff)
+    }
+  }
   
   return (
     <section 
