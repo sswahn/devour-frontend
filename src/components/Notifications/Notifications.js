@@ -7,8 +7,9 @@ import styles from './Notifications.module.css'
 import Avatar from '../Avatar/Avatar'
 
 function Notifications({ closeNotifications }) {
-  const [isOpen, setIsOpen] = useState(false)
+  const { pop } = useFocusStack()
   const focusRef = useFocusTrap()
+  const [isOpen, setIsOpen] = useState(false)
   const bottomSheetRef = useRef(null)
   const initialHeight = useRef(0)
   const dragging = useRef(false)
