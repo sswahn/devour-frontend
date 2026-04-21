@@ -9,8 +9,9 @@ function FeedNode({ item, index, count }) {
     const now = performance.now()
     const deltaT = now - prevTime.current
     if (deltaT < 300) {
-      setDoubleTap(prev => !prev)
+      setDoubleTap(true)
     } 
+    setDoubleTap(false)
     prevTime.current = now
   }
 
