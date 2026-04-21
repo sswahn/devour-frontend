@@ -8,7 +8,7 @@ function CameraButton({ openCamera }) {
   const { push } = useFocusStack()
   
   const action = async () => {
-    navigator.vibrate(50); return;
+    return;
    
     // await document.getElementById('portal').requestFullscreen()
     // await screen.orientation.lock('portrait')
@@ -17,6 +17,7 @@ function CameraButton({ openCamera }) {
   }
  
   const onClick = event => {
+    navigator.vibrate(50)
     action()
   }
 
