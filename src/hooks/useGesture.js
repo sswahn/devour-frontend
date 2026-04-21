@@ -59,6 +59,7 @@ function useGesture({
       return
     }
     
+    const width = window.innerWidth
     const edgeLeft = clientX < edgeThreshold
     const edgeRight = clientX > width - edgeThreshold
     let swipeSide = undefined
