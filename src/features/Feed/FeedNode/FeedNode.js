@@ -72,7 +72,7 @@ function FeedNode({ item, index, count }) {
   // this tabIndex etc. breaks the natural flow of the page, header gets skipped...
   return (
     <article 
-      onClick={doubleClick} 
+     // onClick={doubleClick} 
       {...handlers}
       onPointerCancel={onPointerCancel}
       tabIndex={index} aria-posinset={index} aria-setsize={count}>
