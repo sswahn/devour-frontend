@@ -10,12 +10,12 @@ function ProfileButton({ openProfile }) {
   const { push } = useFocusStack()
   
   const action = async () => {
-    navigator.vibrate(50)
-    push(buttonRef.current)
     openProfile(session.username)
+    push(buttonRef.current)
   }
   
   const onClick = event => {
+        navigator.vibrate(50)
     action()
   }
 
