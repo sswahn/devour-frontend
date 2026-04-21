@@ -95,7 +95,10 @@ function useGesture({
   const onPointerMove = event => {
     const { clientX, clientY, currentTarget, pointerId } = event
     const { startX, startY, activeSide, id } = data.current
-    
+    if (pointerId !== id) {
+      return
+    }
+        
     const deltaX = clientX - startX
     const deltaY = clientY - startY
 
