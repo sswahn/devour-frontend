@@ -33,7 +33,10 @@ export function useGesture({
     moved.current = false
     longPressFired.current = false
 
-    startPos.current = { x: e.clientX, y: e.clientY }
+    startPos.current = { 
+      x: event.clientX, 
+      y: event.clientY 
+    }
 
     timerRef.current = setTimeout(() => {
       longPressFired.current = true
@@ -43,13 +46,15 @@ export function useGesture({
     }, longPressDelay)
   }
 
-  const onPointerMove = (e) => {
-    if (!startPos.current || moved.current) return
+  const onPointerMove = event => {
+    if (!startPos.current || moved.current) {
+      return
+    }
 
-    const dx = Math.abs(e.clientX - startPos.current.x)
-    const dy = Math.abs(e.clientY - startPos.current.y)
+    const deltaX = Math.abs(event.clientX - startPos.current.x)
+    const deltaY = Math.abs(event.clientY - startPos.current.y)
 
-    if (dx > moveThreshold || dy > moveThreshold) {
+    if (deltaX > moveThreshold || deltaY > moveThreshold) {
       moved.current = true
       cancelLongPress()
     }
