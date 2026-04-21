@@ -4,7 +4,8 @@ import SideNav from '../SideNav/SideNav'
 function FeedNode({ item, index, count }) {
   const [doubleTap, setDoubleTap] = useState(0)
   const [longPress, setLongPress] = useState(0)
-  const startLongPress = useRef(0)
+  const timerRef = useRef(null)
+  const startPos = useRef(null)
   const prevClick = useRef(0)
   
   const doubleClick = event => {
@@ -18,24 +19,41 @@ function FeedNode({ item, index, count }) {
     }
   }
 
+  const cancelLongPress = () => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current)
+      timerRef.current = null
+    }
+  }
+
   const onPointerDown = event => {
-    startLongPress.current = performance.now()
+    startPos.current = { 
+      x: event.clientX, 
+      y: event.clientY 
+    }
+    timerRef.current = setTimeout(() => {
+      navigation.vibrate(50)
+      setLongPress(performance.now())
+      cancelLongPress()
+    }, 500)
+  }
+
+  const onPointerMove = event => {
+    if (!startPos.current) {
+      return
+    }
+    const deltaX = Math.abs(event.clientX - startPos.current.x)
+    const deltaY = Math.abs(event.clientY - startPos.current.y)
+    if (deltaX > 10 || deltaY > 10) {
+      cancelLongPress() 
+    }
   }
   
   const onPointerUp = event => {
-    const now = performance.now()
-    const deltaT = now - startLongPress.current
-    if (deltaT > 500) {
-      setLongPress(now)
-    } 
-    startLongPress.current = 0
-  }
-  
-  const onPointerUp = () => {
     cancelLongPress()
   }
   
-  const onPointerCancel = () => {
+  const onPointerCancel = event => {
     cancelLongPress() 
   }
 
@@ -49,7 +67,9 @@ function FeedNode({ item, index, count }) {
     <article 
       onClick={doubleClick} 
       onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
+      onPointerCancel={onPointerCancel}
       tabIndex={index} aria-posinset={index} aria-setsize={count}>
       <header>
       {/*
