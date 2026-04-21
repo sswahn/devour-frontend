@@ -1,9 +1,8 @@
-import { useRef, useEffect } from 'react'
+import { useEffect } from 'react'
 import ShareIcon from '../../../components/Icons/ShareIcon/ShareIcon'
 import styles from './ShareButton.module.css'
 
 function ShareButton({ longPress }) {
-  const prevLongPress = useRef(null)
 
   const action = () => {
     // check navigator.canShare(file) to verify file sharing support 
@@ -37,10 +36,7 @@ function ShareButton({ longPress }) {
   }
 
   useEffect(() => {
-   // if (prevLongPress.current !== longPress) {
-      gesture()
-   //   prevLongPress.current = longPress
-   // }
+    gesture()
   }, [longPress])
   
   return (
