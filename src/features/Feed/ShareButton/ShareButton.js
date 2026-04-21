@@ -5,7 +5,7 @@ import styles from './ShareButton.module.css'
 function ShareButton({ longPress }) {
 
   const action = () => {
-    // check navigator.canShare(file) if shareable file
+    // check navigator.canShare(file) to verify file sharing support 
     navigator.share({
       title: 'Check this out!',
       text: 'I found this video.',
