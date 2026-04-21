@@ -24,8 +24,10 @@ export function useGesture({
     startPos.curret = null
   }
 
-  const onPointerDown = (e) => {
-    if (e.button !== 0) return
+  const onPointerDown = event => {
+    if (event.button !== 0) {
+      return
+    }
 
     moved.current = false
     longPressFired.current = false
