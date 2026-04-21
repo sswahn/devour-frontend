@@ -4,11 +4,11 @@ import ShareButton from '../ShareButton/ShareButton'
 import FullscreenButton from '../FullscreenButton/FullscreenButton'
 import styles from './SideNav.module.css'
 
-function SideNav() {
+function SideNav({ doubleTap }) {
   
   return (
     <div className={styles.sideNav}>
-      <LikeButton />
+      <LikeButton doubleTap={doubleTap} />
       <CommentsButton />
       <ShareButton />
       <FullscreenButton />
