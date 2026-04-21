@@ -1,28 +1,35 @@
-import { memo } from 'react'
+import { useState, useRef } from 'react'
 import SideNav from '../SideNav/SideNav'
 
 function FeedNode({ item, index, count }) {
+  const prevTime = useRef(0)
   
-  const data = {
-    videoUrl: item.videoUrl || '',
-    caption: item.caption || ''
+  const doubleClick = event => {
+    const now = performance.now()
+    const deltaT = now - prevTime.current
+    if (deltaT < 300) {
+      // perform doubleTap function (like)
+    }
+    prevTime.current = now
   }
 
-  // this tabIndex etc. breaks the natural flow of the page, header gets skipped...
+    // all gestures go here. eventually abstracted to hooks, using gestrue engine.
+
   
+  // this tabIndex etc. breaks the natural flow of the page, header gets skipped...
   return (
-    <article tabIndex={index} aria-posinset={index} aria-setsize={count}>
+    <article onClick={doubleClick} tabIndex={index} aria-posinset={index} aria-setsize={count}>
       <header>
-{/*
+      {/*
         <AuthorButton />
         <LocationButton />
 
         Change 'data' back to 'item'
-*/}
+      */}
       </header>
       <figure style={{ background: '#666', borderRadius: '10px', height: '100%', width: '100%' }}>
-        {data.videoUrl && <video ref={ref} src={data.videoUrl} preload="metadata" muted playsInline loop />}
-        {data.caption ?? <figcaption>{data.caption}</figcaption>}
+        {/* data.videoUrl && <video ref={ref} src={data.videoUrl} preload="metadata" muted playsInline loop /> */}
+        {/* data.caption ?? <figcaption>{data.caption}</figcaption> */}
       </figure>
       <footer>
         // static captions, meta text, etc.
