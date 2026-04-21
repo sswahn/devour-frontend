@@ -12,12 +12,16 @@ export function useGesture({
 
   const lastTapTime = useRef(0)
   const timerRef = useRef(null)
-  const gestureData = useRef(null)
+  const data = useRef(null)
 
   const moved = useRef(false)
   const longPressFired = useRef(false)
 
-  const reset = () => {
+  const reset = element => {
+    const { id } = data.current
+    if (id !== null && element.hasPointerCapture(id)) {
+      element.releasePointerCapture(id)
+    }
     data.current = null
     moved.current = false
     longPressFired.current = false
@@ -55,15 +59,16 @@ export function useGesture({
     if (button !== 0) {// if right click return
       return
     }
-    moved.current = false
-
+    
+    const edgeLeft = clientX < edgeThreshold
+    const edgeRight = clientX > width - edgeThreshold
     let swipeSide = null
-    const isLeft = clientX < edgeThreshold
-    const isRight = clientX > width - edgeThreshold
-    if (isLeft || isRight) {
-      swipeSide: isLeft ? 'left' : 'right',
+    
+    if (edgeLeft || edgeRight) {
+      swipeEdge: edgeLeft ? 'left' : 'right',
     }
     
+    moved.current = false
     data.current = { 
       startX: clientX, 
       startY: clientY,
@@ -85,12 +90,13 @@ export function useGesture({
     longPressOnMove(deltaX, deltaY)
   }
 
-  const onPointerUp = () => {
+  const onPointerUp = event => {
+    const { currentTarget } = event
     longPressCancel()
     
     // If moved → ignore taps
     if (moved.current || longPressFired.current) {
-      return reset()
+      return reset(currentTarget)
     }
 
     const now = performance.now()
@@ -103,12 +109,12 @@ export function useGesture({
       setTap(now)
       lastTapTime.current = now
     }
-    reset()
+    reset(currentTarget)
   }
 
-  const onPointerCancel = () => {
+  const onPointerCancel = event => {
     longPressCancel()
-    reset()
+    reset(event.currentTarget)
   }
 
 
