@@ -8,12 +8,12 @@ function NotificationsButton({ openNotifications }) {
   const { push } = useFocusStack()
   
   const action = () => {
-    navigator.vibrate(50)
     push(buttonRef.current)
     openNotifications()
   }
   
   const onClick = event => {
+    navigator.vibrate(50)
     action()
   }
 
