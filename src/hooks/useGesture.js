@@ -96,6 +96,7 @@ function useGesture({
   }
 
   const onPointerUp = event => {
+    longPressCancel()
     const { pointerId, currentTarget } = event
     const { id } = data.current
     if (pointerId !== id) {
