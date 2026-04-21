@@ -36,7 +36,7 @@ function FullscreenButton({ openFeed }) {
       ref={buttonRef} 
       type="button" 
       aria-label="enter fullscreen mode">
-      <FullscreenIcon />
+      <ExpandIcon />
     </button>
   )
 }
