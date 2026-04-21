@@ -22,13 +22,16 @@ function useGesture({
     if (id && currentTarget.hasPointerCapture(id)) {
       currentTarget.releasePointerCapture(id)
     }
-    if (timer.current) { // formally longPressCancel()
-      clearTimeout(timer.current)
-      timer.current = null
-    }
     data.current = null
     moved.current = false
     longPressFired.current = false
+  }
+
+  const longPressCancel = () => {
+    if (timer.current) { 
+      clearTimeout(timer.current)
+      timer.current = null
+    }
   }
   
   const longPressOnDown = currentTarget => {
@@ -36,7 +39,7 @@ function useGesture({
     timer.current = setTimeout(() => {
       longPressFired.current = true
       setLongPress(performance.now())
-      window.queueMicrotask(() => reset(currentTarget))
+      longPressCancel()
     }, longPressDelay)
   }
 
@@ -58,7 +61,6 @@ function useGesture({
     if (button !== 0) {// if right click return
       return
     }
-    
     const width = window.innerWidth
     const edgeLeft = clientX < edgeThreshold
     const edgeRight = clientX > width - edgeThreshold
@@ -67,10 +69,6 @@ function useGesture({
     if (edgeLeft || edgeRight) {
       swipeSide = edgeLeft ? 'left' : 'right'
     }
-
-    console.log('onPointerDown clientX: ', clientX)
-    console.log('onPointerDown clientY: ', clientY)
-    
     moved.current = false
     data.current = { 
       startX: clientX, 
@@ -79,9 +77,6 @@ function useGesture({
       direction: null,
       activeSide: swipeSide
     }
-    
-    console.log('onPointerDown data.current set: ', data.current)
-    
     currentTarget.setPointerCapture(pointerId)
     longPressOnDown(currentTarget)
   }
@@ -94,7 +89,6 @@ function useGesture({
     }
     const deltaX = clientX - startX
     const deltaY = clientY - startY
-
 
     if (Math.abs(deltaX) > moveThreshold || Math.abs(deltaY) > moveThreshold) {
       moved.current = true
