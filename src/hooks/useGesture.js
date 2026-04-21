@@ -25,6 +25,7 @@ export function useGesture({
   }
 
   const onPointerDown = event => {
+    // if right click return
     if (event.button !== 0) {
       return
     }
