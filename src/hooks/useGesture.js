@@ -79,6 +79,9 @@ function useGesture({
     if (edgeLeft || edgeRight) {
       swipeSide = edgeLeft ? 'left' : 'right'
     }
+
+    console.log('onPointerDown clientX: ', clientX)
+    console.log('onPointerDown clientY: ', clientY)
     
     moved.current = false
     data.current = { 
@@ -88,6 +91,9 @@ function useGesture({
       direction: null,
       activeSide: swipeSide
     }
+    
+    console.log('onPointerDown data.current set: ', data.current)
+    
     currentTarget.setPointerCapture(pointerId)
     longPressOnDown()
   }
@@ -98,7 +104,10 @@ function useGesture({
     if (!data.current || pointerId !== id) {
       return
     }
-        
+
+    console.log('onPointerMove clientX: ', clientX)
+    console.log('onPointerMove data.current: ', data.current)
+    
     const deltaX = clientX - startX
     const deltaY = clientY - startY
 
