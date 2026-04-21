@@ -6,7 +6,10 @@
   position: absolute;
   top: 0;
   width: 100%;
-  z-index: 100;
+  z-index: 500; /* 100 */
+
+  background: maroon;
+  border: 1px dashed red;
 }
 
 .overlayButton div:first-of-type {
