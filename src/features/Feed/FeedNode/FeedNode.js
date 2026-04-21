@@ -10,10 +10,8 @@ function FeedNode({ item, index, count }) {
     const deltaT = now - prevTime.current
     if (deltaT < 300) {
       setDoubleTap(prev => !prev)
-      prevTime.current = 0
-    } else {
-      prevTime.current = now
-    }
+    } 
+    prevTime.current = now
   }
 
     // all gestures go here. eventually abstracted to hooks, using gestrue engine.
