@@ -8,12 +8,12 @@ function SearchButton({ openSearch }) {
   const { push } = useFocusStack()
   
   const action = async () => {
-    navigator.vibrate(50)
     push(buttonRef.current)
     openSearch()
   }
   
   const onClick = event => {
+    navigator.vibrate(50)
     action()
   }
 
