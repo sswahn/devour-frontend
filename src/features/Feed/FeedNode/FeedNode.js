@@ -2,14 +2,15 @@ import { useState, useRef } from 'react'
 import SideNav from '../SideNav/SideNav'
 
 function FeedNode({ item, index, count }) {
+  const [doubleTap, setDoubleTap] = useState(false)
   const prevTime = useRef(0)
   
   const doubleClick = event => {
     const now = performance.now()
     const deltaT = now - prevTime.current
     if (deltaT < 300) {
-      // perform doubleTap function (like)
-      // reset prevTime.current = 0
+      setDoubleTap(prev => !prev)
+      prevTime.current = 0
     } else {
       prevTime.current = now
     }
@@ -36,7 +37,7 @@ function FeedNode({ item, index, count }) {
       <footer>
         // static captions, meta text, etc.
       </footer>
-      <SideNav />
+      <SideNav doubleTap={doubleTap} />
     </article>
   )
 }
