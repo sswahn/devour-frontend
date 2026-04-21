@@ -3,25 +3,44 @@ import SideNav from '../SideNav/SideNav'
 
 function FeedNode({ item, index, count }) {
   const [doubleTap, setDoubleTap] = useState(0)
-  const prevTime = useRef(0)
+  const [longPress, setLongPress] = useState(0)
+  const startLongPress = useRef(0)
+  const prevClick = useRef(0)
   
   const doubleClick = event => {
     const now = performance.now()
-    const deltaT = now - prevTime.current
+    const deltaT = now - prevClick.current
     if (deltaT > 0 && deltaT < 300) {
       setDoubleTap(now)
-      prevTime.current = 0
+      prevClick.current = 0
     } else {
-      prevTime.current = now
+      prevClick.current = now
     }
   }
 
-    // all gestures go here. eventually abstracted to hooks, using gestrue engine.
+  const onPointerDown = event => {
+    startLongPress.current = performance.now()
+  }
+  
+  const onPointerUp = event => {
+    const now = performance.now()
+    const deltaT = now - startLongPress.current
+    if (deltaT > 500) {
+      setLongPress(now)
+    } 
+    startLongPress.current = 0
+  }
+
+  // all gestures go here. eventually abstracted to hooks, using gestrue engine.
 
   
   // this tabIndex etc. breaks the natural flow of the page, header gets skipped...
   return (
-    <article onClick={doubleClick} tabIndex={index} aria-posinset={index} aria-setsize={count}>
+    <article 
+      onClick={doubleClick} 
+      onPointerDown={onPointerDown}
+      onPointerUp={onPointerUp}
+      tabIndex={index} aria-posinset={index} aria-setsize={count}>
       <header>
       {/*
         <AuthorButton />
@@ -37,7 +56,7 @@ function FeedNode({ item, index, count }) {
       <footer>
         // static captions, meta text, etc.
       </footer>
-      <SideNav doubleTap={doubleTap} />
+      <SideNav doubleTap={doubleTap} longPress={longPress} />
     </article>
   )
 }
