@@ -30,7 +30,17 @@ function FeedNode({ item, index, count }) {
     } 
     startLongPress.current = 0
   }
+  
+  const onPointerUp = () => {
+    cancelLongPress()
+  }
+  
+  const onPointerCancel = () => {
+    cancelLongPress() 
+  }
 
+
+  
   // all gestures go here. eventually abstracted to hooks, using gestrue engine.
 
   
