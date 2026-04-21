@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import OverlayButtons from '../OverlayButtons/OverlayButtons'
 
-function FeedNode({ onClick, item, index, count }) {
+function FeedNode({ item, index, count }) {
   
   const data = {
     videoUrl: item.videoUrl || '',
@@ -11,7 +11,7 @@ function FeedNode({ onClick, item, index, count }) {
   // this tabIndex etc. breaks the natural flow of the page, header gets skipped...
   
   return (
-    <article onClick={onClick} tabIndex={index} aria-posinset={index} aria-setsize={count}>
+    <article tabIndex={index} aria-posinset={index} aria-setsize={count}>
       <header>
 {/*
         <AuthorButton />
