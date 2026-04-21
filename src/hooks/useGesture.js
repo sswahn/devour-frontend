@@ -53,6 +53,19 @@ export function useGesture({
       longPressCancel()
     }
   }
+
+  const doubleTapOnUp = () => {
+    const now = performance.now()
+    const deltaT = now - lastTapTime.current
+
+    if (deltaT > 0 && deltaT < doubleTapDelay) {
+      setDoubleTap(now)
+      lastTapTime.current = 0
+    } else {
+      setTap(now)
+      lastTapTime.current = now
+    }
+  }
   
   const onPointerDown = event => {
     const { button, clientX, clientY, currentTarget, pointerId } = event
@@ -99,16 +112,7 @@ export function useGesture({
       return reset(currentTarget)
     }
 
-    const now = performance.now()
-    const deltaT = now - lastTapTime.current
-
-    if (deltaT > 0 && deltaT < doubleTapDelay) {
-      setDoubleTap(now)
-      lastTapTime.current = 0
-    } else {
-      setTap(now)
-      lastTapTime.current = now
-    }
+    doubleTapOnUp()
     reset(currentTarget)
   }
 
