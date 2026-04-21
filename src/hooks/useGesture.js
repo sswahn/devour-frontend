@@ -44,7 +44,7 @@ export function useGesture({
     }, longPressDelay)
   }
 
-  const longPressOnMove = () => {
+  const longPressOnMove = (deltaX, deltaY) => {
     if (!data.current || moved.current) {
       return
     }
