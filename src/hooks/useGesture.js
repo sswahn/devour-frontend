@@ -16,51 +16,54 @@ export function useGesture({
   const moved = useRef(false)
   const longPressFired = useRef(false)
 
-  const cancelLongPress = () => {
+  const longPressCancel = () => {
     if (timerRef.current) {
       clearTimeout(timerRef.current)
       timerRef.current = null
     }
   }
+  const longPressOnDown = () => {
+    longPressFired.current = false
+    
+    timerRef.current = setTimeout(() => {
+      longPressFired.current = true
+      setLongPress(performance.now())
+      longPressCancel()
+    }, longPressDelay)
+  }
 
-  const onPointerDown = event => {
-    // if right click return
-    if (event.button !== 0) {
+  const longPressOnMove = () => {
+    if (!startPos.current || moved.current) {
       return
     }
+    if (deltaX > moveThreshold || deltaY > moveThreshold) {
+      moved.current = true
+      longPressCancel()
+    }
+  }
 
+  const onPointerDown = event => {
+    if (event.button !== 0) {// if right click return
+      return
+    }
     moved.current = false
-    longPressFired.current = false
-    isSwiping.current = false
-
     startPos.current = { 
       x: event.clientX, 
       y: event.clientY 
     }
 
-    timerRef.current = setTimeout(() => {
-      longPressFired.current = true
-      setLongPress(performance.now())
-      cancelLongPress()
-    }, longPressDelay)
+    longPressOnDown()
   }
 
   const onPointerMove = event => {
-    if (!startPos.current || moved.current) {
-      return
-    }
-
     const deltaX = Math.abs(event.clientX - startPos.current.x)
     const deltaY = Math.abs(event.clientY - startPos.current.y)
 
-    if (deltaX > moveThreshold || deltaY > moveThreshold) {
-      moved.current = true
-      cancelLongPress()
-    }
+    longPressOnMove(deltaX, deltaY)
   }
 
   const onPointerUp = () => {
-    cancelLongPress()
+    longPressCancel()
 
     // If long press already fired → ignore taps
     if (longPressFired.current) {
@@ -87,7 +90,7 @@ export function useGesture({
   }
 
   const onPointerCancel = () => {
-    cancelLongPress()
+    longPressCancel()
     reset()
   }
 
