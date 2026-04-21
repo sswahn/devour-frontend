@@ -98,7 +98,7 @@ function useGesture({
   const onPointerUp = event => {
     const { currentTarget } = event
     
-    // If moved, ignore taps
+    // If moved, ignore taps. If longPress fired, gesture complete.
     if (moved.current || longPressFired.current) {
       return reset(currentTarget)
     }
