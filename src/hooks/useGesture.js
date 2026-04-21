@@ -75,10 +75,10 @@ export function useGesture({
     
     const edgeLeft = clientX < edgeThreshold
     const edgeRight = clientX > width - edgeThreshold
-    let swipeSide = null
+    let swipeSide = undefined
     
     if (edgeLeft || edgeRight) {
-      swipeSide = edgeLeft ? 'left' : 'right',
+      swipeSide = edgeLeft ? 'left' : 'right'
     }
     
     moved.current = false
