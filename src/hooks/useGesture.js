@@ -31,6 +31,7 @@ export function useGesture({
 
     moved.current = false
     longPressFired.current = false
+    isSwiping.current = false
 
     startPos.current = { 
       x: event.clientX, 
