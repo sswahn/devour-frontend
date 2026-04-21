@@ -36,7 +36,7 @@ function useGesture({
     timer.current = setTimeout(() => {
       longPressFired.current = true
       setLongPress(performance.now())
-      reset(currentTarget)
+      window.queueMicrotask(() => reset(currentTarget))
     }, longPressDelay)
   }
 
