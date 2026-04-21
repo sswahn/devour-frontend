@@ -11,7 +11,7 @@ export function useGesture({
   const [longPress, setLongPress] = useState(0)
 
   const lastTapTime = useRef(0)
-  const timerRef = useRef(null)
+  const timer = useRef(null)
   const data = useRef(null)
 
   const moved = useRef(false)
@@ -28,16 +28,15 @@ export function useGesture({
   }
 
   const longPressCancel = () => {
-    if (timerRef.current) {
-      clearTimeout(timerRef.current)
-      timerRef.current = null
+    if (timer.current) {
+      clearTimeout(timer.current)
+      timer.current = null
     }
   }
   
   const longPressOnDown = () => {
     longPressFired.current = false
-    
-    timerRef.current = setTimeout(() => {
+    timer.current = setTimeout(() => {
       longPressFired.current = true
       setLongPress(performance.now())
       longPressCancel()
