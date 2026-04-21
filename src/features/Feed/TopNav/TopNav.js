@@ -1,3 +1,5 @@
+import CloseButton from '../../../components/CloseButton/CloseButton'
+import Dropdown from '../../../components/Dropdown/Dropdown'
 
 function TopNav() {
   return (
