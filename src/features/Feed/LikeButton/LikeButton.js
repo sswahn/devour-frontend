@@ -5,24 +5,27 @@ import HeartIconFill from '../../../components/Icons/HeartIcon/HeartIconFill'
 import HeartIconStroke from '../../../components/Icons/HeartIcon/HeartIconStroke' 
 import styles from './LikeButton.module.css'
 
-function LikeButton({ doubleTap, likedByUser }) {
+function LikeButton({ doubleTap, likedByUser = false }) {
   const [liked, setLiked] = useState(false)
   const [loading, setLoading] = useState(false)
 
+  const init = () => {
+    setLiked(likedByUser)
+  }
+  
   const action = async () => {
-    navigator.vibrate(50)
-    setLiked(prevState => !prevState)
-    return
-    
-    setLoading(true)
-    const request = {}
-    const response = await server.post(config.post.like)
-    
-    setLiked(prevState => !prevState)
-    setLoading(false)
+    setLiked(prev => !prev)
+    // dounce request to update stored like state
+  }
+
+  const gesture = () => {
+    if (doubleTap) {
+      action()
+    }
   }
 
   const onClick = event => {
+    navigator.vibrate(50)
     action()
   }
 
@@ -34,11 +37,11 @@ function LikeButton({ doubleTap, likedByUser }) {
   }
 
   useEffect(() => {
-    setLiked(prev => !prev)
+    gesture()
   }, [doubleTap])
 
   useEffect(() => {
-    setLiked(likedByUser) 
+    init() 
   }, [likedByUser])
   
   return (
