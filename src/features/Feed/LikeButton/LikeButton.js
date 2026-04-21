@@ -16,11 +16,12 @@ function LikeButton({ doubleTap, likedByUser = false }) {
   const action = async () => {
     setLiked(prev => !prev)
     // dounce request to update stored like state
+    
   }
 
   const gesture = () => {
-    console.log('firing like gesture for no reason.')
     if (!liked) {
+      navigator.vibrate?.(50)
       action()
     }
   }
