@@ -21,7 +21,6 @@ export function useGesture({
       clearTimeout(timerRef.current)
       timerRef.current = null
     }
-    startPos.curret = null
   }
 
   const onPointerDown = event => {
@@ -65,14 +64,12 @@ export function useGesture({
 
     // If long press already fired → ignore taps
     if (longPressFired.current) {
-      reset()
-      return
+      return reset()
     }
 
     // If moved → ignore taps
     if (moved.current) {
-      reset()
-      return
+      return reset()
     }
 
     const now = performance.now()
