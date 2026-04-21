@@ -24,6 +24,7 @@ function FeedNode({ item, index, count }) {
       clearTimeout(timerRef.current)
       timerRef.current = null
     }
+    startPos.current = null
   }
 
   const onPointerDown = event => {
