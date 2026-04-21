@@ -20,11 +20,11 @@ function ListItemButton({ buttonRef, listRef, text, method, close }) {
   }
 
   const action = () => {
-    navigator.vibrate(50)
     method()
   }
 
   const onClick = event => {
+    navigator.vibrate(50)
     action()
   }
 
