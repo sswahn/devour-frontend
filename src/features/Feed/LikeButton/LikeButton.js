@@ -19,7 +19,8 @@ function LikeButton({ doubleTap, likedByUser = false }) {
   }
 
   const gesture = () => {
-    if (doubleTap && !liked) {
+    console.log('firing like gesture for no reason.')
+    if (!liked) {
       action()
     }
   }
