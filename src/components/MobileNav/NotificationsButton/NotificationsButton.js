@@ -13,7 +13,7 @@ function NotificationsButton({ openNotifications }) {
   }
   
   const onClick = event => {
-    navigator.vibrate(50)
+    navigator.vibrate?.(50)
     action()
   }
 
