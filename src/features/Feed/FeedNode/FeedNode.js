@@ -2,17 +2,16 @@ import { useState, useRef } from 'react'
 import SideNav from '../SideNav/SideNav'
 
 function FeedNode({ item, index, count }) {
-  const [doubleTap, setDoubleTap] = useState(false)
+  const [doubleTap, setDoubleTap] = useState(0)
   const prevTime = useRef(0)
   
   const doubleClick = event => {
     const now = performance.now()
     const deltaT = now - prevTime.current
     if (!likedByUser && deltaT > 0 && deltaT < 300) {
-      setDoubleTap(true) // double tap true, set like button liked
+      setDoubleTap(now) // double tap true, set like button liked
       prevTime.current = 0
     } else {
-      setDoubleTap(false)
       prevTime.current = now
     }
   }
