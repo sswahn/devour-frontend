@@ -21,6 +21,7 @@ export function useGesture({
       clearTimeout(timerRef.current)
       timerRef.current = null
     }
+    startPos.curret = null
   }
 
   const onPointerDown = (e) => {
