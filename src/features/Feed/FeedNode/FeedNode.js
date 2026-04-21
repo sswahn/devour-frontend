@@ -3,7 +3,7 @@ import useGesture from '../../../hooks/useGesture'
 import SideNav from '../SideNav/SideNav'
 
 function FeedNode({ item, index, count }) {
-  const {doubleTap, longPress} = useGesture()
+  const {doubleTap, longPress, handlers} = useGesture()
   /*
   const [doubleTap, setDoubleTap] = useState(0)
   const [longPress, setLongPress] = useState(0)
