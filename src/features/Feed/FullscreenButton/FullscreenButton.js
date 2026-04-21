@@ -8,7 +8,6 @@ function FullscreenButton({ openFeed }) {
   const buttonRef = useRef(null)
   
   const action = async () => {
-    navigator.vibrate(50)
     await document.getElementById('portal').requestFullscreen()
     await screen.orientation.lock('portrait')
     push(buttonRef.current)
@@ -18,6 +17,7 @@ function FullscreenButton({ openFeed }) {
   }
   
   const onClick = event => {
+    navigator.vibrate(50)
     action()
   }
   
