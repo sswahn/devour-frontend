@@ -1,21 +1,28 @@
+import { useEffect } from 'react'
 import ShareIcon from '../../../components/Icons/ShareIcon/ShareIcon'
 import styles from './ShareButton.module.css'
 
-function ShareButton({ data }) {
+function ShareButton({ longPress }) {
 
   const action = () => {
     navigator.share({
-      title: data.title || 'Check this out!',
-      text: data.text || 'I found this video.',
-      url: data.url || 'https://sswahn.github.io/devour-frontend',
-      files: data.files || [
-        new File([blob], 'snapshot.png', { type: 'image/png' })
+      title: 'Check this out!',
+      text: 'I found this video.',
+      url: 'https://sswahn.github.io/devour-frontend',
+      files: [
+        //new File([blob], 'snapshot.png', { type: 'image/png' })
       ]
     })
   }
+
+  const gesture = () => {
+    if (longPress) {
+      action()
+    }
+  }
   
   const onClick = event => {
-    navigator.vibrate(50)
+    navigator.vibrate?.(50)
     action()
   }
   
@@ -25,6 +32,10 @@ function ShareButton({ data }) {
       action()
     }
   }
+
+  useEffect(() => {
+    gesture()
+  }, [])
   
   return (
     <button className={styles.shareButton} onClick={onClick} onKeyDown={onKeyDown} type="button" aria-label="share this video">
