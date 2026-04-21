@@ -4,7 +4,6 @@ import styles from './ShareButton.module.css'
 function ShareButton({ data }) {
 
   const action = () => {
-    navigator.vibrate(50)
     navigator.share({
       title: data.title || 'Check this out!',
       text: data.text || 'I found this video.',
@@ -16,6 +15,7 @@ function ShareButton({ data }) {
   }
   
   const onClick = event => {
+    navigator.vibrate(50)
     action()
   }
   
