@@ -92,7 +92,6 @@ function useGesture({
 
     if (Math.abs(deltaX) > moveThreshold || Math.abs(deltaY) > moveThreshold) {
       moved.current = true
-      reset(currentTarget)
     }
   }
 
