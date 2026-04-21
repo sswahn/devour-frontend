@@ -6,6 +6,7 @@ function FeedNode({ item, index, count }) {
   const [longPress, setLongPress] = useState(0)
   const timerRef = useRef(null)
   const startPos = useRef(null)
+  const hasFired = useRef(false)
   const prevClick = useRef(0)
   
   const doubleClick = event => {
@@ -28,19 +29,21 @@ function FeedNode({ item, index, count }) {
   }
 
   const onPointerDown = event => {
+    hasFired.current = false
     startPos.current = { 
       x: event.clientX, 
       y: event.clientY 
     }
     timerRef.current = setTimeout(() => {
-      navigation.vibrate(50)
+      navigation.vibrate?.(50)
+      hasFired.current = true
       setLongPress(performance.now())
       cancelLongPress()
     }, 500)
   }
 
   const onPointerMove = event => {
-    if (!startPos.current) {
+    if (!startPos.current || hasFired.current) {
       return
     }
     const deltaX = Math.abs(event.clientX - startPos.current.x)
