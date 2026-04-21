@@ -19,7 +19,7 @@ function useGesture({
 
   const reset = element => {
     const { id } = data.current
-    if (id !== null && element.hasPointerCapture(id)) {
+    if (id && element.hasPointerCapture(id)) {
       element.releasePointerCapture(id)
     }
     data.current = null
