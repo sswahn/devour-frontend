@@ -6,12 +6,12 @@ function CloseButton({ overlay, close }) {
   const { pop } = useFocusStack()
   
   const action = () => {
-    navigator.vibrate(50)
     close()
     pop()
   }
   
   const onClick = event => {
+    navigator.vibrate(50)
     action()
   }
 
