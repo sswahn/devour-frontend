@@ -39,7 +39,6 @@ export function useGesture({
 
     timerRef.current = setTimeout(() => {
       longPressFired.current = true
-      navigator.vibrate?.(50)
       setLongPress(performance.now())
       cancelLongPress()
     }, longPressDelay)
