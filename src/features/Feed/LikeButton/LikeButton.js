@@ -19,7 +19,7 @@ function LikeButton({ doubleTap, likedByUser = false }) {
   }
 
   const gesture = () => {
-    if (!liked) {
+    if (doubleTap && !liked) {
       action()
     }
   }
