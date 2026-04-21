@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 
-export function useGesture({
+function useGesture({
   doubleTapDelay = 300,
   longPressDelay = 500,
   moveThreshold = 10,
