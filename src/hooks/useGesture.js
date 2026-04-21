@@ -17,40 +17,27 @@ function useGesture({
   const moved = useRef(false)
   const longPressFired = useRef(false)
 
-  const reset = element => {
+  const reset = currentTarget => {
     const { id } = data.current
-    if (id && element.hasPointerCapture(id)) {
-      element.releasePointerCapture(id)
+    if (id && currentTarget.hasPointerCapture(id)) {
+      currentTarget.releasePointerCapture(id)
+    }
+    if (timer.current) { // formally longPressCancel()
+      clearTimeout(timer.current)
+      timer.current = null
     }
     data.current = null
     moved.current = false
     longPressFired.current = false
   }
-
-  const longPressCancel = () => {
-    if (timer.current) {
-      clearTimeout(timer.current)
-      timer.current = null
-    }
-  }
   
-  const longPressOnDown = () => {
+  const longPressOnDown = currentTarget => {
     longPressFired.current = false
     timer.current = setTimeout(() => {
       longPressFired.current = true
       setLongPress(performance.now())
-      longPressCancel()
+      reset(currentTarget)
     }, longPressDelay)
-  }
-
-  const longPressOnMove = (deltaX, deltaY) => {
-    if (moved.current) {
-      return
-    }
-    if (Math.abs(deltaX) > moveThreshold || Math.abs(deltaY) > moveThreshold) {
-      moved.current = true
-      longPressCancel()
-    }
   }
 
   const doubleTapOnUp = () => {
@@ -95,7 +82,7 @@ function useGesture({
     console.log('onPointerDown data.current set: ', data.current)
     
     currentTarget.setPointerCapture(pointerId)
-    longPressOnDown()
+    longPressOnDown(currentTarget)
   }
 
   const onPointerMove = event => {
@@ -104,21 +91,20 @@ function useGesture({
     if (pointerId !== id) {
       return
     }
-
-    console.log('onPointerMove clientX: ', clientX)
-    console.log('onPointerMove data.current: ', data.current)
-    
     const deltaX = clientX - startX
     const deltaY = clientY - startY
 
-    longPressOnMove(deltaX, deltaY)
+
+    if (Math.abs(deltaX) > moveThreshold || Math.abs(deltaY) > moveThreshold) {
+      moved.current = true
+      reset(currentTarget)
+    }
   }
 
   const onPointerUp = event => {
     const { currentTarget } = event
-    longPressCancel()
     
-    // If moved → ignore taps
+    // If moved, ignore taps
     if (moved.current || longPressFired.current) {
       return reset(currentTarget)
     }
@@ -128,7 +114,6 @@ function useGesture({
   }
 
   const onPointerCancel = event => {
-    longPressCancel()
     reset(event.currentTarget)
   }
 
