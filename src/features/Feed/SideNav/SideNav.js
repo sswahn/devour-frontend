@@ -7,7 +7,7 @@ import styles from './SideNav.module.css'
 function SideNav() {
   
   return (
-    <div>
+    <div className={styles.sideNav}>
       <LikeButton />
       <CommentsButton />
       <ShareButton />
