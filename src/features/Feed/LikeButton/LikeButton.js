@@ -26,7 +26,7 @@ function LikeButton({ doubleTap, likedByUser = false }) {
   }
 
   const onClick = event => {
-    navigator.vibrate(50)
+    navigator.vibrate?.(50)
     action()
   }
 
