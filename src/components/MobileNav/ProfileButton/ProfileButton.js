@@ -10,8 +10,8 @@ function ProfileButton({ openProfile }) {
   const { push } = useFocusStack()
   
   const action = async () => {
-    openProfile(session.username)
     push(buttonRef.current)
+    openProfile(session.username)
   }
   
   const onClick = event => {
