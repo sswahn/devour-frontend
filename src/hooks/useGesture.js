@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useState, useRef } from 'react'
 
 function useGesture({
   doubleTapDelay = 300,
