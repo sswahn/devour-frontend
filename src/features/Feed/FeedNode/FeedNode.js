@@ -8,11 +8,10 @@ function FeedNode({ item, index, count }) {
   const doubleClick = event => {
     const now = performance.now()
     const deltaT = now - prevTime.current
-    if (deltaT > 0 && deltaT < 300) {
-      setDoubleTap(true)
-    } else {
-      prevTime.current = now
-    }
+    if (!likedByUser && deltaT > 0 && deltaT < 300) {
+      setDoubleTap(true) // double tap true, set like button liked
+    } 
+    prevTime.current = now
   }
 
     // all gestures go here. eventually abstracted to hooks, using gestrue engine.
