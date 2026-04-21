@@ -8,8 +8,8 @@ function FeedNode({ item, index, count }) {
   const doubleClick = event => {
     const now = performance.now()
     const deltaT = now - prevTime.current
-    if (deltaT < 300) {
-      setToggleLike(prev => !prev)
+    if (deltaT > 0 && deltaT < 300) {
+      // double tap detected
     } 
     prevTime.current = now
   }
