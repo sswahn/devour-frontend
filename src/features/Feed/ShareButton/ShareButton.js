@@ -16,7 +16,9 @@ function ShareButton({ longPress }) {
   }
 
   const gesture = () => {
-    action()
+    if (longPress) {
+      action()
+    }
   }
   
   const onClick = event => {
@@ -33,7 +35,7 @@ function ShareButton({ longPress }) {
 
   useEffect(() => {
     gesture()
-  }, [])
+  }, [longPress])
   
   return (
     <button className={styles.shareButton} onClick={onClick} onKeyDown={onKeyDown} type="button" aria-label="share this video">
