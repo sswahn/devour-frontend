@@ -44,7 +44,7 @@ function useGesture({
   }
 
   const longPressOnMove = (deltaX, deltaY) => {
-    if (!data.current || moved.current) {
+    if (moved.current) {
       return
     }
     if (Math.abs(deltaX) > moveThreshold || Math.abs(deltaY) > moveThreshold) {
@@ -95,7 +95,7 @@ function useGesture({
   const onPointerMove = event => {
     const { clientX, clientY, currentTarget, pointerId } = event
     const { startX, startY, activeSide, id } = data.current
-    if (pointerId !== id) {
+    if (!data.current || pointerId !== id) {
       return
     }
         
