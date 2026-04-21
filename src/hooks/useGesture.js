@@ -17,6 +17,12 @@ export function useGesture({
   const moved = useRef(false)
   const longPressFired = useRef(false)
 
+  const reset = () => {
+    data.current = null
+    moved.current = false
+    longPressFired.current = false
+  }
+
   const longPressCancel = () => {
     if (timerRef.current) {
       clearTimeout(timerRef.current)
@@ -35,7 +41,7 @@ export function useGesture({
   }
 
   const longPressOnMove = () => {
-    if (!gestureData.current || moved.current) {
+    if (!data.current || moved.current) {
       return
     }
     if (Math.abs(deltaX) > moveThreshold || Math.abs(deltaY) > moveThreshold) {
@@ -43,7 +49,7 @@ export function useGesture({
       longPressCancel()
     }
   }
-
+  
   const onPointerDown = event => {
     const { button, clientX, clientY, currentTarget, pointerId } = event
     if (button !== 0) {// if right click return
@@ -58,7 +64,7 @@ export function useGesture({
       swipeSide: isLeft ? 'left' : 'right',
     }
     
-    gestureData.current = { 
+    data.current = { 
       startX: clientX, 
       startY: clientY,
       id: pointerId,
@@ -71,7 +77,7 @@ export function useGesture({
 
   const onPointerMove = event => {
     const { clientX, clientY, currentTarget, pointerId } = event
-    const { startX, startY, activeSide, id } = gestureData.current
+    const { startX, startY, activeSide, id } = data.current
     
     const deltaX = clientX - startX
     const deltaY = clientY - startY
@@ -81,28 +87,22 @@ export function useGesture({
 
   const onPointerUp = () => {
     longPressCancel()
-
-    // If long press already fired → ignore taps
-    if (longPressFired.current) {
-      return reset()
-    }
-
+    
     // If moved → ignore taps
-    if (moved.current) {
+    if (moved.current || longPressFired.current) {
       return reset()
     }
 
     const now = performance.now()
-    const delta = now - lastTapTime.current
+    const deltaT = now - lastTapTime.current
 
-    if (delta > 0 && delta < doubleTapDelay) {
+    if (deltaT > 0 && deltaT < doubleTapDelay) {
       setDoubleTap(now)
       lastTapTime.current = 0
     } else {
       setTap(now)
       lastTapTime.current = now
     }
-
     reset()
   }
 
@@ -111,11 +111,7 @@ export function useGesture({
     reset()
   }
 
-  const reset = () => {
-    gestureData.current = null
-    moved.current = false
-    longPressFired.current = false
-  }
+
 
   return {
     tap,
