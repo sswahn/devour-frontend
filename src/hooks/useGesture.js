@@ -78,7 +78,7 @@ export function useGesture({
     let swipeSide = null
     
     if (edgeLeft || edgeRight) {
-      swipeEdge = edgeLeft ? 'left' : 'right',
+      swipeSide = edgeLeft ? 'left' : 'right',
     }
     
     moved.current = false
