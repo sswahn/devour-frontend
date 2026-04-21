@@ -74,7 +74,7 @@ function FeedNode({ item, index, count }) {
     <article 
      // onClick={doubleClick} 
       {...handlers}
-      onPointerCancel={onPointerCancel}
+      // onPointerCancel={onPointerCancel}
       tabIndex={index} aria-posinset={index} aria-setsize={count}>
       <header>
       {/*
