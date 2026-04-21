@@ -67,7 +67,7 @@ function useGesture({
   }
   
   const onPointerDown = event => {
-    const { button, clientX, clientY, currentTarget, pointerId } = event
+    const { clientX, clientY, currentTarget, pointerId, button } = event
     if (button !== 0) {// if right click return
       return
     }
