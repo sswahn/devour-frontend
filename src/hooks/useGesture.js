@@ -3,7 +3,8 @@ import { useRef, useState } from 'react'
 export function useGesture({
   doubleTapDelay = 300,
   longPressDelay = 500,
-  moveThreshold = 10
+  moveThreshold = 10,
+  edgeThreshold = 35
 } = {}) {
   const [tap, setTap] = useState(0)
   const [doubleTap, setDoubleTap] = useState(0)
@@ -11,7 +12,7 @@ export function useGesture({
 
   const lastTapTime = useRef(0)
   const timerRef = useRef(null)
-  const startPos = useRef(null)
+  const gestureData = useRef(null)
 
   const moved = useRef(false)
   const longPressFired = useRef(false)
@@ -22,6 +23,7 @@ export function useGesture({
       timerRef.current = null
     }
   }
+  
   const longPressOnDown = () => {
     longPressFired.current = false
     
@@ -33,31 +35,46 @@ export function useGesture({
   }
 
   const longPressOnMove = () => {
-    if (!startPos.current || moved.current) {
+    if (!gestureData.current || moved.current) {
       return
     }
-    if (deltaX > moveThreshold || deltaY > moveThreshold) {
+    if (Math.abs(deltaX) > moveThreshold || Math.abs(deltaY) > moveThreshold) {
       moved.current = true
       longPressCancel()
     }
   }
 
   const onPointerDown = event => {
-    if (event.button !== 0) {// if right click return
+    const { button, clientX, clientY, currentTarget, pointerId } = event
+    if (button !== 0) {// if right click return
       return
     }
     moved.current = false
-    startPos.current = { 
-      x: event.clientX, 
-      y: event.clientY 
-    }
 
+    let swipeSide = null
+    const isLeft = clientX < edgeThreshold
+    const isRight = clientX > width - edgeThreshold
+    if (isLeft || isRight) {
+      swipeSide: isLeft ? 'left' : 'right',
+    }
+    
+    gestureData.current = { 
+      startX: clientX, 
+      startY: clientY,
+      id: pointerId,
+      direction: null,
+      activeSide: swipeSide
+    }
+    currentTarget.setPointerCapture(pointerId)
     longPressOnDown()
   }
 
   const onPointerMove = event => {
-    const deltaX = Math.abs(event.clientX - startPos.current.x)
-    const deltaY = Math.abs(event.clientY - startPos.current.y)
+    const { clientX, clientY, currentTarget, pointerId } = event
+    const { startX, startY, activeSide, id } = gestureData.current
+    
+    const deltaX = clientX - startX
+    const deltaY = clientY - startY
 
     longPressOnMove(deltaX, deltaY)
   }
@@ -95,7 +112,7 @@ export function useGesture({
   }
 
   const reset = () => {
-    startPos.current = null
+    gestureData.current = null
     moved.current = false
     longPressFired.current = false
   }
