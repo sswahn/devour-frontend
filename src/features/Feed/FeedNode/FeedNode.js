@@ -8,8 +8,8 @@ function FeedNode({ item, index, count }) {
   const doubleClick = event => {
     const now = performance.now()
     const deltaT = now - prevTime.current
-    if (!likedByUser && deltaT > 0 && deltaT < 300) {
-      setDoubleTap(now) // double tap true, set like button liked
+    if (deltaT > 0 && deltaT < 300) {
+      setDoubleTap(now)
       prevTime.current = 0
     } else {
       prevTime.current = now
