@@ -17,7 +17,7 @@ function CameraButton({ openCamera }) {
   }
  
   const onClick = event => {
-    navigator.vibrate(50)
+    navigator.vibrate?.(50)
     action()
   }
 
