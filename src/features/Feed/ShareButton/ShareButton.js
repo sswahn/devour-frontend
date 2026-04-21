@@ -17,7 +17,9 @@ function ShareButton({ longPress }) {
   }
 
   const gesture = () => {
-    action()
+    if (longPress) {
+      action()
+    }
   }
   
   const onClick = event => {
