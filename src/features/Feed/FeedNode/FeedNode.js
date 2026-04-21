@@ -1,7 +1,10 @@
 import { useState, useRef } from 'react'
+import useGesture from '../../../hooks/useGesture'
 import SideNav from '../SideNav/SideNav'
 
 function FeedNode({ item, index, count }) {
+  const {doubleTap, longPress} = useGesture()
+  /*
   const [doubleTap, setDoubleTap] = useState(0)
   const [longPress, setLongPress] = useState(0)
   const timerRef = useRef(null)
@@ -61,7 +64,7 @@ function FeedNode({ item, index, count }) {
     cancelLongPress() 
   }
 
-
+*/
   
   // all gestures go here. eventually abstracted to hooks, using gestrue engine.
 
@@ -70,9 +73,7 @@ function FeedNode({ item, index, count }) {
   return (
     <article 
       onClick={doubleClick} 
-      onPointerDown={onPointerDown}
-      onPointerMove={onPointerMove}
-      onPointerUp={onPointerUp}
+      {...handlers}
       onPointerCancel={onPointerCancel}
       tabIndex={index} aria-posinset={index} aria-setsize={count}>
       <header>
