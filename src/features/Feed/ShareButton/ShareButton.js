@@ -18,6 +18,7 @@ function ShareButton({ longPress }) {
 
   const gesture = () => {
     if (longPress) {
+      navigator.vibrate?.(50)
       action()
     }
   }
