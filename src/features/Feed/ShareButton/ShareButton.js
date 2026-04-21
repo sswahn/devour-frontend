@@ -37,10 +37,10 @@ function ShareButton({ longPress }) {
   }
 
   useEffect(() => {
-    if (prevLongPress.current !== longPress) {
+   // if (prevLongPress.current !== longPress) {
       gesture()
-      prevLongPress.current = longPress
-    }
+   //   prevLongPress.current = longPress
+   // }
   }, [longPress])
   
   return (
