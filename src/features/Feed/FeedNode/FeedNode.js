@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import OverlayButtons from '../OverlayButtons/OverlayButtons'
+import SideNav from '../SideNav/SideNav'
 
 function FeedNode({ item, index, count }) {
   
@@ -20,14 +20,14 @@ function FeedNode({ item, index, count }) {
         Change 'data' back to 'item'
 */}
       </header>
-        <figure style={{ background: '#666', borderRadius: '10px', height: '100%', width: '100%' }}>
-          {data.videoUrl && <video ref={ref} src={data.videoUrl} preload="metadata" muted playsInline loop />}
-          {data.caption ?? <figcaption>{data.caption}</figcaption>}
-        </figure>
+      <figure style={{ background: '#666', borderRadius: '10px', height: '100%', width: '100%' }}>
+        {data.videoUrl && <video ref={ref} src={data.videoUrl} preload="metadata" muted playsInline loop />}
+        {data.caption ?? <figcaption>{data.caption}</figcaption>}
+      </figure>
       <footer>
         // static captions, meta text, etc.
       </footer>
-      <OverlayButtons />
+      <SideNav />
     </article>
   )
 }
