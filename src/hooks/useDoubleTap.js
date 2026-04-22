@@ -1,7 +1,10 @@
 
 function useDoubleTap() {
-
+  const [doubleTap, setDoubleTap] = useState(0)
+  const moved = useRef(false)
+  
   const doubleTapOnUp = () => {
+    const doubleTapDelay = 300
     const now = performance.now()
     const deltaT = now - lastTapTime.current
     if (deltaT > 0 && deltaT < doubleTapDelay) {
