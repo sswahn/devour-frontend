@@ -14,6 +14,7 @@ function useGesture({
 
   const data = useRef(null)
   const timer = useRef(null)
+  const moved = useRef(false)
   
   const lastTapTime = useRef(0)
   const longPressFired = useRef(false)
@@ -59,13 +60,10 @@ function useGesture({
     }
   }
 
-  const edgeSwipeOnMove = (activeSide, deltaX, deltaY, currentTarget) => {
+  const edgeSwipeOnMove = (activeSide, deltaX, absDeltaX, deltaY, absDeltaY, currentTarget) => {
     if (!activeSide) {
       return
     }
-    const absDeltaX = Math.abs(deltaX)
-    const absDeltaY = Math.abs(deltaY)
-
     // Get direction, if vertical (y) reset 
     if (!data.current.direction) {
       data.current.direction = absDeltaX > absDeltaY ? 'x' : 'y'
@@ -118,11 +116,15 @@ function useGesture({
     }
     const deltaX = clientX - startX
     const deltaY = clientY - startY
+    const absDeltaX = Math.abs(deltaX)
+    const absDeltaY = Math.abs(deltaY)
+    
+    moved.current = absDeltaX > moveThreshold || absDeltaY > moveThreshold
 
-    if (Math.abs(deltaX) > moveThreshold || Math.abs(deltaY) > moveThreshold) {
+    if (absDeltaX > moveThreshold || absDeltaY > moveThreshold) {
       return longPressCancel()
     }
-    edgeSwipeOnMove(activeSide, deltaX, deltaY, currentTarget)
+    edgeSwipeOnMove(activeSide, deltaX, absDeltaX, deltaY, absDeltaY, currentTarget)
   }
 
   const onPointerUp = event => {
@@ -141,7 +143,7 @@ function useGesture({
       edgeSwipeOnUp(clientX, startX, activeSide) 
     } 
     // If movement in a direction, ignore taps. 
-    if(!direction) {
+    if(!moved.current) {
       doubleTapOnUp()
     }
     reset(currentTarget)
