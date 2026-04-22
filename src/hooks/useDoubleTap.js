@@ -13,7 +13,6 @@ function useDoubleTap() {
       setDoubleTap(now)
       lastTapTime.current = 0
     } else {
-      setTap(now)
       lastTapTime.current = now
     }
   }
