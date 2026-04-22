@@ -79,7 +79,7 @@ function useGesture({
     const resistance = raw / (1 + Math.abs(raw) / 300)
     setEdgeSwipeMove(resistance)
     // Useage in component:
-    // currentTarget.style.transform = `translateX(${resistance}px)`
+    // currentTarget.style.transform = `translateX(${edgeSwipeMove}px)`
   }
 
   const edgeSwipeOnUp = (clientX, startX, activeSide) => {
