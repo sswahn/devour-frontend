@@ -9,6 +9,10 @@ function LoginForm() {
   // Perform validation checks in javascript and return alert if violated.
   // ex. username.length > 50 characters, etc. -> error out.
 
+  const onClick = event => {
+    navigator.vibrate?.(50)
+  }
+  
   const onSubmit = event => {
     event.preventDefault()
     // initiate auth call to backend
@@ -20,11 +24,12 @@ function LoginForm() {
     // setSession({ isAuthenticated: true, ...response.message.userData})
   }
   
+  
   return (
     <form className={styles.loginForm} onSubmit={onSubmit} aria-label="login form">
       <label htmlFor="username">Email or username:</label>
       <input id="username" type="text" required autoComplete="username webauthn" />
-      <button type="submit">Sign In</button>
+      <button onClick={onClick} type="submit">Sign In</button>
     </form>
   )
 }
