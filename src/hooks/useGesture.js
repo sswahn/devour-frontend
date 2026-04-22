@@ -162,8 +162,7 @@ function useGesture({
     tap,
     doubleTap,
     longPress,
-    edgeSwipeMove,
-    edgeSwipeEnd,
+    edgeSwipe,
     handlers: {
       onPointerDown,
       onPointerMove,
