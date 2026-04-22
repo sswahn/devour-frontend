@@ -11,37 +11,6 @@ function useSwipe() {
     }
     data.current = {}
   }
-
-  const edgeSwipeOnMove = (activeSide, deltaX, deltaY, currentTarget) => {
-    if (!activeSide) {
-      return
-    }
-    const absDeltaX = Math.abs(deltaX)
-    const absDeltaY = Math.abs(deltaY)
-    
-    // Get direction, if vertical (y) reset 
-    if (!data.current.direction) {
-      const LOCK_THRESHOLD = 8
-      if (absDeltaX < LOCK_THRESHOLD && absDeltaY < LOCK_THRESHOLD) {
-        return
-      }
-      data.current.direction = absDeltaX > absDeltaY ? 'x' : 'y'
-    }
-    if (data.current.direction === 'y') {
-      return reset(currentTarget)
-    }
-    // if horizontal, perform side swipe
-    const raw = activeSide === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
-    const resistance = raw / (1 + Math.abs(raw) / 300)
-    setEdgeSwipe(prev => ({ ...prev, delta: resistance }))
-  }
-
-  const edgeSwipeOnUp = (clientX, startX, activeSide) => {
-    const deltaX = clientX - startX
-    const isCorrectDir = activeSide === 'left' ? deltaX > 0 : deltaX < 0
-    const shouldClose = Math.abs(deltaX) > closeThreshold && isCorrectDir
-    setEdgeSwipe(prev => ({ ...prev, shouldClose: shouldClose ? performance.now() : 0 }))
-  }
   
   const onPointerDown = event => {
     const { clientX, clientY, currentTarget, pointerId, button } = event
@@ -64,18 +33,69 @@ function useSwipe() {
   }
   
   const onPointerMove = event => {
+    const { clientX, clientY, currentTarget, pointerId } = event
+    const { startX, startY, activeSide, id } = data.current
+    if (pointerId !== id || !activeSide) {
+      return
+    }
+    const deltaX = clientX - startX
+    const deltaY = clientY - startY
+    const absDeltaX = Math.abs(deltaX)
+    const absDeltaY = Math.abs(deltaY)
+
+    // Get direction, if vertical (y) reset 
+    if (!data.current.direction) {
+      const LOCK_THRESHOLD = 8
+      if (absDeltaX < LOCK_THRESHOLD && absDeltaY < LOCK_THRESHOLD) {
+        return
+      }
+      data.current.direction = absDeltaX > absDeltaY ? 'x' : 'y'
+    }
+    if (data.current.direction === 'y') {
+      return reset(currentTarget)
+    }
     
+    // if horizontal, perform side swipe
+    const raw = activeSide === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
+    const resistance = raw / (1 + Math.abs(raw) / 300)
+    
+    // swipe delta + resistance provided 
+    setEdgeSwipe(prev => ({ ...prev, delta: resistance }))
   }
   
   const onPointerUp = event => {
+    const { clientX, pointerId, currentTarget } = event
+    const { startX, activeSide, id, direction } = data.current
+    if (pointerId !== id || !activeSide) {
+      return
+    }
+    const deltaX = clientX - startX
+    const isCorrectDir = activeSide === 'left' ? deltaX > 0 : deltaX < 0
+    const swipeThresholdMet = Math.abs(deltaX) > swipeThreshold && isCorrectDir
+    // if threshold met execute code
     
+    setEdgeSwipe(prev => ({ ...prev, shouldClose: shouldClose ? performance.now() : 0 }))
+    
+    // threshold not met, reset state
+    reset(currentTarget)
   }
   
   const onPointerCancel = event => {
-    
+    const { pointerId, currentTarget } = event
+    const { id } = data.current
+    if (id && pointerId !== id) {
+      return
+    }
+    reset(currentTarget)
   }
 
   return {
-    
+    swipe,
+    handlers: {
+      onPointerDown,
+      onPointerMove,
+      onPointerUp,
+      onPointerCancel
+    }
   }
 }
