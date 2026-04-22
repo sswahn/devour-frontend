@@ -40,6 +40,7 @@ function Notifications({ closeNotifications }) {
 
   const onClick = event => {
     if (event.target === event.currentTarget) {
+      navigator.vibrate?.(50)
       close()
     }
   }
