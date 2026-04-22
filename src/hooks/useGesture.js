@@ -55,7 +55,7 @@ function useGesture({
     }
   }
 
-  const edgeSwipeOnMove = (activeSide, deltaX, deltaY) => {
+  const edgeSwipeOnMove = (activeSide, deltaX, deltaY, currentTarget) => {
     if (!activeSide) {
       return
     }
@@ -89,7 +89,7 @@ function useGesture({
   
   const onPointerDown = event => {
     const { clientX, clientY, currentTarget, pointerId, button } = event
-    if (button !== 0) {// if right click return
+    if (button !== 0) {// if right click return // also if longPressOnDown returns reset(currentTarget) should check for it.
       return
     }
     const width = window.innerWidth
@@ -118,7 +118,7 @@ function useGesture({
     }
     const deltaX = clientX - startX
     const deltaY = clientY - startY
-    edgeSwipeOnMove(activeSide, deltaX, deltaY)
+    edgeSwipeOnMove(activeSide, deltaX, deltaY, currentTarget)
   }
 
   const onPointerUp = event => {
