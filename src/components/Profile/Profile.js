@@ -44,7 +44,7 @@ function Profile({ closeProfile }) {
   */
 
   useEffect(() => {
-    if (overlayRef.current) {
+    if (overlayRef.current && !edgeSwipe.shouldClose) {
       overlayRef.current.style.transform = `translateX(${edgeSwipe.delta}px)`
     }
   }, [edgeSwipe.delta])
