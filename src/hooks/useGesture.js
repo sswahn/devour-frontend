@@ -28,6 +28,7 @@ function useGesture({
       currentTarget.releasePointerCapture(id)
     }
     data.current = {}
+    moved.current = false
     longPressFired.current = false
   }
 
