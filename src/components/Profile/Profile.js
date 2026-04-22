@@ -44,14 +44,14 @@ function Profile({ closeProfile }) {
   */
 
   useEffect(() => {
-    if (edgeSwipeMove.delta) {
+    if (edgeSwipe.delta) {
       overlayRef.current.style.transform = `translateX(${edgeSwipe.delta}px)`
     }
   }, [edgeSwipe.delta])
 
   useEffect(() => {
     const element = overlayRef.current
-    if (edgeSwipeEnd.shouldClose) {
+    if (edgeSwipe.shouldClose) {
       // Close
       element.style.transform = `translateX(${element.offsetWidth}px)`
       // maybe a transition delay
@@ -61,7 +61,7 @@ function Profile({ closeProfile }) {
       element.style.transition = 'transform 0.2s ease'
       element.style.transform = ''
     }
-  }, [edgeSwipeEnd.shouldClose])
+  }, [edgeSwipe.shouldClose])
 
   return (
     <section 
