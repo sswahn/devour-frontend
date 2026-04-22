@@ -53,7 +53,7 @@ function Profile({ closeProfile }) {
     const element = overlayRef.current
     if (edgeSwipe.shouldClose) {
       element.style.transform = `translateX(${element.offsetWidth}px)`
-      action()
+      action() // wait for transition.
     } else {
       element.style.transform = 'translateX(0px)'
     }
