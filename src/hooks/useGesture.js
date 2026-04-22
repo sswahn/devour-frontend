@@ -97,7 +97,7 @@ function useGesture({
     if (absDeltaX < LOCK_THRESHOLD && absDeltaY < LOCK_THRESHOLD) {
       return
     }
-    // Get direction, if vertical reset 
+    // Get direction, if vertical (y) reset 
     if (!data.current.direction) {
       data.current.direction = absDeltaX > absDeltaY ? 'x' : 'y'
     }
