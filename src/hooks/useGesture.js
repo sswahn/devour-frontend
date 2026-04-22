@@ -92,12 +92,13 @@ function useGesture({
     const absDeltaX = Math.abs(deltaX)
     const absDeltaY = Math.abs(deltaY)
 
+    // Check for unintentional movement and return
+    const LOCK_THRESHOLD = 8
+    if (absDeltaX < LOCK_THRESHOLD && absDeltaY < LOCK_THRESHOLD) {
+      return
+    }
     // Get direction, if vertical reset 
     if (!data.current.direction) {
-      const LOCK_THRESHOLD = 8
-      if (absDeltaX < LOCK_THRESHOLD && absDeltaY < LOCK_THRESHOLD) {
-        return
-      }
       data.current.direction = absDeltaX > absDeltaY ? 'x' : 'y'
     }
     if (data.current.direction === 'y') {
