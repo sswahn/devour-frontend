@@ -11,9 +11,9 @@ function useGesture({
   const [doubleTap, setDoubleTap] = useState(0)
   const [longPress, setLongPress] = useState(0)
   const [edgeSwipe, setEdgeSwipe] = useState({
-    delta,
-    isFinal,
-    shouldClose
+    delta: 0,
+    isFinal: false,
+    shouldClose: 0
   })
 
   const data = useRef(null)
