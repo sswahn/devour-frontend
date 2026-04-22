@@ -1,6 +1,7 @@
 import { useRef, useEffect } from 'react'
 import useFocusStack from '../../hooks/useFocusStack'
 import useFocusTrap from '../../hooks/useFocusTrap'
+import useGesture from '../../hooks/useGesture'
 import useSwipeToClose from '../../hooks/useSwipeToClose'
 import CloseButton from '../CloseButton/CloseButton'
 import Dropdown from '../Dropdown/Dropdown'
@@ -11,6 +12,8 @@ import styles from './Profile.module.css'
 function Profile({ closeProfile }) {
   const { pop } = useFocusStack()
   const {overlayRef, focusRef} = useFocusTrap()
+  const { edgeSwipeMove, edgeSwipeUp, handlers } = useGesture()
+  
   const swipeToClose = useSwipeToClose()
 
   const action = () => {
@@ -18,12 +21,14 @@ function Profile({ closeProfile }) {
     pop()
   }
 
+  /*
   const gesture = () => {
     if (overlayRef.current && action) {
       navigator.vibrate?.(50)
       swipeToClose(overlayRef.current, action)
     }
   }
+  */
 
   const onKeyDown = event => {
     if (event.key === 'Escape') {
@@ -31,16 +36,29 @@ function Profile({ closeProfile }) {
       action()
     }
   }
-  
+
+  /*
   useEffect(() => {
     gesture()
   }, [])
+  */
+
+  useEffect(() => {
+    overlayRef.current.style.transform = `translateX(${edgeSwipeMove}px)`
+  }, [edgeSwipeMove])
+
+  useEffect(() => {
+    action()
+  }, [edgeSwipeUp])
   
   return (
     <section 
       id="profile"
       className={styles.profile} 
       ref={focusRef} 
+
+      {...handlers}
+
       onKeyDown={onKeyDown}
       tabIndex={-1} 
       role="dialog" 
