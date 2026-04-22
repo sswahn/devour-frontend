@@ -61,7 +61,6 @@ function useGesture({
     }
     const absDeltaX = Math.abs(deltaX)
     const absDeltaY = Math.abs(deltaY)
-
     // Check for unintentional movement and return
     const LOCK_THRESHOLD = 8
     if (absDeltaX < LOCK_THRESHOLD && absDeltaY < LOCK_THRESHOLD) {
@@ -78,8 +77,6 @@ function useGesture({
     const raw = activeSide === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
     const resistance = raw / (1 + Math.abs(raw) / 300)
     setEdgeSwipeMove(resistance)
-    // Useage in component:
-    // currentTarget.style.transform = `translateX(${edgeSwipeMove}px)`
   }
 
   const edgeSwipeOnUp = (clientX, startX, activeSide) => {
@@ -88,12 +85,6 @@ function useGesture({
     const isCorrectDir = activeSide === 'left' ? deltaX > 0 : deltaX < 0
     const shouldClose = Math.abs(deltaX) > CLOSE_THRESHOLD && isCorrectDir
     setEdgeSwipeEnd(shouldClose)
-    
-    // Usage in component:
-    // if (shouldClose) closeOverlay()
-    // else, snap back with reset:
-    // overlayRef.current.style.transition = 'transform 0.2s ease'
-    // overlayRef.current.style.transform = ''
   }
   
   const onPointerDown = event => {
@@ -127,8 +118,7 @@ function useGesture({
     }
     const deltaX = clientX - startX
     const deltaY = clientY - startY
-    
-    edgeSwipeOnMove(activeSide, deltaX, deltaY, currentTarget)
+    edgeSwipeOnMove(activeSide, deltaX, deltaY)
   }
 
   const onPointerUp = event => {
@@ -142,17 +132,14 @@ function useGesture({
     if (longPressFired.current) {
       return reset(currentTarget)
     }
-
     // Edge swipe active side detected, end swipe
     if (activeSide) {
       edgeSwipeOnUp(clientX, startX, activeSide) 
     } 
-
     // If movement in a direction, ignore taps. 
     if(!direction) {
       doubleTapOnUp()
     }
-    
     reset(currentTarget)
   }
 
