@@ -65,6 +65,10 @@ function useGesture({
     }
     // Get direction, if vertical (y) reset 
     if (!data.current.direction) {
+      const LOCK_THRESHOLD = 8
+      if (absDeltaX < LOCK_THRESHOLD && absDeltaY < LOCK_THRESHOLD) {
+        return
+      }
       data.current.direction = absDeltaX > absDeltaY ? 'x' : 'y'
     }
     if (data.current.direction === 'y') {
@@ -119,7 +123,7 @@ function useGesture({
     
     if (absDeltaX > moveThreshold || absDeltaY > moveThreshold) {
       moved.current = true
-      return longPressCancel()
+      longPressCancel()
     }
     edgeSwipeOnMove(activeSide, deltaX, absDeltaX, deltaY, absDeltaY, currentTarget)
   }
