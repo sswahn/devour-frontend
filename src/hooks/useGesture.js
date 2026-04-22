@@ -80,7 +80,7 @@ function useGesture({
     const deltaX = clientX - startX
     const isCorrectDir = activeSide === 'left' ? deltaX > 0 : deltaX < 0
     const shouldClose = Math.abs(deltaX) > closeThreshold && isCorrectDir
-    setEdgeSwipe(prev => ({ ...prev, shouldClose: shouldClose ? performance.now() : 0))
+    setEdgeSwipe(prev => ({ ...prev, shouldClose: shouldClose ? performance.now() : 0 }))
   }
   
   const onPointerDown = event => {
