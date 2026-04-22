@@ -155,6 +155,7 @@ function useGesture({
     tap,
     doubleTap,
     longPress,
+    edgeSwipe,
     handlers: {
       onPointerDown,
       onPointerMove,
