@@ -8,6 +8,7 @@ function AppleButton() {
   }
   
   const onClick = event => {
+    navigator.vibrate?.(50)
     action()
   }
   
