@@ -1,0 +1,27 @@
+/* Navigation Camera Button */
+
+.cameraButton {
+  align-items: center; 
+  background: var(--surface);
+  border: var(--border);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  height: 44px;
+  width: 44px;
+}
+
+/* Override defaults: */
+.cameraButton:focus {
+  background: var(--surface);
+}
+
+.cameraButton:hover {
+  background: var(--gray);
+}
+
+.cameraButton:active {
+  background: var(--light-gray);
+}

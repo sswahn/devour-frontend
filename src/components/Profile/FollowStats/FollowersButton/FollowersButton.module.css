@@ -1,0 +1,15 @@
+/* Profile User Stat Following Button */
+
+.followersButton {
+  background: none;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 8px 16px;
+  user-select: none;
+}
+
+.followersButton:active {
+  background: var(--button-active);
+}

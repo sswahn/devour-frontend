@@ -1,4 +1,4 @@
-const SearchIcon = ({ size = 24 }) => {
+function SearchIcon({ size = 24 }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width={size} height={size} role="img" aria-label="search icon">
       {/* Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc. */}
@@ -6,5 +6,4 @@ const SearchIcon = ({ size = 24 }) => {
     </svg>
   )
 }
-
 export default SearchIcon

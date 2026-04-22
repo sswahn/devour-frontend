@@ -1,9 +1,10 @@
 import { useState, useRef, memo } from 'react'
+import { config } from '../../config'
 import server from '../../utilities/server'
 import database from '@sswahn/database'
-import FeedNode from './FeedNode'
-import Sentinel from './Sentinel' // sentinel triggers infinite loading
-import styles from './feed.module.css'
+import FeedNode from './FeedNode/FeedNode'
+import Sentinel from './Sentinel/Sentinel' 
+import styles from './Feed.module.css'
 
 function Feed() {
   const [data, setData] = useState([1])
@@ -12,14 +13,12 @@ function Feed() {
 
   const loadMoreData = async event => {
     const response = await server.get(`${config.api.feed}/${batchNumber}`)
-    if (!response.error) {
-      return alert(response.error)
-    }
-    
     setBatchNumber(response.message.batchNumber)
     setData({ ...data, ...response.message })
   }
 
+
+  // Use smart caching, should be part of server.get()
   const loadFromStorage = async () => {
     const db = database()
     const video = await db.get('video')

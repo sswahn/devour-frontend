@@ -1,18 +1,18 @@
+import { StrictMode } from 'react'
 import ErrorBoundary from './ErrorBoundary'
-import Header from './components/Header/Header'
-import Main from './components/Main/Main'
-import MobileUI from './components/MobileUI/MobileUI'
+import Providers from './Providers'
+import AppRoot from './components/AppRoot/AppRoot'
 import './index.css'
 
 function App() {
   return (
-    <React.StrictMode> 
+    <StrictMode> 
       <ErrorBoundary> 
-        <Header />
-        <Main />
-        <MobileUI />
+        <Providers>
+          <AppRoot />
+        </Providers>
       </ErrorBoundary> 
-    </React.StrictMode>
+    </StrictMode>
   )
 }
 

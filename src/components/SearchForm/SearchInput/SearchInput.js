@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import styles from './SearchInput.module.css'
 
 function SearchInput({ searchValue, error, setSearchValue, setError }) {
-
+  const inputRef = useRef(null)
+  
   const onChange = ({ target }) => {
     if (target.validity.patternMismatch) {
       target.reportValidity()
@@ -12,19 +13,26 @@ function SearchInput({ searchValue, error, setSearchValue, setError }) {
     }
     setSearchValue(target.value)
   }
-  
+
+  useEffect(() => {
+    inputRef.current.scrollLeft = inputRef.current.scrollWidth
+    inputRef.current.focus()
+  }, [searchValue])
+ 
+
   return (
     <input
       className={styles.input}
-      type="search"
+      ref={inputRef}
       value={searchValue}
       onChange={onChange}
       maxLength="288"
-      pattern="[a-zA-Z0-9 ]+" 
-      title="Use letters and numbers only."
-      spellCheck={true}
-      autoComplete="off"
+      pattern="[^<>\(\)\{\}\[\]\\\/\|;=~%^]+"
+      title="Special characters are not allowed."
+      spellCheck="true"
       autoFocus
+      type="search"
+      name="search"
       role="combobox"
       aria-autocomplete="list"
       aria-controls="suggestions"

@@ -1,0 +1,17 @@
+/* Feed Node */
+
+.feedNode {
+  contain: layout paint size;
+  height: 100dvh;
+  position: relative;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  touch-action: none;
+  width: 100%;
+
+  background: #888;
+  border-radius: 10px;
+  max-width: 500px;
+  margin: 0 auto 4px auto;
+  z-index: 10;
+}

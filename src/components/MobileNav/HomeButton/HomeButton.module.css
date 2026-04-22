@@ -1,0 +1,16 @@
+/* Navigation Home Button */
+
+.homeButton {
+  align-items: center; 
+  background: none;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  height: 44px;
+  width: 44px;
+}
+
+

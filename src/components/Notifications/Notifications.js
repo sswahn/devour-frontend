@@ -1,8 +1,14 @@
 import { useState, useRef, useEffect } from 'react'
+import useFocusStack from '../../hooks/useFocusStack'
+import useFocusTrap from '../../hooks/useFocusTrap'
 import EllipsisVerticalIcon from '../Icons/EllipsisVerticalIcon/EllipsisVerticalIcon'
 import styles from './Notifications.module.css'
 
+import Avatar from '../Avatar/Avatar'
+
 function Notifications({ closeNotifications }) {
+  const { pop } = useFocusStack()
+  const focusRef = useFocusTrap()
   const [isOpen, setIsOpen] = useState(false)
   const bottomSheetRef = useRef(null)
   const initialHeight = useRef(0)
@@ -12,23 +18,37 @@ function Notifications({ closeNotifications }) {
   
   const context = { 
     notifications: [
-      {img: '', username: 'username', text: '12345678901234567890123456', timestamp: '5 days ago' },
-      {img: '', username: 'username', text: 'testing user notification section', timestamp: '5 days ago' },
-      {img: '', username: 'username', text: 'testing user notification section', timestamp: '5 days ago' },
-      {img: '', username: 'username', text: 'testing user notification section', timestamp: '5 days ago' },
-      {img: '', username: 'username', text: 'testing user notification section', timestamp: '5 days ago' },
+      {username: 'username', text: '12345678901234567890123456', timestamp: '5 days ago' },
+      {username: 'username', text: 'testing user notification section', timestamp: '5 days ago' },
+      {username: 'username', text: 'testing user notification section', timestamp: '5 days ago' },
+      {username: 'username', text: 'testing user notification section', timestamp: '5 days ago' },
+      {username: 'username', text: 'testing user notification section', timestamp: '5 days ago' },
     ]
   }
 
-  const close = bottomSheet => {
-    bottomSheet.style.transform = '' 
-    bottomSheet.addEventListener('transitionend', closeNotifications, { once: true }) 
-    setIsOpen(false)
+  const action = () => {
+    closeNotifications()
+    pop()
   }
 
-  const handleClose = event => {
+  const close = () => {
+    const bottomSheet = bottomSheetRef.current
+    bottomSheet.style.transform = '' 
+    bottomSheet.addEventListener('transitionend', action, { once: true }) 
+    setIsOpen(false) // remove?
+  }
+
+  const onClick = event => {
     if (event.target === event.currentTarget) {
-      close(bottomSheetRef.current)
+      navigator.vibrate?.(50)
+      close()
+    }
+  }
+  
+  const onKeyDown = event => {
+    if (event.key === 'Escape') {
+      event.preventDefault()
+      close() 
     }
   }
 
@@ -47,16 +67,24 @@ function Notifications({ closeNotifications }) {
     const deltaY = event.clientY - startY.current
     const bottomSheet = bottomSheetRef.current
     const height = initialHeight.current
+    /*
     // Elasticity:
     if (deltaY < 0) {
-      const maxDragUp = -200
-      const resistanceFactor = Math.max(0, 1 - Math.abs(deltaY) / Math.abs(maxDragUp))
-      const stretch = Math.abs(deltaY) * resistanceFactor
+      const resistance = Math.max(0, 1 - Math.abs(deltaY) / Math.abs(-200))
+      const stretch = Math.abs(deltaY) * resistance
       bottomSheet.style.height = `${height + stretch}px`
-      bottomSheet.style.transform = `translateY(0px)` 
+      bottomSheet.style.transform = `translateY(0)` 
+      */
+      // No resistance: Map pull-up (negative deltaY) directly to height increase
+    if (deltaY < 0) {
+      // stretch increases as deltaY becomes more negative
+      const newHeight = height + Math.abs(deltaY) 
+      initialHeight.current = `${newHeight}px`
+      bottomSheet.style.height = `${newHeight}px`
+      bottomSheet.style.transform = `translateY(0)` // Keep anchored to bottom
     } else {
-      bottomSheet.style.transform = `translateY(${deltaY}px)`
       bottomSheet.style.height = `${height}px`
+      bottomSheet.style.transform = `translateY(${deltaY}px)`
     } 
   }
 
@@ -71,11 +99,41 @@ function Notifications({ closeNotifications }) {
     const deltaTime = performance.now() - startTime.current
     const velocity = deltaY / deltaTime
     const bottomSheet = bottomSheetRef.current
+    /*
     bottomSheet.style.height = ''
     if (deltaY > bottomSheet.offsetHeight / 2 || velocity > 0.8) {
       close(bottomSheet)
     } else {
       bottomSheet.style.transform = 'translateY(0)'
+    }
+    */
+
+      // 1. Identify current state via style, not just your ref
+    const isCurrentlyFull = bottomSheet.style.height === '100vh';
+
+    if (deltaY > 0) {
+      // DRAGGING DOWN
+      const closeThreshold = isCurrentlyFull ? 100 : bottomSheet.offsetHeight / 2;
+      
+      if (deltaY > closeThreshold || velocity > 0.8) {
+        close(bottomSheet);
+      } else {
+        // SNAP BACK: If full, keep it 100vh. If mid, let CSS take over ('')
+        bottomSheet.style.height = isCurrentlyFull ? '100vh' : '';
+        bottomSheet.style.transform = 'translateY(0)';
+      }
+    } else {
+      // DRAGGING UP
+      const expandThreshold = -100;
+      if (deltaY < expandThreshold || velocity < -0.8) {
+        bottomSheet.style.height = '100vh';
+        bottomSheet.style.transform = 'translateY(0)';
+      } else {
+        // SNAP BACK: If it was already full, stay full. 
+        // If it was mid and didn't pull enough, go back to mid ('')
+        bottomSheet.style.height = isCurrentlyFull ? '100vh' : '';
+        bottomSheet.style.transform = 'translateY(0)';
+      }
     }
   }
 
@@ -93,33 +151,32 @@ function Notifications({ closeNotifications }) {
   }
 
   useEffect(() => {
-  // Wait for the next repaint to transition:
-  const timer = requestAnimationFrame(() => {
-    if (!isOpen) {
-      setIsOpen(true)
+    // Wait for the next repaint to transition:
+    const timer = requestAnimationFrame(() => {
+      if (!isOpen) {
+        setIsOpen(true)
+        bottomSheetRef.current.focus()
+      }
+    })
+    return () => {
+      cancelAnimationFrame(timer)
     }
-  })
-  return () => {
-    cancelAnimationFrame(timer)
-  }
   }, [])
   
   return (
-    <div className={styles.notifications} onClick={handleClose}>
+    <div id="notifications" className={styles.notifications} ref={focusRef} onClick={onClick} onKeyDown={onKeyDown} tabIndex={-1} role="dialog" aria-modal="true">
       <section ref={bottomSheetRef}  
         className={`${styles.bottomSheet} ${isOpen ? styles.open : ''}`}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
         onPointerCancel={handlePointerCancel}
-        role="dialog" 
-        aria-modal="true" 
         aria-label="notifications">
         <div id="grabber" role="presentation"></div>
         <ul aria-label="user notifications">
           {context.notifications?.map((notification, index) => 
             <li key={index}>
-              <img src={notification.img} alt={notification.username} />
+              <Avatar username={notification.username} image={null} />
               <div>
                 <div>
                   <span>{notification.username}</span>

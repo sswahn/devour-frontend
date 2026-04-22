@@ -6,5 +6,4 @@ function LineChartIcon({ size = 24 }) {
     </svg>
   )
 }
-
 export default LineChartIcon

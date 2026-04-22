@@ -1,15 +1,22 @@
 import { useState, useRef, useEffect } from 'react'
 import { config } from '../../config'
-import server from '../../utilities/server'
+import useFocusStack from '../../hooks/useFocusStack'
+import useFocusTrap from '../../hooks/useFocusTrap'
+import useSwipeToClose from '../../hooks/useSwipeToClose'
 import useDebounce from '../../hooks/useDebounce'
+import server from '../../utilities/server'
+import CloseButton from '../CloseButton/CloseButton'
+import Dropdown from '../Dropdown/Dropdown'
 import SearchIcon from '../Icons/SearchIcon/SearchIcon'
 import SearchInput from './SearchInput/SearchInput'
 import SpeechRecognitionButton from './SpeechRecognitionButton/SpeechRecognitionButton'
-import CloseSearchButton from './CloseSearchButton/CloseSearchButton'
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
-import styles from './searchform.module.css'
+import styles from './SearchForm.module.css'
 
 function SearchForm({ closeSearch }) {
+  const { pop } = useFocusStack()
+  const {overlayRef, focusRef} = useFocusTrap()
+  const swipeToClose = useSwipeToClose()
   const [searchValue, setSearchValue] = useState('')
   const [searchResults, setSearchResults] = useState([])
   const [recentSearches, setRecentSearches] = useState([])
@@ -19,9 +26,10 @@ function SearchForm({ closeSearch }) {
   const onSubmit = event => event.preventDefault()
 
   const requestSearchResults = useDebounce(async () => {
-    
+
+    // break validation out into another function
     const value = searchValue.trim()
-    if (!value || error) { // might have to .trim() here
+    if (value.length <= 3 || error) {
       return
     }
     
@@ -52,41 +60,53 @@ function SearchForm({ closeSearch }) {
     setRecentSearches(data)
   }
 
-  const loadRecentSearchTerms = () => {
-    const item = localStorage.getItem('searches')
-    if (item) {
-      setRecentSearches(JSON.parse(item) )
+  const action = () => {
+    closeSearch()
+    pop()
+  }
+
+  const gesture = () => {
+    if (overlayRef.current && action) {
+      navigator.vibrate?.(50)
+      swipeToClose(overlayRef.current, action)
+    }
+  }
+  
+  const onKeyDown = event => {
+    if (event.key === 'Escape') {
+      event.preventDefault()
+      action()
     }
   }
 
   useEffect(() => {
-    requestSearchResults()
-  }, [searchValue])
-  
-  useEffect(() => {
-    loadRecentSearchTerms()
+    gesture()
   }, [])
 
+  useEffect(() => {
+    requestSearchResults()
+  }, [searchValue])
+
   return (
-    <search className={styles.search}>
-      <div>
-        <CloseSearchButton closeSearch={closeSearch} />
-        <form onSubmit={onSubmit}>
-          <div>
-            <SearchIcon size={18} />
-          </div>
-          <SearchInput 
-            searchValue={searchValue} 
-            error={error}
-            setSearchValue={setSearchValue}
-            setError={setError}
-          />
-          <div>
-            <SpeechRecognitionButton setSearchValue={setSearchValue} />
-          </div>
-        </form>
-      </div>
-  
+    <search id="search" className={styles.search} ref={focusRef} onKeyDown={onKeyDown} role="dialog" aria-modal="true">
+      <nav>
+        <CloseButton overlay="search" close={closeSearch} />
+        <Dropdown items={[
+          { text: 'alert message', method: () => alert('dropdown item clicked.') },
+          { text: 'console log message', method: () => console.log('dropdown item clicked.') }
+        ]} />
+      </nav>
+      <form onSubmit={onSubmit}>
+        <SearchIcon size={10} />
+        <SearchInput 
+          searchValue={searchValue} 
+          error={error}
+          setSearchValue={setSearchValue}
+          setError={setError}
+        />
+        <SpeechRecognitionButton setSearchValue={setSearchValue} />
+      </form>
+      
       {/* make Suggestions component: */}
       
       <ul id="suggestions" role="listbox" aria-live="polite" aria-busy={loading}>
@@ -94,7 +114,6 @@ function SearchForm({ closeSearch }) {
           <li key={index} role="option">{search}</li>
         )}    
       </ul>  
-      
     
     </search>
   )

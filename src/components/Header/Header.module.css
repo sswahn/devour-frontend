@@ -1,31 +1,30 @@
 /* Primary Header */
 
 .header {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
+  background-color: var(--surface-raised);
+  border-bottom: 1px solid var(--border-raised);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   height: 60px;
-  background: var(--background);
-  border-bottom: 1px solid var(--border); /* #ffffff0d; */
-  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
-  z-index: 100;
-  
+  left: 0;
+  opacity: 1;
+  position: fixed;
+  right: 0;
+  top: 0;
   /* Smooth, buttery transitions */
   transform: translateY(0);
-  opacity: 1;
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
               opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform, opacity;
+  z-index: 100;
 }
 
 .header.hidden {
-  transform: translateY(-100%);
   opacity: 0;
+  transform: translateY(-100%);
 }
 
-.header > div {
+.header div {
   align-items: center;
   display: flex;
   justify-content: space-between;
@@ -35,47 +34,22 @@
   width: 100%;
 }
 
-.header button {
+.header div > button {
+  align-items: center; 
   background: none;
   border: none;
-  padding: 0;
-  cursor: pointer;
-  font-size: 24px;
-
-  /* Optional: subtle touch feedback */
-  transition: transform 0.15s ease, opacity 0.15s ease;
-}
-
-.header button:active {
-  transform: scale(0.85);
-  opacity: 0.7;
-}
-
-.header button svg {
-  fill: var(--text);
-}
-
-/*
-.header button {
-  background: none;
-  border: 0;
   border-radius: 50%;
-  color: white;
   cursor: pointer;
-  display: block;
-  font-size: 22px; 
-  height: 45px;
-  margin: 6px 8px 0 auto;
-  padding-top: 5px;
-  position: relative;
-  width: 45px; 
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  height: 44px;
+  width: 44px;
 }
 
-.header button svg {
-  fill: white;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.header nav {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
 }
-*/
+

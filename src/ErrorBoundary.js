@@ -24,8 +24,18 @@ class ErrorBoundary extends Component {
     if (this.state.hasError) {
       // render custom fallback UI
       return (
-        <div>
-          <h1>Something went wrong.</h1>
+        <div style={{
+          background: 'black',
+          color: 'white',
+          height: '100%',
+          padding: '200px 0 0 200px',
+          width: '100%',
+        }}>
+          <h1>Oops! Something went wrong.</h1>
+          <p>We’re sorry for the inconvenience. Our team has been notified.</p>
+          <button onClick={() => window.location.reload()} type="button" style={{ width: '100px', height: '44px' }}>
+            Try Again
+          </button>
         </div>
       )
     }

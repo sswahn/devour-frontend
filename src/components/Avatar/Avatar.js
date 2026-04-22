@@ -1,16 +1,38 @@
-import { useState } from 'react'
-import UserIcon from '../Icons/UserIcon/UserIcon'
-import styles from './styles.module.css'
+import { useState, useRef } from 'react'
+import useProfile from '../../hooks/useProfile'
+import useFocusStack from '../../hooks/useFocusStack'
+import Identicon from '../Identicon/Identicon'
+import styles from './Avatar.module.css'
 
-const Avatar = ({ className, image, username, onClick, size }) => {
-  // should onClick be a prop or defined here?
+function Avatar({ username, image, size = 24 }) {
+  const { openProfile } = useProfile()
+  const { push } = useFocusStack()
+  const avatarRef = useRef(null)
+  
+  const action = () => {
+    push(avatarRef.current)
+    openProfile(username)
+  }
+  
+  const onClick = event => {
+    navigator.vibrate?.(50)
+    action()
+  }
+
+  const onKeyDown = event => {
+    if (event.key === 'Enter') {
+      event.preventDefault()
+      action()
+    }
+  }
+  
   return (
-    <div className={`${styles.avatar} ${className || ''}`} onClick={onClick} aria-label={`${username}'s avatar`}>
+    <button className={styles.avatar} ref={avatarRef} onClick={onClick} onKeyDown={onKeyDown} type="button" aria-label={`${username}'s avatar`}>
       {image 
-        ? <img src={image} alt={`${username}'s avatar`} width={size || '24px'} height={size || '24px'} />
-        : <UserIcon size={size} />
+        ? <img src={image} alt={`${username}'s avatar`} loading="lazy" width={size} height={size} />
+        : <Identicon seed={username} />
       }
-    </div>
+    </button>
   )
 }
 

@@ -1,13 +1,13 @@
 /* Search Form Input */
 
 .input {
-  background-color: var(--input);
-  border: 0;
-  border-top: 1px solid var(--input-border);
-  border-bottom: 1px solid var(--input-border);
-  color: var(--text);
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 50px;
+  color: var(--input-text);
   font-size: 18px;
   height: 44px;
+  padding: 0 52px 0 44px;
   width: 100%;
 }
 
@@ -15,14 +15,11 @@
   outline: none;
 }
 
-
 .input::-webkit-search-decoration,
 .input::-webkit-search-cancel-button,
 .input::-webkit-search-results-button,
 .input::-webkit-search-results-decoration {
   cursor: pointer;
-  height: 24px;
-  padding-right: 8px;
-  width: 24px;
+  padding-left: 8px;
 }
 

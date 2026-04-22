@@ -1,25 +1,118 @@
 /* css global classes */
 
+/*
 :root {
-  color-scheme: light dark; /* mode swap */
-  --black: #181818;
-  --white: #f9fafb;
+  --brand: oklch(65% 0.18 260);
+  --neutral-0: oklch(from var(--brand) 99% 0.01 h);
+  --neutral-50: oklch(from var(--brand) 96% 0.01 h);
+  --neutral-100: oklch(from var(--brand) 92% 0.01 h);
+  --neutral-200: oklch(from var(--brand) 85% 0.01 h);
+  --neutral-300: oklch(from var(--brand) 75% 0.01 h);
+  --neutral-400: oklch(from var(--brand) 60% 0.01 h);
+  --neutral-500: oklch(from var(--brand) 45% 0.01 h);
+  --neutral-600: oklch(from var(--brand) 32% 0.01 h);
+  --neutral-700: oklch(from var(--brand) 24% 0.01 h);
+  --neutral-800: oklch(from var(--brand) 18% 0.01 h);
+  --neutral-900: oklch(from var(--brand) 12% 0.01 h);
+}
+*/
+
+:root {
+
+  color-scheme: light dark;
+
+  --lighter-black: #303030;
+  --light-black: #202020;/* #2b2b2b; */
+  --dark-black: #121212; /* #181818; */
+  --white: white; /* #f9fafb; */
+  --lighter-gray: #e8e8e8;
+  --light-gray: #606060;
+  --gray: #484848;
+  --purple: #663399; 
+  --purple-alt: #8a2be2;
+
+  --complementary: orange;
+
+  /* Typography */
+
+  --text: light-dark(black, white);
   
-  --background: light-dark(var(--white), var(--black));
-  --text: light-dark(var(--black), var(--white));
-  --border: light-dark(
-    color-mix(in srgb, var(--white), transparent 95%), 
-    color-mix(in srgb, var(--black), transparent 95%)
+  --text-muted: oklch(from var(--text) 60% 0.01 h);
+
+  /* Surfaces */
+
+  --surface: light-dark(var(--lighter-gray), var(--dark-black));
+
+  --surface-raised: light-dark(var(--white), var(--light-black));
+
+  --surface-elevated: light-dark(var(--white), var(--lighter-black));
+
+  /* Accent */
+
+  --accent: var(--complementary);
+
+  --accent-text: var(--white);
+
+  --accent-surface: color-mix(
+    in oklch,
+    var(--accent) 10%,
+    var(--surface)
   );
+
+  /* Borders */
+
+  --border: light-dark(#ffffff0d, #ffffff26);
+
+  --border-raised: light-dark(#0000000d, #00000026);
+
+  /* Inputs */
+
+  --input-bg: var(--surface);
   
-  --input: light-dark(#999999, #444444);
-  --input-border: light-dark(#888888, #555555);
+  --input-text: var(--text);
+  
+  --input-border: var(--border);
+  
+  /* Buttons */
 
-  --active-button: light-dark(#777777, #444444);
+  --button-bar-bg: light-dark(var(--dark-black), var(--lighter-black));
 
-  --font-size: 18px;
+  --button-bar-text: var(--white);
+
+  --button-bg: var(--surface-raised);
+  
+  --button-text: var(--text);
+  
+  --button-border: var(--border);
+
+  --button-active: var(--surface);
+
+  --button-alt: light-dark(
+    oklch(from var(--black) 10% 0.01 h),
+    oklch(from var(--white) 90% 0.01 h)
+  );
+
+  /* Dropdown */
+  
+  --dropdown-bg: var(--surface-elevated);
+
+  --dropdown-text: var(--text);
+
+  --dropdown-border: var(--border-raised);
+
+  /* Typography Sizing */
+
+  --font-size: 16px;
+  
   --line-height: 1.5;
+
+  /* Alerts */
   
+  --success: oklch(65% 0.18 calc(260 - 120));
+  
+  --warning: oklch(70% 0.18 calc(260 - 200));
+  
+  --danger: oklch(65% 0.18 calc(260 - 260));
 }
 
 * {
@@ -60,14 +153,44 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
+#root {
+  background-color: var(--surface);
+}
+
 button {
   touch-action: manipulation;
+  transition: background 0.2s ease-in-out;
+  user-select: none;
+}
+
+button:focus {
+  background: initial;
+}
+
+button:hover {
+  background: var(--gray);
+}
+
+button:active {
+  background: var(--light-gray);
+}
+
+svg {
+  fill: var(--text);
+  flex-shrink: 0;
+  pointer-events: none;
 }
 
 img, video {
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+input,
+progress,
+select {
+  accent-color: var(--accent)
 }
 
 :focus-visible {
@@ -77,6 +200,10 @@ img, video {
 
 
 
+
+
+
+/*
 
 .tooltip {
   background-color: #575a62;
@@ -93,10 +220,6 @@ img, video {
 
 
 
-
-
-
-/*
 .sidebar-user {
   padding-top: 4px;
 }

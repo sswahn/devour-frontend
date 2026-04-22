@@ -1,0 +1,14 @@
+/* Header Login Button to Open Auth Flow */
+
+.loginButton {
+  align-items: center; 
+  background: none;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  padding: 10px;
+  height: 44px;
+  width: 44px;
+}

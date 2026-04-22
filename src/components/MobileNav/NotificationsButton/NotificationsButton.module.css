@@ -1,0 +1,27 @@
+/* Navigation Notifications Button */
+
+.notificationsButton {
+  align-items: center; 
+  background: none;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  position: relative;
+  height: 44px;
+  width: 44px;
+}
+
+.notificationsButton div {
+  background-color: darkorange;
+  border: 2px solid var(--black);
+  border-radius: 50%;
+  height: 10px;
+  /* left: 14px; */
+  right: 8px;
+  position: absolute;
+  top: 8px;
+  width: 10px;
+}

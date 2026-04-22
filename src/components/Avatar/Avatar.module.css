@@ -1,0 +1,14 @@
+
+.avatar {
+  align-items: center; 
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 10px;
+  height: 32px;
+  width: 32px;
+}

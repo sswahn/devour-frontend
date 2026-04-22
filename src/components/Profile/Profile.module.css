@@ -1,5 +1,57 @@
 /* User Profile */
 
 .profile {
-  
+  background-color: var(--surface-raised);
+  height: 100dvh;
+  left: 0;
+  outline: none;
+  overflow-y: scroll;
+  overscroll-behavior-y: contain;
+  padding: 8px;
+  position: absolute;
+  touch-action: none;
+  top: 0;
+  transition: transform 0.2s ease;
+  width: 100%;
+  z-index: 200;
 }
+
+.profile nav {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.profile header div {
+  padding: 0 16px;
+}
+
+.profile header img {
+  border-radius: 50%;
+  display: block;
+  height: 128px;
+  margin: 0 auto;
+  width: 128px;
+  
+  background: gray;
+}
+
+.profile header h1 {
+  font-size: 24px;
+  font-weight: normal;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.profile address {
+  font-size: var(--font-size);
+  margin-top: 8px;
+  text-align: center;
+}
+
+.profile p {
+  font-size: var(--font-size);
+  margin-top: 8px;
+}
+
