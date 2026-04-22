@@ -12,7 +12,7 @@ import styles from './Profile.module.css'
 function Profile({ closeProfile }) {
   const { pop } = useFocusStack()
   const {overlayRef, focusRef} = useFocusTrap()
-  const { edgeSwipeMove, edgeSwipeUp, handlers } = useGesture()
+  const { edgeSwipeMove, edgeSwipeClose, edgeSwipeReset, handlers } = useGesture()
   
   const swipeToClose = useSwipeToClose()
 
@@ -48,18 +48,13 @@ function Profile({ closeProfile }) {
   }, [edgeSwipeMove])
 
   useEffect(() => {
-        // Usage in component:
-    // if (edgeSwipeUp) closeOverlay()
-    // else, snap back by resetting css to:
-    // overlayRef.current.style.transition = 'transform 0.2s ease'
-    // overlayRef.current.style.transform = ''
-    if (edgeSwipeUp) {
-      action()
-    } else {
-      overlayRef.current.style.transition = 'transform 0.2s ease'
-      overlayRef.current.style.transform = ''
-    }
-  }, [edgeSwipeUp])
+    action()
+  }, [edgeSwipeClose])
+
+  useEffect(() => {
+    overlayRef.current.style.transition = 'transform 0.2s ease'
+    overlayRef.current.style.transform = ''
+  }, [edgeSwipeReset])
   
   return (
     <section 
