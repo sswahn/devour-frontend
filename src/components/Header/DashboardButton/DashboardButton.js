@@ -8,12 +8,12 @@ function DashboardButton({ openDashboard }) {
   const buttonRef = useRef(null)
   
   const action = () => {
-    navigator.vibrate(50)
     openDashboard()
     push(buttonRef.current)
   }
   
   const onClick = event => {
+    navigator.vibrate?.(50)
     action()
   }
   
