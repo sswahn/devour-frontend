@@ -11,6 +11,7 @@ const Checkbox = memo(({ label, checked, onChange }) => {
   }
 
   const onClick = event => {
+    navigator.vibrate?.(50)
     action()
   }
 
