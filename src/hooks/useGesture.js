@@ -128,20 +128,39 @@ function useGesture({
     edgeSwipeOnMove(activeSide, deltaX, deltaY, currentTarget)
   }
 
+  const edgeSwipeOnUp = (clientX, startX, activeSide) => {
+    const CLOSE_THRESHOLD = 150 
+    const deltaX = clientX - startX
+    const isCorrectDir = activeSide === 'left' ? deltaX > 0 : deltaX < 0
+    const shouldClose = Math.abs(deltaX) > CLOSE_THRESHOLD && isCorrectDir
+    const edgeSwipeComplete = shouldClose
+    if (shouldClose) {
+      setEdgeSwipeComplete(true)
+    }
+  }
+
   const onPointerUp = event => {
     longPressCancel()
-    const { pointerId, currentTarget } = event
-    const { id } = data.current
+    const { clientX, pointerId, currentTarget } = event
+    const { startX, activeSide, id } = data.current
     if (pointerId !== id) {
       return
     }
-    
-    // If moved, ignore taps. If longPress fired, gesture complete.
-    if (moved.current || longPressFired.current) {
+    // If longPress fired, gesture complete.
+    if (longPressFired.current) {
       return reset(currentTarget)
     }
 
-    doubleTapOnUp()
+    if (activeSide) {
+      edgeSwipeOnUp(clientX, startX, activeSide) 
+    } 
+
+    // If moved, ignore taps. 
+    if(!moved.current) {
+      doubleTapOnUp()
+    }
+  
+    
     reset(currentTarget)
   }
 
