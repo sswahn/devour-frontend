@@ -48,7 +48,17 @@ function Profile({ closeProfile }) {
   }, [edgeSwipeMove])
 
   useEffect(() => {
-    action()
+        // Usage in component:
+    // if (edgeSwipeUp) closeOverlay()
+    // else, snap back by resetting css to:
+    // overlayRef.current.style.transition = 'transform 0.2s ease'
+    // overlayRef.current.style.transform = ''
+    if (edgeSwipeUp) {
+      action()
+    } else {
+      overlayRef.current.style.transition = 'transform 0.2s ease'
+      overlayRef.current.style.transform = ''
+    }
   }, [edgeSwipeUp])
   
   return (
