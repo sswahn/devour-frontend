@@ -11,11 +11,10 @@ function useGesture({
   const [longPress, setLongPress] = useState(0)
   const [edgeSwipe, setEdgeSwipe] = useState('')
 
-  const lastTapTime = useRef(0)
-  const timer = useRef(null)
   const data = useRef(null)
-
-  const moved = useRef(false)
+  const timer = useRef(null)
+  
+  const lastTapTime = useRef(0)
   const longPressFired = useRef(false)
 
   const reset = currentTarget => {
@@ -24,7 +23,6 @@ function useGesture({
       currentTarget.releasePointerCapture(id)
     }
     data.current = null
-    moved.current = false
     longPressFired.current = false
   }
 
@@ -47,7 +45,6 @@ function useGesture({
   const doubleTapOnUp = () => {
     const now = performance.now()
     const deltaT = now - lastTapTime.current
-
     if (deltaT > 0 && deltaT < doubleTapDelay) {
       setDoubleTap(now)
       lastTapTime.current = 0
@@ -68,11 +65,9 @@ function useGesture({
     const edgeLeft = clientX < edgeThreshold
     const edgeRight = clientX > width - edgeThreshold
     let swipeSide = undefined
-    
     if (edgeLeft || edgeRight) {
       swipeSide = edgeLeft ? 'left' : 'right'
     }
-    moved.current = false
     data.current = { 
       startX: clientX, 
       startY: clientY,
@@ -120,11 +115,7 @@ function useGesture({
     }
     const deltaX = clientX - startX
     const deltaY = clientY - startY
-
-    if (Math.abs(deltaX) > moveThreshold || Math.abs(deltaY) > moveThreshold) {
-      moved.current = true
-    }
-
+    
     edgeSwipeOnMove(activeSide, deltaX, deltaY, currentTarget)
   }
 
@@ -137,12 +128,17 @@ function useGesture({
     if (shouldClose) {
       setEdgeSwipeComplete(true)
     }
+    // Usage in component:
+    // if (edgeSwipeComplete) closeOverlay()
+    // else, snap back by resetting css to:
+    // overlayRef.current.style.transition = 'transform 0.2s ease'
+    // overlayRef.current.style.transform = ''
   }
 
   const onPointerUp = event => {
     longPressCancel()
     const { clientX, pointerId, currentTarget } = event
-    const { startX, activeSide, id } = data.current
+    const { startX, activeSide, id, direction } = data.current
     if (pointerId !== id) {
       return
     }
@@ -151,15 +147,15 @@ function useGesture({
       return reset(currentTarget)
     }
 
+    // Edge swipe active side detected, end swipe
     if (activeSide) {
       edgeSwipeOnUp(clientX, startX, activeSide) 
     } 
 
-    // If moved, ignore taps. 
-    if(!moved.current) {
+    // If movement in a direction, ignore taps. 
+    if(!direction) {
       doubleTapOnUp()
     }
-  
     
     reset(currentTarget)
   }
