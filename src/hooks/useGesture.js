@@ -48,10 +48,6 @@ function useGesture({
     }, longPressDelay)
   }
 
-  const longPressOnMove = (deltaX, deltaY) => {
-
-  }
-
   const doubleTapOnUp = () => {
     const now = performance.now()
     const deltaT = now - lastTapTime.current
