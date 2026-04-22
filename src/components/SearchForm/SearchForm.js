@@ -67,6 +67,7 @@ function SearchForm({ closeSearch }) {
 
   const gesture = () => {
     if (overlayRef.current && action) {
+      navigator.vibrate?.(50)
       swipeToClose(overlayRef.current, action)
     }
   }
