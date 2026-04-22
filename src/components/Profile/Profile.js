@@ -52,9 +52,11 @@ function Profile({ closeProfile }) {
   useEffect(() => {
     const element = overlayRef.current
     if (edgeSwipe.shouldClose) {
+      console.log('close overlay.')
       element.style.transform = `translateX(${element.offsetWidth}px)`
       action() // wait for transition.
     } else {
+      console.log('snap back overlay.')
       element.style.transform = ''
     }
   }, [edgeSwipe.shouldClose])
