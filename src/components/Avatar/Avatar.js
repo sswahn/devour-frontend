@@ -10,12 +10,12 @@ function Avatar({ username, image, size = 24 }) {
   const avatarRef = useRef(null)
   
   const action = () => {
-    navigator.vibrate(50)
     push(avatarRef.current)
     openProfile(username)
   }
   
   const onClick = event => {
+    navigator.vibrate?.(50)
     action()
   }
 
