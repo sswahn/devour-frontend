@@ -58,9 +58,10 @@ function useSwipe() {
     // if horizontal, perform side swipe
     const raw = activeSide === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
     const resistance = raw / (1 + Math.abs(raw) / 300)
-    
+
+    return resistance
     // swipe delta + resistance provided 
-    setEdgeSwipe(prev => ({ ...prev, delta: resistance }))
+    //setEdgeSwipe(prev => ({ ...prev, delta: resistance }))
   }
   
   const onPointerUp = event => {
@@ -73,11 +74,12 @@ function useSwipe() {
     const isCorrectDir = activeSide === 'left' ? deltaX > 0 : deltaX < 0
     const swipeThresholdMet = Math.abs(deltaX) > swipeThreshold && isCorrectDir
     // if threshold met execute code
-    
-    setEdgeSwipe(prev => ({ ...prev, shouldClose: shouldClose ? performance.now() : 0 }))
-    
-    // threshold not met, reset state
-    reset(currentTarget)
+    if (swipeThresholdMet) {
+      return true
+    } else {
+      reset(currentTarget)
+      return false
+    }
   }
   
   const onPointerCancel = event => {
