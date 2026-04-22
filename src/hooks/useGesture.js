@@ -9,6 +9,7 @@ function useGesture({
   const [tap, setTap] = useState(0)
   const [doubleTap, setDoubleTap] = useState(0)
   const [longPress, setLongPress] = useState(0)
+  const [edgeSwipe, setEdgeSwipe] = useState(0)
 
   const lastTapTime = useRef(0)
   const timer = useRef(null)
@@ -55,6 +56,8 @@ function useGesture({
       lastTapTime.current = now
     }
   }
+
+
   
   const onPointerDown = event => {
     const { clientX, clientY, currentTarget, pointerId, button } = event
@@ -81,6 +84,32 @@ function useGesture({
     longPressOnDown(currentTarget)
   }
 
+
+  const edgeSwipeOnMove = (activeSide, deltaX, deltaY) => {
+    if (!activeSide) {
+      return
+    }
+    const absDeltaX = Math.abs(deltaX)
+    const absDeltaY = Math.abs(deltaY)
+
+    // Get direction, if vertical reset 
+    if (!data.current.direction) {
+      const LOCK_THRESHOLD = 8
+      if (absDeltaX < LOCK_THRESHOLD && absDeltaY < LOCK_THRESHOLD) {
+        return
+      }
+      data.current.direction = absDeltaX > absDeltaY ? 'x' : 'y'
+    }
+    if (data.current.direction === 'y') {
+      return reset(currentTarget)
+    }
+    // if horizontal, perform side swipe
+    // maybe return edgeSwipe = resisted 
+    const raw = activeSide === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
+    const resisted = raw / (1 + Math.abs(raw) / 300)
+    currentTarget.style.transform = `translateX(${resisted}px)`
+  }
+  
   const onPointerMove = event => {
     const { clientX, clientY, currentTarget, pointerId } = event
     const { startX, startY, activeSide, id } = data.current
@@ -93,6 +122,8 @@ function useGesture({
     if (Math.abs(deltaX) > moveThreshold || Math.abs(deltaY) > moveThreshold) {
       moved.current = true
     }
+
+    edgeSwipeOnMove(activeSide, deltaX, deltaY, currentTarget)
   }
 
   const onPointerUp = event => {
