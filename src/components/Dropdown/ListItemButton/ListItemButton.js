@@ -24,7 +24,7 @@ function ListItemButton({ buttonRef, listRef, text, method, close }) {
   }
 
   const onClick = event => {
-    navigator.vibrate(50)
+    navigator.vibrate?.(50)
     action()
   }
 
