@@ -9,8 +9,8 @@ function useGesture({
   const [tap, setTap] = useState(0)
   const [doubleTap, setDoubleTap] = useState(0)
   const [longPress, setLongPress] = useState(0)
-  const [edgeSwipeMove, setEdgeSwipeMove] = useState('')
-  const [edgeSwipeUp, edgeSwipeUp] = useState(false)
+  const [edgeSwipeMove, setEdgeSwipeMove] = useState(0)
+  const [edgeSwipeUp, edgeSwipeUp] = useState(0)
 
   const data = useRef(null)
   const timer = useRef(null)
@@ -88,7 +88,7 @@ function useGesture({
     const isCorrectDir = activeSide === 'left' ? deltaX > 0 : deltaX < 0
     const shouldClose = Math.abs(deltaX) > CLOSE_THRESHOLD && isCorrectDir
     if (shouldClose) {
-      setEdgeSwipeUp(true)
+      setEdgeSwipeUp(performance.now())
     }
     // Usage in component:
     // if (edgeSwipeUp) closeOverlay()
