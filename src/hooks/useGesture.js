@@ -10,7 +10,7 @@ function useGesture({
   const [doubleTap, setDoubleTap] = useState(0)
   const [longPress, setLongPress] = useState(0)
   const [edgeSwipeMove, setEdgeSwipeMove] = useState(0)
-  const [edgeSwipeUp, edgeSwipeUp] = useState(0)
+  const [edgeSwipeUp, setEdgeSwipeUp] = useState(0)
 
   const data = useRef(null)
   const timer = useRef(null)
