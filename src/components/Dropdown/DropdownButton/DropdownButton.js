@@ -8,7 +8,7 @@ function DropdownButton({ id, label, isOpen, open, close, buttonRef }) {
   }
   
   const onClick = event => {
-    navigator.vibrate(50)
+    navigator.vibrate?.(50)
     action()
   }
 
