@@ -8,12 +8,12 @@ function LoginButton({ openAuthentication }) {
   const { push } = useFocusStack()
   
   const action = () => {
-    navigator.vibrate(50)
     push(buttonRef.current)
     openAuthentication()  
   }
   
   const onClick = event => {
+    navigator.vibrate?.(50)
     action()
   }
   
