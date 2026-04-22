@@ -1,6 +1,8 @@
+import { useState, useRef } from 'react'
 
 function useDoubleTap() {
   const [doubleTap, setDoubleTap] = useState(0)
+  const lastTapTime = useRef(0)
   const moved = useRef(false)
   
   const doubleTapOnUp = () => {
