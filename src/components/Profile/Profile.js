@@ -55,7 +55,7 @@ function Profile({ closeProfile }) {
       element.style.transform = `translateX(${element.offsetWidth}px)`
       action() // wait for transition.
     } else {
-      element.style.transform = 'translateX(0px)'
+      element.style.transform = ''
     }
   }, [edgeSwipe.shouldClose])
 
