@@ -9,9 +9,8 @@ function useGesture({
   const [tap, setTap] = useState(0)
   const [doubleTap, setDoubleTap] = useState(0)
   const [longPress, setLongPress] = useState(0)
-  const [edgeSwipeMove, setEdgeSwipeMove] = useState(0)
-  const [edgeSwipeClose, setEdgeSwipeClose] = useState(0)
-  const [edgeSwipeReset, setEdgeSwipeReset] = useState(0)
+  const [edgeSwipeStart, setEdgeSwipeStart] = useState(0)
+  const [edgeSwipeEnd, setEdgeSwipeEnd] = useState(0)
 
   const data = useRef(null)
   const timer = useRef(null)
@@ -78,7 +77,7 @@ function useGesture({
     // if horizontal, perform side swipe
     const raw = activeSide === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
     const resistance = raw / (1 + Math.abs(raw) / 300)
-    setEdgeSwipeMove(resistance)
+    setEdgeSwipeStart(resistance)
     // Useage in component:
     // currentTarget.style.transform = `translateX(${edgeSwipeMove}px)`
   }
@@ -89,10 +88,8 @@ function useGesture({
     const isCorrectDir = activeSide === 'left' ? deltaX > 0 : deltaX < 0
     const shouldClose = Math.abs(deltaX) > CLOSE_THRESHOLD && isCorrectDir
     if (shouldClose) {
-      setEdgeSwipeClose(performance.now())
-    } else {
-      setedgeSwipeReset(performance.now())
-    }
+      setEdgeSwipeEnd(performance.now())
+    } 
     // Usage in component:
     // if (edgeSwipeUp) closeOverlay()
     // else, snap back by resetting css to:
