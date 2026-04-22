@@ -146,7 +146,7 @@ function useGesture({
   const onPointerCancel = event => {
     const { pointerId, currentTarget } = event
     const { id } = data.current
-    if (pointerId !== id) {
+    if (id && pointerId !== id) {
       return
     }
     reset(currentTarget)
