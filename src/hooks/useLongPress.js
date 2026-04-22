@@ -70,9 +70,15 @@ function useLongPress() {
     reset(currentTarget)
   }
   
-  return (
-    
-  )
+  return {
+    longPress,
+    handlers: {
+      onPointerDown,
+      onPointerMove,
+      onPointerUp,
+      onPointerCancel
+    }
+  }
 }
 
 export default useLongPress
