@@ -1,7 +1,6 @@
 
 function useDoubleTap() {
 
-
   const doubleTapOnUp = () => {
     const now = performance.now()
     const deltaT = now - lastTapTime.current
@@ -13,6 +12,11 @@ function useDoubleTap() {
       lastTapTime.current = now
     }
   }
+
+  const onPointerDown = event => {}
+  const onPointerMove = event => {}
+  const onPointerUp = event => {}
+  const onPointerCancel = event => {}
   
   return (
     
