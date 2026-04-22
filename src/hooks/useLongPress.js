@@ -2,7 +2,6 @@ import { useState, useRef } from 'react'
 
 function useLongPress() {
   const [longPress, setLongPress] = useState(0)
-  const longPressFired = useRef(false)
   const timer = useRef(null)
 
   const reset = currentTarget => {
@@ -10,7 +9,6 @@ function useLongPress() {
     if (id && currentTarget.hasPointerCapture(id)) {
       currentTarget.releasePointerCapture(id)
     }
-    longPressFired.current = false
   }
 
   const longPressCancel = () => {
@@ -54,11 +52,22 @@ function useLongPress() {
   }
   
   const onPointerUp = event => {
-    
+    longPressCancel()
+    const { pointerId, currentTarget } = event
+    const { id } = data.current
+    if (id && pointerId !== id) {
+      return
+    }
+    reset(currentTarget)
   }
   
   const onPointerCancel = event => {
-    
+    const { pointerId, currentTarget } = event
+    const { id } = data.current
+    if (id && pointerId !== id) {
+      return
+    }
+    reset(currentTarget)
   }
   
   return (
