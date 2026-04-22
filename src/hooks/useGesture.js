@@ -118,6 +118,10 @@ function useGesture({
     }
     const deltaX = clientX - startX
     const deltaY = clientY - startY
+
+    if (Math.abs(deltaX) > moveThreshold || Math.abs(deltaY) > moveThreshold) {
+      longPressCancel()
+    }
     edgeSwipeOnMove(activeSide, deltaX, deltaY, currentTarget)
   }
 
