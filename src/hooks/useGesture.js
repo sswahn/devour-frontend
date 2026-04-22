@@ -43,6 +43,12 @@ function useGesture({
     }, longPressDelay)
   }
 
+  const longPressOnMove = (deltaX, deltaY) => {
+    if (Math.abs(deltaX) > moveThreshold || Math.abs(deltaY) > moveThreshold) {
+      longPressCancel()
+    }
+  }
+
   const doubleTapOnUp = () => {
     const now = performance.now()
     const deltaT = now - lastTapTime.current
@@ -119,10 +125,8 @@ function useGesture({
     const deltaX = clientX - startX
     const deltaY = clientY - startY
 
-    if (Math.abs(deltaX) > moveThreshold || Math.abs(deltaY) > moveThreshold) {
-      longPressCancel()
-    }
     edgeSwipeOnMove(activeSide, deltaX, deltaY, currentTarget)
+    longPressOnMove(deltaX, deltaY)
   }
 
   const onPointerUp = event => {
