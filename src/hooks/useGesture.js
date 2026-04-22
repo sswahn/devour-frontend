@@ -74,7 +74,7 @@ function useGesture({
     // if horizontal, perform side swipe
     const raw = activeSide === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
     const resistance = raw / (1 + Math.abs(raw) / 300)
-    setEdgeSwipe(prev => ({ ...prev, delta: resistance })
+    setEdgeSwipe(prev => ({ ...prev, delta: resistance }))
   }
 
   const edgeSwipeOnUp = (clientX, startX, activeSide) => {
