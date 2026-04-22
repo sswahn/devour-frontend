@@ -154,6 +154,7 @@ function useGesture({
     if (id && pointerId !== id) {
       return
     }
+    longPressCancel()
     reset(currentTarget)
   }
 
