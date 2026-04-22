@@ -4,13 +4,17 @@ function useGesture({
   doubleTapDelay = 300,
   longPressDelay = 500,
   moveThreshold = 10,
-  edgeThreshold = 35
+  edgeThreshold = 35,
+  closeThreshold = 150
 } = {}) {
   const [tap, setTap] = useState(0)
   const [doubleTap, setDoubleTap] = useState(0)
   const [longPress, setLongPress] = useState(0)
-  const [edgeSwipeMove, setEdgeSwipeMove] = useState(0)
-  const [edgeSwipeEnd, setEdgeSwipeEnd] = useState(false)
+  const [edgeSwipe, setEdgeSwipe] = useState({
+    delta,
+    isFinal,
+    shouldClose
+  })
 
   const data = useRef(null)
   const timer = useRef(null)
@@ -74,20 +78,19 @@ function useGesture({
     // if horizontal, perform side swipe
     const raw = activeSide === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
     const resistance = raw / (1 + Math.abs(raw) / 300)
-    setEdgeSwipeMove(resistance)
+    setEdgeSwipe(prev => ({ ...prev, delta: resistance })
   }
 
   const edgeSwipeOnUp = (clientX, startX, activeSide) => {
-    const CLOSE_THRESHOLD = 150 
     const deltaX = clientX - startX
     const isCorrectDir = activeSide === 'left' ? deltaX > 0 : deltaX < 0
-    const shouldClose = Math.abs(deltaX) > CLOSE_THRESHOLD && isCorrectDir
-    setEdgeSwipeEnd(shouldClose ? performance.now() : 0)
+    const shouldClose = Math.abs(deltaX) > closeThreshold && isCorrectDir
+    setEdgeSwipe(prev => { ...prev, isFinal: true, shouldClose: shouldClose ? performance.now() : 0)
   }
   
   const onPointerDown = event => {
     const { clientX, clientY, currentTarget, pointerId, button } = event
-    if (button !== 0) {// if right click return // also if longPressOnDown returns reset(currentTarget) should check for it.
+    if (button !== 0) {// if right click return
       return
     }
     const width = window.innerWidth
