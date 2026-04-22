@@ -44,16 +44,22 @@ function Profile({ closeProfile }) {
   */
 
   useEffect(() => {
-    overlayRef.current.style.transform = `translateX(${edgeSwipeMove}px)`
+    if (edgeSwipeMove) {
+      overlayRef.current.style.transform = `translateX(${edgeSwipeMove}px)`
+    }
   }, [edgeSwipeMove])
 
   useEffect(() => {
-    action()
+    if (edgeSwipeClose) {
+      action()
+    }
   }, [edgeSwipeClose])
 
   useEffect(() => {
-    overlayRef.current.style.transition = 'transform 0.2s ease'
-    overlayRef.current.style.transform = ''
+    if (edgeSwipeReset) {
+      overlayRef.current.style.transition = 'transform 0.2s ease'
+      overlayRef.current.style.transform = ''
+    }
   }, [edgeSwipeReset])
   
   return (
