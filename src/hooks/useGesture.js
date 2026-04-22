@@ -9,7 +9,7 @@ function useGesture({
   const [tap, setTap] = useState(0)
   const [doubleTap, setDoubleTap] = useState(0)
   const [longPress, setLongPress] = useState(0)
-  const [edgeSwipe, setEdgeSwipe] = useState(0)
+  const [edgeSwipe, setEdgeSwipe] = useState('')
 
   const lastTapTime = useRef(0)
   const timer = useRef(null)
@@ -104,10 +104,11 @@ function useGesture({
       return reset(currentTarget)
     }
     // if horizontal, perform side swipe
-    // maybe return edgeSwipe = resisted 
     const raw = activeSide === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
-    const resisted = raw / (1 + Math.abs(raw) / 300)
-    currentTarget.style.transform = `translateX(${resisted}px)`
+    const resistance = raw / (1 + Math.abs(raw) / 300)
+    setEdgeSwipe(resistance)
+    // Useage in component:
+    // currentTarget.style.transform = `translateX(${resistance}px)`
   }
   
   const onPointerMove = event => {
