@@ -16,7 +16,7 @@ function useGesture({
     shouldClose: 0
   })
 
-  const data = useRef(null)
+  const data = useRef({})
   const timer = useRef(null)
   const moved = useRef(false)
   
@@ -28,7 +28,7 @@ function useGesture({
     if (id && currentTarget.hasPointerCapture(id)) {
       currentTarget.releasePointerCapture(id)
     }
-    data.current = null
+    data.current = {}
     longPressFired.current = false
   }
 
