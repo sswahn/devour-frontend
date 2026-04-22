@@ -44,9 +44,7 @@ function useGesture({
   }
 
   const longPressOnMove = (deltaX, deltaY) => {
-    if (Math.abs(deltaX) > moveThreshold || Math.abs(deltaY) > moveThreshold) {
-      longPressCancel()
-    }
+
   }
 
   const doubleTapOnUp = () => {
@@ -67,11 +65,7 @@ function useGesture({
     }
     const absDeltaX = Math.abs(deltaX)
     const absDeltaY = Math.abs(deltaY)
-    // Check for unintentional movement and return
-    const LOCK_THRESHOLD = 8
-    if (absDeltaX < LOCK_THRESHOLD && absDeltaY < LOCK_THRESHOLD) {
-      return
-    }
+
     // Get direction, if vertical (y) reset 
     if (!data.current.direction) {
       data.current.direction = absDeltaX > absDeltaY ? 'x' : 'y'
@@ -125,8 +119,10 @@ function useGesture({
     const deltaX = clientX - startX
     const deltaY = clientY - startY
 
+    if (Math.abs(deltaX) > moveThreshold || Math.abs(deltaY) > moveThreshold) {
+      return longPressCancel()
+    }
     edgeSwipeOnMove(activeSide, deltaX, deltaY, currentTarget)
-    longPressOnMove(deltaX, deltaY)
   }
 
   const onPointerUp = event => {
