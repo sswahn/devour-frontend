@@ -125,7 +125,7 @@ function useGesture({
     longPressCancel()
     const { clientX, pointerId, currentTarget } = event
     const { startX, activeSide, id, direction } = data.current
-    if (pointerId !== id) {
+    if (id && pointerId !== id) {
       return
     }
     // If longPress fired, gesture complete.
