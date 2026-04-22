@@ -14,6 +14,7 @@ function GoogleButton() {
   
   const onKeyDown = event => {
     if (event.key === 'Enter') {
+      event.preventDefault()
       action()
     }
   }
