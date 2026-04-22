@@ -88,11 +88,14 @@ function useGesture({
     const isCorrectDir = activeSide === 'left' ? deltaX > 0 : deltaX < 0
     const shouldClose = Math.abs(deltaX) > CLOSE_THRESHOLD && isCorrectDir
     if (shouldClose) {
-      setEdgeSwipeEnd(performance.now())
+      setEdgeSwipeEnd({
+        direction: activeSide,
+        shouldClose
+      })
     } 
     // Usage in component:
-    // if (edgeSwipeUp) closeOverlay()
-    // else, snap back by resetting css to:
+    // if (shouldClose) closeOverlay()
+    // else, snap back with reset:
     // overlayRef.current.style.transition = 'transform 0.2s ease'
     // overlayRef.current.style.transform = ''
   }
