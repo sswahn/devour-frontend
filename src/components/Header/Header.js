@@ -26,13 +26,11 @@ const Header = ({ openAuthentication, openDashboard }) => {
         
         <nav>
         {/* Needs desktop navigation in header (basically the mobile nav buttons, no camera, and a download option. */}
-        {session.isAuthenticated && (
+        {session.isAuthenticated && ( // && .isProUser &&
           <DashboardButton openDashboard={openDashboard} />
         )}
-        {session.isAuthenticated 
-          ? <Avatar username={session.username} image={null} />
-          : <LoginButton openAuthentication={openAuthentication} />
-        }
+        {/* should be not authed: !session... */}
+        {session.isAuthenticated && <LoginButton openAuthentication={openAuthentication} />}
         </nav>
       </div>
     </header>
