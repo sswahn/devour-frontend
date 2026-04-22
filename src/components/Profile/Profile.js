@@ -51,7 +51,7 @@ function Profile({ closeProfile }) {
 
   useEffect(() => {
     const element = overlayRef.current
-    if (edgeSwipeEnd.isFinal) {
+    if (edgeSwipeEnd.shouldClose) {
       // Close
       element.style.transform = `translateX(${element.offsetWidth}px)`
       // maybe a transition delay
