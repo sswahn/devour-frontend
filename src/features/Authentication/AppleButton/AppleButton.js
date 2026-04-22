@@ -14,6 +14,7 @@ function AppleButton() {
   
   const onKeyDown = event => {
     if (event.key === 'Enter') {
+      event.preventDefault()
       action()
     }
   }
