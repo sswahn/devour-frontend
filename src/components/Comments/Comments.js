@@ -1,6 +1,8 @@
 
 import styles from './Comments.module.css'
 
+// consider moving to features
+
 function Commets() {
 
   // Comments Form
@@ -11,7 +13,7 @@ function Commets() {
   }
 
   const onSubmit = event => {
-    
+    event.preventDefault()
   }
   
   return (
@@ -21,9 +23,9 @@ function Commets() {
         <button onClick={onClick} type="submit">Submit</button>
       </form>
       <div>
-        {data.comments.map(comment => 
+        {/* data.comments.map(comment => 
           <div key={comment.id}>{comment}</div>            
-        )}
+        ) */}
       </div>
     </section>
   )
