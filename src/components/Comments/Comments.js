@@ -14,9 +14,9 @@ function Commets() {
 
   const onSubmit = event => {
     event.preventDefault()
-    if (!comment.trim()) {
+    //if (!event.target.firstElementChild.value.trim()) {
       return
-    }
+    //}
   }
   
   return (
