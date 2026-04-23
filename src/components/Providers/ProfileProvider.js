@@ -9,7 +9,7 @@ function ProfileProvider({ children }) {
   const openProfile = useCallback(username => {
     setProfileUsername(username)
     setProfileIsOpen(true)
-  }, [username])
+  }, [])
   
   const closeProfile = useCallback(() => {
     setProfileIsOpen(false)
