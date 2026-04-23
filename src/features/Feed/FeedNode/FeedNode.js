@@ -73,24 +73,15 @@ function FeedNode({ item, index, count }) {
   // this tabIndex etc. breaks the natural flow of the page, header gets skipped...
   return (
     <article 
-     // onClick={doubleClick} 
       {...handlers}
-      // onPointerCancel={onPointerCancel}
       tabIndex={index} aria-posinset={index} aria-setsize={count}>
-      <header>
-      {/*
-        {isFullscreen && <closeButton overlay="video" close={closeFeed} />}
-        <Dropdown />
-
-      */}
-      </header>
+        <header>
+          <TopNav />
+        </header>
       <figure style={{ background: '#666', borderRadius: '10px', height: '100%', width: '100%' }}>
         {/* data.videoUrl && <video ref={ref} src={data.videoUrl} preload="metadata" muted playsInline loop /> */}
         {/* data.caption ?? <figcaption>{data.caption}</figcaption> */}
       </figure>
-      <footer>
-        // static captions, meta text, etc.
-      </footer>
       <SideNav doubleTap={doubleTap} longPress={longPress} />
     </article>
   )
