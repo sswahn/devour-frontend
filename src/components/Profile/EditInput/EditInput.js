@@ -2,10 +2,10 @@ import { useState } from 'react'
 import styles from './EditInput.module.css'
 
 function EditInput({ field, value }) {
-  const [value, setValue] = useState('')
+  const [inputValue, setInputValue] = useState('')
   
   const onChange = event => {
-    setValue(event.target.value)  
+    setInputValue(event.target.value)  
   }
   
   return (
