@@ -9,7 +9,7 @@ function EditInput({ field, value }) {
   }
   
   return (
-    <input className={styles.editInput} onChange={onChange} type="text' placeholder={value} aria-label={`${field} input`} />
+    <input className={styles.editInput} onChange={onChange} type="text" placeholder={value} aria-label={`${field} input`} />
   )
 }
 
