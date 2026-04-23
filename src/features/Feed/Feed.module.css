@@ -19,7 +19,7 @@
 }
 
 
-.feed article {
+.feed figure {
   contain: layout paint size;
   height: 100dvh;
   scroll-snap-align: start;
