@@ -9,6 +9,7 @@ import CloseButton from '../CloseButton/CloseButton'
 import Dropdown from '../Dropdown/Dropdown'
 import FollowButton from './FollowButton/FollowButton'
 import FollowStats from './FollowStats/FollowStats'
+import EditButton from './EditButton/EditButton'
 import styles from './Profile.module.css'
 
 // move to features
@@ -91,11 +92,25 @@ function Profile({ closeProfile }) {
         ]} />
       </nav>
       <header>
-        <img src="" alt={`{''}'s profile picture`} />
         <div>
-          <h1 id="username">Username</h1>
-          <address>New York, NY</address>
-           {/* <p id="biography">Some biographical information about Username.</p> */}
+          <img src={profile.image} alt={`${profile.username}'s profile picture`} />
+          {<EditButton info="profile" current={profile.image} />}
+        </div>
+        <div>
+          <div>
+            <h1 id="username">{profile.username}</h1>
+            {<EditButton info="username" current={profile.username} />}
+          </div>
+          <div>
+            <address>New York, NY</address>
+            {<EditButton info="location" current={profile.location} />}
+          </div>
+          {/* 
+          <div>
+            <p id="biography">Some biographical information about Username.</p>
+            {<EditButton info="biography" current={profile.biography} />
+          </div>   
+          */}
         </div>
       </header>
   
