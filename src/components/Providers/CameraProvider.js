@@ -6,7 +6,7 @@ function CameraProvider({ children }) {
   const [state, setState] = useState(false)
 
   return (
-    <CameraContext.Provider value={state, setState}>
+    <CameraContext.Provider value={{ state, setState }}>
       {children}
     </CameraContext.Provider>
   )
