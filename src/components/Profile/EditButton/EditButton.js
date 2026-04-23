@@ -3,10 +3,13 @@ import server from '../../../utilities/server'
 import EditIcon from '../../Icons/EditIcon/EditIcon'
 import styles from './EditButton.module.css'
 
-function EditButton({ info }) {
+function EditButton({ field }) {
 
   const action = () => {
-    // submit updated info to server
+    // so the Edit button should just open the EditInput field
+    // (or however image gets edited)
+    // the Input will make the request
+    // setEditInputIsOpen(true)
   }
 
   const onClick = event => {
@@ -22,7 +25,7 @@ function EditButton({ info }) {
   }
   
   return (
-    <button className={styles.editButton} onClick={onClick} onKeyDown={onKeyDown} type="button" aria-label={`edit ${info}`}>
+    <button className={styles.editButton} onClick={onClick} onKeyDown={onKeyDown} type="button" aria-label={`edit ${field}`}>
       <EditIcon />
     </button>
   )
