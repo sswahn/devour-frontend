@@ -15,6 +15,10 @@ function LoginForm() {
   
   const onSubmit = event => {
     event.preventDefault()
+    const formData = new FormData(event.target)
+    const request = {
+      username: formData.get('username')
+    }
     // initiate auth call to backend
     // response returns challenge
     // challenge is signed by browser/device:
@@ -28,7 +32,7 @@ function LoginForm() {
   return (
     <form className={styles.loginForm} onSubmit={onSubmit} aria-label="login form">
       <label htmlFor="username">Email or username:</label>
-      <input id="username" type="text" required autoComplete="username webauthn" />
+      <input id="username" name="username" type="text" required autoComplete="username webauthn" />
       <button onClick={onClick} type="submit">Sign In</button>
     </form>
   )
