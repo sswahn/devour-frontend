@@ -13,7 +13,7 @@ import SpeechRecognitionButton from './SpeechRecognitionButton/SpeechRecognition
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 import styles from './SearchForm.module.css'
 
-function SearchForm({ closeSearch }) {
+function Search({ closeSearch }) {
   const { pop } = useFocusStack()
   const {overlayRef, focusRef} = useFocusTrap()
   const swipeToClose = useSwipeToClose()
@@ -119,4 +119,4 @@ function SearchForm({ closeSearch }) {
   )
 }
 
-export default SearchForm
+export default Search
