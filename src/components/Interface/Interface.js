@@ -11,7 +11,6 @@ function Interface() {
   const [searchIsOpen, setSearchIsOpen] = useState(false)
   const [cameraIsOpen, setCameraIsOpen] = useState(false)
   const [notificationsIsOpen, setNotificationsIsOpen] = useState(false)
-  const [profileIsOpen, setProfileIsOpen] = useState(false)
   
   const openAuthentication = () => setAuthenticationIsOpen(true)
   const closeAuthentication = () => setAuthenticationIsOpen(false)
@@ -28,9 +27,6 @@ function Interface() {
   const openNotifications = () => setNotificationsIsOpen(true)
   const closeNotifications = () => setNotificationsIsOpen(false)
 
-  const openProfile = () => setProfileIsOpen(true)
-  const closeProfile = () => setProfileIsOpen(false)
-
   return (
     <>
       <Header 
@@ -42,7 +38,6 @@ function Interface() {
         openSearch={openSearch}
         openCamera={openCamera}
         openNotifications={openNotifications}
-        openProfile={openProfile}
       />
       <Suspense fallback={<LoadingSpinner />}>
         <Overlays 
@@ -51,12 +46,10 @@ function Interface() {
           searchIsOpen={searchIsOpen} 
           cameraIsOpen={cameraIsOpen}
           notificationsIsOpen={notificationsIsOpen}
-          profileIsOpen={profileIsOpen}
           closeAuthentication={closeAuthentication}
           closeSearch={closeSearch}
           closeCamera={closeCamera}
           closeNotifications={closeNotifications}
-          closeProfile={closeProfile}
         />
       </Suspense>
     </>
