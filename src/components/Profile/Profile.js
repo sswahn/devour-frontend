@@ -11,6 +11,8 @@ import FollowButton from './FollowButton/FollowButton'
 import FollowStats from './FollowStats/FollowStats'
 import styles from './Profile.module.css'
 
+// move to features
+
 function Profile({ closeProfile }) {
   const { pop } = useFocusStack()
   const { overlayRef, focusRef } = useFocusTrap()
