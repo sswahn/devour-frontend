@@ -221,6 +221,24 @@
 }
 
 
+/*!**********************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Feed/TopNav/TopNav.module.css ***!
+  \**********************************************************************************************/
+/* Feed Node Top Nav */
+
+.RDylejBr3Rzb8YpYfiDx {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 200;
+  
+  border: 1px dashed red;
+}
+
 /*!******************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Feed/LikeButton/LikeButton.module.css ***!
   \******************************************************************************************************/
