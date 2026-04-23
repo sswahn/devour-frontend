@@ -72,12 +72,10 @@ function FeedNode({ item, index, count }) {
   
   // this tabIndex etc. breaks the natural flow of the page, header gets skipped...
   return (
-    <article 
+    <article  // consider using figure instead of article.
       {...handlers}
       tabIndex={index} aria-posinset={index} aria-setsize={count}>
-        <header>
-          <TopNav />
-        </header>
+      <TopNav />
       <figure style={{ background: '#666', borderRadius: '10px', height: '100%', width: '100%' }}>
         {/* data.videoUrl && <video ref={ref} src={data.videoUrl} preload="metadata" muted playsInline loop /> */}
         {/* data.caption ?? <figcaption>{data.caption}</figcaption> */}
