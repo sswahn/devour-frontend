@@ -1,5 +1,7 @@
 import { useState, useRef } from 'react'
 import useGesture from '../../../hooks/useGesture'
+import CloseButton from '../../../components/CloseButton/CloseButton'
+import Dropdown from '../../../components/Dropdown/Dropdown'
 import SideNav from '../SideNav/SideNav'
 
 function FeedNode({ item, index, count }) {
@@ -78,10 +80,9 @@ function FeedNode({ item, index, count }) {
       tabIndex={index} aria-posinset={index} aria-setsize={count}>
       <header>
       {/*
-        <AuthorButton />
-        <LocationButton />
+        {isFullscreen && <closeButton overlay="video" close={closeFeed} />}
+        <Dropdown />
 
-        Change 'data' back to 'item'
       */}
       </header>
       <figure style={{ background: '#666', borderRadius: '10px', height: '100%', width: '100%' }}>
