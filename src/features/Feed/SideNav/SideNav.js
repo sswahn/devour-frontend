@@ -7,7 +7,7 @@ import styles from './SideNav.module.css'
 function SideNav({ doubleTap, longPress }) {
   
   return (
-    <nav className={styles.sideNav} aria-label="video actions'>
+    <nav className={styles.sideNav} aria-label="video actions">
       <LikeButton doubleTap={doubleTap} />
       <CommentsButton />
       <ShareButton longPress={longPress} />
