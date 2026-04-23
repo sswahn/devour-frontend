@@ -19,7 +19,12 @@ function Commets() {
   return (
     <section>
       <form className={styles.comments} onSubmit={onSubmit} aria-label="comment form">
-        <textarea></textarea>
+        <textarea 
+          maxLength="288"
+          pattern="[^<>\(\)\{\}\[\]\\\/\|;=~%^]+"
+          title="Special characters are not allowed."
+          spellCheck="true">
+          </textarea>
         <button onClick={onClick} type="submit">Submit</button>
       </form>
       <div>
