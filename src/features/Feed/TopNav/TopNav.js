@@ -4,10 +4,10 @@ import styles from './TopNav.module.css'
 
 function TopNav() {
   return (
-    <div className={styles.topNav}>
+    <nav className={styles.topNav} aria-label="top menu">
       {/* isFullscreen && <CloseButton overlay="feed overlay" close={closeFeed} /> */}
       <Dropdown items={[1,2,3]} />
-    </div>
+    </nav>
   )
 }
 
