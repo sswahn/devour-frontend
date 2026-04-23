@@ -94,16 +94,16 @@ function Profile({ closeProfile }) {
       <header>
         <div>
           <img src={profile.image} alt={`${profile.username}'s profile picture`} />
-          {<EditButton info="profile" current={profile.image} />}
+          {<EditButton field="profile" value={profile.image} />}
         </div>
         <div>
           <div>
             <h1 id="username">{profile.username}</h1>
-            {<EditButton info="username" current={profile.username} />}
+            {<EditButton field="username" value={profile.username} />}
           </div>
           <div>
             <address>New York, NY</address>
-            {<EditButton info="location" current={profile.location} />}
+            {<EditButton field="location" value={profile.location} />}
           </div>
           {/* 
           <div>
