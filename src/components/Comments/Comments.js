@@ -14,6 +14,13 @@ function Commets() {
 
   const onSubmit = event => {
     event.preventDefault()
+    const formData = new FormData(event.target)
+    const request = {
+      comment: formData.get('comment')
+    }
+
+    console.log('request: ', request)
+    
     //if (!event.target.firstElementChild.value.trim()) {
       return
     //}
@@ -23,6 +30,7 @@ function Commets() {
     <section>
       <form className={styles.comments} onSubmit={onSubmit} aria-label="comment form">
         <textarea 
+          name={comment}
           maxLength="288"
           pattern="[^<>\(\)\{\}\[\]\\\/\|;=~%^]+"
           title="Special characters are not allowed."
