@@ -3,13 +3,13 @@ import server from '../../../utilities/server'
 import EditIcon from '../../Icons/EditIcon/EditIcon'
 import styles from './EditButton.module.css'
 
-function EditButton({ field }) {
+function EditButton({ editorIsOpen, setEditorIsOpen }) {
 
   const action = () => {
-    // so the Edit button should just open the EditInput field
-    // (or however image gets edited)
-    // the Input will make the request
-    // setEditInputIsOpen(true)
+    // display input
+    // toggle state between
+    // edit/submit
+    setEditorIsOpen(prev => !prev)
   }
 
   const onClick = event => {
@@ -23,11 +23,17 @@ function EditButton({ field }) {
       action()
     }
   }
+
+  // move buttons into their own components.
   
   return (
-    <button className={styles.editButton} onClick={onClick} onKeyDown={onKeyDown} type="button" aria-label={`edit ${field}`}>
-      <EditIcon />
-    </button>
+    {editorIsOpen 
+    ?  <button className={styles.editButton} onClick={onClick} onKeyDown={onKeyDown} type="button" aria-label={`edit ${field}`}>
+        <EditIcon />
+      </button>
+    : <button className={styles.editButton} onClick={onClick} onKeyDown={onKeyDown} type="button" aria-label={`submit new ${field}`}>
+        {/* <SubmitIcon /> */}
+      </button>
   )
 }
 
