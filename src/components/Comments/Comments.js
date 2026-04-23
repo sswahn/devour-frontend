@@ -23,7 +23,9 @@ function Commets() {
           maxLength="288"
           pattern="[^<>\(\)\{\}\[\]\\\/\|;=~%^]+"
           title="Special characters are not allowed."
-          spellCheck="true">
+          spellCheck="true"
+          required
+          aria-label="comment input">
           </textarea>
         <button onClick={onClick} type="submit">Submit</button>
       </form>
