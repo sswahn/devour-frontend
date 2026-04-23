@@ -23,7 +23,7 @@
   width: 100%;
 }
 
-.profile header div {
+.profile header > div {
   padding: 0 16px;
 }
 
