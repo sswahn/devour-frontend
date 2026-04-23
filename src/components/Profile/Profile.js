@@ -3,6 +3,7 @@ import useFocusStack from '../../hooks/useFocusStack'
 import useFocusTrap from '../../hooks/useFocusTrap'
 import useGesture from '../../hooks/useGesture'
 import useSwipeToClose from '../../hooks/useSwipeToClose'
+import useSession from '../../hooks/useSession'
 import useProfile from '../../hooks/useProfile'
 import CloseButton from '../CloseButton/CloseButton'
 import Dropdown from '../Dropdown/Dropdown'
@@ -15,9 +16,10 @@ function Profile({ closeProfile }) {
   const { overlayRef, focusRef } = useFocusTrap()
   const { edgeSwipe, handlers } = useGesture()
   const { profileUsername } = useProfile() 
-  // server request profile of profileUsername if not logged in user
-  // probably need useSession to compare logged in user to profileUsername
-  
+
+  // profileUsername used to render profile
+  // session.username used to edit profile
+
   const swipeToClose = useSwipeToClose()
 
   const action = () => {
