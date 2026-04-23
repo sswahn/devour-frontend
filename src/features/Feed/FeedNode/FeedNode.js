@@ -1,7 +1,6 @@
 import { useState, useRef } from 'react'
 import useGesture from '../../../hooks/useGesture'
-import CloseButton from '../../../components/CloseButton/CloseButton'
-import Dropdown from '../../../components/Dropdown/Dropdown'
+import TopNav from '../TopNav/TopNav'
 import SideNav from '../SideNav/SideNav'
 
 function FeedNode({ item, index, count }) {
