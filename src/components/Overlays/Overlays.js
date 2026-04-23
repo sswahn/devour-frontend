@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { FocusTrapProvider } from '../Providers/FocusTrapProvider'
-import useProfile from '../../hooks/useProfile'
 import Authentication from '../../features/Authentication/Authentication'
 import Dashboard from '../Dashboard/Dashboard'
 import SearchForm from '../SearchForm/SearchForm'
@@ -15,14 +14,14 @@ function Overlays({
   searchIsOpen, 
   cameraIsOpen, 
   notificationsIsOpen, 
+  profileIsOpen,
   closeAuthentication,
   closeDashboard,
   closeSearch, 
   closeCamera, 
-  closeNotifications 
+  closeNotifications,
+  closeProfile
 }) {
-
-  const { profileIsOpen } = useProfile()
   
   return createPortal(
     <FocusTrapProvider>
@@ -31,7 +30,7 @@ function Overlays({
       {searchIsOpen && <SearchForm closeSearch={closeSearch} />}
       {cameraIsOpen && <Camera closeCamera={closeCamera} />}
       {notificationsIsOpen && <Notifications closeNotifications={closeNotifications} />}
-      {profileIsOpen && <Profile />}
+      {profileIsOpen && <Profile closeProfile={closeProfile} />}
     </FocusTrapProvider>, 
     document.getElementById('portal')
   )
