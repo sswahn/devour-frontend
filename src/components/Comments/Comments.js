@@ -1,10 +1,10 @@
-
+import { config } from '../../config'
+import server from '../../utilities/server'
 import styles from './Comments.module.css'
 
 // consider moving to features
 
 function Commets() {
-
   // Comments Form
   // Comments Feed
 
@@ -12,8 +12,11 @@ function Commets() {
     navigator.vibrate?.(50)
   }
 
-  const onSubmit = event => {
+  const onSubmit = async event => {
     event.preventDefault()
+    
+    // perform basic validation, at least .trim()
+    
     const formData = new FormData(event.target)
     const request = {
       comment: formData.get('comment')
@@ -21,9 +24,9 @@ function Commets() {
 
     console.log('request: ', request)
     
-    //if (!event.target.firstElementChild.value.trim()) {
-      return
-    //}
+    // const response = await server.post(config.api.comment, request)
+    
+    // update feed.
   }
   
   return (
