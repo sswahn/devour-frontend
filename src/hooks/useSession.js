@@ -1,13 +1,9 @@
 import { useContext } from 'react'
-import { GetSessionContext, SetSessionContext } from '../components/Providers/SessionProvider'
+import { SessionContext } from '../components/Providers/SessionProvider'
 
 function useSession() {
-  const session = useContext(GetSessionContext)
-  const setSession = useContext(SetSessionContext)
-  
-  // Note: Even if you return an object here, 
-  // the component calling this hook only re-renders
-  // if the SPECIFIC context it "touches" changes.
+  const { session, setSession } = useContext(SessionContext)
+ 
   return { session, setSession }
 }
 
