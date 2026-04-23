@@ -14,7 +14,7 @@ function Profile({ closeProfile }) {
   const { pop } = useFocusStack()
   const { overlayRef, focusRef } = useFocusTrap()
   const { edgeSwipe, handlers } = useGesture()
-  const { profileUsername, closeProfile } = useProfile() 
+  const { profileUsername } = useProfile() 
   // server request profile of profileUsername if not logged in user
   // probably need useSession to compare logged in user to profileUsername
   
