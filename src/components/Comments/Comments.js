@@ -38,7 +38,7 @@ function Commets() {
           required
           aria-label="comment input">
           </textarea>
-        <button onClick={onClick} type="submit">Submit</button>
+        <button onClick={onClick} type="submit" aria-label="submit comment">Submit</button>
       </form>
       <div>
         {/* data.comments.map(comment => 
