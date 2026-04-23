@@ -3,7 +3,7 @@ import { useState, useCallback, createContext } from 'react'
 const ProfileContext = createContext(null)
 
 function ProfileProvider({ children }) {
-  const [profileUsername, setProfileUsername] = useState(false)
+  const [profileUsername, setProfileUsername] = useState('')
   const [profileIsOpen, setProfileIsOpen] = useState(false)
 
   const openProfile = useCallback(username => {
