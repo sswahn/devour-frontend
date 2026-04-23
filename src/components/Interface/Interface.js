@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, Suspense, lazy } from 'react'
+import useProfile from '../../hooks/useProfile'
 import Header from '../Header/Header'
 import Main from '../Main/Main'
 import MobileNav from '../MobileNav/MobileNav'
@@ -6,6 +7,7 @@ import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 const Overlays = lazy(() => import('../Overlays/Overlays'))
 
 function Interface() {
+  const { profileIsOpen, openProfile, closeProfile } = useProfile()
   const [authenticationIsOpen, setAuthenticationIsOpen] = useState(false)
   const [dashboardIsOpen, setDashboardIsOpen] = useState(false)
   const [searchIsOpen, setSearchIsOpen] = useState(false)
@@ -38,6 +40,7 @@ function Interface() {
         openSearch={openSearch}
         openCamera={openCamera}
         openNotifications={openNotifications}
+        openProfile={openProfile}
       />
       <Suspense fallback={<LoadingSpinner />}>
         <Overlays 
@@ -46,10 +49,12 @@ function Interface() {
           searchIsOpen={searchIsOpen} 
           cameraIsOpen={cameraIsOpen}
           notificationsIsOpen={notificationsIsOpen}
+          profileIsOpen={profileIsOpen}
           closeAuthentication={closeAuthentication}
           closeSearch={closeSearch}
           closeCamera={closeCamera}
           closeNotifications={closeNotifications}
+          closeProfile={closeProfile}
         />
       </Suspense>
     </>
