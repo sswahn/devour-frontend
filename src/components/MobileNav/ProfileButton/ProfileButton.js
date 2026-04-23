@@ -1,14 +1,12 @@
 import { useRef } from 'react'
 import useSession from '../../../hooks/useSession'
-import useProfile from '../../../hooks/useProfile'
 import useFocusStack from '../../../hooks/useFocusStack'
 import UserIcon from '../../Icons/UserIcon/UserIcon'
 import styles from './ProfileButton.module.css'
 
-function ProfileButton() {
+function ProfileButton({ openProfile }) {
   const buttonRef = useRef(null)
   const { session } = useSession()
-  const { openProfile } = useProfile()
   const { push } = useFocusStack()
   
   const action = async () => {
