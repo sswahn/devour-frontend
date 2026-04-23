@@ -1,18 +1,25 @@
-import { useState, useMemo, useCallback, createContext } from 'react'
+import { useState, useCallback, createContext } from 'react'
 
-const GetProfileContext = createContext(null)
-const SetProfileContext = createContext(null)
+const ProfileContext = createContext(null)
 
 function ProfileProvider({ children }) {
-  const [username, setUsername] = useState(false)
+  const [profileUsername, setProfileUsername] = useState(false)
+  const [profileIsOpen, setProfileIsOpen] = useState(false)
 
+  const openProfile = useCallback(username => {
+    setProfileUsername(username)
+    setProfileIsOpen(true)
+  }, [username])
+  
+  const closeProfile = useCallback(() => {
+    setProfileIsOpen(false)
+  }, [])
+  
   return (
-    <GetProfileContext.Provider value={username}>
-      <SetProfileContext.Provider value={setUsername}>
-        {children}
-      </SetProfileContext.Provider>
-    </GetProfileContext.Provider>
+    <ProfileContext.Provider value={{ profileUsername, profileIsOpen, openProfile, closeProfile }}>
+      {children}
+    </ProfileContext.Provider>
   )
 }
 
-export { GetProfileContext, SetProfileContext, ProfileProvider }
+export { ProfileContext, ProfileProvider }
