@@ -5,7 +5,7 @@ import useFocusTrap from '../../hooks/useFocusTrap'
 import Dropdown from '../../components/Dropdown/Dropdown'
 import styles from './Notifications.module.css'
 
-import Avatar from '../Avatar/Avatar'
+import Avatar from '../../components/Avatar/Avatar'
 
 function Notifications({ closeNotifications }) {
   const { pop } = useFocusStack()
