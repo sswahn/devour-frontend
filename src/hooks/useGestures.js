@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import useSwipe from './useSwipe'
 
-function useGesture() {
+function useGestures() {
   const id = useRef(null)
   const {
     onSwipeDown,
@@ -63,4 +63,4 @@ function useGesture() {
   }
 }
 
-export default useGesture
+export default useGestures
