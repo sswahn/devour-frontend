@@ -13,9 +13,10 @@ import SpeechRecognitionButton from './SpeechRecognitionButton/SpeechRecognition
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner'
 import styles from './Search.module.css'
 
-function Search({ closeSearch }) {
+function Search() {
   const { pop } = useFocusStack()
   const {overlayRef, focusRef} = useFocusTrap()
+  const { closeOverlay } = useOverlay()
   const swipeToClose = useSwipeToClose()
   const [searchValue, setSearchValue] = useState('')
   const [searchResults, setSearchResults] = useState([])
@@ -61,7 +62,7 @@ function Search({ closeSearch }) {
   }
 
   const action = () => {
-    closeSearch()
+    closeOverlay(overlays.search)
     pop()
   }
 
@@ -90,7 +91,7 @@ function Search({ closeSearch }) {
   return (
     <search id={overlays.search} className={styles.search} ref={focusRef} onKeyDown={onKeyDown} role="dialog" aria-modal="true">
       <nav>
-        <CloseButton overlay={overlays.search} />
+        <CloseButton overlay={overlays.search} close={closeOverlay} />
         <Dropdown items={[
           { text: 'alert message', method: () => alert('dropdown item clicked.') },
           { text: 'console log message', method: () => console.log('dropdown item clicked.') }
