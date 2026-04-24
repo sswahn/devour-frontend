@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import { overlays } from '../../config'
 import useFocusStack from '../../../hooks/useFocusStack'
 import PlusIcon from '../../Icons/PlusIcon/PlusIcon'
 import styles from './CameraButton.module.css'
@@ -13,7 +14,7 @@ function CameraButton({ openCamera }) {
     // await document.getElementById('portal').requestFullscreen()
     // await screen.orientation.lock('portrait')
     push(buttonRef.current)
-    openCamera()
+    openCamera(overlays.camera)
   }
  
   const onClick = event => {
