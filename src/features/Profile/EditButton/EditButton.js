@@ -4,7 +4,7 @@ import server from '../../../utilities/server'
 import EditIcon from '../../../components/Icons/EditIcon/EditIcon'
 import styles from './EditButton.module.css'
 
-function EditButton({ editorIsOpen, setEditorIsOpen }) {
+function EditButton({ field, editorIsOpen, setEditorIsOpen }) {
  // const [editorIsOpen, setEditorIsOpen] = useState()
   
   const action = () => {
@@ -30,7 +30,7 @@ function EditButton({ editorIsOpen, setEditorIsOpen }) {
   
   return (
     <>
-      {editorIsOpen 
+      {editorIsOpen // this logic goes in the parent like so: editorIsOpen ? <Edit /> : <Submit />
         ?  <button className={styles.editButton} onClick={onClick} onKeyDown={onKeyDown} type="button" aria-label={`edit ${field}`}>
             <EditIcon />
           </button>
