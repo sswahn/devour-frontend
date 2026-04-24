@@ -1,7 +1,7 @@
 import { useRef, useEffect, memo } from 'react'
 import useSpeechRecognition from '../../../hooks/useSpeechRecognition'
 import useSpeechChime from '../../../hooks/useSpeechChime'
-import MicrophoneIcon from '../../Icons/MicrophoneIcon/MicrophoneIcon'
+import MicrophoneIcon from '../../../components/Icons/MicrophoneIcon/MicrophoneIcon'
 import styles from './SpeechRecognitionButton.module.css'
 
 /*
