@@ -25,9 +25,6 @@ function useGestures() {
     }
 
     const swipeMove = onSwipeMove(event)
-
-    console.log('onGestureMove, swipeMove data: ', JSON.stringify(swipeMove))
-    
     return { ...swipeMove }
   }
   
