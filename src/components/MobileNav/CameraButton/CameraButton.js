@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { overlays } from '../../config'
+import { overlays } from '../../../config'
 import useFocusStack from '../../../hooks/useFocusStack'
 import PlusIcon from '../../Icons/PlusIcon/PlusIcon'
 import styles from './CameraButton.module.css'
