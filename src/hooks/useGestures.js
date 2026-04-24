@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useCallback } from 'react'
 import useSwipe from './useSwipe'
 
 function useGestures() {
@@ -10,15 +10,15 @@ function useGestures() {
     onSwipeCancel
   } = useSwipe()
   
-  const onGestureDown = event => {
+  const onGestureDown = useCallback(event => {
     const { currentTarget, pointerId } = event
     currentTarget.setPointerCapture(pointerId)
     id.current = pointerId
 
     onSwipeDown(event)
-  }
+  }, [])
   
-  const onGestureMove = event => {
+  const onGestureMove = useCallback(event => {
     const { pointerId } = event
     if (id?.current !== pointerId) { 
       return
@@ -26,9 +26,9 @@ function useGestures() {
 
     const swipeMove = onSwipeMove(event)
     return { ...swipeMove }
-  }
+  }, [])
   
-  const onGestureUp = event => {
+  const onGestureUp = useCallback(event => {
     
     console.log('onGestureUp')
     
@@ -59,9 +59,9 @@ function useGestures() {
 
     console.log('onGestureUp return data: ', JSON.stringify(swipeUp))
     return { ...swipeUp }
-  }
+  }, [])
   
-  const onGestureCancel = event => {
+  const onGestureCancel = useCallback(event => {
 
     console.log('onGestureCancel')
     
@@ -75,7 +75,7 @@ function useGestures() {
     }
     
     onSwipeCancel()
-  }
+  }, [])
 
   return {
     onGestureDown,
