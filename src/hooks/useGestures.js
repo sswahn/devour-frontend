@@ -20,7 +20,7 @@ function useGestures() {
   
   const onGestureMove = event => {
     const { pointerId } = event
-    if (id.current !== pointerId) { 
+    if (id?.current !== pointerId) { 
       return
     }
 
@@ -30,7 +30,7 @@ function useGestures() {
   
   const onGestureUp = event => {
     const { pointerId } = event
-    const id = id.current
+    const id = id?.current
     if (id !== pointerId) { 
       return
     }
@@ -44,7 +44,7 @@ function useGestures() {
   
   const onGestureCancel = event => {
     const { pointerId } = event
-    const id = id.current
+    const id = id?.current
     if (id !== pointerId) { 
       return
     }
