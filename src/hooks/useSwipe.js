@@ -1,9 +1,9 @@
-import { useRef } from 'react'
+import { useRef, useCallback } from 'react'
 
 function useSwipe({ swipeThreshold = 10, edgeThreshold = 35 } = {}) {
   const data = useRef({})
   
-  const onSwipeDown = event => {
+  const onSwipeDown = useCallback(event => {
     const { clientX, clientY } = event
     const width = window.innerWidth
     const isLeft = clientX < edgeThreshold
@@ -14,9 +14,9 @@ function useSwipe({ swipeThreshold = 10, edgeThreshold = 35 } = {}) {
       direction: null,
       edge: isLeft ? 'left' : 'right'
     }
-  }
+  }, [])
   
-  const onSwipeMove = event => {
+  const onSwipeMove = useCallback(event => {
     if (!Object.keys(data?.current || {}).length) {
       return
     }
@@ -31,9 +31,9 @@ function useSwipe({ swipeThreshold = 10, edgeThreshold = 35 } = {}) {
       data.current.direction = absX > absY ? 'x' : 'y'
     }
     return { deltaX, deltaY, edge, direction: data.current.direction }
-  }
+  }, [])
   
-  const onSwipeUp = event => {
+  const onSwipeUp = useCallback(event => {
 
     console.log('onSwipeUp')
     
@@ -48,11 +48,11 @@ function useSwipe({ swipeThreshold = 10, edgeThreshold = 35 } = {}) {
     console.log('onSwipeUp return data: ', JSON.stringify({ deltaX, deltaY, edge, direction }))
     
     return { deltaX, deltaY, edge, direction }
-  }
+  }, [])
   
-  const onSwipeCancel = event => {
+  const onSwipeCancel = useCallback(event => {
     data.current = {}
-  }
+  }, [])
 
   return {
     onSwipeDown,
