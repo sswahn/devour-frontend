@@ -1,7 +1,14 @@
 import { useRef } from 'react'
+import useSwipe from './useSwipe'
 
 function useGesture() {
   const id = useRef(null)
+  const {
+    onGestureDown,
+    onGestureMove,
+    onGestureUp,
+    onGestureCancel
+  } = useSwipe()
 
   const reset = currentTarget => {
     const id = id.current
