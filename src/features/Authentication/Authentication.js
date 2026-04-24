@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { overlays } from '../../config'
+import useOverlay from '../../hooks/useOverlay'
 import useFocusStack from '../../hooks/useFocusStack'
 import useFocusTrap from '../../hooks/useFocusTrap'
 import useSwipeToClose from '../../hooks/useSwipeToClose'
@@ -42,7 +43,7 @@ function Authentication() {
   
   return (
     <section id={overlays.authentication} className={styles.authentication} ref={focusRef} onKeyDown={onKeyDown} aria-label="user authentication">
-      <CloseButton overlay={overlays.profile} closeOverlay={closeOverlay} pop={pop} />
+      <CloseButton overlay={overlays.authentication} closeOverlay={closeOverlay} pop={pop} />
       <LoginForm />
       <RegistrationButton />
       <GoogleButton />
