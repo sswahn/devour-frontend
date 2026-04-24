@@ -1,10 +1,10 @@
 import { useState, useRef } from 'react'
-import useGesture from '../../../hooks/useGesture'
+import useGestures from '../../../hooks/useGestures'
 import TopNav from '../TopNav/TopNav'
 import SideNav from '../SideNav/SideNav'
 
 function FeedNode({ item, index, count }) {
-  const {doubleTap, longPress, handlers} = useGesture()
+  // const {doubleTap, longPress, handlers} = useGesture()
   /*
   const [doubleTap, setDoubleTap] = useState(0)
   const [longPress, setLongPress] = useState(0)
@@ -74,7 +74,6 @@ function FeedNode({ item, index, count }) {
   return (
     <figure 
       style={{ background: '#666', borderRadius: '10px', height: '100%', width: '100%' }}
-      {...handlers} 
       tabIndex={index} aria-posinset={index} aria-setsize={count}>
       <TopNav />
         
