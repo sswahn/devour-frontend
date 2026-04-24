@@ -7,7 +7,8 @@ import Sentinel from './Sentinel/Sentinel'
 import styles from './Feed.module.css'
 
 function Feed() {
-
+  const [data, setData] = useState([])
+  
   return (
     <section className={styles.feed} role="feed">
     
