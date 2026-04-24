@@ -29,46 +29,30 @@ function useGestures() {
   }, [])
   
   const onGestureUp = useCallback(event => {
-    const { pointerId } = event
-
-    console.log('onGestureUp')
-    console.log('id?.current: ', id?.current) // undefined
-    
+    const { pointerId, currentTarget } = event
     if (id?.current !== pointerId) { 
       return console.log('failed this check: id !== pointerId', id?.current !== pointerId)
     }
-
-    console.log('fixed: past initial condition.')
-    
     if (currentTarget.hasPointerCapture(id.current)) {
-      console.log('failed this check: currentTarget.hasPointerCapture(id)')
       currentTarget.releasePointerCapture(id.current)
-    }
-
-    console.log('past second condition.')
-
-    
+    }    
     
     const swipeUp = onSwipeUp(event)
 
     console.log('onGestureUp return data: ', JSON.stringify(swipeUp))
+    
     return { ...swipeUp }
   }, [])
   
   const onGestureCancel = useCallback(event => {
-
-    console.log('onGestureCancel')
-    
-    const { pointerId } = event
-
+    const { pointerId, currentTarget } = event
     if (id?.current !== pointerId) { 
       return
     }
     if (currentTarget.hasPointerCapture(id.current)) {
       currentTarget.releasePointerCapture(id.current)
     }
-    
-    onSwipeCancel()
+    onSwipeCancel(event)
   }, [])
 
   return {
