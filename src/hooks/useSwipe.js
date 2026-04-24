@@ -26,10 +26,8 @@ function useSwipe({ swipeThreshold = 10, edgeThreshold = 35 } = {}) {
     const deltaY = clientY - startY
     const absX = Math.abs(deltaX)
     const absY = Math.abs(deltaY)
-    if (absX < swipeThreshold && absY < swipeThreshold) {    // Is there a vaild movement
-      return
-    }
-    if (!data.current.direction) {                           // Determine the dominant axis of the movement
+    // Determine the dominant axis of the movement:
+    if (!data.current.direction) {
       data.current.direction = absX > absY ? 'x' : 'y'
     }
     return { deltaX, deltaY, edge, direction: data.current.direction }
