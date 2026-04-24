@@ -1,21 +1,42 @@
-
+import { useRef } from 'react'
 
 function useGesture() {
+  const id = useRef(null)
 
+  const reset = currentTarget => {
+    const id = id.current
+    if (currentTarget.hasPointerCapture(id)) {
+      currentTarget.releasePointerCapture(id)
+    }
+    id.current = null
+  }
+  
   const onGestureDown = event => {
+    const { currentTarget, pointerId } = event
+    currentTarget.setPointerCapture(pointerId)
+
     
   }
   
   const onGestureMove = event => {
-    
+    const { pointerId } = event
+    if (id.current !== pointerId) { 
+      return
+    }
   }
   
   const onGestureUp = event => {
-    
+    const { pointerId } = event
+    if (id.current !== pointerId) { 
+      return
+    }
   }
   
   const onGestureCancel = event => {
-    
+    const { pointerId } = event
+    if (id.current !== pointerId) { 
+      return
+    }
   }
 
   return {
