@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { overlays } from '../../config'
 import useFocusStack from '../../hooks/useFocusStack'
 import useFocusTrap from '../../hooks/useFocusTrap'
-import EllipsisVerticalIcon from '../Icons/EllipsisVerticalIcon/EllipsisVerticalIcon'
+import Dropdown from '../../components/Dropdown/Dropdown'
 import styles from './Notifications.module.css'
 
 import Avatar from '../Avatar/Avatar'
@@ -185,9 +185,7 @@ function Notifications({ closeNotifications }) {
                 </div>
                 <div>{notification.text}</div>
               </div>
-              <button onClick={handleDropDown} type="button" aria-label="dropdown">
-                <EllipsisVerticalIcon />
-              </button>
+              <Dropdown />
             </li>                                                           
           )}
         </ul>
