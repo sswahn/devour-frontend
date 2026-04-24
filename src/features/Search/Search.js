@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { overlays, apis } from '../../config'
+import useOverlay from '../../hooks/useOverlay'
 import useFocusStack from '../../hooks/useFocusStack'
 import useFocusTrap from '../../hooks/useFocusTrap'
 import useSwipeToClose from '../../hooks/useSwipeToClose'
