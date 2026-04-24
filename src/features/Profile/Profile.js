@@ -50,6 +50,7 @@ function Profile() {
 
   const onPointerDown = event => {
     onGestureDown(event)
+    event.currentTarget.style.transition = 'none' // disable snap back
   }
   
   const onPointerMove = event => {
