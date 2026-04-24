@@ -11,13 +11,14 @@ import GoogleButton from './GoogleButton/GoogleButton'
 import AppleButton from './AppleButton/AppleButton'
 import styles from './Authentication.module.css'
 
-function Authentication({ closeAuthentication }) {
+function Authentication() {
   const { pop } = useFocusStack()
   const {overlayRef, focusRef} = useFocusTrap()
+  const { closeOverlay } = useOverlay()
   const swipeToClose = useSwipeToClose()
 
   const action = () => {
-    closeAuthentication()
+    closeOverlay(overlays.authentication)
     pop()
   }
 
@@ -41,7 +42,7 @@ function Authentication({ closeAuthentication }) {
   
   return (
     <section id={overlays.authentication} className={styles.authentication} ref={focusRef} onKeyDown={onKeyDown} aria-label="user authentication">
-      <CloseButton overlay={overlays.authentication} />
+      <CloseButton overlay={overlays.authentication} close={closeOverlay} />
       <LoginForm />
       <RegistrationButton />
       <GoogleButton />
