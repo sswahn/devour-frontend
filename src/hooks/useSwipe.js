@@ -1,7 +1,10 @@
 import { useState, useRef, useEffect } from 'react'
 
 function useSwipe() {
-  const data = useRef({})
+  const data = useRef({
+    startX: null,
+    startY: null,
+  })
 
   const reset = currentTarget => {
     const { id } = data.current
@@ -23,6 +26,15 @@ function useSwipe() {
     if (!data.current) {
       return
     }
+    const { clientX, clientY } = event
+    const { startX, startY } = data.current
+    const deltaX = clientX - startX
+    const deltaY = clientY - startY
+    const absX = Math.abs(deltaX)
+    const absY = Math.abs(deltaY)
+
+
+    
   }
   
   const onSwipeUp = event => {
