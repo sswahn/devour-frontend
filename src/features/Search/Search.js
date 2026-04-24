@@ -15,7 +15,7 @@ import styles from './Search.module.css'
 
 function Search() {
   const { pop } = useFocusStack()
-  const {overlayRef, focusRef} = useFocusTrap()
+  const { overlayRef, focusRef } = useFocusTrap()
   const { closeOverlay } = useOverlay()
   const swipeToClose = useSwipeToClose()
   const [searchValue, setSearchValue] = useState('')
