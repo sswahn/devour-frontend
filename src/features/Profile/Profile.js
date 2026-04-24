@@ -20,7 +20,6 @@ import useGestures from '../../hooks/useGestures'
 function Profile() {
   const { pop } = useFocusStack()
   const { overlayRef, focusRef } = useFocusTrap()
-  const { edgeSwipe, handlers } = useGesture()
   const { userProfile } = useProfile() // username of profile to be displayed.
   const { closeOverlay } = useOverlay()
   const {
