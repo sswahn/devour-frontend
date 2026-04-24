@@ -11,7 +11,7 @@ import Avatar from '../../components/Avatar/Avatar'
 function Notifications() {
   const { pop } = useFocusStack()
   const { closeOverlay } = useOverlay()
-  const focusRef = useFocusTrap()
+  const { focusRef } = useFocusTrap()
   const [isOpen, setIsOpen] = useState(false)
   const bottomSheetRef = useRef(null)
   const initialHeight = useRef(0)
