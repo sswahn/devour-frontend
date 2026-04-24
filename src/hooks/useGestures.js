@@ -62,6 +62,9 @@ function useGestures() {
   }
   
   const onGestureCancel = event => {
+
+    console.log('onGestureCancel')
+    
     const { pointerId } = event
     const id = id?.current
     if (id !== pointerId) { 
