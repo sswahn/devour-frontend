@@ -92,7 +92,7 @@ function Search() {
   return (
     <search id={overlays.search} className={styles.search} ref={focusRef} onKeyDown={onKeyDown} role="dialog" aria-modal="true">
       <nav>
-        <CloseButton overlay={overlays.search} close={closeOverlay} />
+        <CloseButton overlay={overlays.profile} closeOverlay={closeOverlay} pop={pop} />
         <Dropdown items={[
           { text: 'alert message', method: () => alert('dropdown item clicked.') },
           { text: 'console log message', method: () => console.log('dropdown item clicked.') }
