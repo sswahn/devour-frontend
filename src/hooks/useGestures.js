@@ -38,7 +38,7 @@ function useGestures() {
     
     const id = id?.current
 
-    console.log('id: ', id)
+    console.log('id: ', id) // undefined
     
     if (id !== pointerId) { 
       return console.log('failed this check: id !== pointerId', id !== pointerId)
