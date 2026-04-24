@@ -1,15 +1,16 @@
 import { useRef } from 'react'
+import { overlays } from '../../../config'
 import useFocusStack from '../../../hooks/useFocusStack'
 import SearchIcon from '../../Icons/SearchIcon/SearchIcon'
 import styles from './SearchButton.module.css'
 
-function SearchButton({ openSearch }) {
+function SearchButton({ openOverlay }) {
   const buttonRef = useRef(null)
   const { push } = useFocusStack()
   
   const action = async () => {
     push(buttonRef.current)
-    openSearch()
+    openOverlay(overlays.search)
   }
   
   const onClick = event => {
