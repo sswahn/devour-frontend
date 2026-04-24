@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import { overlays } from '../../config'
 import useFocusStack from '../../hooks/useFocusStack'
 import useFocusTrap from '../../hooks/useFocusTrap'
 import EllipsisVerticalIcon from '../Icons/EllipsisVerticalIcon/EllipsisVerticalIcon'
