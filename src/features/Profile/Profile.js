@@ -56,7 +56,12 @@ function Profile() {
     const { deltaX, deltaY, edge, direction } = onGestureMove(event)
 
     console.log('profile onPointerMove initial data: ', JSON.stringify({ deltaX, deltaY, edge, direction }))
-    
+    if (!direction) {
+      const LOCK_THRESHOLD = 8
+      if (Math.abs(deltaX) < LOCK_THRESHOLD && Math.abs(deltaY) < LOCK_THRESHOLD) {
+        return
+      }
+    }
     if (direction === 'y') {
       return
     }
