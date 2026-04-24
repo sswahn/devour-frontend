@@ -36,6 +36,13 @@ function Profile() {
     biography: ''
    })
 
+  const onKeyDown = event => {
+    if (event.key === 'Escape') {
+      event.preventDefault()
+      action()
+    }
+  }
+
   const onPointerDown = event => {
     onGestureDown(event)
   }
@@ -82,36 +89,7 @@ function Profile() {
   }
   */
 
-  const onKeyDown = event => {
-    if (event.key === 'Escape') {
-      event.preventDefault()
-      action()
-    }
-  }
 
-  /*
-  useEffect(() => {
-    gesture()
-  }, [])
-  */
-
-  useEffect(() => {
-    if (overlayRef.current && !edgeSwipe.shouldClose) {
-      overlayRef.current.style.transform = `translateX(${edgeSwipe.delta}px)`
-    }
-  }, [edgeSwipe.delta])
-
-  useEffect(() => {
-    const element = overlayRef.current
-    if (edgeSwipe.shouldClose) {
-      console.log('close overlay.')
-      element.style.transform = `translateX(${element.offsetWidth}px)`
-      action() // wait for transition.
-    } else {
-      console.log('snap back overlay.')
-      element.style.transform = ''
-    }
-  }, [edgeSwipe.shouldClose])
 
   return (
     <section 
