@@ -5,7 +5,7 @@ import EditIcon from '../../../components/Icons/EditIcon/EditIcon'
 import styles from './EditButton.module.css'
 
 function EditButton({ editorIsOpen, setEditorIsOpen }) {
-  const [editorIsOpen, setEditorIsOpen] = useState()
+ // const [editorIsOpen, setEditorIsOpen] = useState()
   
   const action = () => {
     // display input
