@@ -6,3 +6,5 @@ function useOverlay() {
 
   return { isActive, openOverlay, closeOverlay }
 }
+
+export default useOverlay
