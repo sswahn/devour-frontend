@@ -64,7 +64,7 @@ function Interface() {
           notificationsIsOpen={notificationsIsOpen}
           profileIsOpen={profileIsOpen}
 */
-          
+          isActive={isActive}
           closeAuthentication={closeAuthentication}
           closeSearch={closeSearch}
           closeCamera={closeCamera}
