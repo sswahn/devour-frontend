@@ -40,10 +40,10 @@ function useSwipe({ swipeThreshold = 10, edgeThreshold = 35 }) {
       return
     }
     const { clientX, clientY } = event
-    const { startX, startY } = data.current
+    const { startX, startY, edge, direction } = data.current
     const deltaX = clientX - startX
     const deltaY = clientY - startY
-    return { deltaX, deltaY }
+    return { deltaX, deltaY, edge, direction }
   }
   
   const onSwipeCancel = event => {
