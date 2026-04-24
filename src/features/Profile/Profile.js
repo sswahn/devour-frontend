@@ -32,7 +32,6 @@ function Profile() {
     biography: ''
    })
 
-  
   const action = () => {
     closeOverlay(overlays.profile)
     pop()
@@ -100,8 +99,6 @@ function Profile() {
     }
   }
   */
-
-
 
   return (
     <section 
