@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { overlays } from '../../../config'
-import useOverlay from '../../hooks/useOverlay'
+import useOverlay from '../../../hooks/useOverlay'
 import useFocusStack from '../../../hooks/useFocusStack'
 import BellIcon from '../../Icons/BellIcon/BellIcon'
 import styles from './NotificationsButton.module.css'
