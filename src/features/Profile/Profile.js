@@ -82,19 +82,15 @@ function Profile() {
     
     if (shouldClose) {
       action()
-    }// else {
+    } else {
       event.currentTarget.style.transition = 'transform 0.2s ease'
       event.currentTarget.style.transform = ''
-   // }
+    }
   }
   
   const onPointerCancel = event => {
     onGestureCancel(event)
   }
-  
-  // IF every overlay must import closeOverlay for closing on Escape key
-  // then might as well pass it to the close button, instead of importing inside button.
-
   
   // profileUsername used to render profile
   // session.username used to edit profile
