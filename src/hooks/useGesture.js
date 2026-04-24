@@ -4,25 +4,18 @@ import useSwipe from './useSwipe'
 function useGesture() {
   const id = useRef(null)
   const {
-    onGestureDown,
-    onGestureMove,
-    onGestureUp,
-    onGestureCancel
+    onSwipeDown,
+    onSwipeMove,
+    onSwipeUp,
+    onSwipeCancel
   } = useSwipe()
-
-  const reset = currentTarget => {
-    const id = id.current
-    if (currentTarget.hasPointerCapture(id)) {
-      currentTarget.releasePointerCapture(id)
-    }
-    id.current = null
-  }
   
   const onGestureDown = event => {
     const { currentTarget, pointerId } = event
     currentTarget.setPointerCapture(pointerId)
+    id.current = pointerId
 
-    
+    onSwipeDown(event)
   }
   
   const onGestureMove = event => {
@@ -30,20 +23,36 @@ function useGesture() {
     if (id.current !== pointerId) { 
       return
     }
+
+    const swipeMove = onSwipeMove(event)
+    return { ...swipeMove }
   }
   
   const onGestureUp = event => {
     const { pointerId } = event
-    if (id.current !== pointerId) { 
+    const id = id.current
+    if (id !== pointerId) { 
       return
     }
+    if (currentTarget.hasPointerCapture(id)) {
+      currentTarget.releasePointerCapture(id)
+    }
+    
+    const swipeUp = onSwipeUp(event)
+    return { ...swipeUp }
   }
   
   const onGestureCancel = event => {
     const { pointerId } = event
-    if (id.current !== pointerId) { 
+    const id = id.current
+    if (id !== pointerId) { 
       return
     }
+    if (currentTarget.hasPointerCapture(id)) {
+      currentTarget.releasePointerCapture(id)
+    }
+    
+    onSwipeCancel()
   }
 
   return {
