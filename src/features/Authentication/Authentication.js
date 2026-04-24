@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { overlays } from '../../config'
 import useFocusStack from '../../hooks/useFocusStack'
 import useFocusTrap from '../../hooks/useFocusTrap'
 import useSwipeToClose from '../../hooks/useSwipeToClose'
@@ -39,7 +40,7 @@ function Authentication({ closeAuthentication }) {
   }, [])
   
   return (
-    <section className={styles.authentication} ref={focusRef} onKeyDown={onKeyDown}>
+    <section id={overlays.authentication} className={styles.authentication} ref={focusRef} onKeyDown={onKeyDown} aria-label="user authentication">
       <CloseButton overlay="authentication" close={closeAuthentication} />
       <LoginForm />
       <RegistrationButton />
