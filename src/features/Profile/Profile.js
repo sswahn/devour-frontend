@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { overlays } from '../../config'
 import useOverlay from '../../hooks/useOverlay'
 import useFocusStack from '../../hooks/useFocusStack'
@@ -22,7 +22,12 @@ function Profile() {
   const { edgeSwipe, handlers } = useGesture()
   const { userProfile } = useProfile() // username of profile to be displayed.
   const { closeOverlay } = useOverlay()
-
+  const [profile, setProfile] = useState({
+    image: '',
+    username: '',
+    location: '',
+    biography: ''
+   })
   
   // IF every overlay must import closeOverlay for closing on Escape key
   // then might as well pass it to the close button, instead of importing inside button.
@@ -110,7 +115,7 @@ function Profile() {
             {<EditButton field="username" />}
           </div>
           <div>
-            <address>New York, NY</address>
+            <address>{profile.location}</address>
             {<EditButton field="location" />}
           </div>
           {/* 
