@@ -11,7 +11,7 @@ import SearchIcon from '../../components/Icons/SearchIcon/SearchIcon'
 import SearchInput from './SearchInput/SearchInput'
 import SpeechRecognitionButton from './SpeechRecognitionButton/SpeechRecognitionButton'
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner'
-import styles from './SearchForm.module.css'
+import styles from './Search.module.css'
 
 function Search({ closeSearch }) {
   const { pop } = useFocusStack()
