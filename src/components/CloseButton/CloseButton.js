@@ -1,9 +1,7 @@
-import useFocusStack from '../../hooks/useFocusStack'
 import ArrowLeftIcon from '../Icons/ArrowLeftIcon/ArrowLeftIcon'
 import styles from './CloseButton.module.css'
 
-function CloseButton({ overlay, close }) {
-  const { pop } = useFocusStack()
+function CloseButton({ overlay, close, pop }) {
 
   const action = () => {
     close(overlay)
