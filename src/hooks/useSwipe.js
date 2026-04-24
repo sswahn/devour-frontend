@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 
-function useSwipe() {
+function useSwipe({ threshold = 10 }) {
   const data = useRef({
     startX: null,
     startY: null,
@@ -36,21 +36,16 @@ function useSwipe() {
 
     // Determine the dominant axis of the movement
 
+
+
+    if (absX < threshold && absY < threshold) {
+      return
+    }
+
     if (!data.current.direction) {
       data.current.direction = absX > absY ? 'x' : 'y'
     }
     
-    if (absX > absY) {
-      // Horizontal swipe
-      if (absX > threshold) {
-        onSwipe(diffX > 0 ? 'RIGHT' : 'LEFT');
-      }
-    } else {
-      // Vertical swipe
-      if (absY > threshold) {
-        onSwipe(diffY > 0 ? 'DOWN' : 'UP');
-      }
-    }
     
   }
   
