@@ -67,7 +67,8 @@ function Profile() {
     if (shouldClose) {
       closeOverlay(overlay.profile)
     } else {
-      
+      event.currentTarget.style.transition = 'transform 0.2s ease'
+      event.currentTarget.style.transform = ''
     }
   }
   
