@@ -1,15 +1,16 @@
 import { useRef } from 'react'
+import { overlays } from '../../../config'
 import useFocusStack from '../../../hooks/useFocusStack'
 import BellIcon from '../../Icons/BellIcon/BellIcon'
 import styles from './NotificationsButton.module.css'
 
-function NotificationsButton({ openNotifications }) {
+function NotificationsButton({ openOverlay }) {
   const buttonRef = useRef(null)
   const { push } = useFocusStack()
   
   const action = () => {
     push(buttonRef.current)
-    openNotifications()
+    openOverlay(overlays.notifications)
   }
   
   const onClick = event => {
