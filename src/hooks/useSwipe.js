@@ -29,11 +29,9 @@ function useSwipe({ swipeThreshold = 10, edgeThreshold = 35 } = {}) {
     if (absX < swipeThreshold && absY < swipeThreshold) {    // Is there a vaild movement
       return
     }
-    console.log('movement passed swipeThreshold.')
     if (!data.current.direction) {                           // Determine the dominant axis of the movement
       data.current.direction = absX > absY ? 'x' : 'y'
     }
-    console.log('returning data: ', JSON.stringify(data.current))
     return { deltaX, deltaY, edge, direction: data.current.direction }
   }
   
