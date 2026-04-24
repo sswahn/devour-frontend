@@ -67,8 +67,11 @@ function Profile() {
   
   const onPointerUp = event => {
     const { deltaX, deltaY, edge } = onGestureUp(event)
-    const CLOSE_THRESHOLD = 150 
 
+    console.log('profile onPointerUp: ', JSON.stringify({ deltaX, deltaY, edge }))
+    
+    
+    const CLOSE_THRESHOLD = 150 
     const isCorrectDir = edge === 'left' ? deltaX > 0 : deltaX < 0
     const shouldClose = Math.abs(deltaX) > CLOSE_THRESHOLD && isCorrectDir
     
