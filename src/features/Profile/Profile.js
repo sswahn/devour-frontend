@@ -77,10 +77,10 @@ function Profile() {
     
     if (shouldClose) {
       action()
-    } else {
+    }// else {
       event.currentTarget.style.transition = 'transform 0.2s ease'
       event.currentTarget.style.transform = ''
-    }
+   // }
   }
   
   const onPointerCancel = event => {
