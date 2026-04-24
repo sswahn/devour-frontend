@@ -168,134 +168,6 @@
   top: 8px;
 }
 
-/*!*************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/Dashboard/Dashboard.module.css ***!
-  \*************************************************************************************************/
-/* User Dashboard */
-
-.a8YfnRQ4IgM03UuZcNYy {
-  color: white;
-  height: 100dvh;
-  width: 100%;
-}
-
-/*!****************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/SearchForm/SearchInput/SearchInput.module.css ***!
-  \****************************************************************************************************************/
-/* Search Form Input */
-
-.E5mhg1QQHXBJyTe4V76v {
-  background-color: var(--input-bg);
-  border: 1px solid var(--input-border);
-  border-radius: 50px;
-  color: var(--input-text);
-  font-size: 18px;
-  height: 44px;
-  padding: 0 52px 0 44px;
-  width: 100%;
-}
-
-.E5mhg1QQHXBJyTe4V76v:focus {
-  outline: none;
-}
-
-.E5mhg1QQHXBJyTe4V76v::-webkit-search-decoration,
-.E5mhg1QQHXBJyTe4V76v::-webkit-search-cancel-button,
-.E5mhg1QQHXBJyTe4V76v::-webkit-search-results-button,
-.E5mhg1QQHXBJyTe4V76v::-webkit-search-results-decoration {
-  cursor: pointer;
-  padding-left: 8px;
-}
-
-
-/*!****************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/SearchForm/SpeechRecognitionButton/SpeechRecognitionButton.module.css ***!
-  \****************************************************************************************************************************************/
-/* Search Form Speech Recognition Button */
-
-.iMFEEY1YvDzgj8w_W3wI {
-  align-items: center; 
-  background: none;
-  border: 0;
-  border-top-right-radius: 50px;
-  border-bottom-right-radius: 50px;
-  display: flex;
-  justify-content: center;
-  cursor: pointer;
-  height: 44px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 44px;
-}
-
-.iMFEEY1YvDzgj8w_W3wI svg {
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-}
-
-.iMFEEY1YvDzgj8w_W3wI.mDwrKHdH0eu7Q2AAX1Yr svg {
-  fill: #00C853;
-}
-
-/*!***************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/SearchForm/SearchForm.module.css ***!
-  \***************************************************************************************************/
-/* Search Form */
-
-.SLy02R_oWPksADBQiBuZ {
-  background-color: var(--surface-raised);
-  height: 100dvh;
-  left: 0;
-  overflow-y: scroll;
-  overscroll-behavior-y: contain;
-  padding: 8px;
-  position: absolute;
-  top: 0;
-  touch-action: none;
-  width: 100%;
-  z-index: 200;
-}
-
-.SLy02R_oWPksADBQiBuZ nav {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 16px;
-}
-
-.SLy02R_oWPksADBQiBuZ form {
-  position: relative;
-}
-
-.SLy02R_oWPksADBQiBuZ form > svg:first-of-type {
-  align-items: center; 
-  display: flex;
-  justify-content: center;
-  border: 0;
-  border-top-left-radius: 50px;
-  border-bottom-left-radius: 50px;
-  height: 44px;
-  padding: 0 8px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 44px; 
-}
-
-.SLy02R_oWPksADBQiBuZ ul {
-  list-style: none;
-  margin-top: 8px;
-  width: 100%;
-}
-
-.SLy02R_oWPksADBQiBuZ ul li {
-  color: var(--text);
-  font-size: var(--font-size);
-  line-height: var(--line-height);
-  padding: 12px;
-  width: 100%;
-}
-
 /*!****************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Camera/ViewPort/viewport.module.css ***!
   \****************************************************************************************************/
@@ -499,13 +371,24 @@
   width: 100%;
 }
 
-/*!*********************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/Notifications/Notifications.module.css ***!
-  \*********************************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Dashboard/Dashboard.module.css ***!
+  \***********************************************************************************************/
+/* User Dashboard */
+
+.FlKf9UiiLCEgBH_Mh5z0 {
+  color: white;
+  height: 100dvh;
+  width: 100%;
+}
+
+/*!*******************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Notifications/Notifications.module.css ***!
+  \*******************************************************************************************************/
 /* User Notifications */
 
 /* the transparent div overlay */
-.EW8UjTxcaJyjDU58ZAQw {
+.F9PYmx_5X6rU17dx6cCf {
   backdrop-filter: blur(1px);
   background-color: var(--surface-raised);
   height: 100dvh;
@@ -517,7 +400,7 @@
 }
 
 /* the bottom sheet */
-.Y0AUW1KZg3XuDWSjnSiH {
+.MzJOiSKo0uK6jIHn7Lhb {
   background-color: var(--surface);
   border-top: 1px solid var(--border);
   bottom: 0;
@@ -537,12 +420,12 @@
   will-change: transform; /* Ensures it doesn't flicker before starting */
 }
 
-.txatc1UMFm1tg1LtMLFJ {
+.uAJJhhp9HgWfViRMXugq {
   transform: translateY(0);
 }
 
 /* the grabber handle */
-.EW8UjTxcaJyjDU58ZAQw section > div {
+.F9PYmx_5X6rU17dx6cCf section > div {
   background-color: #ccc;
   border-radius: 3px;
   height: 6px;
@@ -552,11 +435,11 @@
 }
 
 /* the grabber handle active */
-.EW8UjTxcaJyjDU58ZAQw section div:active {
+.F9PYmx_5X6rU17dx6cCf section div:active {
   background-color: #888;
 }
 
-.EW8UjTxcaJyjDU58ZAQw ul {
+.F9PYmx_5X6rU17dx6cCf ul {
   list-style-type: none;
   margin-top: 8px;
   width: 100%;
@@ -565,7 +448,7 @@
   flex: 1; /* Takes up remaining space */
 }
 
-.EW8UjTxcaJyjDU58ZAQw ul li {
+.F9PYmx_5X6rU17dx6cCf ul li {
   align-items: center;
   color: var(--text);
   display: flex;
@@ -577,11 +460,11 @@
   width: 100%;
 }
 
-.EW8UjTxcaJyjDU58ZAQw ul li div:first-child {
+.F9PYmx_5X6rU17dx6cCf ul li div:first-child {
   flex: 1;
 }
 
-.EW8UjTxcaJyjDU58ZAQw ul li img {
+.F9PYmx_5X6rU17dx6cCf ul li img {
   border-radius: 50px;
   height: 56px;
   width: 56px;
@@ -590,12 +473,12 @@
   border: 1px dotted white;
 }
 
-.EW8UjTxcaJyjDU58ZAQw ul li div > div {
+.F9PYmx_5X6rU17dx6cCf ul li div > div {
   display: flex;
   gap: 10px;
 }
 
-.EW8UjTxcaJyjDU58ZAQw ul li button {
+.F9PYmx_5X6rU17dx6cCf ul li button {
   background: none;
   border: 0;
   border-radius: 50px;
@@ -604,17 +487,17 @@
   width: 48px;
 }
 
-.EW8UjTxcaJyjDU58ZAQw ul li button:active {
+.F9PYmx_5X6rU17dx6cCf ul li button:active {
   background: var(--button-active);
 }
 
 
-/*!***************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/Profile/FollowButton/FollowButton.module.css ***!
-  \***************************************************************************************************************/
+/*!*************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Profile/FollowButton/FollowButton.module.css ***!
+  \*************************************************************************************************************/
 /* Profile Follow Button */
 
-.LxVk1HYZYwEEuUZ934ZA {
+.lPq22vgzV_SkRROgFQcA {
   align-items: center;
   border: 0;
   border-radius: 8px;
@@ -630,12 +513,12 @@
   width: calc(100% - 48px);
 }
 
-/*!*********************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/Profile/FollowStats/FollowingButton/FollowingButton.module.css ***!
-  \*********************************************************************************************************************************/
+/*!*******************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Profile/FollowStats/FollowingButton/FollowingButton.module.css ***!
+  \*******************************************************************************************************************************/
 /* Profile User Stat Following Button */
 
-.s2g8IVHQcXdzvp0yLgzf {
+.LFQXA2zLBGoClhFiLyQh {
   background: none;
   border: 0;
   border-radius: 8px;
@@ -645,16 +528,16 @@
   user-select: none;
 }
 
-.s2g8IVHQcXdzvp0yLgzf:active {
+.LFQXA2zLBGoClhFiLyQh:active {
   background: var(--button-active);
 }
 
-/*!*********************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/Profile/FollowStats/FollowersButton/FollowersButton.module.css ***!
-  \*********************************************************************************************************************************/
+/*!*******************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Profile/FollowStats/FollowersButton/FollowersButton.module.css ***!
+  \*******************************************************************************************************************************/
 /* Profile User Stat Following Button */
 
-.TdNADfbRmDXUlRkNMYRO {
+.OiYeL661hs5Ulbu4Wv0W {
   background: none;
   border: 0;
   border-radius: 8px;
@@ -664,16 +547,16 @@
   user-select: none;
 }
 
-.TdNADfbRmDXUlRkNMYRO:active {
+.OiYeL661hs5Ulbu4Wv0W:active {
   background: var(--button-active);
 }
 
-/*!*************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/Profile/FollowStats/FollowStats.module.css ***!
-  \*************************************************************************************************************/
+/*!***********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Profile/FollowStats/FollowStats.module.css ***!
+  \***********************************************************************************************************/
 /* Follow Stats List */
 
-.nhqSoBloQwWMoUudU1C4 {
+.NqptCRcHAXkX4aK4ROWp {
   align-items: center;
   display: flex;
   justify-content: space-between;
@@ -681,11 +564,11 @@
   margin: 24px;
 }
 
-.nhqSoBloQwWMoUudU1C4 li {
+.NqptCRcHAXkX4aK4ROWp li {
   
 }
 
-.nhqSoBloQwWMoUudU1C4 li button {
+.NqptCRcHAXkX4aK4ROWp li button {
   background: none;
   border: 0;
   border-radius: 8px;
@@ -695,25 +578,25 @@
   user-select: none;
 }
 
-.nhqSoBloQwWMoUudU1C4 li button:active {
+.NqptCRcHAXkX4aK4ROWp li button:active {
   background: var(--button-active);
 }
 
-/*!***********************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/Profile/EditButton/EditButton.module.css ***!
-  \***********************************************************************************************************/
+/*!*********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Profile/EditButton/EditButton.module.css ***!
+  \*********************************************************************************************************/
 /* User Profile Edit Button */
 
-.VY0SWe0SANxVXjDQXvCr {
+.kSRV1SGvCF_0rvvsxWcg {
   
 }
 
-/*!*********************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/Profile/Profile.module.css ***!
-  \*********************************************************************************************/
+/*!*******************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Profile/Profile.module.css ***!
+  \*******************************************************************************************/
 /* User Profile */
 
-.bRXXEOH49SRQPlqWmeUf {
+.KIIoXhhSaQeQ2LSTtavI {
   background-color: var(--surface-raised);
   height: 100dvh;
   left: 0;
@@ -729,18 +612,18 @@
   z-index: 200;
 }
 
-.bRXXEOH49SRQPlqWmeUf nav {
+.KIIoXhhSaQeQ2LSTtavI nav {
   display: flex;
   justify-content: space-between;
   margin-bottom: 16px;
   width: 100%;
 }
 
-.bRXXEOH49SRQPlqWmeUf header > div {
+.KIIoXhhSaQeQ2LSTtavI header > div {
   padding: 0 16px;
 }
 
-.bRXXEOH49SRQPlqWmeUf header img {
+.KIIoXhhSaQeQ2LSTtavI header img {
   border-radius: 50%;
   display: block;
   height: 128px;
@@ -750,22 +633,139 @@
   background: gray;
 }
 
-.bRXXEOH49SRQPlqWmeUf header h1 {
+.KIIoXhhSaQeQ2LSTtavI header h1 {
   font-size: 24px;
   font-weight: normal;
   margin-top: 8px;
   text-align: center;
 }
 
-.bRXXEOH49SRQPlqWmeUf address {
+.KIIoXhhSaQeQ2LSTtavI address {
   font-size: var(--font-size);
   margin-top: 8px;
   text-align: center;
 }
 
-.bRXXEOH49SRQPlqWmeUf p {
+.KIIoXhhSaQeQ2LSTtavI p {
   font-size: var(--font-size);
   margin-top: 8px;
 }
 
+
+/*!**********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Search/SearchInput/SearchInput.module.css ***!
+  \**********************************************************************************************************/
+/* Search Form Input */
+
+.p4TUZVPF8wqzulMquXkH {
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 50px;
+  color: var(--input-text);
+  font-size: 18px;
+  height: 44px;
+  padding: 0 52px 0 44px;
+  width: 100%;
+}
+
+.p4TUZVPF8wqzulMquXkH:focus {
+  outline: none;
+}
+
+.p4TUZVPF8wqzulMquXkH::-webkit-search-decoration,
+.p4TUZVPF8wqzulMquXkH::-webkit-search-cancel-button,
+.p4TUZVPF8wqzulMquXkH::-webkit-search-results-button,
+.p4TUZVPF8wqzulMquXkH::-webkit-search-results-decoration {
+  cursor: pointer;
+  padding-left: 8px;
+}
+
+
+/*!**********************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Search/SpeechRecognitionButton/SpeechRecognitionButton.module.css ***!
+  \**********************************************************************************************************************************/
+/* Search Form Speech Recognition Button */
+
+.mMtQZAl4NN2dDTDb2UHf {
+  align-items: center; 
+  background: none;
+  border: 0;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  height: 44px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 44px;
+}
+
+.mMtQZAl4NN2dDTDb2UHf svg {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.mMtQZAl4NN2dDTDb2UHf.sgiS4UCId20jusnAvnQA svg {
+  fill: #00C853;
+}
+
+/*!*****************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Search/Search.module.css ***!
+  \*****************************************************************************************/
+/* Search Form */
+
+.FJMCQdB5zc5RgmizOMOi {
+  background-color: var(--surface-raised);
+  height: 100dvh;
+  left: 0;
+  overflow-y: scroll;
+  overscroll-behavior-y: contain;
+  padding: 8px;
+  position: absolute;
+  top: 0;
+  touch-action: none;
+  width: 100%;
+  z-index: 200;
+}
+
+.FJMCQdB5zc5RgmizOMOi nav {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.FJMCQdB5zc5RgmizOMOi form {
+  position: relative;
+}
+
+.FJMCQdB5zc5RgmizOMOi form > svg:first-of-type {
+  align-items: center; 
+  display: flex;
+  justify-content: center;
+  border: 0;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  height: 44px;
+  padding: 0 8px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 44px; 
+}
+
+.FJMCQdB5zc5RgmizOMOi ul {
+  list-style: none;
+  margin-top: 8px;
+  width: 100%;
+}
+
+.FJMCQdB5zc5RgmizOMOi ul li {
+  color: var(--text);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  padding: 12px;
+  width: 100%;
+}
 
