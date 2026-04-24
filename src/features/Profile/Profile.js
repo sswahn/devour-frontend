@@ -90,10 +90,9 @@ function Profile() {
     
     if (shouldClose) {
       action()
-    } else {
-      event.currentTarget.style.transition = 'transform 0.2s ease'
-      event.currentTarget.style.transform = ''
     }
+    event.currentTarget.style.transition = 'transform 0.2s ease'
+    event.currentTarget.style.transform = ''
   }
   
   const onPointerCancel = event => {
