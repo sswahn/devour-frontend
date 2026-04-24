@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, Suspense, lazy } from 'react'
+import { overlays } from '../../config'
 import useProfile from '../../hooks/useProfile'
 import Header from '../Header/Header'
 import Main from '../Main/Main'
@@ -8,26 +9,37 @@ const Overlays = lazy(() => import('../Overlays/Overlays'))
 
 function Interface() {
   const { profileIsOpen, openProfile, closeProfile } = useProfile()
+  const [isActive, setIsActive] = useState(undefined)
+  /*
   const [authenticationIsOpen, setAuthenticationIsOpen] = useState(false)
   const [dashboardIsOpen, setDashboardIsOpen] = useState(false)
   const [searchIsOpen, setSearchIsOpen] = useState(false)
   const [cameraIsOpen, setCameraIsOpen] = useState(false)
   const [notificationsIsOpen, setNotificationsIsOpen] = useState(false)
+  */
   
-  const openAuthentication = () => setAuthenticationIsOpen(true)
-  const closeAuthentication = () => setAuthenticationIsOpen(false)
+  const openAuthentication = () => setIsActive(overlays.authentication)
+  const closeAuthentication = () => setIsActive(undefined)
 
-  const openDashboard = () => setDashboardIsOpen(true)
-  const closeDashboard = () => setDashboardIsOpen(false)
+  const openDashboard = () => setIsActive(overlays.dashboard)
+  const closeDashboard = () => setIsActive(undefined)
   
-  const openSearch = () => setSearchIsOpen(true)
-  const closeSearch = () => setSearchIsOpen(false)
+  const openSearch = () => setIsActive(overlays.search)
+  const closeSearch = () => setIsActive(undefined)
 
-  const openCamera = () => setCameraIsOpen(true)
-  const closeCamera = () => setCameraIsOpen(false)
+  const openCamera = () => setIsActive(overlays.camera)
+  const closeCamera = () => setIsActive(undefined)
 
-  const openNotifications = () => setNotificationsIsOpen(true)
-  const closeNotifications = () => setNotificationsIsOpen(false)
+  const openNotifications = () => setIsActive(overlays.notifications)
+  const closeNotifications = () => setIsActive(undefined)
+
+  const handleProfileContext = () => {
+    profileIsOpen ? setIsActive(overlays.profile) : setIsActive(undefined)
+  }
+
+  useEffect(() => {
+    handleProfileContext()
+  }, [profileIsOpen])
 
   return (
     <>
@@ -44,12 +56,15 @@ function Interface() {
       />
       <Suspense fallback={<LoadingSpinner />}>
         <Overlays 
+/*
           authenticationIsOpen={authenticationIsOpen}
           dashboardIsOpen={dashboardIsOpen}
           searchIsOpen={searchIsOpen} 
           cameraIsOpen={cameraIsOpen}
           notificationsIsOpen={notificationsIsOpen}
           profileIsOpen={profileIsOpen}
+*/
+          
           closeAuthentication={closeAuthentication}
           closeSearch={closeSearch}
           closeCamera={closeCamera}
