@@ -19,6 +19,7 @@ function useSwipe() {
     data.current = {
       startX: clientX,
       startY: clientY,
+      direction: null
     }
   }
   
@@ -33,7 +34,23 @@ function useSwipe() {
     const absX = Math.abs(deltaX)
     const absY = Math.abs(deltaY)
 
+    // Determine the dominant axis of the movement
 
+    if (!data.current.direction) {
+      data.current.direction = absX > absY ? 'x' : 'y'
+    }
+    
+    if (absX > absY) {
+      // Horizontal swipe
+      if (absX > threshold) {
+        onSwipe(diffX > 0 ? 'RIGHT' : 'LEFT');
+      }
+    } else {
+      // Vertical swipe
+      if (absY > threshold) {
+        onSwipe(diffY > 0 ? 'DOWN' : 'UP');
+      }
+    }
     
   }
   
