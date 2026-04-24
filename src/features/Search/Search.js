@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { config } from '../../config'
+import { overlays, apis } from '../../config'
 import useFocusStack from '../../hooks/useFocusStack'
 import useFocusTrap from '../../hooks/useFocusTrap'
 import useSwipeToClose from '../../hooks/useSwipeToClose'
@@ -88,7 +88,7 @@ function Search({ closeSearch }) {
   }, [searchValue])
 
   return (
-    <search id="search" className={styles.search} ref={focusRef} onKeyDown={onKeyDown} role="dialog" aria-modal="true">
+    <search id={overlays.search} className={styles.search} ref={focusRef} onKeyDown={onKeyDown} role="dialog" aria-modal="true">
       <nav>
         <CloseButton overlay="search" close={closeSearch} />
         <Dropdown items={[
