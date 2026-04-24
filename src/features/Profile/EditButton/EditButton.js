@@ -1,6 +1,6 @@
 import config from '../../../config'
 import server from '../../../utilities/server'
-import EditIcon from '../../Icons/EditIcon/EditIcon'
+import EditIcon from '../../../components/Icons/EditIcon/EditIcon'
 import styles from './EditButton.module.css'
 
 function EditButton({ editorIsOpen, setEditorIsOpen }) {
