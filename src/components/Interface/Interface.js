@@ -19,6 +19,16 @@ function Interface() {
     profileIsOpen ? setIsActive(overlays.profile) : setIsActive(undefined)
   }
 
+  // create an overlays provider
+  // all this goes into it
+  // components can pull open overlay and close overlay from it
+  // it can use Seperate context providers to avoid rerenders
+  // it can use separate hooks to avoid rerenders useOpenOverlay, useCloseOverlay
+  // no more prop drilling for overlay controls.
+  // all these functions/logic goes away, and into the provider.
+  // profile issue then solved as:
+  // in avatar openOverlay(id), setProfileUser(username) (not sure where setProileUser comes from...)
+
   useEffect(() => {
     setProfileActive()
   }, [profileIsOpen])
