@@ -55,7 +55,7 @@ function Profile() {
   const onPointerMove = event => {
     const { deltaX, deltaY, edge, direction } = onGestureMove(event)
 
-    console.log('profile onPointerMove initial data: ', JSON.stringify{ deltaX, deltaY, edge, direction }))
+    console.log('profile onPointerMove initial data: ', JSON.stringify({ deltaX, deltaY, edge, direction }))
     
     if (direction === 'y') {
       return
