@@ -92,7 +92,7 @@ function Profile() {
       action()
     }
     event.currentTarget.style.transition = 'transform 0.2s ease'
-    event.currentTarget.style.transform = ''
+    event.currentTarget.style.transform = '' // or `translateX(0px)`
   }
   
   const onPointerCancel = event => {
