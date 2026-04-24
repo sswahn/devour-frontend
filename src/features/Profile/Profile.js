@@ -6,16 +6,13 @@ import useFocusTrap from '../../hooks/useFocusTrap'
 import useSwipeToClose from '../../hooks/useSwipeToClose'
 import useSession from '../../hooks/useSession'
 import useProfile from '../../hooks/useProfile'
+import useGestures from '../../hooks/useGestures'
 import CloseButton from '../../components/CloseButton/CloseButton'
 import Dropdown from '../../components/Dropdown/Dropdown'
 import FollowButton from './FollowButton/FollowButton'
 import FollowStats from './FollowStats/FollowStats'
 import EditButton from './EditButton/EditButton'
 import styles from './Profile.module.css'
-
-import useGestures from '../../hooks/useGestures'
-
-// move to features
 
 function Profile() {
   const { pop } = useFocusStack()
@@ -55,7 +52,6 @@ function Profile() {
   
   const onPointerMove = event => {
     const { deltaX, deltaY, edge, direction } = onGestureMove(event)
-
     const absX = Math.abs(deltaX)
     const absY = Math.abs(deltaY)
     
@@ -78,18 +74,10 @@ function Profile() {
   }
   
   const onPointerUp = event => {
-
-    console.log('onPointerUp')
-    
     const { deltaX, deltaY, edge } = onGestureUp(event)
-
-    console.log('profile onPointerUp: ', JSON.stringify({ deltaX, deltaY, edge }))
-    
-    
     const CLOSE_THRESHOLD = 150 
     const isCorrectDir = edge === 'left' ? deltaX > 0 : deltaX < 0
     const shouldClose = Math.abs(deltaX) > CLOSE_THRESHOLD && isCorrectDir
-    
     if (shouldClose) {
       action()
     }
