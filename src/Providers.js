@@ -4,7 +4,6 @@ import { FocusStackProvider } from './components/Providers/FocusStackProvider'
 import { OverlayProvider } from './components/Providers/OverlayProvider'
 import { ProfileProvider } from './components/Providers/ProfileProvider'
 
-
 function Providers({ children }) {
   return (
     <SessionProvider>
