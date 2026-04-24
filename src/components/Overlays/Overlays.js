@@ -19,7 +19,7 @@ function Overlays() {
       {overlays.dashboard === isActive && <Dashboard />}
       {overlays.search === isActive && <SearchForm />}
       {overlays.camera === isActive && <Camera />}
-      {overlays.notifications ==== isActive && <Notifications />}
+      {overlays.notifications === isActive && <Notifications />}
       {overlays.profile === isActive && <Profile />}
     </FocusTrapProvider>, 
     document.getElementById('portal')
