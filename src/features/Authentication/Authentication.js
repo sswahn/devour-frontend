@@ -41,7 +41,7 @@ function Authentication({ closeAuthentication }) {
   
   return (
     <section id={overlays.authentication} className={styles.authentication} ref={focusRef} onKeyDown={onKeyDown} aria-label="user authentication">
-      <CloseButton overlay="authentication" close={closeAuthentication} />
+      <CloseButton overlay={overlays.authentication} />
       <LoginForm />
       <RegistrationButton />
       <GoogleButton />
