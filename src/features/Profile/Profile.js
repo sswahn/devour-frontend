@@ -23,6 +23,11 @@ function Profile() {
   const { userProfile } = useProfile() // username of profile to be displayed.
   const { closeOverlay } = useOverlay()
 
+  
+  // IF every overlay must import closeOverlay for closing on Escape key
+  // then might as well pass it to the close button, instead of importing inside button.
+
+  
   // profileUsername used to render profile
   // session.username used to edit profile
 
