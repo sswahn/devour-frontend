@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import PlusIcon from '../../Icons/PlusIcon/PlusIcon'
-import MinusIcon from '../../Icons/MinusIcon/MinusIcon'
+import PlusIcon from '../../../components/Icons/PlusIcon/PlusIcon'
+import MinusIcon from '../../components/Icons/MinusIcon/MinusIcon'
 import styles from './FollowButton.module.css'
 
 function FollowButton() {
