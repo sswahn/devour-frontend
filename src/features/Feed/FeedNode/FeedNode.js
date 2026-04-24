@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import useGestures from '../../../hooks/useGestures'
+//import useGestures from '../../../hooks/useGestures'
 import TopNav from '../TopNav/TopNav'
 import SideNav from '../SideNav/SideNav'
 
@@ -80,7 +80,7 @@ function FeedNode({ item, index, count }) {
       {/* data.videoUrl && <video ref={ref} src={data.videoUrl} preload="metadata" muted playsInline loop /> */}
       {/* data.caption ?? <figcaption>{data.caption}</figcaption> */}
 
-      <SideNav doubleTap={doubleTap} longPress={longPress} />
+{/* <SideNav doubleTap={doubleTap} longPress={longPress}  /> */}
     </figure>
   )
 }
