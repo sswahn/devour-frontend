@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import OverlayContext from '../components/Providers/OverlayContext'
+import { OverlayContext } from '../components/Providers/OverlayProvider'
 
 function useOverlay() {
   const { isActive, openOverlay, closeOverlay } = useContext(OverlayContext)
