@@ -36,6 +36,12 @@ function Profile() {
     biography: ''
    })
 
+  
+  const action = () => {
+    closeOverlay(overlays.profile)
+    pop()
+  }
+
   const onKeyDown = event => {
     if (event.key === 'Escape') {
       event.preventDefault()
@@ -65,7 +71,7 @@ function Profile() {
     const shouldClose = Math.abs(deltaX) > CLOSE_THRESHOLD && isCorrectDir
     
     if (shouldClose) {
-      closeOverlay(overlay.profile)
+      action()
     } else {
       event.currentTarget.style.transition = 'transform 0.2s ease'
       event.currentTarget.style.transform = ''
@@ -82,13 +88,6 @@ function Profile() {
   
   // profileUsername used to render profile
   // session.username used to edit profile
-
-  const swipeToClose = useSwipeToClose()
-
-  const action = () => {
-    closeOverlay(overlays.profile)
-    pop()
-  }
 
   /*
   const gesture = () => {
