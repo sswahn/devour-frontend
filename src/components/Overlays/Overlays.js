@@ -4,11 +4,11 @@ import { overlays } from '../../config'
 import { FocusTrapProvider } from '../Providers/FocusTrapProvider'
 import useOverlay from '../../hooks/useOverlay'
 import Authentication from '../../features/Authentication/Authentication'
-import Dashboard from '../Dashboard/Dashboard'
-import SearchForm from '../SearchForm/SearchForm'
+import Dashboard from '../../features/Dashboard/Dashboard'
+import SearchForm from '../../features/SearchForm/SearchForm'
 import Camera from '../../features/Camera/Camera'
-import Notifications from '../Notifications/Notifications'
-import Profile from '../Profile/Profile'
+import Notifications from '../../features/Notifications/Notifications'
+import Profile from '../../features/Profile/Profile'
 
 function Overlays() {
   const { isActive } = useOverlay()
