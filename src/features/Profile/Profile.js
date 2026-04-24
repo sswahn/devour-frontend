@@ -63,7 +63,6 @@ function Profile() {
       return
     } */
 
-    console.log('profile onPointerMove initial data: ', JSON.stringify({ deltaX, deltaY, edge, direction }))
     if (!direction) {
       const LOCK_THRESHOLD = 8
       if (Math.abs(deltaX) < LOCK_THRESHOLD && Math.abs(deltaY) < LOCK_THRESHOLD) {
@@ -79,6 +78,9 @@ function Profile() {
   }
   
   const onPointerUp = event => {
+
+    console.log('onPointerUp')
+    
     const { deltaX, deltaY, edge } = onGestureUp(event)
 
     console.log('profile onPointerUp: ', JSON.stringify({ deltaX, deltaY, edge }))
