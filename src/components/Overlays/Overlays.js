@@ -9,32 +9,15 @@ import Camera from '../../features/Camera/Camera'
 import Notifications from '../Notifications/Notifications'
 import Profile from '../Profile/Profile'
 
-function Overlays({ 
-  /*
-  authenticationIsOpen,
-  dashboardIsOpen,
-  searchIsOpen, 
-  cameraIsOpen, 
-  notificationsIsOpen, 
-  profileIsOpen,
-  */
-  isActive,
-  closeAuthentication,
-  closeDashboard,
-  closeSearch, 
-  closeCamera, 
-  closeNotifications,
-  closeProfile
-}) {
-  
+function Overlays({ isActive, closeOverlay }) {
   return createPortal(
     <FocusTrapProvider>
-      {overlays.authentication === isActive && <Authentication closeAuthentication={closeAuthentication} />}
-      {overlays.dashboard === isActive && <Dashboard closeDashboard={closeDashboard} />}
-      {overlays.search === isActive && <SearchForm closeSearch={closeSearch} />}
-      {overlays.camera === isActive && <Camera closeCamera={closeCamera} />}
-      {overlays.notifications ==== isActive && <Notifications closeNotifications={closeNotifications} />}
-      {overlays.profile === isActive && <Profile closeProfile={closeProfile} />}
+      {overlays.authentication === isActive && <Authentication closeOverlay={closeOverlay} />}
+      {overlays.dashboard === isActive && <Dashboard closeOverlay={closeOverlay} />}
+      {overlays.search === isActive && <SearchForm closeOverlay={closeOverlay} />}
+      {overlays.camera === isActive && <Camera closeOverlay={closeOverlay} />}
+      {overlays.notifications ==== isActive && <Notifications closeOverlay={closeOverlay} />}
+      {overlays.profile === isActive && <Profile closeOverlay={closeOverlay} />}
     </FocusTrapProvider>, 
     document.getElementById('portal')
   )
