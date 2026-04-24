@@ -34,9 +34,6 @@ function useSwipe({ swipeThreshold = 10, edgeThreshold = 35 } = {}) {
   }, [])
   
   const onSwipeUp = useCallback(event => {
-
-    console.log('onSwipeUp')
-    
     if (!Object.keys(data?.current || {}).length) {
       return
     }
@@ -44,9 +41,6 @@ function useSwipe({ swipeThreshold = 10, edgeThreshold = 35 } = {}) {
     const { startX, startY, edge, direction } = data.current
     const deltaX = clientX - startX
     const deltaY = clientY - startY
-
-    console.log('onSwipeUp return data: ', JSON.stringify({ deltaX, deltaY, edge, direction }))
-    
     return { deltaX, deltaY, edge, direction }
   }, [])
   
