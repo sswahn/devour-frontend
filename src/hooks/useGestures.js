@@ -37,8 +37,12 @@ function useGestures() {
     if (currentTarget.hasPointerCapture(id)) {
       currentTarget.releasePointerCapture(id)
     }
+
+    
     
     const swipeUp = onSwipeUp(event)
+
+    console.log('onGestureUp return data: ', JSON.stringify(swipeUp))
     return { ...swipeUp }
   }
   
