@@ -12,12 +12,12 @@ function useSwipe({ swipeThreshold = 10, edgeThreshold = 35 }) {
       startX: clientX,
       startY: clientY,
       direction: null,
-      edge: isLeft ? 'left' : 'right',
+      edge: isLeft ? 'left' : 'right'
     }
   }
   
   const onSwipeMove = event => {
-    if (!data.current) { // <-- invalid check, fix this
+    if (!Object.keys(data.current).length) {
       return
     }
     const { clientX, clientY } = event
@@ -26,20 +26,17 @@ function useSwipe({ swipeThreshold = 10, edgeThreshold = 35 }) {
     const deltaY = clientY - startY
     const absX = Math.abs(deltaX)
     const absY = Math.abs(deltaY)
-
-    // Is there a vaild movement:
-    if (absX < swipeThreshold && absY < swipeThreshold) {
+    if (absX < swipeThreshold && absY < swipeThreshold) {    // Is there a vaild movement
       return
     }
-    // Determine the dominant axis of the movement
-    if (!data.current.direction) {
+    if (!data.current.direction) {                           // Determine the dominant axis of the movement
       data.current.direction = absX > absY ? 'x' : 'y'
     }
     return { deltaX, deltaY, edge, direction: data.current.direction }
   }
   
   const onSwipeUp = event => {
-    if (!data.current) {
+    if (!Object.keys(data.current).length) {
       return
     }
     const { clientX, clientY } = event
