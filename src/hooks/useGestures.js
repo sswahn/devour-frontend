@@ -29,6 +29,9 @@ function useGestures() {
   }
   
   const onGestureUp = event => {
+    
+    console.log('onGestureUp')
+    
     const { pointerId } = event
     const id = id?.current
     if (id !== pointerId) { 
