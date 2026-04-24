@@ -14,6 +14,8 @@ import FollowStats from './FollowStats/FollowStats'
 import EditButton from './EditButton/EditButton'
 import styles from './Profile.module.css'
 
+import useGestures from '../../hooks/useGestures'
+
 // move to features
 
 function Profile() {
@@ -22,12 +24,36 @@ function Profile() {
   const { edgeSwipe, handlers } = useGesture()
   const { userProfile } = useProfile() // username of profile to be displayed.
   const { closeOverlay } = useOverlay()
+  const {
+    onGestureDown,
+    onGestureMove,
+    onGestureUp,
+    onGestureCancel
+  } = useGestures()
   const [profile, setProfile] = useState({
     image: '',
     username: '',
     location: '',
     biography: ''
    })
+
+  const onPointerDown = event => {
+    onGestureDown(event)
+  }
+  
+  const onPointerMove = event => {
+    const {deltaX, deltaY, edge, direction } = onGestureMove(event)
+    
+  }
+  
+  const onPointerUp = event => {
+    const { deltaX, deltaY } = onGestureUp(event)
+    
+  }
+  
+  const onPointerCancel = event => {
+    onGestureCancel(event)
+  }
   
   // IF every overlay must import closeOverlay for closing on Escape key
   // then might as well pass it to the close button, instead of importing inside button.
