@@ -34,6 +34,9 @@ function useSwipe({ swipeThreshold = 10, edgeThreshold = 35 } = {}) {
   }
   
   const onSwipeUp = event => {
+
+    console.log('onSwipeUp')
+    
     if (!Object.keys(data?.current || {}).length) {
       return
     }
