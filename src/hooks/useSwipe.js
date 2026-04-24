@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 
-function useSwipe({ swipeThreshold = 10, edgeThreshold = 35 }) {
+function useSwipe({ swipeThreshold = 10, edgeThreshold = 35 } = {}) {
   const data = useRef({})
   
   const onSwipeDown = event => {
