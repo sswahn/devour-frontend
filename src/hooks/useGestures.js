@@ -33,13 +33,25 @@ function useGestures() {
     console.log('onGestureUp')
     
     const { pointerId } = event
+
+    console.log('1')
+    
     const id = id?.current
+
+    console.log('2')
+    
     if (id !== pointerId) { 
-      return
+      return console.log('failed this check: id !== pointerId')
     }
+
+    console.log('3')
+    
     if (currentTarget.hasPointerCapture(id)) {
+      console.log('failed this check: currentTarget.hasPointerCapture(id)')
       currentTarget.releasePointerCapture(id)
     }
+
+    console.log('4')
 
     
     
