@@ -6,5 +6,4 @@ function BorderOuterIcon({ size = 24 }) {
     </svg>
   )
 }
-
 export default BorderOuterIcon
