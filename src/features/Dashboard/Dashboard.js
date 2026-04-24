@@ -1,9 +1,10 @@
+import { overlays } from '../../config'
 import styles from './Dashboard.module.css'
 
 function Dashboard() {
 
   return (
-    <section className={styles.dashboard}>
+    <section id={overlays.dashboard} className={styles.dashboard}>
       Dashboard
     </section>
   )
