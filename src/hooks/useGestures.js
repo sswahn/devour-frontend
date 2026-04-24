@@ -14,7 +14,6 @@ function useGestures() {
     const { currentTarget, pointerId } = event
     currentTarget.setPointerCapture(pointerId)
     id.current = pointerId
-
     onSwipeDown(event)
   }, [])
   
@@ -23,7 +22,6 @@ function useGestures() {
     if (id?.current !== pointerId) { 
       return
     }
-
     const swipeMove = onSwipeMove(event)
     return { ...swipeMove }
   }, [])
@@ -35,12 +33,8 @@ function useGestures() {
     }
     if (currentTarget.hasPointerCapture(id.current)) {
       currentTarget.releasePointerCapture(id.current)
-    }    
-    
+    }
     const swipeUp = onSwipeUp(event)
-
-    console.log('onGestureUp return data: ', JSON.stringify(swipeUp))
-    
     return { ...swipeUp }
   }, [])
   
