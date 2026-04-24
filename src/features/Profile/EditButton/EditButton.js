@@ -1,10 +1,12 @@
+import { useState } from 'react'
 import config from '../../../config'
 import server from '../../../utilities/server'
 import EditIcon from '../../../components/Icons/EditIcon/EditIcon'
 import styles from './EditButton.module.css'
 
 function EditButton({ editorIsOpen, setEditorIsOpen }) {
-
+  const [editorIsOpen, setEditorIsOpen] = useState()
+  
   const action = () => {
     // display input
     // toggle state between
