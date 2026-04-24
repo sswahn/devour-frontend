@@ -1,5 +1,6 @@
 import { useRef, useEffect } from 'react'
 import { overlays } from '../../config'
+import useOverlay from '../../hooks/useOverlay'
 import useFocusStack from '../../hooks/useFocusStack'
 import useFocusTrap from '../../hooks/useFocusTrap'
 import useGesture from '../../hooks/useGesture'
@@ -15,11 +16,12 @@ import styles from './Profile.module.css'
 
 // move to features
 
-function Profile({ closeProfile }) {
+function Profile() {
   const { pop } = useFocusStack()
   const { overlayRef, focusRef } = useFocusTrap()
   const { edgeSwipe, handlers } = useGesture()
   const { userProfile } = useProfile() // username of profile to be displayed.
+  const { closeOverlay } = useOverlay()
 
   // profileUsername used to render profile
   // session.username used to edit profile
@@ -27,7 +29,7 @@ function Profile({ closeProfile }) {
   const swipeToClose = useSwipeToClose()
 
   const action = () => {
-    closeProfile()
+    closeOverlay(overlays.profile)
     pop()
   }
 
