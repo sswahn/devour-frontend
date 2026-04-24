@@ -58,8 +58,17 @@ function Profile() {
   }
   
   const onPointerUp = event => {
-    const { deltaX, deltaY } = onGestureUp(event)
+    const { deltaX, deltaY, edge } = onGestureUp(event)
+    const CLOSE_THRESHOLD = 150 
+
+    const isCorrectDir = edge === 'left' ? deltaX > 0 : deltaX < 0
+    const shouldClose = Math.abs(deltaX) > CLOSE_THRESHOLD && isCorrectDir
     
+    if (shouldClose) {
+      closeOverlay(overlay.profile)
+    } else {
+      
+    }
   }
   
   const onPointerCancel = event => {
