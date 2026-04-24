@@ -19,7 +19,7 @@ function Profile({ closeProfile }) {
   const { pop } = useFocusStack()
   const { overlayRef, focusRef } = useFocusTrap()
   const { edgeSwipe, handlers } = useGesture()
-  const { profileUsername } = useProfile() 
+  const { userProfile } = useProfile() // username of profile to be displayed.
 
   // profileUsername used to render profile
   // session.username used to edit profile
