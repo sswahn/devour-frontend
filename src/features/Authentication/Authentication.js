@@ -42,7 +42,7 @@ function Authentication() {
   
   return (
     <section id={overlays.authentication} className={styles.authentication} ref={focusRef} onKeyDown={onKeyDown} aria-label="user authentication">
-      <CloseButton overlay={overlays.authentication} close={closeOverlay} />
+      <CloseButton overlay={overlays.profile} closeOverlay={closeOverlay} pop={pop} />
       <LoginForm />
       <RegistrationButton />
       <GoogleButton />
