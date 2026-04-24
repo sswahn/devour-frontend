@@ -5,7 +5,7 @@ import { FocusTrapProvider } from '../Providers/FocusTrapProvider'
 import useOverlay from '../../hooks/useOverlay'
 import Authentication from '../../features/Authentication/Authentication'
 import Dashboard from '../../features/Dashboard/Dashboard'
-import SearchForm from '../../features/SearchForm/SearchForm'
+import Search from '../../features/Search/Search'
 import Camera from '../../features/Camera/Camera'
 import Notifications from '../../features/Notifications/Notifications'
 import Profile from '../../features/Profile/Profile'
@@ -16,11 +16,11 @@ function Overlays() {
   return createPortal(
     <FocusTrapProvider>
       {overlays.authentication === isActive && <Authentication />}
-      {overlays.dashboard === isActive && <Dashboard />}
-      {overlays.search === isActive && <SearchForm />}
       {overlays.camera === isActive && <Camera />}
+      {overlays.dashboard === isActive && <Dashboard />}
       {overlays.notifications === isActive && <Notifications />}
       {overlays.profile === isActive && <Profile />}
+      {overlays.search === isActive && <Search />}
     </FocusTrapProvider>, 
     document.getElementById('portal')
   )
