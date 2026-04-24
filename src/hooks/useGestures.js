@@ -33,15 +33,15 @@ function useGestures() {
     console.log('onGestureUp')
     
     const { pointerId } = event
-
-    console.log('1')
+    
+    console.log('pointerId: ', pointerId)
     
     const id = id?.current
 
-    console.log('2')
+    console.log('id: ', id)
     
     if (id !== pointerId) { 
-      return console.log('failed this check: id !== pointerId')
+      return console.log('failed this check: id !== pointerId', id !== pointerId)
     }
 
     console.log('3')
