@@ -3,7 +3,6 @@ import { overlays } from '../../config'
 import useOverlay from '../../hooks/useOverlay'
 import useFocusStack from '../../hooks/useFocusStack'
 import useFocusTrap from '../../hooks/useFocusTrap'
-import useGesture from '../../hooks/useGesture'
 import useSwipeToClose from '../../hooks/useSwipeToClose'
 import useSession from '../../hooks/useSession'
 import useProfile from '../../hooks/useProfile'
@@ -114,10 +113,11 @@ function Profile() {
       id={overlays.profile}
       className={styles.profile} 
       ref={focusRef} 
-
-      {...handlers}
-
       onKeyDown={onKeyDown}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerCancel={onPointerCancel}
       tabIndex={-1} 
       role="dialog" 
       aria-modal="true" 
