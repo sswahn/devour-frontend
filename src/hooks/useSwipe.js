@@ -1,13 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 
 function useSwipe() {
-  const data = useRef({ 
-    startX: 0,
-    startY: 0,
-    activeSide: null,
-    pointerId: null,
-    direction: null
-  })
+  const data = useRef({})
 
   const reset = currentTarget => {
     const { id } = data.current
@@ -18,29 +12,27 @@ function useSwipe() {
   }
   
   const onSwipeDown = event => {
-    const { clientX, clientY, pointerId } = event
+    const { clientX, clientY } = event
     data.current = {
       startX: clientX,
       startY: clientY,
-      id: pointerId,
     }
-    currentTarget.setPointerCapture(pointerId)
   }
   
   const onSwipeMove = event => {
-    if (id !== pointerId) { 
+    if (!data.current) {
       return
     }
   }
   
   const onSwipeUp = event => {
-    if (id !== pointerId) { 
+    if (!data.current) {
       return
     }
   }
   
   const onSwipeCancel = event => {
-    if (id !== pointerId) { 
+    if (!data.current) {
       return
     }
   }
