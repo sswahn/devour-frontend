@@ -31,12 +31,13 @@ function EditButton({ editorIsOpen, setEditorIsOpen }) {
   return (
     <>
       {editorIsOpen 
-      ?  <button className={styles.editButton} onClick={onClick} onKeyDown={onKeyDown} type="button" aria-label={`edit ${field}`}>
-          <EditIcon />
-        </button>
-      : <button className={styles.editButton} onClick={onClick} onKeyDown={onKeyDown} type="button" aria-label={`submit new ${field}`}>
-          {/* <SubmitIcon /> */}
-        </button>
+        ?  <button className={styles.editButton} onClick={onClick} onKeyDown={onKeyDown} type="button" aria-label={`edit ${field}`}>
+            <EditIcon />
+          </button>
+        : <button className={styles.editButton} onClick={onClick} onKeyDown={onKeyDown} type="button" aria-label={`submit new ${field}`}>
+            {/* <SubmitIcon /> */}
+          </button>
+      }
     </>
   )
 }
