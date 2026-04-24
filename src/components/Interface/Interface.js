@@ -10,23 +10,17 @@ const Overlays = lazy(() => import('../Overlays/Overlays'))
 function Interface() {
   const { profileIsOpen, openProfile, closeProfile } = useProfile()
   const [isActive, setIsActive] = useState(undefined)
-  /*
-  const [authenticationIsOpen, setAuthenticationIsOpen] = useState(false)
-  const [dashboardIsOpen, setDashboardIsOpen] = useState(false)
-  const [searchIsOpen, setSearchIsOpen] = useState(false)
-  const [cameraIsOpen, setCameraIsOpen] = useState(false)
-  const [notificationsIsOpen, setNotificationsIsOpen] = useState(false)
-  */
 
   const openOverlay = id => setIsActive(id)
+  
   const closeOverlay = () => setIsActive(undefined)
 
-  const handleProfileContext = () => {
+  const setProfileActive = () => {
     profileIsOpen ? setIsActive(overlays.profile) : setIsActive(undefined)
   }
 
   useEffect(() => {
-    handleProfileContext()
+    setProfileActive()
   }, [profileIsOpen])
 
   return (
