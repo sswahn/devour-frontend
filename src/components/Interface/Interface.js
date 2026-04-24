@@ -18,17 +18,8 @@ function Interface() {
   const [notificationsIsOpen, setNotificationsIsOpen] = useState(false)
   */
 
+  const openOverlay = id => setIsActive(id)
   const closeOverlay = () => setIsActive(undefined)
-  
-  const openAuthentication = () => setIsActive(overlays.authentication)
-
-  const openDashboard = () => setIsActive(overlays.dashboard)
-  
-  const openSearch = () => setIsActive(overlays.search)
-
-  const openCamera = () => setIsActive(overlays.camera)
-
-  const openNotifications = () => setIsActive(overlays.notifications)
 
   const handleProfileContext = () => {
     profileIsOpen ? setIsActive(overlays.profile) : setIsActive(undefined)
@@ -40,22 +31,11 @@ function Interface() {
 
   return (
     <>
-      <Header 
-        openAuthentication={openAuthentication} 
-        openDashboard={openDashboard}
-      />
+      <Header openOverlay={openOverlay} />
       <Main />
-      <MobileNav 
-        openSearch={openSearch}
-        openCamera={openCamera}
-        openNotifications={openNotifications}
-        openProfile={openProfile}
-      />
+      <MobileNav openOverlay={openOverlay} />
       <Suspense fallback={<LoadingSpinner />}>
-        <Overlays 
-          isActive={isActive}
-          closeOverlay={closeOverlay}
-        />
+        <Overlays isActive={isActive} closeOverlay={closeOverlay} />
       </Suspense>
     </>
   )
