@@ -3,10 +3,10 @@ import { useState, useCallback, createContext } from 'react'
 const ProfileContext = createContext(null)
 
 function ProfileProvider({ children }) {
-  const [profileUser, setProfileUser] = useState('')
+  const [userProfile, setUserProfile] = useState('')
   
   return (
-    <ProfileContext.Provider value={{ profileUser, setProfileUser }}>
+    <ProfileContext.Provider value={{ userProfile, setUserProfile }}>
       {children}
     </ProfileContext.Provider>
   )
