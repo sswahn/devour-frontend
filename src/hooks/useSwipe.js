@@ -17,7 +17,7 @@ function useSwipe({ swipeThreshold = 10, edgeThreshold = 35 } = {}) {
   }
   
   const onSwipeMove = event => {
-    if (!Object.keys(data.current).length) {
+    if (data && !Object.keys(data.current).length) {
       return
     }
     const { clientX, clientY } = event
@@ -36,7 +36,7 @@ function useSwipe({ swipeThreshold = 10, edgeThreshold = 35 } = {}) {
   }
   
   const onSwipeUp = event => {
-    if (!Object.keys(data.current).length) {
+    if (data && !Object.keys(data.current).length) {
       return
     }
     const { clientX, clientY } = event
