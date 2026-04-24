@@ -1,4 +1,5 @@
 import { useRef, useEffect } from 'react'
+import { overlays } from '../../config'
 import useFocusStack from '../../hooks/useFocusStack'
 import useFocusTrap from '../../hooks/useFocusTrap'
 import useGesture from '../../hooks/useGesture'
@@ -72,7 +73,7 @@ function Profile({ closeProfile }) {
 
   return (
     <section 
-      id="profile"
+      id={overlays.profile}
       className={styles.profile} 
       ref={focusRef} 
 
