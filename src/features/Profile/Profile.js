@@ -80,9 +80,8 @@ function Profile() {
       return
     }
     const raw = edge === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
-    // const resisted = raw / (1 + Math.abs(raw) / 300)
-    // leaky resistance:
-    const resisted = Math.sign(raw) * Math.pow(Math.abs(raw), 0.85)
+    const resisted = raw / (1 + Math.abs(raw) / 300)
+    latestDeltaX.current = resisted
     overlayRef.current.style.transform = `translateX(${resisted}px)`
     //throttleTransition(resisted)
   }
@@ -95,7 +94,7 @@ function Profile() {
     
     const CLOSE_THRESHOLD = 150 
     const isCorrectDir = edge === 'left' ? deltaX > 0 : deltaX < 0
-    const shouldClose = Math.abs(deltaX) > CLOSE_THRESHOLD && isCorrectDir
+    const shouldClose = Math.abs(latestDeltaX.current) > CLOSE_THRESHOLD && isCorrectDir
     overlayRef.current.style.transition = 'transform 0.2s ease'
     if (shouldClose) {
       navigation.vibrate?.(50)
