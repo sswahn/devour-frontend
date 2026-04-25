@@ -91,10 +91,9 @@ function Profile() {
     overlayRef.current.style.transition = 'transform 0.2s ease'
     if (shouldClose) {
       navigation.vibrate?.(50)
-      //event.currentTarget.addEventListener('transitionend', action, { once: true })
-      action()
       const translation = edge === 'right' ? '100%' : '-100%'
       overlayRef.current.style.transform = `translateX(${translation}%)`
+      overlayRef.current.addEventListener('transitionend', action, { once: true })
     } else {
       overlayRef.current.style.transform = `translateX(0)`
     }
