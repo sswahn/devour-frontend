@@ -20,6 +20,7 @@ function Profile() {
   const { userProfile } = useProfile() // username of profile to be displayed.
   const { closeOverlay } = useOverlay()
   const ticking = useRef(false)
+  const latestDeltaX = useRef(0)
   const {
     onGestureDown,
     onGestureMove,
@@ -55,9 +56,10 @@ function Profile() {
   }
 
   const throttleTransition = deltaX => {
+    latestDeltaX.current = deltaX
     if (!ticking.current) {
       requestAnimationFrame(() => {
-        overlayRef.current.style.transform = `translateX(${deltaX})`
+        overlayRef.current.style.transform = `translateX(${latestDeltaX.current})`
         ticking.current = false
       })
       ticking.current = true
@@ -89,8 +91,8 @@ function Profile() {
     }
     const raw = edge === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
     const resisted = raw / (1 + Math.abs(raw) / 300)
-    event.currentTarget.style.transform = `translateX(${resisted}px)`
-    //throttleTransition(resisted)
+    //event.currentTarget.style.transform = `translateX(${resisted}px)`
+    throttleTransition(resisted)
   }
   
   const onPointerUp = event => {
