@@ -68,12 +68,14 @@ function Profile() {
     const absX = Math.abs(deltaX)
     const absY = Math.abs(deltaY)
 
+    /*
     if (!direction) {
       const LOCK_THRESHOLD = 10
       if (absX < LOCK_THRESHOLD && absY < LOCK_THRESHOLD) {
         return
       }
     }
+    */
     if (direction === 'y') {
       return
     }
