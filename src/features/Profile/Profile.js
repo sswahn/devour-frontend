@@ -64,45 +64,32 @@ function Profile() {
   }
   
   const onPointerMove = event => {
+    const { currentTarget } = event
     const { deltaX, deltaY, edge, direction } = onGestureMove(event)
-    const absX = Math.abs(deltaX)
-    const absY = Math.abs(deltaY)
-
-    /*
-    if (!direction) {
-      const LOCK_THRESHOLD = 10
-      if (absX < LOCK_THRESHOLD && absY < LOCK_THRESHOLD) {
-        return
-      }
-    }
-    */
     if (direction === 'y') {
       return
     }
     const raw = edge === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
     const resisted = raw / (1 + Math.abs(raw) / 300)
-    latestDeltaX.current = resisted
-    overlayRef.current.style.transform = `translateX(${resisted}px)`
+    
+    currentTarget.style.transform = `translateX(${resisted}px)`
     //throttleTransition(resisted)
   }
 
   const onPointerUp = event => {
+    const { currentTarget } = event
     const { deltaX, deltaY, edge } = onGestureUp(event)
-
-    console.log('edge: ', edge)
-    console.log('deltaX: ', deltaX)
-    
     const CLOSE_THRESHOLD = 150 
     const isCorrectDir = edge === 'left' ? deltaX > 0 : deltaX < 0
     const shouldClose = Math.abs(latestDeltaX.current) > CLOSE_THRESHOLD && isCorrectDir
-    overlayRef.current.style.transition = 'transform 0.2s ease'
+    currentTarget.style.transition = 'transform 0.2s ease'
     if (shouldClose) {
       navigation.vibrate?.(50)
-      overlayRef.current.addEventListener('transitionend', action, { once: true })
+      currentTarget.addEventListener('transitionend', action, { once: true })
       const translation = edge === 'right' ? '100%' : '-100%'
-      overlayRef.current.style.transform = `translateX(${translation}%)`
+      currentTarget.style.transform = `translateX(${translation}%)`
     } else {
-      overlayRef.current.style.transform = ''
+      currentTarget.style.transform = ''
     }
   }
 
