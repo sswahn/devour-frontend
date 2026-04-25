@@ -80,7 +80,9 @@ function Profile() {
       return
     }
     const raw = edge === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
-    const resisted = raw / (1 + Math.abs(raw) / 300)
+    // const resisted = raw / (1 + Math.abs(raw) / 300)
+    // leaky resistance:
+    const resisted = Math.sign(raw) * Math.pow(Math.abs(raw), 0.85)
     overlayRef.current.style.transform = `translateX(${resisted}px)`
     //throttleTransition(resisted)
   }
