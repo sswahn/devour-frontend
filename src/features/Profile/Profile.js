@@ -100,8 +100,9 @@ function Profile() {
     if (shouldClose) {
       gesture(event.currentTarget)
     } 
+    const translation = edge === 'right' ? '100%' : '-100%'
     event.currentTarget.style.transition = 'transform 0.2s ease'
-    event.currentTarget.style.transform = `translateX(0px)`
+    event.currentTarget.style.transform = `translateX(${translation}%)`
   }
   
   const onPointerCancel = event => {
