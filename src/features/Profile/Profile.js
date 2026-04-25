@@ -96,7 +96,7 @@ function Profile() {
       event.currentTarget.style.transform = `translateX(${translation}%)`
     } else {
       event.currentTarget.style.transition = 'transform 0.2s ease'
-      event.currentTarget.style.transform = ``
+      event.currentTarget.style.transform = `translateX(0)`
     }
   }
   
