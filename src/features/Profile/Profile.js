@@ -82,7 +82,8 @@ function Profile() {
     overlayRef.current.style.transform = `translateX(${resisted}px)`
     //throttleTransition(resisted)
   }
-  
+
+  /*
   const onPointerUp = event => {
     const { deltaX, deltaY, edge } = onGestureUp(event)
     const CLOSE_THRESHOLD = 150 
@@ -97,7 +98,28 @@ function Profile() {
     } else {
       overlayRef.current.style.transform = `translateX(0)`
     }
+  }*/
+const onPointerUp = event => {
+  const { deltaX, edge } = onGestureUp(event)
+
+  const CLOSE_THRESHOLD = 150
+  const distance = edge === 'left' ? deltaX : -deltaX
+  const shouldClose = distance > CLOSE_THRESHOLD
+
+  el.style.transition = 'transform 0.2s ease'
+  el.offsetHeight // force reflow
+
+  if (shouldClose) {
+    navigation.vibrate?.(50)
+
+    const translation = edge === 'right' ? '100%' : '-100%'
+    el.style.transform = `translateX(${translation}%)`
+
+    el.addEventListener('transitionend', action, { once: true })
+  } else {
+    el.style.transform = 'translateX(0)'
   }
+}
   
   const onPointerCancel = event => {
     onGestureCancel(event)
