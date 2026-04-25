@@ -33,7 +33,7 @@ function useGestures() { // thresholds
     if (callback) {
       onLongPressDown(callback)
     }
-  }, [callback])
+  }, [])
   
   const onGestureMove = useCallback(event => {
     const { pointerId } = event
