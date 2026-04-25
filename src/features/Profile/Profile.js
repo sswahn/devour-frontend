@@ -103,10 +103,9 @@ function Profile() {
     const shouldClose = Math.abs(deltaX) > CLOSE_THRESHOLD && isCorrectDir
     if (shouldClose) {
       gesture(event.currentTarget)
-    } else {
-      event.currentTarget.style.transition = 'transform 0.2s ease'
-      event.currentTarget.style.transform = '' // or `translateX(0px)`
-    }
+    } 
+    event.currentTarget.style.transition = 'transform 0.2s ease'
+    event.currentTarget.style.transform = `translateX(0px)`
   }
   
   const onPointerCancel = event => {
