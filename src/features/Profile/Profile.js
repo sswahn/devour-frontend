@@ -39,13 +39,12 @@ function Profile() {
     pop()
   }
 
-  const gesture = (currentTarget) => {
+  const gesture = (currentTarget, edge) => {
     navigation.vibrate?.(50)
-    currentTarget.addEventListener(
-      'transitionend', 
-      action, 
-      { once: true }
-    )
+    currentTarget.addEventListener('transitionend', action, { once: true })
+    const translation = edge === 'right' ? '100%' : '-100%'
+    event.currentTarget.style.transition = 'transform 0.2s ease'
+    event.currentTarget.style.transform = `translateX(${translation}%)`
   }
   
   const onKeyDown = event => {
@@ -98,11 +97,15 @@ function Profile() {
     const isCorrectDir = edge === 'left' ? deltaX > 0 : deltaX < 0
     const shouldClose = Math.abs(deltaX) > CLOSE_THRESHOLD && isCorrectDir
     if (shouldClose) {
-      gesture(event.currentTarget)
-    } 
-    const translation = edge === 'right' ? '100%' : '-100%'
-    event.currentTarget.style.transition = 'transform 0.2s ease'
-    event.currentTarget.style.transform = `translateX(${translation}%)`
+      navigation.vibrate?.(50)
+      event.currentTarget.addEventListener('transitionend', action, { once: true })
+      const translation = edge === 'right' ? '100%' : '-100%'
+      event.currentTarget.style.transition = 'transform 0.2s ease'
+      event.currentTarget.style.transform = `translateX(${translation}%)`
+    } else {
+      event.currentTarget.style.transition = 'transform 0.2s ease'
+      event.currentTarget.style.transform = ``
+    }
   }
   
   const onPointerCancel = event => {
