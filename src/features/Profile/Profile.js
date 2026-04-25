@@ -76,87 +76,42 @@ function Profile() {
     throttleTransition(resisted, currentTarget)
   }
 
-  /*
+// calculate velocity in hook and return with result object
+  
 const onPointerUp = event => {
-  const { currentTarget } = event;
-  const { deltaX, edge } = onGestureUp(event);
+  const { currentTarget } = event
+  const { deltaX, edge } = onGestureUp(event)
 
   // 1. Kill the move throttle immediately
-  ticking.current = false; 
+  ticking.current = false
 
-  const raw = edge === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX);
-  const resisted = raw / (1 + Math.abs(raw) / 300);
-  const shouldClose = Math.abs(resisted) >= 150;
+  const raw = edge === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
+  const resisted = raw / (1 + Math.abs(raw) / 300)
+  const shouldClose = Math.abs(resisted) >= 150
 
   // 2. State Prep: Switch transition ON
-  currentTarget.style.transition = 'transform 0.25s cubic-bezier(0.2, 0, 0, 1)';
+  currentTarget.style.transition = 'transform 0.25s cubic-bezier(0.2, 0, 0, 1)'
 
   // 3. The "Double rAF" — Guarantees transition starts without layout thrashing
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       if (shouldClose) {
-        navigation.vibrate?.(50);
-        const translation = edge === 'left' ? '100vw' : '-100vw';
+        navigation.vibrate?.(50)
+        const translation = edge === 'left' ? '100vw' : '-100vw'
         
-        currentTarget.style.transform = `translate3d(${translation}, 0, 0)`;
-        currentTarget.addEventListener('transitionend', action, { once: true });
+        currentTarget.style.transform = `translate3d(${translation}, 0, 0)`
+        currentTarget.addEventListener('transitionend', action, { once: true })
       } else {
-        currentTarget.style.transform = 'translate3d(0, 0, 0)';
+        currentTarget.style.transform = 'translate3d(0, 0, 0)'
         
         // Cleanup transition when snap-back finishes
         currentTarget.addEventListener('transitionend', () => {
-          currentTarget.style.transition = '';
-        }, { once: true });
+          currentTarget.style.transition = ''
+        }, { once: true })
       }
-    });
-  });
-};
-
-  */
-
-  
-// velocity based:
-
-const onPointerUp = event => {
-  const { currentTarget } = event;
-  const { deltaX, edge } = onGestureUp(event);
-
-  ticking.current = false; 
-
-  const raw = edge === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX);
-  const resisted = raw / (1 + Math.abs(raw) / 300);
-  
-  // TRIGGER LOGIC
-  const DISTANCE_THRESHOLD = 150;
-  const VELOCITY_THRESHOLD = 0.5; // px per ms
-  
-  // Check if it's a "Distance trigger" OR a "Velocity trigger" in the right direction
-  const isFlick = Math.abs(velocity.current) > VELOCITY_THRESHOLD;
-  const isCorrectFlickDir = edge === 'left' ? velocity.current > 0 : velocity.current < 0;
-  
-  const shouldClose = Math.abs(resisted) >= DISTANCE_THRESHOLD || (isFlick && isCorrectFlickDir);
-
-  currentTarget.style.transition = 'transform 0.25s cubic-bezier(0.2, 0, 0, 1)';
-
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      if (shouldClose) {
-        navigation.vibrate?.(50);
-        const translation = edge === 'left' ? '100vw' : '-100vw';
-        currentTarget.style.transform = `translate3d(${translation}, 0, 0)`;
-        currentTarget.addEventListener('transitionend', action, { once: true });
-      } else {
-        currentTarget.style.transform = 'translate3d(0, 0, 0)';
-        currentTarget.addEventListener('transitionend', () => {
-          currentTarget.style.transition = '';
-        }, { once: true });
-      }
-      
-      // Reset velocity for next interaction
-      velocity.current = 0;
-    });
-  });
-};
+    })
+  })
+}
 
 
 
