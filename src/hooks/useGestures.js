@@ -1,6 +1,5 @@
 import { useRef, useCallback } from 'react'
 import useSwipe from './useSwipe'
-import useLongPress from './useLongPress'
 
 function useGestures() { // thresholds
   const id = useRef(null)
