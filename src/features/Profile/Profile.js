@@ -81,7 +81,7 @@ function Profile() {
     const { deltaX, deltaY, edge } = onGestureUp(event)
     const CLOSE_THRESHOLD = 150 
     const isCorrectDir = edge === 'left' ? deltaX > 0 : deltaX < 0
-    const shouldClose = Math.abs(latestDeltaX.current) > CLOSE_THRESHOLD && isCorrectDir
+    const shouldClose = Math.abs(deltaX) > CLOSE_THRESHOLD && isCorrectDir
     currentTarget.style.transition = 'transform 0.2s ease'
     if (shouldClose) {
       navigation.vibrate?.(50)
