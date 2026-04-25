@@ -1,5 +1,6 @@
 import { useRef, useCallback } from 'react'
 import useSwipe from './useSwipe'
+import useLongPress from './useLongPress'
 
 function useGestures() {
   const id = useRef(null)
@@ -9,15 +10,25 @@ function useGestures() {
     onSwipeUp,
     onSwipeCancel
   } = useSwipe()
+  const {
+    onLongPressDown,
+    onLongPressMove,
+    onLongPressUp,
+    onLongPressCancel
+  } = useSwipe()
   
-  const onGestureDown = useCallback(event => {
+  const onGestureDown = useCallback((event, callback = undefined) => {
     const { currentTarget, pointerId } = event
     currentTarget.setPointerCapture(pointerId)
     id.current = pointerId
     onSwipeDown(event)
-  }, [])
+    if (callback) {
+      onLongPressDown(event, callback)
+    }
+  }, [callback])
   
   const onGestureMove = useCallback(event => {
+    onLongPressMove(event)
     const { pointerId } = event
     if (id?.current !== pointerId) { 
       return
@@ -27,6 +38,7 @@ function useGestures() {
   }, [])
   
   const onGestureUp = useCallback(event => {
+    onLongPressUp(event)
     const { pointerId, currentTarget } = event
     if (id?.current !== pointerId) { 
       return console.log('failed this check: id !== pointerId', id?.current !== pointerId)
@@ -39,6 +51,7 @@ function useGestures() {
   }, [])
   
   const onGestureCancel = useCallback(event => {
+    onLongPressCancel(event)
     const { pointerId, currentTarget } = event
     if (id?.current !== pointerId) { 
       return
