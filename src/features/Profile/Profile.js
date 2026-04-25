@@ -98,8 +98,9 @@ function Profile() {
       const translation = edge === 'right' ? '100%' : '-100%'
       overlayRef.current.style.transform = `translateX(${translation}%)`
       overlayRef.current.addEventListener('transitionend', action, { once: true })
-    } 
-    overlayRef.current.style.transform = ''
+    } else {
+      overlayRef.current.style.transform = ''
+    }
   }
 
   const onPointerCancel = event => {
