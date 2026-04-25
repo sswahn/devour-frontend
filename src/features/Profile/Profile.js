@@ -70,11 +70,11 @@ function Profile() {
 
     if (!direction) {
       const LOCK_THRESHOLD = 8
-      if (Math.abs(deltaX) < LOCK_THRESHOLD && Math.abs(deltaY) < LOCK_THRESHOLD) {
+      if (absX < LOCK_THRESHOLD && absY < LOCK_THRESHOLD) {
         return
       }
     }
-    if (direction === 'y') {
+    if (direction !== 'x') {
       return
     }
     const raw = edge === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
