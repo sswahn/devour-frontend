@@ -65,7 +65,7 @@ function Profile() {
   
   const onPointerMove = event => {
     const { currentTarget } = event
-    const { deltaX, deltaY, edge, direction } = onGestureMove(event)
+    const { deltaX, edge, direction } = onGestureMove(event)
     if (direction === 'y') {
       return
     }
@@ -78,11 +78,21 @@ function Profile() {
 
   const onPointerUp = event => {
     const { currentTarget } = event
-    const { deltaX, deltaY, edge } = onGestureUp(event)
+    const { deltaX, edge } = onGestureUp(event)
+    /*
     const CLOSE_THRESHOLD = 150 
     const isCorrectDir = edge === 'left' ? deltaX > 0 : deltaX < 0
     const shouldClose = Math.abs(deltaX) > CLOSE_THRESHOLD && isCorrectDir
     currentTarget.style.transition = 'transform 0.2s ease'
+    */
+    // 1. Calculate the final resisted value exactly like in onPointerMove
+    const raw = edge === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX);
+    const resisted = raw / (1 + Math.abs(raw) / 300);
+
+    // 2. Threshold check (150px visual distance)
+    const CLOSE_THRESHOLD = 150;
+    const shouldClose = Math.abs(resisted) >= CLOSE_THRESHOLD;
+
     if (shouldClose) {
       navigation.vibrate?.(50)
       currentTarget.addEventListener('transitionend', action, { once: true })
