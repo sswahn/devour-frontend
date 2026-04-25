@@ -77,9 +77,9 @@ function Profile() {
     const absX = Math.abs(deltaX)
     const absY = Math.abs(deltaY)
     
-   /* if (absX < swipeThreshold && absY < swipeThreshold) {    // Is there a vaild movement
+   if (absX < swipeThreshold && absY < swipeThreshold) {    // Is there a vaild movement
       return
-    } */
+    }
 
     if (!direction) {
       const LOCK_THRESHOLD = 8
