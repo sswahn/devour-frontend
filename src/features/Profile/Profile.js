@@ -59,7 +59,7 @@ function Profile() {
 
   const onPointerDown = event => {
     onGestureDown(event)
-    //overlayRef.current.style.transition = 'none' // disable snap back
+    overlayRef.current.style.transition = 'none' // disable snap back
     overlayRef.current.style.willChange = 'transform'
   }
   
@@ -69,12 +69,12 @@ function Profile() {
     const absY = Math.abs(deltaY)
 
     if (!direction) {
-      const LOCK_THRESHOLD = 8
+      const LOCK_THRESHOLD = 10
       if (absX < LOCK_THRESHOLD && absY < LOCK_THRESHOLD) {
         return
       }
     }
-    if (direction !== 'x') {
+    if (direction === 'y') {
       return
     }
     const raw = edge === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
