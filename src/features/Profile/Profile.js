@@ -38,14 +38,6 @@ function Profile() {
     closeOverlay(overlays.profile)
     pop()
   }
-
-  const gesture = (currentTarget, edge) => {
-    navigation.vibrate?.(50)
-    currentTarget.addEventListener('transitionend', action, { once: true })
-    const translation = edge === 'right' ? '100%' : '-100%'
-    event.currentTarget.style.transition = 'transform 0.2s ease'
-    event.currentTarget.style.transform = `translateX(${translation}%)`
-  }
   
   const onKeyDown = event => {
     if (event.key === 'Escape') {
