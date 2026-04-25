@@ -89,8 +89,8 @@ function Profile() {
     }
     const raw = edge === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
     const resisted = raw / (1 + Math.abs(raw) / 300)
-    //event.currentTarget.style.transform = `translateX(${resisted}px)`
-    throttleTransition(resisted)
+    event.currentTarget.style.transform = `translateX(${resisted}px)`
+    //throttleTransition(resisted)
   }
   
   const onPointerUp = event => {
