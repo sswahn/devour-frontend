@@ -91,7 +91,8 @@ function Profile() {
     event.currentTarget.style.transition = 'transform 0.2s ease'
     if (shouldClose) {
       navigation.vibrate?.(50)
-      event.currentTarget.addEventListener('transitionend', action, { once: true })
+      //event.currentTarget.addEventListener('transitionend', action, { once: true })
+      action()
       const translation = edge === 'right' ? '100%' : '-100%'
       event.currentTarget.style.transform = `translateX(${translation}%)`
     } else {
