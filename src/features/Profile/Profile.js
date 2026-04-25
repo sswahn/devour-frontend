@@ -76,6 +76,7 @@ function Profile() {
     throttleTransition(resisted, currentTarget)
   }
 
+  /*
 const onPointerUp = event => {
   const { currentTarget } = event;
   const { deltaX, edge } = onGestureUp(event);
@@ -111,65 +112,55 @@ const onPointerUp = event => {
   });
 };
 
-  
-  /*
-  const onPointerUp = event => {
-    ticking.current = false
-    const { currentTarget } = event
-    const { deltaX, edge } = onGestureUp(event)
-    
-    const CLOSE_THRESHOLD = 150 
-    const isCorrectDir = edge === 'left' ? deltaX > 0 : deltaX < 0
-    const shouldClose = Math.abs(deltaX) > CLOSE_THRESHOLD && isCorrectDir
-    currentTarget.style.transition = 'transform 0.2s ease'
-
-    if (shouldClose) {
-      navigation.vibrate?.(50)
-      currentTarget.addEventListener('transitionend', action, { once: true })
-      const translation = edge === 'right' ? '100vw' : '-100vw'
-      currentTarget.style.transform = `translateX(${translation}%)`
-    } else {
-      currentTarget.style.transform = ''
-    }
-  }
   */
-/*
-  const onPointerUp = event => {
+
+  
+// velocity based:
+
+const onPointerUp = event => {
   const { currentTarget } = event;
   const { deltaX, edge } = onGestureUp(event);
 
-  // 1. IMMEDIATELY stop the move throttle
   ticking.current = false; 
 
   const raw = edge === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX);
   const resisted = raw / (1 + Math.abs(raw) / 300);
-  const shouldClose = Math.abs(resisted) >= 150;
-
-  // 2. Prepare for the animation
-  currentTarget.style.transition = 'transform 0.2s ease-out';
   
-  // 3. THE FIX: Force the browser to recognize the current 'none' transition is over
-  void currentTarget.offsetHeight; 
+  // TRIGGER LOGIC
+  const DISTANCE_THRESHOLD = 150;
+  const VELOCITY_THRESHOLD = 0.5; // px per ms
+  
+  // Check if it's a "Distance trigger" OR a "Velocity trigger" in the right direction
+  const isFlick = Math.abs(velocity.current) > VELOCITY_THRESHOLD;
+  const isCorrectFlickDir = edge === 'left' ? velocity.current > 0 : velocity.current < 0;
+  
+  const shouldClose = Math.abs(resisted) >= DISTANCE_THRESHOLD || (isFlick && isCorrectFlickDir);
 
-  if (shouldClose) {
-    navigation.vibrate?.(50);
-    // Move completely off-screen using viewport units
-    const translation = edge === 'left' ? '100vw' : '-100vw';
-    currentTarget.style.transform = `translate3d(${translation}, 0, 0)`;
-    
-    currentTarget.addEventListener('transitionend', action, { once: true });
-  } else {
-    // Snap back to exactly zero
-    currentTarget.style.transform = 'translate3d(0, 0, 0)';
-    
-    // Clean up transition so the next drag isn't laggy
-    currentTarget.addEventListener('transitionend', () => {
-      currentTarget.style.transition = '';
-    }, { once: true });
-  }
-}
+  currentTarget.style.transition = 'transform 0.25s cubic-bezier(0.2, 0, 0, 1)';
 
-*/
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      if (shouldClose) {
+        navigation.vibrate?.(50);
+        const translation = edge === 'left' ? '100vw' : '-100vw';
+        currentTarget.style.transform = `translate3d(${translation}, 0, 0)`;
+        currentTarget.addEventListener('transitionend', action, { once: true });
+      } else {
+        currentTarget.style.transform = 'translate3d(0, 0, 0)';
+        currentTarget.addEventListener('transitionend', () => {
+          currentTarget.style.transition = '';
+        }, { once: true });
+      }
+      
+      // Reset velocity for next interaction
+      velocity.current = 0;
+    });
+  });
+};
+
+
+
+
   const onPointerCancel = event => {
     onGestureCancel(event)
   }
