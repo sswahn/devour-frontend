@@ -46,14 +46,14 @@ function Profile() {
     }
   }
 
-  const throttleTransition = deltaX => {
+  const throttleTransition = (deltaX, currentTarget) => {
     latestDeltaX.current = deltaX
     if (!ticking.current) {
+      ticking.current = true
       requestAnimationFrame(() => {
-        overlayRef.current.style.transform = `translate3d(${latestDeltaX.current}px 0 0)`
+        currentTarget.style.transform = `translate3d(${latestDeltaX.current}px, 0, 0)`
         ticking.current = false
       })
-      ticking.current = true
     }
   }
 
@@ -72,8 +72,8 @@ function Profile() {
     const raw = edge === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
     const resisted = raw / (1 + Math.abs(raw) / 300)
     
-    currentTarget.style.transform = `translateX(${resisted}px)`
-    //throttleTransition(resisted)
+    // currentTarget.style.transform = `translateX(${resisted}px)`
+    throttleTransition(resisted, currentTarget)
   }
 
   const onPointerUp = event => {
