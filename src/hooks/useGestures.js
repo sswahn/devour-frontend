@@ -2,20 +2,29 @@ import { useRef, useCallback } from 'react'
 import useSwipe from './useSwipe'
 import useLongPress from './useLongPress'
 
-function useGestures() {
+function useGestures() { // thresholds
   const id = useRef(null)
+  const timer = useRef(null)
   const {
     onSwipeDown,
     onSwipeMove,
     onSwipeUp,
     onSwipeCancel
-  } = useSwipe()
-  const {
-    onLongPressDown,
-    onLongPressMove,
-    onLongPressUp,
-    onLongPressCancel
-  } = useSwipe()
+  } = useSwipe() // thresholds
+
+  const longPressCancel = () => {
+    if (timer.current) { 
+      clearTimeout(timer.current)
+      timer.current = null
+    }
+  }
+
+  const onLongPressDown = callback => {
+    timer.current = setTimeout(() => {
+      callback()
+      longPressCancel()
+    }, 500)
+  }
   
   const onGestureDown = useCallback((event, callback = undefined) => {
     const { currentTarget, pointerId } = event
@@ -23,22 +32,25 @@ function useGestures() {
     id.current = pointerId
     onSwipeDown(event)
     if (callback) {
-      onLongPressDown(event, callback)
+      onLongPressDown(callback)
     }
   }, [callback])
   
   const onGestureMove = useCallback(event => {
-    onLongPressMove(event)
     const { pointerId } = event
     if (id?.current !== pointerId) { 
       return
+    }
+    const moveThreshold = 10
+    if (absX > moveThreshold || absY > moveThreshold) {
+      longPressCancel()
     }
     const swipeMove = onSwipeMove(event)
     return { ...swipeMove }
   }, [])
   
   const onGestureUp = useCallback(event => {
-    onLongPressUp(event)
+    longPressCancel(event)
     const { pointerId, currentTarget } = event
     if (id?.current !== pointerId) { 
       return console.log('failed this check: id !== pointerId', id?.current !== pointerId)
@@ -51,7 +63,7 @@ function useGestures() {
   }, [])
   
   const onGestureCancel = useCallback(event => {
-    onLongPressCancel(event)
+    longPressCancel(event)
     const { pointerId, currentTarget } = event
     if (id?.current !== pointerId) { 
       return
