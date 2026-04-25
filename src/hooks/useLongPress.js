@@ -1,15 +1,7 @@
-import { useState, useRef } from 'react'
+import { useRef } from 'react'
 
 function useLongPress() {
-  const [longPress, setLongPress] = useState(0)
   const timer = useRef(null)
-
-  const reset = currentTarget => {
-    const { id } = data.current
-    if (id && currentTarget.hasPointerCapture(id)) {
-      currentTarget.releasePointerCapture(id)
-    }
-  }
 
   const longPressCancel = () => {
     if (timer.current) { 
@@ -18,66 +10,33 @@ function useLongPress() {
     }
   }
 
-  const longPressOnDown = currentTarget => {
-    const longPressDelay = 500
-    longPressFired.current = false
+  const onLongPressDown = callback => {
     timer.current = setTimeout(() => {
-      longPressFired.current = true
-      setLongPress(performance.now())
+      callback()
       longPressCancel()
-    }, longPressDelay)
+    }, 500)
   }
   
-  const onPointerDown = event => {
-    const { currentTarget, pointerId } = event
-    currentTarget.setPointerCapture(pointerId)
-    longPressOnDown(currentTarget)
-  }
-  
-  const onPointerMove = event => {
-    const { clientX, clientY, pointerId } = event
-    const { startX, startY, id } = data.current
-    if (id && pointerId !== id) {
-      return
-    }
+  const onLongPressMove = (absX, absY) => {
     const moveThreshold = 10
-    const deltaX = clientX - startX
-    const deltaY = clientY - startY
-    const absDeltaX = Math.abs(deltaX)
-    const absDeltaY = Math.abs(deltaY)
-    
-    if (absDeltaX > moveThreshold || absDeltaY > moveThreshold) {
+    if (absX > moveThreshold || absY > moveThreshold) {
       longPressCancel()
     }
   }
   
-  const onPointerUp = event => {
+  const onLongPressUp = event => {
     longPressCancel()
-    const { pointerId, currentTarget } = event
-    const { id } = data.current
-    if (id && pointerId !== id) {
-      return
-    }
-    reset(currentTarget)
   }
   
-  const onPointerCancel = event => {
-    const { pointerId, currentTarget } = event
-    const { id } = data.current
-    if (id && pointerId !== id) {
-      return
-    }
-    reset(currentTarget)
+  const onLongPressCancel = event => {
+    longPressCancel()
   }
   
   return {
-    longPress,
-    handlers: {
-      onPointerDown,
-      onPointerMove,
-      onPointerUp,
-      onPointerCancel
-    }
+    onLongPressDown,
+    onLongPressMove,
+    onLongPressUp,
+    onLongPressCancel
   }
 }
 
