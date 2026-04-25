@@ -59,7 +59,7 @@ function Profile() {
     latestDeltaX.current = deltaX
     if (!ticking.current) {
       requestAnimationFrame(() => {
-        overlayRef.current.style.transform = `translateX(${latestDeltaX.current})`
+        overlayRef.current.style.transform = `translate3d(${latestDeltaX.current}px 0 0)`
         ticking.current = false
       })
       ticking.current = true
