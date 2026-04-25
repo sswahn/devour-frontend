@@ -46,11 +46,11 @@ function Profile() {
     }
   }
 
-  const throttleTransition = (currentTarget, deltaX) => {
+  const throttleTransition = deltaX => {
     latestDeltaX.current = deltaX
     if (!ticking.current) {
       requestAnimationFrame(() => {
-        currentTarget.style.transform = `translate3d(${latestDeltaX.current}px 0 0)`
+        overlayRef.current.style.transform = `translate3d(${latestDeltaX.current}px 0 0)`
         ticking.current = false
       })
       ticking.current = true
@@ -59,8 +59,8 @@ function Profile() {
 
   const onPointerDown = event => {
     onGestureDown(event)
-    event.currentTarget.style.transition = 'none' // disable snap back
-    event.currentTarget.style.willChange = 'transform'
+    overlayRef.current.style.transition = 'none' // disable snap back
+    overlayRef.current.style.willChange = 'transform'
   }
   
   const onPointerMove = event => {
@@ -79,8 +79,8 @@ function Profile() {
     }
     const raw = edge === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
     const resisted = raw / (1 + Math.abs(raw) / 300)
-    event.currentTarget.style.transform = `translateX(${resisted}px)`
-    //throttleTransition(event.currentTarget, resisted)
+    overlayRef.current.style.transform = `translateX(${resisted}px)`
+    //throttleTransition(resisted)
   }
   
   const onPointerUp = event => {
@@ -88,15 +88,15 @@ function Profile() {
     const CLOSE_THRESHOLD = 150 
     const isCorrectDir = edge === 'left' ? deltaX > 0 : deltaX < 0
     const shouldClose = Math.abs(deltaX) > CLOSE_THRESHOLD && isCorrectDir
-    event.currentTarget.style.transition = 'transform 0.2s ease'
+    overlayRef.current.style.transition = 'transform 0.2s ease'
     if (shouldClose) {
       navigation.vibrate?.(50)
       //event.currentTarget.addEventListener('transitionend', action, { once: true })
       action()
       const translation = edge === 'right' ? '100%' : '-100%'
-      event.currentTarget.style.transform = `translateX(${translation}%)`
+      overlayRef.current.style.transform = `translateX(${translation}%)`
     } else {
-      event.currentTarget.style.transform = `translateX(0)`
+      overlayRef.current.style.transform = `translateX(0)`
     }
   }
   
