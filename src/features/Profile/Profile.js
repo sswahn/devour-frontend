@@ -77,6 +77,7 @@ function Profile() {
   }
 
   const onPointerUp = event => {
+    ticking.current = false
     const { currentTarget } = event
     const { deltaX, edge } = onGestureUp(event)
     
