@@ -106,18 +106,18 @@ const onPointerUp = event => {
   const distance = edge === 'left' ? deltaX : -deltaX
   const shouldClose = distance > CLOSE_THRESHOLD
 
-  el.style.transition = 'transform 0.2s ease'
-  el.offsetHeight // force reflow
+  overlayRef.current.style.transition = 'transform 0.2s ease'
+  overlayRef.current.offsetHeight // force reflow
 
   if (shouldClose) {
     navigation.vibrate?.(50)
 
     const translation = edge === 'right' ? '100%' : '-100%'
-    el.style.transform = `translateX(${translation}%)`
+    overlayRef.current.style.transform = `translateX(${translation}%)`
 
-    el.addEventListener('transitionend', action, { once: true })
+    overlayRef.current.addEventListener('transitionend', action, { once: true })
   } else {
-    el.style.transform = 'translateX(0)'
+    overlayRef.current.style.transform = 'translateX(0)'
   }
 }
   
