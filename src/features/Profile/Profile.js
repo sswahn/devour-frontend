@@ -59,7 +59,7 @@ function Profile() {
 
   const onPointerDown = event => {
     onGestureDown(event)
-    overlayRef.current.style.transition = 'none' // disable snap back
+    //overlayRef.current.style.transition = 'none' // disable snap back
     overlayRef.current.style.willChange = 'transform'
   }
   
@@ -83,7 +83,6 @@ function Profile() {
     //throttleTransition(resisted)
   }
 
-  /*
   const onPointerUp = event => {
     const { deltaX, deltaY, edge } = onGestureUp(event)
     const CLOSE_THRESHOLD = 150 
@@ -95,32 +94,10 @@ function Profile() {
       const translation = edge === 'right' ? '100%' : '-100%'
       overlayRef.current.style.transform = `translateX(${translation}%)`
       overlayRef.current.addEventListener('transitionend', action, { once: true })
-    } else {
-      overlayRef.current.style.transform = `translateX(0)`
-    }
-  }*/
-const onPointerUp = event => {
-  const { deltaX, edge } = onGestureUp(event)
-
-  const CLOSE_THRESHOLD = 150
-  const distance = edge === 'left' ? deltaX : -deltaX
-  const shouldClose = distance > CLOSE_THRESHOLD
-
-  overlayRef.current.style.transition = 'transform 0.2s ease'
-  overlayRef.current.offsetHeight // force reflow
-
-  if (shouldClose) {
-    navigation.vibrate?.(50)
-
-    const translation = edge === 'right' ? '100%' : '-100%'
-    overlayRef.current.style.transform = `translateX(${translation}%)`
-
-    overlayRef.current.addEventListener('transitionend', action, { once: true })
-  } else {
-    overlayRef.current.style.transform = 'translateX(0)'
+    } 
+    overlayRef.current.style.transform = ''
   }
-}
-  
+
   const onPointerCancel = event => {
     onGestureCancel(event)
   }
