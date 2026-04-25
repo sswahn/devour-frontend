@@ -37,10 +37,29 @@ function Profile() {
     pop()
   }
 
+  const gesture = () => {
+    navigation.vibrate?.(50)
+    overlayRef.current.addEventListener(
+      'transitionend', 
+      action, 
+      { once: true }
+    )
+  }
+  
   const onKeyDown = event => {
     if (event.key === 'Escape') {
       event.preventDefault()
       action()
+    }
+  }
+
+  const throttleTransition = deltaX => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        overlayRef.current.style.transform = `translateX(${deltaX})`
+        ticking = false
+      })
+      ticking = true
     }
   }
 
@@ -69,7 +88,8 @@ function Profile() {
     }
     const raw = edge === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
     const resisted = raw / (1 + Math.abs(raw) / 300)
-    event.currentTarget.style.transform = `translateX(${resisted}px)`
+    //event.currentTarget.style.transform = `translateX(${resisted}px)`
+    throttleTransition(resisted)
   }
   
   const onPointerUp = event => {
