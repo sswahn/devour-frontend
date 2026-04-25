@@ -19,6 +19,7 @@ function Profile() {
   const { overlayRef, focusRef } = useFocusTrap()
   const { userProfile } = useProfile() // username of profile to be displayed.
   const { closeOverlay } = useOverlay()
+  const ticking = useRef(false)
   const {
     onGestureDown,
     onGestureMove,
@@ -54,12 +55,12 @@ function Profile() {
   }
 
   const throttleTransition = deltaX => {
-    if (!ticking) {
+    if (!ticking.current) {
       requestAnimationFrame(() => {
         overlayRef.current.style.transform = `translateX(${deltaX})`
-        ticking = false
+        ticking.current = false
       })
-      ticking = true
+      ticking.current = true
     }
   }
 
