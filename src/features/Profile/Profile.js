@@ -39,9 +39,9 @@ function Profile() {
     pop()
   }
 
-  const gesture = () => {
+  const gesture = (currentTarget) => {
     navigation.vibrate?.(50)
-    overlayRef.current.addEventListener(
+    currentTarget.addEventListener(
       'transitionend', 
       action, 
       { once: true }
@@ -55,11 +55,11 @@ function Profile() {
     }
   }
 
-  const throttleTransition = deltaX => {
+  const throttleTransition = (currentTarget, deltaX) => {
     latestDeltaX.current = deltaX
     if (!ticking.current) {
       requestAnimationFrame(() => {
-        overlayRef.current.style.transform = `translate3d(${latestDeltaX.current}px 0 0)`
+        currentTarget.style.transform = `translate3d(${latestDeltaX.current}px 0 0)`
         ticking.current = false
       })
       ticking.current = true
@@ -93,7 +93,7 @@ function Profile() {
     const raw = edge === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
     const resisted = raw / (1 + Math.abs(raw) / 300)
     //event.currentTarget.style.transform = `translateX(${resisted}px)`
-    throttleTransition(resisted)
+    throttleTransition(event.currentTarget, resisted)
   }
   
   const onPointerUp = event => {
@@ -102,7 +102,7 @@ function Profile() {
     const isCorrectDir = edge === 'left' ? deltaX > 0 : deltaX < 0
     const shouldClose = Math.abs(deltaX) > CLOSE_THRESHOLD && isCorrectDir
     if (shouldClose) {
-      action()
+      gesture(event.currentTarget)
     }
     event.currentTarget.style.transition = 'transform 0.2s ease'
     event.currentTarget.style.transform = '' // or `translateX(0px)`
