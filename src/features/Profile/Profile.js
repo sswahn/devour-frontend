@@ -76,6 +76,7 @@ function Profile() {
     throttleTransition(resisted, currentTarget)
   }
 
+  /*
   const onPointerUp = event => {
     ticking.current = false
     const { currentTarget } = event
@@ -95,6 +96,43 @@ function Profile() {
       currentTarget.style.transform = ''
     }
   }
+  */
+
+  const onPointerUp = event => {
+  const { currentTarget } = event;
+  const { deltaX, edge } = onGestureUp(event);
+
+  // 1. IMMEDIATELY stop the move throttle
+  ticking.current = false; 
+
+  const raw = edge === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX);
+  const resisted = raw / (1 + Math.abs(raw) / 300);
+  const shouldClose = Math.abs(resisted) >= 150;
+
+  // 2. Prepare for the animation
+  currentTarget.style.transition = 'transform 0.2s ease-out';
+  
+  // 3. THE FIX: Force the browser to recognize the current 'none' transition is over
+  void currentTarget.offsetHeight; 
+
+  if (shouldClose) {
+    navigation.vibrate?.(50);
+    // Move completely off-screen using viewport units
+    const translation = edge === 'left' ? '100vw' : '-100vw';
+    currentTarget.style.transform = `translate3d(${translation}, 0, 0)`;
+    
+    currentTarget.addEventListener('transitionend', action, { once: true });
+  } else {
+    // Snap back to exactly zero
+    currentTarget.style.transform = 'translate3d(0, 0, 0)';
+    
+    // Clean up transition so the next drag isn't laggy
+    currentTarget.addEventListener('transitionend', () => {
+      currentTarget.style.transition = '';
+    }, { once: true });
+  }
+}
+
 
   const onPointerCancel = event => {
     onGestureCancel(event)
