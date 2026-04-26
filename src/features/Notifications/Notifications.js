@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { overlays } from '../../config'
 import useOverlay from '../../hooks/useOverlay'
-import useFocusStack from '../../hooks/useFocusStack'
 import useFocusTrap from '../../hooks/useFocusTrap'
 import Dropdown from '../../components/Dropdown/Dropdown'
 import styles from './Notifications.module.css'
@@ -9,7 +8,6 @@ import styles from './Notifications.module.css'
 import Avatar from '../../components/Avatar/Avatar'
 
 function Notifications() {
-  const { pop } = useFocusStack()
   const { closeOverlay } = useOverlay()
   const { focusRef } = useFocusTrap()
   const [isOpen, setIsOpen] = useState(false)
@@ -30,8 +28,7 @@ function Notifications() {
   }
 
   const action = () => {
-    closeOverlay(overlays.notifications)
-    pop()
+    closeOverlay()
   }
 
   const close = () => {
