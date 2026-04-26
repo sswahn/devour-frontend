@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { overlays, apis } from '../../config'
 import useOverlay from '../../hooks/useOverlay'
 import useFocusTrap from '../../hooks/useFocusTrap'
-import useSwipeToClose from '../../hooks/useSwipeToClose'
+import useSwipeFromEdge from '../../hooks/useSwipeFromEdge'
 import useDebounce from '../../hooks/useDebounce'
 import server from '../../utilities/server'
 import CloseButton from '../../components/CloseButton/CloseButton'
@@ -22,6 +22,12 @@ function Search() {
   const [recentSearches, setRecentSearches] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
+  const {
+    onPointerDown,
+    onPointerMove,
+    onPointerUp,
+    onPointerCancel
+  } = useSwipeFromEdge(closeOverlay)
 
   const onSubmit = event => event.preventDefault()
 
@@ -87,7 +93,17 @@ function Search() {
   }, [searchValue])
 
   return (
-    <search id={overlays.search} className={styles.search} ref={focusRef} onKeyDown={onKeyDown} role="dialog" aria-modal="true">
+    <search 
+      id={overlays.search} 
+      className={styles.search} 
+      ref={focusRef} 
+      onKeyDown={onKeyDown}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerCancel={onPointerCancel}
+      role="dialog" 
+      aria-modal="true">
       <nav>
         <CloseButton overlay={overlays.search} close={action} />
         <Dropdown items={[
