@@ -100,6 +100,24 @@ function Notifications() {
     // 2. State Prep: Switch transition ON
     currentTarget.style.transition = 'transform 0.25s cubic-bezier(0.2, 0, 0, 1)'
 
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        if (shouldClose) {
+          navigation.vibrate?.(50)
+          const translation = edge === 'up' ? '100vh' : '-100vh'
+          
+          currentTarget.style.transform = `translate3d(${translation}, 0, 0)`
+          currentTarget.addEventListener('transitionend', action, { once: true })
+        } else {
+          currentTarget.style.transform = 'translate3d(0, 0, 0)'
+          
+          // Cleanup transition when snap-back finishes
+          currentTarget.addEventListener('transitionend', () => {
+            currentTarget.style.transition = ''
+          }, { once: true })
+        }
+      })
+    })
   }
   
   const onPointerCancel = event => {
