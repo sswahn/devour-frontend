@@ -60,7 +60,7 @@ function Notifications() {
   }
 
   const onPointerDown = event => {
-    const { deltaX, deltaY } = onGestureDown(event)
+    onGestureDown(event)
   }
   
   const onPointerMove = event => {
