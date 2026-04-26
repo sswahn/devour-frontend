@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { overlays } from '../../config'
 import useOverlay from '../../hooks/useOverlay'
-import useFocusStack from '../../hooks/useFocusStack'
 import useFocusTrap from '../../hooks/useFocusTrap'
 import useSwipeToClose from '../../hooks/useSwipeToClose'
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner'
@@ -13,14 +12,12 @@ import AppleButton from './AppleButton/AppleButton'
 import styles from './Authentication.module.css'
 
 function Authentication() {
-  const { pop } = useFocusStack()
   const {overlayRef, focusRef} = useFocusTrap()
   const { closeOverlay } = useOverlay()
   const swipeToClose = useSwipeToClose()
 
   const action = () => {
     closeOverlay(overlays.authentication)
-    pop()
   }
 
   const gesture = () => {
