@@ -7,12 +7,10 @@ import styles from './NotificationsButton.module.css'
 
 function NotificationsButton() {
   const buttonRef = useRef(null)
-  const { push } = useFocusStack()
   const { openOverlay } = useOverlay()
   
   const action = () => {
-    push(buttonRef.current)
-    openOverlay(overlays.notifications)
+    openOverlay(overlays.notifications, buttonRef.current)
   }
   
   const onClick = event => {
