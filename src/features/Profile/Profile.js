@@ -77,7 +77,7 @@ function Profile() {
   
   const onPointerUp = event => {
     const { currentTarget } = event
-    const { deltaX, edge } = onGestureUp(event)
+    const { deltaX, edge, velocity } = onGestureUp(event)
   
     // 1. Kill the move throttle immediately
     ticking.current = false
@@ -88,6 +88,25 @@ function Profile() {
   
     // 2. State Prep: Switch transition ON
     currentTarget.style.transition = 'transform 0.25s cubic-bezier(0.2, 0, 0, 1)'
+
+    
+    const timeSinceLastMove = performance.now() - prevTimestamp.current
+  
+    // 1. If they held their finger still for > 100ms, it's not a flick
+    const finalVelocity = timeSinceLastMove > 100 ? 0 : velocity
+  
+    // 2. Define your threshold (0.5 to 1.0 is usually a good "flick" feel)
+    const FLICK_THRESHOLD = 0.5
+  
+    if (Math.abs(finalVelocity) > FLICK_THRESHOLD) {
+      console.log("Flick detected with velocity:", finalVelocity)
+      // Trigger your "flick" animation here
+      // flickClose()
+    } else {
+      console.log("Regular release or snap-back")
+      //regularClose()
+    }
+    
   
     // 3. The "Double rAF" — Guarantees transition starts without layout thrashing
     requestAnimationFrame(() => {
