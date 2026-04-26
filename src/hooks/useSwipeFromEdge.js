@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import useGestures from '../../hooks/useGestures'
 
 function useSwipeFromEdge() {
   const ticking = useRef(false)
