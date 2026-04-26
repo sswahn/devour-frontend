@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { FocusStackContext } from '../components/Providers/FocusStackProvider'
+import { FocusStackContext } from '../archive/Providers/FocusStackProvider'
 
 function useFocusStack() {
   const { push, pop } = useContext(FocusStackContext)
