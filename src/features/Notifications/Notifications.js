@@ -77,7 +77,7 @@ function Notifications() {
   
   const onPointerMove = event => {
     const { currentTarget } = event
-    const { deltaY, edge, direction } = onGestureMove(event)
+    const { deltaY, direction } = onGestureMove(event)
     if (direction === 'x') {
       return
     }
@@ -88,7 +88,7 @@ function Notifications() {
   
   const onPointerUp = event => {
     const { currentTarget } = event
-    const { deltaY, edge, velocity, timestamp } = onGestureUp(event)
+    const { deltaY, velocity, timestamp } = onGestureUp(event)
   
     // 1. Kill the move throttle immediately
     ticking.current = false
