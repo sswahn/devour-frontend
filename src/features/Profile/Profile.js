@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { overlays } from '../../config'
 import useOverlay from '../../hooks/useOverlay'
-import useFocusStack from '../../hooks/useFocusStack'
 import useFocusTrap from '../../hooks/useFocusTrap'
 import useSwipeToClose from '../../hooks/useSwipeToClose'
 import useSession from '../../hooks/useSession'
@@ -15,7 +14,6 @@ import EditButton from './EditButton/EditButton'
 import styles from './Profile.module.css'
 
 function Profile() {
-  const { pop } = useFocusStack()
   const { overlayRef, focusRef } = useFocusTrap()
   const { userProfile } = useProfile() // username of profile to be displayed.
   const { closeOverlay } = useOverlay()
@@ -35,8 +33,7 @@ function Profile() {
    })
 
   const action = () => {
-    closeOverlay(overlays.profile)
-    pop()
+    closeOverlay()
   }
   
   const onKeyDown = event => {
