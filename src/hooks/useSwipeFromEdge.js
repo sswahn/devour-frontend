@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import useGestures from '../../hooks/useGestures'
 
-function useSwipeFromEdge() {
+function useSwipeFromEdge(callback) {
   const ticking = useRef(false)
   const latestDeltaX = useRef(0)
   const {
@@ -80,7 +80,7 @@ function useSwipeFromEdge() {
           const translation = edge === 'left' ? '100vw' : '-100vw'
           
           currentTarget.style.transform = `translate3d(${translation}, 0, 0)`
-          currentTarget.addEventListener('transitionend', action, { once: true })
+          currentTarget.addEventListener('transitionend', callback, { once: true })
         } else {
           currentTarget.style.transform = 'translate3d(0, 0, 0)'
           
