@@ -64,7 +64,12 @@ function Notifications() {
   }
   
   const onPointerMove = event => {
-    const { deltaX, deltaY } = onGestureMove(event)
+    const { currentTarget } = event
+    const { deltaX, edge, direction } = onGestureMove(event)
+    if (direction === 'x') {
+      return
+    }
+    
   }
   
   const onPointerUp = event => {
