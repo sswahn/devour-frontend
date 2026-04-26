@@ -1,4 +1,4 @@
-import { useState, useCallback, createContext } from 'react'
+import { useState, useCallback, useEffect, createContext } from 'react'
 import useFocusStack from '../../hooks/useFocusStack'
 
 const OverlayContext = createContext(null)
@@ -19,6 +19,13 @@ function OverlayProvider({ children }) {
     }
     setIsActive(undefined)
     pop()
+  }, [])
+
+  useEffect(() => {
+    window.addEventListener('popstate', closeOverlay)
+    return () => {
+      window.removeEventListener('popstate', closeOverlay)
+    } 
   }, [])
 
   return (
