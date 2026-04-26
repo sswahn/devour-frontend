@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { overlays } from '../../config'
 import useOverlay from '../../hooks/useOverlay'
 import useFocusTrap from '../../hooks/useFocusTrap'
+import useGestures from '../../hooks/useGestures'
 import Dropdown from '../../components/Dropdown/Dropdown'
 import styles from './Notifications.module.css'
 
@@ -16,6 +17,12 @@ function Notifications() {
   const dragging = useRef(false)
   const startY = useRef(0)
   const startTime = useRef(0)
+  const {
+    onGestureDown,
+    onGestureMove,
+    onGestureUp,
+    onGestureCancel
+  } = useGestures()
   
   const context = { 
     notifications: [
@@ -52,6 +59,23 @@ function Notifications() {
     }
   }
 
+  const onPointerDown = event => {
+    const { deltaX, deltaY } = onGestureDown(event)
+  }
+  
+  const onPointerMove = event => {
+    const { deltaX, deltaY } = onGestureMove(event)
+  }
+  
+  const onPointerUp = event => {
+    const { deltaX, deltaY } = onGestureUp(event)
+  }
+  
+  const onPointerCancel = event => {
+    onGestureCancel(event)
+  }
+
+  /*
   const handlePointerDown = event => {
     event.currentTarget.setPointerCapture(event.pointerId)
     startY.current = event.clientY
@@ -60,6 +84,7 @@ function Notifications() {
     dragging.current = true
   }
 
+  
   const handlePointerMove = event => {
     if (!dragging.current) {
       return
@@ -67,14 +92,14 @@ function Notifications() {
     const deltaY = event.clientY - startY.current
     const bottomSheet = bottomSheetRef.current
     const height = initialHeight.current
-    /*
+    
     // Elasticity:
     if (deltaY < 0) {
       const resistance = Math.max(0, 1 - Math.abs(deltaY) / Math.abs(-200))
       const stretch = Math.abs(deltaY) * resistance
       bottomSheet.style.height = `${height + stretch}px`
       bottomSheet.style.transform = `translateY(0)` 
-      */
+      
       // No resistance: Map pull-up (negative deltaY) directly to height increase
     if (deltaY < 0) {
       // stretch increases as deltaY becomes more negative
@@ -106,7 +131,7 @@ function Notifications() {
     } else {
       bottomSheet.style.transform = 'translateY(0)'
     }
-    */
+    
 
       // 1. Identify current state via style, not just your ref
     const isCurrentlyFull = bottomSheet.style.height === '100vh';
@@ -145,11 +170,13 @@ function Notifications() {
       bottomSheet.style.height = '' 
     }
   }
+  */
 
   const handleDropDown = event => {
     alert('Dropdown button fires.')
   }
 
+  /*
   useEffect(() => {
     // Wait for the next repaint to transition:
     const timer = requestAnimationFrame(() => {
@@ -162,15 +189,16 @@ function Notifications() {
       cancelAnimationFrame(timer)
     }
   }, [])
+  */
   
   return (
     <div id={overlays.notifications} className={styles.notifications} ref={focusRef} onClick={onClick} onKeyDown={onKeyDown} tabIndex={-1} role="dialog" aria-modal="true">
       <section ref={bottomSheetRef}  
         className={`${styles.bottomSheet} ${isOpen ? styles.open : ''}`}
-        onPointerDown={handlePointerDown}
-        onPointerMove={handlePointerMove}
-        onPointerUp={handlePointerUp}
-        onPointerCancel={handlePointerCancel}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerUp}
+        onPointerCancel={onPointerCancel}
         aria-label="notifications">
         <div id="grabber" role="presentation"></div>
         <ul aria-label="user notifications">
