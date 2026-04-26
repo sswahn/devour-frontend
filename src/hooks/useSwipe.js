@@ -8,18 +8,13 @@ function useSwipe({ swipeThreshold = 10, edgeThreshold = 35 } = {}) {
   const onSwipeDown = useCallback(event => {
     const { clientX, clientY } = event
     const width = window.innerWidth
-    const height = window.innerHeight
     const isLeft = clientX < edgeThreshold
     const isRight = clientX > width - edgeThreshold
-    const isTop = clientY < edgeThreshold
-    const isBottom = clientY > height - edgeThreshold
-
     prevTimestamp.current = performance.now()
     data.current = {
       startX: clientX,
       startY: clientY,
       direction: null,
-      vertical: isTop ? 'up' : 'down',
       edge: isLeft ? 'left' : 'right'
     }
   }, [])
