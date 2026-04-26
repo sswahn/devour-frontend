@@ -34,10 +34,8 @@ function OverlayProvider({ children }) {
   }, [])
 
   const handlePopState = () => {
-    if (isActive) {
-      setIsActive(null)
-      pop()
-    }
+    setIsActive(null)
+    pop()
   }
 
   useEffect(() => {
@@ -45,7 +43,7 @@ function OverlayProvider({ children }) {
     return () => {
       window.removeEventListener('popstate', handlePopState)
     } 
-  }, [])
+  }, [handlePopState])
 
   return (
     <OverlayContext.Provider value={{ isActive, openOverlay, closeOverlay }}>
