@@ -22,10 +22,12 @@ function OverlayProvider({ children }) {
   }
 
   const openOverlay = useCallback((id, focusElement) => {
-    history.pushState({ overlayOpen: true }, '')
-    push(focusElement)
-    setIsActive(id)
-  }, []) 
+    if (!isActive) {
+      history.pushState({ overlayOpen: true }, '')
+      push(focusElement)
+      setIsActive(id)
+    }
+  }, [isActive]) 
   
   const closeOverlay = useCallback(() => {
     if (history.state?.overlayOpen) {
@@ -34,8 +36,10 @@ function OverlayProvider({ children }) {
   }, [])
 
   const handlePopState = () => {
-    setIsActive(undefined)
-    pop()
+    if (isActive) {
+      setIsActive(null)
+      pop()
+    }
   }
 
   useEffect(() => {
