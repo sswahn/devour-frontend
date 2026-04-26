@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { overlays, apis } from '../../config'
 import useOverlay from '../../hooks/useOverlay'
-import useFocusStack from '../../hooks/useFocusStack'
 import useFocusTrap from '../../hooks/useFocusTrap'
 import useSwipeToClose from '../../hooks/useSwipeToClose'
 import useDebounce from '../../hooks/useDebounce'
@@ -15,7 +14,6 @@ import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner'
 import styles from './Search.module.css'
 
 function Search() {
-  const { pop } = useFocusStack()
   const { overlayRef, focusRef } = useFocusTrap()
   const { closeOverlay } = useOverlay()
   const swipeToClose = useSwipeToClose()
@@ -63,8 +61,7 @@ function Search() {
   }
 
   const action = () => {
-    closeOverlay(overlays.search)
-    pop()
+    closeOverlay()
   }
 
   const gesture = () => {
