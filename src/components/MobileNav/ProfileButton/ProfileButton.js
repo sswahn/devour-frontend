@@ -15,9 +15,8 @@ function ProfileButton() {
   const { openOverlay } = useOverlay()
   
   const action = async () => {
-    push(buttonRef.current)
     setUserProfile(session.username)
-    openOverlay(overlays.profile)
+    openOverlay(overlays.profile, buttonRef.current)
   }
   
   const onClick = event => {
