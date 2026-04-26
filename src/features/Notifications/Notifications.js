@@ -17,6 +17,7 @@ function Notifications() {
   const dragging = useRef(false)
   const startY = useRef(0)
   const startTime = useRef(0)
+  const ticking = useRef(0)
   const {
     onGestureDown,
     onGestureMove,
@@ -86,7 +87,19 @@ function Notifications() {
   }
   
   const onPointerUp = event => {
-    const { deltaX, deltaY } = onGestureUp(event)
+    const { currentTarget } = event
+    const { deltaY, edge, velocity, timestamp } = onGestureUp(event)
+  
+    // 1. Kill the move throttle immediately
+    ticking.current = false
+  
+    const raw = edge === 'up' ? Math.max(0, deltaX) : Math.min(0, deltaX)
+    const resisted = raw / (1 + Math.abs(raw) / 300)
+    const shouldClose = Math.abs(resisted) >= 150
+  
+    // 2. State Prep: Switch transition ON
+    currentTarget.style.transition = 'transform 0.25s cubic-bezier(0.2, 0, 0, 1)'
+
   }
   
   const onPointerCancel = event => {
