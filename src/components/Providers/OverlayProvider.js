@@ -1,23 +1,26 @@
-import { useState, useCallback, useEffect, createContext } from 'react'
+import { useState, useRef, useCallback, useEffect, createContext } from 'react'
 import useFocusStack from '../../hooks/useFocusStack'
 
 const OverlayContext = createContext(null)
 
 function OverlayProvider({ children }) {
   const [isActive, setIsActive] = useState(undefined)
+  const closeFired = useRef(false)
   const { push, pop } = useFocusStack()
 
-  const openOverlay = useCallback((id, element) => {
-    push(element)
-    setIsActive(id)
+  const openOverlay = useCallback((id, focusElement) => {
     history.pushState({ overlayOpen: true }, '')
+    closeFired.current = true
+    push(focusElement)
+    setIsActive(id)
   }, []) 
   
   const closeOverlay = useCallback(() => {
-    if (!isActive) {
+    if (!isActive || closeFired.current) {
       return
     }
     if (history.state?.overlayOpen) {
+      closeFired.current = true
       history.back()
     }
     setIsActive(undefined)
