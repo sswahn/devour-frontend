@@ -1,15 +1,13 @@
 import { useRef } from 'react'
-import useFocusStack from '../../../hooks/useFocusStack'
+import { overlays } from '../../../config'
 import LineChartIcon from '../../Icons/LineChartIcon/LineChartIcon'
 import styles from './DashboardButton.module.css'
 
-function DashboardButton({ openDashboard }) {
-  const { push } = useFocusStack()
+function DashboardButton({ openOverlay }) {
   const buttonRef = useRef(null)
   
   const action = () => {
-    openDashboard()
-    push(buttonRef.current)
+    openOverlay(overlays.dashboard, buttonRef.current)
   }
   
   const onClick = event => {
