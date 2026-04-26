@@ -19,6 +19,7 @@ function Notifications() {
   const startTime = useRef(0)
   const ticking = useRef(0)
   const latestDeltaY = useRef(0)
+  const initialHeight = useRef(0)
   const {
     onGestureDown,
     onGestureMove,
@@ -61,11 +62,13 @@ function Notifications() {
     }
   }
 
-  const throttleTransition = (deltaY, currentTarget) => {
+  const throttleTransition = (deltaY, height, currentTarget) => {
     latestDeltaY.current = deltaY
+    initialHeight.current = height
     if (!ticking.current) {
       ticking.current = true
       requestAnimationFrame(() => {
+        currentTarget.style.height = `${initialHeight.current}px`
         currentTarget.style.transform = `translate3d(0, ${latestDeltaY.current}px, 0)`
         ticking.current = false
       })
@@ -75,6 +78,7 @@ function Notifications() {
   const onPointerDown = event => {
     const { currentTarget } = event
     onGestureDown(event)
+    initialHeight.current = currentTarget.offsetHeight
     currentTarget.style.transition = 'none'
     currentTarget.style.willChange = 'transform'
   }
@@ -85,9 +89,10 @@ function Notifications() {
     if (direction === 'x') {
       return
     }
-    const raw = deltaY < 0 ? deltaY : 0 // Only capture negative movement (upward)
+    const raw = deltaY < 0 ? deltaY : 0 
     const resisted = raw / (1 + Math.abs(raw) / 300)
-    throttleTransition(resisted, currentTarget)
+    const newHeight = initialHeight.current + Math.abs(deltaY) 
+    throttleTransition(resisted, newHeight, currentTarget)
   }
   
   const onPointerUp = event => {
