@@ -2,20 +2,17 @@ import { useState, useRef } from 'react'
 import { overlay } from '../../config'
 import useProfile from '../../hooks/useProfile'
 import useOverlay from '../../hooks/useOverlay'
-import useFocusStack from '../../hooks/useFocusStack'
 import Identicon from '../Identicon/Identicon'
 import styles from './Avatar.module.css'
 
 function Avatar({ username, image, size = 24 }) {
   const { openOverlay } = useOverlay()
   const { setUserProfile } = useProfile()
-  const { push } = useFocusStack()
   const avatarRef = useRef(null)
   
   const action = () => {
-    push(avatarRef.current)
     setUserProfile(username)
-    openOverlay(overlay.profile)
+    openOverlay(overlay.profile, avatarRef.current)
   }
   
   const onClick = event => {
