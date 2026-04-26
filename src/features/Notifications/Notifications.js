@@ -105,6 +105,21 @@ function Notifications() {
 
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
+        // Snap Logic based on Translate Y position
+        if (finalTranslate < vh * 0.25) {
+          // Snap to Full Screen (Top)
+          sheet.style.transform = 'translateY(0dvh)';
+        } else if (finalTranslate < vh * 0.75) {
+          // Snap to Half Screen
+          sheet.style.transform = 'translateY(50dvh)';
+        } else {
+          // Snap to Closed (Bottom)
+          sheet.style.transform = 'translateY(100dvh)';
+        }
+
+
+
+        
         if (shouldClose) {
           navigation.vibrate?.(50)
           const translation = edge === 'up' ? '100vh' : '-100vh'
