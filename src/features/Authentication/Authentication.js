@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { overlays } from '../../config'
 import useOverlay from '../../hooks/useOverlay'
 import useFocusTrap from '../../hooks/useFocusTrap'
-import useSwipeToClose from '../../hooks/useSwipeToClose'
+import useSwipeFromEdge from '../../hooks/useSwipeFromEdge'
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner'
 import CloseButton from '../../components/CloseButton/CloseButton'
 import LoginForm from './LoginForm/LoginForm'
@@ -14,7 +14,12 @@ import styles from './Authentication.module.css'
 function Authentication() {
   const {overlayRef, focusRef} = useFocusTrap()
   const { closeOverlay } = useOverlay()
-  const swipeToClose = useSwipeToClose()
+  const {
+    onPointerDown,
+    onPointerMove,
+    onPointerUp,
+    onPointerCancel
+  } = useSwipeFromEdge()
 
   const action = () => {
     closeOverlay()
@@ -39,7 +44,16 @@ function Authentication() {
   }, [])
   
   return (
-    <section id={overlays.authentication} className={styles.authentication} ref={focusRef} onKeyDown={onKeyDown} aria-label="user authentication">
+    <section 
+      id={overlays.authentication} 
+      className={styles.authentication} 
+      ref={focusRef} 
+      onKeyDown={onKeyDown} 
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerCancel={onPointerCancel}
+      aria-label="user authentication">
       <CloseButton overlay={overlays.authentication} close={action} />
       <LoginForm />
       <RegistrationButton />
