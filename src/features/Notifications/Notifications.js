@@ -102,11 +102,10 @@ function Notifications() {
 
      // 1. Calculate Resistance for the SNAP logic
     // We apply resistance if the resulting position would be above the screen (negative)
-    let finalTranslate = clientY + deltaY
+    let finalTranslate = clientY
   
     if (finalTranslate < 0) {
-      const raw = finalTranslate
-      finalTranslate = raw / (1 + Math.abs(raw) / 300)
+      finalTranslate = finalTranslate / (1 + Math.abs(raw) / 300)
     }
   
     // 2. State Prep: Switch transition ON
