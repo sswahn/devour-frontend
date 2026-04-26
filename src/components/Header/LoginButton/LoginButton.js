@@ -1,15 +1,15 @@
 import { useRef } from 'react'
-import useFocusStack from '../../../hooks/useFocusStack'
+import { overlays } from '../../../config'
+import useOverlay from '../../../hooks/useOverlay'
 import RightToBracketIcon from '../../Icons/RightToBracketIcon/RightToBracketIcon'
 import styles from './LoginButton.module.css'
 
-function LoginButton({ openAuthentication }) {
+function LoginButton() {
   const buttonRef = useRef(null)
-  const { push } = useFocusStack()
+  const { openOverlay } = useOverlay()
   
   const action = () => {
-    push(buttonRef.current)
-    openAuthentication()  
+    openOverlay(overlays.authentication, buttonRef.current)  
   }
   
   const onClick = event => {
