@@ -3,6 +3,12 @@ import { useRef } from 'react'
 function useSwipeFromEdge() {
   const ticking = useRef(false)
   const latestDeltaX = useRef(0)
+  const {
+    onGestureDown,
+    onGestureMove,
+    onGestureUp,
+    onGestureCancel
+  } = useGestures()
 
   const throttleTransition = (deltaX, currentTarget) => {
     latestDeltaX.current = deltaX
