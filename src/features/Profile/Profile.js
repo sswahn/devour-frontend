@@ -145,7 +145,7 @@ function Profile() {
       aria-labelledby="username" 
       aria-describedby="biography">
       <nav>
-        <CloseButton overlay={overlays.profile} close={closeOverlay} pop={pop} />
+        <CloseButton overlay={overlays.profile} close={action} />
         <Dropdown items={[
           { text: 'alert message', method: () => alert('dropdown item clicked.') },
           { text: 'console log message', method: () => console.log('dropdown item clicked.') }
