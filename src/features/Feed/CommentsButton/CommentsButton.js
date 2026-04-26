@@ -1,15 +1,14 @@
 import { useRef } from 'react'
-import useFocusStack from '../../../hooks/useFocusStack'
+import useOverlay from '../../../hooks/useOverlay'
 import CommentIcon from '../../../components/Icons/CommentIcon/CommentIcon'
 import styles from './CommentsButton.module.css'
 
-function CommentsButton({ openComments }) {
-  const { push } = useFocusStack()
+function CommentsButton() {
   const buttonRef = useRef(null)
+  const { openOverlay } = useOverlay()
   
   const action = () => {
-    openComments()
-    push(buttonRef.current)
+    openOverlay(overlay.comments, buttonRef.current)
   }
   
   const onClick = event => {
