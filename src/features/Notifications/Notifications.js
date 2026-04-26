@@ -81,7 +81,7 @@ function Notifications() {
     if (direction === 'x') {
       return
     }
-    const raw = deltaY < 0 ? deltaY : 0; // Only capture negative movement (upward)
+    const raw = deltaY < 0 ? deltaY : 0 // Only capture negative movement (upward)
     const resisted = raw / (1 + Math.abs(raw) / 300)
     throttleTransition(resisted, currentTarget)
   }
@@ -93,7 +93,7 @@ function Notifications() {
     // 1. Kill the move throttle immediately
     ticking.current = false
   
-    const raw = edge === 'up' ? Math.max(0, deltaX) : Math.min(0, deltaX)
+    const raw = deltaY < 0 ? deltaY : 0 // Only capture negative movement (upward)
     const resisted = raw / (1 + Math.abs(raw) / 300)
     const shouldClose = Math.abs(resisted) >= 150
   
