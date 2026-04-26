@@ -14,12 +14,15 @@ function OverlayProvider({ children }) {
   }, []) 
   
   const closeOverlay = useCallback(() => {
+    if (!isActive) {
+      return
+    }
     if (history.state?.overlayOpen) {
       history.back()
     }
     setIsActive(undefined)
     pop()
-  }, [])
+  }, [isActive])
 
   useEffect(() => {
     window.addEventListener('popstate', closeOverlay)
