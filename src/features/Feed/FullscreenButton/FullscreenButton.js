@@ -1,16 +1,16 @@
 import { useRef } from 'react'
-import useFocusStack from '../../../hooks/useFocusStack'
+//import useFocusStack from '../../../hooks/useFocusStack'
 import ExpandIcon from '../../../components/Icons/ExpandIcon/ExpandIcon'
 import styles from './FullscreenButton.module.css'
 
 function FullscreenButton({ openFeed }) {
-  const { push } = useFocusStack()
+//  const { push } = useFocusStack()
   const buttonRef = useRef(null)
   
   const action = async () => {
     await document.getElementById('portal').requestFullscreen()
     await screen.orientation.lock('portrait')
-    push(buttonRef.current)
+//    push(buttonRef.current)
     openFeed()
 
     // make sure current video focused
