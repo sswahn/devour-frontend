@@ -59,17 +59,30 @@ function Notifications() {
     }
   }
 
+  const throttleTransition = (deltaY, currentTarget) => {
+    latestDeltaY.current = deltaY
+    if (!ticking.current) {
+      ticking.current = true
+      requestAnimationFrame(() => {
+        currentTarget.style.transform = `translate3d(${latestDeltaY.current}px, 0, 0)`
+        ticking.current = false
+      })
+    }
+  }
+
   const onPointerDown = event => {
     onGestureDown(event)
   }
   
   const onPointerMove = event => {
     const { currentTarget } = event
-    const { deltaX, edge, direction } = onGestureMove(event)
+    const { deltaY, edge, direction } = onGestureMove(event)
     if (direction === 'x') {
       return
     }
-    
+    const raw = edge === 'up' ? Math.max(0, deltaY) : Math.min(0, deltaY)
+    const resisted = raw / (1 + Math.abs(raw) / 300)
+    throttleTransition(resisted, currentTarget)
   }
   
   const onPointerUp = event => {
