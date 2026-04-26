@@ -89,12 +89,21 @@ function useSwipeFromEdge() {
       })
     })
   }
+
+  const onPointerCancel = event => {
+    onGestureCancel(event)
+  }
+
+  return {
+    onPointerDown,
+    onPointerMove,
+    onPointerUp,
+    onPointerCancel
+  }
 }
 
 export default useSwipeFromEdge
 
 
 
-  const onPointerCancel = event => {
-    onGestureCancel(event)
-  }
+
