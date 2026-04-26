@@ -95,44 +95,32 @@ function Notifications() {
   
     // 1. Kill the move throttle immediately
     ticking.current = false
-  
+    
+    const height = window.innerHeight
     const raw = deltaY < 0 ? deltaY : 0 // Only capture negative movement (upward)
     const resisted = raw / (1 + Math.abs(raw) / 300)
     const shouldClose = Math.abs(resisted) >= 150
   
     // 2. State Prep: Switch transition ON
     currentTarget.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1)'
-
+    
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         // Snap Logic based on Translate Y position
-        if (finalTranslate < vh * 0.25) {
+        if (finalTranslate < height * 0.25) {
           // Snap to Full Screen (Top)
-          sheet.style.transform = 'translateY(0dvh)';
-        } else if (finalTranslate < vh * 0.75) {
+          currentTarget.style.transform = 'translateY(0dvh)'
+        } else if (finalTranslate < height * 0.75) {
           // Snap to Half Screen
-          sheet.style.transform = 'translateY(50dvh)';
+          currentTarget.style.transform = 'translateY(50dvh)'
         } else {
           // Snap to Closed (Bottom)
-          sheet.style.transform = 'translateY(100dvh)';
-        }
-
-
-
-        
-        if (shouldClose) {
-          navigation.vibrate?.(50)
-          const translation = edge === 'up' ? '100vh' : '-100vh'
-          
-          currentTarget.style.transform = `translate3d(0, ${translation}, 0)`
-          currentTarget.addEventListener('transitionend', action, { once: true })
-        } else {
-          currentTarget.style.transform = 'translate3d(0, 0, 0)'
-          
-          // Cleanup transition when snap-back finishes
           currentTarget.addEventListener('transitionend', () => {
             currentTarget.style.transition = ''
+            action()
           }, { once: true })
+          currentTarget.style.transform = 'translateY(100dvh)'
+          //throttleTransition(100, currentTarget)
         }
       })
     })
