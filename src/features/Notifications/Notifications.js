@@ -81,7 +81,7 @@ function Notifications() {
     if (direction === 'x') {
       return
     }
-    const raw = edge === 'up' ? Math.max(0, deltaY) : Math.min(0, deltaY)
+    const raw = deltaY < 0 ? deltaY : 0; // Only capture negative movement (upward)
     const resisted = raw / (1 + Math.abs(raw) / 300)
     throttleTransition(resisted, currentTarget)
   }
