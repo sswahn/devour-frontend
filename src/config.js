@@ -2,6 +2,7 @@
 export const overlays = {
   authentication: 'authentication',
   camera: 'camera',
+  comments: 'comments',
   dashboard: 'dashboard',
   notifications: 'notifications',
   profile: 'profile',
