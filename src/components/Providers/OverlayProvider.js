@@ -7,12 +7,16 @@ function OverlayProvider({ children }) {
   const [isActive, setIsActive] = useState(undefined)
   const { push, pop } = useFocusStack()
 
-  const openOverlay = useCallback(id => {
-    push(id)
+  const openOverlay = useCallback((id, element) => {
+    push(element)
     setIsActive(id)
+    history.pushState({ overlayOpen: true }, '')
   }, []) 
   
   const closeOverlay = useCallback(() => {
+    if (history.state?.overlayOpen) {
+      history.back()
+    }
     setIsActive(undefined)
     pop()
   }, [])
