@@ -18,6 +18,7 @@ function Notifications() {
   const startY = useRef(0)
   const startTime = useRef(0)
   const ticking = useRef(0)
+  const latestDeltaY = useRef(0)
   const {
     onGestureDown,
     onGestureMove,
