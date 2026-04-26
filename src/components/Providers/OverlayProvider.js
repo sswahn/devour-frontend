@@ -10,7 +10,7 @@ function OverlayProvider({ children }) {
 
   const openOverlay = useCallback((id, focusElement) => {
     history.pushState({ overlayOpen: true }, '')
-    closeFired.current = true
+    closeFired.current = false
     push(focusElement)
     setIsActive(id)
   }, []) 
