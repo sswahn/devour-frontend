@@ -1,9 +1,11 @@
 import { useRef } from 'react'
 import { overlays } from '../../../config'
+import useOverlay from '../../../hooks/useOverlay'
 import LineChartIcon from '../../Icons/LineChartIcon/LineChartIcon'
 import styles from './DashboardButton.module.css'
 
-function DashboardButton({ openOverlay }) {
+function DashboardButton() {
+  const { openOverlay } = useOverlay()
   const buttonRef = useRef(null)
   
   const action = () => {
