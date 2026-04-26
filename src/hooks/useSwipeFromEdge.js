@@ -32,8 +32,6 @@ function useSwipeFromEdge() {
     throttleTransition(resisted, currentTarget)
   }
 
-  // calculate velocity in hook and return with result object
-  
   const onPointerUp = event => {
     const { currentTarget } = event
     const { deltaX, edge, velocity, timestamp } = onGestureUp(event)
