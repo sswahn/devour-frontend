@@ -410,7 +410,8 @@
   height: auto; /* Grows with content */ 
   left: 0;
   max-height: 90dvh; 
-  min-height: 50dvh;  
+  min-height: 50dvh;
+  overscroll-behavior-y: contain;
   padding-top: 8px;
   position: absolute;
   transform: translateY(100%);   /* start hidden */
