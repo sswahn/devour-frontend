@@ -16,7 +16,6 @@ import styles from './Search.module.css'
 function Search() {
   const { overlayRef, focusRef } = useFocusTrap()
   const { closeOverlay } = useOverlay()
-  const swipeToClose = useSwipeToClose()
   const [searchValue, setSearchValue] = useState('')
   const [searchResults, setSearchResults] = useState([])
   const [recentSearches, setRecentSearches] = useState([])
