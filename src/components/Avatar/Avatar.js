@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import { overlay } from '../../config'
+import { overlays } from '../../config'
 import useProfile from '../../hooks/useProfile'
 import useOverlay from '../../hooks/useOverlay'
 import Identicon from '../Identicon/Identicon'
@@ -12,7 +12,7 @@ function Avatar({ username, image, size = 24 }) {
   
   const action = () => {
     setUserProfile(username)
-    openOverlay(overlay.profile, avatarRef.current)
+    openOverlay(overlays.profile, avatarRef.current)
   }
   
   const onClick = event => {
