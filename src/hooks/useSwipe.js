@@ -3,6 +3,7 @@ import { useRef, useCallback } from 'react'
 function useSwipe({ swipeThreshold = 10, edgeThreshold = 35 } = {}) {
   const data = useRef({})
   const prevTimestamp = useRef(0)
+  const finalVelocity = useRef(0)
   
   const onSwipeDown = useCallback(event => {
     const { clientX, clientY } = event
@@ -35,11 +36,11 @@ function useSwipe({ swipeThreshold = 10, edgeThreshold = 35 } = {}) {
     }
     // Calculate scroll velocity
     const deltaTime = timestamp - prevTimestamp.current
-    const rawVelocity =  data.current.direction === 'x' 
+    const velocity =  data.current.direction === 'x' 
       ? deltaX / deltaTime 
       : deltaY / deltaTime
     prevTimestamp.current = timestamp
-    
+    finalVelocity.current = velocity
     return { deltaX, deltaY, edge, direction: data.current.direction, velocity }
   }, [])
   
@@ -51,7 +52,7 @@ function useSwipe({ swipeThreshold = 10, edgeThreshold = 35 } = {}) {
     const { startX, startY, edge, direction } = data.current
     const deltaX = clientX - startX
     const deltaY = clientY - startY
-    return { deltaX, deltaY, edge, direction }
+    return { deltaX, deltaY, edge, direction, velocity: finalVelocity.current }
   }, [])
   
   const onSwipeCancel = useCallback(event => {
