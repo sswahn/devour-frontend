@@ -57,6 +57,8 @@ function useSwipe({ swipeThreshold = 10, edgeThreshold = 35 } = {}) {
   
   const onSwipeCancel = useCallback(event => {
     data.current = {}
+    prevTimestamp.current = 0
+    finalVelocity.current = 0
   }, [])
 
   return {
