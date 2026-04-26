@@ -4,7 +4,6 @@ const OverlayContext = createContext(null)
 
 function OverlayProvider({ children }) {
   const [isActive, setIsActive] = useState(undefined)
-  const closeFired = useRef(false)
   const focusStack = useRef([])
 
   const push = element => {
@@ -24,29 +23,27 @@ function OverlayProvider({ children }) {
 
   const openOverlay = useCallback((id, focusElement) => {
     history.pushState({ overlayOpen: true }, '')
-    closeFired.current = false
     push(focusElement)
     setIsActive(id)
   }, []) 
   
   const closeOverlay = useCallback(() => {
-    if (!isActive || closeFired.current) {
-      return
-    }
     if (history.state?.overlayOpen) {
-      closeFired.current = true
       history.back()
     }
+  }, [])
+
+  const handlePopState = () => {
     setIsActive(undefined)
     pop()
-  }, [isActive])
+  }
 
   useEffect(() => {
-    window.addEventListener('popstate', closeOverlay)
+    window.addEventListener('popstate', handlePopState)
     return () => {
-      window.removeEventListener('popstate', closeOverlay)
+      window.removeEventListener('popstate', handlePopState)
     } 
-  }, [closeOverlay])
+  }, [])
 
   return (
     <OverlayContext.Provider value={{ isActive, openOverlay, closeOverlay }}>
