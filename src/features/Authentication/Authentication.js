@@ -17,7 +17,7 @@ function Authentication() {
   const swipeToClose = useSwipeToClose()
 
   const action = () => {
-    closeOverlay(overlays.authentication)
+    closeOverlay()
   }
 
   const gesture = () => {
