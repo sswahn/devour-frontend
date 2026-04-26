@@ -1,11 +1,10 @@
 import ArrowLeftIcon from '../Icons/ArrowLeftIcon/ArrowLeftIcon'
 import styles from './CloseButton.module.css'
 
-function CloseButton({ overlay, close, pop }) {
+function CloseButton({ overlay, close }) {
 
   const action = () => {
-    close(overlay)
-    pop()
+    close()
   }
   
   const onClick = event => {
