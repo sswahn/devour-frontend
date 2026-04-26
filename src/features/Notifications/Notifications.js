@@ -98,7 +98,7 @@ function Notifications() {
     const shouldClose = Math.abs(resisted) >= 150
   
     // 2. State Prep: Switch transition ON
-    currentTarget.style.transition = 'transform 0.25s cubic-bezier(0.2, 0, 0, 1)'
+    currentTarget.style.transition = 'height 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1)'
 
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
