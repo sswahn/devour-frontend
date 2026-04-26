@@ -3,7 +3,7 @@ import { useState, useRef, useCallback, useEffect, createContext } from 'react'
 const OverlayContext = createContext(null)
 
 function OverlayProvider({ children }) {
-  const [isActive, setIsActive] = useState(undefined)
+  const [isActive, setIsActive] = useState(null)
   const focusStack = useRef([])
 
   const push = element => {
