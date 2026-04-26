@@ -35,13 +35,9 @@ function useSwipe({ swipeThreshold = 10, edgeThreshold = 35 } = {}) {
     }
     // Calculate scroll velocity
     const deltaTime = timestamp - prevTimestamp.current
-    const rawVelocity =  data.current.direction === 'x' ? deltaX / deltaTime : deltaY / deltaTime
-
-    // Formula: (currentRawVelocity * smoothingFactor) + (PreviousSmoothedVelocity * (1 - Factor))
-    // (smoothingFactor: 0 < factor <= 1. Smaller = smoother.
-    velocity = (rawVelocity * 0.05) + (velocity * (1 - 0.05))
-
-    // Set prevTimestamp for use in next frame
+    const rawVelocity =  data.current.direction === 'x' 
+      ? deltaX / deltaTime 
+      : deltaY / deltaTime
     prevTimestamp.current = timestamp
     
     return { deltaX, deltaY, edge, direction: data.current.direction, velocity }
