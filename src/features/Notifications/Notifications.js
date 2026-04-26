@@ -90,7 +90,7 @@ function Notifications() {
   }
   
   const onPointerUp = event => {
-    const { currentTarget } = event
+    const { clientY, currentTarget } = event
     const { deltaY, velocity, timestamp } = onGestureUp(event)
   
     // 1. Kill the move throttle immediately
@@ -100,6 +100,14 @@ function Notifications() {
     const raw = deltaY < 0 ? deltaY : 0 // Only capture negative movement (upward)
     const resisted = raw / (1 + Math.abs(raw) / 300)
 
+     // 1. Calculate Resistance for the SNAP logic
+    // We apply resistance if the resulting position would be above the screen (negative)
+    let finalTranslate = clientY + deltaY
+  
+    if (finalTranslate < 0) {
+      const raw = finalTranslate
+      finalTranslate = raw / (1 + Math.abs(raw) / 300)
+    }
   
     // 2. State Prep: Switch transition ON
     currentTarget.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1)'
