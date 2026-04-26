@@ -1,20 +1,18 @@
 import { useRef } from 'react'
 import { overlays } from '../../../config'
-import useFocusStack from '../../../hooks/useFocusStack'
+import useOverlay from '../../../hooks/useOverlay'
 import PlusIcon from '../../Icons/PlusIcon/PlusIcon'
 import styles from './CameraButton.module.css'
 
-function CameraButton({ openOverlay }) {
+function CameraButton() {
   const buttonRef = useRef(null)
-  const { push } = useFocusStack()
+  const { openOverlay } = useOverlay()
   
   const action = async () => {
     return;
-   
     // await document.getElementById('portal').requestFullscreen()
     // await screen.orientation.lock('portrait')
-    push(buttonRef.current)
-    openOverlay(overlays.camera)
+    openOverlay(overlays.camera, buttonRef.current)
   }
  
   const onClick = event => {
