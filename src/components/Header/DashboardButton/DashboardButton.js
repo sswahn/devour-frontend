@@ -5,8 +5,8 @@ import LineChartIcon from '../../Icons/LineChartIcon/LineChartIcon'
 import styles from './DashboardButton.module.css'
 
 function DashboardButton() {
-  const { openOverlay } = useOverlay()
   const buttonRef = useRef(null)
+  const { openOverlay } = useOverlay()
   
   const action = () => {
     openOverlay(overlays.dashboard, buttonRef.current)
