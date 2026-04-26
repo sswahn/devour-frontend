@@ -23,14 +23,14 @@ function useSwipe({ swipeThreshold = 10, edgeThreshold = 35 } = {}) {
       return
     }
     const { clientX, clientY } = event
-    const { startX, startY, edge } = data.current
+    const { startX, startY, edge, direction } = data.current
     const timestamp = performance.now()
     const deltaX = clientX - startX
     const deltaY = clientY - startY
     const absX = Math.abs(deltaX)
     const absY = Math.abs(deltaY)
     // Determine the dominant axis of the movement:
-    if (!data.current.direction) {
+    if (!direction) {
       data.current.direction = absX > absY ? 'x' : 'y'
     }
     // Calculate scroll velocity
