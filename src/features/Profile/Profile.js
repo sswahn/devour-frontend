@@ -77,7 +77,7 @@ function Profile() {
   
   const onPointerUp = event => {
     const { currentTarget } = event
-    const { deltaX, edge, velocity } = onGestureUp(event)
+    const { deltaX, edge, velocity, timestamp } = onGestureUp(event)
   
     // 1. Kill the move throttle immediately
     ticking.current = false
@@ -90,7 +90,7 @@ function Profile() {
     currentTarget.style.transition = 'transform 0.25s cubic-bezier(0.2, 0, 0, 1)'
 
     
-    const timeSinceLastMove = performance.now() - prevTimestamp.current
+    const timeSinceLastMove = performance.now() - timestamp
   
     // 1. If they held their finger still for > 100ms, it's not a flick
     const finalVelocity = timeSinceLastMove > 100 ? 0 : velocity
