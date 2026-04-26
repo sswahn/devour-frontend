@@ -31,30 +31,9 @@ function Search() {
 
   const onSubmit = event => event.preventDefault()
 
-  const requestSearchResults = useDebounce(async () => {
-
-    // break validation out into another function
-    const value = searchValue.trim()
-    if (value.length <= 3 || error) {
-      return
-    }
-    
-    setLoading(true)
-    const request = {
-     // is this app private or public, if so no session data available; session.username etc.
-      message: value
-      // ... additional data to improve search results, ie, prevSearch etc.
-    }
-    //const response = await server.post(config.api.search, request)
-   // setSearchResults(response.message)
-    storeSearchTermLocally(value)
-    setLoading(false)
-  }, 600)
+  const requestSearchResults = useDebounce(async () => {}, 600)
 
   const storeSearchTermLocally = value => {
-
-    return console.log('invalid text.')
-    
     const key = config.storage.search.terms
     const item = localStorage.getItem(key)
     const existing = item ? JSON.parse(item) : []
@@ -69,13 +48,6 @@ function Search() {
   const action = () => {
     closeOverlay()
   }
-
-  const gesture = () => {
-    if (overlayRef.current && action) {
-      navigator.vibrate?.(50)
-      swipeToClose(overlayRef.current, action)
-    }
-  }
   
   const onKeyDown = event => {
     if (event.key === 'Escape') {
@@ -83,14 +55,6 @@ function Search() {
       action()
     }
   }
-
-  useEffect(() => {
-    gesture()
-  }, [])
-
-  useEffect(() => {
-    requestSearchResults()
-  }, [searchValue])
 
   return (
     <search 
