@@ -72,7 +72,10 @@ function Notifications() {
   }
 
   const onPointerDown = event => {
+    const { currentTarget } = event
     onGestureDown(event)
+    currentTarget.style.transition = 'none'
+    currentTarget.style.willChange = 'transform'
   }
   
   const onPointerMove = event => {
