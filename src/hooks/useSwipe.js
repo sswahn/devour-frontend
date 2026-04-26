@@ -41,7 +41,7 @@ function useSwipe({ swipeThreshold = 10, edgeThreshold = 35 } = {}) {
       : deltaY / deltaTime
     prevTimestamp.current = timestamp
     finalVelocity.current = velocity
-    return { deltaX, deltaY, edge, direction: data.current.direction, velocity }
+    return { deltaX, deltaY, edge, direction: data.current.direction, velocity, timestamp }
   }, [])
   
   const onSwipeUp = useCallback(event => {
@@ -52,7 +52,7 @@ function useSwipe({ swipeThreshold = 10, edgeThreshold = 35 } = {}) {
     const { startX, startY, edge, direction } = data.current
     const deltaX = clientX - startX
     const deltaY = clientY - startY
-    return { deltaX, deltaY, edge, direction, velocity: finalVelocity.current }
+    return { deltaX, deltaY, edge, direction, velocity: finalVelocity.current, timestamp: prevTimestamp.current }
   }, [])
   
   const onSwipeCancel = useCallback(event => {
