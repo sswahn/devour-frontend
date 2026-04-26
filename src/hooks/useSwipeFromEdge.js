@@ -23,9 +23,10 @@ function useSwipeFromEdge(callback) {
   }
 
   const onPointerDown = event => {
+    const { currentTarget } = event
     onGestureDown(event)
-    overlayRef.current.style.transition = 'none' // disable snap back
-    overlayRef.current.style.willChange = 'transform'
+    currentTarget.style.transition = 'none' // disable snap back
+    currentTarget.style.willChange = 'transform'
   }
   
   const onPointerMove = event => {
