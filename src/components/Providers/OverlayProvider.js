@@ -22,12 +22,10 @@ function OverlayProvider({ children }) {
   }
 
   const openOverlay = useCallback((id, focusElement) => {
-    if (!isActive) {
-      history.pushState({ overlayOpen: true }, '')
+      history.pushState({ overlayOpen: id }, '')
       push(focusElement)
       setIsActive(id)
-    }
-  }, [isActive]) 
+  }, []) 
   
   const closeOverlay = useCallback(() => {
     if (history.state?.overlayOpen) {
