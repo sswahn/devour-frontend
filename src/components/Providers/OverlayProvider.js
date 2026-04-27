@@ -37,8 +37,10 @@ function OverlayProvider({ children }) {
   }, [])
 
   const handlePopState = () => {
-    setIsActive(null)
-    pop()
+    if (!isActive) {
+      setIsActive(null)
+      pop()
+    }
   }
 
   useEffect(() => {
