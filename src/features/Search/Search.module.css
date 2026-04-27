@@ -17,8 +17,8 @@
 */
 
 .search {
-  background-color: ;
-  backdrop-filter: blur(), opacity();
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(1px);
   height: 100dvh;
   left: 0;
   overflow-y: scroll;
