@@ -21,7 +21,7 @@ function Profile() {
     onPointerMove,
     onPointerUp,
     onPointerCancel
-  } = useSwipeFromEdge()
+  } = useSwipeFromEdge(closeOverlay)
   const [profile, setProfile] = useState({
     image: '',
     username: '',
