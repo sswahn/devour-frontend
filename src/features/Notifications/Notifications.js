@@ -106,7 +106,7 @@ function Notifications() {
     const resisted = raw / (1 + Math.abs(raw) / 300)
 
     // If moving down, keep it 1:1; if moving up, use the resisted value
-    const finalY = deltaY < 0 ? resisted : deltaY;
+    const finalY = clientY
 
     if (finalTranslate < 0) {
       finalTranslate = finalTranslate / (1 + Math.abs(raw) / 300)
