@@ -118,18 +118,15 @@ function Notifications() {
     
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        // Snap Logic based on Translate Y position
-      if (finalTranslate < height * 0.40) {
-        // Snap to Full Screen
-        currentTarget.style.transform = 'translate3d(0, 0dvh, 0)'
-      } else {
-        // Snap to Closed (any swipe down from the initial 50% state)
-        currentTarget.addEventListener('transitionend', () => {
-          currentTarget.style.transition = ''
-          action()
-        }, { once: true })
-        currentTarget.style.transform = 'translate3d(0, 100dvh, 0)'
-      }
+        if (finalTranslate < height * 0.40) {
+          currentTarget.style.transform = 'translate3d(0, 0dvh, 0)'
+        } else {
+          currentTarget.addEventListener('transitionend', () => {
+            currentTarget.style.transition = ''
+            action()
+          }, { once: true })
+          currentTarget.style.transform = 'translate3d(0, 100dvh, 0)'
+        }
       })
     })
   }
