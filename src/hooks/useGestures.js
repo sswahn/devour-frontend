@@ -93,7 +93,6 @@ function useGestures() { // thresholds
       currentTarget.releasePointerCapture(id.current)
     }
     onSwipeCancel(event)
-    longPressCancel()
     id.current = null
     move.current = false
   }, [])
