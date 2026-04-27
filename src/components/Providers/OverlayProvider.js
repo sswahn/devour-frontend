@@ -23,9 +23,9 @@ function OverlayProvider({ children }) {
 
   const openOverlay = useCallback((id, focusElement) => {
     if (history.state?.overlayOpen === id) {
-      history.replaceState({ overlayOpen: id }, '')
+      history.replaceState({ overlayOpen: id, element: flocusELement }, '')
     } else {
-      history.pushState({ overlayOpen: id }, '')
+      history.pushState({ overlayOpen: id, element: flocusELement }, '')
     }
   }, []) 
   
@@ -37,8 +37,9 @@ function OverlayProvider({ children }) {
 
   const handlePopState = () => {
     if (!isActive) {
-      push(focusElement)
-      setIsActive(id)
+      const { overlayOpen, element } = history.state
+      push(element)
+      setIsActive(overlayOpen)
     } else {
       setIsActive(null)
       pop()
