@@ -153,52 +153,53 @@ function Profile() {
       className={styles.profile} 
       ref={focusRef} 
       onKeyDown={onKeyDown}
-      onPointerDown={onPointerDown}
-      onPointerMove={onPointerMove}
-      onPointerUp={onPointerUp}
-      onPointerCancel={onPointerCancel}
       tabIndex={-1} 
       role="dialog" 
       aria-modal="true" 
       aria-labelledby="username" 
       aria-describedby="biography">
-      <nav>
-        <CloseButton overlay={overlays.profile} close={action} />
-        <Dropdown items={[
-          { text: 'alert message', method: () => alert('dropdown item clicked.') },
-          { text: 'console log message', method: () => console.log('dropdown item clicked.') }
-        ]} />
-      </nav>
-      <header>
-        <div>
-          <img src={profile.image} alt={`${profile.username}'s profile picture`} />
-          {<EditButton field="profile" />}
-        </div>
-        <div>
+      <div
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerUp}
+        onPointerCancel={onPointerCancel}>
+        <nav>
+          <CloseButton overlay={overlays.profile} close={action} />
+          <Dropdown items={[
+            { text: 'alert message', method: () => alert('dropdown item clicked.') },
+            { text: 'console log message', method: () => console.log('dropdown item clicked.') }
+          ]} />
+        </nav>
+        <header>
           <div>
-            <h1 id="username">{profile.username}</h1>
-            {<EditButton field="username" />}
+            <img src={profile.image} alt={`${profile.username}'s profile picture`} />
+            {<EditButton field="profile" />}
           </div>
           <div>
-            <address>{profile.location}</address>
-            {<EditButton field="location" />}
+            <div>
+              <h1 id="username">{profile.username}</h1>
+              {<EditButton field="username" />}
+            </div>
+            <div>
+              <address>{profile.location}</address>
+              {<EditButton field="location" />}
+            </div>
+            {/* 
+            <div>
+              <p id="biography">Some biographical information about Username.</p>
+              {<EditButton info="biography" current={profile.biography} />
+            </div>   
+            */}
           </div>
-          {/* 
-          <div>
-            <p id="biography">Some biographical information about Username.</p>
-            {<EditButton info="biography" current={profile.biography} />
-          </div>   
-          */}
-        </div>
-      </header>
+        </header>
   
-      <FollowButton />
-      <FollowStats />
-        
-      <div id="profile-feed" role="feed">
-        {/* feed role="feed" must have article elements as children */}
+        <FollowButton />
+        <FollowStats />
+          
+        <div id="profile-feed" role="feed">
+          {/* feed role="feed" must have article elements as children */}
+        </div>
       </div>
-
     </section>
   )
 }
