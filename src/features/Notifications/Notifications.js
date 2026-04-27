@@ -105,10 +105,9 @@ function Notifications() {
     const raw = deltaY < 0 ? deltaY : 0 // Only capture negative movement (upward)
     const resisted = raw / (1 + Math.abs(raw) / 300)
 
-     // 1. Calculate Resistance for the SNAP logic
-    // We apply resistance if the resulting position would be above the screen (negative)
-    let finalTranslate = clientY
-  
+    // If moving down, keep it 1:1; if moving up, use the resisted value
+    const finalY = deltaY < 0 ? resisted : deltaY;
+
     if (finalTranslate < 0) {
       finalTranslate = finalTranslate / (1 + Math.abs(raw) / 300)
     }
