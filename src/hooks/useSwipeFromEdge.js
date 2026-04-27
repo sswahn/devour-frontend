@@ -24,9 +24,16 @@ function useSwipeFromEdge(callback) {
 
   const onPointerDown = event => {
     const { currentTarget } = event
-    onGestureDown(event)
-    currentTarget.style.transition = 'none' // disable snap back
-    currentTarget.style.willChange = 'transform'
+    const EDGE_THRESHOLD = 35
+    const width = window.innerWidth
+    // Only capture if actually hitting an edge
+    const isLeft = clientX < EDGE_THRESHOLD
+    const isRight = clientX > width - EDGE_THRESHOLD
+    if (isLeft || isRight) {
+      onGestureDown(event)
+      currentTarget.style.transition = 'none'
+      currentTarget.style.willChange = 'transform'
+    }
   }
   
   const onPointerMove = event => {
