@@ -12,14 +12,13 @@
   top: 0;
   transition: transform 0.2s ease;
   width: 100%;
-  z-index: 200;
+  z-index: 150;
 }
 
 .profile > div {
   background-color: var(--surface-raised);
   height: 100dvh;
   left: 0;
-  outline: none;
   overflow-y: scroll;
   overscroll-behavior-y: contain;
   padding: 8px;
