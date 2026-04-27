@@ -61,38 +61,39 @@ function Search() {
       className={styles.search} 
       ref={focusRef} 
       onKeyDown={onKeyDown}
-      onPointerDown={onPointerDown}
-      onPointerMove={onPointerMove}
-      onPointerUp={onPointerUp}
-      onPointerCancel={onPointerCancel}
       role="dialog" 
       aria-modal="true">
-      <nav>
-        <CloseButton overlay={overlays.search} close={action} />
-        <Dropdown items={[
-          { text: 'alert message', method: () => alert('dropdown item clicked.') },
-          { text: 'console log message', method: () => console.log('dropdown item clicked.') }
-        ]} />
-      </nav>
-      <form onSubmit={onSubmit}>
-        <SearchIcon size={10} />
-        <SearchInput 
-          searchValue={searchValue} 
-          error={error}
-          setSearchValue={setSearchValue}
-          setError={setError}
-        />
-        <SpeechRecognitionButton setSearchValue={setSearchValue} />
-      </form>
-      
-      {/* make Suggestions component: */}
-      
-      <ul id="suggestions" role="listbox" aria-live="polite" aria-busy={loading}>
-        {loading ? <LoadingSpinner /> : recentSearches?.map((search, index) =>
-          <li key={index} role="option">{search}</li>
-        )}    
-      </ul>  
-    
+      <div       
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerUp}
+        onPointerCancel={onPointerCancel}>
+        <nav>
+          <CloseButton overlay={overlays.search} close={action} />
+          <Dropdown items={[
+            { text: 'alert message', method: () => alert('dropdown item clicked.') },
+            { text: 'console log message', method: () => console.log('dropdown item clicked.') }
+          ]} />
+        </nav>
+        <form onSubmit={onSubmit}>
+          <SearchIcon size={10} />
+          <SearchInput 
+            searchValue={searchValue} 
+            error={error}
+            setSearchValue={setSearchValue}
+            setError={setError}
+          />
+          <SpeechRecognitionButton setSearchValue={setSearchValue} />
+        </form>
+        
+        {/* make Suggestions component: */}
+        
+        <ul id="suggestions" role="listbox" aria-live="polite" aria-busy={loading}>
+          {loading ? <LoadingSpinner /> : recentSearches?.map((search, index) =>
+            <li key={index} role="option">{search}</li>
+          )}    
+        </ul>  
+      </div>
     </search>
   )
 }
