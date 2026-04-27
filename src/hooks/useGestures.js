@@ -38,7 +38,7 @@ function useGestures() { // thresholds
     const { currentTarget, pointerId } = event
     currentTarget.setPointerCapture(pointerId)
     id.current = pointerId
-    move.current = false
+    moved.current = false
     onSwipeDown(event)
     if (callback) {
       onLongPressDown(callback)
