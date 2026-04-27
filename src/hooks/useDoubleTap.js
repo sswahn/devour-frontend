@@ -18,30 +18,11 @@ function useDoubleTap() {
   }
 
   const reset = currentTarget => {
-    const { id } = data.current
-    if (id && currentTarget.hasPointerCapture(id)) {
-      currentTarget.releasePointerCapture(id)
-    }
     moved.current = false
   }
 
-  const onPointerDown = event => {
-    const { currentTarget, pointerId } = event
-    currentTarget.setPointerCapture(pointerId)
-  }
   
   const onPointerMove = event => {
-    const { clientX, clientY, currentTarget, pointerId } = event
-    const { id } = data.current
-    if (id && pointerId !== id) {
-      return
-    }
-    const moveThreshold = 10
-    const deltaX = clientX - startX
-    const deltaY = clientY - startY
-    const absDeltaX = Math.abs(deltaX)
-    const absDeltaY = Math.abs(deltaY)
-    
     if (absDeltaX > moveThreshold || absDeltaY > moveThreshold) {
       moved.current = true
     }
@@ -60,11 +41,6 @@ function useDoubleTap() {
   }
   
   const onPointerCancel = event => {
-    const { pointerId, currentTarget } = event
-    const { id } = data.current
-    if (id && pointerId !== id) {
-      return
-    }
     reset(currentTarget)
   }
   
