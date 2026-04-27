@@ -409,7 +409,7 @@
   flex-direction: column;
   height: auto; /* Grows with content */ 
   left: 0;
-  max-height: 90dvh; 
+  max-height: 100dvh; 
   min-height: 50dvh;
   overscroll-behavior-y: contain;
   padding-top: 8px;
