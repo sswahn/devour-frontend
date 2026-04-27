@@ -602,7 +602,6 @@
   backdrop-filter: blur(1px);
   height: 100dvh;
   left: 0;
-  outline: none;
   overflow-y: scroll;
   overscroll-behavior-y: contain;
   padding: 8px;
