@@ -17,11 +17,11 @@ function useGestures() { // thresholds
     const now = performance.now()
     const deltaT = now - lastTapTime.current
     if (deltaT > 0 && deltaT < doubleTapDelay) {
-      return now
       lastTapTime.current = 0
+      return now
     } else {
-      return 0
       lastTapTime.current = now
+      return 0
     }
   }
 
