@@ -23,7 +23,7 @@ function useSwipeFromEdge(callback) {
   }
 
   const onPointerDown = event => {
-    const { currentTarget } = event
+    const { clientX, currentTarget } = event
     const EDGE_THRESHOLD = 35
     const width = window.innerWidth
     // Only capture if actually hitting an edge
