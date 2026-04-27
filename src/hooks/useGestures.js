@@ -60,6 +60,9 @@ function useGestures() { // thresholds
     if (currentTarget.hasPointerCapture(id.current)) {
       currentTarget.releasePointerCapture(id.current)
     }
+    if(!moved.current) {
+      doubleTapOnUp()
+    }
     const swipeUp = onSwipeUp(event)
     return { ...swipeUp }
   }, [])
