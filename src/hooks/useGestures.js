@@ -16,13 +16,8 @@ function useGestures() { // thresholds
     const doubleTapDelay = 300
     const now = performance.now()
     const deltaT = now - lastTapTime.current
-    if (deltaT > 0 && deltaT < doubleTapDelay) {
-      lastTapTime.current = 0
-      return now
-    } else {
-      lastTapTime.current = now
-      return 0
-    }
+    lastTapTime.current = (deltaT > 0 && deltaT < doubleTapDelay) ? now : 0
+    return lastTapTIme.current
   }
 
   const longPressCancel = () => {
