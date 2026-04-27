@@ -12,6 +12,19 @@ function useGestures() { // thresholds
     onSwipeCancel
   } = useSwipe()
 
+  const doubleTapOnUp = () => {
+    const doubleTapDelay = 300
+    const now = performance.now()
+    const deltaT = now - lastTapTime.current
+    if (deltaT > 0 && deltaT < doubleTapDelay) {
+      return now
+      lastTapTime.current = 0
+    } else {
+      return 0
+      lastTapTime.current = now
+    }
+  }
+
   const longPressCancel = () => {
     if (timer.current) { 
       clearTimeout(timer.current)
