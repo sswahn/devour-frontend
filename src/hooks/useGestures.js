@@ -74,11 +74,12 @@ function useGestures() { // thresholds
     if (currentTarget.hasPointerCapture(id.current)) {
       currentTarget.releasePointerCapture(id.current)
     }
+    let doubleTap = 0
     if(!moved.current) {
-      doubleTapOnUp()
+      doubleTap = doubleTapOnUp()
     }
     const swipeUp = onSwipeUp(event)
-    return { ...swipeUp }
+    return { ...swipeUp, doubleTap }
   }, [])
   
   const onGestureCancel = useCallback(event => {
