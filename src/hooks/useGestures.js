@@ -12,7 +12,7 @@ function useGestures() { // thresholds
     onSwipeCancel
   } = useSwipe()
 
-  const doubleTapOnUp = () => {
+  const onDoubleTapUp = () => {
     const doubleTapDelay = 300
     const now = performance.now()
     const deltaT = now - lastTapTime.current
@@ -76,7 +76,7 @@ function useGestures() { // thresholds
     }
     let doubleTap = 0
     if(!moved.current) {
-      doubleTap = doubleTapOnUp()
+      doubleTap = onDoubleTapUp()
     }
     const swipeUp = onSwipeUp(event)
     return { ...swipeUp, doubleTap }
