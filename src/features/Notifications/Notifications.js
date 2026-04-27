@@ -13,7 +13,7 @@ function Notifications() {
   const { focusRef } = useFocusTrap()
   const [isOpen, setIsOpen] = useState(false)
   const bottomSheetRef = useRef(null)
-  const initialHeight = useRef(0)
+  const latestHeight = useRef(0)
   const dragging = useRef(false)
   const startY = useRef(0)
   const startTime = useRef(0)
@@ -63,11 +63,11 @@ function Notifications() {
 
   const throttleTransition = (deltaY, height, currentTarget) => {
     latestDeltaY.current = deltaY
-    initialHeight.current = height
+    latestHeight.current = height
     if (!ticking.current) {
       ticking.current = true
       requestAnimationFrame(() => {
-        currentTarget.style.height = `${initialHeight.current}px`
+        currentTarget.style.height = `${latestHeight.current}px`
         currentTarget.style.transform = `translate3d(0, ${latestDeltaY.current}px, 0)`
         ticking.current = false
       })
@@ -77,7 +77,7 @@ function Notifications() {
   const onPointerDown = event => {
     const { currentTarget } = event
     onGestureDown(event)
-    initialHeight.current = currentTarget.offsetHeight
+    latestHeight.current = currentTarget.offsetHeight
     currentTarget.style.transition = 'none'
     currentTarget.style.willChange = 'transform'
   }
@@ -90,7 +90,7 @@ function Notifications() {
     }
     const raw = deltaY < 0 ? deltaY : 0 
     const resisted = raw / (1 + Math.abs(raw) / 300)
-    const newHeight = initialHeight.current + Math.abs(deltaY) 
+    const newHeight = latestHeight.current + Math.abs(deltaY) 
     throttleTransition(resisted, newHeight, currentTarget)
   }
   
