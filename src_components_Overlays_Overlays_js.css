@@ -717,7 +717,38 @@
   \*****************************************************************************************/
 /* Search Form */
 
+/*
+.search {
+  background-color: var(--surface-raised);
+  height: 100dvh;
+  left: 0;
+  overflow-y: scroll;
+  overscroll-behavior-y: contain;
+  padding: 8px;
+  position: absolute;
+  top: 0;
+  touch-action: none;
+  width: 100%;
+  z-index: 200;
+}
+*/
+
 .FJMCQdB5zc5RgmizOMOi {
+  background-color: ;
+  backdrop-filter: blur(), opacity();
+  height: 100dvh;
+  left: 0;
+  overflow-y: scroll;
+  overscroll-behavior-y: contain;
+  padding: 8px;
+  position: absolute;
+  top: 0;
+  touch-action: none;
+  width: 100%;
+  z-index: 150;
+}
+
+.FJMCQdB5zc5RgmizOMOi > div {
   background-color: var(--surface-raised);
   height: 100dvh;
   left: 0;
