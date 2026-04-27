@@ -167,8 +167,10 @@ button:focus {
   background: initial;
 }
 
-button:hover {
-  background: var(--gray);
+@media (pointer: fine) {
+  button:hover {
+    background: var(--gray);
+  }
 }
 
 button:active {
