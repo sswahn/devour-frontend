@@ -4,12 +4,13 @@ import useSwipe from './useSwipe'
 function useGestures() { // thresholds
   const id = useRef(null)
   const timer = useRef(null)
+  const moved = useRef(false)
   const {
     onSwipeDown,
     onSwipeMove,
     onSwipeUp,
     onSwipeCancel
-  } = useSwipe() // thresholds
+  } = useSwipe()
 
   const longPressCancel = () => {
     if (timer.current) { 
