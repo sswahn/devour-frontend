@@ -90,7 +90,7 @@ function useGestures() { // thresholds
     }
     onSwipeCancel(event)
     id.current = null
-    move.current = false
+    moved.current = false
   }, [])
 
   return {
