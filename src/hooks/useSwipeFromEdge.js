@@ -39,11 +39,23 @@ function useSwipeFromEdge(callback) {
   const onPointerMove = event => {
     const { currentTarget } = event
     const { deltaX, edge, direction } = onGestureMove(event)
+
+    console.log('deltaX in Move: ', deltaX)
+    
     if (direction === 'y') {
       return
     }
+
+    console.log('after direction condition: ', direction)
+    
     const raw = edge === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
+
+    console.log('raw: ', raw)
+    
     const resisted = raw / (1 + Math.abs(raw) / 300)
+
+    console.log('resisted: ', resisted)
+    
     throttleTransition(resisted, currentTarget)
   }
 
