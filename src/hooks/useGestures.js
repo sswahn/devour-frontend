@@ -82,7 +82,8 @@ function useGestures() { // thresholds
     const swipeUp = onSwipeUp(event)
     return { ...swipeUp, doubleTap }
   }, [])
-  
+
+  // Review this function for accuracy.
   const onGestureCancel = useCallback(event => {
     longPressCancel(event)
     const { pointerId, currentTarget } = event
