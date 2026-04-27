@@ -36,12 +36,12 @@ function OverlayProvider({ children }) {
     }
   }, [])
 
-  const handlePopState = () => {
+  const handlePopState = useCallback(() => {
     if (isActive) {
       setIsActive(null)
       pop()
     }
-  }
+  }, [isActive])
 
   useEffect(() => {
     window.addEventListener('popstate', handlePopState)
