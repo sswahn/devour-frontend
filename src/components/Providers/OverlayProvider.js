@@ -22,7 +22,11 @@ function OverlayProvider({ children }) {
   }
 
   const openOverlay = useCallback((id, focusElement) => {
-    history.pushState({ overlayOpen: id }, '')
+    if (history.state?.overlayOpen === id) {
+      history.replaceState({ overlayOpen: id }, '')
+    } else {
+      history.pushState({ overlayOpen: id }, '')
+    }
   }, []) 
   
   const closeOverlay = useCallback(() => {
