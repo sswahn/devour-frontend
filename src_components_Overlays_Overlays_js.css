@@ -598,7 +598,8 @@
 /* User Profile */
 
 .KIIoXhhSaQeQ2LSTtavI {
-  background-color: var(--surface-raised);
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(1px);
   height: 100dvh;
   left: 0;
   outline: none;
