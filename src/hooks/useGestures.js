@@ -46,6 +46,7 @@ function useGestures() { // thresholds
     const moveThreshold = 10
     if (absX > moveThreshold || absY > moveThreshold) {
       longPressCancel()
+      moved.current = true
     }
     return { ...swipeMove }
   }, [])
