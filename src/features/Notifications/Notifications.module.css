@@ -32,6 +32,11 @@
   touch-action: none;
   width: 100%;
   will-change: transform; /* Ensures it doesn't flicker before starting */
+
+  /* This extra padding acts as a "buffer" so the bottom never shows when bouncing */
+  padding-bottom: 50vh; 
+  margin-bottom: -50vh;
+  box-sizing: content-box; 
 }
 
 .open {
