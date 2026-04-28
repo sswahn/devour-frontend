@@ -39,7 +39,7 @@ function useSwipeFromEdge(callback) {
   const onPointerMove = event => {
     const { currentTarget } = event
     const { deltaX, edge, direction } = onGestureMove(event)
-    if (!deltaX || direction === 'y') {
+    if (deltaX === undefined || direction === 'y') {
       return
     }
     const raw = edge === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
