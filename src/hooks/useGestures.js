@@ -48,12 +48,8 @@ function useGestures() { // thresholds
   const onGestureMove = useCallback(event => {
     const { pointerId } = event
     if (id?.current !== pointerId) { 
-      console.log('pointerId check returned.')
       return {}
     }
-    
-    console.log('pointerId check passed...')
-    
     const swipeMove = onSwipeMove(event)
     const absX = Math.abs(swipeMove.deltaX)
     const absY = Math.abs(swipeMove.deltaY)
@@ -69,7 +65,7 @@ function useGestures() { // thresholds
     longPressCancel(event)
     const { pointerId, currentTarget } = event
     if (id?.current !== pointerId) { 
-      return
+      return {}
     }
     if (currentTarget.hasPointerCapture(id.current)) {
       currentTarget.releasePointerCapture(id.current)
