@@ -104,13 +104,7 @@ function Notifications() {
   const onPointerUp = event => {
     const { clientY, currentTarget } = event
     const { deltaY, direction, velocity, timestamp } = onGestureUp(event)
-    ticking.current = false // 1. Kill the move throttle immediately
-
-    // prolly remove these calculations unless implemented for resistance in condition below.
-    const height = window.innerHeight
-    const raw = deltaY < 0 ? deltaY : 0 // Only capture negative movement (upward)
-    const resisted = raw / (1 + Math.abs(raw) / 300)
-  
+    ticking.current = false // 1. Kill the move throttle immediately  
     // 2. State Prep: Switch transition ON
     // This curve (0.25, 1, 0.5, 1) starts fast and decelerates smoothly to a dead stop.
     currentTarget.style.transition = 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), height 0.4s cubic-bezier(0.25, 1, 0.5, 1)'
