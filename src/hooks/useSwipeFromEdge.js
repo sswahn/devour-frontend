@@ -39,6 +39,9 @@ function useSwipeFromEdge(callback) {
   const onPointerMove = event => {
     const { currentTarget } = event
     const { deltaX, edge, direction } = onGestureMove(event)
+
+    console.log('onpointerdown just before null check of deltaX: ', deltaX)
+    
     if (deltaX === undefined || direction === 'y') {
       return
     }
