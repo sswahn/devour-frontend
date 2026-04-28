@@ -14,6 +14,7 @@ function useSwipe({ swipeThreshold = 10, edgeThreshold = 35 } = {}) {
     data.current = {
       startX: clientX,
       startY: clientY,
+      axis: null,
       direction: null,
       edge: isLeft ? 'left' : 'right'
     }
