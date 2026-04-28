@@ -99,21 +99,13 @@ function Notifications() {
   
   const onPointerUp = event => {
     const { clientY, currentTarget } = event
-    const { deltaY, velocity, timestamp } = onGestureUp(event)
-  
-    // 1. Kill the move throttle immediately
-    ticking.current = false
-    
+    const { deltaY, direction, velocity, timestamp } = onGestureUp(event)
+    ticking.current = false // 1. Kill the move throttle immediately
+
+    // prolly remove these calculations unless implemented for resistance in condition below.
     const height = window.innerHeight
     const raw = deltaY < 0 ? deltaY : 0 // Only capture negative movement (upward)
     const resisted = raw / (1 + Math.abs(raw) / 300)
-
-    // If moving down, keep it 1:1; if moving up, use the resisted value
-    const finalY = clientY
-
-    if (finalY < 0) {
-      finalY = finalY / (1 + Math.abs(raw) / 300)
-    }
   
     // 2. State Prep: Switch transition ON
     currentTarget.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1), height 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1)'
@@ -121,7 +113,7 @@ function Notifications() {
     
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        if (finalY < height * 0.40) {
+        if (direction == 'up') {
           currentTarget.style.height = '100dvh'
           currentTarget.style.transform = 'translate3d(0, 0dvh, 0)'
         } else {
