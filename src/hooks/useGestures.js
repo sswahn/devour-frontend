@@ -48,7 +48,8 @@ function useGestures() { // thresholds
   const onGestureMove = useCallback(event => {
     const { pointerId } = event
     if (id?.current !== pointerId) { 
-      return console.log('pointerId check returned.')
+      console.log('pointerId check returned.')
+      return {}
     }
     
     console.log('pointerId check passed...')
