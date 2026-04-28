@@ -84,8 +84,8 @@ function Notifications() {
   
   const onPointerMove = event => {
     const { currentTarget } = event
-    const { deltaY, direction } = onGestureMove(event)
-    if (deltaY === undefined || direction === 'x') {
+    const { deltaY, axis } = onGestureMove(event)
+    if (deltaY === undefined || axis === 'x') {
       return
     }
     const raw = deltaY < 0 ? deltaY : 0 
