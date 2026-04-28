@@ -104,7 +104,7 @@ function Notifications() {
     let translateY = deltaY + adjustedDeltaY
 
     // clamp to top (don’t overshoot)
-    nextTranslateY = Math.max(MAX_TRANSLATE, nextTranslateY)
+    translateY = Math.max(MAX_TRANSLATE, nextTranslateY)
     
     // const translateY = Math.max(deltaY, 8)
     throttleTransition(translateY, newHeight, currentTarget)
