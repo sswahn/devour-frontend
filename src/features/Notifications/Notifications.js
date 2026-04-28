@@ -97,7 +97,14 @@ function Notifications() {
 
     const distanceToTop = deltaY - MAX_TRANSLATE // dragging UP → apply resistance
     const resistanceFactor = Math.max(0.2, distanceToTop / 300) // normalize resistance (tweak 300 for feel)
-    const translateY = deltaY * resistanceFactor
+    const adjustedDeltaY = deltaY * resistanceFactor
+
+   
+    // Allow upward movement now (no Math.max hack)
+    let translateY = deltaY + adjustedDeltaY
+
+    // clamp to top (don’t overshoot)
+    nextTranslateY = Math.max(MAX_TRANSLATE, nextTranslateY)
     
     // const translateY = Math.max(deltaY, 8)
     throttleTransition(translateY, newHeight, currentTarget)
