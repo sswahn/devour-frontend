@@ -49,9 +49,6 @@ function Notifications() {
 
   const onClick = event => {
     if (event.target === event.currentTarget) {
-      
-      console.lo('passed click condition. executing code.')
-      
       navigator.vibrate?.(50)
       close()
     }
