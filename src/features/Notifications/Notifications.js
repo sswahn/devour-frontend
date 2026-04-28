@@ -85,7 +85,7 @@ function Notifications() {
   const onPointerMove = event => {
     const { currentTarget } = event
     const { deltaY, direction } = onGestureMove(event)
-    if (!deltaY || direction === 'x') {
+    if (deltaY === undefined || direction === 'x') {
       return
     }
     const raw = deltaY < 0 ? deltaY : 0 
@@ -119,6 +119,7 @@ function Notifications() {
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         if (finalTranslate < height * 0.40) {
+          currentTarget.style.height = '100dvh'
           currentTarget.style.transform = 'translate3d(0, 0dvh, 0)'
         } else {
           currentTarget.addEventListener('transitionend', () => {
