@@ -75,6 +75,9 @@ function useGestures() { // thresholds
     if(!moved.current) {
       doubleTap = onDoubleTapUp()
     }
+
+    console.log('Double Tap fired?: ', doubleTap)
+    
     const swipeUp = onSwipeUp(event)
     return { ...swipeUp, doubleTap }
   }, [])
