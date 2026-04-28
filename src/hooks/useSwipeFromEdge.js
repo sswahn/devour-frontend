@@ -39,9 +39,6 @@ function useSwipeFromEdge(callback) {
   const onPointerMove = event => {
     const { currentTarget } = event
     const { deltaX, edge, direction } = onGestureMove(event)
-
-    console.log('onpointerdown just before null check of deltaX: ', deltaX)
-    
     if (deltaX === undefined || direction === 'y') {
       return
     }
@@ -74,11 +71,11 @@ function useSwipeFromEdge(callback) {
     const FLICK_THRESHOLD = 0.5
   
     if (Math.abs(finalVelocity) > FLICK_THRESHOLD) {
-      console.log("Flick detected with velocity:", finalVelocity)
+     // console.log("Flick detected with velocity:", finalVelocity)
       // Trigger your "flick" animation here
       // flickClose()
     } else {
-      console.log("Regular release or snap-back")
+    //  console.log("Regular release or snap-back")
       //regularClose()
     }
     
