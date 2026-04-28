@@ -15,11 +15,11 @@ function useGestures() { // thresholds
   } = useSwipe()
 
   const tapCounter = () => {
-    const doubleTapDelay = 300
+    const tapDelay = 300
     const now = performance.now()
     const deltaT = now - prevTap.current
-    const isSequence = deltaT < doubleTapDelay && deltaT > 0
-    tapCount.current = isSequence ? tapCount.current + 1 : 1 // 2. Update count: Increment if fast enough, otherwise reset to 1
+    const isSequence = deltaT < tapDelay && deltaT > 0
+    tapCount.current = isSequence ? tapCount.current + 1 : tapCount.current // 2. Update count: Increment if fast enough, otherwise reset to 1
     prevTap.current = now // 3. Update timestamp for next comparison
     return tapCount.current
   }
