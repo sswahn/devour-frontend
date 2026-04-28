@@ -95,8 +95,8 @@ function Notifications() {
     }
     // const raw = deltaY < 0 ? deltaY : 8
     // const translateY = raw / (1 + Math.abs(raw) / 300)
-    // const newHeight = latestHeight.current + Math.abs(deltaY) 
-
+    
+    const newHeight = latestHeight.current + Math.abs(deltaY) 
     const clampedY = Math.max(deltaY, 8) 
     throttleTransition(clampedY, newHeight, currentTarget)
   }
