@@ -51,7 +51,7 @@ function useGestures() { // thresholds
     
     const { pointerId } = event
     if (id?.current !== pointerId) { 
-      return console.log('inside condition (id?.current !== pointerId) return: ' id?.current !== pointerId)
+      return console.log('inside condition (id?.current !== pointerId) return: ', id?.current !== pointerId)
     }
     
     console.log('passed pointerId condition successfully.')
