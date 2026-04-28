@@ -103,6 +103,9 @@ function Notifications() {
     const { clientY, currentTarget } = event
     const { deltaY, direction, velocity, timestamp } = onGestureUp(event)
     ticking.current = false // 1. Kill the move throttle immediately  
+
+    // if (singleTap) return // implement singleTap in useGesture
+    
     // 2. State Prep: Switch transition ON
     // This curve (0.25, 1, 0.5, 1) starts fast and decelerates smoothly to a dead stop.
     currentTarget.style.transition = 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), height 0.4s cubic-bezier(0.25, 1, 0.5, 1)'
