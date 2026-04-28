@@ -17,7 +17,8 @@ function useGestures() { // thresholds
     const doubleTapDelay = 300
     const now = performance.now()
     const deltaT = now - prevTap.current
-    prevTap.current = (deltaT > 0 && deltaT < doubleTapDelay) ? now : 0
+    const isDoubleTap = deltaT < doubleTapDelay && deltaT > 0
+    prevTap.current = isDoubleTap ? 0 : now
     return prevTap.current
   }
 
