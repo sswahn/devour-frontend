@@ -122,9 +122,7 @@ function Notifications() {
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         if (finalY < height * 0.40) {
-          currentTarget.addEventListener('transitionend', () => {
-            currentTarget.style.height = '100dvh'
-          }, { once: true })
+          currentTarget.style.height = '100dvh'
           currentTarget.style.transform = 'translate3d(0, 0dvh, 0)'
         } else {
           currentTarget.addEventListener('transitionend', () => {
