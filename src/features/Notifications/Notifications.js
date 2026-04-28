@@ -112,16 +112,12 @@ function Notifications() {
     const resisted = raw / (1 + Math.abs(raw) / 300)
   
     // 2. State Prep: Switch transition ON
-    // currentTarget.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1), height 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1)'
-    // currentTarget.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), height 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)'
     // This curve (0.25, 1, 0.5, 1) starts fast and decelerates smoothly to a dead stop.
     currentTarget.style.transition = 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), height 0.4s cubic-bezier(0.25, 1, 0.5, 1)'
 
-    void currentTarget.offsetHeight
-    
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        if (direction == 'up') {
+        if (direction == 'up' || deltaY < -100) {
           currentTarget.style.height = '100dvh'
           currentTarget.style.transform = 'translate3d(0, 8px, 0)'
         } else {
