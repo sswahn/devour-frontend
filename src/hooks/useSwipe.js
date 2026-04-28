@@ -34,7 +34,9 @@ function useSwipe({ swipeThreshold = 10, edgeThreshold = 35 } = {}) {
     // Determine the dominant axis of the movement:
     if (!direction) {
       data.current.axis = absX > absY ? 'x' : 'y'
-      data.current.direction = (absX > absY) ? ((deltaY > 0) ?'up' : 'down') : ((deltaX > 0) ? 'left' : 'right')
+      data.current.direction = (data.current.axis === 'x') 
+        ? (deltaX > 0 ? 'right' : 'left') 
+        : (deltaY > 0 ? 'down' : 'up')
     }
     // Calculate scroll velocity
     const deltaTime = timestamp - prevTimestamp.current
