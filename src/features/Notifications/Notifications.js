@@ -124,13 +124,12 @@ function Notifications() {
         if (finalY < height * 0.40) {
           currentTarget.addEventListener('transitionend', () => {
             currentTarget.style.height = '100dvh'
-            action()
           }, { once: true })
           currentTarget.style.transform = 'translate3d(0, 0dvh, 0)'
         } else {
           currentTarget.addEventListener('transitionend', () => {
-            currentTarget.style.height = '0dvh'
             currentTarget.style.transition = ''
+            currentTarget.style.height = '0dvh'
             action()
           }, { once: true })
           currentTarget.style.transform = 'translate3d(0, 100dvh, 0)'
