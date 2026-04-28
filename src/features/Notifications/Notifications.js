@@ -117,7 +117,7 @@ function Notifications() {
   
     // 2. State Prep: Switch transition ON
     currentTarget.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1), height 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1)'
-    // currentTarget.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), height 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)'
+    // currentTarget.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), height 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)'
     
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
