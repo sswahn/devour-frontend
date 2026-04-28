@@ -111,8 +111,8 @@ function Notifications() {
     // If moving down, keep it 1:1; if moving up, use the resisted value
     const finalY = clientY
 
-    if (finalTranslate < 0) {
-      finalTranslate = finalTranslate / (1 + Math.abs(raw) / 300)
+    if (finalY < 0) {
+      finalY = finalY / (1 + Math.abs(raw) / 300)
     }
   
     // 2. State Prep: Switch transition ON
@@ -121,7 +121,7 @@ function Notifications() {
     
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        if (finalTranslate < height * 0.40) {
+        if (finalY < height * 0.40) {
           currentTarget.style.height = '100dvh'
           currentTarget.style.transform = 'translate3d(0, 0dvh, 0)'
         } else {
