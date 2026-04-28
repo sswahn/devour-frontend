@@ -40,6 +40,7 @@ function useSwipeFromEdge(callback) {
     const { currentTarget } = event
     const { deltaX, edge, direction } = onGestureMove(event)
 
+    console.log('just before deltaX call in on pointer move.')
     console.log('deltaX in Move: ', deltaX)
     
     if (direction === 'y') {
