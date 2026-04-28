@@ -18,7 +18,7 @@ function useGestures() { // thresholds
     const tapDelay = 300
     const now = performance.now()
     const deltaT = now - prevTap.current
-    const isSequence = deltaT < tapDelay && deltaT > 0
+    const isSequence = deltaT > 0 && deltaT < tapDelay
     tapCount.current = isSequence ? tapCount.current + 1 : 1 
     prevTap.current = now 
     return tapCount.current
