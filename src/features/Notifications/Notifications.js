@@ -115,7 +115,7 @@ function Notifications() {
     // currentTarget.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1), height 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1)'
     // currentTarget.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), height 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)'
     // This curve (0.25, 1, 0.5, 1) starts fast and decelerates smoothly to a dead stop.
-    currentTarget.style.transition = 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), height 0.4s cubic-bezier(0.25, 1, 0.5, 1)';
+    currentTarget.style.transition = 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), height 0.4s cubic-bezier(0.25, 1, 0.5, 1)'
 
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
