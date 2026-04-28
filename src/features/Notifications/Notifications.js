@@ -122,13 +122,10 @@ function Notifications() {
     // 2. State Prep: Switch transition ON
     // This curve (0.25, 1, 0.5, 1) starts fast and decelerates smoothly to a dead stop.
     currentTarget.style.transition = 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), height 0.4s cubic-bezier(0.25, 1, 0.5, 1)'
-    const height = window.innerHeight
-    const commitThreshold = height * 0.75
-    const shouldExpand = height - deltaY >= commitThreshold
-    
+ 
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        if (direction == 'up' && shouldExpand) { //|| deltaY < -100) {
+        if (direction == 'up') // || deltaY < -100) {
           currentTarget.style.height = '100dvh'
           currentTarget.style.transform = 'translate3d(0, 8px, 0)'
         } else {
