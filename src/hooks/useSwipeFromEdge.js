@@ -46,15 +46,12 @@ function useSwipeFromEdge(callback) {
       return
     }
 
-    console.log('after direction condition: ', direction)
+    console.log('past direction condition')
     
     const raw = edge === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
-
-    console.log('raw: ', raw)
-    
     const resisted = raw / (1 + Math.abs(raw) / 300)
 
-    console.log('resisted: ', resisted)
+    console.log('about to throttle transition.')
     
     throttleTransition(resisted, currentTarget)
   }
