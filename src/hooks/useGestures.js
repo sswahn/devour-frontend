@@ -5,7 +5,7 @@ function useGestures() { // thresholds
   const id = useRef(null)
   const timer = useRef(null)
   const moved = useRef(false)
-  const lastTapTime = useRef(0)
+  const prevTap = useRef(0)
   const {
     onSwipeDown,
     onSwipeMove,
@@ -16,9 +16,9 @@ function useGestures() { // thresholds
   const onDoubleTapUp = () => {
     const doubleTapDelay = 300
     const now = performance.now()
-    const deltaT = now - lastTapTime.current
-    lastTapTime.current = (deltaT > 0 && deltaT < doubleTapDelay) ? now : 0
-    return lastTapTIme.current
+    const deltaT = now - prevTap.current
+    prevTap.current = (deltaT > 0 && deltaT < doubleTapDelay) ? now : 0
+    return prevTap.current
   }
 
   const longPressCancel = () => {
