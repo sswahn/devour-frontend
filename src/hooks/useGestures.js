@@ -46,16 +46,10 @@ function useGestures() { // thresholds
   }, [])
   
   const onGestureMove = useCallback(event => {
-    
-    console.log('gesture move')
-    
     const { pointerId } = event
     if (id?.current !== pointerId) { 
-      return console.log('inside condition (id?.current !== pointerId) return: ', id?.current !== pointerId)
+      return
     }
-    
-    console.log('passed pointerId condition successfully.')
-    
     const swipeMove = onSwipeMove(event)
     const absX = Math.abs(swipeMove.deltaX)
     const absY = Math.abs(swipeMove.deltaY)
