@@ -126,6 +126,7 @@ function Notifications() {
           currentTarget.style.transform = 'translate3d(0, 0dvh, 0)'
         } else {
           currentTarget.addEventListener('transitionend', () => {
+            currentTarget.style.height = ''
             currentTarget.style.transition = ''
             action()
           }, { once: true })
