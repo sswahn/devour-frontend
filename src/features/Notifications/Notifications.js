@@ -96,11 +96,7 @@ function Notifications() {
     const raw = deltaY < 0 ? deltaY : 0 
     const translateY = raw / (1 + Math.abs(raw) / 300)
     const newHeight = latestHeight.current + Math.abs(deltaY) 
-
-    const maxUpwardTranslate = -window.innerHeight // Adjust based on sheet height
-    // Prevent translating further up than the top of the screen
-    const safeTranslateY = Math.max(translateY, maxUpwardTranslate)
-    throttleTransition(safeTranslateY, newHeight, currentTarget)
+    throttleTransition(translateY, newHeight, currentTarget)
   }
   
   const onPointerUp = event => {
