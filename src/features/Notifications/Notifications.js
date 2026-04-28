@@ -123,7 +123,8 @@ function Notifications() {
     // This curve (0.25, 1, 0.5, 1) starts fast and decelerates smoothly to a dead stop.
     currentTarget.style.transition = 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), height 0.4s cubic-bezier(0.25, 1, 0.5, 1)'
     const height = window.innerHeight
-    const shouldExpand = height - deltaY >= height * 0.75
+    const commitThreshold = height * 0.75
+    const shouldExpand = height - deltaY >= commitThreshold
     
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
