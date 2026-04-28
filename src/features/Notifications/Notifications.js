@@ -125,7 +125,7 @@ function Notifications() {
  
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        if (direction === 'up') { // || deltaY < -100) {
+        if (direction === 'up' || deltaY < -100) {
           currentTarget.style.height = '100dvh'
           currentTarget.style.transform = 'translate3d(0, 8px, 0)'
         } else {
