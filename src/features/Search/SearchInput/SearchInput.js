@@ -32,7 +32,7 @@ function SearchInput({ searchValue, error, setSearchValue, setError }) {
       spellCheck="true"
       autoFocus
       type="search"
-      inputmode="search"
+      inputMode="search"
       name="search"
       role="combobox"
       aria-autocomplete="list"
