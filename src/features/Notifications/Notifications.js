@@ -94,7 +94,12 @@ function Notifications() {
       return
     }
     const newHeight = latestHeight.current + Math.abs(deltaY) 
-    const translateY = Math.max(deltaY, 8)
+
+    const distanceToTop = currentTranslateY - MAX_TRANSLATE // dragging UP → apply resistance
+    const resistanceFactor = Math.max(0.2, distanceToTop / 300) // normalize resistance (tweak 300 for feel)
+    const translateY = deltaY * resistanceFactor
+    
+    // const translateY = Math.max(deltaY, 8)
     throttleTransition(translateY, newHeight, currentTarget)
   }
   
