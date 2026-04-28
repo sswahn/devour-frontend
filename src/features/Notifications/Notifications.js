@@ -96,7 +96,7 @@ function Notifications() {
     const raw = deltaY < 0 ? deltaY : 0 
     const resisted = raw / (1 + Math.abs(raw) / 300)
     const newHeight = latestHeight.current + Math.abs(deltaY) 
-    if (newHeight > 100) {
+    if (newHeight > window.innerHeight) {
       return
     }
     throttleTransition(resisted, newHeight, currentTarget)
