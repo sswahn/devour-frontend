@@ -72,7 +72,7 @@ function useGestures() { // thresholds
     if (currentTarget.hasPointerCapture(id.current)) {
       currentTarget.releasePointerCapture(id.current)
     }
-    let doubleTap = 0
+    let doubleTap = false
     if(!moved.current) {
       doubleTap = onDoubleTapUp()
     }
