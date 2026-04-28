@@ -61,6 +61,11 @@ function Notifications() {
     }
   }
 
+  const handleGrabberClick = event => {
+    // if fully open, close
+    // else open to fullscreen
+  }
+
   const throttleTransition = (deltaY, height, currentTarget) => {
     latestDeltaY.current = deltaY
     latestHeight.current = height
@@ -72,11 +77,6 @@ function Notifications() {
         ticking.current = false
       })
     }
-  }
-
-  const handleGrabberClick = event => {
-    // if fully open, close
-    // else open to fullscreen
   }
 
   const onPointerDown = event => {
