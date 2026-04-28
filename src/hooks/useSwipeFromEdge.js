@@ -43,7 +43,7 @@ function useSwipeFromEdge(callback) {
     console.log('just before deltaX call in on pointer move.')
     console.log('deltaX in Move: ', deltaX)
     
-    if (direction === 'y') {
+    if (!deltaX || direction === 'y') {
       return
     }
 
