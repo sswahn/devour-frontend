@@ -14,7 +14,7 @@ function useGestures() { // thresholds
     onSwipeCancel
   } = useSwipe()
 
-  const onDoubleTapUp = () => {
+  const tapCounter = () => {
     const doubleTapDelay = 300
     const now = performance.now()
     const deltaT = now - prevTap.current
@@ -74,15 +74,15 @@ function useGestures() { // thresholds
     if (currentTarget.hasPointerCapture(id.current)) {
       currentTarget.releasePointerCapture(id.current)
     }
-    let doubleTap = false
+    let taps = 0
     if(!moved.current) {
-      doubleTap = onDoubleTapUp()
+      taps = tapCounter()
     }
 
-    console.log('Double Tap fired?: ', doubleTap)
+    console.log('Double Tap fired?: ', taps)
     
     const swipeUp = onSwipeUp(event)
-    return { ...swipeUp, doubleTap }
+    return { ...swipeUp, tapCount: taps }
   }, [])
 
   // Review this function for accuracy.
