@@ -93,7 +93,7 @@ function Notifications() {
     if (deltaY === undefined || axis === 'x') {
       return
     }
-    const raw = deltaY < 0 ? deltaY : 0 
+    const raw = deltaY < 0 ? deltaY : 8
     const translateY = raw / (1 + Math.abs(raw) / 300)
     const newHeight = latestHeight.current + Math.abs(deltaY) 
     throttleTransition(translateY, newHeight, currentTarget)
