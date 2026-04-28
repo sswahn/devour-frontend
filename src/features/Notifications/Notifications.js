@@ -74,6 +74,11 @@ function Notifications() {
     }
   }
 
+  const handleGrabberClick = event => {
+    // if fully open, close
+    // else open to fullscreen
+  }
+
   const onPointerDown = event => {
     const { currentTarget } = event
     onGestureDown(event)
@@ -255,7 +260,7 @@ function Notifications() {
         onPointerUp={onPointerUp}
         onPointerCancel={onPointerCancel}
         aria-label="notifications">
-        <div id="grabber" role="presentation"></div>
+        <div id="grabber" onClick={handleGrabberClick} role="presentation"></div>
         <ul aria-label="user notifications">
           {context.notifications?.map((notification, index) => 
             <li key={index}>
