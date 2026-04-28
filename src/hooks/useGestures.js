@@ -5,6 +5,7 @@ function useGestures() { // thresholds
   const id = useRef(null)
   const timer = useRef(null)
   const moved = useRef(false)
+  const lastTapTime = useRef(0)
   const {
     onSwipeDown,
     onSwipeMove,
