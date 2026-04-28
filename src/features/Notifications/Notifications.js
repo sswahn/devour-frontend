@@ -94,9 +94,9 @@ function Notifications() {
       return
     }
     const newHeight = latestHeight.current + Math.abs(deltaY) 
-
-    const distanceToTop = deltaY - 8 // dragging UP → apply resistance
-    const resistanceFactor = Math.max(0.2, distanceToTop / 300) // normalize resistance (tweak 300 for feel)
+    
+    const commitThreshold = window.innerHeight * 0.75
+    const resistanceFactor = Math.max(0.2, commitThreshold / 300) // normalize resistance (tweak 300 for feel)
     const adjustedDeltaY = deltaY * resistanceFactor
 
    
