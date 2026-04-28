@@ -119,7 +119,7 @@ function Notifications() {
       requestAnimationFrame(() => {
         if (direction == 'up') {
           currentTarget.style.height = '100dvh'
-          currentTarget.style.transform = 'translate3d(0, 0dvh, 0)'
+          currentTarget.style.transform = 'translate3d(0, 8px, 0)'
         } else {
           currentTarget.addEventListener('transitionend', () => {
             currentTarget.style.transition = ''
