@@ -1,27 +1,26 @@
 import { useState, useRef, useCallback } from 'react'
 
 const usePinch = () => {
-  const [isPinching, setIsPinching] = useState(false)
+  const isPinching = useRef(false)
   const data = useRef({}) // Map of pointerId -> { clientX, clientY }
   const prevDiff = useRef(-1)
 
-  const onPointerDown = useCallback((e) => {
-    data.current[e.pointerId] = { clientX: e.clientX, clientY: e.clientY }
+  const onPointerDown = event => {
+    const { clientX, clientY, pointerId } = event
+    data.current[pointerId] = { clientX, clientY }
     const activePointers = Object.keys(data.current).length
-    
-    if (activePointers === 2) setIsPinching(true)
-
-    return {
-      type: 'down',
-      activePointers,
-      isPinching: activePointers === 2
+    if (activePointers === 2) {
+      isPinching.current = true
     }
   }, [])
 
-  const onPointerMove = useCallback((e) => {
-    if (!data.current[e.pointerId]) return { type: 'move', activePointers: Object.keys(data.current).length }
+  const onPointerMove = event => {
+    if (!isPinching.current) {
+      return
+    }
+    const { clientX, clientY, pointerId } = event
 
-    data.current[e.pointerId] = { clientX: e.clientX, clientY: e.clientY }
+    data.current[pointerId] = { clientX, clientY }
     const pointers = Object.values(data.current)
     
     let ratio = 1
