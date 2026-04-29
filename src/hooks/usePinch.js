@@ -38,7 +38,7 @@ const usePinch = () => {
     }  
     prevDistance.current = distance
   
-    return { distance, ratio, direction, delta: distance - (prevDiff.current || distance) }
+    return { distance, ratio, direction, delta: distance - prevDistance.current }
   }
 
   const onPointerUp = useCallback((e) => {
