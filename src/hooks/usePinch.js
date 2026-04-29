@@ -25,35 +25,21 @@ const usePinch = () => {
     if (data.current.length !== 2) { 
       return {}
     }
-    
-    let ratio = 1
-    let direction = 'none'
-    let distance = 0
-
     const deltaX = startX - clientX
     const deltaY = startY - clientY
-
-    // Distance between pointers:
     const distance = Math.hypot(deltaX, deltaY)
+    let direction = 'none'
+    let distance = 0
+    let ratio = 1
 
-      if (prevDistance.current > 0) {
-        ratio = distance / prevDistance.current
-        direction = ratio > 1 ? 'out' : 'in'
-      }
-    
-      prevDistance.current = distance
-    }
-
-    return {
-      type: 'move',
-      activePointers: pointers.length,
-      isPinching: pointers.length === 2,
-      distance,
-      ratio,
-      direction,
-      delta: distance - (prevDiff.current || distance)
-    }
-  }, [])
+    if (prevDistance.current > 0) {
+      ratio = distance / prevDistance.current
+      direction = ratio > 1 ? 'out' : 'in'
+    }  
+    prevDistance.current = distance
+  
+    return { distance, ratio, direction, delta: distance - (prevDiff.current || distance) }
+  }
 
   const onPointerUp = useCallback((e) => {
     delete data.current[e.pointerId]
