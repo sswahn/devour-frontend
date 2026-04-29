@@ -28,6 +28,8 @@ const usePinch = () => {
   const onPointerMove = event => {
     const { clientX, clientY, pointerId } = event
     const { startX, startY, id } = data.current
+
+    //if (there are not two pointers) return
     
     let ratio = 1
     let direction = 'none'
@@ -36,12 +38,14 @@ const usePinch = () => {
     const deltaX = startX - clientX
     const deltaY = startY - clientY
 
-    distance = Math.hypot(startX - clientX, startY - clientY)
+    // Distance between pointers:
+    const distance = Math.hypot(deltaX, deltaY)
 
       if (prevDiff.current > 0) {
         ratio = distance / prevDelta.current
         direction = ratio > 1 ? 'out' : 'in'
       }
+    
       prevDiff.current = distance
     }
 
