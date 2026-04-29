@@ -30,7 +30,7 @@ const usePinch = () => {
     const distance = Math.hypot(deltaX, deltaY)
     let direction = 'none'
     let ratio = 1
-    let delta = distance
+    let delta = 0
 
     if (prevDistance.current > 0) {
       ratio = distance / prevDistance.current
