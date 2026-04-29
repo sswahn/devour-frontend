@@ -2,7 +2,7 @@ import { useState, useRef, useCallback } from 'react'
 
 const usePinch = () => {
   const isPinching = useRef(false)
-  const data = useRef({}) // Map of pointerId -> { clientX, clientY }
+  const data = useRef([]) // Map of pointerId -> { clientX, clientY }
   const prevDelta = useRef(-1)
 
   /*
@@ -16,20 +16,24 @@ const usePinch = () => {
   }, [])
   */
 
+  // Because the browser fires a new onpointerdown for every finger that touches the screen, your code collects them one by one.
+
   const onPointerDown = event => {
     const { clientX, clientY, pointerId } = event
-    data.current = { 
+    data.current.push({ 
       startX: clientX, 
       startY: clientY,
       id: pointerId
-    }
+    })
   }
 
   const onPointerMove = event => {
     const { clientX, clientY, pointerId } = event
     const { startX, startY, id } = data.current
 
-    //if (there are not two pointers) return
+    if (data.current.length < 2) { 
+      return {}
+    }
     
     let ratio = 1
     let direction = 'none'
