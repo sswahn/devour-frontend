@@ -7,6 +7,8 @@ import useProfile from '../../hooks/useProfile'
 import useSwipeFromEdge from '../../hooks/useSwipeFromEdge'
 import CloseButton from '../../components/CloseButton/CloseButton'
 import Dropdown from '../../components/Dropdown/Dropdown'
+import ImageField from './ImageField/ImageField'
+import TextField from './TextField/TextField'
 import FollowButton from './FollowButton/FollowButton'
 import FollowStats from './FollowStats/FollowStats'
 import EditButton from './EditButton/EditButton'
@@ -68,17 +70,27 @@ function Profile() {
         </nav>
         <header>
           <div>
-            <img src={profile.image} alt={`${profile.username}'s profile picture`} />
-            {<EditButton field="profile" />}
+            {/*
+              <img src={profile.image} alt={`${profile.username}'s profile picture`} />
+              {<EditButton field="profile" />}
+            */}
+            <ImageField src={profile.image} alt={`${profile.username}'s profile picture`} />
           </div>
           <div>
             <div>
-              <h1 id="username">{profile.username}</h1>
-              {<EditButton field="username" />}
+              {/* <h1 id="username">{profile.username}</h1> */}
+              <h1 id="username">
+                <TextField text={profile.username} />
+              </h1>
             </div>
             <div>
-              <address>{profile.location}</address>
-              {<EditButton field="location" />}
+              {/*
+                <address>{profile.location}</address>
+                {<EditButton field="location" />}
+              */}
+              <address>
+                <TextField text={profile.locaiton} />
+              </address>
             </div>
             {/* 
             <div>
