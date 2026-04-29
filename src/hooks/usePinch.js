@@ -26,10 +26,11 @@ const usePinch = () => {
       return {}
     }
     // deltas need to take into account both pointers.
-    
-    const deltaX = startX - clientX
-    const deltaY = startY - clientY
-    const distance = Math.hypot(deltaX, deltaY)
+    //const deltaX = startX - clientX
+    //const deltaY = startY - clientY
+    //const distance = Math.hypot(deltaX, deltaY)
+
+    const distance = Math.hypot(second.startX - first.startX, second.startY - first.startY)
     let direction = 'none'
     let ratio = 1
     let delta = 0
