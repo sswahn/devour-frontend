@@ -21,7 +21,7 @@ const usePinch = () => {
 
   const onPointerMove = event => {
     const { clientX, clientY, pointerId } = event
-    const { startX, startY, id } = data.current
+    const [ first, second ] = data.current
     if (data.current.length !== 2) { 
       return {}
     }
