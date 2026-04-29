@@ -29,7 +29,6 @@ const usePinch = () => {
     const deltaY = startY - clientY
     const distance = Math.hypot(deltaX, deltaY)
     let direction = 'none'
-    let distance = 0
     let ratio = 1
 
     if (prevDistance.current > 0) {
