@@ -30,14 +30,16 @@ const usePinch = () => {
     const distance = Math.hypot(deltaX, deltaY)
     let direction = 'none'
     let ratio = 1
+    let delta = distance
 
     if (prevDistance.current > 0) {
       ratio = distance / prevDistance.current
       direction = ratio > 1 ? 'out' : 'in'
+      delta = currentDistance - prevDistance.current
     }  
     prevDistance.current = distance
   
-    return { distance, ratio, direction, delta: distance - prevDistance.current }
+    return { distance, ratio, direction, delta }
   }
 
   const onPointerUp = useCallback((e) => {
