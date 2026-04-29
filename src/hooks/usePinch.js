@@ -3,8 +3,9 @@ import { useState, useRef, useCallback } from 'react'
 const usePinch = () => {
   const isPinching = useRef(false)
   const data = useRef({}) // Map of pointerId -> { clientX, clientY }
-  const prevDiff = useRef(-1)
+  const prevDelta = useRef(-1)
 
+  /*
   const onPointerDown = event => {
     const { clientX, clientY, pointerId } = event
     data.current[pointerId] = { clientX, clientY }
@@ -13,28 +14,32 @@ const usePinch = () => {
       isPinching.current = true
     }
   }, [])
+  */
+
+  const onPointerDown = event => {
+    const { clientX, clientY, pointerId } = event
+    data.current = { 
+      startX: clientX, 
+      startY: clientY,
+      id: pointerId
+    }
+  }
 
   const onPointerMove = event => {
-    if (!isPinching.current) {
-      return
-    }
     const { clientX, clientY, pointerId } = event
-
-    data.current[pointerId] = { clientX, clientY }
-    const pointers = Object.values(data.current)
+    const { startX, startY, id } = data.current
     
     let ratio = 1
     let direction = 'none'
     let distance = 0
 
-    if (pointers.length === 2) {
-      distance = Math.hypot(
-        pointers[0].clientX - pointers[1].clientX,
-        pointers[0].clientY - pointers[1].clientY
-      )
+    const deltaX = startX - clientX
+    const deltaY = startY - clientY
+
+    distance = Math.hypot(startX - clientX, startY - clientY)
 
       if (prevDiff.current > 0) {
-        ratio = distance / prevDiff.current
+        ratio = distance / prevDelta.current
         direction = ratio > 1 ? 'out' : 'in'
       }
       prevDiff.current = distance
