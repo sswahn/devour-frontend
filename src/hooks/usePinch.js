@@ -25,6 +25,8 @@ const usePinch = () => {
     if (data.current.length !== 2) { 
       return {}
     }
+    // deltas need to take into account both pointers.
+    
     const deltaX = startX - clientX
     const deltaY = startY - clientY
     const distance = Math.hypot(deltaX, deltaY)
