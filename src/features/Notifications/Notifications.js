@@ -109,15 +109,6 @@ function Notifications() {
     
     // State Prep: Switch transition ON. This curve (0.25, 1, 0.5, 1) starts fast and decelerates smoothly to a dead stop.
     currentTarget.style.transition = 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), height 0.4s cubic-bezier(0.25, 1, 0.5, 1)'
-
-
-    /*
-    actually it should be: 
-    if dragging up and threshold met transition up, 
-    otherwise snap back to original state (50dvh), 
-    otherwise it direction is down and threshold met
-    */
-
     
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
