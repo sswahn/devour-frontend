@@ -78,9 +78,6 @@ function useGestures() { // thresholds
     if(!moved.current) {
       taps = tapCounter()
     }
-
-    console.log('Double Tap fired?: ', taps)
-    
     const swipeUp = onSwipeUp(event)
     return { ...swipeUp, tapCount: taps }
   }, [])
