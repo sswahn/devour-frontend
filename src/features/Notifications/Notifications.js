@@ -40,6 +40,12 @@ function Notifications() {
     closeOverlay()
   }
 
+  const open = currentTarget => {
+    const bottomSheet = currentTarget || bottomSheetRef.current
+    bottomSheet.style.height = '100dvh'
+    bottomSheet.style.transform = 'translate3d(0, 8px, 0)'
+  }
+  
   const close = currentTarget => {
     const bottomSheet = currentTarget || bottomSheetRef.current
     bottomSheet.addEventListener('transitionend', () => {
@@ -48,6 +54,12 @@ function Notifications() {
       action()
     }, { once: true })
     bottomSheet.style.transform = 'translate3d(0, 100dvh, 0)'
+  }
+
+  const reset = currentTarget => {
+    const bottomSheet = currentTarget || bottomSheetRef.current
+    currentTarget.style.height = ''
+    currentTarget.style.transform = ''
   }
 
   const onClick = event => {
@@ -116,8 +128,9 @@ function Notifications() {
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         if (direction === 'up' && movement > threshold) {
-          currentTarget.style.height = '100dvh'
-          currentTarget.style.transform = 'translate3d(0, 8px, 0)'
+          open(currentTarget)
+          // currentTarget.style.height = '100dvh'
+          // currentTarget.style.transform = 'translate3d(0, 8px, 0)'
         } else if (direction === 'down' && movement > 10) {
           close(currentTarget)
           
@@ -130,8 +143,9 @@ function Notifications() {
           currentTarget.style.transform = 'translate3d(0, 100dvh, 0)'
           */
         } else {
-          currentTarget.style.height = ''
-          currentTarget.style.transform = ''
+          reset(currentTarget)
+          // currentTarget.style.height = ''
+          // currentTarget.style.transform = ''
         }
       })
     })
