@@ -35,7 +35,7 @@ function TextField({ text }) {
       {isOpen 
         ?  <>
              <input ref={inputRef} type="text" defaultValue={text} aria-label={`${text} input`} />
-             <SubmitButton text={text} close={close} />
+             <CloseButton text={text} close={close} />
            </>
         : <>
             <span>{text}</span>
