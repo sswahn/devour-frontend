@@ -127,8 +127,8 @@ function Notifications() {
     // State Prep: Switch transition ON. This curve (0.25, 1, 0.5, 1) starts fast and decelerates smoothly to a dead stop.
     currentTarget.style.transition = 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), height 0.4s cubic-bezier(0.25, 1, 0.5, 1)'
     
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
+    //requestAnimationFrame(() => {
+     // requestAnimationFrame(() => {
         if (direction === 'up' && movement > threshold) {
           open(currentTarget)
         } else if (direction === 'down' && movement > 10) {
@@ -136,8 +136,8 @@ function Notifications() {
         } else {
           reset(currentTarget)
         }
-      })
-    })
+    //  })
+  //  })
   }
   
   const onPointerCancel = event => {
