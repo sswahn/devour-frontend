@@ -12,7 +12,7 @@ function FeedNode({ item, index, count }) {
   const getLongPress = longPress => {
     console.log('getLongPress: ', longPress)
     if (longPress) {
-      setIsLongPress(true)
+      setIsLongPress(longPress)
     }
   }
   
@@ -28,7 +28,7 @@ function FeedNode({ item, index, count }) {
     const { tapCount } = onGestureUp(event)
     console.log('tapCount: ', tapCount)
     if (tapCount === 2) {
-      setIsDoubleTap(true)
+      setIsDoubleTap(tapCount)
     }
   }
   
