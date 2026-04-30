@@ -103,8 +103,10 @@ function Notifications() {
     // Allow upward movement now (no Math.max hack)
     let translateY = deltaY + adjustedDeltaY
 
+    console.log('translateY: ', translateY)
+
     // clamp to top (don’t overshoot)
-    translateY = Math.max(8, translateY)
+    //translateY = Math.max(8, translateY)
     
     // const translateY = Math.max(deltaY, 8)
     throttleTransition(translateY, newHeight, currentTarget)
