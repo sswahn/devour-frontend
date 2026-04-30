@@ -103,11 +103,10 @@ function Notifications() {
     if (tapCount > 0) { 
       return
     }
-    const threshold = window.innerHeight * 0.75
-    const movement = Math.abs(deltaY * 0.5) // Calculate total movement - with resistance: (deltaY * 0.5)
+    const threshold = window.innerHeight * 0.65
+    const movement = Math.abs(deltaY)
     
-    // 2. State Prep: Switch transition ON
-    // This curve (0.25, 1, 0.5, 1) starts fast and decelerates smoothly to a dead stop.
+    // State Prep: Switch transition ON. This curve (0.25, 1, 0.5, 1) starts fast and decelerates smoothly to a dead stop.
     currentTarget.style.transition = 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), height 0.4s cubic-bezier(0.25, 1, 0.5, 1)'
  
     requestAnimationFrame(() => {
