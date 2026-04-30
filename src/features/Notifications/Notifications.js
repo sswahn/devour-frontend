@@ -119,27 +119,20 @@ function Notifications() {
     const { clientY, currentTarget } = event
     const { deltaY, direction, velocity, timestamp, tapCount } = onGestureUp(event)
     ticking.current = false // 1. Kill the move throttle immediately  
-    
     if (tapCount > 0) { 
       return
     }
     const threshold = window.innerHeight * 0.25
     const movement = Math.abs(deltaY)
-    
     // State Prep: Switch transition ON. This curve (0.25, 1, 0.5, 1) starts fast and decelerates smoothly to a dead stop.
     currentTarget.style.transition = 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), height 0.4s cubic-bezier(0.25, 1, 0.5, 1)'
-    
-    //requestAnimationFrame(() => {
-     // requestAnimationFrame(() => {
-        if (direction === 'up' && movement > threshold) {
-          open(currentTarget)
-        } else if (direction === 'down' && movement > 10) {
-          close(currentTarget)
-        } else {
-          reset(currentTarget)
-        }
-    //  })
-  //  })
+    if (direction === 'up' && movement > threshold) {
+      open(currentTarget)
+    } else if (direction === 'down' && movement > 10) {
+      close(currentTarget)
+    } else {
+      reset(currentTarget)
+    }
   }
   
   const onPointerCancel = event => {
