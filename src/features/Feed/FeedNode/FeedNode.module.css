@@ -17,5 +17,5 @@
 
   background: #666; 
   border-radius: 10px;
-  height: 100%;
+  border: 1px dashed orange;
 }
