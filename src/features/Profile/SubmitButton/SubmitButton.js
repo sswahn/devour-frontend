@@ -2,14 +2,8 @@ import PaperPlaneIcon from '../../../components/Icons/PaperPlaneIcon/PaperPlaneI
 import styles from './SubmitButton.module.css'
 
 function SubmitButton({ text, close }) {
- // const [editorIsOpen, setEditorIsOpen] = useState()
-
-  const update = async () => {
-    // update field
-  }
  
-  const action = async () => {
-    await update()
+  const action = () => {
     close()
   }
 
