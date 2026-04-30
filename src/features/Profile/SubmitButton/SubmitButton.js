@@ -1,14 +1,16 @@
 import PaperPlaneIcon from '../../../components/Icons/PaperPlaneIcon/PaperPlaneIcon'
 import styles from './SubmitButton.module.css'
 
-function SubmitButton({ field, submit }) {
+function SubmitButton({ text, close }) {
  // const [editorIsOpen, setEditorIsOpen] = useState()
-  
-  const action = () => {
-    // display input
-    // toggle state between
-    // edit/submit
-    submit(prev => !prev)
+
+  const update = async () => {
+    // update field
+  }
+ 
+  const action = async () => {
+    await update()
+    close()
   }
 
   const onClick = event => {
@@ -24,7 +26,7 @@ function SubmitButton({ field, submit }) {
   }
 
   return (
-    <button className={styles.submitButton} onClick={onClick} onKeyDown={onKeyDown} type="button" aria-label={`submit new ${field}`}>
+    <button className={styles.submitButton} onClick={onClick} onKeyDown={onKeyDown} type="button" aria-label={`submit new ${text}`}>
       <PaperPlaneIcon />
     </button>
   )
