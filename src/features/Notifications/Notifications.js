@@ -43,8 +43,8 @@ function Notifications() {
   const close = currentTarget => {
     const bottomSheet = currentTarget || bottomSheetRef.current
     bottomSheet.addEventListener('transitionend', () => {
-      bottomSheet.style.transition = ''
-      bottomSheet.style.height = '0dvh'
+      // bottomSheet.style.transition = ''
+      // bottomSheet.style.height = '0dvh'
       action()
     }, { once: true })
     bottomSheet.style.transform = 'translate3d(0, 100dvh, 0)'
