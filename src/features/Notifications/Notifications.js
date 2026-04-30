@@ -68,11 +68,9 @@ function Notifications() {
 
   const throttleTransition = (deltaY, currentTarget) => {
     latestDeltaY.current = deltaY
-    //latestHeight.current = height
     if (!ticking.current) {
       ticking.current = true
       requestAnimationFrame(() => {
-       // currentTarget.style.height = `${latestHeight.current}px`
         currentTarget.style.transform = `translate3d(0, ${latestDeltaY.current}px, 0)`
         ticking.current = false
       })
