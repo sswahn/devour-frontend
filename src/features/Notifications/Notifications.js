@@ -77,8 +77,12 @@ function Notifications() {
   }
 
   const handleGrabberClick = event => {
-    // if fully open, close
-    // else open to fullscreen
+    const bottomSheet = event.target.parentElement
+    if (bottomSheet.innerHeight === 50dvh) {
+      open(bottomSheet)
+    } else {
+      close(bottomSheet)
+    }
   }
 
   const throttleTransition = (deltaY, currentTarget) => {
@@ -129,23 +133,10 @@ function Notifications() {
       requestAnimationFrame(() => {
         if (direction === 'up' && movement > threshold) {
           open(currentTarget)
-          // currentTarget.style.height = '100dvh'
-          // currentTarget.style.transform = 'translate3d(0, 8px, 0)'
         } else if (direction === 'down' && movement > 10) {
           close(currentTarget)
-          
-          /*
-          currentTarget.addEventListener('transitionend', () => {
-            currentTarget.style.transition = ''
-            currentTarget.style.height = '0dvh'
-            action()
-          }, { once: true })
-          currentTarget.style.transform = 'translate3d(0, 100dvh, 0)'
-          */
         } else {
           reset(currentTarget)
-          // currentTarget.style.height = ''
-          // currentTarget.style.transform = ''
         }
       })
     })
