@@ -4,7 +4,7 @@ const usePinch = () => {
   const prevDistance = useRef(-1)
   const data = useRef([])
 
-  // Because the browser fires a new onpointerdown for every finger that touches the screen, your code collects them one by one.
+  // The browser fires a new pointerdown event for every finger that touches the screen
 
   const onPinchDown = event => {
     const { clientX, clientY, pointerId } = event
@@ -30,11 +30,9 @@ const usePinch = () => {
     const distance = Math.hypot(p2.clientX - p1.clientX, p2.clientY - p1.clientY)
     let direction = 'none'
     let ratio = 1
-    let delta = 0
     if (prevDistance.current > 0) {
       ratio = distance / prevDistance.current
       direction = ratio > 1 ? 'out' : 'in'
-      delta = distance - prevDistance.current
     }  
     prevDistance.current = distance
     return { pinchDirection: direction }
