@@ -35,7 +35,7 @@ const usePinch = () => {
     if (prevDistance.current > 0) {
       ratio = distance / prevDistance.current
       direction = ratio > 1 ? 'out' : 'in'
-      delta = currentDistance - prevDistance.current
+      delta = distance - prevDistance.current
     }  
     prevDistance.current = distance
     return { distance, ratio, direction, delta }
