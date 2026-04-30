@@ -15,13 +15,6 @@ function ShareButton({ isLongPress }) {
       ]
     })
   }
-
-  const gesture = () => {
-    if (isLongPress) {
-      navigator.vibrate?.(50)
-      action()
-    }
-  }
   
   const onClick = event => {
     navigator.vibrate?.(50)
@@ -31,6 +24,13 @@ function ShareButton({ isLongPress }) {
   const onKeyDown = event => {
     if (event.key === 'Enter') {
       event.preventDefault()
+      action()
+    }
+  }
+
+  const gesture = () => {
+    if (isLongPress) {
+      navigator.vibrate?.(50)
       action()
     }
   }
