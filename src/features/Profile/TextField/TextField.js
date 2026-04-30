@@ -7,8 +7,8 @@ import styles from './TextField.module.css'
 function TextField({ text }) {
   const [isOpen, setIsOpen] = useState(false)
 
-  const open = setIsOpen(true)
-  const close = setIsOpen(false)
+  const open = () => setIsOpen(true)
+  const close = () => setIsOpen(false)
 
   const onChange = useDebounce(event => {
     // make request once finished typing
