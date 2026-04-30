@@ -15,7 +15,7 @@ function TextField({ text }) {
     if (text === inputRef.current.value.trim()) {
       return
     }
-    // else make request to upate user, and update state of profile directly to avoid loading
+    // else make request to upate text, and update state of profile directly to avoid loading
   }
 
   useEffect(() => {
