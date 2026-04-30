@@ -77,7 +77,7 @@ function Notifications() {
   }
 
   const handleGrabberClick = event => {
-    const bottomSheet = event.currentTarget.parentElement
+    const bottomSheet = bottomSheet.current
     const currentHeight = bottomSheet.offsetHeight
     const halfViewport = window.innerHeight * 0.5
     // 3. Compare them (using a small 1px buffer for rounding errors)
