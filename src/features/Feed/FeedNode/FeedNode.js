@@ -4,12 +4,31 @@ import TopNav from '../TopNav/TopNav'
 import SideNav from '../SideNav/SideNav'
 
 function FeedNode({ item, index, count }) {
-  const {
-    onPointerDown,
-    onPointerMove,
-    onPointerUp,
-    onPointerCancel
-  } = useGestures()
+  const [isDoubleTap, setIsDoubleTap] = useState(false)
+  const [isLongPress, setIsLongPress] = useState(false)
+  const { onGestureDown, onGestureMove, onGestureUp, onGestureCancel } = useGestures()
+
+  const onPointerDown () => {
+    const { longPress } = onGestureDown()
+    if (longPress) {
+      setIsLongPress(true)
+    }
+  }
+  
+  const onPointerMove = () => {
+    onGestureMove()
+  }
+  
+  const onPointerUp = () => {
+    const { tapCount } = onGestureUp()
+    if (tapCount === 2) {
+      setIsDoubleTap(true)
+    }
+  }
+  
+  const onPointerCancel = () => {
+    onGestureCancel()
+  }
 
   // this tabIndex etc. breaks the natural flow of the page, header gets skipped...
   return (
@@ -24,7 +43,7 @@ function FeedNode({ item, index, count }) {
       {/* data.videoUrl && <video ref={ref} src={data.videoUrl} preload="metadata" muted playsInline loop /> */}
       {/* data.caption ?? <figcaption>{data.caption}</figcaption> */}
 
-      {/* <SideNav doubleTap={doubleTap} longPress={longPress}  /> */}
+      <SideNav isDoubleTap={isDoubleTap} isLongPress={isLongPress}  />
     </figure>
   )
 }
