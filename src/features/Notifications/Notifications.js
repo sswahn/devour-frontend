@@ -124,7 +124,7 @@ function Notifications() {
         if (direction === 'up' && movement > threshold) {
           currentTarget.style.height = '100dvh'
           currentTarget.style.transform = 'translate3d(0, 8px, 0)'
-        } else if (direction === 'down') {
+        } else if (direction === 'down' && movement > 10) {
           currentTarget.addEventListener('transitionend', () => {
             currentTarget.style.transition = ''
             currentTarget.style.height = '0dvh'
