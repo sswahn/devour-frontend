@@ -78,10 +78,13 @@ function Notifications() {
 
   const handleGrabberClick = event => {
     const bottomSheet = bottomSheetRef.current
-    const currentHeight = bottomSheet.offsetHeight
+    const height = bottomSheet.offsetHeight
     const halfViewport = window.innerHeight * 0.5
-    // 3. Compare them (using a small 1px buffer for rounding errors)
-    if (Math.abs(currentHeight - halfViewport) < 1) {
+    
+    console.log('bottomsheet height: ', height)
+    console.log('halfviewport height: ', halfViewport)
+    
+    if (height < halfViewport) {
       open(bottomSheet)
     } else {
       close(bottomSheet)
