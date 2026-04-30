@@ -82,7 +82,7 @@ function Notifications() {
     console.log('bottomsheet height: ', height)
     console.log('half vp height: ', half)
 
-    height < half ? open(bottomSheet) : close(bottomSheet)
+    height > half ? close(bottomSheet) : open(bottomSheet)
   }
 
   const throttleTransition = (deltaY, currentTarget) => {
