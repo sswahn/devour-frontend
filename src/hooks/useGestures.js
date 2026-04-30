@@ -8,13 +8,9 @@ function useGestures() { // thresholds
   const moved = useRef(false)
   const prevTap = useRef(0)
   const tapCount = useRef(0)
-  const {
-    onSwipeDown,
-    onSwipeMove,
-    onSwipeUp,
-    onSwipeCancel
-  } = useSwipe()
-
+  const { onPinchDown, onPinchMove, onPinchUp, onPinchCancel } = usePinch()
+  const { onSwipeDown, onSwipeMove, onSwipeUp, onSwipeCancel } = useSwipe()
+  
   const tapCounter = () => {
     const tapDelay = 300
     const now = performance.now()
