@@ -41,13 +41,12 @@ function FeedNode({ item, index, count }) {
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
       onPointerCancel={onPointerCancel}>
+      
       <TopNav />
-        
-      <span>{item}</span>
 
       {/* item.videoUrl && <video ref={ref} src={item.videoUrl} preload="metadata" muted playsInline loop /> */}
-      {/* item.caption ?? <figcaption>{item.caption}</figcaption> */}
-
+      {item.caption ?? <figcaption>{item.caption}</figcaption>}
+      
       <SideNav isDoubleTap={isDoubleTap} isLongPress={isLongPress}  />
     </figure>
   )
