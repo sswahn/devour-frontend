@@ -104,7 +104,7 @@ function Notifications() {
       return
     }
     const threshold = window.innerHeight * 0.75
-    const movement = Math.abs(deltaY) // Calculate total movement - with resistance: (deltaY * 0.5)
+    const movement = Math.abs(deltaY * 0.5) // Calculate total movement - with resistance: (deltaY * 0.5)
     
     // 2. State Prep: Switch transition ON
     // This curve (0.25, 1, 0.5, 1) starts fast and decelerates smoothly to a dead stop.
