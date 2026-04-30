@@ -91,7 +91,8 @@ function Notifications() {
     if (deltaY === undefined || axis === 'x') {
       return
     }
-    const translateY = deltaY * 0.5
+    const translateY = deltaY * 0.5 // linear
+    // const translateY = deltaY / (1 + Math.abs(deltaY) / 300) // asymptotic
     throttleTransition(translateY, currentTarget)
   }
   
