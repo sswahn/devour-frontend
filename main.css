@@ -353,6 +353,12 @@
   border: 1px dashed orange;
 }
 
+.QNshFBXSoGNyBxo7mpBY figcaption {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+}
+
 /*!*************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Feed/Feed.module.css ***!
   \*************************************************************************************/
