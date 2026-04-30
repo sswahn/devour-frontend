@@ -89,16 +89,6 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 
 /***/ },
 
-/***/ "./src/components/Icons/PaperPlaneIcon/PaperPlaneIcon.js"
-/*!***************************************************************!*\
-  !*** ./src/components/Icons/PaperPlaneIcon/PaperPlaneIcon.js ***!
-  \***************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nfunction PaperPlaneIcon(_ref) {\n  var _ref$size = _ref.size,\n    size = _ref$size === void 0 ? 24 : _ref$size;\n  return /*#__PURE__*/React.createElement(\"svg\", {\n    xmlns: \"http://www.w3.org/2000/svg\",\n    viewBox: \"0 0 640 640\",\n    width: size,\n    height: size,\n    \"aria-hidden\": \"true\"\n  }, /*#__PURE__*/React.createElement(\"path\", {\n    d: \"M568.4 37.7C578.2 34.2 589 36.7 596.4 44C603.8 51.3 606.2 62.2 602.7 72L424.7 568.9C419.7 582.8 406.6 592 391.9 592C377.7 592 364.9 583.4 359.6 570.3L295.4 412.3C290.9 401.3 292.9 388.7 300.6 379.7L395.1 267.3C400.2 261.2 399.8 252.3 394.2 246.7C388.6 241.1 379.6 240.7 373.6 245.8L261.2 340.1C252.1 347.7 239.6 349.7 228.6 345.3L70.1 280.8C57 275.5 48.4 262.7 48.4 248.5C48.4 233.8 57.6 220.7 71.5 215.7L568.4 37.7z\"\n  }));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PaperPlaneIcon);\n\n//# sourceURL=webpack://devour-frontend/./src/components/Icons/PaperPlaneIcon/PaperPlaneIcon.js?\n}");
-
-/***/ },
-
 /***/ "./src/components/Icons/SunIcon/DarkSunIcon.js"
 /*!*****************************************************!*\
   !*** ./src/components/Icons/SunIcon/DarkSunIcon.js ***!
@@ -116,6 +106,16 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nvar SunIcon = function SunIcon() {\n  return /*#__PURE__*/React.createElement(\"svg\", {\n    xmlns: \"http://www.w3.org/2000/svg\",\n    height: \"1em\",\n    viewBox: \"0 0 512 512\",\n    role: \"img\",\n    \"aria-label\": \"light icon\"\n  }, /*#__PURE__*/React.createElement(\"path\", {\n    d: \"M375.7 19.7c-1.5-8-6.9-14.7-14.4-17.8s-16.1-2.2-22.8 2.4L256 61.1 173.5 4.2c-6.7-4.6-15.3-5.5-22.8-2.4s-12.9 9.8-14.4 17.8l-18.1 98.5L19.7 136.3c-8 1.5-14.7 6.9-17.8 14.4s-2.2 16.1 2.4 22.8L61.1 256 4.2 338.5c-4.6 6.7-5.5 15.3-2.4 22.8s9.8 13 17.8 14.4l98.5 18.1 18.1 98.5c1.5 8 6.9 14.7 14.4 17.8s16.1 2.2 22.8-2.4L256 450.9l82.5 56.9c6.7 4.6 15.3 5.5 22.8 2.4s12.9-9.8 14.4-17.8l18.1-98.5 98.5-18.1c8-1.5 14.7-6.9 17.8-14.4s2.2-16.1-2.4-22.8L450.9 256l56.9-82.5c4.6-6.7 5.5-15.3 2.4-22.8s-9.8-12.9-17.8-14.4l-98.5-18.1L375.7 19.7zM269.6 110l65.6-45.2 14.4 78.3c1.8 9.8 9.5 17.5 19.3 19.3l78.3 14.4L402 242.4c-5.7 8.2-5.7 19 0 27.2l45.2 65.6-78.3 14.4c-9.8 1.8-17.5 9.5-19.3 19.3l-14.4 78.3L269.6 402c-8.2-5.7-19-5.7-27.2 0l-65.6 45.2-14.4-78.3c-1.8-9.8-9.5-17.5-19.3-19.3L64.8 335.2 110 269.6c5.7-8.2 5.7-19 0-27.2L64.8 176.8l78.3-14.4c9.8-1.8 17.5-9.5 19.3-19.3l14.4-78.3L242.4 110c8.2 5.7 19 5.7 27.2 0zM256 368a112 112 0 1 0 0-224 112 112 0 1 0 0 224zM192 256a64 64 0 1 1 128 0 64 64 0 1 1 -128 0z\"\n  }));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SunIcon);\n\n//# sourceURL=webpack://devour-frontend/./src/components/Icons/SunIcon/SunIcon.js?\n}");
+
+/***/ },
+
+/***/ "./src/components/Icons/XmarkIcon/XmarkIcon.js"
+/*!*****************************************************!*\
+  !*** ./src/components/Icons/XmarkIcon/XmarkIcon.js ***!
+  \*****************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nfunction XmarkIcon(_ref) {\n  var _ref$size = _ref.size,\n    size = _ref$size === void 0 ? 24 : _ref$size;\n  return /*#__PURE__*/React.createElement(\"svg\", {\n    xmlns: \"http://www.w3.org/2000/svg\",\n    viewBox: \"0 0 640 640\",\n    width: size,\n    height: size,\n    role: \"img\",\n    \"aria-label\": \"x icon\"\n  }, /*#__PURE__*/React.createElement(\"path\", {\n    d: \"M183.1 137.4C170.6 124.9 150.3 124.9 137.8 137.4C125.3 149.9 125.3 170.2 137.8 182.7L275.2 320L137.9 457.4C125.4 469.9 125.4 490.2 137.9 502.7C150.4 515.2 170.7 515.2 183.2 502.7L320.5 365.3L457.9 502.6C470.4 515.1 490.7 515.1 503.2 502.6C515.7 490.1 515.7 469.8 503.2 457.3L365.8 320L503.1 182.6C515.6 170.1 515.6 149.8 503.1 137.3C490.6 124.8 470.3 124.8 457.8 137.3L320.5 274.7L183.1 137.4z\"\n  }));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (XmarkIcon);\n\n//# sourceURL=webpack://devour-frontend/./src/components/Icons/XmarkIcon/XmarkIcon.js?\n}");
 
 /***/ },
 
@@ -279,6 +279,16 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 
 /***/ },
 
+/***/ "./src/features/Profile/CloseButton/CloseButton.js"
+/*!*********************************************************!*\
+  !*** ./src/features/Profile/CloseButton/CloseButton.js ***!
+  \*********************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _components_Icons_XmarkIcon_XmarkIcon__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../components/Icons/XmarkIcon/XmarkIcon */ \"./src/components/Icons/XmarkIcon/XmarkIcon.js\");\n/* harmony import */ var _CloseButton_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CloseButton.module.css */ \"./src/features/Profile/CloseButton/CloseButton.module.css\");\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nfunction CloseButton(_ref) {\n  var text = _ref.text,\n    close = _ref.close;\n  var action = function action() {\n    close();\n  };\n  var onClick = function onClick(event) {\n    var _navigation$vibrate, _navigation;\n    (_navigation$vibrate = (_navigation = navigation).vibrate) === null || _navigation$vibrate === void 0 || _navigation$vibrate.call(_navigation);\n    action();\n  };\n  var onKeyDown = function onKeyDown(event) {\n    if (event.key === 'Enter') {\n      event.preventDefault();\n      action();\n    }\n  };\n  return /*#__PURE__*/React.createElement(\"button\", {\n    className: _CloseButton_module_css__WEBPACK_IMPORTED_MODULE_1__[\"default\"].closeButton,\n    onClick: onClick,\n    onKeyDown: onKeyDown,\n    type: \"button\",\n    \"aria-label\": \"submit new \".concat(text)\n  }, /*#__PURE__*/React.createElement(_components_Icons_XmarkIcon_XmarkIcon__WEBPACK_IMPORTED_MODULE_0__[\"default\"], null));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CloseButton);\n\n//# sourceURL=webpack://devour-frontend/./src/features/Profile/CloseButton/CloseButton.js?\n}");
+
+/***/ },
+
 /***/ "./src/features/Profile/EditButton/EditButton.js"
 /*!*******************************************************!*\
   !*** ./src/features/Profile/EditButton/EditButton.js ***!
@@ -349,23 +359,13 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 
 /***/ },
 
-/***/ "./src/features/Profile/SubmitButton/SubmitButton.js"
-/*!***********************************************************!*\
-  !*** ./src/features/Profile/SubmitButton/SubmitButton.js ***!
-  \***********************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _components_Icons_PaperPlaneIcon_PaperPlaneIcon__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../components/Icons/PaperPlaneIcon/PaperPlaneIcon */ \"./src/components/Icons/PaperPlaneIcon/PaperPlaneIcon.js\");\n/* harmony import */ var _SubmitButton_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SubmitButton.module.css */ \"./src/features/Profile/SubmitButton/SubmitButton.module.css\");\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nfunction SubmitButton(_ref) {\n  var text = _ref.text,\n    close = _ref.close;\n  var action = function action() {\n    close();\n  };\n  var onClick = function onClick(event) {\n    var _navigation$vibrate, _navigation;\n    (_navigation$vibrate = (_navigation = navigation).vibrate) === null || _navigation$vibrate === void 0 || _navigation$vibrate.call(_navigation);\n    action();\n  };\n  var onKeyDown = function onKeyDown(event) {\n    if (event.key === 'Enter') {\n      event.preventDefault();\n      action();\n    }\n  };\n  return /*#__PURE__*/React.createElement(\"button\", {\n    className: _SubmitButton_module_css__WEBPACK_IMPORTED_MODULE_1__[\"default\"].submitButton,\n    onClick: onClick,\n    onKeyDown: onKeyDown,\n    type: \"button\",\n    \"aria-label\": \"submit new \".concat(text)\n  }, /*#__PURE__*/React.createElement(_components_Icons_PaperPlaneIcon_PaperPlaneIcon__WEBPACK_IMPORTED_MODULE_0__[\"default\"], null));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SubmitButton);\n\n//# sourceURL=webpack://devour-frontend/./src/features/Profile/SubmitButton/SubmitButton.js?\n}");
-
-/***/ },
-
 /***/ "./src/features/Profile/TextField/TextField.js"
 /*!*****************************************************!*\
   !*** ./src/features/Profile/TextField/TextField.js ***!
   \*****************************************************/
 (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ \"./node_modules/@babel/runtime/helpers/esm/slicedToArray.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _hooks_useDebounce__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../hooks/useDebounce */ \"./src/hooks/useDebounce.js\");\n/* harmony import */ var _EditButton_EditButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../EditButton/EditButton */ \"./src/features/Profile/EditButton/EditButton.js\");\n/* harmony import */ var _SubmitButton_SubmitButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../SubmitButton/SubmitButton */ \"./src/features/Profile/SubmitButton/SubmitButton.js\");\n/* harmony import */ var _TextField_module_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./TextField.module.css */ \"./src/features/Profile/TextField/TextField.module.css\");\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\n\n\n\n\nfunction TextField(_ref) {\n  var text = _ref.text;\n  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),\n    _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(_useState, 2),\n    isOpen = _useState2[0],\n    setIsOpen = _useState2[1];\n  var open = function open() {\n    return setIsOpen(true);\n  };\n  var close = function close() {\n    return setIsOpen(false);\n  };\n  var onChange = (0,_hooks_useDebounce__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(function (event) {\n    // make request once finished typing\n    console.log('debounced onChange: ', event.target.value);\n  }, 500);\n  return /*#__PURE__*/React.createElement(\"div\", {\n    className: _TextField_module_css__WEBPACK_IMPORTED_MODULE_5__[\"default\"].textField\n  }, isOpen ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(\"input\", {\n    type: \"text\",\n    value: text,\n    onChange: onChange,\n    \"aria-label\": \"\".concat(text, \" input\")\n  }), /*#__PURE__*/React.createElement(_SubmitButton_SubmitButton__WEBPACK_IMPORTED_MODULE_4__[\"default\"], {\n    text: text,\n    close: close\n  })) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(\"span\", null, text), /*#__PURE__*/React.createElement(_EditButton_EditButton__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n    text: text,\n    open: open\n  })));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TextField);\n\n//# sourceURL=webpack://devour-frontend/./src/features/Profile/TextField/TextField.js?\n}");
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ \"./node_modules/@babel/runtime/helpers/esm/slicedToArray.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _hooks_useDebounce__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../hooks/useDebounce */ \"./src/hooks/useDebounce.js\");\n/* harmony import */ var _EditButton_EditButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../EditButton/EditButton */ \"./src/features/Profile/EditButton/EditButton.js\");\n/* harmony import */ var _CloseButton_CloseButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../CloseButton/CloseButton */ \"./src/features/Profile/CloseButton/CloseButton.js\");\n/* harmony import */ var _TextField_module_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./TextField.module.css */ \"./src/features/Profile/TextField/TextField.module.css\");\n/* provided dependency */ var React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\n\n\n\n\nfunction TextField(_ref) {\n  var text = _ref.text;\n  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),\n    _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(_useState, 2),\n    isOpen = _useState2[0],\n    setIsOpen = _useState2[1];\n  var inputRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);\n  var open = function open() {\n    return setIsOpen(true);\n  };\n  var close = function close() {\n    return setIsOpen(false);\n  };\n  var update = function update() {\n    console.log('text: ', text);\n    console.log('inputRef.current.value: ', inputRef.current.value);\n    console.log('text === inputRef.current.value: ', text === inputRef.current.value);\n    if (text === inputRef.current.value) {\n      return;\n    }\n    // if (text === updateText) return\n    // else make request\n  };\n  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {\n    if (!isOpen) {\n      update();\n    }\n  }, [isOpen]);\n  return /*#__PURE__*/React.createElement(\"div\", {\n    className: _TextField_module_css__WEBPACK_IMPORTED_MODULE_5__[\"default\"].textField\n  }, isOpen ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(\"input\", {\n    ref: inputRef,\n    type: \"text\",\n    defaultValue: text,\n    \"aria-label\": \"\".concat(text, \" input\")\n  }), /*#__PURE__*/React.createElement(SubmitButton, {\n    text: text,\n    close: close\n  })) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(\"span\", null, text), /*#__PURE__*/React.createElement(_EditButton_EditButton__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n    text: text,\n    open: open\n  })));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TextField);\n\n//# sourceURL=webpack://devour-frontend/./src/features/Profile/TextField/TextField.js?\n}");
 
 /***/ },
 
@@ -629,6 +629,16 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 
 /***/ },
 
+/***/ "./src/features/Profile/CloseButton/CloseButton.module.css"
+/*!*****************************************************************!*\
+  !*** ./src/features/Profile/CloseButton/CloseButton.module.css ***!
+  \*****************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// extracted by mini-css-extract-plugin\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\"closeButton\":\"EZnx2dv8ZwanEykv96AH\"});\n\n//# sourceURL=webpack://devour-frontend/./src/features/Profile/CloseButton/CloseButton.module.css?\n}");
+
+/***/ },
+
 /***/ "./src/features/Profile/EditButton/EditButton.module.css"
 /*!***************************************************************!*\
   !*** ./src/features/Profile/EditButton/EditButton.module.css ***!
@@ -696,16 +706,6 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// extracted by mini-css-extract-plugin\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\"profile\":\"KIIoXhhSaQeQ2LSTtavI\"});\n\n//# sourceURL=webpack://devour-frontend/./src/features/Profile/Profile.module.css?\n}");
-
-/***/ },
-
-/***/ "./src/features/Profile/SubmitButton/SubmitButton.module.css"
-/*!*******************************************************************!*\
-  !*** ./src/features/Profile/SubmitButton/SubmitButton.module.css ***!
-  \*******************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// extracted by mini-css-extract-plugin\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\"submitButton\":\"xxrXjQ2RcUCLVvYPxYwb\"});\n\n//# sourceURL=webpack://devour-frontend/./src/features/Profile/SubmitButton/SubmitButton.module.css?\n}");
 
 /***/ },
 
