@@ -1,13 +1,12 @@
-import { useState, useRef, useCallback } from 'react'
+import { useRef } from 'react'
 
 const usePinch = () => {
-  const isPinching = useRef(false)
-  const data = useRef([]) // Map of pointerId -> { clientX, clientY }
   const prevDistance = useRef(-1)
+  const data = useRef([])
 
   // Because the browser fires a new onpointerdown for every finger that touches the screen, your code collects them one by one.
 
-  const onPointerDown = event => {
+  const onPinchDown = event => {
     const { clientX, clientY, pointerId } = event
     const exists = data.current.find(p => p.id === pointerId) // 1. Prevent adding the same finger twice
     if (!exists) {
@@ -19,7 +18,7 @@ const usePinch = () => {
     }
   }
 
-  const onPointerMove = event => {
+  const onPinchMove = event => {
     if (data.current.length !== 2) { 
       return {}
     }
@@ -41,31 +40,20 @@ const usePinch = () => {
     return { distance, ratio, direction, delta }
   }
 
-  const onPointerUp = useCallback((e) => {
-    delete data.current[e.pointerId]
-    const activePointers = Object.keys(data.current).length
+  const onPinchUp = event => {
 
-    if (activePointers < 2) {
-      prevDiff.current = -1
-      setIsPinching(false)
-    }
+  }
 
-    return {
-      type: 'up',
-      activePointers,
-      isPinching: false
-    }
-  }, [])
+  const onPinchCancel = event => {
+    data.current = []
+    pinchDistance.current = -1
+  }
 
   return {
-    isPinching,
-    pointerHandlers: {
-      onPointerDown,
-      onPointerMove,
-      onPointerUp,
-      onPointerCancel: onPointerUp,
-      onPointerLeave: onPointerUp,
-    },
+    onPinchDown,
+    onPinchMove,
+    onPinchUp,
+    onPinchCancel
   }
 }
 
