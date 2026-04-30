@@ -33,7 +33,7 @@ function useGestures() { // thresholds
 
   const onLongPressDown = callback => {
     timer.current = setTimeout(() => {
-      callback()
+      callback(true)
       longPressCancel()
     }, 500)
   }
