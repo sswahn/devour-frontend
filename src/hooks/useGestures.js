@@ -81,9 +81,8 @@ function useGestures() { // thresholds
     if(!moved.current) {
       taps = tapCounter()
     }
-    
     const swipeUp = onSwipeUp(event)
-    return { ...swipeUp, ...pinchUp, tapCount: taps }
+    return { ...swipeUp, tapCount: taps }
   }
 
   // Review this function for accuracy.
