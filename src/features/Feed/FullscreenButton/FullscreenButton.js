@@ -29,6 +29,7 @@ function FullscreenButton({ isPinch }) {
   }
 
   const gesture = () => {
+    navigator.vibrate?.(50)
     if (isPinch === 'out') {
       console.log('pinch === out: value::', isPinch)
     } else {
@@ -37,7 +38,9 @@ function FullscreenButton({ isPinch }) {
   }
 
   useEffect(() => {
-    gesture()
+    if (isPinch) {
+      gesture()
+    }
   }, [isPinch])
   
   return (
