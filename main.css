@@ -328,6 +328,31 @@
   border: 1px dashed red;
 }
 
+/*!**************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Feed/FeedNode/FeedNode.module.css ***!
+  \**************************************************************************************************/
+/* Feed Node */
+
+.QNshFBXSoGNyBxo7mpBY {
+  contain: layout paint size;
+  height: 100dvh;
+  position: relative;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  touch-action: none;
+  width: 100%;
+  z-index: 10;
+
+
+  max-width: 500px;
+  margin: 0 auto 4px auto;
+
+
+  background: #666; 
+  border-radius: 10px;
+  border: 1px dashed orange;
+}
+
 /*!*************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Feed/Feed.module.css ***!
   \*************************************************************************************/
