@@ -40,12 +40,8 @@ function Notifications() {
     closeOverlay()
   }
 
-  const close = () => {
-    const bottomSheet = bottomSheetRef.current
-   // bottomSheet.style.transform = '' 
-   // bottomSheet.addEventListener('transitionend', action, { once: true }) 
-   // setIsOpen(false) // remove?
-
+  const close = currentTarget => {
+    const bottomSheet = currentTarget || bottomSheetRef.current
     bottomSheet.addEventListener('transitionend', () => {
       bottomSheet.style.transition = ''
       bottomSheet.style.height = '0dvh'
@@ -123,11 +119,14 @@ function Notifications() {
           currentTarget.style.height = '100dvh'
           currentTarget.style.transform = 'translate3d(0, 8px, 0)'
         } else if (direction === 'down' && movement > 10) {
+          close(currentTarget)
+          /*
           currentTarget.addEventListener('transitionend', () => {
             currentTarget.style.transition = ''
             currentTarget.style.height = '0dvh'
             action()
           }, { once: true })
+          */
           currentTarget.style.transform = 'translate3d(0, 100dvh, 0)'
         } else {
           currentTarget.style.height = ''
