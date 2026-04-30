@@ -52,9 +52,9 @@ function useGestures() { // thresholds
     if (id?.current !== pointerId) { 
       return {}
     }
-    const { pinchDirection } = onPinchMove(event)
-    if (pinchDirection) {
-      return { pinchDirection }
+    const { pinch } = onPinchMove(event)
+    if (pinch) {
+      return { pinch }
     }
     const swipeMove = onSwipeMove(event)
     const absX = Math.abs(swipeMove.deltaX)
