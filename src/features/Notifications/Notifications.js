@@ -103,7 +103,7 @@ function Notifications() {
     const translateY = deltaY * resistanceFactor
    
     // Allow upward movement now (no Math.max hack)
-    let translateY = deltaY + adjustedDeltaY
+   // let translateY = deltaY + adjustedDeltaY
 
     console.log('translateY: ', translateY)
 
