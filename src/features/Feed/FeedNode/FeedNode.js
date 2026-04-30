@@ -5,8 +5,8 @@ import SideNav from '../SideNav/SideNav'
 import styles from './FeedNode.module.css'
 
 function FeedNode({ item, index, count }) {
-  const [isDoubleTap, setIsDoubleTap] = useState(false)
-  const [isLongPress, setIsLongPress] = useState(false)
+  const [isDoubleTap, setIsDoubleTap] = useState(null)
+  const [isLongPress, setIsLongPress] = useState(null)
   const [isPinch, setIsPinch] = useState(null)
   const { onGestureDown, onGestureMove, onGestureUp, onGestureCancel } = useGestures()
 
