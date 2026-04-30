@@ -12,16 +12,10 @@ function TextField({ text }) {
   const close = () => setIsOpen(false)
 
   const update = () => {
-    
-    console.log('text: ', text)
-    console.log('inputRef.current.value: ', inputRef.current.value)
-    console.log('text === inputRef.current.value: ', text === inputRef.current.value)
-    
-    if (text === inputRef.current.value) {
+    if (text === inputRef.current.value.trim()) {
       return
     }
-    // if (text === updateText) return
-    // else make request
+    // else make request to upate user, and update state of profile directly to avoid loading
   }
 
   useEffect(() => {
