@@ -104,7 +104,7 @@ function Notifications() {
     if (tapCount > 0) { 
       return
     }
-    const threshold = window.innerHeight * 0.35
+    const threshold = window.innerHeight * 0.25
     const movement = Math.abs(deltaY)
     
     // State Prep: Switch transition ON. This curve (0.25, 1, 0.5, 1) starts fast and decelerates smoothly to a dead stop.
