@@ -13,12 +13,12 @@ function Notifications() {
   const { focusRef } = useFocusTrap()
   const [isOpen, setIsOpen] = useState(false)
   const bottomSheetRef = useRef(null)
-  const latestHeight = useRef(0)
   const dragging = useRef(false)
   const startY = useRef(0)
   const startTime = useRef(0)
   const ticking = useRef(0)
   const latestDeltaY = useRef(0)
+  const latestHeight = useRef(0)
   const {
     onGestureDown,
     onGestureMove,
@@ -66,13 +66,13 @@ function Notifications() {
     // else open to fullscreen
   }
 
-  const throttleTransition = (deltaY, height, currentTarget) => {
+  const throttleTransition = (deltaY, currentTarget) => {
     latestDeltaY.current = deltaY
-    latestHeight.current = height
+    //latestHeight.current = height
     if (!ticking.current) {
       ticking.current = true
       requestAnimationFrame(() => {
-        currentTarget.style.height = `${latestHeight.current}px`
+       // currentTarget.style.height = `${latestHeight.current}px`
         currentTarget.style.transform = `translate3d(0, ${latestDeltaY.current}px, 0)`
         ticking.current = false
       })
@@ -93,25 +93,19 @@ function Notifications() {
     if (deltaY === undefined || axis === 'x') {
       return
     }
-    const newHeight = latestHeight.current + Math.abs(deltaY) 
-    const commitThreshold = window.innerHeight * 0.75
+   // const newHeight = latestHeight.current // + Math.abs(deltaY) 
+    // const commitThreshold = window.innerHeight * 0.75
    
-    //const resistanceFactor = Math.max(0.2, commitThreshold / 300) // normalize resistance (tweak 300 for feel)
-   // const adjustedDeltaY = deltaY * resistanceFactor
-
     const resistanceFactor = 0.5
     const translateY = deltaY * resistanceFactor
    
-    // Allow upward movement now (no Math.max hack)
-   // let translateY = deltaY + adjustedDeltaY
-
     console.log('translateY: ', translateY)
 
     // clamp to top (don’t overshoot)
     //translateY = Math.max(8, translateY)
     
     // const translateY = Math.max(deltaY, 8)
-    throttleTransition(translateY, newHeight, currentTarget)
+    throttleTransition(translateY, currentTarget)
   }
   
   const onPointerUp = event => {
