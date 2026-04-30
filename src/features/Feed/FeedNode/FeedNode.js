@@ -7,7 +7,7 @@ import styles from './FeedNode.module.css'
 function FeedNode({ item, index, count }) {
   const [isDoubleTap, setIsDoubleTap] = useState(false)
   const [isLongPress, setIsLongPress] = useState(false)
-  const [isPinch, setIsPinch] = useState('')
+  const [isPinch, setIsPinch] = useState(null)
   const { onGestureDown, onGestureMove, onGestureUp, onGestureCancel } = useGestures()
 
   const getLongPress = longPress => {
