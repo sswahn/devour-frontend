@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import useGestures from '../../../hooks/useGestures'
 import TopNav from '../TopNav/TopNav'
 import SideNav from '../SideNav/SideNav'
+import styles from './FeedNode.module.css'
 
 function FeedNode({ item, index, count }) {
   const [isDoubleTap, setIsDoubleTap] = useState(false)
@@ -35,7 +36,7 @@ function FeedNode({ item, index, count }) {
 
   // this tabIndex etc. breaks the natural flow of the page, header gets skipped...
   return (
-    <figure tabIndex={index} aria-posinset={index} aria-setsize={count}
+    <figure className={styles.feedNode} tabIndex={index} aria-posinset={index} aria-setsize={count}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
