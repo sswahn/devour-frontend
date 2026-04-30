@@ -75,12 +75,10 @@ function Notifications() {
   const handleGrabberClick = event => {
     const bottomSheet = bottomSheetRef.current
     const height = bottomSheet.offsetHeight
-    const halfViewport = window.innerHeight * 0.5
     
     console.log('bottomsheet height: ', height)
-    console.log('halfviewport height: ', halfViewport)
-    
-    if (height < halfViewport) {
+
+    if (height < 1000) {
       open(bottomSheet)
     } else {
       close(bottomSheet)
@@ -161,6 +159,7 @@ function Notifications() {
       }
     })
     return () => {
+      setIsOpen(false)
       cancelAnimationFrame(timer)
     }
   }, [])
