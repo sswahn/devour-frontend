@@ -93,18 +93,7 @@ function Notifications() {
     if (deltaY === undefined || axis === 'x') {
       return
     }
-   // const newHeight = latestHeight.current // + Math.abs(deltaY) 
-    // const commitThreshold = window.innerHeight * 0.75
-   
-    const resistanceFactor = 0.5
-    const translateY = deltaY * resistanceFactor
-   
-    console.log('translateY: ', translateY)
-
-    // clamp to top (don’t overshoot)
-    //translateY = Math.max(8, translateY)
-    
-    // const translateY = Math.max(deltaY, 8)
+    const translateY = deltaY * 0.5
     throttleTransition(translateY, currentTarget)
   }
   
