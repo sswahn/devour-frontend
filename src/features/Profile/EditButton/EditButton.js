@@ -1,14 +1,10 @@
 import EditIcon from '../../../components/Icons/EditIcon/EditIcon'
 import styles from './EditButton.module.css'
 
-function EditButton({ field, editorIsOpen, setEditorIsOpen }) {
- // const [editorIsOpen, setEditorIsOpen] = useState()
-  
+function EditButton({ field, open }) {
+
   const action = () => {
-    // display input
-    // toggle state between
-    // edit/submit
-    setEditorIsOpen(prev => !prev)
+    open()
   }
 
   const onClick = event => {
