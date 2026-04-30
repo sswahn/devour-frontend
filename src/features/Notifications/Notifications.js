@@ -74,6 +74,7 @@ function Notifications() {
   }
 
   const handleGrabberClick = event => {
+    navigator.vibrate?.(50)
     const bottomSheet = bottomSheetRef.current
     const half = window.innerHeight / 2
     const grabberOffset = 9
