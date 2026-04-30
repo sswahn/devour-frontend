@@ -76,7 +76,8 @@ function Notifications() {
   const handleGrabberClick = event => {
     const bottomSheet = bottomSheetRef.current
     const half = window.innerHeight / 2
-    const height = (bottomSheet.offsetHeight - 15) - half
+    const grabberOffset = 14
+    const height = (bottomSheet.offsetHeight - grabberOffset) - half
     
     console.log('bottomsheet height: ', height)
     console.log('half vp height: ', half)
