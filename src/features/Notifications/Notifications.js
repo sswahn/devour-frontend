@@ -99,10 +99,12 @@ function Notifications() {
     const { clientY, currentTarget } = event
     const { deltaY, direction, velocity, timestamp, tapCount } = onGestureUp(event)
     ticking.current = false // 1. Kill the move throttle immediately  
-
+    
     if (tapCount > 0) { 
       return
     }
+    const threshold = window.innerHeight * 0.75
+    const movement = Math.abs(deltaY) // Calculate total movement - with resistance: (deltaY * 0.5)
     
     // 2. State Prep: Switch transition ON
     // This curve (0.25, 1, 0.5, 1) starts fast and decelerates smoothly to a dead stop.
@@ -110,7 +112,8 @@ function Notifications() {
  
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        if (direction === 'up') {
+        //if (direction === 'up') {
+        if (movement > threshold) {
           currentTarget.style.height = '100dvh'
           currentTarget.style.transform = 'translate3d(0, 8px, 0)'
         } else {
