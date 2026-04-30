@@ -75,8 +75,10 @@ function Notifications() {
   const handleGrabberClick = event => {
     const bottomSheet = bottomSheetRef.current
     const height = bottomSheet.offsetHeight
+    const half = window.innerHeight / 2
     
     console.log('bottomsheet height: ', height)
+    console.log('half vp height: ', half)
 
     if (height < 1000) {
       open(bottomSheet)
