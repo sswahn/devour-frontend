@@ -26,8 +26,8 @@ function Profile() {
   } = useSwipeFromEdge(closeOverlay)
   const [profile, setProfile] = useState({
     image: '',
-    username: '',
-    location: '',
+    username: 'test_user',
+    location: 'new york',
     biography: ''
    })
 
@@ -70,28 +70,16 @@ function Profile() {
         </nav>
         <header>
           <div>
-            {/*
-              <img src={profile.image} alt={`${profile.username}'s profile picture`} />
-              {<EditButton field="profile" />}
-            */}
             <ImageField src={profile.image} alt={`${profile.username}'s profile picture`} />
           </div>
           <div>
-            <div>
-              {/* <h1 id="username">{profile.username}</h1> */}
-              <h1 id="username">
-                <TextField text={profile.username} />
-              </h1>
-            </div>
-            <div>
-              {/*
-                <address>{profile.location}</address>
-                {<EditButton field="location" />}
-              */}
-              <address>
-                <TextField text={profile.locaiton} />
-              </address>
-            </div>
+            <h1 id="username">
+              <TextField text={profile.username} />
+            </h1>
+            <address>
+              <TextField text={profile.location} />
+            </address>
+            
             {/* 
             <div>
               <p id="biography">Some biographical information about Username.</p>
