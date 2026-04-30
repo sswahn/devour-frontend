@@ -94,11 +94,13 @@ function Notifications() {
       return
     }
     const newHeight = latestHeight.current + Math.abs(deltaY) 
-    
     const commitThreshold = window.innerHeight * 0.75
-    const resistanceFactor = Math.max(0.2, commitThreshold / 300) // normalize resistance (tweak 300 for feel)
-    const adjustedDeltaY = deltaY * resistanceFactor
+   
+    //const resistanceFactor = Math.max(0.2, commitThreshold / 300) // normalize resistance (tweak 300 for feel)
+   // const adjustedDeltaY = deltaY * resistanceFactor
 
+    const resistanceFactor = 0.5
+    const translateY = deltaY * resistanceFactor
    
     // Allow upward movement now (no Math.max hack)
     let translateY = deltaY + adjustedDeltaY
