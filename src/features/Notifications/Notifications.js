@@ -37,7 +37,6 @@ function Notifications() {
   }
 
   const action = () => {
-    setIsOpen(false)
     closeOverlay()
   }
 
