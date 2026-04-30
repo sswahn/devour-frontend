@@ -77,11 +77,7 @@ function Notifications() {
     const bottomSheet = bottomSheetRef.current
     const half = window.innerHeight / 2
     const grabberOffset = 9
-    const height = (bottomSheet.offsetHeight - 9) - half
-    
-    console.log('bottomsheet height: ', height)
-    console.log('half vp height: ', half)
-
+    const height = (bottomSheet.offsetHeight - grabberOffset) - half
     height > half ? close(bottomSheet) : open(bottomSheet)
   }
 
