@@ -4,13 +4,13 @@ import ShareButton from '../ShareButton/ShareButton'
 import FullscreenButton from '../FullscreenButton/FullscreenButton'
 import styles from './SideNav.module.css'
 
-function SideNav({ doubleTap, longPress }) {
+function SideNav({ isDoubleTap, isLongPress }) {
   
   return (
     <nav className={styles.sideNav} aria-label="video actions">
-      <LikeButton doubleTap={doubleTap} />
+      <LikeButton isDoubleTap={isDoubleTap} />
       <CommentsButton />
-      <ShareButton longPress={longPress} />
+      <ShareButton isLongPress={isLongPress} />
       <FullscreenButton />
     </nav>
   )
