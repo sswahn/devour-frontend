@@ -8,7 +8,7 @@
   position: absolute;
   top: 0;
   width: 100%;
-  z-index: 200;
+  z-index: 20;
   
   border: 1px dashed red;
 }
