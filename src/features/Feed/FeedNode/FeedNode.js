@@ -13,7 +13,7 @@ function FeedNode({ item, index, count }) {
 
   // this tabIndex etc. breaks the natural flow of the page, header gets skipped...
   return (
-    <figure style={{ background: '#666', borderRadius: '10px', height: '100%', width: '100%' }}
+    <figure
       tabIndex={index} aria-posinset={index} aria-setsize={count}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
