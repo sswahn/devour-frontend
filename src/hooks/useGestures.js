@@ -53,7 +53,7 @@ function useGestures() { // thresholds
       return {}
     }
     const { pinch } = onPinchMove(event)
-    if (pinch) {
+    if (pinch !== 'none') {
       return { pinch }
     }
     const swipeMove = onSwipeMove(event)
