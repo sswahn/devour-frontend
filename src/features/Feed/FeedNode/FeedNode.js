@@ -43,9 +43,9 @@ function FeedNode({ item, index, count }) {
       <TopNav />
         
       <span>{item}</span>
-  
-      {/* data.videoUrl && <video ref={ref} src={data.videoUrl} preload="metadata" muted playsInline loop /> */}
-      {/* data.caption ?? <figcaption>{data.caption}</figcaption> */}
+
+      {/* item.videoUrl && <video ref={ref} src={item.videoUrl} preload="metadata" muted playsInline loop /> */}
+      {/* item.caption ?? <figcaption>{item.caption}</figcaption> */}
 
       <SideNav isDoubleTap={isDoubleTap} isLongPress={isLongPress}  />
     </figure>
