@@ -25,7 +25,7 @@ function TextField({ text }) {
   }
 
   useEffect(() => {
-    if (!isOpen) {
+    if (inputRef.current) {
       update()
     }
   }, [isOpen])
