@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import ShareIcon from '../../../components/Icons/ShareIcon/ShareIcon'
 import styles from './ShareButton.module.css'
 
-function ShareButton({ longPress }) {
+function ShareButton({ isLongPress }) {
 
   const action = () => {
     // check navigator.canShare(file) to verify file sharing support 
@@ -17,7 +17,7 @@ function ShareButton({ longPress }) {
   }
 
   const gesture = () => {
-    if (longPress) {
+    if (isLongPress) {
       navigator.vibrate?.(50)
       action()
     }
@@ -37,7 +37,7 @@ function ShareButton({ longPress }) {
 
   useEffect(() => {
     gesture()
-  }, [longPress])
+  }, [isLongPress])
   
   return (
     <button className={styles.shareButton} onClick={onClick} onKeyDown={onKeyDown} type="button" aria-label="share this video">
