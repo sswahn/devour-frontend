@@ -78,7 +78,7 @@ function Notifications() {
     const half = window.innerHeight / 2
     const grabberOffset = 9
     const height = (bottomSheet.offsetHeight - grabberOffset) - half
-    height > half ? close(bottomSheet) : open(bottomSheet)
+    height > half ? close() : open()
   }
 
   const throttleTransition = (deltaY, currentTarget) => {
