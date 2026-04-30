@@ -5,7 +5,7 @@ import HeartIconFill from '../../../components/Icons/HeartIcon/HeartIconFill'
 import HeartIconStroke from '../../../components/Icons/HeartIcon/HeartIconStroke' 
 import styles from './LikeButton.module.css'
 
-function LikeButton({ doubleTap, likedByUser = false }) {
+function LikeButton({ isDoubleTap, likedByUser = false }) {
   const [liked, setLiked] = useState(false)
   const [loading, setLoading] = useState(false)
 
@@ -40,7 +40,7 @@ function LikeButton({ doubleTap, likedByUser = false }) {
 
   useEffect(() => {
     gesture()
-  }, [doubleTap])
+  }, [isDoubleTap])
 
   useEffect(() => {
     init() 
