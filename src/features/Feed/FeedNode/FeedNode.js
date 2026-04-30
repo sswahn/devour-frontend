@@ -17,6 +17,7 @@ function FeedNode({ item, index, count }) {
   }
   
   const onPointerDown = event => {
+    event.preventDefault()
     onGestureDown(event, getLongPress)
   }
   
