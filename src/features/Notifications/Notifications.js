@@ -42,9 +42,16 @@ function Notifications() {
 
   const close = () => {
     const bottomSheet = bottomSheetRef.current
-    bottomSheet.style.transform = '' 
-    bottomSheet.addEventListener('transitionend', action, { once: true }) 
-    setIsOpen(false) // remove?
+   // bottomSheet.style.transform = '' 
+   // bottomSheet.addEventListener('transitionend', action, { once: true }) 
+   // setIsOpen(false) // remove?
+
+    bottomSheet.addEventListener('transitionend', () => {
+      bottomSheet.style.transition = ''
+      bottomSheet.style.height = '0dvh'
+      action()
+    }, { once: true })
+    bottomSheet.style.transform = 'translate3d(0, 100dvh, 0)'
   }
 
   const onClick = event => {
