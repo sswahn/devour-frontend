@@ -37,6 +37,7 @@ function Notifications() {
   }
 
   const action = () => {
+    setIsOpen(false)
     closeOverlay()
   }
 
@@ -157,7 +158,6 @@ function Notifications() {
       }
     })
     return () => {
-      setIsOpen(false)
       cancelAnimationFrame(timer)
     }
   }, [])
