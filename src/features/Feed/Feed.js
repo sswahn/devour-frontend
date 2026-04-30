@@ -1,6 +1,6 @@
 import { useState, useRef, memo } from 'react'
 import { api } from '../../config'
-import server from '../../utilities/server' // useLongPoll hook instead
+import server from '../../utilities/server' // useLongPoll hook
 import database from '@sswahn/database' // move locally
 import FeedNode from './FeedNode/FeedNode'
 import Sentinel from './Sentinel/Sentinel' 
