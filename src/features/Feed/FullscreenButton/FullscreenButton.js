@@ -1,9 +1,9 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 //import useFocusStack from '../../../hooks/useFocusStack'
 import ExpandIcon from '../../../components/Icons/ExpandIcon/ExpandIcon'
 import styles from './FullscreenButton.module.css'
 
-function FullscreenButton({ openFeed }) {
+function FullscreenButton({ isPinch }) {
 //  const { push } = useFocusStack()
   const buttonRef = useRef(null)
   
@@ -27,6 +27,18 @@ function FullscreenButton({ openFeed }) {
       action()
     }
   }
+
+  const gesture = () => {
+    if (isPinch === 'out') {
+      console.log('pinch === out: value::', isPinch)
+    } else {
+      console.log('pinch === in: value::', isPinch)
+    }
+  }
+
+  useEffect(() => {
+    gesture()
+  }, [isPinch])
   
   return (
     <button 
