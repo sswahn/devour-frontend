@@ -41,7 +41,7 @@ function useGestures() { // thresholds
     id.current = pointerId
     moved.current = false
     onSwipeDown(event)
-    onPinch(event)
+    onPinchDown(event)
     if (callback) {
       onLongPressDown(callback)
     }
@@ -80,7 +80,7 @@ function useGestures() { // thresholds
     if(!moved.current) {
       taps = tapCounter()
     }
-    const pinchUp = onPinchUp(event)
+    
     const swipeUp = onSwipeUp(event)
     return { ...swipeUp, ...pinchUp, tapCount: taps }
   }
