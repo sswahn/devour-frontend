@@ -1,5 +1,6 @@
-import { useRef, useCallback } from 'react'
+import { useRef } from 'react'
 import useSwipe from './useSwipe'
+import usePinch from './usePinch'
 
 function useGestures() { // thresholds
   const id = useRef(null)
@@ -38,22 +39,24 @@ function useGestures() { // thresholds
     }, 500)
   }
   
-  const onGestureDown = useCallback((event, callback = undefined) => {
+  const onGestureDown = (event, callback = undefined) => {
     const { currentTarget, pointerId } = event
     currentTarget.setPointerCapture(pointerId)
     id.current = pointerId
     moved.current = false
     onSwipeDown(event)
+    onPinch(event)
     if (callback) {
       onLongPressDown(callback)
     }
-  }, [])
+  }
   
-  const onGestureMove = useCallback(event => {
+  const onGestureMove = event => {
     const { pointerId } = event
     if (id?.current !== pointerId) { 
       return {}
     }
+    const pinchMove = onPinchMove(event)
     const swipeMove = onSwipeMove(event)
     const absX = Math.abs(swipeMove.deltaX)
     const absY = Math.abs(swipeMove.deltaY)
@@ -62,10 +65,10 @@ function useGestures() { // thresholds
       longPressCancel()
       moved.current = true
     }
-    return { ...swipeMove }
-  }, [])
+    return { ...swipeMove, ...pinchMove }
+  }
   
-  const onGestureUp = useCallback(event => {
+  const onGestureUp = event => {
     longPressCancel(event)
     const { pointerId, currentTarget } = event
     if (id?.current !== pointerId) { 
@@ -78,12 +81,13 @@ function useGestures() { // thresholds
     if(!moved.current) {
       taps = tapCounter()
     }
+    const pinchUp = onPinchUp(event)
     const swipeUp = onSwipeUp(event)
-    return { ...swipeUp, tapCount: taps }
-  }, [])
+    return { ...swipeUp, ...pinchUp, tapCount: taps }
+  }
 
   // Review this function for accuracy.
-  const onGestureCancel = useCallback(event => {
+  const onGestureCancel = event => {
     longPressCancel(event)
     const { pointerId, currentTarget } = event
     if (id?.current !== pointerId) { 
@@ -92,10 +96,11 @@ function useGestures() { // thresholds
     if (currentTarget.hasPointerCapture(id.current)) {
       currentTarget.releasePointerCapture(id.current)
     }
+    onPinchCancel(event)
     onSwipeCancel(event)
     id.current = null
     moved.current = false
-  }, [])
+  }
 
   return {
     onGestureDown,
