@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import EditButton from '../EditButton'
+import SubmitButton from '../SubmitButton'
 import styles from './TextField.module.css'
 
 function TextField({ text }) {
