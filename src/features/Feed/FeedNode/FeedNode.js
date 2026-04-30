@@ -52,4 +52,4 @@ function FeedNode({ item, index, count }) {
   )
 }
 
-export default FeedNode // memo(FeedNode)
+export default FeedNode
