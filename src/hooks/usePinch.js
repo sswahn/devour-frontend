@@ -20,24 +20,24 @@ const usePinch = () => {
   }
 
   const onPointerMove = event => {
-    const { clientX, clientY, pointerId } = event
-    const [ first, second ] = data.current
     if (data.current.length !== 2) { 
       return {}
     }
-
-    const distance = Math.hypot(second.startX - first.startX, second.startY - first.startY)
+    const { clientX, clientY, pointerId } = event
+    const [ first, second ] = data.current
+    const isFirst = first.pointerId === pointerId
+    const p1 = isFirst ? { clientX, clientY } : first
+    const p2 = isFirst ? second : { clientX, clientY }
+    const distance = Math.hypot(p2.clientX - p1.clientX, p2.clientY - p1.clientY)
     let direction = 'none'
     let ratio = 1
     let delta = 0
-
     if (prevDistance.current > 0) {
       ratio = distance / prevDistance.current
       direction = ratio > 1 ? 'out' : 'in'
       delta = currentDistance - prevDistance.current
     }  
     prevDistance.current = distance
-  
     return { distance, ratio, direction, delta }
   }
 
