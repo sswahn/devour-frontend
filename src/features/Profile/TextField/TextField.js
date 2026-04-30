@@ -5,14 +5,14 @@ import SubmitButton from '../SubmitButton'
 import styles from './TextField.module.css'
 
 function TextField({ text }) {
-  const debounce = useDebounce()
   const [isOpen, setIsOpen] = useState(false)
 
   const open = setIsOpen(true)
   const close = setIsOpen(false)
 
-  const onChange = debounce(event => {
+  const onChange = useDebounce(event => {
     // make request once finished typing
+    console.log('debounced onChange: ', event.target.value)
   }, 500)
 
   return (
