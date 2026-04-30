@@ -69,7 +69,7 @@ function useGestures() { // thresholds
   }
   
   const onGestureUp = event => {
-    longPressCancel(event)
+    longPressCancel()
     const { pointerId, currentTarget } = event
     if (id?.current !== pointerId) { 
       return {}
@@ -88,7 +88,7 @@ function useGestures() { // thresholds
 
   // Review this function for accuracy.
   const onGestureCancel = event => {
-    longPressCancel(event)
+    longPressCancel()
     const { pointerId, currentTarget } = event
     if (id?.current !== pointerId) { 
       return
