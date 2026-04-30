@@ -9,15 +9,15 @@ function TextField({ text }) {
 
   return (
     <div className={styles.textField}>
-     {isOpen 
-       ?  <>
-            <input type="text" value={text} />
-            <SubmitButton close={close} />
+      {isOpen 
+        ?  <>
+             <input type="text" value={text} />
+             <SubmitButton close={close} />
+           </>
+        : <>
+            <span>{text}</span>
+            <EditButton open={open} />
           </>
-       : <>
-           <span>{text}</span>
-           <EditButton open={open} />
-         </>
       }
     </div>
   )
