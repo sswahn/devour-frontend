@@ -42,6 +42,8 @@ function FeedNode({ item, index, count }) {
       onPointerCancel={onPointerCancel}>
       <TopNav />
         
+      <span>{item}</span>
+  
       {/* data.videoUrl && <video ref={ref} src={data.videoUrl} preload="metadata" muted playsInline loop /> */}
       {/* data.caption ?? <figcaption>{data.caption}</figcaption> */}
 
