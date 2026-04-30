@@ -8,26 +8,29 @@ function FeedNode({ item, index, count }) {
   const [isLongPress, setIsLongPress] = useState(false)
   const { onGestureDown, onGestureMove, onGestureUp, onGestureCancel } = useGestures()
 
-  const onPointerDown () => {
-    const { longPress } = onGestureDown()
+  const getLongPress = longPress => {
     if (longPress) {
       setIsLongPress(true)
     }
   }
   
-  const onPointerMove = () => {
-    onGestureMove()
+  const onPointerDown = event => {
+    onGestureDown(event, getLongPress)
   }
   
-  const onPointerUp = () => {
-    const { tapCount } = onGestureUp()
+  const onPointerMove = event => {
+    onGestureMove(event)
+  }
+  
+  const onPointerUp = event => {
+    const { tapCount } = onGestureUp(event)
     if (tapCount === 2) {
       setIsDoubleTap(true)
     }
   }
   
-  const onPointerCancel = () => {
-    onGestureCancel()
+  const onPointerCancel = event => {
+    onGestureCancel(event)
   }
 
   // this tabIndex etc. breaks the natural flow of the page, header gets skipped...
