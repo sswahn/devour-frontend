@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import useDebounce from '../../../hooks/useDebounce'
-import EditButton from '../EditButton'
-import SubmitButton from '../SubmitButton'
+import EditButton from '../EditButton/EditButton'
+import SubmitButton from '../SubmitButton/SubmitButton'
 import styles from './TextField.module.css'
 
 function TextField({ text }) {
