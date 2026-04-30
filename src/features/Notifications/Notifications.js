@@ -74,10 +74,9 @@ function Notifications() {
 
   const handleGrabberClick = event => {
     navigator.vibrate?.(50)
-    const bottomSheet = bottomSheetRef.current
     const half = window.innerHeight / 2
     const grabberOffset = 9
-    const height = (bottomSheet.offsetHeight - grabberOffset) - half
+    const height = (bottomSheetRef.current.offsetHeight - grabberOffset) - half
     height > half ? close() : open()
   }
 
