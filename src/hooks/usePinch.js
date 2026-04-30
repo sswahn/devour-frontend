@@ -37,7 +37,7 @@ const usePinch = () => {
       delta = distance - prevDistance.current
     }  
     prevDistance.current = distance
-    return { distance, ratio, direction, delta }
+    return { pinchDirection: direction }
   }
 
   const onPinchUp = event => {
