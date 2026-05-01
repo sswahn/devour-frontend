@@ -44,13 +44,11 @@ function useGestures() { // thresholds
     
     console.log('isPinching: ', isPinching)
     
-    if (isPinching) {
-      return { isPinching }
-    }
-    if (callback) {
+    if (!isPinching && callback) {
       onLongPressDown(callback)
     }
     onSwipeDown(event)
+    return { isPinching }
   }
   
   const onGestureMove = event => {
@@ -70,7 +68,7 @@ function useGestures() { // thresholds
       longPressCancel()
       moved.current = true
     }
-    return { ...swipeMove }
+    return { ...swipeMove, pinch }
   }
   
   const onGestureUp = event => {
