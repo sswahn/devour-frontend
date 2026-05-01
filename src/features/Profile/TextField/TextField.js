@@ -26,10 +26,10 @@ function TextField({ text }) {
   return (
     <div className={styles.textField}>
       {isOpen 
-        ?  <>
-             <input ref={inputRef} type="text" inputMode="username" defaultValue={text} aria-label={`${text} input`} />
-             <CloseButton text={text} close={close} />
-           </>
+        ? <>
+            <input ref={inputRef} type="text" inputMode="username" defaultValue={text} aria-label={`${text} input`} />
+            <CloseButton text={text} close={close} />
+          </>
         : <>
             <span>{text}</span>
             <EditButton text={text} open={open} />
