@@ -18,6 +18,7 @@ function LoginForm() {
   const onSubmit = event => {
     event.preventDefault()
     const formData = new FormData(event.target)
+    // validate username first.
     const request = {
       username: formData.get('username')
     }
