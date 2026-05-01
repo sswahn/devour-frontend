@@ -1,9 +1,18 @@
 /* Text Field for Profile Text Editing*/
 
 .textField {
+  position: relative;
+}
+
+.textField input {
   background: var(--input-bg);
   border-radius: 10px;
+  color: var(--input-text);
   padding: 4px 8px;
   margin: 0 auto;
   max-width: 50px;
+}
+
+.textField span {
+  
 }
