@@ -40,11 +40,14 @@ function useGestures() { // thresholds
     currentTarget.setPointerCapture(pointerId)
     id.current = pointerId
     moved.current = false
-    onSwipeDown(event)
-    onPinchDown(event)
+    const { isPinching } = onPinchDown(event)
+    if (isPinching) {
+      return {}
+    }
     if (callback) {
       onLongPressDown(callback)
     }
+    onSwipeDown(event)
   }
   
   const onGestureMove = event => {
