@@ -5,6 +5,8 @@ import styles from './LoginForm.module.css'
 function LoginForm() {
   const { setSession } = useSession() 
   const [loading, setLoading] = useState(false)
+  const [data, setData] = useState([])
+  const [error, setError] = useState(false)
 
   // Perform validation checks in javascript and return alert if violated.
   // ex. username.length > 50 characters, etc. -> error out.
