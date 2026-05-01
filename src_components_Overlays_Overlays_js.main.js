@@ -399,6 +399,16 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 
 /***/ },
 
+/***/ "./src/hooks/useDebounce.js"
+/*!**********************************!*\
+  !*** ./src/hooks/useDebounce.js ***!
+  \**********************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nfunction useDebounce(fn, delay) {\n  var timeoutRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();\n  var fnRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(fn);\n  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {\n    fnRef.current = fn;\n  }, [fn]);\n  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {\n    return function () {\n      clearTimeout(timeoutRef.current);\n    };\n  }, []);\n  return (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {\n    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {\n      args[_key] = arguments[_key];\n    }\n    clearTimeout(timeoutRef.current);\n    timeoutRef.current = setTimeout(function () {\n      fnRef.current.apply(fnRef, args);\n    }, delay);\n  }, [delay]);\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useDebounce);\n\n//# sourceURL=webpack://devour-frontend/./src/hooks/useDebounce.js?\n}");
+
+/***/ },
+
 /***/ "./src/hooks/useFocusTrap.js"
 /*!***********************************!*\
   !*** ./src/hooks/useFocusTrap.js ***!
