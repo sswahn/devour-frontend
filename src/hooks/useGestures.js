@@ -57,7 +57,6 @@ function useGestures() { // thresholds
     }
     const { pinch } = onPinchMove(event)
     if (pinch !== 'none') {
-      longPressCancel()
       return { pinch }
     }
     const swipeMove = onSwipeMove(event)
