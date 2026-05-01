@@ -528,6 +528,7 @@
 
 .klXrR4Fk65hNe19HFYR6 {
   position: relative;
+  max-width: 200px;
 }
 
 .klXrR4Fk65hNe19HFYR6 input {
@@ -536,7 +537,7 @@
   color: var(--input-text);
   padding: 4px 8px;
   margin: 0 auto;
-  max-width: 50px;
+  width: 100%;
 }
 
 .klXrR4Fk65hNe19HFYR6 span {
