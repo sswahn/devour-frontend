@@ -9,6 +9,7 @@ function RegistrationForm() {
   const onSubmit = event => {
     event.preventDefault()
     const formData = new FormData(event.target)
+    // validate data first.
     const request = {
       username: formData.get('username'),
       contact: formData.get('contact') // phone or email
@@ -18,8 +19,10 @@ function RegistrationForm() {
   
   return (
     <form className={styles.registrationForm} onSubmit={onSubmit} aria-label="registration form">
-      <input type="text" name="username" inputMode="username" />
-      <input type="text" name="contact" /> {/* phone or email (needs validation) */}
+      <label htmlFor="username">Username:</label>
+      <input id="username" type="text" name="username" inputMode="username" />
+      <label htmlFor="contact">Email or phone:</label>
+      <input id="contact" type="text" name="contact" inputMode="email" /> {/* phone or email (needs validation) */}
       <button onClick={onClick} type="submit">Sign Up</button>
     </form>
   )
