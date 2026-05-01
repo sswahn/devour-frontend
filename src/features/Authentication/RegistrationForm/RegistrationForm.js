@@ -4,7 +4,10 @@ function RegistrationForm() {
 
   const onSubmit = event => {
     event.preventDefault()
-    // make request
+    const formData = new FormData(event.target)
+    const request = {
+      username: formData.get('username')
+    }
   }
   
   return (
