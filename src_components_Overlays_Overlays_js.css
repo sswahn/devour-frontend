@@ -46,10 +46,6 @@
   width: 100%;
 }
 
-.DZ0S8wRAGVyW9Xa9BSBu button[type="submit"]:active {
-  background: var(--button-active);
-}
-
 /*!********************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Authentication/RegistrationButton/RegistrationButton.module.css ***!
   \********************************************************************************************************************************/
