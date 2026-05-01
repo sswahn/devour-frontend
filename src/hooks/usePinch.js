@@ -16,6 +16,7 @@ const usePinch = () => {
         id: pointerId
       })
     }
+    return { isPinching: data.current.length === 2 }
   }
 
   const onPinchMove = event => {
