@@ -527,11 +527,20 @@
 /* Text Field for Profile Text Editing*/
 
 .klXrR4Fk65hNe19HFYR6 {
+  position: relative;
+}
+
+.klXrR4Fk65hNe19HFYR6 input {
   background: var(--input-bg);
   border-radius: 10px;
+  color: var(--input-text);
   padding: 4px 8px;
   margin: 0 auto;
   max-width: 50px;
+}
+
+.klXrR4Fk65hNe19HFYR6 span {
+  
 }
 
 /*!*************************************************************************************************************!*\
