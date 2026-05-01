@@ -20,7 +20,7 @@ function RegistrationForm() {
     <form className={styles.registrationForm} onSubmit={onSubmit} aria-label="registration form">
       <input type="text" name="username" inputMode="username" />
       <input type="text" name="contact" /> {/* phone or email (needs validation) */}
-      <button onClick={onClick} type="submit">{/* <PaperPlane /> */} Submit</button>
+      <button onClick={onClick} type="submit">Sign Up</button>
     </form>
   )
 }
