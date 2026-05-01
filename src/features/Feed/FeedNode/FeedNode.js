@@ -18,11 +18,13 @@ function FeedNode({ item, index, count }) {
   
   const onPointerDown = event => {
     event.preventDefault()
-    onGestureDown(event, getLongPress)
+    const { isPinching } = onGestureDown(event, getLongPress)
+    console.log('feedNode pointerdown: ', isPinching)
   }
   
   const onPointerMove = event => {
     const { pinch } = onGestureMove(event)
+    console.log('feedNode pointermove: ', pinch)
     if (pinch) {
       setIsPinch(pinch)
     }
