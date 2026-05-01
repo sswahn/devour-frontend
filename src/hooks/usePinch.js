@@ -9,6 +9,9 @@ const usePinch = () => {
   const onPinchDown = event => {
     const { clientX, clientY, pointerId } = event
     const exists = data.current.find(p => p.id === pointerId) // 1. Prevent adding the same finger twice
+
+    console.log('checking .find if pointer exists: ', exists)
+    
     if (!exists) {
       data.current.push({ 
         startX: clientX, 
