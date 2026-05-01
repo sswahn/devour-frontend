@@ -11,6 +11,10 @@
   margin: 0 0 8px 8px;
 }
 
+.registrationForm label span {
+  color: red;
+}
+
 .registrationForm input {
   background-color: var(--input-bg);
   border: 1px solid var(--input-border);
