@@ -527,7 +527,11 @@
 /* Text Field for Profile Text Editing*/
 
 .klXrR4Fk65hNe19HFYR6 {
-  
+  background: var(--input-bg);
+  border-radius: 10px;
+  padding: 4px 8px;
+  margin: 0 auto;
+  max-width: 50px;
 }
 
 /*!*************************************************************************************************************!*\
