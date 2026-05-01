@@ -18,6 +18,8 @@ function RegistrationForm() {
       username: formData.get('username'),
       contact: formData.get('contact') // phone or email
     }
+
+    // navigator.credentials.create
     
   }
   
