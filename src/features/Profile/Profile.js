@@ -18,12 +18,8 @@ function Profile() {
   const { overlayRef, focusRef } = useFocusTrap()
   const { userProfile } = useProfile() // username of profile to be displayed.
   const { closeOverlay } = useOverlay()
-  const {
-    onPointerDown,
-    onPointerMove,
-    onPointerUp,
-    onPointerCancel
-  } = useSwipeFromEdge(closeOverlay)
+  const { onPointerDown, onPointerMove, onPointerUp, onPointerCancel } = useSwipeFromEdge(closeOverlay)
+  
   const [profile, setProfile] = useState({
     image: '',
     username: 'test_user',
