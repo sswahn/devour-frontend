@@ -1,7 +1,11 @@
+
 import styles from './RegistrationForm.module.css'
 
 function RegistrationForm() {
-
+  const [loading, setLoading] = useState(false)
+  const [data, setData] = useState([])
+  const [error, setError] = useState(false)
+  
   const onClick = event => {
     navigator.vibrate?.(50)
   }
