@@ -26,9 +26,9 @@ function RegistrationForm() {
   return (
     <form className={styles.registrationForm} onSubmit={onSubmit} aria-label="registration form">
       <label htmlFor="username">Username:</label>
-      <input id="username" type="text" name="username" inputMode="username" />
+      <input id="username" type="text" name="username" inputMode="username" required />
       <label htmlFor="contact">Email or phone:</label>
-      <input id="contact" type="text" name="contact" inputMode="email" /> {/* phone or email (needs validation) */}
+      <input id="contact" type="text" name="contact" inputMode="email" required /> {/* phone or email (needs validation) */}
       <button onClick={onClick} type="submit">Sign Up</button>
     </form>
   )
