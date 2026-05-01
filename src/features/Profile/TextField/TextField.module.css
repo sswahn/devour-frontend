@@ -2,6 +2,7 @@
 
 .textField {
   position: relative;
+  max-width: 200px;
 }
 
 .textField input {
@@ -10,7 +11,7 @@
   color: var(--input-text);
   padding: 4px 8px;
   margin: 0 auto;
-  max-width: 50px;
+  width: 100%;
 }
 
 .textField span {
