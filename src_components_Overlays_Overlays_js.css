@@ -509,10 +509,19 @@
 /* User Profile Edit Button */
 
 .kSRV1SGvCF_0rvvsxWcg {
-  border: 0;
+  align-items: center; 
+  background: none;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  height: 44px;
+  justify-content: center;
+  cursor: pointer;
+  padding: 10px;
   position: absolute;
   right: 0;
   top: 0;
+  width: 44px;
 }
 
 /*!***********************************************************************************************************!*\
