@@ -57,6 +57,9 @@ function useGestures() { // thresholds
       return {}
     }
     const { pinch } = onPinchMove(event)
+
+    console.log('pinch direction: ', pinch)
+    
     if (pinch !== 'none') {
       return { pinch }
     }
