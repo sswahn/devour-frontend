@@ -5,13 +5,9 @@ const usePinch = () => {
   const data = useRef([])
 
   // The browser fires a new pointerdown event for every finger that touches the screen
-
   const onPinchDown = event => {
     const { clientX, clientY, pointerId } = event
     const exists = data.current.find(p => p.id === pointerId) // 1. Prevent adding the same finger twice
-
-    console.log('checking .find if pointer exists: ', exists)
-    
     if (!exists) {
       data.current.push({ 
         startX: clientX, 
@@ -43,7 +39,7 @@ const usePinch = () => {
   }
 
   const onPinchUp = event => {
-
+    return { isPinching: data.current.length === 2 }
   }
 
   const onPinchCancel = event => {
