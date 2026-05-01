@@ -335,6 +335,7 @@
 
 .QNshFBXSoGNyBxo7mpBY {
   contain: layout paint size;
+  display: block;
   height: 100dvh;
   position: relative;
   scroll-snap-align: start;
@@ -347,10 +348,8 @@
   max-width: 500px;
   margin: 0 auto 4px auto;
 
-
   background: #666; 
   border-radius: 10px;
-  border: 1px dashed orange;
 }
 
 .QNshFBXSoGNyBxo7mpBY figcaption {
