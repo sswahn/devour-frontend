@@ -7,7 +7,7 @@
 
 .textField input {
   background: var(--input-bg);
-  border-radius: 10px;
+  border-radius: 50px;
   color: var(--input-text);
   padding: 4px 8px;
   margin: 0 auto;
