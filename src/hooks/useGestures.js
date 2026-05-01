@@ -45,7 +45,7 @@ function useGestures() { // thresholds
     console.log('isPinching: ', isPinching)
     
     if (isPinching) {
-      return {}
+      return { isPinching }
     }
     if (callback) {
       onLongPressDown(callback)
