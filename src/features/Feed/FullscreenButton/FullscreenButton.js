@@ -4,16 +4,21 @@ import ExpandIcon from '../../../components/Icons/ExpandIcon/ExpandIcon'
 import styles from './FullscreenButton.module.css'
 
 function FullscreenButton({ isPinch }) {
-//  const { push } = useFocusStack()
   const buttonRef = useRef(null)
   
   const action = async () => {
     await document.getElementById('portal').requestFullscreen()
     await screen.orientation.lock('portrait')
-//    push(buttonRef.current)
-    openFeed()
+    /*
+      if (pinch === 'out' && !fullscreen.isActive) {
+        gesture: open fullscreen 
+      }
+      if (pinch === 'in' && fullscreen.isActive && (not natively zoomed-in)) {
+        gesture: exit fullscreen
+      }
+    */
 
-    // make sure current video focused
+    // make sure current video focused when enters fullscreen for accessibility
   }
   
   const onClick = event => {
