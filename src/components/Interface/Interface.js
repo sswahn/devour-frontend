@@ -1,15 +1,13 @@
 import { Suspense, lazy } from 'react'
+import useSelectionToSpeech from './hooks/useSelectionToSpeech'
 import Header from '../Header/Header'
 import Main from '../Main/Main'
 import MobileNav from '../MobileNav/MobileNav'
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 const Overlays = lazy(() => import('../Overlays/Overlays'))
 
-
-// consider deleting Interface and 
-// moving its content to <App />
-
 function Interface() {
+  useSelectionToSpeech()
   return (
     <>
       <Header />
