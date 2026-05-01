@@ -52,9 +52,9 @@ function FeedNode({ item, index, count }) {
       <TopNav />
 
       {/* item.videoUrl && <video ref={ref} src={item.videoUrl} preload="metadata" muted playsInline loop /> */}
-      {// item.caption ?? 
-        <figcaption>{item.caption}</figcaption>
-          
+      {/* item.caption ?? */}
+      
+      <figcaption>{item.caption}</figcaption>
       
       <SideNav isDoubleTap={isDoubleTap} isLongPress={isLongPress} isPinch={isPinch} />
     </figure>
