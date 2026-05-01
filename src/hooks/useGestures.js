@@ -41,6 +41,9 @@ function useGestures() { // thresholds
     id.current = pointerId
     moved.current = false
     const { isPinching } = onPinchDown(event)
+    
+    console.log('isPinching: ', isPinching)
+    
     if (isPinching) {
       return {}
     }
