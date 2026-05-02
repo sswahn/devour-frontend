@@ -4,30 +4,31 @@ import styles from './Register.module.css'
 function Register() {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(false)
-  const [errorMessage, setErrorMessage] = useState(false)
+  const [message, setMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
   
   const onClick = event => {
     navigator.vibrate?.(50)
   }
 
   const validate = data => {
-    // validate username
-    // validate phone/email
+    // validate data.username
+    // validate data.contact (phone or email)
     // if invalid:
     // break onSubmit with throw error
   }
 
-  const onSubmit = event => {
+  const onSubmit = async event => {
     try {
-    event.preventDefault()
-    const formData = new FormData(event.target)
-    const request = {
-      username: formData.get('username'),
-      contact: formData.get('contact') // phone or email
-    }
-    validate(formData)
-
-    // navigator.credentials.create
+      event.preventDefault()
+      const formData = new FormData(event.target)
+      const username = formData.get('username')
+      const contact = formData.get('contact')
+      validate({ username, contact }) // consider validating in onChange...
+      const credentials = await navigator.credentials.create()
+      const request = { username, contact, credentials }
+      const response = await server.post(api.register, request)
+      setMessage('Account successfully created.')
     } catch (error) {
       setErrorMessage(error)
     }
