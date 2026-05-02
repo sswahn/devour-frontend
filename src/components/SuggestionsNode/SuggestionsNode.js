@@ -1,11 +1,14 @@
+import styles from './Suggestions.module.css'
 
-function SuggestionsNode() {
+function Suggestions() {
+
   
-  // move this out of Feed feature.
   
   return (
-    <></>
+    <section className={styles.suggestions}>
+    
+    </section>
   )
 }
 
-export default SuggestionsNode
+export default Suggestions
