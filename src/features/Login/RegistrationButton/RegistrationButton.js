@@ -1,15 +1,15 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import { overlay } from '../../../config'
 import useOverlay from '../../../hooks/useOverlay'
 import styles from './RegistrationButton.module.css'
 
 function RegistrationButton() {
   const buttonRef = useRef(null)
-  const { openOverlay, closeOverlay } = useOverlay()
+  const { isActive, openOverlay, closeOverlay } = useOverlay()
   
   const action = () => {
     closeOverlay()
-    openOverlay(overlay.register, buttonRef.current)  
+    // openOverlay(overlay.register, buttonRef.current)  
   }
   
   const onClick = event => {
