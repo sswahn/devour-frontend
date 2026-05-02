@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react'
-import Feed from '../../features/Feed/Feed'
+import { useState, useEffect, Suspense, lazy } from 'react'
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
+const Feed = lazy(() => import('../../features/Feed/Feed'))
 import styles from './Main.module.css'
 
 function Main() {
@@ -8,8 +9,10 @@ function Main() {
     <main className={styles.main} aria-description="When text is highlighted, it will automatically be read aloud.">
     
       {/* <Suggestions /> etc. */}
-    
-      <Feed />
+
+      <Suspense fallback={<LoadingSpinner />}>
+        <Feed />
+      </Suspense>
     </main>
   )
 }
