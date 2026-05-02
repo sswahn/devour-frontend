@@ -1,7 +1,7 @@
 import XmarkIcon from '../../../components/Icons/XmarkIcon/XmarkIcon'
 import styles from './CloseButton.module.css'
 
-function CloseButton({ text, close }) {
+function CloseButton({ field, close }) {
  
   const action = () => {
     close()
@@ -20,8 +20,8 @@ function CloseButton({ text, close }) {
   }
 
   return (
-    <button className={styles.closeButton} onClick={onClick} onKeyDown={onKeyDown} type="button" aria-label={`submit new ${text}`}>
-      <XmarkIcon size={18} />
+    <button className={styles.closeButton} onClick={onClick} onKeyDown={onKeyDown} type="button" aria-label={`submit new ${field}`}>
+      <XmarkIcon size={16} />
     </button>
   )
 }
