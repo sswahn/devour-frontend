@@ -21,7 +21,7 @@ function CloseButton({ text, close }) {
 
   return (
     <button className={styles.closeButton} onClick={onClick} onKeyDown={onKeyDown} type="button" aria-label={`submit new ${text}`}>
-      <XmarkIcon size={16} />
+      <XmarkIcon size={18} />
     </button>
   )
 }
