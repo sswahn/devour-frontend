@@ -7,7 +7,7 @@
  * or disable the default devtool with "devtool: false".
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
-(self["webpackChunkdevour_frontend"] = self["webpackChunkdevour_frontend"] || []).push([["src_components_Overlays_Overlays_js"],{
+(self["webpackChunkdevour_frontend"] = self["webpackChunkdevour_frontend"] || []).push([["src_components_Overlays_Overlays_js-src_components_CloseButton_CloseButton_module_css-src_com-429f55"],{
 
 /***/ "./src/archive/Provider.js"
 /*!*********************************!*\
