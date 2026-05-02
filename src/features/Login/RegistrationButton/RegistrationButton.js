@@ -5,9 +5,10 @@ import styles from './RegistrationButton.module.css'
 
 function RegistrationButton() {
   const buttonRef = useRef(null)
-  const { openOverlay } = useOverlay()
+  const { openOverlay, closeOverlay } = useOverlay()
   
   const action = () => {
+    closeOverlay()
     openOverlay(overlay.login, buttonRef.current)  
   }
   
