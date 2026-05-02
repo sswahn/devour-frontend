@@ -2,7 +2,10 @@
 
 .textField {
   position: relative;
+  margin: 0 auto;
   max-width: 200px;
+
+  border: 1px dashed orange;
 }
 
 .textField input {
@@ -12,10 +15,11 @@
   padding: 4px 8px;
   margin: 0 auto;
   width: 100%;
+
+  border: 1px dashed red;
 }
 
 .textField span {
-  text-align: center;
 
   border: 1px dashed red;
 }
