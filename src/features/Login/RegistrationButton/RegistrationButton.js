@@ -9,7 +9,7 @@ function RegistrationButton() {
   
   const action = () => {
     closeOverlay()
-    openOverlay(overlay.login, buttonRef.current)  
+    openOverlay(overlay.register, buttonRef.current)  
   }
   
   const onClick = event => {
