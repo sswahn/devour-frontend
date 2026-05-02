@@ -12,7 +12,7 @@ function ProfileButton() {
   const { setUserProfile } = useProfile()
   const { openOverlay } = useOverlay()
   
-  const action = async () => {
+  const action = () => {
     setUserProfile(session.username)
     openOverlay(overlay.profile, buttonRef.current)
   }
