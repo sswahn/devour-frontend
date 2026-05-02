@@ -42,20 +42,30 @@ function FeedNode({ item, index, count }) {
   }
 
   // this tabIndex etc. breaks the natural flow of the page, header gets skipped...
-  return (
-    <figure className={styles.feedNode} tabIndex={index} aria-posinset={index} aria-setsize={count}
-      onPointerDown={onPointerDown}
-      onPointerMove={onPointerMove}
-      onPointerUp={onPointerUp}
-      onPointerCancel={onPointerCancel}>
-      
-      <TopNav />
 
-      {/* item.videoUrl && <video ref={ref} src={item.videoUrl} preload="metadata" muted playsInline loop /> */}
-      {item.caption ?? <figcaption tabIndex="0">{item.caption}</figcaption>}
-      
-      <SideNav isDoubleTap={isDoubleTap} isLongPress={isLongPress} isPinch={isPinch} />
-    </figure>
+  // needs a container <div>
+  // in the container will be <figure>, and <section id="comments">
+  // gestures can swipe back and forth between them.
+  
+  return (
+    <div className={styles.feedNode}>
+      <figure tabIndex={index} aria-posinset={index} aria-setsize={count}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerUp}
+        onPointerCancel={onPointerCancel}>
+        
+        <TopNav />
+  
+        {/* item.videoUrl && <video ref={ref} src={item.videoUrl} preload="metadata" muted playsInline loop /> */}
+        {item.caption ?? <figcaption tabIndex="0">{item.caption}</figcaption>}
+        
+        <SideNav isDoubleTap={isDoubleTap} isLongPress={isLongPress} isPinch={isPinch} />
+      </figure>
+      <section>
+        {/* comments "section" */}
+      </section>
+    </div>
   )
 }
 
