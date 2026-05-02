@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { overlays } from '../../../config'
+import { overlay } from '../../../config'
 import useOverlay from '../../../hooks/useOverlay'
 import SearchIcon from '../../Icons/SearchIcon/SearchIcon'
 import styles from './SearchButton.module.css'
@@ -8,8 +8,8 @@ function SearchButton() {
   const buttonRef = useRef(null)
   const { openOverlay } = useOverlay()
   
-  const action = async () => {
-    openOverlay(overlays.search, buttonRef.current)
+  const action = () => {
+    openOverlay(overlay.search, buttonRef.current)
   }
   
   const onClick = event => {
