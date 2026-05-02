@@ -42,18 +42,15 @@
 .profile header h1 {
   font-size: 24px;
   font-weight: normal;
-  margin-top: 8px;
   text-align: center;
 }
 
 .profile address {
   font-size: var(--font-size);
-  margin-top: 8px;
   text-align: center;
 }
 
 .profile p {
   font-size: var(--font-size);
-  margin-top: 8px;
 }
 
