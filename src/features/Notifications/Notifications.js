@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { overlays } from '../../config'
+import { overlay } from '../../config'
 import useOverlay from '../../hooks/useOverlay'
 import useFocusTrap from '../../hooks/useFocusTrap'
 import useGestures from '../../hooks/useGestures'
@@ -19,12 +19,7 @@ function Notifications() {
   const ticking = useRef(0)
   const latestDeltaY = useRef(0)
   const latestHeight = useRef(0)
-  const {
-    onGestureDown,
-    onGestureMove,
-    onGestureUp,
-    onGestureCancel
-  } = useGestures()
+  const { onGestureDown, onGestureMove, onGestureUp, onGestureCancel } = useGestures()
   
   const context = { 
     notifications: [
@@ -152,7 +147,7 @@ function Notifications() {
   }, [])
   
   return (
-    <div id={overlays.notifications} className={styles.notifications} ref={focusRef} onClick={onClick} onKeyDown={onKeyDown} tabIndex={-1} role="dialog" aria-modal="true">
+    <div id={overlay.notifications} className={styles.notifications} ref={focusRef} onClick={onClick} onKeyDown={onKeyDown} tabIndex={-1} role="dialog" aria-modal="true">
       <section ref={bottomSheetRef}  
         className={`${styles.bottomSheet} ${isOpen ? styles.open : ''}`}
         onPointerDown={onPointerDown}
