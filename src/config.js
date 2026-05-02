@@ -1,5 +1,5 @@
 
-export const overlays = {
+export const overlay = {
   camera: 'camera',
   comments: 'comments',
   dashboard: 'dashboard',
@@ -10,7 +10,7 @@ export const overlays = {
   search: 'search'
 }
 
-export const apis = {
+export const api = {
   login: '/api/v1/login',
   logout: '/api/v1/logout',
   register: '/api/v1/register',
