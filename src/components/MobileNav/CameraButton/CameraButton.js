@@ -8,7 +8,7 @@ function CameraButton() {
   const buttonRef = useRef(null)
   const { openOverlay } = useOverlay()
   
-  const action = async () => {
+  const action = () => {
     return;
     // await document.getElementById('portal').requestFullscreen()
     // await screen.orientation.lock('portrait')
