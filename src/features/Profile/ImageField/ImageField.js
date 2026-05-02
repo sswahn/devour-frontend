@@ -5,7 +5,7 @@ function ImageField({ src, alt }) {
 
   return (
     <div className={styles.imageField}>
-    
+      <EditButton />
     </div>
   )
 }
