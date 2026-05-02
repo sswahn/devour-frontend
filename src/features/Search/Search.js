@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { overlays, apis } from '../../config'
+import { overlay, api } from '../../config'
 import useOverlay from '../../hooks/useOverlay'
 import useFocusTrap from '../../hooks/useFocusTrap'
 import useSwipeFromEdge from '../../hooks/useSwipeFromEdge'
@@ -21,12 +21,7 @@ function Search() {
   const [recentSearches, setRecentSearches] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
-  const {
-    onPointerDown,
-    onPointerMove,
-    onPointerUp,
-    onPointerCancel
-  } = useSwipeFromEdge(closeOverlay)
+  const { onPointerDown, onPointerMove, onPointerUp, onPointerCancel } = useSwipeFromEdge(closeOverlay)
 
   const onSubmit = event => event.preventDefault()
 
@@ -57,7 +52,7 @@ function Search() {
 
   return (
     <search 
-      id={overlays.search} 
+      id={overlay.search} 
       className={styles.search} 
       ref={focusRef} 
       onKeyDown={onKeyDown}
@@ -69,7 +64,7 @@ function Search() {
         onPointerUp={onPointerUp}
         onPointerCancel={onPointerCancel}>
         <nav>
-          <CloseButton overlay={overlays.search} close={action} />
+          <CloseButton overlay={overlay.search} close={action} />
           <Dropdown items={[
             { text: 'alert message', method: () => alert('dropdown item clicked.') },
             { text: 'console log message', method: () => console.log('dropdown item clicked.') }
