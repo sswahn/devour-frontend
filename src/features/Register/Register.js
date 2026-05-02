@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { api } from '../../config'
 import styles from './Register.module.css'
 
 function Register() {
