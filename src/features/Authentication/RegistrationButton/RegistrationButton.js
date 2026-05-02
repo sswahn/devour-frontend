@@ -3,7 +3,7 @@ import styles from './RegistrationButton.module.css'
 function RegistrationButton() {
 
   const action = () => {
-    // navigation.credentials.create()
+    // openRegistration
   }
   
   const onClick = event => {
@@ -18,10 +18,6 @@ function RegistrationButton() {
     }
   }
 
-  // Need to register username or email, with backend.
-  // That means another UI.
-  // Probably needs a registration success page too.
-  
   return (
     <button 
       id="register-passkey"
