@@ -27,7 +27,7 @@ function TextField({ text }) {
     <div className={styles.textField}>
       {isOpen 
         ? <>
-            <input ref={inputRef} type="text" inputMode="username" defaultValue={text} aria-label={`${text} input`} />
+            <input id={`${text} input`} ref={inputRef} type="text" inputMode="username" defaultValue={text} aria-label={`${text} input`} />
             <CloseButton text={text} close={close} />
           </>
         : <>
