@@ -27,6 +27,8 @@ function Profile() {
     biography: ''
    })
 
+  const updateProfile = property => setProfile(prev => {...prev, ...property })
+
   const action = () => {
     closeOverlay()
   }
@@ -70,10 +72,10 @@ function Profile() {
           </div>
           <div>
             <h1 id="username">
-              <TextField text={profile.username} />
+              <TextField text={profile.username} update={updateProfile} />
             </h1>
             <address>
-              <TextField text={profile.location} />
+              <TextField text={profile.location} update={updateProfile} />
             </address>
             
             {/* 
