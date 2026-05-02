@@ -1,4 +1,5 @@
 import { useState, useEffect, Suspense, lazy } from 'react'
+import Suggestions from '../Suggestions/Suggestions'
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 const Feed = lazy(() => import('../../features/Feed/Feed'))
 import styles from './Main.module.css'
