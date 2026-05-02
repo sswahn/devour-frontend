@@ -1,6 +1,6 @@
 import { useRef } from 'react'
-import { overlay } from '../../config'
-import useOverlay from '../../hooks/useOverlay'
+import { overlay } from '../../../config'
+import useOverlay from '../../../hooks/useOverlay'
 import styles from './RegistrationButton.module.css'
 
 function RegistrationButton() {
