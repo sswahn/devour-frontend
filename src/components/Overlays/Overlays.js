@@ -3,11 +3,12 @@ import { createPortal } from 'react-dom'
 import { overlays } from '../../config'
 import { FocusTrapProvider } from '../Providers/FocusTrapProvider'
 import useOverlay from '../../hooks/useOverlay'
-import Authentication from '../../features/Authentication/Authentication'
 import Camera from '../../features/Camera/Camera'
 import Dashboard from '../../features/Dashboard/Dashboard'
 import Notifications from '../../features/Notifications/Notifications'
+import Login from '../../features/Login/Login'
 import Profile from '../../features/Profile/Profile'
+import Register from '../../features/Register/Register'
 import Search from '../../features/Search/Search'
 
 function Overlays() {
@@ -15,11 +16,12 @@ function Overlays() {
   
   return createPortal(
     <FocusTrapProvider>
-      {overlays.authentication === isActive && <Authentication />}
       {overlays.camera === isActive && <Camera />}
       {overlays.dashboard === isActive && <Dashboard />}
       {overlays.notifications === isActive && <Notifications />}
+      {overlays.login === isActive && <Login />}
       {overlays.profile === isActive && <Profile />}
+      {overlays.register === isActive && <Register />}
       {overlays.search === isActive && <Search />}
     </FocusTrapProvider>, 
     document.getElementById('portal')
