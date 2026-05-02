@@ -15,5 +15,7 @@
 }
 
 .textField span {
-  
+  text-align: center;
+
+  border: 1px dashed red;
 }
