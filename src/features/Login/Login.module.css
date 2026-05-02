@@ -1,6 +1,6 @@
-/* Authentication Flow */
+/* User Authentication Flow, Login */
 
-.authentication {
+.login {
   align-items: center;
   background-color: var(--surface);
   display: flex;
@@ -19,7 +19,7 @@
   z-index: 200;
 }
 
-.authentication > button:first-of-type { /* isnt aligned with form fields (id rather change the padding on fields than close button) */
+.login > button:first-of-type { /* isnt aligned with form fields (id rather change the padding on fields than close button) */
   left: 8px;
   position: absolute;
   top: 8px;
