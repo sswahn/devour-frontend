@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { overlays } from '../../config'
+import { overlay } from '../../config'
 import useOverlay from '../../hooks/useOverlay'
 import useFocusTrap from '../../hooks/useFocusTrap'
 import useSwipeFromEdge from '../../hooks/useSwipeFromEdge'
@@ -29,7 +29,7 @@ function Login() {
   
   return (
     <section 
-      id={overlays.login} 
+      id={overlay.login} 
       className={styles.login} 
       ref={focusRef} 
       onKeyDown={onKeyDown} 
