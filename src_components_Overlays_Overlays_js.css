@@ -495,21 +495,6 @@
 
 
 /*!*********************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Profile/ImageField/ImageField.module.css ***!
-  \*********************************************************************************************************/
-/* Image Field for Profile Image Editing */ 
-
-.vKj8KylyFqGrO2mxDn8w {
-  border-radius: 50%;
-  display: block;
-  height: 128px;
-  margin: 0 auto;
-  width: 128px;
-  
-  background: gray;
-}
-
-/*!*********************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Profile/EditButton/EditButton.module.css ***!
   \*********************************************************************************************************/
 /* User Profile Edit Button */
@@ -530,6 +515,21 @@
   width: 44px;
 
   border: 1px dashed red;
+}
+
+/*!*********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Profile/ImageField/ImageField.module.css ***!
+  \*********************************************************************************************************/
+/* Image Field for Profile Image Editing */ 
+
+.vKj8KylyFqGrO2mxDn8w {
+  border-radius: 50%;
+  display: block;
+  height: 128px;
+  margin: 0 auto;
+  width: 128px;
+  
+  background: gray;
 }
 
 /*!***********************************************************************************************************!*\
