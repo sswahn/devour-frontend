@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { createPortal } from 'react-dom'
-import { overlays } from '../../config'
+import { overlay } from '../../config'
 import { FocusTrapProvider } from '../Providers/FocusTrapProvider'
 import useOverlay from '../../hooks/useOverlay'
 import Camera from '../../features/Camera/Camera'
@@ -16,13 +16,13 @@ function Overlays() {
   
   return createPortal(
     <FocusTrapProvider>
-      {overlays.camera === isActive && <Camera />}
-      {overlays.dashboard === isActive && <Dashboard />}
-      {overlays.notifications === isActive && <Notifications />}
-      {overlays.login === isActive && <Login />}
-      {overlays.profile === isActive && <Profile />}
-      {overlays.register === isActive && <Register />}
-      {overlays.search === isActive && <Search />}
+      {overlay.camera === isActive && <Camera />}
+      {overlay.dashboard === isActive && <Dashboard />}
+      {overlay.notifications === isActive && <Notifications />}
+      {overlay.login === isActive && <Login />}
+      {overlay.profile === isActive && <Profile />}
+      {overlay.register === isActive && <Register />}
+      {overlay.search === isActive && <Search />}
     </FocusTrapProvider>, 
     document.getElementById('portal')
   )
