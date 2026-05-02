@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { overlays } from '../../../config'
+import { overlay } from '../../../config'
 import useSession from '../../../hooks/useSession'
 import useProfile from '../../../hooks/useProfile'
 import useOverlay from '../../../hooks/useOverlay'
@@ -14,7 +14,7 @@ function ProfileButton() {
   
   const action = async () => {
     setUserProfile(session.username)
-    openOverlay(overlays.profile, buttonRef.current)
+    openOverlay(overlay.profile, buttonRef.current)
   }
   
   const onClick = event => {
