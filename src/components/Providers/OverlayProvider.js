@@ -42,14 +42,13 @@ function OverlayProvider({ children }) {
   }, [])
 
   const handlePopState = useCallback(() => {
-    if (!isActive) {
-      return
-    }
     if (swapId.current !== null) {
       return openOverlay(swapId.current, null)
     }
-    setIsActive(null)
-    pop()
+    if (isActive) {
+      setIsActive(null)
+      pop()
+    }
   }, [isActive])
 
   useEffect(() => {
