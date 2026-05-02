@@ -562,6 +562,7 @@
   position: relative;
   margin: 0 auto;
   max-width: 200px;
+  height: 24px;
 
   border: 1px dashed orange;
 }
