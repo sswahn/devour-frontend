@@ -5,6 +5,7 @@
   display: block;
   height: 128px;
   margin: 0 auto;
+  position: relative;
   width: 128px;
   
   background: gray;
