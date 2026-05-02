@@ -16,7 +16,7 @@ function TextField({ type, text, update }) {
       return
     }
     update({ [type]: value })
-    // else make request to upate text, and update state of profile directly to avoid loading
+    // make request asynchronously
   }
 
   useEffect(() => {
