@@ -11,7 +11,7 @@ function TextField({ type, text, update }) {
   const close = () => setIsOpen(false)
 
   const updateField = event => {
-    const value = inputRef.current.value.trim()
+    const value = inputRef.current?.value.trim()
     if (text === value) {
       return
     }
@@ -20,9 +20,7 @@ function TextField({ type, text, update }) {
   }
 
   useEffect(() => {
-    if (inputRef.current) {
-      updateField()
-    }
+    updateField()
   }, [isOpen])
 
   return (
