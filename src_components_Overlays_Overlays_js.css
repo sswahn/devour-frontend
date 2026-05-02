@@ -572,11 +572,9 @@
   background: var(--input-bg);
   border-radius: 50px;
   color: var(--input-text);
+  height: 100%;
   padding: 4px 8px;
-  margin: 0 auto;
   width: 100%;
-
-  border: 1px dashed red;
 }
 
 .klXrR4Fk65hNe19HFYR6 span {
