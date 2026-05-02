@@ -500,7 +500,13 @@
 /* Image Field for Profile Image Editing */ 
 
 .vKj8KylyFqGrO2mxDn8w {
+  border-radius: 50%;
+  display: block;
+  height: 128px;
+  margin: 0 auto;
+  width: 128px;
   
+  background: gray;
 }
 
 /*!*********************************************************************************************************!*\
