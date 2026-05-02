@@ -11,7 +11,7 @@ import GoogleButton from './GoogleButton/GoogleButton'
 import AppleButton from './AppleButton/AppleButton'
 import styles from './Authentication.module.css'
 
-function Authentication() {
+function Login() {
   const {overlayRef, focusRef} = useFocusTrap()
   const { closeOverlay } = useOverlay()
   const { onPointerDown, onPointerMove, onPointerUp, onPointerCancel } = useSwipeFromEdge(closeOverlay)
@@ -29,16 +29,16 @@ function Authentication() {
   
   return (
     <section 
-      id={overlays.authentication} 
-      className={styles.authentication} 
+      id={overlays.login} 
+      className={styles.login} 
       ref={focusRef} 
       onKeyDown={onKeyDown} 
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
       onPointerCancel={onPointerCancel}
-      aria-label="user authentication">
-      <CloseButton overlay={overlays.authentication} close={action} />
+      aria-label="user login">
+      <CloseButton overlay={overlays.login} close={action} />
       <LoginForm />
       <RegistrationButton />
       <GoogleButton />
@@ -47,4 +47,4 @@ function Authentication() {
   )
 }
 
-export default Authentication
+export default Login
