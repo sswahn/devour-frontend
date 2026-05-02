@@ -1,11 +1,12 @@
 
 export const overlays = {
-  authentication: 'authentication',
   camera: 'camera',
   comments: 'comments',
   dashboard: 'dashboard',
   notifications: 'notifications',
+  login: 'login',
   profile: 'profile',
+  register: 'register',
   search: 'search'
 }
 
