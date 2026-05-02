@@ -23,9 +23,12 @@ function OverlayProvider({ children }) {
   }
 
   const openOverlay = useCallback((id, focusElement) => {
+    console.log('within openOverlay')
     if (history.state?.overlayOpen === id) {
       return
     }
+    console.log('passed history condition: ', history.state?.overlayOpen === id)
+    console.log('setting isActive to id: ', id)
     history.pushState({ overlayOpen: id }, '')
     push(focusElement)
     setIsActive(id)
@@ -39,15 +42,12 @@ function OverlayProvider({ children }) {
   }, [])
 
   const handlePopState = useCallback(() => {
-    console.log('in handlePopState - isActive: ', isActive)
     if (!isActive) {
       return
     }
     setIsActive(null)
     pop()
-    console.log('just before swapId condition')
     if (swapId.current !== null) {
-      console.log('passed swapId: ', swapId.current)
       openOverlay(swapId.current, null)
     }
   }, [isActive])
