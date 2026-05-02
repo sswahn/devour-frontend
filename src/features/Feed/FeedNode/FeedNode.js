@@ -42,9 +42,7 @@ function FeedNode({ item, index, count }) {
 
   // this tabIndex etc. breaks the natural flow of the page, header gets skipped...
 
-  // needs a container <div>
-  // in the container will be <figure>, and <section id="comments">
-  // gestures can swipe back and forth between them.
+  // gestures can swipe back and forth between <figure>, and <section id="comments">
   
   return (
     <div className={styles.feedNode}>
