@@ -1,5 +1,11 @@
 /* Image Field for Profile Image Editing */ 
 
 .imageField {
+  border-radius: 50%;
+  display: block;
+  height: 128px;
+  margin: 0 auto;
+  width: 128px;
   
+  background: gray;
 }
