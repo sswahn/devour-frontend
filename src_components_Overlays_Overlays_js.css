@@ -719,19 +719,16 @@
 .KIIoXhhSaQeQ2LSTtavI header h1 {
   font-size: 24px;
   font-weight: normal;
-  margin-top: 8px;
   text-align: center;
 }
 
 .KIIoXhhSaQeQ2LSTtavI address {
   font-size: var(--font-size);
-  margin-top: 8px;
   text-align: center;
 }
 
 .KIIoXhhSaQeQ2LSTtavI p {
   font-size: var(--font-size);
-  margin-top: 8px;
 }
 
 
