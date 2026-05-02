@@ -38,7 +38,7 @@ function Login() {
       onPointerUp={onPointerUp}
       onPointerCancel={onPointerCancel}
       aria-label="user login">
-      <CloseButton overlay={overlays.login} close={action} />
+      <CloseButton overlay={overlay.login} close={action} />
       <LoginForm />
       <RegistrationButton />
       <GoogleButton />
