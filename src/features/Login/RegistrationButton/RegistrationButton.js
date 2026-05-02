@@ -11,10 +11,6 @@ function RegistrationButton() {
     openOverlay(overlay.login, buttonRef.current)  
   }
   
-  const action = () => {
-    // openRegistration
-  }
-  
   const onClick = event => {
     navigator.vibrate?.(50)
     action()
