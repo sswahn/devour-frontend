@@ -14,12 +14,7 @@ import styles from './Authentication.module.css'
 function Authentication() {
   const {overlayRef, focusRef} = useFocusTrap()
   const { closeOverlay } = useOverlay()
-  const {
-    onPointerDown,
-    onPointerMove,
-    onPointerUp,
-    onPointerCancel
-  } = useSwipeFromEdge()
+  const { onPointerDown, onPointerMove, onPointerUp, onPointerCancel } = useSwipeFromEdge(closeOverlay)
 
   const action = () => {
     closeOverlay()
