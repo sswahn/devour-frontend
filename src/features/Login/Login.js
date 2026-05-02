@@ -9,7 +9,7 @@ import LoginForm from './LoginForm/LoginForm'
 import RegistrationButton from './RegistrationButton/RegistrationButton'
 import GoogleButton from './GoogleButton/GoogleButton'
 import AppleButton from './AppleButton/AppleButton'
-import styles from './Authentication.module.css'
+import styles from './Login.module.css'
 
 function Login() {
   const {overlayRef, focusRef} = useFocusTrap()
