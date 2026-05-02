@@ -20,23 +20,12 @@ function Authentication() {
     closeOverlay()
   }
 
-  const gesture = () => {
-    if (overlayRef.current && action) {
-      navigator.vibrate?.(50)
-      swipeToClose(overlayRef.current, action)
-    }
-  }
-
   const onKeyDown = event => {
     if (event.key === 'Escape') {
       event.preventDefault()
       action()
     }
   }
-  
-  useEffect(() => {
-    gesture()
-  }, [])
   
   return (
     <section 
