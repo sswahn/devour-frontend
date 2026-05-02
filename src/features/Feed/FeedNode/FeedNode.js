@@ -17,7 +17,6 @@ function FeedNode({ item, index, count }) {
   }
   
   const onPointerDown = event => {
-    event.preventDefault()
     const { isPinching } = onGestureDown(event, getLongPress)
     console.log('feedNode pointerdown: ', isPinching)
   }
