@@ -28,6 +28,8 @@ function Commets() {
     
     // update feed.
   }
+
+  // start with only a single line height, then dynamically grow as user input moves to the next line
   
   return (
     <section>
