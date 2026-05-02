@@ -72,10 +72,10 @@ function Profile() {
           </div>
           <div>
             <h1 id="username">
-              <TextField text={profile.username} update={updateProfile} />
+              <TextField type="username" text={profile.username} update={updateProfile} />
             </h1>
             <address>
-              <TextField text={profile.location} update={updateProfile} />
+              <TextField type="location" text={profile.location} update={updateProfile} />
             </address>
             
             {/* 
