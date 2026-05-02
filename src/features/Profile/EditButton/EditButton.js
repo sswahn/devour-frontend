@@ -21,7 +21,7 @@ function EditButton({ field, open }) {
 
   return (
     <button className={styles.editButton} onClick={onClick} onKeyDown={onKeyDown} type="button" aria-label={`edit ${field}`}>
-      <EditIcon />
+      <EditIcon size={16} />
     </button>
   )
 }
