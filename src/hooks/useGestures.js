@@ -36,6 +36,7 @@ function useGestures() { // thresholds
   }
   
   const onGestureDown = (event, callback = undefined) => {
+    console.log('onGestureDown event fired.')
     const { currentTarget, pointerId } = event
     currentTarget.setPointerCapture(pointerId)
     id.current = pointerId
