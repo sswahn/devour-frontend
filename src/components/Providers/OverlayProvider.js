@@ -5,6 +5,7 @@ const OverlayContext = createContext(null)
 function OverlayProvider({ children }) {
   const [isActive, setIsActive] = useState(null)
   const focusStack = useRef([])
+  const swapId = useRef(null)
 
   const push = element => {
     focusStack.current.push(element)
@@ -30,16 +31,21 @@ function OverlayProvider({ children }) {
     setIsActive(id)
   }, []) 
   
-  const closeOverlay = useCallback(() => {
+  const closeOverlay = useCallback((id = null) => {
     if (history.state?.overlayOpen) {
       history.back()
     }
+    swapId.current = id
   }, [])
 
   const handlePopState = useCallback(() => {
-    if (isActive) {
-      setIsActive(null)
-      pop()
+    if (!isActive) {
+      return
+    }
+    setIsActive(null)
+    pop()
+    if (swapId.current !== null) {
+      openOverlay(swapId.current, null)
     }
   }, [isActive])
 
