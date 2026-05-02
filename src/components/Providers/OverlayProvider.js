@@ -32,6 +32,7 @@ function OverlayProvider({ children }) {
     history.pushState({ overlayOpen: id }, '')
     push(focusElement)
     setIsActive(id)
+    swapId.current = null
   }, []) 
   
   const closeOverlay = useCallback((id = null) => {
