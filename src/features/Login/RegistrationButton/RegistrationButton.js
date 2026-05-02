@@ -1,7 +1,16 @@
+import { useRef } from 'react'
+import { overlay } from '../../config'
+import useOverlay from '../../hooks/useOverlay'
 import styles from './RegistrationButton.module.css'
 
 function RegistrationButton() {
-
+  const buttonRef = useRef(null)
+  const { openOverlay } = useOverlay()
+  
+  const action = () => {
+    openOverlay(overlay.login, buttonRef.current)  
+  }
+  
   const action = () => {
     // openRegistration
   }
@@ -22,6 +31,7 @@ function RegistrationButton() {
     <button 
       id="register-passkey"
       className={styles.registrationButton} 
+      ref={buttonRef}
       onClick={onClick} 
       onKeyDown={onKeyDown} 
       type="button" 
