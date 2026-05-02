@@ -3,7 +3,7 @@ import EditButton from '../EditButton/EditButton'
 import CloseButton from '../CloseButton/CloseButton'
 import styles from './TextField.module.css'
 
-function TextField({ text, update }) {
+function TextField({ type, text, update }) {
   const [isOpen, setIsOpen] = useState(false)
   const inputRef = useRef(null)
 
@@ -15,7 +15,7 @@ function TextField({ text, update }) {
     if (text === value) {
       return
     }
-    update({ [text]: value })
+    update({ [type]: value })
     // else make request to upate text, and update state of profile directly to avoid loading
   }
 
