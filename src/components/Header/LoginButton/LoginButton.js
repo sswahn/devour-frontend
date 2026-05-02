@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { overlays } from '../../../config'
+import { overlay } from '../../../config'
 import useOverlay from '../../../hooks/useOverlay'
 import RightToBracketIcon from '../../Icons/RightToBracketIcon/RightToBracketIcon'
 import styles from './LoginButton.module.css'
@@ -9,7 +9,7 @@ function LoginButton() {
   const { openOverlay } = useOverlay()
   
   const action = () => {
-    openOverlay(overlays.authentication, buttonRef.current)  
+    openOverlay(overlay.login, buttonRef.current)  
   }
   
   const onClick = event => {
