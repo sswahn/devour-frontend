@@ -28,11 +28,11 @@ function TextField({ type, text, update }) {
       {isOpen 
         ? <>
             <input id={`${text}-input`} ref={inputRef} type="text" inputMode="username" defaultValue={text} aria-label={`${text} input`} />
-            <CloseButton text={text} close={close} />
+            <CloseButton field={type} close={close} />
           </>
         : <>
             <span>{text}</span>
-            <EditButton text={text} open={open} />
+            <EditButton field={type} open={open} />
           </>
       }
     </div>
