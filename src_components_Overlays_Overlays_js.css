@@ -1,169 +1,3 @@
-/*!**************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Authentication/LoginForm/LoginForm.module.css ***!
-  \**************************************************************************************************************/
-/* Authentication Login Form */
-
-.DZ0S8wRAGVyW9Xa9BSBu {
-  width: 100%;
-}
-
-.DZ0S8wRAGVyW9Xa9BSBu label {
-  color: var(--text);
-  display: block;
-  font-size: var(--font-size);
-  margin: 0 0 8px 8px;
-}
-
-.DZ0S8wRAGVyW9Xa9BSBu input {
-  background-color: var(--input-bg);
-  border: 1px solid var(--input-border);
-  border-radius: 5px;
-  color: var(--input-text);
-  font-size: 18px;
-  height: 44px;
-  padding: 0 8px;
-  width: 100%;
-}
-
-.DZ0S8wRAGVyW9Xa9BSBu input:focus {
-  outline: none;
-}
-
-.DZ0S8wRAGVyW9Xa9BSBu button[type="submit"] {
-  align-items: center;
-  background: var(--button-bg);
-  border: var(--button-border);
-  border-radius: 50px;
-  color: var(--button-text);
-  cursor: pointer;
-  display: flex;
-  font-size: 18px;
-  font-weight: bold;
-  height: 44px;
-  justify-content: center;
-  margin: 32px 0;
-  text-transform: uppercase;
-  width: 100%;
-}
-
-/*!********************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Authentication/RegistrationButton/RegistrationButton.module.css ***!
-  \********************************************************************************************************************************/
-/* Auth Login Flow Forgot Password Button */
-
-.__CuXY8dgC7rbEFNNkzg {
-  align-items: center;
-  background: none;
-  border: 4px solid var(--button-bg);
-  border-radius: 50px;
-  color: var(--button-text);
-  cursor: pointer;
-  display: flex;
-  font-size: 18px;
-  font-weight: bold;
-  min-height: 44px;
-  justify-content: center;
-  text-transform: uppercase;
-  width: 100%;
-}
-
-.__CuXY8dgC7rbEFNNkzg:active {
-  background: var(--button-active);
-}
-
-/*!********************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Authentication/GoogleButton/GoogleButton.module.css ***!
-  \********************************************************************************************************************/
-/* Federated Access with Google Button */
-
-.prckt0265mpeiXlE3kxP {
-  align-items: center;
-  background: none;
-  border: 4px solid var(--button-bg);
-  border-radius: 50px;
-  color: var(--button-text);
-  display: flex;
-  font-size: var(--font-size);
-  font-weight: bold;
-  gap: 12px;
-  min-height: 44px;
-  justify-content: flex-start;
-  margin: 32px 0;
-  padding-left: 64px;
-  text-transform: uppercase;
-  user-select: none;
-  width: 100%;
-}
-
-.prckt0265mpeiXlE3kxP:active {
-  background: var(--button-active);
-}
-
-.prckt0265mpeiXlE3kxP svg {
-  fill: var(--button-text);
-}
-
-/*!******************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Authentication/AppleButton/AppleButton.module.css ***!
-  \******************************************************************************************************************/
-/* Federated Access with Apple Button */
-
-.gd0SLQU_H_0LYCyhuG1y {
-  align-items: center;
-  background: none;
-  border: 4px solid var(--button-bg);
-  border-radius: 50px;
-  color: var(--button-text);
-  display: flex;
-  font-size: var(--font-size);
-  font-weight: bold;
-  gap: 12px;
-  min-height: 44px;
-  justify-content: flex-start;
-  padding-left: 64px;
-  text-transform: uppercase;
-  user-select: none;
-  width: 100%;
-}
-
-.gd0SLQU_H_0LYCyhuG1y:active {
-  background: var(--button-active);
-}
-
-.gd0SLQU_H_0LYCyhuG1y svg {
-  fill: var(--button-text);
-}
-
-/*!*********************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Authentication/Authentication.module.css ***!
-  \*********************************************************************************************************/
-/* Authentication Flow */
-
-.kXofMQa6vzuWGHvhoZSw {
-  align-items: center;
-  background-color: var(--surface);
-  display: flex;
-  flex-direction: column;
-  height: 100dvh;
-  justify-content: safe center;
-  left: 0;
-  overflow-y: auto;
-  overscroll-behavior-y: contain;
-  padding: 16px 24px;
-  position: absolute;
-  scrollbar-width: none;
-  top: 0;
-  touch-action: none;
-  width: 100%;
-  z-index: 200;
-}
-
-.kXofMQa6vzuWGHvhoZSw > button:first-of-type { /* isnt aligned with form fields (id rather change the padding on fields than close button) */
-  left: 8px;
-  position: absolute;
-  top: 8px;
-}
-
 /*!****************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Camera/ViewPort/viewport.module.css ***!
   \****************************************************************************************************/
@@ -494,6 +328,172 @@
 }
 
 
+/*!*****************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Login/LoginForm/LoginForm.module.css ***!
+  \*****************************************************************************************************/
+/* Authentication Login Form */
+
+.JGSQMGJEsXFrIiWPZmsd {
+  width: 100%;
+}
+
+.JGSQMGJEsXFrIiWPZmsd label {
+  color: var(--text);
+  display: block;
+  font-size: var(--font-size);
+  margin: 0 0 8px 8px;
+}
+
+.JGSQMGJEsXFrIiWPZmsd input {
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 5px;
+  color: var(--input-text);
+  font-size: 18px;
+  height: 44px;
+  padding: 0 8px;
+  width: 100%;
+}
+
+.JGSQMGJEsXFrIiWPZmsd input:focus {
+  outline: none;
+}
+
+.JGSQMGJEsXFrIiWPZmsd button[type="submit"] {
+  align-items: center;
+  background: var(--button-bg);
+  border: var(--button-border);
+  border-radius: 50px;
+  color: var(--button-text);
+  cursor: pointer;
+  display: flex;
+  font-size: 18px;
+  font-weight: bold;
+  height: 44px;
+  justify-content: center;
+  margin: 32px 0;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+/*!***********************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Login/RegistrationButton/RegistrationButton.module.css ***!
+  \***********************************************************************************************************************/
+/* Auth Login Flow Forgot Password Button */
+
+.O4wFjYyL0P7NI8cYUcX3 {
+  align-items: center;
+  background: none;
+  border: 4px solid var(--button-bg);
+  border-radius: 50px;
+  color: var(--button-text);
+  cursor: pointer;
+  display: flex;
+  font-size: 18px;
+  font-weight: bold;
+  min-height: 44px;
+  justify-content: center;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.O4wFjYyL0P7NI8cYUcX3:active {
+  background: var(--button-active);
+}
+
+/*!***********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Login/GoogleButton/GoogleButton.module.css ***!
+  \***********************************************************************************************************/
+/* Federated Access with Google Button */
+
+.YbU3lVTtOrXuukoFALAw {
+  align-items: center;
+  background: none;
+  border: 4px solid var(--button-bg);
+  border-radius: 50px;
+  color: var(--button-text);
+  display: flex;
+  font-size: var(--font-size);
+  font-weight: bold;
+  gap: 12px;
+  min-height: 44px;
+  justify-content: flex-start;
+  margin: 32px 0;
+  padding-left: 64px;
+  text-transform: uppercase;
+  user-select: none;
+  width: 100%;
+}
+
+.YbU3lVTtOrXuukoFALAw:active {
+  background: var(--button-active);
+}
+
+.YbU3lVTtOrXuukoFALAw svg {
+  fill: var(--button-text);
+}
+
+/*!*********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Login/AppleButton/AppleButton.module.css ***!
+  \*********************************************************************************************************/
+/* Federated Access with Apple Button */
+
+.KxOGxU_EQPAmsER6H2BB {
+  align-items: center;
+  background: none;
+  border: 4px solid var(--button-bg);
+  border-radius: 50px;
+  color: var(--button-text);
+  display: flex;
+  font-size: var(--font-size);
+  font-weight: bold;
+  gap: 12px;
+  min-height: 44px;
+  justify-content: flex-start;
+  padding-left: 64px;
+  text-transform: uppercase;
+  user-select: none;
+  width: 100%;
+}
+
+.KxOGxU_EQPAmsER6H2BB:active {
+  background: var(--button-active);
+}
+
+.KxOGxU_EQPAmsER6H2BB svg {
+  fill: var(--button-text);
+}
+
+/*!***************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Login/Login.module.css ***!
+  \***************************************************************************************/
+/* User Authentication Flow, Login */
+
+.ZN6CWqaJlKMfDaydN3QY {
+  align-items: center;
+  background-color: var(--surface);
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  justify-content: safe center;
+  left: 0;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  padding: 16px 24px;
+  position: absolute;
+  scrollbar-width: none;
+  top: 0;
+  touch-action: none;
+  width: 100%;
+  z-index: 200;
+}
+
+.ZN6CWqaJlKMfDaydN3QY > button:first-of-type { /* isnt aligned with form fields (id rather change the padding on fields than close button) */
+  left: 8px;
+  position: absolute;
+  top: 8px;
+}
+
 /*!*********************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Profile/EditButton/EditButton.module.css ***!
   \*********************************************************************************************************/
@@ -732,6 +732,58 @@
   font-size: var(--font-size);
 }
 
+
+/*!*********************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Register/Register.module.css ***!
+  \*********************************************************************************************/
+/* User Authentication Flow, Register User */
+
+.oSMoVZYW2HrKOJTgWNU2 {
+  width: 100%;
+}
+
+.oSMoVZYW2HrKOJTgWNU2 label {
+  color: var(--text);
+  display: block;
+  font-size: var(--font-size);
+  margin: 0 0 8px 8px;
+}
+
+.oSMoVZYW2HrKOJTgWNU2 label span {
+  color: red;
+}
+
+.oSMoVZYW2HrKOJTgWNU2 input {
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 5px;
+  color: var(--input-text);
+  font-size: 18px;
+  height: 44px;
+  padding: 0 8px;
+  width: 100%;
+}
+
+.oSMoVZYW2HrKOJTgWNU2 input:focus {
+  outline: none;
+}
+
+.oSMoVZYW2HrKOJTgWNU2 button {
+  align-items: center;
+  background: var(--button-bg);
+  border: var(--button-border);
+  border-radius: 50px;
+  color: var(--button-text);
+  cursor: pointer;
+  display: flex;
+  font-size: 18px;
+  font-weight: bold;
+  height: 44px;
+  justify-content: center;
+  margin: 32px 0;
+  text-transform: uppercase;
+  width: 100%;
+}
 
 /*!**********************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Search/SearchInput/SearchInput.module.css ***!
