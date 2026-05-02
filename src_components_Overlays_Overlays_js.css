@@ -564,6 +564,7 @@
   margin: 0 auto;
   max-width: 200px;
   height: 24px;
+  padding-top: 8px;
 
   border: 1px dashed orange;
 }
