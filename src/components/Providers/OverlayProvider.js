@@ -45,11 +45,11 @@ function OverlayProvider({ children }) {
     if (!isActive) {
       return
     }
+    if (swapId.current !== null) {
+      return openOverlay(swapId.current, null)
+    }
     setIsActive(null)
     pop()
-    if (swapId.current !== null) {
-      openOverlay(swapId.current, null)
-    }
   }, [isActive])
 
   useEffect(() => {
