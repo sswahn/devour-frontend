@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { overlays } from '../../config'
+import { overlay } from '../../config'
 import useOverlay from '../../hooks/useOverlay'
 import useFocusTrap from '../../hooks/useFocusTrap'
 import useSession from '../../hooks/useSession'
@@ -45,7 +45,7 @@ function Profile() {
 
   return (
     <section 
-      id={overlays.profile}
+      id={overlay.profile}
       className={styles.profile} 
       ref={focusRef} 
       onKeyDown={onKeyDown}
