@@ -3,23 +3,25 @@ import EditButton from '../EditButton/EditButton'
 import CloseButton from '../CloseButton/CloseButton'
 import styles from './TextField.module.css'
 
-function TextField({ text }) {
+function TextField({ text, update }) {
   const [isOpen, setIsOpen] = useState(false)
   const inputRef = useRef(null)
 
   const open = () => setIsOpen(true)
   const close = () => setIsOpen(false)
 
-  const update = () => {
-    if (text === inputRef.current.value.trim()) {
+  const updateField = event => {
+    const value = inputRef.current.value.trim()
+    if (text === value) {
       return
     }
+    update({ [text]: value })
     // else make request to upate text, and update state of profile directly to avoid loading
   }
 
   useEffect(() => {
     if (inputRef.current) {
-      update()
+      updateField()
     }
   }, [isOpen])
 
