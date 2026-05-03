@@ -2,21 +2,15 @@ import { config } from '../../config'
 import server from '../../utilities/server'
 import styles from './Comments.module.css'
 
-// consider moving to features
-
 function Commets() {
-  // Comments Form
-  // Comments Feed
-
+  
   const onClick = event => {
     navigator.vibrate?.(50)
   }
 
   const onSubmit = async event => {
     event.preventDefault()
-    
-    // perform basic validation, at least .trim()
-    
+
     const formData = new FormData(event.target)
     const request = {
       comment: formData.get('comment')
