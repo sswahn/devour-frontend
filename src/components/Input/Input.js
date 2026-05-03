@@ -17,7 +17,7 @@ const Input = ({ label, error, success, helperText, required, ...props }) => {
       <input 
         id={id} 
         className={styles.input} 
-        aria-invalid={!!error} 
+        aria-invalid={error ? 'true' : undefined}
         aria-describedby={`${id}-helper ${error ? `${id}-error` : ''}`} 
        {required && 'required'} 
        {...props} />
