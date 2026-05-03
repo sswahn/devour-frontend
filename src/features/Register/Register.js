@@ -26,7 +26,6 @@ function Register() {
       const formData = new FormData(event.target)
       const username = formData.get('username')
       const contact = formatContact(formData.get('contact'))
-      validate({ username, contact }) // consider validating in onChange...
       const credentials = await navigator.credentials.create()
       const request = { username, contact, credentials }
       const response = await server.post(api.register, request)
