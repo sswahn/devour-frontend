@@ -3,3 +3,11 @@
 .comments {
   
 }
+
+.comments textarea {
+  field-sizing: content;
+  max-height: 150px;
+  min-height: 50px;
+  overflow: hidden; /* Hide scrollbars */
+  resize: none; /* Disable manual resize */
+}
