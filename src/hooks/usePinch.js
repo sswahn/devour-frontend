@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 
-const usePinch = () => {
+function usePinch() {
   const pointers = useRef(new Map())
   const prevDistance = useRef(null)
 
