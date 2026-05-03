@@ -7,10 +7,6 @@ function Register() {
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
-  
-  const onClick = event => {
-    navigator.vibrate?.(50)
-  }
 
   const validate = data => {
     // validate data.username
@@ -22,6 +18,7 @@ function Register() {
   const onSubmit = async event => {
     try {
       event.preventDefault()
+      navigator.vibrate?.(50)
       const formData = new FormData(event.target)
       const username = formData.get('username')
       const contact = formData.get('contact')
@@ -59,7 +56,7 @@ function Register() {
         pattern="^([^@\s]+@[^@\s]+\.[^@\s]+|\+?[\d\s\-()]{7,15})$"
         title="Please enter a valid email address or an international phone number (e.g., +1 234 567 8900)."
         required />
-      <button onClick={onClick} type="submit">Sign Up</button>
+      <button type="submit">Sign Up</button>
     </form>
   )
 }
