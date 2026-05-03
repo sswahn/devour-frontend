@@ -6,25 +6,19 @@ function FullscreenButton({ isPinch }) {
   const buttonRef = useRef(null)
 
   const zoomIn = async () => {
-    const isZoomed = window.visualViewport.scale > 1
-    const isFullscreen = document.fullscreenElement !== null
-    if (!isFullscreen && !isZoomed) {
-      await document.getElementById('portal').requestFullscreen()
-      await screen.orientation.lock('portrait')
-    }
+    await document.getElementById('portal').requestFullscreen()
+    await screen.orientation.lock('portrait')
   }
   
   const zoomOut = async () => {
-    const isZoomed = window.visualViewport.scale > 1
-    const isFullscreen = document.fullscreenElement !== null
-    if (isFullscreen && !isZoomed) {
-      await document.exitFullscreen()
-      await screen.orientation.unlock()
-    }
+    await document.exitFullscreen()
+    await screen.orientation.unlock()
   } 
 
   const action = () => {
-    document.fullscreenElement !== null ? zoomOut() : zoomIn()
+    const isZoomed = window.visualViewport.scale > 1
+    const isFullscreen = document.fullscreenElement !== null
+    !isFullscreen ? !isZoomed && zoomIn() : !isZoomed && zoomOut()
   }
   
   const onClick = event => {
