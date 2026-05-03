@@ -3,7 +3,7 @@ import { api } from '../../config'
 import server from '../../utilities/server'
 import styles from './Comments.module.css'
 
-function Commets() {
+function Comments() {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
