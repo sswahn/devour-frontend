@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react'
+import observer from '../../../utilities/observer'
 import useGestures from '../../../hooks/useGestures'
 import TopNav from '../TopNav/TopNav'
 import SideNav from '../SideNav/SideNav'
