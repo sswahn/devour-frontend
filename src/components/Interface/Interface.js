@@ -11,7 +11,8 @@ function Interface() {
 
   const onContextMenu = event => {
     console.log('contextmenu event fired, and prevented.')
-    event.preventDefault()
+    // leave commented while developing:
+    // event.preventDefault()
   }
 
   useEffect(() => {
