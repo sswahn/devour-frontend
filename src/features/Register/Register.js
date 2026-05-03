@@ -43,6 +43,7 @@ function Register() {
         type="text" 
         name="username" 
         autoComplete="username webauthn" 
+        autoCapitalize="none"
         minLength={2} 
         maxLength={50} 
         pattern="^[a-zA-Z0-9](?:[a-zA-Z0-9_]*[a-zA-Z0-9])?$" 
