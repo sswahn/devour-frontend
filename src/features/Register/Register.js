@@ -51,7 +51,8 @@ function Register() {
       />
       <label htmlFor="contact">Email or phone: <span aria-hidden="true">*</span></label>
       <input id="contact" type="text" name="contact" inputMode="email"
-        pattern="^([^\s@]+@[^\s@]+\.[^\s@]+|\+?[\d\s\-()]{7,15})$"          
+        pattern="^([^@\s]+@[^@\s]+\.[^@\s]+|\+?[\d\s\-()]{7,15})$"
+        title="Please enter a valid email address or an international phone number (e.g., +1 234 567 8900)."
         required />
       <button onClick={onClick} type="submit">Sign Up</button>
     </form>
