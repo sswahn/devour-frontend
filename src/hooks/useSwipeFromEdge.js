@@ -4,12 +4,7 @@ import useGestures from './useGestures'
 function useSwipeFromEdge(callback) {
   const ticking = useRef(false)
   const latestDeltaX = useRef(0)
-  const {
-    onGestureDown,
-    onGestureMove,
-    onGestureUp,
-    onGestureCancel
-  } = useGestures()
+  const { onGestureDown, onGestureMove, onGestureUp, onGestureCancel } = useGestures()
 
   const throttleTransition = (deltaX, currentTarget) => {
     latestDeltaX.current = deltaX
