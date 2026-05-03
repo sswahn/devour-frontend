@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import useConent from '../../../hooks/useContent'
+import useContent from '../../../hooks/useContent'
 import useGestures from '../../../hooks/useGestures'
 import TopNav from '../TopNav/TopNav'
 import SideNav from '../SideNav/SideNav'
