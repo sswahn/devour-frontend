@@ -24,7 +24,7 @@ const usePinch = () => {
     }
     const { clientX, clientY, pointerId } = event
     const [ first, second ] = data.current
-    const isFirst = first.pointerId === pointerId
+    const isFirst = first.id === pointerId
     const p1 = isFirst ? { clientX, clientY } : first
     const p2 = isFirst ? second : { clientX, clientY }
     const distance = Math.hypot(p2.clientX - p1.clientX, p2.clientY - p1.clientY)
