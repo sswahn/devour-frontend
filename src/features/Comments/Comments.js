@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import { api } from '../../config'
+import useComments from '../../hooks/useComments'
 import server from '../../utilities/server'
 import styles from './Comments.module.css'
 
 function Comments() {
+  const { comments, setComments } = useComments()
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
