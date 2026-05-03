@@ -2,7 +2,7 @@ import { SessionProvider } from './components/Providers/SessionProvider'
 import { FocusTrapProvider } from './components/Providers/FocusTrapProvider'
 import { OverlayProvider } from './components/Providers/OverlayProvider'
 import { ProfileProvider } from './components/Providers/ProfileProvider'
-import { CommentsProvider } from './components/Providers/CommentsProvider'
+import { ContentProvider } from './components/Providers/ContentProvider'
 
 function Providers({ children }) {
   return (
@@ -10,9 +10,9 @@ function Providers({ children }) {
       <FocusTrapProvider>
         <OverlayProvider>
           <ProfileProvider>
-            <CommentsProvider>
+            <ContentProvider>
               {children}
-            </CommentsProvider>
+            </ContentProvider>
           </ProfileProvider>
         </OverlayProvider>
       </FocusTrapProvider>
