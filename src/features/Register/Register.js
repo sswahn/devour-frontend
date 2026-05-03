@@ -46,8 +46,8 @@ function Register() {
         autoComplete="username webauthn" 
         minLength={2} 
         maxLength={50} 
-        pattern="^(?![_])[a-zA-Z0-9_]{0,47}[a-zA-Z0-9]$" 
-        title="Username must be 1–48 alphanumeric characters and cannot start or end with an underscore."
+        pattern="^[a-zA-Z0-9](?:[a-zA-Z0-9_]*[a-zA-Z0-9])?$" 
+        title="Username must be alphanumeric characters and cannot start or end with an underscore."
         required
       />
       <label htmlFor="contact">Email or phone: <span aria-hidden="true">*</span></label>
