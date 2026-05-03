@@ -8,11 +8,15 @@ function Register() {
   const [message, setMessage] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
 
-  const validate = data => {
-    // validate data.username
-    // validate data.contact (phone or email)
-    // if invalid:
-    // break onSubmit with throw error
+  const formatContact = value => {
+    const input = value.trim()
+    if (input.includes('@')) {
+      return input.toLowerCase()
+    }
+    // Remove everything except digits, but keep a leading '+' if present.
+    const hasPlus = input.startsWith('+')
+    const digits = input.replace(/\D/g, '') // Removes all non-digit characters
+    return hasPlus ? `+${digits}` : digits
   }
 
   const onSubmit = async event => {
@@ -21,7 +25,7 @@ function Register() {
       navigator.vibrate?.(50)
       const formData = new FormData(event.target)
       const username = formData.get('username')
-      const contact = formData.get('contact')
+      const contact = formatContact(formData.get('contact'))
       validate({ username, contact }) // consider validating in onChange...
       const credentials = await navigator.credentials.create()
       const request = { username, contact, credentials }
