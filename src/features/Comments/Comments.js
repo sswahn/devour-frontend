@@ -15,7 +15,7 @@ function Comments() {
       comment: content.id
     }
     const response = await server.get(api.comment, request)
-    setData(response.message)
+    setData(response.data)
   }
   
   const onSubmit = async event => {
