@@ -24,16 +24,17 @@ function FeedNode({ item, index, count }) {
   }
   
   const onPointerDown = event => {
-    const { isPinching, pinchDirection } = onGestureDown(event, getLongPress)
-    console.log('feedNode isPinching: ', isPinching)
-    console.log('feedNode pinchDirection: ', pinchDirection)
+    const { isPinching } = onGestureDown(event, getLongPress)
+    console.log('feedNode onPointerDown isPinching: ', isPinching)
+
   }
   
   const onPointerMove = event => {
-    const { pinch } = onGestureMove(event)
-    console.log('feedNode pointermove: ', pinch)
-    if (pinch) {
-      setIsPinch(pinch)
+    const { isPinching, pinchDirection } = onGestureMove(event)
+    console.log('feedNode onPointerMove isPinching: ', isPinching)
+    console.log('feedNode onPointerMove pinchDirection: ', pinchDirection)
+    if (isPinching) {
+      setIsPinch(pinchDirection)
     }
   }
   
