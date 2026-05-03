@@ -9,6 +9,7 @@ function FeedNode({ item, index, count }) {
   const [isDoubleTap, setIsDoubleTap] = useState(null)
   const [isLongPress, setIsLongPress] = useState(null)
   const [isPinch, setIsPinch] = useState(null)
+  const pinchDirection = useRef(null)
   const { onGestureDown, onGestureMove, onGestureUp, onGestureCancel } = useGestures()
 
   // need a function to pass to the swipeFromEdge(func) hook
@@ -21,22 +22,23 @@ function FeedNode({ item, index, count }) {
   }
   
   const onPointerDown = event => {
-    const { isPinching } = onGestureDown(event, getLongPress)
-    console.log('feedNode onPointerDown isPinching: ', isPinching)
-
+    onGestureDown(event, getLongPress)
   }
   
   const onPointerMove = event => {
     const { isPinching, pinchDirection } = onGestureMove(event)
     console.log('feedNode onPointerMove isPinching: ', isPinching)
     console.log('feedNode onPointerMove pinchDirection: ', pinchDirection)
-    if (isPinching) {
-      setIsPinch(pinchDirection)
+    if (isPinching && !pinchDirection.current) {
+      pinchDirection.current = pinchDirection
     }
   }
   
   const onPointerUp = event => {
     const { tapCount } = onGestureUp(event)
+    if (pinchDirection.current) {
+      setIsPinch(pinchDirection.current)
+    }
     if (tapCount === 2) {
       setIsDoubleTap(tapCount)
     }
