@@ -54,7 +54,7 @@ function useGestures() { // thresholds
     if (id?.current !== pointerId) { 
       return {}
     }
-    const { isPinching,  pinch } = onPinchMove(event)
+    const { isPinching, pinchDirection } = onPinchMove(event)
     const swipeMove = onSwipeMove(event)
     const absX = Math.abs(swipeMove.deltaX)
     const absY = Math.abs(swipeMove.deltaY)
@@ -63,7 +63,7 @@ function useGestures() { // thresholds
       longPressCancel()
       moved.current = true
     }
-    return { ...swipeMove, isPinching, pinch }
+    return { ...swipeMove, isPinching, pinchDirection }
   }
   
   const onGestureUp = event => {
