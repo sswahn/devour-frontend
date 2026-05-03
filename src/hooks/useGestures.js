@@ -1,6 +1,5 @@
 import { useRef } from 'react'
 import useSwipe from './useSwipe'
-import usePinch from './usePinch'
 
 function useGestures() { // thresholds
   const id = useRef(null)
