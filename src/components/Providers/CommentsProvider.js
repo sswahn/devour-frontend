@@ -1,15 +1,17 @@
 import { useState, createContext } from 'react'
 
-const CommentsContext = createContext(null)
+const ContentContext = createContext(null)
 
-function CommentsProvider({ children }) {
-  const [comments, setComments] = useState([])
+function ContentProvider({ children }) {
+  const [content, setContent] = useState({
+    id: '',
+  })
   
   return (
-    <CommentsContext.Provider value={{ comments, setComments }}>
+    <ContentContext.Provider value={{ content, setContent }}>
       {children}
-    </CommentsContext.Provider>
+    </ContentContext.Provider>
   )
 }
 
-export { CommentsContext, CommentsProvider }
+export { ContentContext, ContentProvider }
