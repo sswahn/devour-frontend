@@ -40,6 +40,7 @@ function FullscreenButton({ isPinch }) {
   }
 
   const gesture = () => {
+    console.log('isPinch gesture activated. useEffect condition check.')
     navigator.vibrate?.(50)
     if (isPinch === 'out') {
       console.log('pinch === out: value::', isPinch)
@@ -57,9 +58,9 @@ function FullscreenButton({ isPinch }) {
   return (
     <button 
       className={styles.fullscreenButton}
+      ref={buttonRef} 
       onClick={onClick} 
       onKeyDown={onKeyDown} 
-      ref={buttonRef} 
       type="button" 
       aria-label="enter fullscreen mode">
       <ExpandIcon />
