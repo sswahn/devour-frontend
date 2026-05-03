@@ -1,27 +1,39 @@
-import { config } from '../../config'
+import { useState, useEffect } from 'react'
+import { api } from '../../config'
 import server from '../../utilities/server'
 import styles from './Comments.module.css'
 
 function Commets() {
+  const [data, setData] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
+
+  const loadComments = async () => {
+    // get data
+  }
   
-  const onClick = event => {
-    navigator.vibrate?.(50)
-  }
-
   const onSubmit = async event => {
-    event.preventDefault()
-
-    const formData = new FormData(event.target)
-    const request = {
-      comment: formData.get('comment')
+    try {
+      event.preventDefault()
+      navigator.vibrate?.(50)
+      setLoading(true)
+      const formData = new FormData(event.target)
+      const request = {
+        comment: formData.get('comment')
+      }
+      const response = await server.post(api.comment, request)
+      setLoading(false)
+      // loadComments or append comment to state?
+      // update feed. perhaps a snackbar sucess message.
+    } catch (error) {
+      setLoading(false)
+      setErrorMessage(error)
     }
-
-    console.log('request: ', request)
-    
-    // const response = await server.post(config.api.comment, request)
-    
-    // update feed.
   }
+
+  useEffect(() => {
+    // loadComments()
+  }, [])
 
   // start with only a single line height, then dynamically grow as user input moves to the next line
   
@@ -39,7 +51,7 @@ function Commets() {
           required
           aria-label="comment input">
           </textarea>
-        <button onClick={onClick} type="submit" aria-label="submit comment">Submit</button>
+        <button type="submit" aria-label="submit comment">Submit</button>
       </form>
       <div>
         {/* data.comments.map(comment => 
