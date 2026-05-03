@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import { overlay } from '../../../config'
 import useOverlay from '../../../hooks/useOverlay'
 import CommentIcon from '../../../components/Icons/CommentIcon/CommentIcon'
 import styles from './CommentsButton.module.css'
