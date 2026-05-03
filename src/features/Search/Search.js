@@ -81,7 +81,11 @@ function Search() {
           <SpeechRecognitionButton setSearchValue={setSearchValue} />
         </form>
         
-        {/* make Suggestions component: */}
+        {/* 
+          Change to search results, make a component. 
+          Results will include, avatar, user, food, location
+          Filters, location, popularity, etc.
+        */}
         
         <ul id="suggestions" role="listbox" aria-live="polite" aria-busy={loading}>
           {loading ? <LoadingSpinner /> : recentSearches?.map((search, index) =>
