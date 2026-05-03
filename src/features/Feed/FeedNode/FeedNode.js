@@ -12,6 +12,10 @@ function FeedNode({ item, index, count }) {
   const { observe, unobserve, disconnect } = createObserver()
   const { onGestureDown, onGestureMove, onGestureUp, onGestureCancel } = useGestures()
 
+
+  // need a function to pass to the swipeFromEdge(func) hook
+  // the figure needs to 
+  
   const getLongPress = longPress => {
     if (longPress) {
       setIsLongPress(longPress)
