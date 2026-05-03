@@ -1,24 +1,30 @@
 import { useRef, useEffect } from 'react'
-//import useFocusStack from '../../../hooks/useFocusStack'
 import ExpandIcon from '../../../components/Icons/ExpandIcon/ExpandIcon'
 import styles from './FullscreenButton.module.css'
 
 function FullscreenButton({ isPinch }) {
   const buttonRef = useRef(null)
-  
-  const action = async () => {
-    await document.getElementById('portal').requestFullscreen()
-    await screen.orientation.lock('portrait')
-    /*
-      if (pinch === 'out' && !fullscreen.isActive) {
-        gesture: open fullscreen 
-      }
-      if (pinch === 'in' && fullscreen.isActive && (not natively zoomed-in)) {
-        gesture: exit fullscreen
-      }
-    */
 
-    // make sure current video focused when enters fullscreen for accessibility
+  const zoomIn = async () => {
+    const isZoomed = window.visualViewport.scale > 1
+    const isFullscreen = document.fullscreenElement !== null
+    if (pinch === 'out' && !isFullscreen && !isZoomed) {
+      await document.getElementById('portal').requestFullscreen()
+      await screen.orientation.lock('portrait')
+    }
+  }
+  
+  const zoomOut = async () => {
+    const isZoomed = window.visualViewport.scale > 1
+    const isFullscreen = document.fullscreenElement !== null
+    if (pinch === 'in' && isFullscreen && !isZoomed) {
+      await document.exitFullscreen()
+      await screen.orientation.unlock()
+    }
+  } 
+
+  const action = () => {
+    document.fullscreenElement !== null ? zoomOut() : zoomIn()
   }
   
   const onClick = event => {
@@ -34,12 +40,13 @@ function FullscreenButton({ isPinch }) {
   }
 
   const gesture = () => {
+    navigator.vibrate?.(50)
     if (isPinch === 'out') {
-      navigator.vibrate?.(50)
       console.log('pinch === out: value::', isPinch)
+      zoomIn()
     } else {
-      navigator.vibrate?.(50)
       console.log('pinch === in: value::', isPinch)
+      zoomOut()
     }
   }
 
