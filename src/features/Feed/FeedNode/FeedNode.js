@@ -37,6 +37,7 @@ function FeedNode({ item, index, count }) {
   const onPointerUp = event => {
     const { tapCount } = onGestureUp(event)
     if (pinchDirectionRef.current) {
+      console.log('setting with value from pinchDirectionRef.current: ', pinchDirectionRef.current)
       setIsPinch(pinchDirectionRef.current)
     }
     if (tapCount === 2) {
