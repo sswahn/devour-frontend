@@ -1,4 +1,4 @@
-import { Suspense, lazy } from 'react'
+import { useEffect, Suspense, lazy } from 'react'
 import useSelectionToSpeech from '../../hooks/useSelectionToSpeech'
 import Header from '../Header/Header'
 import Main from '../Main/Main'
@@ -8,6 +8,19 @@ const Overlays = lazy(() => import('../Overlays/Overlays'))
 
 function Interface() {
   useSelectionToSpeech()
+
+  const onContextMenu = event => {
+    console.log('contextmenu event fired, and prevented.')
+    event.preventDefault()
+  }
+
+  useEffect(() => {
+    document.addEventListener('contextmenu', onContextMenu)
+    return () => {
+      document.removeEventListener('contextmenu', onContextMenu)
+    }
+  }, [])
+  
   return (
     <>
       <Header />
