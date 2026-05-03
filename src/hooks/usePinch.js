@@ -44,7 +44,7 @@ const usePinch = () => {
 
   const onPinchCancel = event => {
     data.current = []
-    pinchDistance.current = -1
+    prevDistance.current = -1
   }
 
   return {
