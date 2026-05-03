@@ -8,7 +8,6 @@ function useGestures() { // thresholds
   const moved = useRef(false)
   const prevTap = useRef(0)
   const tapCount = useRef(0)
-  const { onPinchDown, onPinchMove, onPinchUp, onPinchCancel } = usePinch()
   const { onSwipeDown, onSwipeMove, onSwipeUp, onSwipeCancel } = useSwipe()
   
   const tapCounter = () => {
@@ -41,12 +40,10 @@ function useGestures() { // thresholds
     currentTarget.setPointerCapture(pointerId)
     id.current = pointerId
     moved.current = false
-    const { isPinching } = onPinchDown(event)
-    if (!isPinching && callback) {
+    if (callback) {
       onLongPressDown(callback)
     }
     onSwipeDown(event)
-    return { isPinching }
   }
   
   const onGestureMove = event => {
@@ -54,7 +51,6 @@ function useGestures() { // thresholds
     if (id?.current !== pointerId) { 
       return {}
     }
-    const { isPinching, pinchDirection } = onPinchMove(event)
     const swipeMove = onSwipeMove(event)
     const absX = Math.abs(swipeMove.deltaX)
     const absY = Math.abs(swipeMove.deltaY)
@@ -63,7 +59,7 @@ function useGestures() { // thresholds
       longPressCancel()
       moved.current = true
     }
-    return { ...swipeMove, isPinching, pinchDirection }
+    return { ...swipeMove }
   }
   
   const onGestureUp = event => {
@@ -79,9 +75,8 @@ function useGestures() { // thresholds
     if(!moved.current) {
       taps = tapCounter()
     }
-    const { isPinching } = onPinchUp(event)
     const swipeUp = onSwipeUp(event)
-    return { ...swipeUp, tapCount: taps, isPinching }
+    return { ...swipeUp, tapCount: taps }
   }
 
   // Review this function for accuracy.
@@ -94,7 +89,6 @@ function useGestures() { // thresholds
     if (currentTarget.hasPointerCapture(id.current)) {
       currentTarget.releasePointerCapture(id.current)
     }
-    onPinchCancel(event)
     onSwipeCancel(event)
     id.current = null
     moved.current = false
