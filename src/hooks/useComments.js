@@ -1,10 +1,10 @@
 import { useContext } from 'react'
-import { CommentsContext } from '../components/Providers/CommentsProvider'
+import { ContentContext } from '../components/Providers/ContentContext'
 
-function useComments() {
-  const [comments, setComments] = useContext(CommentsContext)
+function useContent() {
+  const [content, setContent] = useContext(ContentContext)
 
-  return { comments, setComments }
+  return { content, setContent }
 }
 
-export default useComments
+export default useContent
