@@ -34,14 +34,13 @@ function FullscreenButton({ isPinch }) {
   }
 
   const gesture = () => {
-    console.log('isPinch gesture activated. useEffect condition check.')
     navigator.vibrate?.(50)
+    const isZoomed = window.visualViewport.scale > 1
+    const isFullscreen = document.fullscreenElement !== null
     if (isPinch === 'out') {
-      console.log('pinch === out: value::', isPinch)
-      zoomIn()
+      !isFullscreen && !isZoomed && zoomIn()
     } else {
-      console.log('pinch === in: value::', isPinch)
-      zoomOut()
+      isFullscreen && !isZoomed && zoomOut()
     }
   }
 
