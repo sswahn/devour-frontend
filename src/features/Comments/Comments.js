@@ -1,17 +1,21 @@
 import { useState, useEffect } from 'react'
 import { api } from '../../config'
-import useComments from '../../hooks/useComments'
+import useContent from '../../hooks/useContent'
 import server from '../../utilities/server'
 import styles from './Comments.module.css'
 
 function Comments() {
-  const { comments, setComments } = useComments()
+  const { content } = useContent()
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
 
   const loadComments = async () => {
-    // get data
+    const request = {
+      comment: content.id
+    }
+    const response = await server.get(api.comment, request)
+    setData(response.message)
   }
   
   const onSubmit = async event => {
@@ -21,6 +25,7 @@ function Comments() {
       setLoading(true)
       const formData = new FormData(event.target)
       const request = {
+        post: content.id,
         comment: formData.get('comment')
       }
       const response = await server.post(api.comment, request)
