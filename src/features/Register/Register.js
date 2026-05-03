@@ -31,6 +31,8 @@ function Register() {
       setErrorMessage(error)
     }
   }
+
+  // highlight fields with red border when input is invalid.
   
   return (
     <form className={styles.registrationForm} onSubmit={onSubmit} aria-label="registration form">
