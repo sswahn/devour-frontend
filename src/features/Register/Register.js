@@ -48,10 +48,14 @@ function Register() {
         maxLength={50} 
         pattern="^[a-zA-Z0-9](?:[a-zA-Z0-9_]*[a-zA-Z0-9])?$" 
         title="Username must be between 2 and 50 alphanumeric characters and cannot start or end with an underscore."
-        required
-      />
+        required />
       <label htmlFor="contact">Email or phone: <span aria-hidden="true">*</span></label>
-      <input id="contact" type="text" name="contact" inputMode="email"
+      <input 
+        id="contact" 
+        type="text" 
+        name="contact" 
+        inputMode="email"
+        autoCapitalize="none"
         pattern="^([^@\s]+@[^@\s]+\.[^@\s]+|\+?[\d\s\-()]{7,15})$"
         title="Please enter a valid email address or an international phone number (e.g., +1 234 567 8900)."
         required />
