@@ -1,24 +1,23 @@
-import { useRef, useEffect } from 'react'
+import { useRef } from 'react'
 import ExpandIcon from '../../../components/Icons/ExpandIcon/ExpandIcon'
 import styles from './FullscreenButton.module.css'
 
-function FullscreenButton({ isPinch }) {
+function FullscreenButton() {
   const buttonRef = useRef(null)
 
-  const zoomIn = async () => {
+  const open = async () => {
     await document.getElementById('portal').requestFullscreen()
     await screen.orientation.lock('portrait')
   }
   
-  const zoomOut = async () => {
+  const close = async () => {
     await document.exitFullscreen()
     await screen.orientation.unlock()
   } 
 
   const action = () => {
-    const isZoomed = window.visualViewport.scale > 1
     const isFullscreen = document.fullscreenElement !== null
-    !isFullscreen ? !isZoomed && zoomIn() : !isZoomed && zoomOut()
+    !isFullscreen ? open() : close()
   }
   
   const onClick = event => {
@@ -32,21 +31,6 @@ function FullscreenButton({ isPinch }) {
       action()
     }
   }
-
-  const gesture = () => {
-    navigator.vibrate?.(50)
-    const isZoomed = window.visualViewport.scale > 1
-    const isFullscreen = document.fullscreenElement !== null
-    if (isPinch === 'out') {
-      !isFullscreen && !isZoomed && zoomIn()
-    } else {
-      isFullscreen && !isZoomed && zoomOut()
-    }
-  }
-
-  useEffect(() => {
-    gesture()
-  }, [isPinch])
   
   return (
     <button 
