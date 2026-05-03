@@ -6,5 +6,4 @@ function ScissorsIcon({ size = 24 }) {
     </svg>
   )
 }
-
 export default ScissorsIcon
