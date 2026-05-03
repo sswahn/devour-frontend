@@ -1,6 +1,6 @@
 import { useState, createContext } from 'react'
 
-const CommentsContext = createContext()
+const CommentsContext = createContext(null)
 
 function CommentsProvider({ children }) {
   const [comments, setComments] = useState([])
