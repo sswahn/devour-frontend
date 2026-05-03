@@ -49,7 +49,6 @@ function Register() {
         pattern="^(?![_])[a-zA-Z0-9_]{0,47}[a-zA-Z0-9]$" 
         title="Username must be 1–48 alphanumeric characters and cannot start or end with an underscore."
         required
-        aria-label="username input"
       />
       <label htmlFor="contact">Email or phone: <span aria-hidden="true">*</span></label>
       <input id="contact" type="text" name="contact" inputMode="email" required /> {/* phone or email (needs validation) */}
