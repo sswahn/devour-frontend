@@ -50,7 +50,9 @@ function Register() {
         required
       />
       <label htmlFor="contact">Email or phone: <span aria-hidden="true">*</span></label>
-      <input id="contact" type="text" name="contact" inputMode="email" required /> {/* phone or email (needs validation) */}
+      <input id="contact" type="text" name="contact" inputMode="email"
+        pattern="^([^\s@]+@[^\s@]+\.[^\s@]+|\+?[\d\s\-()]{7,15})$"          
+        required />
       <button onClick={onClick} type="submit">Sign Up</button>
     </form>
   )
