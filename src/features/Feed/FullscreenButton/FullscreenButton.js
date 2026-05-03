@@ -8,7 +8,7 @@ function FullscreenButton({ isPinch }) {
   const zoomIn = async () => {
     const isZoomed = window.visualViewport.scale > 1
     const isFullscreen = document.fullscreenElement !== null
-    if (pinch === 'out' && !isFullscreen && !isZoomed) {
+    if (!isFullscreen && !isZoomed) {
       await document.getElementById('portal').requestFullscreen()
       await screen.orientation.lock('portrait')
     }
@@ -17,7 +17,7 @@ function FullscreenButton({ isPinch }) {
   const zoomOut = async () => {
     const isZoomed = window.visualViewport.scale > 1
     const isFullscreen = document.fullscreenElement !== null
-    if (pinch === 'in' && isFullscreen && !isZoomed) {
+    if (isFullscreen && !isZoomed) {
       await document.exitFullscreen()
       await screen.orientation.unlock()
     }
