@@ -1,7 +1,9 @@
 /* Feed Node Comments System */
 
 .comments {
-  
+  position: absolute;
+  top: 0;
+  left: 0
 }
 
 .comments textarea {
