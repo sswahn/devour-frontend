@@ -36,6 +36,7 @@ function Register() {
   }
 
   // highlight fields with red border when input is invalid.
+  // also dynamically add aria-invalid="true" only when invalid, remove once valid.
   
   return (
     <form className={styles.registrationForm} onSubmit={onSubmit} aria-label="registration form">
