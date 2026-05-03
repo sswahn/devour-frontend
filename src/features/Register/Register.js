@@ -38,7 +38,18 @@ function Register() {
   return (
     <form className={styles.registrationForm} onSubmit={onSubmit} aria-label="registration form">
       <label htmlFor="username">Username: <span aria-hidden="true">*</span></label>
-      <input id="username" type="text" name="username" inputMode="username" autoComplete="username webauthn" required minLength={2} maxLength={50} pattern="^(?!_)[a-zA-Z0-9_]{1,48}(?<!_)$" title="Username must be 1–48 alphanumeric characters and cannot start or end with an underscore." />
+      <input 
+        id="username" 
+        type="text" 
+        name="username" 
+        inputMode="username" 
+        autoComplete="username webauthn" 
+        minLength={2} 
+        maxLength={50} 
+        pattern="^(?![_])[a-zA-Z0-9_]{0,47}[a-zA-Z0-9]$" 
+        title="Username must be 1–48 alphanumeric characters and cannot start or end with an underscore."
+        required
+      />
       <label htmlFor="contact">Email or phone: <span aria-hidden="true">*</span></label>
       <input id="contact" type="text" name="contact" inputMode="email" required /> {/* phone or email (needs validation) */}
       <button onClick={onClick} type="submit">Sign Up</button>
