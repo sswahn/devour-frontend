@@ -14,7 +14,7 @@ function Comments() {
     const request = {
       comment: content.id
     }
-    const response = await server.get(api.comment, request)
+    const response = await server.get(`${api.comment}/${request.comment}`)
     setData(response.data)
   }
   
