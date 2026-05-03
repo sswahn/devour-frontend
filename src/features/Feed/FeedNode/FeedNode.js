@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import useConent from '../../../hooks/useContent'
 import useGestures from '../../../hooks/useGestures'
 import TopNav from '../TopNav/TopNav'
 import SideNav from '../SideNav/SideNav'
@@ -6,6 +7,7 @@ import Comments from '../../Comments/Comments'
 import styles from './FeedNode.module.css'
 
 function FeedNode({ item, index, count }) {
+  const { content, setContent } = useContent()
   const [isDoubleTap, setIsDoubleTap] = useState(null)
   const [isLongPress, setIsLongPress] = useState(null)
   const { onGestureDown, onGestureMove, onGestureUp, onGestureCancel } = useGestures()
@@ -36,6 +38,12 @@ function FeedNode({ item, index, count }) {
   const onPointerCancel = event => {
     onGestureCancel(event)
   }
+
+  useEffect(() => {
+    if (content.id !== item.id) {
+      setContent({ id: item.id })
+    }
+  }, [])
 
   // this tabIndex etc. breaks the natural flow of the page, header gets skipped...
 
