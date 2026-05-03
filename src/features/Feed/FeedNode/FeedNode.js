@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import useGestures from '../../../hooks/useGestures'
 import TopNav from '../TopNav/TopNav'
 import SideNav from '../SideNav/SideNav'
@@ -8,12 +8,9 @@ import styles from './FeedNode.module.css'
 function FeedNode({ item, index, count }) {
   const [isDoubleTap, setIsDoubleTap] = useState(null)
   const [isLongPress, setIsLongPress] = useState(null)
-  const [isPinch, setIsPinch] = useState(null)
-  const pinchDirectionRef = useRef(null)
   const { onGestureDown, onGestureMove, onGestureUp, onGestureCancel } = useGestures()
 
   // need a function to pass to the swipeFromEdge(func) hook
-  // the figure needs to 
   
   const getLongPress = longPress => {
     if (longPress) {
@@ -26,20 +23,11 @@ function FeedNode({ item, index, count }) {
   }
   
   const onPointerMove = event => {
-    const { isPinching, pinchDirection } = onGestureMove(event)
-    console.log('feedNode onPointerMove isPinching: ', isPinching)
-    console.log('feedNode onPointerMove pinchDirection: ', pinchDirection)
-    if (isPinching && !pinchDirectionRef.current) {
-      pinchDirectionRef.current = pinchDirection
-    }
+    onGestureMove(event)
   }
   
   const onPointerUp = event => {
     const { tapCount } = onGestureUp(event)
-    if (pinchDirectionRef.current) {
-      console.log('setting with value from pinchDirectionRef.current: ', pinchDirectionRef.current)
-      setIsPinch(pinchDirectionRef.current)
-    }
     if (tapCount === 2) {
       setIsDoubleTap(tapCount)
     }
