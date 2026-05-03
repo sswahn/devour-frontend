@@ -215,6 +215,25 @@
   border: 1px dashed red;
 }
 
+/*!*********************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Comments/Comments.module.css ***!
+  \*********************************************************************************************/
+/* Feed Node Comments System */
+
+.uoscghNXGwijRME3XZY7 {
+  position: absolute;
+  top: 0;
+  left: 0
+}
+
+.uoscghNXGwijRME3XZY7 textarea {
+  field-sizing: content;
+  max-height: 152px;
+  min-height: 48px;
+  overflow: hidden; /* Hide scrollbars */
+  resize: none; /* Disable manual resize */
+}
+
 /*!**************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Feed/FeedNode/FeedNode.module.css ***!
   \**************************************************************************************************/
