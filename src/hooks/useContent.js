@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { ContentContext } from '../components/Providers/ContentContext'
+import { ContentContext } from '../components/Providers/ContentProvider'
 
 function useContent() {
   const [content, setContent] = useContext(ContentContext)
