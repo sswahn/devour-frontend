@@ -4,6 +4,7 @@ import { overlay } from '../../config'
 import { FocusTrapProvider } from '../Providers/FocusTrapProvider'
 import useOverlay from '../../hooks/useOverlay'
 import Camera from '../../features/Camera/Camera'
+import Comments from '../../features/Comments/Comments'
 import Dashboard from '../../features/Dashboard/Dashboard'
 import Notifications from '../../features/Notifications/Notifications'
 import Login from '../../features/Login/Login'
@@ -17,6 +18,7 @@ function Overlays() {
   return createPortal(
     <FocusTrapProvider>
       {overlay.camera === isActive && <Camera />}
+      {overlay.comments === isActive && <Comments />}
       {overlay.dashboard === isActive && <Dashboard />}
       {overlay.notifications === isActive && <Notifications />}
       {overlay.login === isActive && <Login />}
