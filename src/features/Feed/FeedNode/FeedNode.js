@@ -21,6 +21,9 @@ function FeedNode({ item, index, count }) {
   }
   
   const onPointerDown = event => {
+    if (event.target.closest('.sideNav') || event.target.closest('.topNav')) {
+      return
+    }
     onGestureDown(event, getLongPress)
   }
   
@@ -29,6 +32,9 @@ function FeedNode({ item, index, count }) {
   }
   
   const onPointerUp = event => {
+    if (event.target.closest('.sideNav') || event.target.closest('.topNav')) {
+      return
+    }
     const { tapCount } = onGestureUp(event)
     if (tapCount === 2) {
       setIsDoubleTap(tapCount)
