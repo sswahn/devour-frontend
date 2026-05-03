@@ -8,8 +8,8 @@
 
 .comments textarea {
   field-sizing: content;
-  max-height: 150px;
-  min-height: 50px;
+  max-height: 152px;
+  min-height: 48px;
   overflow: hidden; /* Hide scrollbars */
   resize: none; /* Disable manual resize */
 }
