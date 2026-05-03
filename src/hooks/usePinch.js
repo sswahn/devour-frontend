@@ -42,7 +42,7 @@ function usePinch() {
     }
     prevDistance.current = distance
 
-    return { isPinching: true, scale, direction }
+    return { isPinching: true, pinchDirection: direction }
   }
 
   const onPinchUp = event => {
