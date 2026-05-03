@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import observer from '../../../utilities/observer'
+import createObserver from '../../../utilities/observer'
 import useGestures from '../../../hooks/useGestures'
 import TopNav from '../TopNav/TopNav'
 import SideNav from '../SideNav/SideNav'
@@ -9,6 +9,7 @@ function FeedNode({ item, index, count }) {
   const [isDoubleTap, setIsDoubleTap] = useState(null)
   const [isLongPress, setIsLongPress] = useState(null)
   const [isPinch, setIsPinch] = useState(null)
+  const { observer, } = createObserver()
   const { onGestureDown, onGestureMove, onGestureUp, onGestureCancel } = useGestures()
 
   const getLongPress = longPress => {
