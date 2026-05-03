@@ -13,6 +13,7 @@ function CommentsButton() {
   }
   
   const onClick = event => {
+    event.stopPropagation()
     navigator.vibrate?.(50)
     action()
   }
