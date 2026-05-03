@@ -1,5 +1,4 @@
 import { useState, useRef } from 'react'
-import { createObserver } from '../../../utilities/observer'
 import useGestures from '../../../hooks/useGestures'
 import TopNav from '../TopNav/TopNav'
 import SideNav from '../SideNav/SideNav'
@@ -10,9 +9,7 @@ function FeedNode({ item, index, count }) {
   const [isDoubleTap, setIsDoubleTap] = useState(null)
   const [isLongPress, setIsLongPress] = useState(null)
   const [isPinch, setIsPinch] = useState(null)
-  const { observe, unobserve, disconnect } = createObserver()
   const { onGestureDown, onGestureMove, onGestureUp, onGestureCancel } = useGestures()
-
 
   // need a function to pass to the swipeFromEdge(func) hook
   // the figure needs to 
