@@ -32,13 +32,14 @@ function Commets() {
   // start with only a single line height, then dynamically grow as user input moves to the next line
   
   return (
-    <section>
-      <form className={styles.comments} onSubmit={onSubmit} aria-label="comment form">
+    <section className={styles.comments}>
+      <form onSubmit={onSubmit} aria-label="comment form">
         <textarea 
           name={comment}
           maxLength="1000"
           pattern="[^<>\(\)\{\}\[\]\\\/\|;=~%^]+"
           title="Special characters are not allowed."
+          placeholder="Leave a comment..."
           spellCheck="true"
           required
           aria-label="comment input">
