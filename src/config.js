@@ -16,3 +16,38 @@ export const api = {
   register: '/api/v1/register',
   session: '/api/v1/session'
 }
+
+export const contextmenu = {
+  default: {
+    actions: [],
+    information: []
+  },
+  feednode: {
+    actions: ['like', 'comment', 'share', 'fullscreen', 'report', 'blockuser'],
+    information: []
+  },
+  camera: {
+    actions: [],
+    information: []
+  },
+  search: {
+    actions: [],
+    information: []
+  },
+  profile: {
+    actions: [],
+    information: []
+  },
+  notifications: {
+    actions: [],
+    information: []
+  },
+  dashboard: {
+    actions: [],
+    information: []
+  },
+  login: {
+    actions: [],
+    information: []
+  },
+}
