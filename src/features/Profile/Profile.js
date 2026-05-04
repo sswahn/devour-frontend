@@ -63,6 +63,8 @@ function Profile() {
           <CloseButton overlay={overlay.profile} close={action} />
           <Dropdown items={[
             { text: 'alert message', method: () => alert('dropdown item clicked.') },
+            { text: 'console log message', method: () => console.log('dropdown item clicked.') },
+            { text: 'console log message', method: () => console.log('dropdown item clicked.') },
             { text: 'console log message', method: () => console.log('dropdown item clicked.') }
           ]} />
         </nav>
