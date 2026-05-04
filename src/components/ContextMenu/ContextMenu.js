@@ -16,7 +16,7 @@ function ContextMenu({ items }) {
       {items.map(item => 
         <li>
           <button type="button" role="menuitem">
-            {<item.icon />}
+            {item.icon}
             {item.text}
           </button>
         </li>
