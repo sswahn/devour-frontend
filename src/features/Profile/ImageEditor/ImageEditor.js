@@ -70,6 +70,7 @@ function ImageEditor() {
         <input id="upload" type="file"  name="upload" accept="image/*">
         <button type="submit">Upload Image</button>
       </form>
+      {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
     </div>
   )
 }
