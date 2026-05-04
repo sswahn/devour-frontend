@@ -26,6 +26,14 @@
   outline: none;
 }
 
+.loginForm input:user-invalid {
+  border: 2px solid red;
+}
+
+.loginForm p {
+  color: red;
+}
+
 .loginForm button[type="submit"] {
   align-items: center;
   background: var(--button-bg);
