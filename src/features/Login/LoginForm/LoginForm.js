@@ -52,7 +52,7 @@ function LoginForm() {
 
   const onInvalid = event => {
     event.preventDefault()
-    setErrors(prev => ({ ...prev, [event.target.name]: event.target.validationMessage })
+    setErrors(prev => ({ ...prev, [event.target.name]: event.target.validationMessage }))
   }
 
   useEffect(() => {
