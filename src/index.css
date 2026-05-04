@@ -94,7 +94,7 @@
 
   /* Dropdown */
   
-  --dropdown-bg: var(--light-gray);  /* var(--surface-elevated); */
+  --dropdown-bg: light-dark(white, var(--gray));
 
   --dropdown-text: var(--text);
 
