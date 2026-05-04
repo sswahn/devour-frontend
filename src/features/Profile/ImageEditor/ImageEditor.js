@@ -46,7 +46,7 @@ function ImageEditor() {
       image.removeEventListener('load', loadImage)
       image.removeEventListener('error', loadImageError)
     }
-  }, [])
+  }, [image])
 
   return (
     <div className={styles.imageEditor}>
