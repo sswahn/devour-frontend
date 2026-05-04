@@ -1046,13 +1046,13 @@
   width: 44px; 
 }
 
-.FJMCQdB5zc5RgmizOMOi ul {
+.FJMCQdB5zc5RgmizOMOi > ul {
   list-style: none;
   margin-top: 8px;
   width: 100%;
 }
 
-.FJMCQdB5zc5RgmizOMOi ul li {
+.FJMCQdB5zc5RgmizOMOi > ul li {
   color: var(--text);
   font-size: var(--font-size);
   line-height: var(--line-height);
