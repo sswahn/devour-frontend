@@ -67,6 +67,7 @@ function LoginForm() {
       <label htmlFor="username">Email or username:</label>
       <input 
         id="username" 
+        className={errors.username ? styles.invalid : ''}
         name="username" 
         type="text" 
         inputMode="email" 
