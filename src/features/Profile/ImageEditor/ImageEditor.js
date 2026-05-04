@@ -1,18 +1,36 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import styles from './ImageEditore.module.css'
 
 function ImageEditor() {
   const [image, setImage] = useState(null)
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState(false)
+  const canvasRef = useRef(null)
 
   const onSubmit = event => {
     try {
       event.preventDefault()
+      setLoading(true)
       const formData = new FormData(event.target)
       const file = formData.get('upload')
-      setImage(URL.createObjectURL(file))
-      // set image to canvas for editing.
+      const canvas = canvasRef.current
+      const ctx = canvas.getContext('2d')
+      const image = new Image()
+      
+      image.onload = () => {
+        canvas.width = image.width
+        canvas.height = image.height
+        ctx.drawImage(image, 0, 0)
+        setLoading(false)
+        URL.revokeObjectURL(image.src)
+      }
+      
+      image.onerror = () => {
+        throw new Error("Failed to load image.")
+      }
+
+      image.src = URL.createObjectURL(file)
+
     } else (error) {
       setErrorMessage(error)
     }
@@ -21,7 +39,7 @@ function ImageEditor() {
   return (
     <div className={styles.imageEditor}>
       <div className={styles.imageDisplay}>
-        {/* need to use canvas */}
+        <canvas ref={canvasRef} style={{ maxWidth: '100%', height: 'auto' }} />
       </div>
       <div>
         <label forHtml="crop">Crop:</label>
