@@ -22,7 +22,7 @@ function LoginForm() {
 
   const handleErrors = error => {
     if (error.cause === 'validationError') {
-      setErrors(prev => ({ username: error.message }))
+      setErrors(prev => ({ ...prev, username: error.message }))
     }
   }
   
@@ -52,7 +52,7 @@ function LoginForm() {
 
   const onInvalid = event => {
     event.preventDefault()
-    setErrors(prev => ({ [event.target.name]: event.target.validationMessage })
+    setErrors(prev => ({ ...prev, [event.target.name]: event.target.validationMessage })
   }
 
   useEffect(() => {
