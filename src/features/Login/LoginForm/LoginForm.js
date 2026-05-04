@@ -13,24 +13,37 @@ function LoginForm() {
   // Perform validation checks in javascript and return alert if violated.
   // ex. username.length > 50 characters, etc. -> error out.
 
-  const onClick = event => {
-    navigator.vibrate?.(50)
+  const validateUsername = username => {
+    if (!username.trim()) {
+      throw new Error('Username is required.', { cause: validationError })
+    }
+    return username
   }
   
   const onSubmit = event => {
-    event.preventDefault()
-    const formData = new FormData(event.target)
-    // validate username first.
-    const request = {
-      username: formData.get('username')
+    try {
+      event.preventDefault()
+      navigator.vibrate?.(50)
+      setLoading(true)
+      const formData = new FormData(event.target)
+      const request = {
+        username: validateUsername(formData.get('username'))
+      }
+        
+      // initiate auth call to backend
+      // response returns challenge
+      // challenge is signed by browser/device:
+      // (call navigator.credentials.get() for signature)
+      // send signature to backend for verification and tokens
+      
+      // setSession({ isAuthenticated: true, ...response.message.userData})
+    } catch (error) {
+       if (error.cause === validationError) {
+         setErrors(prev => ({ username: error.message }))
+       }
+    } finally {
+      setLoading(false)
     }
-    // initiate auth call to backend
-    // response returns challenge
-    // challenge is signed by browser/device:
-    // (call navigator.credentials.get() for signature)
-    // send signature to backend for verification and tokens
-    
-    // setSession({ isAuthenticated: true, ...response.message.userData})
   }
   
   
