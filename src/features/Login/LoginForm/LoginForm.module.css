@@ -26,7 +26,7 @@
   outline: none;
 }
 
-.loginForm input:user-invalid {
+.invalid {
   border: 2px solid red;
 }
 
