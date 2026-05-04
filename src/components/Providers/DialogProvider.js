@@ -1,39 +1,33 @@
-import { useState, useRef, useEffect, createContext, useContext } from 'react'
+import { useState, useRef, useCallback, createContext, useContext } from 'react'
 
 const DialogContext = createContext(null)
 
 function DialogProvider({ children }) {
   const [content, setContent] = useState(null)
+  const [isOpen, setIsOpen] = useState(false)
   const dialogRef = useRef(null)
 
-  // Sync the native <dialog> state with React state
-  useEffect(() => {
-    const dialog = dialogRef.current
-    if (!dialog) return
-
-    if (content) {
-      // .showModal() is critical for focus trapping and backdrop
-      if (!dialog.open) {
-        dialog.showModal() 
-      }
-      
-    } else {
-      dialog.close()
-    }
-  }, [content])
-
-  const openDialog = (component) => setContent(component)
-  const closeDialog = () => setContent(null)
+  const openDialog = useCallback(component => {
+    setContent(component)
+    setIsOpen(true)
+    dialogRef.current.showModal() 
+  }, [])
+  
+  const closeDialog = useCallback(() => {
+    setContent(null)
+    setIsOpen(false)
+    dialogRef.current.close()
+  }, [])
 
   return (
     <DialogContext.Provider value={{ openDialog, closeDialog }}>
       {children}
       
-      <Dialog dialogRef={dialogRef} onClose={closeDialog}>
+      <Dialog dialogRef={dialogRef} close={closeDialog} isOpen={isOpen}>
         {content}
       </Dialog>
     </DialogContext.Provider>
   )
 }
 
-export const useDialog = () => useContext(DialogContext)
+export { DialogContext, DialogProvider }
