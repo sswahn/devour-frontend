@@ -418,7 +418,7 @@
 
   /* Dropdown */
   
-  --dropdown-bg: var(--surface-elevated);
+  --dropdown-bg: var(--light-gray);  /* var(--surface-elevated); */
 
   --dropdown-text: var(--text);
 
