@@ -20,7 +20,7 @@ function DialogProvider({ children }) {
     if (!dialogRef.current) {
       return
     }
-    if (!dialogRef.current.open) {
+    if (!isOpen) {
       dialogRef.current.showModal()
     } else {
       dialogRef.current.close()
