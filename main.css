@@ -427,7 +427,7 @@
 
   /* Dropdown */
   
-  --dropdown-bg: light-dark(white, var(--gray));
+  --dropdown-bg: light-dark(var(--white), var(--gray));
 
   --dropdown-text: var(--text);
 
