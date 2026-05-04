@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import useSession from '../../../hooks/useSession'
 import styles from './LoginForm.module.css'
 
@@ -7,6 +7,7 @@ function LoginForm() {
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState([])
   const [errors, setErrors] = useState({
+    browser: '',
     username: ''
   })
 
@@ -49,7 +50,18 @@ function LoginForm() {
       setLoading(false)
     }
   }
-  
+
+  const onInvalid = event => {
+    event.preventDefault()
+    setErrors(prev => ({ browser: event.target.validationMessage })
+  }
+
+  useEffect(() => {
+    document.addEventListener('invalid', onInvalid, true)
+    return () => {
+      document.removeEventListener('invalid', onInvalid, true)
+    }
+  }, [])
   
   return (
     <form className={styles.loginForm} onSubmit={onSubmit} aria-label="login form">
