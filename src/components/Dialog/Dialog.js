@@ -15,6 +15,9 @@ function Dialog() {
   
   // there will only be one, and children will be injected.
   // possibly via DialogContext
+
+
+  // move dialog into the provider, and delete this component
   
   return (
     <dialog id="dialog" ref={dialogRef} className={styles.dialog} hidden={!isOpen}>
