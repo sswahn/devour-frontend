@@ -29,7 +29,7 @@ function ImageEditor() {
       const image = new Image()
       image.src = URL.createObjectURL(file)
       setImage(image)
-    } else (error) {
+    } catch (error) {
       setErrorMessage(error)
     } finally {
       setLoading(false)
