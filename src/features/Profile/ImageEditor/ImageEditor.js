@@ -12,6 +12,7 @@ function ImageEditor() {
       const formData = new FormData(event.target)
       const file = formData.get('upload')
       setImage(URL.createObjectURL(file))
+      // set image to canvas for editing.
     } else (error) {
       setErrorMessage(error)
     }
@@ -19,7 +20,9 @@ function ImageEditor() {
 
   return (
     <div className={styles.imageEditor}>
-      <div className={styles.imageDisplay}></div>
+      <div className={styles.imageDisplay}>
+        {/* need to use canvas */}
+      </div>
       <div>
         <label forHtml="crop">Crop:</label>
         <input id="crop" type="range" name="crop" min="0" max="100" value="50" styles={{ writingMode: 'vertical-lr' }}>
