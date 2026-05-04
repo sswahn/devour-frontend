@@ -487,6 +487,14 @@
   outline: none;
 }
 
+.JGSQMGJEsXFrIiWPZmsd input:user-invalid {
+  border: 2px solid red;
+}
+
+.JGSQMGJEsXFrIiWPZmsd p {
+  color: red;
+}
+
 .JGSQMGJEsXFrIiWPZmsd button[type="submit"] {
   align-items: center;
   background: var(--button-bg);
