@@ -75,7 +75,7 @@ function LoginForm() {
         aria-invalid={errors.username ? true : undefined} 
         aria-errormessage={errors.username ? 'error-username' : undefined} />
       {errors.username && <p id="error-username" role="alert">{errors.username}</p>}
-      <button onClick={onClick} type="submit">Sign In</button>
+      <button type="submit">Sign In</button>
     </form>
   )
 }
