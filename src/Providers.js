@@ -2,6 +2,7 @@ import { SessionProvider } from './components/Providers/SessionProvider'
 import { FocusTrapProvider } from './components/Providers/FocusTrapProvider'
 import { OverlayProvider } from './components/Providers/OverlayProvider'
 import { ProfileProvider } from './components/Providers/ProfileProvider'
+import { DialogProvider } from './components/Providers/DialogProvider'
 import { ContentProvider } from './components/Providers/ContentProvider'
 
 function Providers({ children }) {
@@ -10,9 +11,11 @@ function Providers({ children }) {
       <FocusTrapProvider>
         <OverlayProvider>
           <ProfileProvider>
-            <ContentProvider>
-              {children}
-            </ContentProvider>
+            <DialogProvider>
+              <ContentProvider>
+                {children}
+              </ContentProvider>
+            </DialogProvider>
           </ProfileProvider>
         </OverlayProvider>
       </FocusTrapProvider>
