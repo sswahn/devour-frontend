@@ -1,27 +1,30 @@
-import { useState, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import styles from './Dialog.module.css'
 
-function Dialog() {
+function Dialog({ dialogRef, onClose, children }) {
   const [isOpen, setIsOpen] = useState(false)
-  const dialogRef = useRef(null)
 
   const open = () => {
-    dialogRef.current.showModal()
+    if (!dialogRef.current.open) {
+      setIsOpen(true)
+    }
   }
   
   const close = () => {
-    dialogRef.current.close()
+    setIsOpen(false)
+    onClose()
   }
-  
-  // there will only be one, and children will be injected.
-  // possibly via DialogContext
 
-
-  // move dialog into the provider, and delete this component
+  useEffect(() => {
+    if (dialogRef.current) {
+      open()
+    }
+  }, [])
+ 
   
   return (
-    <dialog id="dialog" ref={dialogRef} className={styles.dialog} hidden={!isOpen}>
-      
+    <dialog id="dialog" ref={dialogRef} className={styles.dialog} hidden={!isOpen} onClose={close}>
+      {children}
     </dialog>
   )
 }
