@@ -17,7 +17,7 @@ function ContextMenu({ items }) {
         <li>
           <button type="button" role="menuitem">
             {item.icon}
-            {item.text}
+            <span>{item.text}</span>
           </button>
         </li>
       )}
