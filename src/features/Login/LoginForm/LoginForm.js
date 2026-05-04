@@ -15,9 +15,15 @@ function LoginForm() {
 
   const validateUsername = username => {
     if (!username.trim()) {
-      throw new Error('Username is required.', { cause: validationError })
+      throw new Error('Username is required.', { cause: 'validationError' })
     }
     return username
+  }
+
+  const handleErrors = error => {
+    if (error.cause === 'validationError') {
+      setErrors(prev => ({ username: error.message }))
+    }
   }
   
   const onSubmit = event => {
@@ -38,9 +44,7 @@ function LoginForm() {
       
       // setSession({ isAuthenticated: true, ...response.message.userData})
     } catch (error) {
-       if (error.cause === validationError) {
-         setErrors(prev => ({ username: error.message }))
-       }
+      handleErrors(error)
     } finally {
       setLoading(false)
     }
