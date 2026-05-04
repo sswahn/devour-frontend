@@ -8,10 +8,19 @@ function ContextMenu({ items }) {
   // also some elements have specific actions, such as feed node: Like, Share, Flag, etc.
   // perhaps use a config for ContextMenu, that uses "info", "actions" and contains keys to the elements,
   // and related content
+
+  //focus controls should work almost the same as in dropdown, without the return focus.
   
   return (
-    <menu className={styles.contextMenu}>
-     {items.map(item => <li>{item.text}</li>)}
+    <menu className={styles.contextMenu} aria-label="context menu">
+      {items.map(item => 
+        <li>
+          <button type="button" role="menuitem">
+            {<item.icon />}
+            {item.text}
+          </button>
+        </li>
+      )}
     </menu>
   )
 }
