@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import styles from './ImageEditore.module.css'
 
 function ImageEditor() {
   const [image, setImage] = useState()
@@ -13,28 +14,20 @@ function ImageEditor() {
   }
 
   return (
-    <div>
+    <div className={styles.imageEditor}>
+      <div className={styles.imageDisplay}></div>
       <div>
-        {/*
-          Three sliders to edit image: 
-          Expand and crop, zoom, and rotate.
-          
-        */}
-
-        <div>
-          <label forHtml="crop">Crop:</label>
-          <input id="crop" type="range" name="crop" min="0" max="100" value="50" styles={{ writingMode: 'vertical-lr' }}>
-        </div>
-         <div>
-          <label forHtml="rotate">Rotate:</label>
-          <input id="rotate" type="range" name="rotate" min="0" max="100" value="50" styles={{ writingMode: 'vertical-lr' }}>
-        </div>
-        <div>
-          <label forHtml="zoom">Zoom:</label>
-          <input id="zoom" type="range" name="zoom" min="0" max="100" value="50" styles={{ writingMode: 'vertical-lr' }}>
-        </div>
+        <label forHtml="crop">Crop:</label>
+        <input id="crop" type="range" name="crop" min="0" max="100" value="50" styles={{ writingMode: 'vertical-lr' }}>
       </div>
-
+       <div>
+        <label forHtml="rotate">Rotate:</label>
+        <input id="rotate" type="range" name="rotate" min="0" max="100" value="50" styles={{ writingMode: 'vertical-lr' }}>
+      </div>
+      <div>
+        <label forHtml="zoom">Zoom:</label>
+        <input id="zoom" type="range" name="zoom" min="0" max="100" value="50" styles={{ writingMode: 'vertical-lr' }}>
+      </div>
       <form onSubmit={onSubmit}>
         <label forHtml="upload">Select an image:</label>
         <input id="upload" type="file"  name="upload" accept="image/*">
@@ -43,3 +36,5 @@ function ImageEditor() {
     </div>
   )
 }
+
+export default ImageEditor
