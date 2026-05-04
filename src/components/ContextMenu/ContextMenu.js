@@ -1,3 +1,4 @@
+import { contextmenu } from '../../config'
 import styles from './Menu.module.css'
 
 function ContextMenu({ items }) {
@@ -9,25 +10,14 @@ function ContextMenu({ items }) {
   // perhaps use a config for ContextMenu, that uses "info", "actions" and contains keys to the elements,
   // and related content
 
-  // Example:
+  /* Example: 
   const contextmenu = {
     feednode: {
       actions: ['like', 'comment', 'share', 'fullscreen', 'report', 'blockuser'],
       information: []
     },
-    camera: {
-      actions: [],
-      information: []
-    },
-    search: {
-      actions: [],
-      information: []
-    },
-    profile: {},
-    notifications: {},
-    dashboard: {},
-    login: {},
   }
+  */
 
   //focus controls should work almost the same as in dropdown, without the return focus.
   
