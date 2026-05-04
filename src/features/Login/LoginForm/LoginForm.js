@@ -6,7 +6,9 @@ function LoginForm() {
   const { setSession } = useSession() 
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState([])
-  const [error, setError] = useState(false)
+  const [errors, setErrors] = useState({
+    username: ''
+  })
 
   // Perform validation checks in javascript and return alert if violated.
   // ex. username.length > 50 characters, etc. -> error out.
@@ -35,7 +37,15 @@ function LoginForm() {
   return (
     <form className={styles.loginForm} onSubmit={onSubmit} aria-label="login form">
       <label htmlFor="username">Email or username:</label>
-      <input id="username" name="username" type="text" inputMode="email" required autoComplete="username webauthn" />
+      <input 
+        id="username" 
+        name="username" 
+        type="text" 
+        inputMode="email" 
+        autoComplete="username webauthn" 
+        aria-invalid={errors.username ? true : undefined} 
+        aria-errormessage={errors.username ? 'error-username' : undefined} />
+      {errors.username && <p id="error-username" role="alert">{errors.username}</p>}
       <button onClick={onClick} type="submit">Sign In</button>
     </form>
   )
