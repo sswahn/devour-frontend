@@ -13,6 +13,10 @@ function LoginForm() {
   // Perform validation checks in javascript and return alert if violated.
   // ex. username.length > 50 characters, etc. -> error out.
 
+  const onFocus = event => {
+    setErrors({ username: '' })
+  }
+  
   const validateUsername = username => {
     if (!username.trim()) {
       throw new Error('Username is required.', { cause: 'validationError' })
@@ -72,6 +76,7 @@ function LoginForm() {
         //type="text"
         type="email"
         inputMode="email" 
+        onFocus={onFocus}
         autoComplete="username webauthn" 
         aria-invalid={errors.username ? true : undefined} 
         aria-errormessage={errors.username ? 'error-username' : undefined} />
