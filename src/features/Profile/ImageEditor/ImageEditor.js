@@ -2,15 +2,19 @@ import { useState } from 'react'
 import styles from './ImageEditore.module.css'
 
 function ImageEditor() {
-  const [image, setImage] = useState()
+  const [image, setImage] = useState(null)
+  const [loading, setLoading] = useState(false)
+  const [errorMessage, setErrorMessage] = useState(false)
 
   const onSubmit = event => {
-    event.preventDefault()
-    
-    const formData = new FormData(event.target)
-    const file = formData.get('upload')
-    
-    setImage(file)
+    try {
+      event.preventDefault()
+      const formData = new FormData(event.target)
+      const file = formData.get('upload')
+      setImage(URL.createObjectURL(file))
+    } else (error) {
+      setErrorMessage(error)
+    }
   }
 
   return (
