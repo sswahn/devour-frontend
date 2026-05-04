@@ -12,7 +12,7 @@ function ContextMenu({ items }) {
   // Example:
   const contextmenu = {
     feednode: {
-      actions: ['like', 'share', 'comment', 'fullscreen', 'report', 'blockuser'],
+      actions: ['like', 'comment', 'share', 'fullscreen', 'report', 'blockuser'],
       information: []
     },
     camera: {},
