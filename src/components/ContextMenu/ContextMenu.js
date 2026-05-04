@@ -15,10 +15,18 @@ function ContextMenu({ items }) {
       actions: ['like', 'comment', 'share', 'fullscreen', 'report', 'blockuser'],
       information: []
     },
-    camera: {},
-    search: {},
+    camera: {
+      actions: [],
+      information: []
+    },
+    search: {
+      actions: [],
+      information: []
+    },
     profile: {},
-    notifications: {}
+    notifications: {},
+    dashboard: {},
+    login: {},
   }
 
   //focus controls should work almost the same as in dropdown, without the return focus.
