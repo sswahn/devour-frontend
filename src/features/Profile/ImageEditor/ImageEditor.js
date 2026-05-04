@@ -28,6 +28,7 @@ function ImageEditor() {
       const file = formData.get('upload')
       const image = new Image()
       image.src = URL.createObjectURL(file)
+      setImage(image)
     } else (error) {
       setErrorMessage(error)
     } finally {
@@ -36,6 +37,9 @@ function ImageEditor() {
   }
 
   useEffect(() => {
+    if (!image) {
+      return
+    }
     image.addEventListener('load', loadImage)
     image.addEventListener('error', loadImageError)
     return () => {
