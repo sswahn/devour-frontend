@@ -13,6 +13,7 @@ function Interface() {
     console.log('contextmenu event fired, and prevented.')
     // leave commented while developing:
     // event.preventDefault()
+    // render <ContextMenu />
   }
 
   useEffect(() => {
