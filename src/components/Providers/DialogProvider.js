@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback, createContext, useContext } from 'react'
+import { useState, useRef, useEffect, useCallback, createContext, useContext } from 'react'
 
 const DialogContext = createContext(null)
 
@@ -10,14 +10,23 @@ function DialogProvider({ children }) {
   const openDialog = useCallback(component => {
     setContent(component)
     setIsOpen(true)
-    dialogRef.current.showModal() 
   }, [])
   
   const closeDialog = useCallback(() => {
-    setContent(null)
     setIsOpen(false)
-    dialogRef.current.close()
   }, [])
+
+  useEffect(() => {
+    if (!dialogRef.current) {
+      return
+    }
+    if (!dialogRef.current.open) {
+      dialogRef.current.showModal()
+    } else {
+      dialogRef.current.close()
+      setContent(null)
+    }
+  }, [isOpen])
 
   return (
     <DialogContext.Provider value={{ openDialog, closeDialog }}>
