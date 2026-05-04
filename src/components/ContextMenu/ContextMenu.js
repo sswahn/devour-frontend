@@ -9,6 +9,18 @@ function ContextMenu({ items }) {
   // perhaps use a config for ContextMenu, that uses "info", "actions" and contains keys to the elements,
   // and related content
 
+  // Example:
+  const contextmenu = {
+    feednode: {
+      actions: ['like', 'share', 'comment', 'fullscreen', 'report', 'blockuser'],
+      information: []
+    },
+    camera: {},
+    search: {},
+    profile: {},
+    notifications: {}
+  }
+
   //focus controls should work almost the same as in dropdown, without the return focus.
   
   return (
