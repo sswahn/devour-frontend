@@ -7,7 +7,6 @@ function LoginForm() {
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState([])
   const [errors, setErrors] = useState({
-    browser: '',
     username: ''
   })
 
@@ -53,7 +52,7 @@ function LoginForm() {
 
   const onInvalid = event => {
     event.preventDefault()
-    setErrors(prev => ({ browser: event.target.validationMessage })
+    setErrors(prev => ({ [event.target.name]: event.target.validationMessage })
   }
 
   useEffect(() => {
