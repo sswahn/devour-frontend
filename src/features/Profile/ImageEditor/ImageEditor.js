@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import styles from './ImageEditore.module.css'
 
 function ImageEditor() {
@@ -7,34 +7,42 @@ function ImageEditor() {
   const [errorMessage, setErrorMessage] = useState(false)
   const canvasRef = useRef(null)
 
+  const loadImage = event => {
+    const canvas = canvasRef.current
+    const ctx = canvas.getContext('2d')
+    canvas.width = image.width
+    canvas.height = image.height
+    ctx.drawImage(image, 0, 0)
+    URL.revokeObjectURL(image.src)
+  }
+
+  const loadImageError = event => {
+    throw event.error
+  }
+
   const onSubmit = event => {
     try {
       event.preventDefault()
       setLoading(true)
       const formData = new FormData(event.target)
       const file = formData.get('upload')
-      const canvas = canvasRef.current
-      const ctx = canvas.getContext('2d')
       const image = new Image()
-      
-      image.onload = () => {
-        canvas.width = image.width
-        canvas.height = image.height
-        ctx.drawImage(image, 0, 0)
-        setLoading(false)
-        URL.revokeObjectURL(image.src)
-      }
-      
-      image.onerror = () => {
-        throw new Error("Failed to load image.")
-      }
-
       image.src = URL.createObjectURL(file)
-
     } else (error) {
       setErrorMessage(error)
+    } finally {
+      setLoading(false)
     }
   }
+
+  useEffect(() => {
+    image.addEventListener('load', loadImage)
+    image.addEventListener('error', loadImageError)
+    return () => {
+      image.removeEventListener('load', loadImage)
+      image.removeEventListener('error', loadImageError)
+    }
+  }, [])
 
   return (
     <div className={styles.imageEditor}>
