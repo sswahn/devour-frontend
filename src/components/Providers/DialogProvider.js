@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback, createContext } from 'react'
+import Dialog from '../Dialog/Dialog'
 
 const DialogContext = createContext(null)
 
