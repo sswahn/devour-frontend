@@ -69,7 +69,8 @@ function LoginForm() {
         id="username" 
         className={errors.username ? styles.invalid : ''}
         name="username" 
-        type="text" 
+        //type="text"
+        type="email"
         inputMode="email" 
         autoComplete="username webauthn" 
         aria-invalid={errors.username ? true : undefined} 
