@@ -65,6 +65,7 @@ function Search() {
         onPointerCancel={onPointerCancel}>
         <nav>
           <CloseButton overlay={overlay.search} close={action} />
+          {/* dont forget dropdown requires icons too. */}
           <Dropdown items={[
             { text: 'alert message', method: () => alert('dropdown item clicked.') },
             { text: 'console log message', method: () => console.log('dropdown item clicked.') }
