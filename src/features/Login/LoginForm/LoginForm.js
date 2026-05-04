@@ -6,15 +6,12 @@ function LoginForm() {
   const { setSession } = useSession() 
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState([])
-  const [errors, setErrors] = useState({
-    username: ''
-  })
+  const [errors, setErrors] = useState({ username: '' })
 
-  // Perform validation checks in javascript and return alert if violated.
-  // ex. username.length > 50 characters, etc. -> error out.
-
-  const onFocus = event => {
-    setErrors({ username: '' })
+  const onChange = event => {
+    if (errors.username) {
+      setErrors({ username: '' })
+    }
   }
   
   const validateUsername = username => {
@@ -65,6 +62,12 @@ function LoginForm() {
       document.removeEventListener('invalid', onInvalid, true)
     }
   }, [])
+
+  useEffect(() => {
+    if (errors.username) {
+      // need to place focus on first invalid input
+    }
+  }, [errors.username])
   
   return (
     <form className={styles.loginForm} onSubmit={onSubmit} aria-label="login form">
@@ -73,10 +76,9 @@ function LoginForm() {
         id="username" 
         className={errors.username ? styles.invalid : ''}
         name="username" 
-        //type="text"
-        type="email"
+        type="text"
+        onChange={onChange}
         inputMode="email" 
-        onFocus={onFocus}
         autoComplete="username webauthn" 
         aria-invalid={errors.username ? true : undefined} 
         aria-errormessage={errors.username ? 'error-username' : undefined} />
