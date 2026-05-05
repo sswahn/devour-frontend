@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import styles from './Input.module.css'
 
 const Input = ({ 
@@ -9,10 +9,11 @@ const Input = ({
   autoComplete, 
   error, 
   required = false, 
-  focus,
+  focus = false,
   ...props 
 }) => {
   const [errorMessage, setErrorMessage] = useState('')
+  const inputRef = useRef(null)
   
   const onChange = event => {
     if (errorMessage) {
@@ -30,11 +31,18 @@ const Input = ({
       setErrorMessage(error)
     }
   }, [error])
+
+  useEffect(() => {
+    if (focus) {
+      inputRef.current.focus()
+    }
+  }, [focus])
   
   return (
     <div className={styles.input}>
       <label htmlFor={id}>{label}:{/* needs opt-in: required && <span>*</span> */}</label>
       <input 
+        ref={inputRef}
         id={id} 
         className={errorMessage ? styles.invalid : ''}
         name={id}
