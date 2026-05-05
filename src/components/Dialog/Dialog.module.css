@@ -1,7 +1,9 @@
 /* Dialog Modal */
 
 .dialog {
-  
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 dialog::backdrop {
