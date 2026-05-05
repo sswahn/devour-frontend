@@ -1,9 +1,9 @@
 
 
-const interceptFetch = async event => {
+const interceptFetch = event => {
   try {
     const { request, respondWith } = event
-    const response = await fetch(request)
+    const response = fetch(request)
     const cache = caches.open('getRequests')
     const cache.put(request, response.clone())
     return respondWith(response)
