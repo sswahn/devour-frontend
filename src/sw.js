@@ -1,5 +1,5 @@
 
-const cacheResponse = (request, response) => {
+const cacheResponse = async (request, response) => {
   if (response.ok) {
     const cache = await caches.open('getRequests')
     cache.put(request, response.clone())
