@@ -78,6 +78,7 @@ function LoginForm() {
         label="Email or username"
         inputMode="email"
         autoComplete="username webauthn"
+        error={errors.username}
         required />
           
       <label htmlFor="username">Email or username:</label>
