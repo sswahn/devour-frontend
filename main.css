@@ -4,9 +4,10 @@
 /* Dialog Modal */
 
 .ZWJzr7wpZVh1FbHdy6Q2 {
-  align-items: center;
-  display: flex;
-  justify-content: center;
+  border: none;
+  inset: 0; 
+  margin: auto;
+  position: fixed; 
 }
 
 dialog::backdrop {
