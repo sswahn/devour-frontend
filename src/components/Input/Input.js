@@ -1,47 +1,38 @@
-import { useId } from 'react'
-import './Input.module.css'
+import styles from './Input.module.css'
 
-const Input = ({ label, error, success, helperText, required, ...props }) => {
-  const id = useId()
-
-  // Logical state for the container
-  const state = error ? 'error' : success ? 'success' : 'default';
+const Input = ({ 
+  id, 
+  type, 
+  label, 
+  inputMode, 
+  onChange, 
+  autoComplete, 
+  errors, 
+  required = false, 
+  ...props 
+}) => {
 
   return (
-    <div className="input-group" data-state={state}>
-      <label htmlFor={id} className="input-label">
+    <div className={styles.input}>
+      <label htmlFor={id}>
         <span>{label}</span>
-        {required && <span className="required-indicator" aria-hidden="true">*</span>}
+        {required && <span>*</span>}
       </label>
-
       <input 
         id={id} 
-        className={styles.input} 
-        aria-invalid={error ? 'true' : undefined}
-        aria-describedby={`${id}-helper ${error ? `${id}-error` : ''}`} 
-       {required && 'required'} 
-       {...props} />
-  
-
-      <div className="input-messages">
-        {error && (
-          <p id={`${id}-error`} className="message error" role="alert">
-            {error}
-          </p>
-        )}
-        {success && (
-          <p className="message success">
-            {success}
-          </p>
-        )}
-        {helperText && !error && (
-          <p id={`${id}-helper`} className="message helper">
-            {helperText}
-          </p>
-        )}
-      </div>
+        className={errors[id] ? styles.invalid : ''}
+        name={id}
+        type={type}
+        onChange={onChange}
+        inputMode={inputMode} 
+        autoComplete={autoComplete}
+        aria-invalid={errors[id] ? true : undefined} 
+        aria-errormessage={errors[id] ? `error-${id}` : undefined}
+        required={required}
+        {...props} />
+      {errors[id] && <p id={`error-${id}`} role="alert">{errors[id]}</p>}
     </div>
   )
 }
 
-export default ModernInput
+export default Input
