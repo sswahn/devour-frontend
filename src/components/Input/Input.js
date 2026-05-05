@@ -9,6 +9,7 @@ const Input = ({
   autoComplete, 
   error, 
   required = false, 
+  focus,
   ...props 
 }) => {
   const [errorMessage, setErrorMessage] = useState('')
