@@ -34,7 +34,7 @@ const Input = ({
     <div className={styles.input}>
       <label htmlFor={id}>
         <span>{label}:</span>
-        {required && <span>*</span>}
+        {/* asterix needs to be optional for required: required && <span>*</span> */}
       </label>
       <input 
         id={id} 
