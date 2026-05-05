@@ -1,6 +1,6 @@
 
 
-const fetchRequest = async event = {
+const fetchRequest = async event => {
     try {
     const { request } = event
     const response = await fetch(request)
