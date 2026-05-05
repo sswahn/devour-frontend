@@ -16,8 +16,8 @@ self.addEventListener('install', onInstall)
 
 
 const activate = async event => {
-  const names = await caches.keys()
-  return Promise.all(names.map(cache => {
+  const keys = await caches.keys()
+  return Promise.all(keys.map(cache => {
     if (cache !== CACHE_NAME) {
       return caches.delete(cache)
     }
