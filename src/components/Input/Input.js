@@ -11,7 +11,8 @@ const Input = ({
   required = false, 
   ...props 
 }) => {
-
+  const [errors, setErrors] = useState({ [id]: '' })
+  
   const onChange = event => {
     if (errors[id]) {
       setErrors({ [id]: '' })
