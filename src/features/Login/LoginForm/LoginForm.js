@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import useSession from '../../../hooks/useSession'
+import Input from '../../../components/Input/Input'
 import styles from './LoginForm.module.css'
 
 function LoginForm() {
@@ -71,6 +72,14 @@ function LoginForm() {
   
   return (
     <form className={styles.loginForm} onSubmit={onSubmit} aria-label="login form">
+      <Input 
+        id="username"
+        type="text"
+        label="Email or username"
+        inputMode="email"
+        autoComplete="username webauthn"
+        required />
+          
       <label htmlFor="username">Email or username:</label>
       <input 
         id="username" 
