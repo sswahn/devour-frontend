@@ -1,4 +1,4 @@
-const webpack = require('webpack')
+const { ProvidePlugin } = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -40,7 +40,7 @@ module.exports = {
       template: path.join(process.cwd(), 'public', 'index.html'),
     }),
     new MiniCssExtractPlugin(),
-    new webpack.ProvidePlugin({
+    new ProvidePlugin({
       React: 'react',
     }),
     new CompressionPlugin({
