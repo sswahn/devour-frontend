@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import styles from './Input.module.css'
 
 const Input = ({ 
