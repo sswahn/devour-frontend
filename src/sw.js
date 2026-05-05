@@ -15,7 +15,7 @@ const fetchRequest = async event => {
     cacheResponse(request, response)
     return response
   } catch (error) {
-    return caches.match(request) // need to handle if cache match doesnt exist
+    return caches.match(request) || Response.error()
   }
 }
 
