@@ -468,6 +468,10 @@
   margin: 0 0 8px 8px;
 }
 
+.VuK4CecepGSeSwTkC1CQ label span {
+  color: red;
+}
+
 .VuK4CecepGSeSwTkC1CQ input {
   background-color: var(--input-bg);
   border: 1px solid var(--input-border);
