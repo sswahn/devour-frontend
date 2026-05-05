@@ -1,13 +1,10 @@
 
+const CACHE_NAME = 'getRequests'
 
 const install = async event => {
-  try {
-    const cache = await caches.open('assets')
-    await cache.addAll(['/', '/index.html', '/index.css'])
-    self.skipWaiting()
-  } catch (error) {
-    
-  }
+  const cache = await caches.open('assets')
+  await cache.addAll(['/', '/index.html', '/index.css'])
+  self.skipWaiting()
 }
 
 const onInstall = event => {
@@ -17,25 +14,27 @@ const onInstall = event => {
 self.addEventListener('install', onInstall)
 
 
-// 2. Activate Event: Clean up old caches
-self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cache => {
-          if (cache !== CACHE_NAME) {
-            return caches.delete(cache);
-          }
-        })
-      );
-    }).then(() => self.clients.claim()) // Takes control of open pages immediately
-  );
-})
+
+const activate = async event => {
+  const names = await caches.keys()
+  return Promise.all(names.map(cache => {
+    if (cache !== CACHE_NAME) {
+      return caches.delete(cache)
+    }
+  }))
+}
+
+const onActivate = event => {
+  event.waitUntil(activate())
+  self.clients.claim()
+}
+
+self.addEventListener('activate', onActivate)
 
 
 const cacheResponse = async (request, response) => {
   if (response.ok) {
-    const cache = await caches.open('getRequests')
+    const cache = await caches.open(CACHE_NAME)
     cache.put(request, response.clone())
   }
 }
