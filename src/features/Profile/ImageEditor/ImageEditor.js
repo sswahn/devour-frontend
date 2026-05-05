@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import useDialog from '../../../hooks/useDialog'
-import styles from './ImageEditore.module.css'
+import styles from './ImageEditor.module.css'
 
 function ImageEditor() {
   const { closeDialog } = useDialog()
