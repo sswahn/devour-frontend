@@ -34,7 +34,7 @@ const Input = ({
   return (
     <div className={styles.input}>
       <label htmlFor={id}>
-        <span>{label}</span>
+        <span>{label}:</span>
         {required && <span>*</span>}
       </label>
       <input 
