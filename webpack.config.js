@@ -10,7 +10,7 @@ module.exports = {
   entry: './src/index.js',
     
   output: {
-    filename: 'main.js',
+    filename: '[name].[contenthash].js',
     path: path.resolve(process.cwd(), 'build'),
     publicPath: '/devour-frontend/',
     clean: true
