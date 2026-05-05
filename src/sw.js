@@ -14,8 +14,7 @@ const onInstall = event => {
 self.addEventListener('install', onInstall)
 
 
-
-const activate = async event => {
+const activate = async () => {
   const keys = await caches.keys()
   await Promise.all(keys
     .filter(key => key !== CACHE_NAME)
@@ -39,7 +38,7 @@ const cacheResponse = async (request, response) => {
 }
 
 const getRequest = async event => {
-    try {
+  try {
     const { request, waitUntil } = event
     const response = await fetch(request)
     waitUntil(cacheResponse(request, response))
