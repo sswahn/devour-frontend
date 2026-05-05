@@ -10,9 +10,9 @@ const cacheResponse = async (request, response) => {
 
 const fetchRequest = async event => {
     try {
-    const { request } = event
+    const { request, waitUntil } = event
     const response = await fetch(request)
-    cacheResponse(request, response)
+    waitUntil(cacheResponse(request, response))
     return response
   } catch (error) {
     return caches.match(request) || Response.error()
