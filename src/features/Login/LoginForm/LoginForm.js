@@ -7,7 +7,6 @@ import styles from './LoginForm.module.css'
 function LoginForm() {
   const { setSession } = useSession() 
   const [loading, setLoading] = useState(false)
-  const [data, setData] = useState([])
   const [errors, setErrors] = useState({ username: '' })
   
   const validateUsername = username => {
