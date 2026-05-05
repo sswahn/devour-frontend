@@ -57,19 +57,19 @@ function ImageEditor() {
       </div>
       <div>
         <label htmlFor="crop">Crop:</label>
-        <input id="crop" type="range" name="crop" min="0" max="100" value="50" styles={{ writingMode: 'vertical-lr' }}>
+        <input id="crop" type="range" name="crop" min="0" max="100" value="50" styles={{ writingMode: 'vertical-lr' }} />
       </div>
        <div>
         <label htmlFor="rotate">Rotate:</label>
-        <input id="rotate" type="range" name="rotate" min="0" max="100" value="50" styles={{ writingMode: 'vertical-lr' }}>
+        <input id="rotate" type="range" name="rotate" min="0" max="100" value="50" styles={{ writingMode: 'vertical-lr' }} />
       </div>
       <div>
         <label htmlFor="zoom">Zoom:</label>
-        <input id="zoom" type="range" name="zoom" min="0" max="100" value="50" styles={{ writingMode: 'vertical-lr' }}>
+        <input id="zoom" type="range" name="zoom" min="0" max="100" value="50" styles={{ writingMode: 'vertical-lr' }} />
       </div>
       <form onSubmit={onSubmit}>
         <label htmlFor="upload">Select an image:</label>
-        <input id="upload" type="file"  name="upload" accept="image/*">
+        <input id="upload" type="file"  name="upload" accept="image/*" />
         <button type="submit">Upload Image</button>
       </form>
       {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
