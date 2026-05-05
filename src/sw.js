@@ -1,6 +1,21 @@
 
 // need 'install' and 'active' event listeners
 
+
+const install = async event => {
+  const cache = await caches.open('assets')
+  cache.addAll(['/', '/index.html', '/index.css'])
+  self.skipWaiting()
+}
+
+const onInstall = event => {
+  event.waitUntil(install())
+})
+
+self.addEventListener('install', onInstall)
+
+
+
 const cacheResponse = async (request, response) => {
   if (response.ok) {
     const cache = await caches.open('getRequests')
@@ -8,7 +23,7 @@ const cacheResponse = async (request, response) => {
   }
 }
 
-const fetchRequest = async event => {
+const getRequest = async event => {
     try {
     const { request, waitUntil } = event
     const response = await fetch(request)
@@ -19,11 +34,11 @@ const fetchRequest = async event => {
   }
 }
 
-const interceptFetch = event => {
+const onFetch = event => {
   const { request, respondWith } = event
   if (request.method === 'GET') {
-    respondWith(fetchRequest(event))
+    respondWith(getRequest(event))
   }
 }
 
-self.addEventListener('fetch', interceptFetch)
+self.addEventListener('fetch', onFetch)
