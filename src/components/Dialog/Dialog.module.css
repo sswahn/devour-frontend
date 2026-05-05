@@ -1,7 +1,9 @@
 /* Dialog Modal */
 
 .dialog {
+  background: var(--surface-elevated);
   border: none;
+  border-radius: 10px;
   left: 50%;
   margin: 0;
   position: absolute;
