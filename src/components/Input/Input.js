@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import styles from './Input.module.css'
 
 const Input = ({ 
@@ -7,22 +8,28 @@ const Input = ({
   inputMode, 
   onChange, 
   autoComplete, 
-  errors, 
+  error, 
   required = false, 
   ...props 
 }) => {
-  const [errors, setErrors] = useState({ [id]: '' })
+  const [errorMessage, setErrorMessage] = useState('')
   
   const onChange = event => {
-    if (errors[id]) {
-      setErrors({ [id]: '' })
+    if (errorMessage) {
+      setErrorMessage('')
     }
   }
 
   const onInvalid = event => {
     event.preventDefault()
-    setErrors(prev => ({ ...prev, [event.target.name]: event.target.validationMessage }))
+    setErrorMessage(event.target.validationMessage)
   }
+
+  useEffect(() => {
+    if (error) {
+      setError(error)
+    }
+  }, [error])
   
   return (
     <div className={styles.input}>
@@ -32,18 +39,18 @@ const Input = ({
       </label>
       <input 
         id={id} 
-        className={errors[id] ? styles.invalid : ''}
+        className={errorMessage ? styles.invalid : ''}
         name={id}
         type={type}
         onChange={onChange}
         onInvalid={onInvalid}
         inputMode={inputMode} 
         autoComplete={autoComplete}
-        aria-invalid={errors[id] ? true : undefined} 
-        aria-errormessage={errors[id] ? `error-${id}` : undefined}
+        aria-invalid={errorMessage ? true : undefined} 
+        aria-errormessage={errorMessage ? `error-${id}` : undefined}
         required={required}
         {...props} />
-      {errors[id] && <p id={`error-${id}`} role="alert">{errors[id]}</p>}
+      {errorMessage && <p id={`error-${id}`} role="alert">{errorMessage}</p>}
     </div>
   )
 }
