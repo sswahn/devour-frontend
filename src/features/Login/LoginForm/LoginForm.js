@@ -74,7 +74,8 @@ function LoginForm() {
     <form className={styles.loginForm} onSubmit={onSubmit} aria-label="login form">
       <Input 
         id="username"
-        type="text"
+       // type="text"
+        type="email"
         label="Email or username"
         inputMode="email"
         autoComplete="username webauthn"
