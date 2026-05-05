@@ -3,7 +3,7 @@
 const install = async event => {
   try {
     const cache = await caches.open('assets')
-    cache.addAll(['/', '/index.html', '/index.css'])
+    await cache.addAll(['/', '/index.html', '/index.css'])
     self.skipWaiting()
   } catch (error) {
     
