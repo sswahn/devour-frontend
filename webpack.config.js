@@ -43,7 +43,7 @@ module.exports = {
   ],
     
   resolve: {
-    extensions: ['.js', '.jsx', '.mjs'] // ['.js', '.jsx', '.mjs', '.*'],
+    extensions: ['.js'] // '.jsx', '.mjs'] // ['.js', '.jsx', '.mjs', '.*'],
   },
     
   devServer: {
