@@ -32,10 +32,7 @@ const Input = ({
   
   return (
     <div className={styles.input}>
-      <label htmlFor={id}>
-        <span>{label}:</span>
-        {/* asterix needs to be optional for required: required && <span>*</span> */}
-      </label>
+      <label htmlFor={id}>{label}:{/* needs opt-in: required && <span>*</span> */}</label>
       <input 
         id={id} 
         className={errorMessage ? styles.invalid : ''}
