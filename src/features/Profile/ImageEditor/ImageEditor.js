@@ -1,7 +1,9 @@
 import { useState, useRef, useEffect } from 'react'
+import useDialog from '../../../hooks/useDialog'
 import styles from './ImageEditore.module.css'
 
 function ImageEditor() {
+  const { closeDialog } = useDialog()
   const [image, setImage] = useState(null)
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState(false)
