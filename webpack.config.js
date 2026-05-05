@@ -46,11 +46,6 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'] // ['.js', '.jsx', '.mjs', '.*'],
   },
-
-  optimization: {
-    usedExports: true
-  },
-
     
   devServer: {
     historyApiFallback: true,
