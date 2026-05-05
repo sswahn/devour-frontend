@@ -1,7 +1,8 @@
-const webpack = require("webpack")
-const path = require("path")
-const HtmlWebpackPlugin = require("html-webpack-plugin")
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const webpack = require('webpack')
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CompressionPlugin = require('compression-webpack-plugin')
 
 module.exports = {
     
@@ -42,6 +43,12 @@ module.exports = {
     new webpack.ProvidePlugin({
       React: 'react',
     }),
+    new CompressionPlugin({
+      algorithm: 'brotliCompress',
+      test: '/\.(js|css|html|svg)$/',
+      compressionOptions: { level: 11 },
+      threshold: 10240
+    })
   ],
     
   resolve: {
