@@ -13,7 +13,9 @@ const fetchRequest = async event => {
 }
 
 const interceptFetch = event => {
-  event.respondWith(fetchRequest(event))
+  if (request.method === 'GET') {
+    event.respondWith(fetchRequest(event))
+  }
 }
 
 self.addEventListener('fetch', interceptFetch)
