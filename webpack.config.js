@@ -45,7 +45,7 @@ module.exports = {
     }),
     new CompressionPlugin({
       algorithm: 'brotliCompress',
-      test: '/\.(js|css|html|svg)$/',
+      test: /\.(js|css|html|svg)$/,
       compressionOptions: { level: 11 },
       threshold: 10240
     })
