@@ -39,7 +39,9 @@ function LoginForm() {
       // (call navigator.credentials.get() for signature)
       // send signature to backend for verification and tokens
       
-      const credentials = '' // await navigator.credentials.get()
+      const credentials = '' // await navigator.credentials.get({
+     //   publicKey: publicKeyCredentialRequestOptions
+    //  })
       
       const request = {
         username,
