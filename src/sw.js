@@ -1,9 +1,10 @@
 const STATIC_CACHE = 'static-v1'
 const RUNTIME_CACHE = 'runtime-v1'
+const PRECACHE_ASSETS = ['/', '/index.html', '/index.css']
 
 const install = async event => {
-  const cache = await caches.open('assets')
-  await cache.addAll(['/', '/index.html', '/index.css'])
+  const cache = await caches.open(STATIC_CACHE)
+  await cache.addAll(PRECACHE_ASSETS)
   self.skipWaiting()
 }
 
