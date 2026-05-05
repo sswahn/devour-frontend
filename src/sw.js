@@ -46,6 +46,11 @@ self.addEventListener('fetch', event => {
     event.respondWith((async () => {
       try {
         const response = await fetch(request)
+        event.waitUntil(
+          caches.open(RUNTIME_CACHE).then(cache =>
+            cache.put(request, response.clone())
+          )
+        )
         return response
       } catch {
         return (await caches.match('/')) || (await caches.match('/index.html'))
