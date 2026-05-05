@@ -18,6 +18,10 @@ const Input = ({
     }
   }
 
+  const onInvalid = event => {
+    event.preventDefault()
+    setErrors(prev => ({ ...prev, [event.target.name]: event.target.validationMessage }))
+  }
   
   return (
     <div className={styles.input}>
@@ -31,6 +35,7 @@ const Input = ({
         name={id}
         type={type}
         onChange={onChange}
+        onInvalid={onInvalid}
         inputMode={inputMode} 
         autoComplete={autoComplete}
         aria-invalid={errors[id] ? true : undefined} 
