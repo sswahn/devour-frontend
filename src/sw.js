@@ -4,12 +4,10 @@ const PRECACHE_ASSETS = ['/', '/index.html', '/index.css']
 const MAX_RUNTIME_ENTRIES = 50
 
 
-// ---- INSTALL ----
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
     const cache = await caches.open(STATIC_CACHE)
 
-    // resilient precache (won’t fail entire install)
     await Promise.allSettled(
       PRECACHE_ASSETS.map(url => cache.add(url))
     )
@@ -19,7 +17,6 @@ self.addEventListener('install', event => {
 })
 
 
-// ---- ACTIVATE ----
 self.addEventListener('activate', event => {
   event.waitUntil((async () => {
     const keys = await caches.keys()
@@ -35,70 +32,60 @@ self.addEventListener('activate', event => {
 })
 
 
-// ---- FETCH ----
 self.addEventListener('fetch', event => {
   const { request } = event
 
-  if (request.method !== 'GET') {
-    return
-  }
-  
+  if (request.method !== 'GET') return
+
   const url = new URL(request.url)
 
-  // only cache same-origin requests
-  if (url.origin !== self.location.origin) {
-    return
-  }
+  if (url.origin !== self.location.origin) return
 
-  // ---- NAVIGATION (SPA fallback) ----
+
   if (request.mode === 'navigate') {
     event.respondWith((async () => {
       try {
-        return await fetch(request)
+        const response = await fetch(request)
+        return response
       } catch {
-        return await caches.match('/index.html')
+        return (await caches.match('/')) || (await caches.match('/index.html'))
       }
     })())
     return
   }
 
 
-  // ---- STATIC ASSETS (cache-first) ----
   if (PRECACHE_ASSETS.includes(url.pathname)) {
-    event.respondWith(caches.match(request))
+    event.respondWith(caches.match(url.pathname))
     return
   }
 
 
-  // ---- RUNTIME (stale-while-revalidate) ----
   event.respondWith(staleWhileRevalidate(request, event))
 })
 
 
-// ---- STRATEGY ----
 async function staleWhileRevalidate(request, event) {
   const cache = await caches.open(RUNTIME_CACHE)
   const cached = await cache.match(request)
 
   const networkPromise = fetch(request).then(async response => {
-    if (response && response.status === 200) {
+    if (response && response.ok && response.type === 'basic') {
       await cache.put(request, response.clone())
       await trimCache(cache, MAX_RUNTIME_ENTRIES)
     }
     return response
   }).catch(() => null)
 
-  // update cache in background
   event.waitUntil(networkPromise)
 
   return cached || networkPromise || Response.error()
 }
 
 
-// ---- CACHE TRIM (simple LRU-ish) ----
 async function trimCache(cache, maxEntries) {
   const keys = await cache.keys()
-  if (keys.length <= maxEntries) return
-
-  await cache.delete(keys[0]) // delete oldest
+  while (keys.length > maxEntries) {
+    await cache.delete(keys.shift())
+  }
 }
