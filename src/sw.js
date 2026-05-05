@@ -1,6 +1,4 @@
 
-// need 'install' and 'active' event listeners
-
 
 const install = async event => {
   const cache = await caches.open('assets')
@@ -14,6 +12,21 @@ const onInstall = event => {
 
 self.addEventListener('install', onInstall)
 
+
+// 2. Activate Event: Clean up old caches
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cache => {
+          if (cache !== CACHE_NAME) {
+            return caches.delete(cache);
+          }
+        })
+      );
+    }).then(() => self.clients.claim()) // Takes control of open pages immediately
+  );
+})
 
 
 const cacheResponse = async (request, response) => {
