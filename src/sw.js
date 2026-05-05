@@ -1,9 +1,12 @@
 const STATIC_CACHE = 'static-v1'
 const RUNTIME_CACHE = 'runtime-v1'
+
 const PRECACHE_ASSETS = ['/', '/index.html', '/index.css']
+
 const MAX_RUNTIME_ENTRIES = 50
 
-// ---- INSTALL (precache critical assets) ----
+
+// ---- INSTALL ----
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
     const cache = await caches.open(STATIC_CACHE)
@@ -18,7 +21,7 @@ self.addEventListener('install', event => {
 })
 
 
-// ---- ACTIVATE (clean old caches) ----
+// ---- ACTIVATE ----
 self.addEventListener('activate', event => {
   event.waitUntil((async () => {
     const keys = await caches.keys()
@@ -34,40 +37,44 @@ self.addEventListener('activate', event => {
 })
 
 
-// ---- FETCH STRATEGIES ----
+// ---- FETCH ----
 self.addEventListener('fetch', event => {
   const { request } = event
 
   if (request.method !== 'GET') return
 
-  // HTML → network-first (fresh content)
-  if (request.headers.get('accept')?.includes('text/html')) {
-    event.respondWith(networkFirst(request, event))
+  const url = new URL(request.url)
+
+  // only cache same-origin requests
+  if (url.origin !== self.location.origin) return
+
+
+  // ---- NAVIGATION (SPA fallback) ----
+  if (request.mode === 'navigate') {
+    event.respondWith((async () => {
+      try {
+        return await fetch(request)
+      } catch {
+        return await caches.match('/index.html')
+      }
+    })())
     return
   }
 
-  // Everything else → stale-while-revalidate
+
+  // ---- STATIC ASSETS (cache-first) ----
+  if (PRECACHE_ASSETS.includes(url.pathname)) {
+    event.respondWith(caches.match(request))
+    return
+  }
+
+
+  // ---- RUNTIME (stale-while-revalidate) ----
   event.respondWith(staleWhileRevalidate(request, event))
 })
 
 
-// ---- STRATEGIES ----
-
-// Network first (good for HTML)
-async function networkFirst(request, event) {
-  try {
-    const response = await fetch(request)
-
-    event.waitUntil(updateCache(RUNTIME_CACHE, request, response))
-
-    return response
-  } catch {
-    return (await caches.match(request)) || Response.error()
-  }
-}
-
-
-// Stale while revalidate (fast + updates in background)
+// ---- STRATEGY ----
 async function staleWhileRevalidate(request, event) {
   const cache = await caches.open(RUNTIME_CACHE)
   const cached = await cache.match(request)
@@ -87,10 +94,10 @@ async function staleWhileRevalidate(request, event) {
 }
 
 
-// ---- CACHE HELPER ----
-async function updateCache(cacheName, request, response) {
-  if (!response || !response.ok) return
+// ---- CACHE TRIM (simple LRU-ish) ----
+async function trimCache(cache, maxEntries) {
+  const keys = await cache.keys()
+  if (keys.length <= maxEntries) return
 
-  const cache = await caches.open(cacheName)
-  await cache.put(request, response.clone())
+  await cache.delete(keys[0]) // delete oldest
 }
