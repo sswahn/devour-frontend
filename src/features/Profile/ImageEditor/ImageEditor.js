@@ -65,6 +65,8 @@ function ImageEditor() {
     }
   }, [image])
 
+  // needs button to toggle the edit sliders, that is crop btn, rotate btn, zoom btn
+
   return (
     <div className={styles.imageEditor}>
       <div className={styles.imageDisplay}>
