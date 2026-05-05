@@ -4,7 +4,6 @@ import Input from '../../components/Input/Input'
 import styles from './Register.module.css'
 
 function Register() {
-  const [data, setData] = useState([])
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
