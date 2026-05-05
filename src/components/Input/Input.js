@@ -8,8 +8,7 @@ const Input = ({
   inputMode, 
   autoComplete, 
   error, 
-  required = false, 
-  focus = false,
+  required = false,
   ...props 
 }) => {
   const [errorMessage, setErrorMessage] = useState('')
@@ -26,17 +25,19 @@ const Input = ({
     setErrorMessage(event.target.validationMessage)
   }
 
-  useEffect(() => {
-    if (error) {
-      setErrorMessage(error)
+  const handleError = () => {
+    const input = inputRef.current
+    if (input?.closest('form').elements[0] === input) {
+      input.focus()
     }
-  }, [error])
+    setErrorMessage(error)
+  }
 
   useEffect(() => {
-    if (focus) {
-      inputRef.current.focus()
+    if (error) {
+      handleError()
     }
-  }, [focus])
+  }, [error])
   
   return (
     <div className={styles.input}>
