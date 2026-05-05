@@ -4,10 +4,11 @@
 /* Dialog Modal */
 
 .ZWJzr7wpZVh1FbHdy6Q2 {
-  border: none;
-  inset: 0; 
-  margin: auto;
-  position: fixed; 
+  left: 50%;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 dialog::backdrop {
