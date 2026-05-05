@@ -1,5 +1,5 @@
-
-const CACHE_NAME = 'getRequests'
+const STATIC_CACHE = 'static-v1'
+const RUNTIME_CACHE = 'runtime-v1'
 
 const install = async event => {
   const cache = await caches.open('assets')
