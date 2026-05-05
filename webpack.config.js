@@ -13,6 +13,7 @@ module.exports = {
     filename: 'main.js',
     path: path.resolve(process.cwd(), 'build'),
     publicPath: '/devour-frontend/',
+    clean: true
   },
     
   module: {
