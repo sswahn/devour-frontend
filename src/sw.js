@@ -1,4 +1,6 @@
 
+// need 'install' and 'active' event listeners
+
 const cacheResponse = async (request, response) => {
   if (response.ok) {
     const cache = await caches.open('getRequests')
