@@ -26,7 +26,7 @@ const Input = ({
 
   useEffect(() => {
     if (error) {
-      setError(error)
+      setErrorMessage(error)
     }
   }, [error])
   
