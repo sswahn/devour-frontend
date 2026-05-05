@@ -12,6 +12,13 @@ const Input = ({
   ...props 
 }) => {
 
+  const onChange = event => {
+    if (errors[id]) {
+      setErrors({ [id]: '' })
+    }
+  }
+
+  
   return (
     <div className={styles.input}>
       <label htmlFor={id}>
