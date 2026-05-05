@@ -1,9 +1,13 @@
 
 
 const install = async event => {
-  const cache = await caches.open('assets')
-  cache.addAll(['/', '/index.html', '/index.css'])
-  self.skipWaiting()
+  try {
+    const cache = await caches.open('assets')
+    cache.addAll(['/', '/index.html', '/index.css'])
+    self.skipWaiting()
+  } catch (error) {
+    
+  }
 }
 
 const onInstall = event => {
