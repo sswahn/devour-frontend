@@ -6,7 +6,6 @@ const Input = ({
   type, 
   label, 
   inputMode, 
-  onChange, 
   autoComplete, 
   error, 
   required = false, 
