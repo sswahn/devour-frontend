@@ -41,13 +41,16 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   const { request } = event
 
-  if (request.method !== 'GET') return
-
+  if (request.method !== 'GET') {
+    return
+  }
+  
   const url = new URL(request.url)
 
   // only cache same-origin requests
-  if (url.origin !== self.location.origin) return
-
+  if (url.origin !== self.location.origin) {
+    return
+  }
 
   // ---- NAVIGATION (SPA fallback) ----
   if (request.mode === 'navigate') {
