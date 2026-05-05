@@ -17,12 +17,12 @@ self.addEventListener('install', onInstall)
 
 const activate = async event => {
   const keys = await caches.keys()
-  keys.forEach(cache => {
+  keys.forEach(async cache => {
     if (cache !== CACHE_NAME) {
-      caches.delete(cache)
+      await caches.delete(cache)
     }
   }))
-  self.clients.claim()
+  await self.clients.claim()
 }
 
 const onActivate = event => {
