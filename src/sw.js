@@ -68,14 +68,21 @@ async function networkFirst(request, event) {
 
 // Stale while revalidate (fast + updates in background)
 async function staleWhileRevalidate(request, event) {
-  const cached = await caches.match(request)
+  const cache = await caches.open(RUNTIME_CACHE)
+  const cached = await cache.match(request)
 
-  const networkPromise = fetch(request).then(response => {
-    event.waitUntil(updateCache(RUNTIME_CACHE, request, response))
+  const networkPromise = fetch(request).then(async response => {
+    if (response && response.status === 200) {
+      await cache.put(request, response.clone())
+      await trimCache(cache, MAX_RUNTIME_ENTRIES)
+    }
     return response
-  })
+  }).catch(() => null)
 
-  return cached || networkPromise
+  // update cache in background
+  event.waitUntil(networkPromise)
+
+  return cached || networkPromise || Response.error()
 }
 
 
