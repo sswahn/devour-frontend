@@ -18,7 +18,7 @@ self.addEventListener('install', onInstall)
 const activate = async () => {
   const keys = await caches.keys()
   await Promise.all(keys
-    .filter(key => key !== CACHE_NAME)
+    .filter(key => ![STATIC_CACHE, RUNTIME_CACHE].includes(key))
     .map(key => caches.delete(key))
   )
   await self.clients.claim()
@@ -33,7 +33,7 @@ self.addEventListener('activate', onActivate)
 
 const cacheResponse = async (request, response) => {
   if (response.ok) {
-    const cache = await caches.open(CACHE_NAME)
+    const cache = await caches.open(RUNTIME_CACHE)
     cache.put(request, response.clone())
   }
 }
