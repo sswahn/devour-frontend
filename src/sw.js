@@ -6,7 +6,12 @@ const PRECACHE_ASSETS = ['/', '/index.html', '/index.css']
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
     const cache = await caches.open(STATIC_CACHE)
-    await cache.addAll(PRECACHE_ASSETS)
+
+    // resilient precache (won’t fail entire install)
+    await Promise.allSettled(
+      PRECACHE_ASSETS.map(url => cache.add(url))
+    )
+
     await self.skipWaiting()
   })())
 })
