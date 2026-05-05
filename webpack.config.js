@@ -46,6 +46,13 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'] // ['.js', '.jsx', '.mjs', '.*'],
   },
+
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    },
+    runtimeChunk: 'single'
+  },
     
   devServer: {
     historyApiFallback: true,
