@@ -5,12 +5,6 @@ const Input = ({ id, type, label, inputMode, autoComplete, error, required }) =>
   const [errorMessage, setErrorMessage] = useState('')
   const inputRef = useRef(null)
 
-  const onChange = event => {
-    if (errorMessage) {
-      setErrorMessage('') // reset
-    }
-  }
-
   const focusInput = () => {
     const input = inputRef.current
     if (input?.closest('form').elements[0] === input) {
@@ -22,6 +16,12 @@ const Input = ({ id, type, label, inputMode, autoComplete, error, required }) =>
     if (err) {
       setErrorMessage(err)
       focusInput()
+    }
+  }
+
+  const onChange = event => {
+    if (errorMessage) {
+      setErrorMessage('') // reset
     }
   }
   
