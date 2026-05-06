@@ -48,7 +48,7 @@ function OverlayProvider({ children }) {
     return () => {
       window.removeEventListener('popstate', handlePopState)
     } 
-  }, [])
+  }, [handlePopState])
 
   return (
     <OverlayContext.Provider value={{ isActive, openOverlay, closeOverlay }}>
