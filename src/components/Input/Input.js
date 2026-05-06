@@ -13,21 +13,16 @@ const Input = ({
 }) => {
   const [errorMessage, setErrorMessage] = useState('')
   const inputRef = useRef(null)
-  
+
   const onChange = event => {
     if (errorMessage) {
-      setErrorMessage('')
+      setErrorMessage('') // reset
     }
   }
 
-  const onInvalid = event => {
-    event.preventDefault()
-    setErrorMessage(event.target.validationMessage)
-  }
-
-  const handleError = () => {
+  const focusInput = () => {
     const input = inputRef.current
-    
+
     const form = input?.closest('form') //.elements[0]
     
     console.log('should be the form: ', form)
@@ -37,12 +32,23 @@ const Input = ({
     if (input?.closest('form').elements[0] === input) {
       input.focus()
     }
-    setErrorMessage(error)
   }
+
+  const handleError = err => {
+    setErrorMessage(err)
+    focusInput()
+  }
+  
+  const onInvalid = event => {
+    event.preventDefault()
+    handleError(event.target.validationMessage)
+  }
+
+
 
   useEffect(() => {
     if (error) {
-      handleError()
+      handleError(error)
     }
   }, [error])
   
