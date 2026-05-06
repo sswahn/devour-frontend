@@ -21,7 +21,7 @@ function Main() {
       window.scrollTo(0, scrollY)
     }
   }
-
+/*
   useEffect(() => {
     if (!isActive) {
       return
@@ -31,6 +31,7 @@ function Main() {
       reset()
     }
   }, [isActive])
+  */
   
   return (
     <main className={styles.main} inert={!!isActive} aria-description="When text is highlighted, it will automatically be read aloud.">
