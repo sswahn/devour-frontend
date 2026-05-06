@@ -19,10 +19,13 @@ function Search() {
   const [recentSearches, setRecentSearches] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
-  const overlayRef = useRef(null)
   const { onPointerDown, onPointerMove, onPointerUp, onPointerCancel } = useSwipeFromEdge(closeOverlay)
+  const overlayRef = useRef(null)
 
-  const onSubmit = event => event.preventDefault()
+  
+  const onSubmit = event => {
+    event.preventDefault()
+  }
 
   const requestSearchResults = useDebounce(async () => {}, 600)
 
