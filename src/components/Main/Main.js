@@ -24,9 +24,9 @@ function Main() {
 
   useEffect(() => {
     if (isActive) {
-      document.documentElement.style.overflow = 'hidden'
+      document.documentElement.style.overflowY = 'hidden'
     } else {
-      document.documentElement.style.overflow = 'scroll'
+      document.documentElement.style.overflowY = ''
     }
   }, [isActive])
   
