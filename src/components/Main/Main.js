@@ -1,4 +1,4 @@
-import { Suspense, lazy } from 'react'
+import { useEffect, Suspense, lazy } from 'react'
 import useOverlay from '../../hooks/useOverlay'
 import Suggestions from '../Suggestions/Suggestions'
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
@@ -7,6 +7,30 @@ import styles from './Main.module.css'
 
 function Main() {
   const { isActive } = useOverlay()
+
+  const toggleScroll = () => {
+    if (!isActive) {
+      return
+    }
+    const scrollY = window.scrollY
+    const element = document.documentElement
+    element.style.position = 'fixed'
+    element.style.top = `-${scrollY}px`
+    element.style.width = '100%'
+    return () => {
+      element.style.position = ''
+      element.style.top = ''
+      element.style.width = ''
+      window.scrollTo(0, scrollY)
+    }
+  }
+
+  useEffect(() => {
+    const reset = toggleScroll()
+    return () => {
+      reset()
+    }
+  }, [isActive])
   
   return (
     <main className={styles.main} inert={!!isActive} aria-description="When text is highlighted, it will automatically be read aloud.">
