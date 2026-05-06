@@ -27,6 +27,13 @@ const Input = ({
 
   const handleError = () => {
     const input = inputRef.current
+    
+    const form = input?.closest('form') //.elements[0]
+    
+    console.log('should be the form: ', form)
+    console.log('form elements: ', form.elements)
+    console.log('first element in form [0]: ', form.elemnts[0])
+    
     if (input?.closest('form').elements[0] === input) {
       input.focus()
     }
