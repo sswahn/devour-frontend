@@ -719,27 +719,6 @@
   background: gray;
 }
 
-/*!***********************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Profile/CloseButton/CloseButton.module.css ***!
-  \***********************************************************************************************************/
-/* Close Button for Profile Editor */
-
-.EZnx2dv8ZwanEykv96AH {
-  align-items: center; 
-  background: none;
-  border: none;
-  border-radius: 50%;
-  display: flex;
-  height: 44px;
-  justify-content: center;
-  cursor: pointer;
-  padding: 10px;
-  position: absolute;
-  right: -10px;
-  top: -10px;
-  width: 44px;
-}
-
 /*!*******************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/features/Profile/TextField/TextField.module.css ***!
   \*******************************************************************************************************/
