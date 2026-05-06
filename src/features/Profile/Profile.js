@@ -27,7 +27,7 @@ function Profile() {
     biography: ''
    })
 
-  const updateProfile = property => setProfile(prev => ({ ...prev, ...property }))
+  const updateProfile = obj => setProfile(prev => ({ ...prev, ...obj }))
 
   const action = () => {
     closeOverlay()
