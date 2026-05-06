@@ -121,7 +121,7 @@
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames based on template
-/******/ 			return "" + chunkId + "." + {"vendors-node_modules_babel_runtime_regenerator_index_js-node_modules_babel_runtime_helpers_es-d28cbc":"e7d14be2aaf850ba599b","src_components_CloseButton_CloseButton_js-src_components_Dropdown_Dropdown_js-src_features_Co-b7175b":"b9665221c3a1e9ca6ac2","src_components_Overlays_Overlays_js-src_components_CloseButton_CloseButton_module_css-src_com-f4a4c4":"26851735d654a0fd85a7","src_features_Feed_Feed_js-src_components_CloseButton_CloseButton_module_css-src_components_Dr-1b0b2b":"ee4f8f22fe607211f025"}[chunkId] + ".js";
+/******/ 			return "" + chunkId + "." + {"vendors-node_modules_babel_runtime_regenerator_index_js-node_modules_babel_runtime_helpers_es-d28cbc":"e7d14be2aaf850ba599b","src_components_CloseButton_CloseButton_js-src_components_Dropdown_Dropdown_js-src_features_Co-b7175b":"b51a2972800502371cc8","src_components_Overlays_Overlays_js-src_components_CloseButton_CloseButton_module_css-src_com-f4a4c4":"bd097095d32abcc31af7","src_features_Feed_Feed_js-src_components_CloseButton_CloseButton_module_css-src_components_Dr-1b0b2b":"bbbd022be60ae2441be4"}[chunkId] + ".js";
 /******/ 		};
 /******/ 	})();
 /******/ 	
