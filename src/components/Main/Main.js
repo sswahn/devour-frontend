@@ -22,16 +22,6 @@ function Main() {
       window.scrollTo(0, scrollY)
     }
   }
-
-  /*
-  useEffect(() => {
-    if (isActive) {
-      document.documentElement.style.overflowY = 'hidden'
-    } else {
-      document.documentElement.style.overflowY = ''
-    }
-  }, [isActive])
-  */
   
   useEffect(() => {
     if (!isActive) {
