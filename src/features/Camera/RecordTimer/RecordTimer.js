@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react'
 import { Context } from '../../../archive/Provider'
-import database from '@sswahn/database'
+import database from '../../../utilities/database'
 import styles from './recordtimer.module.css'
 
 function RecordTimer({ timer, setTimer }) {
