@@ -22,11 +22,17 @@ function FocusTrapProvider({ children }) {
 
   const focusLast = event => {
     const elements = overlayRef.current.querySelectorAll(selector)
+
+    console.log('focus (last) element: ', elements[elements.length - 1])
+    
     elements[elements.length - 1]?.focus()
   }
   
   const focusFirst = event => {
     const elements = overlayRef.current.querySelectorAll(selector)
+
+    console.log('focus (first) element: ', elements[0])
+    
     elements[0]?.focus()
   }
     
