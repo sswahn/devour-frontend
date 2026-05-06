@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { overlay } from '../../config'
 import useOverlay from '../../hooks/useOverlay'
-import useFocusTrap from '../../hooks/useFocusTrap'
 import useGestures from '../../hooks/useGestures'
 import Dropdown from '../../components/Dropdown/Dropdown'
 import styles from './Notifications.module.css'
@@ -10,7 +9,6 @@ import Avatar from '../../components/Avatar/Avatar'
 
 function Notifications() {
   const { closeOverlay } = useOverlay()
-  const { focusRef } = useFocusTrap()
   const [isOpen, setIsOpen] = useState(false)
   const bottomSheetRef = useRef(null)
   const dragging = useRef(false)
@@ -20,6 +18,7 @@ function Notifications() {
   const latestDeltaY = useRef(0)
   const latestHeight = useRef(0)
   const { onGestureDown, onGestureMove, onGestureUp, onGestureCancel } = useGestures()
+  const overlayRef = useRef()
   
   const context = { 
     notifications: [
@@ -147,7 +146,7 @@ function Notifications() {
   }, [])
   
   return (
-    <div id={overlay.notifications} className={styles.notifications} ref={focusRef} onClick={onClick} onKeyDown={onKeyDown} tabIndex={-1} role="dialog" aria-modal="true">
+    <div id={overlay.notifications} className={styles.notifications} ref={overlayRef} onClick={onClick} onKeyDown={onKeyDown} tabIndex={-1} role="dialog" aria-modal="true">
       <section ref={bottomSheetRef}  
         className={`${styles.bottomSheet} ${isOpen ? styles.open : ''}`}
         onPointerDown={onPointerDown}
