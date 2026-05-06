@@ -44,9 +44,6 @@ function useDoubleTap() {
     reset(currentTarget)
   }
   
-  return (
-    
-  )
 }
 
 export default useDoubleTap
