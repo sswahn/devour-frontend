@@ -31,14 +31,20 @@ jobs:
       - name: Build
         run: webpack --config webpack.config.js --stats verbose > build-stats.txt
 
+      - name: Verify Build Output
+        run: ls -la ./build
+
       - name: Upload build stats
         uses: actions/upload-artifact@v4
         with:
           name: webpack-stats
           path: build-stats.txt
-
-      - name: Verify Build Output
-        run: ls -la ./build
+      
+      - name: Bundle summary
+        run: |
+          echo "=== TOP BUNDLES ==="
+          ls -lh build/static/js || true
+          du -sh build/*
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
