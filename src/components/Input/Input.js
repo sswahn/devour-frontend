@@ -1,16 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import styles from './Input.module.css'
 
-const Input = ({ 
-  id, 
-  type, 
-  label, 
-  inputMode, 
-  autoComplete, 
-  error, 
-  required,
-  ...props 
-}) => {
+const Input = ({ id, type, label, inputMode, autoComplete, error, required }) => {
   const [errorMessage, setErrorMessage] = useState('')
   const inputRef = useRef(null)
 
@@ -58,8 +49,7 @@ const Input = ({
         autoComplete={autoComplete}
         aria-invalid={errorMessage ? true : undefined} 
         aria-errormessage={errorMessage ? `error-${id}` : undefined}
-        required={required}
-        {...props} />
+        required={required} />
       {errorMessage && <p id={`error-${id}`} role="alert">{errorMessage}</p>}
     </div>
   )
