@@ -25,16 +25,11 @@ function TextField({ type, text, update }) {
 
   return (
     <div className={styles.textField}>
-      {isOpen 
-        ? <>
-            <input id={`${type}-input`} ref={inputRef} type="text" inputMode="username" defaultValue={text} aria-label={`${type} input`} />
-            <CloseButton field={type} close={close} />
-          </>
-        : <>
-            <span>{text}</span>
-            <EditButton field={type} open={open} />
-          </>
+      {!isOpen // make this a component?
+        ? <span>{text}</span>
+        : <input id={`${type}-input`} ref={inputRef} type="text" inputMode="email" defaultValue={text} aria-label={`${type} input`} />
       }
+      <EditButton field={type} isOpen={isOpen} open={open} close={close} />
     </div>
   )
 }
