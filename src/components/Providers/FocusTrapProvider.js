@@ -33,7 +33,7 @@ function FocusTrapProvider({ children }) {
 
     console.log('focus (first) element: ', elements[0])
     
-    elements[0]?.focus()
+    elements[0]?.focus({ preventScroll: true })
   }
     
   return (
