@@ -9,6 +9,10 @@ function TextField({ type, text, update }) {
   const open = () => setIsOpen(true)
   const close = () => setIsOpen(false)
 
+  const action = () => {
+    isOpen ? close() : open()
+  }
+
   const updateField = event => {
     const value = inputRef.current?.value.trim()
     if (text === value) {
@@ -18,6 +22,13 @@ function TextField({ type, text, update }) {
     // make request asynchronously
   }
 
+  const onKeyDown = event => {
+    if (event.key === 'Enter') {
+      event.preventDefault()
+      action()
+    }
+  }
+  
   useEffect(() => {
     updateField()
   }, [isOpen])
@@ -26,7 +37,7 @@ function TextField({ type, text, update }) {
     <div className={styles.textField}>
       {!isOpen // make this a component?
         ? <span>{text}</span>
-        : <input id={`${type}-input`} ref={inputRef} type="text" inputMode="email" defaultValue={text} aria-label={`input your new ${type}`} />
+        : <input id={`${type}-input`} ref={inputRef} onKeyDown={onKeyDown} type="text" inputMode="email" defaultValue={text} aria-label={`input your new ${type}`} />
       }
       <EditButton field={type} isOpen={isOpen} open={open} close={close} />
     </div>
