@@ -12,12 +12,12 @@ function FocusTrapProvider({ children }) {
 
   const focusLast = event => {
     const elements = focusTrapRef.current.querySelectorAll(selector)
-    elements[elements.length - 1]?.focus()
+    elements[elements.length - 2]?.focus()
   }
   
   const focusFirst = event => {
     const elements = focusTrapRef.current.querySelectorAll(selector)    
-    elements[0]?.focus()
+    elements[1]?.focus()
   }
 
   useEffect(() => {
