@@ -23,11 +23,12 @@ function Main() {
   }
 
   useEffect(() => {
-    if (isActive) {
-      const reset = lockScroll()
-      return () => {
-        reset()
-      }
+    if (!isActive) {
+      return
+    }
+    const reset = lockScroll()
+    return () => {
+      reset()
     }
   }, [isActive])
   
