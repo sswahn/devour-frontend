@@ -13,9 +13,10 @@ function FocusTrapProvider({ children }) {
       overlayRef.current = node
       overlayRef.current.focus()
       setIsMounted(true)
-    } else {  
-      overlayRef.current = null // 2. Cleanup logic (unmount)
-      setIsMounted(false)
+      return () => {
+        overlayRef.current = null
+        setIsMounted(false)
+      }
     }
   }, [])
 
