@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { overlay, api } from '../../config'
 import useOverlay from '../../hooks/useOverlay'
-import useFocusTrap from '../../hooks/useFocusTrap'
 import useSwipeFromEdge from '../../hooks/useSwipeFromEdge'
 import useDebounce from '../../hooks/useDebounce'
 import server from '../../utilities/server'
@@ -14,13 +13,13 @@ import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner'
 import styles from './Search.module.css'
 
 function Search() {
-  const { overlayRef, focusRef } = useFocusTrap()
   const { closeOverlay } = useOverlay()
   const [searchValue, setSearchValue] = useState('')
   const [searchResults, setSearchResults] = useState([])
   const [recentSearches, setRecentSearches] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
+  const overlayRef = useRef(null)
   const { onPointerDown, onPointerMove, onPointerUp, onPointerCancel } = useSwipeFromEdge(closeOverlay)
 
   const onSubmit = event => event.preventDefault()
@@ -54,7 +53,7 @@ function Search() {
     <search 
       id={overlay.search} 
       className={styles.search} 
-      ref={focusRef} 
+      ref={overlayRef} 
       onKeyDown={onKeyDown}
       role="dialog" 
       aria-modal="true">
