@@ -1,10 +1,10 @@
 import EditIcon from '../../../components/Icons/EditIcon/EditIcon'
 import styles from './EditButton.module.css'
 
-function EditButton({ field, open }) {
+function EditButton({ field, isOpen, open, close }) {
 
   const action = () => {
-    open()
+    isOpen ? close() : open()
   }
 
   const onClick = event => {
@@ -21,7 +21,7 @@ function EditButton({ field, open }) {
 
   return (
     <button className={styles.editButton} onClick={onClick} onKeyDown={onKeyDown} type="button" aria-label={`edit profile ${field}`}>
-      <EditIcon size={16} />
+      {!isOpen ? <EditIcon size={16} /> : }
     </button>
   )
 }
