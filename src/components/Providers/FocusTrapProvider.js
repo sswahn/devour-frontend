@@ -30,9 +30,9 @@ function FocusTrapProvider({ children }) {
     <FocusTrapContext.Provider>
       {isMounted &&  (
         <div ref={focusTrapRef}>
-          <div onFocus={focusLast} tabIndex={0} data-focus-sentinel></div>
+          <div onFocus={focusLast} tabIndex={0}></div>
             {children}
-          <div onFocus={focusFirst} tabIndex={0} data-focus-sentinel></div>
+          <div onFocus={focusFirst} tabIndex={0}></div>
         </div>
       )}
     </FocusTrapContext.Provider>
