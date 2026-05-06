@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback, useEffect, createContext } from 'react'
+import { useState, useRef, useEffect, createContext } from 'react'
 
 const OverlayContext = createContext(null)
 
