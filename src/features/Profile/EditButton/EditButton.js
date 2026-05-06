@@ -1,3 +1,4 @@
+import XmarkIcon from '../../../components/Icons/XmarkIcon/XmarkIcon'
 import EditIcon from '../../../components/Icons/EditIcon/EditIcon'
 import styles from './EditButton.module.css'
 
