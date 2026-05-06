@@ -9,11 +9,7 @@ function CloseButton({ overlay, close }) {
   }
  
  return (
-   <button 
-     className={styles.closeButton} 
-     onClick={onClick} 
-     type="button" 
-     aria-label={`close ${overlay}`}>
+   <button className={styles.closeButton} onClick={onClick} type="button" aria-label={`close ${overlay}`}>
      <ArrowLeftIcon />
    </button>
   )
