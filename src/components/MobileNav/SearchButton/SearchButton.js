@@ -29,7 +29,7 @@ function SearchButton() {
       className={styles.searchButton} 
       ref={buttonRef} 
       onClick={onClick} 
-      onKeyDown={onKeyDown} 
+   //   onKeyDown={onKeyDown} 
       type="button" 
       aria-label="search" 
       aria-haspopup="dialog">
