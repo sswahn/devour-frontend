@@ -22,6 +22,7 @@ function Main() {
     }
   }
 
+  /*
   useEffect(() => {
     if (isActive) {
       document.documentElement.style.overflowY = 'hidden'
@@ -29,8 +30,8 @@ function Main() {
       document.documentElement.style.overflowY = ''
     }
   }, [isActive])
+  */
   
-  /*
   useEffect(() => {
     if (!isActive) {
       return
@@ -40,7 +41,6 @@ function Main() {
       reset()
     }
   }, [isActive])
-  */
   
   return (
     <main className={styles.main} inert={!!isActive} aria-description="When text is highlighted, it will automatically be read aloud.">
