@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
 import EditButton from '../EditButton/EditButton'
-import CloseButton from '../CloseButton/CloseButton'
 import styles from './TextField.module.css'
 
 function TextField({ type, text, update }) {
