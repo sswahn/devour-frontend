@@ -27,7 +27,7 @@ function FocusTrapProvider({ children }) {
   }, [isActive])
     
   return (
-    <FocusTrapContext.Provider value={{ overlayRef, focusRef }}>
+    <FocusTrapContext.Provider>
       {isMounted &&  (
         <div ref={focusTrapRef}>
           <div onFocus={focusLast} tabIndex={0}></div>}
