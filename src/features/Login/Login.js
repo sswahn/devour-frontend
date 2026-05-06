@@ -1,7 +1,6 @@
-import { useEffect } from 'react'
+import { useRef, useEffect } from 'react'
 import { overlay } from '../../config'
 import useOverlay from '../../hooks/useOverlay'
-import useFocusTrap from '../../hooks/useFocusTrap'
 import useSwipeFromEdge from '../../hooks/useSwipeFromEdge'
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner'
 import CloseButton from '../../components/CloseButton/CloseButton'
@@ -12,18 +11,14 @@ import AppleButton from './AppleButton/AppleButton'
 import styles from './Login.module.css'
 
 function Login() {
-  const {overlayRef, focusRef} = useFocusTrap()
   const { closeOverlay } = useOverlay()
   const { onPointerDown, onPointerMove, onPointerUp, onPointerCancel } = useSwipeFromEdge(closeOverlay)
-
-  const action = () => {
-    closeOverlay()
-  }
+  const overlayRef = useRef()
 
   const onKeyDown = event => {
     if (event.key === 'Escape') {
       event.preventDefault()
-      action()
+      closeOverlay()
     }
   }
   
@@ -31,7 +26,7 @@ function Login() {
     <section 
       id={overlay.login} 
       className={styles.login} 
-      ref={focusRef} 
+      ref={overlayRef} 
       onKeyDown={onKeyDown} 
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
