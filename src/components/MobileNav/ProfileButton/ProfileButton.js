@@ -23,7 +23,6 @@ function ProfileButton() {
       className={styles.profileButton} 
       ref={buttonRef} 
       onClick={onClick} 
-      onKeyDown={onKeyDown}
       type="button" 
       aria-label="open profile" 
       aria-haspopup="dialog">
