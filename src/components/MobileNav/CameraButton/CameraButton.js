@@ -7,24 +7,12 @@ import styles from './CameraButton.module.css'
 function CameraButton() {
   const buttonRef = useRef(null)
   const { openOverlay } = useOverlay()
-  
-  const action = () => {
-    return;
-    // await document.getElementById('portal').requestFullscreen()
-    // await screen.orientation.lock('portrait')
-    openOverlay(overlay.camera, buttonRef.current)
-  }
  
   const onClick = event => {
     navigator.vibrate?.(50)
-    action()
-  }
-
-   const onKeyDown = event => {
-    if (event.key === 'Enter') {
-      event.preventDefault()
-      action()
-    }
+    // await document.getElementById('portal').requestFullscreen()
+    // await screen.orientation.lock('portrait')
+    openOverlay(overlay.camera, buttonRef.current)
   }
   
   return (
@@ -32,7 +20,6 @@ function CameraButton() {
       className={styles.cameraButton} 
       ref={buttonRef} 
       onClick={onClick} 
-      onKeyDown={onKeyDown}
       type="button" 
       aria-label="open camera" 
       aria-haspopup="dialog">
