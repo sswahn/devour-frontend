@@ -1,3 +1,5 @@
+// Theres more to it than this.
+// Look into the Push Api
 
   const requestPermission = async () => {
     if (!("Notification" in window)) {
