@@ -8,20 +8,9 @@ function SearchButton() {
   const buttonRef = useRef(null)
   const { openOverlay } = useOverlay()
   
-  const action = () => {
-    openOverlay(overlay.search, buttonRef.current)
-  }
-  
   const onClick = event => {
     navigator.vibrate?.(50)
-    action()
-  }
-
-  const onKeyDown = event => {
-    if (event.key === 'Enter') {
-      event.preventDefault()
-      action()
-    }
+    openOverlay(overlay.search, buttonRef.current)
   }
   
   return (
@@ -29,7 +18,6 @@ function SearchButton() {
       className={styles.searchButton} 
       ref={buttonRef} 
       onClick={onClick} 
-      onKeyDown={onKeyDown} 
       type="button" 
       aria-label="search" 
       aria-haspopup="dialog">
