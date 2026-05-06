@@ -21,20 +21,20 @@ function OverlayProvider({ children }) {
     }
   }
 
-  const openOverlay = useCallback((id, focusElement) => {
+  const openOverlay = (id, focusElement) => {
     if (history.state?.overlayOpen === id) {
       return
     }
     history.pushState({ overlayOpen: id }, '')
     push(focusElement)
     setIsActive(id)
-  }, []) 
+  }
   
-  const closeOverlay = useCallback(() => {
+  const closeOverlay = () => {
     if (history.state?.overlayOpen) {
       history.back()
     }
-  }, [])
+  }
 
   const handlePopState = useCallback(() => {
     if (isActive) {
