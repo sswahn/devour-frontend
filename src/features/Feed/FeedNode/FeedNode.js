@@ -58,7 +58,7 @@ function FeedNode({ item, index, count }) {
   
   return (
     <div className={styles.feedNode}>
-      <figure tabIndex={index} aria-posinset={index} aria-setsize={count}
+      <figure aria-posinset={index} aria-setsize={count}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
