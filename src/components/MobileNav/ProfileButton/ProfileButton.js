@@ -12,21 +12,10 @@ function ProfileButton() {
   const { setUserProfile } = useProfile()
   const { openOverlay } = useOverlay()
   
-  const action = () => {
-    setUserProfile(session.username)
-    openOverlay(overlay.profile, buttonRef.current)
-  }
-  
   const onClick = event => {
     navigator.vibrate?.(50)
-    action()
-  }
-
-  const onKeyDown = event => {
-    if (event.key === 'Enter') {
-      event.preventDefault()
-      action()
-    }
+    setUserProfile(session.username)
+    openOverlay(overlay.profile, buttonRef.current)
   }
   
   return (
