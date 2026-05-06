@@ -60,7 +60,12 @@ module.exports = (env, argv) => {
       splitChunks: {
         chunks: 'all'
       },
-      runtimeChunk: 'single'
+      runtimeChunk: 'single',
+      moduleIds: 'deterministic'
+    },
+
+    cache: {
+      type: 'filesystem'
     },
 
     devServer: {
