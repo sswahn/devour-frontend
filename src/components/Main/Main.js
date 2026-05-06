@@ -8,10 +8,7 @@ import styles from './Main.module.css'
 function Main() {
   const { isActive } = useOverlay()
 
-  const toggleScroll = () => {
-    if (!isActive) {
-      return
-    }
+  const lockScroll = () => {
     const scrollY = window.scrollY
     const element = document.documentElement
     element.style.position = 'fixed'
@@ -26,9 +23,11 @@ function Main() {
   }
 
   useEffect(() => {
-    const reset = toggleScroll()
-    return () => {
-      reset()
+    if (isActive) {
+      const reset = toggleScroll()
+      return () => {
+        reset()
+      }
     }
   }, [isActive])
   
