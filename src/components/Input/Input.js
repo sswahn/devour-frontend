@@ -58,7 +58,7 @@ const Input = ({
         autoComplete={autoComplete}
         aria-invalid={errorMessage ? true : undefined} 
         aria-errormessage={errorMessage ? `error-${id}` : undefined}
-        required={required}
+     //   required={required}
         {...props} />
       {errorMessage && <p id={`error-${id}`} role="alert">{errorMessage}</p>}
     </div>
