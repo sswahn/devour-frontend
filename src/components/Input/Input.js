@@ -35,8 +35,10 @@ const Input = ({
   }
 
   const handleError = err => {
-    setErrorMessage(err)
-    focusInput()
+    if (err) {
+      setErrorMessage(err)
+      focusInput()
+    }
   }
   
   const onInvalid = event => {
@@ -44,12 +46,8 @@ const Input = ({
     handleError(event.target.validationMessage)
   }
 
-
-
   useEffect(() => {
-    if (error) {
-      handleError(error)
-    }
+    handleError(error)
   }, [error])
   
   return (
