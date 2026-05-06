@@ -9,10 +9,6 @@ function TextField({ type, text, update }) {
   const open = () => setIsOpen(true)
   const close = () => setIsOpen(false)
 
-  const action = () => {
-    isOpen ? close() : open()
-  }
-
   const updateField = event => {
     const value = inputRef.current?.value.trim()
     if (text === value) {
@@ -25,7 +21,7 @@ function TextField({ type, text, update }) {
   const onKeyDown = event => {
     if (event.key === 'Enter') {
       event.preventDefault()
-      action()
+      close()
     }
   }
   
