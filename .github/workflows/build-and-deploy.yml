@@ -29,7 +29,7 @@ jobs:
         run: npm test -- --ci --coverage
 
       - name: Build
-        run: webpack --config webpack.config.js --stats verbose
+        run: webpack --config webpack.config.js
 
       - name: Verify Build Output
         run: ls -la ./build
