@@ -8,28 +8,16 @@ function NotificationsButton() {
   const buttonRef = useRef(null)
   const { openOverlay } = useOverlay()
   
-  const action = () => {
-    openOverlay(overlay.notifications, buttonRef.current)
-  }
-  
   const onClick = event => {
     navigator.vibrate?.(50)
-    action()
-  }
-
-  const onKeyDown = event => {
-    if (event.key === 'Enter') {
-      event.preventDefault()
-      action()
-    }
+    openOverlay(overlay.notifications, buttonRef.current)
   }
   
   return (
     <button 
       className={styles.notificationsButton} 
       ref={buttonRef} 
-      onClick={onClick} 
-      onKeyDown={onKeyDown}
+      onClick={onClick}
       type="button" 
       aria-label="open notifications" 
       aria-haspopup="dialog">
