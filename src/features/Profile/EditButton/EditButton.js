@@ -21,7 +21,13 @@ function EditButton({ field, isOpen, open, close }) {
   }
 
   return (
-    <button className={styles.editButton} onClick={onClick} onKeyDown={onKeyDown} type="button" aria-label={`edit profile ${field}`}>
+    <button 
+      className={styles.editButton} 
+      onClick={onClick} 
+      onKeyDown={onKeyDown} 
+      type="button" 
+      aria-pressed={isOpen}
+      aria-label={!isOpen ? `edit profile ${field}` : `submit new ${field}`}>
       {!isOpen ? <EditIcon size={16} /> : <XmarkIcon size={16} />}
     </button>
   )
