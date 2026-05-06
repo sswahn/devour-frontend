@@ -1,7 +1,7 @@
 import { useState, useRef, memo } from 'react'
 import { api } from '../../config'
 import server from '../../utilities/server'
-import database from '../../../utilities/database'
+import database from '../../utilities/database'
 import FeedNode from './FeedNode/FeedNode'
 import Sentinel from './Sentinel/Sentinel' 
 import styles from './Feed.module.css'
