@@ -24,7 +24,7 @@ function Main() {
 
   useEffect(() => {
     if (isActive) {
-      const reset = toggleScroll()
+      const reset = lockScroll()
       return () => {
         reset()
       }
