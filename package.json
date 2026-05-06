@@ -15,15 +15,7 @@
     "@babel/preset-react": "^7.22.15",
     "mini-css-extract-plugin": "^2.7.6",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "@sswahn/camera": "^1.0.2",
-    "@sswahn/server": "^1.0.1",
-    "@sswahn/database": "^1.0.2",
-    "@sswahn/storage": "^1.0.3",
-    "@sswahn/router": "^1.2.2",
-    "@sswahn/components": "^2.4.0",
-    "@sswahn/login": "^1.1.5",
-    "@sswahn/social": "^1.1.1"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.23.0",
