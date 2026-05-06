@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { overlay } from '../../config'
 import useOverlay from '../../hooks/useOverlay'
-import useFocusTrap from '../../hooks/useFocusTrap'
 import useSession from '../../hooks/useSession'
 import useProfile from '../../hooks/useProfile'
 import useSwipeFromEdge from '../../hooks/useSwipeFromEdge'
@@ -15,11 +14,10 @@ import EditButton from './EditButton/EditButton'
 import styles from './Profile.module.css'
 
 function Profile() {
-  const { overlayRef, focusRef } = useFocusTrap()
-  const { userProfile } = useProfile() // username of profile to be displayed.
   const { closeOverlay } = useOverlay()
+  const { userProfile } = useProfile() // username of profile to be displayed.
   const { onPointerDown, onPointerMove, onPointerUp, onPointerCancel } = useSwipeFromEdge(closeOverlay)
-  
+  const overlayRef = useRef(null)
   const [profile, setProfile] = useState({
     image: '',
     username: 'test_user',
@@ -47,7 +45,7 @@ function Profile() {
     <section 
       id={overlay.profile}
       className={styles.profile} 
-      ref={focusRef} 
+      ref={overlayRef} 
       onKeyDown={onKeyDown}
       tabIndex={-1} 
       role="dialog" 
