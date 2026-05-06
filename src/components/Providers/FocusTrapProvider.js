@@ -11,12 +11,14 @@ function FocusTrapProvider({ children }) {
   const focusTrapRef = useRef(null)
 
   const focusLast = event => {
-    const elements = focusTrapRef.current.querySelectorAll(selector)
+    const array = [ ...focusTrapRef.current.querySelectorAll(selector) ]
+    const elements =  array.filter(element => !element.hasAttribute('data-focus-sentinel'))
     elements[elements.length - 2]?.focus()
   }
   
   const focusFirst = event => {
-    const elements = focusTrapRef.current.querySelectorAll(selector)    
+    const array = [ ...focusTrapRef.current.querySelectorAll(selector) ]
+    const elements =  array.filter(element => !element.hasAttribute('data-focus-sentinel')) 
     elements[1]?.focus()
   }
 
