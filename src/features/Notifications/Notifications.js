@@ -9,7 +9,7 @@ import Avatar from '../../components/Avatar/Avatar'
 
 function Notifications() {
   const { closeOverlay } = useOverlay()
-  const [isOpen, setIsOpen] = useState(false)
+  const [state, setState] = useState('')
   const bottomSheetRef = useRef(null)
   const dragging = useRef(false)
   const startY = useRef(0)
@@ -53,6 +53,8 @@ function Notifications() {
   } */
 
   const close = currentTarget => {
+    setState('close')
+    return;
     const bottomSheet = currentTarget || bottomSheetRef.current
     let finished = false
   
@@ -111,7 +113,8 @@ function Notifications() {
     const half = window.innerHeight / 2
     const grabberOffset = 9
     const height = (bottomSheetRef.current.offsetHeight - grabberOffset) - half
-    height > half ? close() : expand()
+    //height > half ? close() : expand()
+    setState(height > half ? 'close' : 'expand')
   }
 
   const throttleTransition = (deltaY, currentTarget) => {
@@ -155,11 +158,14 @@ function Notifications() {
     const movement = Math.abs(deltaY)
     currentTarget.style.transition = ''
     if (direction === 'up' && movement > threshold) {
-      expand(currentTarget)
+      //expand(currentTarget)
+      setState('expand')
     } else if (direction === 'down' && movement > 10) {
-      close(currentTarget)
+      //close(currentTarget)
+      setState('close')
     } else {
-      reset(currentTarget)
+      //reset(currentTarget)
+      setState('peek')
     }
   }
   
@@ -174,8 +180,8 @@ function Notifications() {
   useEffect(() => {
     // Wait for the next repaint to transition:
     const timer = requestAnimationFrame(() => {
-      if (!isOpen) {
-        setIsOpen(true)
+      if (!state) {
+        setState('peek')
         bottomSheetRef.current.focus()
       }
     })
@@ -193,7 +199,7 @@ function Notifications() {
   return (
     <div id={overlay.notifications} className={styles.notifications} ref={overlayRef} onClick={onClick} onKeyDown={onKeyDown} tabIndex={-1} role="dialog" aria-modal="true">
       <section ref={bottomSheetRef}  
-        className={`${styles.bottomSheet} ${isOpen ? styles.peek : ''}`}
+        className={`${styles.bottomSheet} ${state === 'peek' && styles.peek} ${state === 'extend' && styles.extend} ${state === 'close' && styles.close}`}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
