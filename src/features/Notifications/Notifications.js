@@ -60,12 +60,12 @@ function Notifications() {
     sheet.style.removeProperty('transform')
     
     // force browser repaint
-    void sheet.offsetHeight
-    
+    // void sheet.offsetHeight
+
     requestAnimationFrame(() => {
-      state === 'expand'
-        ? close()
-        : setState('expand')
+      requestAnimationFrame(() => {
+        state === 'expand' ? close() : setState('expand')
+      })
     })
   }
 
