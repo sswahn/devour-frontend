@@ -73,8 +73,9 @@ function Notifications() {
     bottomSheet.addEventListener('transitionend', onEnd)
   
     requestAnimationFrame(() => {
-      bottomSheet.style.transform = 'translate3d(0, 100dvh, 0)'
-      bottomSheet.parentElement.style.opacity = 0
+      // bottomSheet.style.transform = 'translate3d(0, 100dvh, 0)'
+      // bottomSheet.parentElement.style.opacity = 0
+      bottomSheet.classList.add(styles.close)
     })
   
     // fallback safety net
