@@ -32,7 +32,6 @@ function Notifications() {
 
   const open = currentTarget => {
     const bottomSheet = currentTarget || bottomSheetRef.current
-    bottomSheet.style.transition = ''
     requestAnimationFrame(() => {
       bottomSheet.style.height = '100dvh'
       bottomSheet.style.transform = 'translate3d(0, 8px, 0)'
@@ -41,7 +40,6 @@ function Notifications() {
   
   const close = currentTarget => {
     const bottomSheet = currentTarget || bottomSheetRef.current
-    bottomSheet.style.transition = '' //transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), height 0.4s cubic-bezier(0.25, 1, 0.5, 1)
     bottomSheet.addEventListener('transitionend', closeOverlay, { once: true })
     requestAnimationFrame(() => {
       bottomSheet.style.transform = 'translate3d(0, 100dvh, 0)'
@@ -50,7 +48,6 @@ function Notifications() {
 
   const reset = currentTarget => {
     const bottomSheet = currentTarget || bottomSheetRef.current
-    bottomSheet.style.transition = ''
     requestAnimationFrame(() => {
       currentTarget.style.height = ''
       currentTarget.style.transform = ''
@@ -118,6 +115,7 @@ function Notifications() {
     }
     const threshold = window.innerHeight * 0.25
     const movement = Math.abs(deltaY)
+    currentTarget.style.transition = ''
     if (direction === 'up' && movement > threshold) {
       open(currentTarget)
     } else if (direction === 'down' && movement > 10) {
