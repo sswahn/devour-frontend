@@ -298,6 +298,9 @@
 
 /* the bottom sheet */
 .MzJOiSKo0uK6jIHn7Lhb {
+  --sheet-y: 100%;
+  --drag-y: 0px;
+
   background-color: var(--surface);
   border-top: 1px solid var(--border);
   bottom: 0;
@@ -312,7 +315,7 @@
   padding-top: 8px;
   position: absolute;
  /* transform: translateY(100%);  */ /* start hidden */
-  transform: translate3d(0, calc(100% + var(--drag-y)), 0);
+  transform: translate3d(0, calc(var(--sheet-y) + var(--drag-y)), 0);
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), height 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   touch-action: none;
   width: 100%;
