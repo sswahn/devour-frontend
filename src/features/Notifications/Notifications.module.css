@@ -50,6 +50,11 @@
   transform: translate3d(0, 8px, 0);
 }
 
+.close {
+  opacity: 0;
+  transform: translate3d(0, 100dvh, 0);
+}
+
 /* the grabber handle */
 .notifications section > div {
   background-color: #ccc;
