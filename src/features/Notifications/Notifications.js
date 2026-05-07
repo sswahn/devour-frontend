@@ -55,7 +55,7 @@ function Notifications() {
   const handleGrabberClick = event => {
     event.stopPropagation()
     navigator.vibrate?.(50)
-    const bottomSheet = bottomSheet.current
+    const bottomSheet = bottomSheetRef.current
     bottomSheet.style.removeProperty('transform')
     bottomSheet.style.transform = state === 'expand' ? 'translate3d(0, 8px, 0)' : ''
     
