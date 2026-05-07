@@ -41,7 +41,7 @@
   box-sizing: content-box; 
 }
 
-.mount {
+.peek {
   transform: translateY(0);
 }
 
