@@ -46,18 +46,19 @@
 }
 
 .peek {
-  transform: translateY(0);
+  --sheet-y: 50dvh;
 }
 
 .expand {
   height: 100svh;
-  transform: translate3d(0, 8px, 0);
+  --sheet-y: 8px;
 }
 
 .close {
   opacity: 0;
-  transform: translate3d(0, 100dvh, 0);
+  --sheet-y: 100dvh;
 }
+
 
 /* the grabber handle */
 .notifications section > div {
