@@ -57,8 +57,9 @@
 }
 
 .close {
-  opacity: 0;
   --sheet-y: 100dvh;
+  opacity: 0;
+  transition: transform 0.4s, opacity 0.2s;
 }
 
 .dragging {
