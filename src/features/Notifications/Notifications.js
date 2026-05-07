@@ -31,14 +31,10 @@ function Notifications() {
   }
 
   const close = () => {
-    const bottomSheet = bottomSheetRef.current
-    const currentTransform = getComputedStyle(bottomSheet).transform
-    bottomSheet.style.transform = currentTransform
-    bottomSheet.offsetHeight // force reflow (critical)
-    requestAnimationFrame(() => {
-      setState('close')
+    setState('close')
+    bottomSheetRef.current.addEventListener('transitionend', closeOverlay, {
+      once: true,
     })
-    bottomSheet.addEventListener('transitionend', closeOverlay, { once: true })
   }
 
   const onClick = event => {
