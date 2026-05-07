@@ -113,20 +113,6 @@ function Notifications() {
   const handleDropDown = event => {
     alert('Dropdown button fires.')
   }
-/*
-  useEffect(() => {
-    // Wait for the next repaint to transition:
-    const timer = requestAnimationFrame(() => {
-      if (!state) {
-        setState('peek')
-        bottomSheetRef.current.focus()
-      }
-    })
-    return () => {
-      cancelAnimationFrame(timer)
-    }
-  }, [])
-  */
   
   return (
     <div id={overlay.notifications} className={styles.notifications} ref={overlayRef} onClick={onClick} onKeyDown={onKeyDown} tabIndex={-1} role="dialog" aria-modal="true">
