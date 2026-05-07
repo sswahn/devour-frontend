@@ -18,7 +18,8 @@ function Main() {
     Object.assign(body.style, {
       position: 'fixed',
       top: `-${scrollY}px`,
-      width: '100%'
+      left: '0',
+      right: '0'
     })
     return () => {
       //element.style.position = ''
@@ -27,7 +28,8 @@ function Main() {
       Object.assign(body.style, {
         position: '',
         top: '',
-        width: ''
+        left: '',
+        right: ''
       })
       window.scrollTo(0, scrollY)
     }
