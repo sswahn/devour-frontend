@@ -105,7 +105,7 @@ function Notifications() {
     } else if (direction === 'down' && movement > 10) {
       close()
     } else {
-      setState('peek')
+      setState(prev => prev === 'expand' ? 'expand' : 'peek')
     }
   }
   
