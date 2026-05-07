@@ -42,6 +42,7 @@ function Notifications() {
   
   const close = currentTarget => {
     const bottomSheet = currentTarget || bottomSheetRef.current
+    bottomSheet.style.transition = 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), height 0.4s cubic-bezier(0.25, 1, 0.5, 1)'
     bottomSheet.addEventListener('transitionend', action, { once: true })
     requestAnimationFrame(() => {
       bottomSheet.style.transform = 'translate3d(0, 100dvh, 0)'
