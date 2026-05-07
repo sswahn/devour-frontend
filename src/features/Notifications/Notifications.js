@@ -33,6 +33,7 @@ function Notifications() {
 
   const close = () => {
     setState('close')
+    clearTimeout(closeTimeout.current)
     closeTimeout.current = setTimeout(() => {
       closeOverlay()
     }, 200)
