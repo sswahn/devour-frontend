@@ -9,7 +9,7 @@ import Avatar from '../../components/Avatar/Avatar'
 
 function Notifications() {
   const { closeOverlay } = useOverlay()
-  const [state, setState] = useState('peek')
+  const [state, setState] = useState('')
   const dragging = useRef(false)
   const startY = useRef(0)
   const startTime = useRef(0)
@@ -121,7 +121,13 @@ function Notifications() {
   }
 
   useEffect(() => {
-    return () => clearTimeout(closeTimeout.current)
+    const id = requestAnimationFrame(() => {
+      setState('peek')
+    })
+    return () => {
+      cancelAnimationFrame(id)
+      clearTimeout(closeTimeout.current)
+    }
   }, [])
   
   return (
