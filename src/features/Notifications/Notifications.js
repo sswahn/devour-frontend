@@ -19,7 +19,6 @@ function Notifications() {
   const { onGestureDown, onGestureMove, onGestureUp, onGestureCancel } = useGestures()
   const overlayRef = useRef(null)
   const bottomSheetRef = useRef(null)
-  const closeTimeout = useRef(0)
   
   const context = { 
     notifications: [
@@ -32,13 +31,12 @@ function Notifications() {
   }
 
   const close = () => {
-    setState('close')
     bottomSheetRef.current.addEventListener('transitionend', closeOverlay, { once: true })
-    
-    //clearTimeout(closeTimeout.current)
-    //closeTimeout.current = setTimeout(() => {
-      //closeOverlay()
-    //}, 200)
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        setState('close')
+      })
+    })
   }
 
   const onClick = event => {
@@ -66,7 +64,6 @@ function Notifications() {
     if (!ticking.current) {
       ticking.current = true
       requestAnimationFrame(() => {
-        //currentTarget.style.transform = `translate3d(0, ${latestDeltaY.current}px, 0)`
         currentTarget.style.setProperty('--drag-y', `${latestDeltaY.current}px`)
         ticking.current = false
       })
@@ -128,9 +125,6 @@ function Notifications() {
         setState('peek')
       })
     })
-    return () => {
-      clearTimeout(closeTimeout.current)
-    }
   }, [])
   
   return (
