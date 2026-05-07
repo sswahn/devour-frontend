@@ -55,9 +55,9 @@ function Notifications() {
   const handleGrabberClick = event => {
     event.stopPropagation()
     navigator.vibrate?.(50)
-
-    sheet.style.removeProperty('transition')
-    sheet.style.removeProperty('transform')
+    const bottomSheet = bottomSheet.current
+    bottomSheet.style.removeProperty('transition')
+    bottomSheet.style.removeProperty('transform')
     
     // force browser repaint
     // void sheet.offsetHeight
