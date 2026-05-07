@@ -31,17 +31,14 @@ function Notifications() {
   }
 
   const close = () => {
-    bottomSheetRef.current.addEventListener('transitionend', closeOverlay, { once: true })
-
-    console.log('BEFORE', getComputedStyle(sheet).transform)
-    
+    const bottomSheet = bottomSheetRef.current
+    const currentTransform = getComputedStyle(bottomSheet).transform
+    bottomSheet.style.transform = currentTransform
+    bottomSheet.offsetHeight // force reflow (critical)
     requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        setState('close')
-
-        console.log('AFTER RAF', getComputedStyle(sheet).transform)
-      })
+      setState('close')
     })
+    bottomSheet.addEventListener('transitionend', closeOverlay, { once: true })
   }
 
   const onClick = event => {
