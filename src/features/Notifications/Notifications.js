@@ -56,8 +56,8 @@ function Notifications() {
     event.stopPropagation()
     navigator.vibrate?.(50)
     const bottomSheet = bottomSheet.current
-    bottomSheet.style.removeProperty('transition')
     bottomSheet.style.removeProperty('transform')
+    bottomSheet.style.transform = state === 'expand' ? 'translate3d(0, 8px, 0)' : ''
     
     // force browser repaint
     // void sheet.offsetHeight
