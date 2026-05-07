@@ -183,11 +183,17 @@ function Notifications() {
       cancelAnimationFrame(timer)
     }
   }, [])
+
+  // use state to control styles in bottomsheet
+  // something like 
+  // state === 'peek' && styles.peek
+  // state === 'expand' && styles.expand
+  // state === 'close' && styles.close
   
   return (
     <div id={overlay.notifications} className={styles.notifications} ref={overlayRef} onClick={onClick} onKeyDown={onKeyDown} tabIndex={-1} role="dialog" aria-modal="true">
       <section ref={bottomSheetRef}  
-        className={`${styles.bottomSheet} ${isOpen ? styles.mount : ''}`}
+        className={`${styles.bottomSheet} ${isOpen ? styles.peek : ''}`}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
