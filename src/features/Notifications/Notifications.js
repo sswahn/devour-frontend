@@ -86,7 +86,6 @@ function Notifications() {
     onGestureDown(event)
     latestHeight.current = currentTarget.offsetHeight
     currentTarget.style.transition = 'none'
-    currentTarget.style.willChange = 'transform'
   }
   
   const onPointerMove = event => {
