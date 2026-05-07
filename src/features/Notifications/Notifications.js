@@ -92,13 +92,13 @@ function Notifications() {
     const { clientY, currentTarget } = event
     const { deltaY, direction, velocity, timestamp, tapCount } = onGestureUp(event)
     ticking.current = false // 1. Kill the move throttle immediately  
+    currentTarget.classList.remove(styles.dragging)
+    currentTarget.style.setProperty('--drag-y', '0px')
     if (tapCount > 0) { 
       return
     }
     const threshold = window.innerHeight * 0.25
     const movement = Math.abs(deltaY)
-    currentTarget.classList.remove(styles.dragging)
-    currentTarget.style.setProperty('--drag-y', '0px')
     if (direction === 'up' && movement > threshold) {
       setState('expand')
     } else if (direction === 'down' && movement > 10) {
