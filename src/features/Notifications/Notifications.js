@@ -10,7 +10,6 @@ import Avatar from '../../components/Avatar/Avatar'
 function Notifications() {
   const { closeOverlay } = useOverlay()
   const [state, setState] = useState('peek')
-  const bottomSheetRef = useRef(null)
   const dragging = useRef(false)
   const startY = useRef(0)
   const startTime = useRef(0)
@@ -19,6 +18,7 @@ function Notifications() {
   const latestHeight = useRef(0)
   const { onGestureDown, onGestureMove, onGestureUp, onGestureCancel } = useGestures()
   const overlayRef = useRef(null)
+  const bottomSheetRef = useRef(null)
   const closeTimeout = useRef(0)
   
   const context = { 
