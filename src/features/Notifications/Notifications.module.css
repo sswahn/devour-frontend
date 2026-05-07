@@ -41,8 +41,13 @@
   box-sizing: content-box; 
 }
 
-.open {
+.mount {
   transform: translateY(0);
+}
+
+.expand {
+  height: 100dvh;
+  transform: translate3d(0, 8px, 0);
 }
 
 /* the grabber handle */
