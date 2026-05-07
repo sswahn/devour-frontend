@@ -936,6 +936,10 @@
   left: 0;
   position: absolute;
   top: 0;
+
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+  
   width: 100%;
   z-index: 150;
 }
