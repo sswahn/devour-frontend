@@ -53,9 +53,7 @@ function Notifications() {
 
   const handleGrabberClick = event => {
     navigator.vibrate?.(50)
-    setState(prev =>
-      prev === 'expand' ? 'close' : 'expand'
-    )
+    state === 'expand' ? close() : setState('expand')
   }
 
   const throttleTransition = (deltaY, currentTarget) => {
@@ -102,7 +100,7 @@ function Notifications() {
     if (direction === 'up' && movement > threshold) {
       setState('expand')
     } else if (direction === 'down' && movement > 10) {
-      setState('close')
+      close()
     } else {
       setState('peek')
     }
