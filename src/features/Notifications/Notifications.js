@@ -121,11 +121,12 @@ function Notifications() {
   }
 
   useEffect(() => {
-    const id = requestAnimationFrame(() => {
-      setState('peek')
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        setState('peek')
+      })
     })
     return () => {
-      cancelAnimationFrame(id)
       clearTimeout(closeTimeout.current)
     }
   }, [])
