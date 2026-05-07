@@ -34,7 +34,7 @@
   position: absolute;
  /* transform: translateY(100%);  */ /* start hidden */
   transform: translate3d(0, calc(var(--sheet-y) + var(--drag-y)), 0);
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), height 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); /*, height 0.4s cubic-bezier(0.25, 1, 0.5, 1); */
   touch-action: none;
   width: 100%;
   will-change: transform; /* Ensures it doesn't flicker before starting */
@@ -50,7 +50,7 @@
 }
 
 .expand {
-  height: 100svh;
+ /* height: 100svh; */
   --sheet-y: 8px;
 }
 
