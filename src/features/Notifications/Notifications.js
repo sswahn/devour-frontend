@@ -37,8 +37,9 @@ function Notifications() {
   const open = currentTarget => {
     const bottomSheet = currentTarget || bottomSheetRef.current
     requestAnimationFrame(() => {
-      bottomSheet.style.height = '100dvh'
-      bottomSheet.style.transform = 'translate3d(0, 8px, 0)'
+      //bottomSheet.style.height = '100dvh'
+      //bottomSheet.style.transform = 'translate3d(0, 8px, 0)'
+      bottomSheet.classList.add(styles.expand)
     })
   }
 
