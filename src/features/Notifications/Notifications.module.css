@@ -16,7 +16,7 @@
 
 /* the bottom sheet */
 .bottomSheet {
-  --sheet-y: var(--sheet-start, 50dvh);
+  --sheet-y: 100dvh;
   --drag-y: 0px;
 
   background-color: var(--surface);
@@ -46,17 +46,17 @@
 }
 
 .peek {
-  --sheet-start: 50dvh;
+  --sheet-y: 50dvh;
 }
 
 .expand {
  /* height: 100svh; */
-  --sheet-start: 8px;
+  --sheet-y: 8px;
 }
 
 .close {
   opacity: 0;
-  --sheet-start: 100dvh;
+  --sheet-y: 100dvh;
 }
 
 .dragging {
