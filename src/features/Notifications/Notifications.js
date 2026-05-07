@@ -32,9 +32,14 @@ function Notifications() {
 
   const close = () => {
     bottomSheetRef.current.addEventListener('transitionend', closeOverlay, { once: true })
+
+    console.log('BEFORE', getComputedStyle(sheet).transform)
+    
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         setState('close')
+
+        console.log('AFTER RAF', getComputedStyle(sheet).transform)
       })
     })
   }
