@@ -37,13 +37,42 @@ function Notifications() {
       bottomSheet.style.transform = 'translate3d(0, 8px, 0)'
     })
   }
-  
+
+  /*
   const close = currentTarget => {
     const bottomSheet = currentTarget || bottomSheetRef.current
     bottomSheet.addEventListener('transitionend', closeOverlay, { once: true })
     requestAnimationFrame(() => {
       bottomSheet.style.transform = 'translate3d(0, 100dvh, 0)'
     })
+  } */
+
+  const close = currentTarget => {
+    const bottomSheet = currentTarget || bottomSheetRef.current
+    let finished = false
+  
+    const done = () => {
+      if (finished) return
+      finished = true
+  
+      bottomSheet.removeEventListener('transitionend', onEnd)
+      closeOverlay()
+    }
+
+    const onEnd = event => {
+      // ensure we only react to transform (not height)
+      if (event.propertyName !== 'transform') return
+      done()
+    }
+  
+    bottomSheet.addEventListener('transitionend', onEnd)
+  
+    requestAnimationFrame(() => {
+      bottomSheet.style.transform = 'translate3d(0, 100dvh, 0)'
+    })
+  
+    // fallback safety net
+    setTimeout(done, 450)
   }
 
   const reset = currentTarget => {
