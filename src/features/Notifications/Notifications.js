@@ -82,7 +82,7 @@ function Notifications() {
       return
     }
     // const translateY = deltaY * 0.5 // linear
-    const translateY = deltaY / (1 + Math.abs(deltaY) / 300) // asymptotic
+    const translateY = deltaY / (1 + Math.abs(deltaY) / 200) // asymptotic
     throttleTransition(translateY, currentTarget)
   }
   
