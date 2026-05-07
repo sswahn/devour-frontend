@@ -28,7 +28,7 @@
   padding-top: 8px;
   position: absolute;
   transform: translateY(100%);   /* start hidden */
-  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), height 0.2s ease;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), height 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   touch-action: none;
   width: 100%;
   will-change: transform; /* Ensures it doesn't flicker before starting */
