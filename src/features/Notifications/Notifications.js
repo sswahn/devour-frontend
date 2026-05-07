@@ -9,7 +9,7 @@ import Avatar from '../../components/Avatar/Avatar'
 
 function Notifications() {
   const { closeOverlay } = useOverlay()
-  const [state, setState] = useState('')
+  const [state, setState] = useState('peek')
   const bottomSheetRef = useRef(null)
   const dragging = useRef(false)
   const startY = useRef(0)
@@ -115,7 +115,7 @@ function Notifications() {
   const handleDropDown = event => {
     alert('Dropdown button fires.')
   }
-
+/*
   useEffect(() => {
     // Wait for the next repaint to transition:
     const timer = requestAnimationFrame(() => {
@@ -128,6 +128,7 @@ function Notifications() {
       cancelAnimationFrame(timer)
     }
   }, [])
+  */
   
   return (
     <div id={overlay.notifications} className={styles.notifications} ref={overlayRef} onClick={onClick} onKeyDown={onKeyDown} tabIndex={-1} role="dialog" aria-modal="true">
