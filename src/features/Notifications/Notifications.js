@@ -159,7 +159,7 @@ function Notifications() {
     currentTarget.style.transition = ''
     if (direction === 'up' && movement > threshold) {
       //expand(currentTarget)
-      setState('expand')
+      setState('extend')
     } else if (direction === 'down' && movement > 10) {
       //close(currentTarget)
       setState('close')
