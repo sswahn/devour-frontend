@@ -332,6 +332,11 @@
   transform: translate3d(0, 8px, 0);
 }
 
+.Xbr3YpUie58bMj6nUAbA {
+  opacity: 0;
+  transform: translate3d(0, 100dvh, 0);
+}
+
 /* the grabber handle */
 .F9PYmx_5X6rU17dx6cCf section > div {
   background-color: #ccc;
