@@ -16,7 +16,7 @@
 
 /* the bottom sheet */
 .bottomSheet {
-  --sheet-y: 100%;
+  --sheet-y: 50dvh;
   --drag-y: 0px;
 
   background-color: var(--surface);
