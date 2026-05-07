@@ -159,7 +159,7 @@ function Notifications() {
     currentTarget.style.transition = ''
     if (direction === 'up' && movement > threshold) {
       //expand(currentTarget)
-      setState('extend')
+      setState('expand')
     } else if (direction === 'down' && movement > 10) {
       //close(currentTarget)
       setState('close')
@@ -199,7 +199,7 @@ function Notifications() {
   return (
     <div id={overlay.notifications} className={styles.notifications} ref={overlayRef} onClick={onClick} onKeyDown={onKeyDown} tabIndex={-1} role="dialog" aria-modal="true">
       <section ref={bottomSheetRef}  
-        className={`${styles.bottomSheet} ${state === 'peek' && styles.peek} ${state === 'extend' && styles.extend} ${state === 'close' && styles.close}`}
+        className={`${styles.bottomSheet} ${state === 'peek' && styles.peek} ${state === 'expand' && styles.expand} ${state === 'close' && styles.close}`}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
