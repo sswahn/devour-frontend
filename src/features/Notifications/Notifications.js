@@ -30,68 +30,11 @@ function Notifications() {
     ]
   }
 
-  // use css modules instead of inline styles.
-  // .classList.add(styles.expand) / .classList.remove(styles.expand)
-  //
-
-  const expand = currentTarget => {
-    const bottomSheet = currentTarget || bottomSheetRef.current
-    requestAnimationFrame(() => {
-      //bottomSheet.style.height = '100dvh'
-      //bottomSheet.style.transform = 'translate3d(0, 8px, 0)'
-      bottomSheet.classList.add(styles.expand)
-    })
-  }
-
-  /*
-  const close = currentTarget => {
-    const bottomSheet = currentTarget || bottomSheetRef.current
-    bottomSheet.addEventListener('transitionend', closeOverlay, { once: true })
-    requestAnimationFrame(() => {
-      bottomSheet.style.transform = 'translate3d(0, 100dvh, 0)'
-    })
-  } */
-
-  const close = currentTarget => {
+  const close = () => {
     setState('close')
-    return;
-    const bottomSheet = currentTarget || bottomSheetRef.current
-    let finished = false
-  
-    const done = () => {
-      if (finished) return
-      finished = true
-  
-      bottomSheet.removeEventListener('transitionend', onEnd)
+    setTimeout(() => {
       closeOverlay()
-    }
-
-    const onEnd = event => {
-      // ensure we only react to transform (not height)
-      if (event.propertyName !== 'transform') return
-      done()
-    }
-  
-    bottomSheet.addEventListener('transitionend', onEnd)
-  
-    requestAnimationFrame(() => {
-      // bottomSheet.style.transform = 'translate3d(0, 100dvh, 0)'
-      // bottomSheet.parentElement.style.opacity = 0
-      bottomSheet.classList.contains(styles.expand)
-        ? bottomSheet.classList.replace(styles.expand, styles.close)
-        : bottomSheet.classList.add(styles.close)
-    })
-  
-    // fallback safety net
-    setTimeout(done, 450)
-  }
-
-  const reset = currentTarget => {
-    const bottomSheet = currentTarget || bottomSheetRef.current
-    requestAnimationFrame(() => {
-      currentTarget.style.height = ''
-      currentTarget.style.transform = ''
-    })
+    }, 400)
   }
 
   const onClick = event => {
@@ -114,7 +57,7 @@ function Notifications() {
     const grabberOffset = 9
     const height = (bottomSheetRef.current.offsetHeight - grabberOffset) - half
     //height > half ? close() : expand()
-    setState(height > half ? 'close' : 'expand')
+    height > half ? close() : setState('expand')
   }
 
   const throttleTransition = (deltaY, currentTarget) => {
@@ -159,13 +102,10 @@ function Notifications() {
     currentTarget.style.transition = ''
     currentTarget.style.transform = ''
     if (direction === 'up' && movement > threshold) {
-      //expand(currentTarget)
       setState('expand')
     } else if (direction === 'down' && movement > 10) {
-      //close(currentTarget)
       setState('close')
     } else {
-      //reset(currentTarget)
       setState('peek')
     }
   }
@@ -190,12 +130,6 @@ function Notifications() {
       cancelAnimationFrame(timer)
     }
   }, [])
-
-  // use state to control styles in bottomsheet
-  // something like 
-  // state === 'peek' && styles.peek
-  // state === 'expand' && styles.expand
-  // state === 'close' && styles.close
   
   return (
     <div id={overlay.notifications} className={styles.notifications} ref={overlayRef} onClick={onClick} onKeyDown={onKeyDown} tabIndex={-1} role="dialog" aria-modal="true">
