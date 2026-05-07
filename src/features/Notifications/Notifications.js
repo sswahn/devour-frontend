@@ -134,7 +134,13 @@ function Notifications() {
   return (
     <div id={overlay.notifications} className={styles.notifications} ref={overlayRef} onClick={onClick} onKeyDown={onKeyDown} tabIndex={-1} role="dialog" aria-modal="true">
       <section ref={bottomSheetRef}  
-        className={`${styles.bottomSheet} ${state === 'peek' && styles.peek} ${state === 'expand' && styles.expand} ${state === 'close' && styles.close}`}
+        className={[
+          styles.bottomSheet,
+          state === 'peek' && styles.peek,
+          state === 'expand' && styles.expand,
+          state === 'close' && styles.close
+        ].filter(Boolean).join(' ')}
+                
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
