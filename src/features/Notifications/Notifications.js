@@ -34,7 +34,7 @@ function Notifications() {
   // .classList.add(styles.expand) / .classList.remove(styles.expand)
   //
 
-  const open = currentTarget => {
+  const expand = currentTarget => {
     const bottomSheet = currentTarget || bottomSheetRef.current
     requestAnimationFrame(() => {
       //bottomSheet.style.height = '100dvh'
@@ -108,7 +108,7 @@ function Notifications() {
     const half = window.innerHeight / 2
     const grabberOffset = 9
     const height = (bottomSheetRef.current.offsetHeight - grabberOffset) - half
-    height > half ? close() : open()
+    height > half ? close() : expand()
   }
 
   const throttleTransition = (deltaY, currentTarget) => {
@@ -152,7 +152,7 @@ function Notifications() {
     const movement = Math.abs(deltaY)
     currentTarget.style.transition = ''
     if (direction === 'up' && movement > threshold) {
-      open(currentTarget)
+      expand(currentTarget)
     } else if (direction === 'down' && movement > 10) {
       close(currentTarget)
     } else {
