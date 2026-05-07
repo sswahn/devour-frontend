@@ -43,7 +43,9 @@ function Notifications() {
   const close = currentTarget => {
     const bottomSheet = currentTarget || bottomSheetRef.current
     bottomSheet.addEventListener('transitionend', action, { once: true })
-    bottomSheet.style.transform = 'translate3d(0, 100dvh, 0)'
+    requestAnimationFrame(() => {
+      bottomSheet.style.transform = 'translate3d(0, 100dvh, 0)'
+    })
   }
 
   const reset = currentTarget => {
