@@ -34,7 +34,7 @@ function Notifications() {
     setState('close')
     setTimeout(() => {
       closeOverlay()
-    }, 400)
+    }, 200)
   }
 
   const onClick = event => {
