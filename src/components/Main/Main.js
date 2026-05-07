@@ -10,15 +10,25 @@ function Main() {
 
   // make hook useScrollLock()
   const lockScroll = () => {
-    const scrollY = window.scrollY
-    const element = document.body
-    element.style.position = 'fixed'
-    element.style.top = `-${scrollY}px`
-    element.style.width = '100%'
+    const { scrollY } = window
+    //const element = document.body
+    //element.style.position = 'fixed'
+    //element.style.top = `-${scrollY}px`
+   // element.style.width = '100%'
+    Object.assign(document.body, {
+      position: 'fixed',
+      top: `-${scrollY}px`,
+      width: '100%'
+    })
     return () => {
-      element.style.position = ''
-      element.style.top = ''
-      element.style.width = ''
+      //element.style.position = ''
+      //element.style.top = ''
+     // element.style.width = ''
+      Object.assign(document.body, {
+        position: '',
+        top: '',
+        width: ''
+      })
       window.scrollTo(0, scrollY)
     }
   }
