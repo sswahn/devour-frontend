@@ -18,7 +18,8 @@ function Notifications() {
   const latestDeltaY = useRef(0)
   const latestHeight = useRef(0)
   const { onGestureDown, onGestureMove, onGestureUp, onGestureCancel } = useGestures()
-  const overlayRef = useRef()
+  const overlayRef = useRef(null)
+  const closeTimeout = useRef(0)
   
   const context = { 
     notifications: [
@@ -32,7 +33,7 @@ function Notifications() {
 
   const close = () => {
     setState('close')
-    setTimeout(() => {
+    closeTimeout.current = setTimeout(() => {
       closeOverlay()
     }, 200)
   }
@@ -114,6 +115,10 @@ function Notifications() {
   const handleDropDown = event => {
     alert('Dropdown button fires.')
   }
+
+  useEffect(() => {
+    return () => clearTimeout(closeTimeout.current)
+  }, [])
   
   return (
     <div id={overlay.notifications} className={styles.notifications} ref={overlayRef} onClick={onClick} onKeyDown={onKeyDown} tabIndex={-1} role="dialog" aria-modal="true">
