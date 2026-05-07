@@ -328,18 +328,19 @@
 }
 
 .da6_YKWlCyjDtU5uqVeI {
-  transform: translateY(0);
+  --sheet-y: 50dvh;
 }
 
 .Xn87m1qQGnnpWjcvqJEn {
   height: 100svh;
-  transform: translate3d(0, 8px, 0);
+  --sheet-y: 8px;
 }
 
 .Xbr3YpUie58bMj6nUAbA {
   opacity: 0;
-  transform: translate3d(0, 100dvh, 0);
+  --sheet-y: 100dvh;
 }
+
 
 /* the grabber handle */
 .F9PYmx_5X6rU17dx6cCf section > div {
