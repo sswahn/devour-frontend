@@ -30,6 +30,10 @@ function Notifications() {
     ]
   }
 
+  // use css modules instead of inline styles.
+  // .classList.add(styles.expand) / .classList.remove(styles.expand)
+  //
+
   const open = currentTarget => {
     const bottomSheet = currentTarget || bottomSheetRef.current
     requestAnimationFrame(() => {
