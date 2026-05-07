@@ -73,6 +73,7 @@ function Notifications() {
   
     requestAnimationFrame(() => {
       bottomSheet.style.transform = 'translate3d(0, 100dvh, 0)'
+      bottomSheet.parentElement.style.opacity = 0
     })
   
     // fallback safety net
