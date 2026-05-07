@@ -74,7 +74,8 @@ function Notifications() {
     if (!ticking.current) {
       ticking.current = true
       requestAnimationFrame(() => {
-        currentTarget.style.transform = `translate3d(0, ${latestDeltaY.current}px, 0)`
+        //currentTarget.style.transform = `translate3d(0, ${latestDeltaY.current}px, 0)`
+        currentTarget.style.setProperty('--drag-y', `${deltaY}px`)
         ticking.current = false
       })
     }
