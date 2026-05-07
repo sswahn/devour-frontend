@@ -46,7 +46,7 @@
 }
 
 .expand {
-  height: 100dvh;
+  height: 100svh;
   transform: translate3d(0, 8px, 0);
 }
 
