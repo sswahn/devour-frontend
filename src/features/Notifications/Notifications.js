@@ -56,7 +56,7 @@ function Notifications() {
     event.stopPropagation()
     navigator.vibrate?.(50)
     const bottomSheet = bottomSheetRef.current
-    bottomSheet.style.removeProperty('transform')
+
     bottomSheet.style.transform = state === 'expand' ? 'translate3d(0, 8px, 0)' : ''
     
     // force browser repaint
@@ -110,7 +110,6 @@ function Notifications() {
     const threshold = window.innerHeight * 0.25
     const movement = Math.abs(deltaY)
     currentTarget.style.removeProperty('transition')
-    currentTarget.style.removeProperty('transform')
     if (direction === 'up' && movement > threshold) {
       setState('expand')
     } else if (direction === 'down' && movement > 10) {
