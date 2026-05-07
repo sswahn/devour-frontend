@@ -1,7 +1,7 @@
 import { useEffect, useRef  } from 'react'
 import useScrollEffect from '../../hooks/useScrollEffect'
 import useSession from '../../hooks/useSession'
-import useOverlay from '../../hooks/useOverlay'
+//import useOverlay from '../../hooks/useOverlay'
 import HomeIcon from '../Icons/HomeIcon/HomeIcon'
 import DashboardButton from './DashboardButton/DashboardButton'
 import LoginButton from './LoginButton/LoginButton'
@@ -12,7 +12,7 @@ import Avatar from '../Avatar/Avatar'
 const Header = ({ openAuthentication, openDashboard }) => {
   const { session } = useSession()
   const { scrollEffect } = useScrollEffect()
-  const { isActive } = useOverlay()
+ // const { isActive } = useOverlay()
   const headerRef = useRef(null)
 
   useEffect(() => {
@@ -20,7 +20,9 @@ const Header = ({ openAuthentication, openDashboard }) => {
   }, [])
 
   return (
-    <header ref={headerRef} className={styles.header} inert={!!isActive}>
+    <header ref={headerRef} className={styles.header} 
+      //inert={!!isActive}
+    >
       <div>
         <button onClick={() => navigator.vibrate(50)} type="button" aria-label="home">
           <HomeIcon />
