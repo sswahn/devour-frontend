@@ -12,9 +12,6 @@ function Main() {
   const lockScroll = () => {
     const { scrollY } = window
     const body = document.body
-    //element.style.position = 'fixed'
-    //element.style.top = `-${scrollY}px`
-   // element.style.width = '100%'
     Object.assign(body.style, {
       position: 'fixed',
       top: `-${scrollY}px`,
@@ -22,9 +19,6 @@ function Main() {
       right: '0'
     })
     return () => {
-      //element.style.position = ''
-      //element.style.top = ''
-     // element.style.width = ''
       Object.assign(body.style, {
         position: '',
         top: '',
