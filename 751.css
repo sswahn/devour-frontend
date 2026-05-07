@@ -298,7 +298,7 @@
 
 /* the bottom sheet */
 .MzJOiSKo0uK6jIHn7Lhb {
-  --sheet-y: var(--sheet-start, 50dvh);
+  --sheet-y: 100dvh;
   --drag-y: 0px;
 
   background-color: var(--surface);
@@ -328,17 +328,17 @@
 }
 
 .da6_YKWlCyjDtU5uqVeI {
-  --sheet-start: 50dvh;
+  --sheet-y: 50dvh;
 }
 
 .Xn87m1qQGnnpWjcvqJEn {
  /* height: 100svh; */
-  --sheet-start: 8px;
+  --sheet-y: 8px;
 }
 
 .Xbr3YpUie58bMj6nUAbA {
   opacity: 0;
-  --sheet-start: 100dvh;
+  --sheet-y: 100dvh;
 }
 
 .id614FJ74860566nJGEQ {
