@@ -53,11 +53,9 @@ function Notifications() {
 
   const handleGrabberClick = event => {
     navigator.vibrate?.(50)
-    const half = window.innerHeight / 2
-    const grabberOffset = 9
-    const height = (bottomSheetRef.current.offsetHeight - grabberOffset) - half
-    //height > half ? close() : expand()
-    height > half ? close() : setState('expand')
+    setState(prev =>
+      prev === 'expand' ? 'close' : 'expand'
+    )
   }
 
   const throttleTransition = (deltaY, currentTarget) => {
