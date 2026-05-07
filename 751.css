@@ -287,9 +287,11 @@
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(1px);
   height: 100dvh;
+  inset: 0;
   left: 0;
   opacity: 1;
-  position: absolute;
+  overflow: hidden;
+  position: fixed;
   top: 0;
   transition: opacity 0.9s ease-out;
   width: 100%;
