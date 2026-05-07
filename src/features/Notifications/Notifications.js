@@ -36,8 +36,11 @@ function Notifications() {
 
   const open = currentTarget => {
     const bottomSheet = currentTarget || bottomSheetRef.current
-    bottomSheet.style.height = '100dvh'
-    bottomSheet.style.transform = 'translate3d(0, 8px, 0)'
+    bottomSheet.style.transition = 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), height 0.4s cubic-bezier(0.25, 1, 0.5, 1)'
+    requestAnimationFrame(() => {
+      bottomSheet.style.height = '100dvh'
+      bottomSheet.style.transform = 'translate3d(0, 8px, 0)'
+    })
   }
   
   const close = currentTarget => {
@@ -51,8 +54,11 @@ function Notifications() {
 
   const reset = currentTarget => {
     const bottomSheet = currentTarget || bottomSheetRef.current
-    currentTarget.style.height = ''
-    currentTarget.style.transform = ''
+    bottomSheet.style.transition = 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), height 0.4s cubic-bezier(0.25, 1, 0.5, 1)'
+    requestAnimationFrame(() => {
+      currentTarget.style.height = ''
+      currentTarget.style.transform = ''
+    })
   }
 
   const onClick = event => {
@@ -116,8 +122,6 @@ function Notifications() {
     }
     const threshold = window.innerHeight * 0.25
     const movement = Math.abs(deltaY)
-    // State Prep: Switch transition ON. This curve (0.25, 1, 0.5, 1) starts fast and decelerates smoothly to a dead stop.
-    currentTarget.style.transition = 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), height 0.4s cubic-bezier(0.25, 1, 0.5, 1)'
     if (direction === 'up' && movement > threshold) {
       open(currentTarget)
     } else if (direction === 'down' && movement > 10) {
