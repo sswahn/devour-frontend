@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import useScrollEffect from '../../hooks/useScrollEffect'
-import useOverlay from '../../hooks/useOverlay'
+//import useOverlay from '../../hooks/useOverlay'
 import HomeButton from './HomeButton/HomeButton'
 import SearchButton from './SearchButton/SearchButton'
 import CameraButton from './CameraButton/CameraButton'
@@ -10,7 +10,7 @@ import styles from './MobileNav.module.css'
 
 function MobileNav() {
   const { scrollEffect } = useScrollEffect()
-  const { useOverlay } = useOverlay()
+  //const { useOverlay } = useOverlay()
   const navRef = useRef(null)
 
   useEffect(() => {
@@ -18,7 +18,9 @@ function MobileNav() {
   }, [])
   
   return (
-    <nav ref={navRef} className={styles.navigation} inert={!!isActive} aria-label="primary navigation">
+    <nav ref={navRef} className={styles.navigation} 
+      //inert={!!isActive} 
+    aria-label="primary navigation">
       <div>
         <HomeButton />  
         <SearchButton />
