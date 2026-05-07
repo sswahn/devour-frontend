@@ -109,6 +109,9 @@ function Notifications() {
   }
   
   const onPointerCancel = event => {
+    const { currentTarget } = event
+    currentTarget.classList.remove(styles.dragging)
+    currentTarget.style.setProperty('--drag-y', '0px')
     onGestureCancel(event)
   }
 
