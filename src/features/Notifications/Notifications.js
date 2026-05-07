@@ -52,6 +52,7 @@ function Notifications() {
   }
 
   const handleGrabberClick = event => {
+    event.stopPropagation()
     navigator.vibrate?.(50)
     state === 'expand' ? close() : setState('expand')
   }
