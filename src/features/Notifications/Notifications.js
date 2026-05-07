@@ -33,10 +33,12 @@ function Notifications() {
 
   const close = () => {
     setState('close')
-    clearTimeout(closeTimeout.current)
-    closeTimeout.current = setTimeout(() => {
-      closeOverlay()
-    }, 200)
+    bottomSheetRef.current.addEventListener('transitionend', closeOverlay, { once: true })
+    
+    //clearTimeout(closeTimeout.current)
+    //closeTimeout.current = setTimeout(() => {
+      //closeOverlay()
+    //}, 200)
   }
 
   const onClick = event => {
