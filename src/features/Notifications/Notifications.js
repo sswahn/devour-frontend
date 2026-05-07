@@ -55,7 +55,18 @@ function Notifications() {
   const handleGrabberClick = event => {
     event.stopPropagation()
     navigator.vibrate?.(50)
-    state === 'expand' ? close() : setState('expand')
+
+    sheet.style.removeProperty('transition')
+    sheet.style.removeProperty('transform')
+    
+    // force browser repaint
+    void sheet.offsetHeight
+    
+    requestAnimationFrame(() => {
+      state === 'expand'
+        ? close()
+        : setState('expand')
+    })
   }
 
   const throttleTransition = (deltaY, currentTarget) => {
