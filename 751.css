@@ -323,8 +323,13 @@
   box-sizing: content-box; 
 }
 
-.uAJJhhp9HgWfViRMXugq {
+.QqejRctOD7AgTXBCBP8Q {
   transform: translateY(0);
+}
+
+.Xn87m1qQGnnpWjcvqJEn {
+  height: 100dvh;
+  transform: translate3d(0, 8px, 0);
 }
 
 /* the grabber handle */
