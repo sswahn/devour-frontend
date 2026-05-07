@@ -75,7 +75,9 @@ function Notifications() {
     requestAnimationFrame(() => {
       // bottomSheet.style.transform = 'translate3d(0, 100dvh, 0)'
       // bottomSheet.parentElement.style.opacity = 0
-      bottomSheet.classList.add(styles.close)
+      bottomSheet.classList.contains(styles.expand)
+        ? bottomSheet.classList.replace(styles.expand, styles.close)
+        : bottomSheet.classList.add(styles.close)
     })
   
     // fallback safety net
