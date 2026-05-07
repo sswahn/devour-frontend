@@ -59,6 +59,9 @@
   --sheet-y: 100dvh;
 }
 
+.dragging {
+  transition: none !important;
+}
 
 /* the grabber handle */
 .notifications section > div {
