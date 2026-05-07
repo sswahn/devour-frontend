@@ -74,7 +74,7 @@ function Notifications() {
     const { currentTarget } = event
     onGestureDown(event)
     latestHeight.current = currentTarget.offsetHeight
-    currentTarget.style.transition = 'none'
+    currentTarget.classList.add(styles.dragging)
   }
   
   const onPointerMove = event => {
@@ -97,7 +97,7 @@ function Notifications() {
     }
     const threshold = window.innerHeight * 0.25
     const movement = Math.abs(deltaY)
-    currentTarget.style.removeProperty('transition')
+    currentTarget.classList.remove(styles.dragging)
     currentTarget.style.setProperty('--drag-y', '0px')
     if (direction === 'up' && movement > threshold) {
       setState('expand')
