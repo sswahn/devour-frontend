@@ -83,6 +83,7 @@ function useSwipeFromEdge(callback) {
           const translation = edge === 'left' ? '100vw' : '-100vw'
           
           currentTarget.style.transform = `translate3d(${translation}, 0, 0)`
+          currentTarget.parentElement.style.opacity = 0
           currentTarget.addEventListener('transitionend', callback, { once: true })
         } else {
           currentTarget.style.transform = 'translate3d(0, 0, 0)'
