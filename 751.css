@@ -307,10 +307,12 @@
  /* contain: layout paint; */
   display: flex;
   flex-direction: column;
-  height: auto; /* Grows with content */ 
+  height: 100dvh; /* Grows with content */ 
   left: 0;
+  /*
   max-height: 100dvh; 
   min-height: 50dvh;
+  */
   overscroll-behavior-y: contain;
   padding-top: 8px;
   position: absolute;
