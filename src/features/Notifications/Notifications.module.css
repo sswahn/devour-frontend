@@ -29,7 +29,8 @@
   overscroll-behavior-y: contain;
   padding-top: 8px;
   position: absolute;
-  transform: translateY(100%);   /* start hidden */
+ /* transform: translateY(100%);  */ /* start hidden */
+  transform: translate3d(0, calc(100% + var(--drag-y)), 0);
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), height 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   touch-action: none;
   width: 100%;
