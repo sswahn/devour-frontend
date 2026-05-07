@@ -157,6 +157,7 @@ function Notifications() {
     const threshold = window.innerHeight * 0.25
     const movement = Math.abs(deltaY)
     currentTarget.style.transition = ''
+    currentTarget.style.transform = ''
     if (direction === 'up' && movement > threshold) {
       //expand(currentTarget)
       setState('expand')
