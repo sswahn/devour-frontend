@@ -72,7 +72,7 @@ function Notifications() {
     state === 'expand' ? close() : setState('expand')
   }
 
-  const applyResistance = deltaY => {
+  const applyElasticDrag = deltaY => {
     const limit = state === 'expand' && deltaY < 0 ? 10 : 200
     const k = 600 // increase to make growth feel heavier
     const absDeltaY = Math.abs(deltaY)
@@ -104,9 +104,7 @@ function Notifications() {
     if (deltaY === undefined || axis === 'x') {
       return
     }
-    //const resistance = state === 'expand' && deltaY < 0 ? 10 : 200
-    //const translateY = deltaY / (1 + Math.abs(deltaY) / resistance)
-    const translateY = applyResistance(deltaY)
+    const translateY = applyElasticDrag(deltaY)
     throttleTransition(translateY, currentTarget)
   }
   
