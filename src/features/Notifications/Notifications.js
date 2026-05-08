@@ -177,7 +177,7 @@ function Notifications() {
               <Avatar username={notification.username} image={null} />
               <div>
                 <div>
-                  <span>{notification.username}</span>
+                  <strong>{notification.username}</strong>
                   <span>{notification.timestamp}</span>
                 </div>
                 <div>{notification.text}</div>
