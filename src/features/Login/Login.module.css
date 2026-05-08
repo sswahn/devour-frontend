@@ -3,6 +3,7 @@
 .login {
   align-items: center;
   background-color: var(--surface);
+  contain: layout paint style;
   display: flex;
   flex-direction: column;
   height: 100dvh;
