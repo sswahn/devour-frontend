@@ -113,9 +113,10 @@ function Notifications() {
     if (tapCount > 0) { 
       return
     }
-    const threshold = window.innerHeight * 0.15
+    const upwardThreshold = window.innerHeight * 0.15
+    // need downwardThreshold to keep it snapping back up
     const movement = Math.abs(deltaY)
-    if (direction === 'up' && movement > threshold) {
+    if (direction === 'up' && movement > upwardThreshold) {
       setState('expand')
     } else if (direction === 'down' && movement > 15) {
       close()
