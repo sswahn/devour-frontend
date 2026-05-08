@@ -18,9 +18,7 @@ function MobileNav() {
   }, [])
   
   return (
-    <nav ref={navRef} className={styles.navigation} 
-      //inert={!!isActive} 
-    aria-label="primary navigation">
+    <nav ref={navRef} className={styles.navigation} aria-label="primary navigation">
       <div>
         <HomeButton />  
         <SearchButton />
