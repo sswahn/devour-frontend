@@ -180,7 +180,7 @@ function Notifications() {
                   <strong>{notification.username}</strong>
                   <time datetime={notification.timestamp}>{notification.timestamp}</time>
                 </div>
-                <div>{notification.text}</div>
+                <p>{notification.text}</p>
               </div>
               <Dropdown />
             </li>                                                           
