@@ -97,7 +97,7 @@ function Notifications() {
       return
     }
     const resistance = state === 'expand' && deltaY < 0 
-      ? 10 + Math.pow(1.5, Math.abs(deltaY)) // 10 + Math.abs(deltaY) * 0.5 
+      ? 10 // 10 + Math.abs(deltaY) * 0.5 
       : 200
     const translateY = deltaY / (1 + Math.abs(deltaY) / resistance)
     throttleTransition(translateY, currentTarget)
