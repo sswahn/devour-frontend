@@ -31,7 +31,17 @@ function Notifications() {
       {username: 'username7', text: 'testing user notification section', timestamp: '5 days ago' },
       {username: 'username8', text: 'testing user notification section', timestamp: '5 days ago' },
       {username: 'username9', text: 'testing user notification section', timestamp: '5 days ago' },
-      {username: 'username0', text: 'testing user notification section', timestamp: '5 days ago' },
+      {username: 'username10', text: 'testing user notification section', timestamp: '5 days ago' },
+      {username: 'username11', text: '12345678901234567890123456', timestamp: '5 days ago' },
+      {username: 'username12', text: 'testing user notification section', timestamp: '5 days ago' },
+      {username: 'username13', text: 'testing user notification section', timestamp: '5 days ago' },
+      {username: 'username14', text: 'testing user notification section', timestamp: '5 days ago' },
+      {username: 'username15', text: 'testing user notification section', timestamp: '5 days ago' },
+      {username: 'username16', text: '12345678901234567890123456', timestamp: '5 days ago' },
+      {username: 'username17', text: 'testing user notification section', timestamp: '5 days ago' },
+      {username: 'username18', text: 'testing user notification section', timestamp: '5 days ago' },
+      {username: 'username19', text: 'testing user notification section', timestamp: '5 days ago' },
+      {username: 'username20', text: 'testing user notification section', timestamp: '5 days ago' },
     ]
   }
 
@@ -86,7 +96,7 @@ function Notifications() {
     if (deltaY === undefined || axis === 'x') {
       return
     }
-    const resistance = state === 'expand' && deltaY < 0 ? 40 : 200
+    const resistance = state === 'expand' && deltaY < 0 ? 20 + Math.abs(deltaY) * 0.5 : 200
     const translateY = deltaY / (1 + Math.abs(deltaY) / resistance) // asymptotic
     throttleTransition(translateY, currentTarget)
   }
