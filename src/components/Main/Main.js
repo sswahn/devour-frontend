@@ -30,7 +30,9 @@ function Main() {
   }, [isActive])
   
   return (
-    <main className={styles.main} inert={!!isActive} aria-description="When text is highlighted, it will automatically be read aloud.">
+    <main className={styles.main} 
+      //inert={!!isActive} 
+      aria-description="When text is highlighted, it will automatically be read aloud.">
     
       {/* <Suggestions /> etc. */}
 
