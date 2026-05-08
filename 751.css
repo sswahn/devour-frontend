@@ -644,11 +644,13 @@
   z-index: 200;
 }
 
-.ZN6CWqaJlKMfDaydN3QY button:first-of-type {
+/*
+.login button:first-of-type {
   left: 8px;
   position: absolute;
   top: 8px;
 }
+*/
 
 /* User Profile Edit Button */
 
