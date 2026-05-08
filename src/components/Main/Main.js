@@ -13,7 +13,7 @@ function Main() {
     const { scrollY } = window
     const body = document.body
     body.classList.add('.lockScroll')
-    body.style.setProperty('--scroll-y', scrollY)
+    body.style.setProperty('--scroll-y', `-${scrollY}px`)
 
     /*
     Object.assign(body.style, {
@@ -23,8 +23,7 @@ function Main() {
       right: '0'
     }) */
     return () => {
-      body.classList.add('.lockScroll')
-      body.style.setProperty('--scroll-y', scrollY)
+      body.classList.remove('.lockScroll')
     /*
       Object.assign(body.style, {
         position: '',
