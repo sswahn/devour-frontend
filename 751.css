@@ -613,7 +613,7 @@
   overflow-y: auto;
   overscroll-behavior-y: contain;
   padding: 16px 24px;
-  position: absolute;
+  position: fixed;
   scrollbar-width: none;
   top: 0;
   touch-action: none;
