@@ -8,31 +8,12 @@ import styles from './Main.module.css'
 function Main() {
   const { isActive } = useOverlay()
 
-  // make hook useScrollLock()
   const lockScroll = () => {
     const { scrollY } = window
-    const body = document.body
-   // body.classList.add('lockScroll')
-  //  body.style.setProperty('--scroll-y', `-${scrollY}px`)
-
-    
-    Object.assign(body.style, {
-      position: 'fixed',
-      top: `-${scrollY}px`,
-      left: '0',
-      right: '0'
-    }) 
+    const html = document.documentElement
+    html.classList.add('lockScroll')
     return () => {
-     // body.classList.remove('lockScroll')
-    //  body.style.removeProperty('--scroll-y')
-    
-      Object.assign(body.style, {
-        position: '',
-        top: '',
-        left: '',
-        right: ''
-      })
-      
+      html.classList.remove('lockScroll')
       window.scrollTo(0, scrollY)
     }
   }
@@ -41,9 +22,9 @@ function Main() {
     if (!isActive) {
       return
     }
-    const reset = lockScroll()
+    const unlockScroll = lockScroll()
     return () => {
-      reset()
+      unlockScroll()
     }
   }, [isActive])
   
