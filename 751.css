@@ -612,6 +612,7 @@
 .ZN6CWqaJlKMfDaydN3QY {
   align-items: center;
   background-color: var(--surface);
+  contain: layout paint style;
   display: flex;
   flex-direction: column;
   height: 100dvh;
