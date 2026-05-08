@@ -89,6 +89,14 @@ function Notifications() {
     latestHeight.current = currentTarget.offsetHeight
     currentTarget.classList.add(styles.dragging)
   }
+
+  const applyResistance = deltaY => {
+    const limit = 150
+    const k = 600 // increase to make growth feel heavier
+    const absDeltaY = Math.abs(deltaY)
+    const translation = limit * (absDeltaY / (absDeltaY + k))
+    return Math.sign(deltaY) * translation
+  }
   
   const onPointerMove = event => {
     const { currentTarget } = event
@@ -96,8 +104,9 @@ function Notifications() {
     if (deltaY === undefined || axis === 'x') {
       return
     }
-    const resistance = state === 'expand' && deltaY < 0 ? 10 : 200
-    const translateY = deltaY / (1 + Math.abs(deltaY) / resistance)
+    //const resistance = state === 'expand' && deltaY < 0 ? 10 : 200
+    //const translateY = deltaY / (1 + Math.abs(deltaY) / resistance)
+    const translateY = applyResistance(deltaY)
     throttleTransition(translateY, currentTarget)
   }
   
