@@ -10,25 +10,14 @@ function Avatar({ username, image, size = 24 }) {
   const { setUserProfile } = useProfile()
   const avatarRef = useRef(null)
   
-  const action = () => {
+  const onClick = event => {
+    navigator.vibrate?.(50)
     setUserProfile(username)
     openOverlay(overlay.profile, avatarRef.current)
   }
   
-  const onClick = event => {
-    navigator.vibrate?.(50)
-    action()
-  }
-
-  const onKeyDown = event => {
-    if (event.key === 'Enter') {
-      event.preventDefault()
-      action()
-    }
-  }
-  
   return (
-    <button className={styles.avatar} ref={avatarRef} onClick={onClick} onKeyDown={onKeyDown} type="button" aria-label={`${username}'s avatar`}>
+    <button className={styles.avatar} ref={avatarRef} onClick={onClick} type="button" aria-label={`${username}'s avatar`}>
       {image 
         ? <img src={image} alt={`${username}'s avatar`} loading="lazy" width={size} height={size} />
         : <Identicon seed={username} />
