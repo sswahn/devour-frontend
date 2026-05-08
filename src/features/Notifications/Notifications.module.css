@@ -111,7 +111,7 @@
   border: 1px dashed red;
 }
 
-.notifications ul li div:nth-of-type(2) {
+.notifications ul li div:nth-child(2) {
   flex: 1;
 }
 
