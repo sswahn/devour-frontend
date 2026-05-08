@@ -22,11 +22,16 @@ function Notifications() {
   
   const context = { 
     notifications: [
-      {username: 'username', text: '12345678901234567890123456', timestamp: '5 days ago' },
-      {username: 'username', text: 'testing user notification section', timestamp: '5 days ago' },
-      {username: 'username', text: 'testing user notification section', timestamp: '5 days ago' },
-      {username: 'username', text: 'testing user notification section', timestamp: '5 days ago' },
-      {username: 'username', text: 'testing user notification section', timestamp: '5 days ago' },
+      {username: 'username1', text: '12345678901234567890123456', timestamp: '5 days ago' },
+      {username: 'username2', text: 'testing user notification section', timestamp: '5 days ago' },
+      {username: 'username3', text: 'testing user notification section', timestamp: '5 days ago' },
+      {username: 'username4', text: 'testing user notification section', timestamp: '5 days ago' },
+      {username: 'username5', text: 'testing user notification section', timestamp: '5 days ago' },
+      {username: 'username6', text: '12345678901234567890123456', timestamp: '5 days ago' },
+      {username: 'username7', text: 'testing user notification section', timestamp: '5 days ago' },
+      {username: 'username8', text: 'testing user notification section', timestamp: '5 days ago' },
+      {username: 'username9', text: 'testing user notification section', timestamp: '5 days ago' },
+      {username: 'username0', text: 'testing user notification section', timestamp: '5 days ago' },
     ]
   }
 
