@@ -72,6 +72,14 @@ function Notifications() {
     state === 'expand' ? close() : setState('expand')
   }
 
+  const applyResistance = deltaY => {
+    const limit = state === 'expand' && deltaY < 0 ? 10 : 200
+    const k = 600 // increase to make growth feel heavier
+    const absDeltaY = Math.abs(deltaY)
+    const translation = limit * (absDeltaY / (absDeltaY + k))
+    return Math.sign(deltaY) * translation
+  }
+
   const throttleTransition = (deltaY, currentTarget) => {
     latestDeltaY.current = deltaY
     if (!ticking.current) {
@@ -88,14 +96,6 @@ function Notifications() {
     onGestureDown(event)
     latestHeight.current = currentTarget.offsetHeight
     currentTarget.classList.add(styles.dragging)
-  }
-
-  const applyResistance = deltaY => {
-    const limit = state === 'expand' && deltaY < 0 ? 10 : 200
-    const k = 600 // increase to make growth feel heavier
-    const absDeltaY = Math.abs(deltaY)
-    const translation = limit * (absDeltaY / (absDeltaY + k))
-    return Math.sign(deltaY) * translation
   }
   
   const onPointerMove = event => {
