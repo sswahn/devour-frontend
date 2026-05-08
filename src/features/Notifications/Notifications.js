@@ -96,7 +96,7 @@ function Notifications() {
     if (deltaY === undefined || axis === 'x') {
       return
     }
-    const resistance = state === 'expand' && deltaY < 0 ? 20 + Math.abs(deltaY) * 0.5 : 200
+    const resistance = state === 'expand' && deltaY < 0 ? 10 + Math.abs(deltaY) * 0.5 : 200
     const translateY = deltaY / (1 + Math.abs(deltaY) / resistance) // asymptotic
     throttleTransition(translateY, currentTarget)
   }
