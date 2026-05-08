@@ -106,7 +106,8 @@ function Notifications() {
     const { deltaY, direction, velocity, timestamp, tapCount } = onGestureUp(event)
     ticking.current = false // 1. Kill the move throttle immediately  
     currentTarget.classList.remove(styles.dragging)
-    currentTarget.style.setProperty('--drag-y', '0px')
+    // currentTarget.style.setProperty('--drag-y', '0px')
+    currentTarget.style.removeProperty('--drag-y')
     if (tapCount > 0) { 
       return
     }
