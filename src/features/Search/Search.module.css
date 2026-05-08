@@ -20,7 +20,7 @@
   overflow-y: scroll;
   overscroll-behavior-y: contain;
   padding: 8px;
-  position: absolute;
+  position: fixed;
   top: 0;
   touch-action: none;
   width: 100%;
