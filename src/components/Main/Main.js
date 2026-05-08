@@ -12,27 +12,27 @@ function Main() {
   const lockScroll = () => {
     const { scrollY } = window
     const body = document.body
-    body.classList.add('lockScroll')
-    body.style.setProperty('--scroll-y', `-${scrollY}px`)
+   // body.classList.add('lockScroll')
+  //  body.style.setProperty('--scroll-y', `-${scrollY}px`)
 
-    /*
+    
     Object.assign(body.style, {
       position: 'fixed',
       top: `-${scrollY}px`,
       left: '0',
       right: '0'
-    }) */
+    }) 
     return () => {
-      body.classList.remove('lockScroll')
-      body.style.removeProperty('--scroll-y')
-    /*
+     // body.classList.remove('lockScroll')
+    //  body.style.removeProperty('--scroll-y')
+    
       Object.assign(body.style, {
         position: '',
         top: '',
         left: '',
         right: ''
       })
-      */
+      
       window.scrollTo(0, scrollY)
     }
   }
