@@ -286,6 +286,7 @@
 .F9PYmx_5X6rU17dx6cCf {
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(1px);
+  contain: layout paint style;
   height: 100dvh;
   inset: 0;
   left: 0;
