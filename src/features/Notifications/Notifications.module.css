@@ -109,8 +109,6 @@
 
 .notifications ul li div:nth-child(2) {
   flex: 1;
-
-  border: 1px dashed red;
 }
 
 .notifications ul li img {
