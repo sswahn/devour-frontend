@@ -178,7 +178,7 @@ function Notifications() {
               <div>
                 <div>
                   <strong>{notification.username}</strong>
-                  <span>{notification.timestamp}</span>
+                  <time datetime={notification.timestamp}>{notification.timestamp}</time>
                 </div>
                 <div>{notification.text}</div>
               </div>
