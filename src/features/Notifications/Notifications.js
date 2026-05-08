@@ -175,12 +175,12 @@ function Notifications() {
           {context.notifications?.map((notification, index) => 
             <li key={index}>
               <Avatar username={notification.username} image={null} />
-              <div role="group">
+              <div role="group" aria-label="notification content">
                 <div>
-                  <strong>{notification.username}</strong>
+                  <strong aria-label="username">{notification.username}</strong>
                   <time datetime={notification.timestamp}>{notification.timestamp}</time>
                 </div>
-                <p>{notification.text}</p>
+                <p aria-label="notification text">{notification.text}</p>
               </div>
               <Dropdown />
             </li>                                                           
