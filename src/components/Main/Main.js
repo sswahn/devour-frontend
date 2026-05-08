@@ -8,6 +8,7 @@ import styles from './Main.module.css'
 function Main() {
   const { isActive } = useOverlay()
 
+  // move to a hook, then use hook in Interface
   const lockScroll = () => {
     const { scrollY } = window
     const html = document.documentElement
