@@ -24,6 +24,7 @@ function Main() {
     }) */
     return () => {
       body.classList.remove('lockScroll')
+      body.style.removeProperty('--scroll-y')
     /*
       Object.assign(body.style, {
         position: '',
