@@ -175,7 +175,7 @@ function Notifications() {
           {context.notifications?.map((notification, index) => 
             <li key={index}>
               <Avatar username={notification.username} image={null} />
-              <div>
+              <div role="group">
                 <div>
                   <strong>{notification.username}</strong>
                   <time datetime={notification.timestamp}>{notification.timestamp}</time>
