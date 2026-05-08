@@ -113,12 +113,11 @@ function Notifications() {
     if (tapCount > 0) { 
       return
     }
-    const upwardThreshold = window.innerHeight * 0.15
-    // need downwardThreshold to keep it snapping back up
+    const threshold = window.innerHeight * 0.15
     const movement = Math.abs(deltaY)
-    if (direction === 'up' && movement > upwardThreshold) {
+    if (direction === 'up' && movement > threshold) {
       setState('expand')
-    } else if (direction === 'down' && movement > 15) {
+    } else if (direction === 'down' && movement > threshold) {
       close()
     } else {
       setState(prev => prev === 'expand' ? 'expand' : 'peek')
