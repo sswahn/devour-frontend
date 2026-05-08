@@ -92,7 +92,7 @@ function Notifications() {
 
   const applyResistance = deltaY => {
     const limit = state === 'expand' && deltaY < 0 ? 10 : 200
-    const k = 600 // state === 'expand' && deltaY < 0 ? 600 : 400 // increase to make growth feel heavier
+    const k = 600 // increase to make growth feel heavier
     const absDeltaY = Math.abs(deltaY)
     const translation = limit * (absDeltaY / (absDeltaY + k))
     return Math.sign(deltaY) * translation
