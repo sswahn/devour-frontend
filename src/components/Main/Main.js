@@ -14,7 +14,9 @@ function Main() {
     const html = document.documentElement
     html.classList.add('lockScroll')
     return () => {
-      html.classList.remove('lockScroll')
+     // html.classList.remove('lockScroll')
+      html.removeAttribute('class')
+      
       window.scrollTo(0, scrollY)
     }
   }
