@@ -20,9 +20,7 @@ const Header = ({ openAuthentication, openDashboard }) => {
   }, [])
 
   return (
-    <header ref={headerRef} className={styles.header} 
-      //inert={!!isActive}
-    >
+    <header ref={headerRef} className={styles.header}>
       <div>
         <button onClick={() => navigator.vibrate(50)} type="button" aria-label="home">
           <HomeIcon />
