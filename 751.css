@@ -778,7 +778,7 @@
   height: 100dvh;
   left: 0;
   opacity: 1;
-  position: absolute;
+  position: fixed;
   top: 0;
   transition: opacity 0.5s ease-out;
   width: 100%;
@@ -792,7 +792,7 @@
   overflow-y: scroll;
   overscroll-behavior-y: contain;
   padding: 8px;
-  position: absolute;
+  position: fixed;
   touch-action: none;
   top: 0;
   width: 100%;
