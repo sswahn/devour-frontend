@@ -96,9 +96,7 @@ function Notifications() {
     if (deltaY === undefined || axis === 'x') {
       return
     }
-    const resistance = state === 'expand' && deltaY < 0 
-      ? 10 //(Math.abs(deltaY) * 10) / (Math.abs(deltaY) + 20) // 10 + Math.abs(deltaY) * 0.5 
-      : 200
+    const resistance = state === 'expand' && deltaY < 0 ? 10 : 200
     const translateY = deltaY / (1 + Math.abs(deltaY) / resistance)
     throttleTransition(translateY, currentTarget)
   }
@@ -108,7 +106,6 @@ function Notifications() {
     const { deltaY, direction, velocity, timestamp, tapCount } = onGestureUp(event)
     ticking.current = false // 1. Kill the move throttle immediately  
     currentTarget.classList.remove(styles.dragging)
-    // currentTarget.style.setProperty('--drag-y', '0px')
     currentTarget.style.removeProperty('--drag-y')
     if (tapCount > 0) { 
       return
