@@ -1,6 +1,21 @@
 /* User Authentication Flow, Login */
 
 .login {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(1px);
+  contain: layout paint style;
+  height: 100dvh;
+  left: 0;
+  opacity: 1;
+  position: fixed;
+  scrollbar-width: none;
+  top: 0;
+  transition: opacity 0.5s ease-out;
+  width: 100%;
+  z-index: 150;
+}
+
+.login > div {
   align-items: center;
   background-color: var(--surface);
   contain: layout paint style;
