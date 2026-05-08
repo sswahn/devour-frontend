@@ -781,6 +781,7 @@
 .KIIoXhhSaQeQ2LSTtavI {
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(1px);
+  contain: layout paint style;
   height: 100dvh;
   left: 0;
   opacity: 1;
