@@ -73,6 +73,11 @@
   margin: 0 auto;
   touch-action: none;
   width: 40px;
+
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* the grabber handle active */
