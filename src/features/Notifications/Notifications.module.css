@@ -50,6 +50,7 @@
 .expand {
   --sheet-y: 8px;
   overflow: auto;
+  scrollbar-width: none;
 }
 
 .close {
