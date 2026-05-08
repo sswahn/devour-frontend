@@ -28,16 +28,20 @@ function Login() {
       className={styles.login} 
       ref={overlayRef} 
       onKeyDown={onKeyDown} 
-      onPointerDown={onPointerDown}
-      onPointerMove={onPointerMove}
-      onPointerUp={onPointerUp}
-      onPointerCancel={onPointerCancel}
+      role="dialog" 
+      aria-modal="true"
       aria-label="user login">
-      <CloseButton overlay={overlay.login} close={closeOverlay} />
-      <LoginForm />
-      <RegistrationButton />
-      <GoogleButton />
-      <AppleButton />
+      <div
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerUp}
+        onPointerCancel={onPointerCancel}>
+        <CloseButton overlay={overlay.login} close={closeOverlay} />
+        <LoginForm />
+        <RegistrationButton />
+        <GoogleButton />
+        <AppleButton />
+      </div>
     </section>
   )
 }
