@@ -35,10 +35,10 @@
   z-index: 200;
 }
 
-/*
-.login button:first-of-type {
+/* Close button */
+.login > div > button:first-of-type {
   left: 8px;
   position: absolute;
   top: 8px;
 }
-*/
+
