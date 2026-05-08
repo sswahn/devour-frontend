@@ -1,4 +1,5 @@
 import { Suspense, lazy } from 'react'
+import useOverlay from '../../hooks/useOverlay'
 import useSelectionToSpeech from '../../hooks/useSelectionToSpeech'
 import useContextMenu from '../../hooks/useContextMenu'
 import Header from '../Header/Header'
@@ -8,14 +9,17 @@ import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 const Overlays = lazy(() => import('../Overlays/Overlays'))
 
 function Interface() {
+  const { isActive } = useOverlay()
   useSelectionToSpeech()
   useContextMenu()
   
   return (
     <>
-      <Header />
-      <Main />
-      <MobileNav />
+      <div id="app-shell" inert={!!isActive}>
+        <Header />
+        <Main />
+        <MobileNav />
+      </div>
       <Suspense fallback={<LoadingSpinner />}>
         <Overlays />
       </Suspense>
