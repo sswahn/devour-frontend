@@ -73,7 +73,7 @@ function Notifications() {
 
   const applyElasticDrag = deltaY => {
     const limit = state === 'expand' && deltaY < 0 ? 10 : 200
-    const k = 600 // increase to make growth feel heavier
+    const k = 600 // Increase to make growth feel heavier
     const absDeltaY = Math.abs(deltaY)
     const translation = limit * (absDeltaY / (absDeltaY + k))
     return Math.sign(deltaY) * translation
@@ -109,7 +109,7 @@ function Notifications() {
   const onPointerUp = event => {
     const { clientY, currentTarget } = event
     const { deltaY, direction, velocity, timestamp, tapCount } = onGestureUp(event)
-    ticking.current = false // 1. Kill the move throttle immediately  
+    ticking.current = false // Kill the move throttle immediately  
     currentTarget.classList.remove(styles.dragging)
     currentTarget.style.removeProperty('--drag-y')
     if (tapCount > 0) { 
