@@ -17,7 +17,7 @@ function notify(data) {
 }
 
 function update(timestamp) {
-  const scrollY = window.scrollY
+  const scrollY = element.scrollY
   
   // Calculate change in Y
   deltaY = scrollY - scrollStart 
@@ -59,7 +59,7 @@ function onScroll(event) {
 }
 
 function onScrollEnd(event) {
-  scrollStart = window.scrollY
+  scrollStart = element.scrollY
   
   notify({
     deltaY,
