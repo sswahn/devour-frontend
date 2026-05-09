@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback, useEffect, createContext } from 'react'
-import scroll from '../utilities/scrollEngine'
+import scroll from '../../utilities/scrollEngine'
 
 const ScrollContext = createContext(null)
 
