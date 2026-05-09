@@ -2,13 +2,16 @@ import { useRef } from 'react'
 import ExpandIcon from '../../../components/Icons/ExpandIcon/ExpandIcon'
 import styles from './FullscreenButton.module.css'
 
-function FullscreenButton({ toggleFullScreenMode }) {
+function FullscreenButton({ isFullScreen, toggleFullScreenMode }) {
   const buttonRef = useRef(null)
   
   const onClick = event => {
     navigator.vibrate?.(50)
     toggleFullScreenMode()
   }
+
+  // button needs to toggle icon from expand to contract, 
+  // have aria pressed, and label accordingly.
   
   return (
     <button 
