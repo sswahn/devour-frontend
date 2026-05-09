@@ -1,27 +1,19 @@
-import { useState, useRef, useCallback, useEffect, createContext } from 'react'
+import { useRef, useCallback, useEffect, createContext } from 'react'
 import scroll from '../../utilities/scrollEngine'
 
 const ScrollContext = createContext(null)
 
 function ScrollProvider({ children }) {
-  const [isSet, setIsSet] = useState(false)
   const getScrollRef = useRef(null)
-  
   const setScrollRef = useCallback(node => {
     if (node) {
       getScrollRef.current = node  
-      setIsSet(true)
+      scroll.get(node)
     }
     return () => {
       getScrollRef.current = null
     }
   }, [])
-
-  useEffect(() => {
-    if (getScrollRef.current) {
-      scroll.get(getScrollRef.current)
-    }
-  }, [isSet])
   
   return (
     <ScrollContext.Provider value={{ getScrollRef, setScrollRef }}>
