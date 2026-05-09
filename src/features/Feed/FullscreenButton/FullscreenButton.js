@@ -7,7 +7,6 @@ function FullscreenButton({ isFullScreen, enterFullScreen, exitFullScreen }) {
   
   const onClick = event => {
     navigator.vibrate?.(50)
-    console.log('FullScreenButton onClick: !document.fullscreenElement: ', !document.fullscreenElement)
     !document.fullscreenElement ? enterFullScreen() : exitFullScreen() 
   }
 
