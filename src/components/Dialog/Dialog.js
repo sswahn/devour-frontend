@@ -1,8 +1,15 @@
 import styles from './Dialog.module.css'
 
-function Dialog({ dialogRef, content }) { 
+function Dialog({ dialogRef, content, close }) { 
+
+  const onClick = event => {
+    if (event.target === dialogRef.current) {
+      close()
+    }
+  }
+  
   return (
-    <dialog id="dialog" ref={dialogRef} className={styles.dialog} closedby="any">
+    <dialog id="dialog" ref={dialogRef} className={styles.dialog} onClick={onClick}>
       {content}
     </dialog>
   )
