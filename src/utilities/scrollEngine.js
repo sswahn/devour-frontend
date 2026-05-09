@@ -69,15 +69,19 @@ function onScrollEnd(event) {
 }
 
 function start() {
-  element.addEventListener('scroll', onScroll, { passive: true })
-  element.addEventListener("scrollend", onScrollEnd, { passive: true })
-  started = true
+  if (element) {
+    element.addEventListener('scroll', onScroll, { passive: true })
+    element.addEventListener("scrollend", onScrollEnd, { passive: true })
+    started = true
+  }
 }
 
 function stop() {
-  element.removeEventListener('scroll', onScroll)
-  element.removeEventListener('scrollend', onScrollEnd)
-  started = false
+  if (element) {
+    element.removeEventListener('scroll', onScroll)
+    element.removeEventListener('scrollend', onScrollEnd)
+    started = false
+  }
 }
 
 const scroll = {
