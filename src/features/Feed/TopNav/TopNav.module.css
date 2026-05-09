@@ -3,7 +3,7 @@
 .topNav {
   align-items: center;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end; 
   left: 0;
   position: absolute;
   top: 0;
@@ -11,4 +11,8 @@
   z-index: 20;
   
   border: 1px dashed red;
+}
+
+.conditional {
+  justify-content: space-between;
 }
