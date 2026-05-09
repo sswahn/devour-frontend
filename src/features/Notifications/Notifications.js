@@ -15,7 +15,6 @@ function Notifications() {
   const startTime = useRef(0)
   const ticking = useRef(0)
   const latestDeltaY = useRef(0)
-  const latestHeight = useRef(0)
   const { onGestureDown, onGestureMove, onGestureUp, onGestureCancel } = useGestures()
   const overlayRef = useRef(null)
   const bottomSheetRef = useRef(null)
@@ -94,7 +93,6 @@ function Notifications() {
   const onPointerDown = event => {
     const { currentTarget } = event
     onGestureDown(event)
-    latestHeight.current = currentTarget.offsetHeight
     currentTarget.classList.add(styles.dragging)
   }
   
@@ -117,7 +115,8 @@ function Notifications() {
     if (tapCount > 0) { 
       return
     }
-    const threshold = window.innerHeight * 0.15
+    const height = window.visualViewport?.height || window.innerHeight
+    const threshold = height * 0.15
     const movement = Math.abs(deltaY)
     if (direction === 'up' && movement > threshold) {
       setState('expand')
