@@ -48,6 +48,11 @@ function FeedNode({ item, index, count }) {
   }
 
   const enterFullScreen = async () => {
+    
+    console.log('enterFullScreen function fired!')
+    console.log('!document.fullscreenElement ', !document.fullscreenElement)
+    console.log('feedNodeRef.current.parentElement ', feedNodeRef.current.parentElement)
+    
     if (!document.fullscreenElement) {
       await feedNodeRef.current.parentElement.requestFullscreen()
       await screen.orientation?.lock?.('portrait')
@@ -62,6 +67,9 @@ function FeedNode({ item, index, count }) {
   }
   
   const onFullScreenChange = event => {
+    
+    console.log('onFullScreenChange event fired!')
+    
     setFullScreen(!!document.fullscreenElement)
   }
 
