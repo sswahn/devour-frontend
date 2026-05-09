@@ -7,6 +7,8 @@ function Dialog({ dialogRef, content, close }) {
       close()
     }
   }
+
+  console.log('is recognizeed as modal opened with showModal()', dialogRef.current?.matches(':modal'))
   
   return (
     <dialog id="dialog" ref={dialogRef} className={styles.dialog} onClick={onClick}>
