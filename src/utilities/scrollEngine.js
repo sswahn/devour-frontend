@@ -18,6 +18,8 @@ function notify(data) {
 
 function update(timestamp) {
   const scrollY = element.scrollTop
+
+    console.log('update onScroll: ', scrollY)
   
   // Calculate change in Y
   deltaY = scrollY - scrollStart 
@@ -37,6 +39,8 @@ function update(timestamp) {
   // (smoothingFactor: 0 < factor <= 1. Smaller = smoother.
   velocity = (rawVelocity * 0.05) + (velocity * (1 - 0.05))
 
+  console.log('velocity: ', velocity)
+  
   // Set prevTimestamp for use in next frame
   prevTimestamp = timestamp
   
@@ -86,7 +90,6 @@ function stop() {
 
 const scroll = {
   get(feed) {
-    console.log('getting scroll ref in scroll.get(): ', feed)
     element = feed
   },
   subscribe(fn) {
