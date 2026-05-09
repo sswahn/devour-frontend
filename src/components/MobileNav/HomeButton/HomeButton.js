@@ -1,11 +1,13 @@
+import useScroll from '../../../hooks/useScroll'
 import HomeIcon from '../../Icons/HomeIcon/HomeIcon'
 import styles from './HomeButton.module.css'
 
 function HomeButton() {
+  const { getScrollRef } = useScroll()
   
   const onClick = event => {
     navigator.vibrate?.(50)
-    window.scrollTo({
+    getScrollRef.current.scrollTo({
       behavior: 'smooth',
       top: 0
     })
