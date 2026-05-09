@@ -18,7 +18,7 @@ function ScrollProvider({ children }) {
   }, [])
 
   useEffect(() => {
-    if (isSet) {
+    if (getScrollRef.current) {
       scroll.get(getScrollRef.current)
     }
   }, [isSet])
