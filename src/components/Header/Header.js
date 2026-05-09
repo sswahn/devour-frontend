@@ -14,7 +14,7 @@ const Header = ({ openAuthentication, openDashboard }) => {
   const headerRef = useRef(null)
 
   useEffect(() => {
-    headerRef.current && scrollEffect(headerRef.current, styles.hidden)
+    headerRef && scrollEffect(headerRef.current, styles.hidden)
   }, [])
 
   return (
