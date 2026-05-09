@@ -48,7 +48,7 @@ function FeedNode({ item, index, count }) {
   }
 
   const enterFullScreen = async () => {
-    await feedNodeRef.current.parentElement.requestFullscreen()
+    await document.documentElement.requestFullscreen()
     await screen.orientation?.lock?.('portrait')
   }
 
