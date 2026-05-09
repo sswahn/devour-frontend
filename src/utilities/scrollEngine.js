@@ -96,6 +96,8 @@ const scroll = {
     if (typeof fn !== 'function') {
       throw new TypeError('scroll.subscribe arugument must be of type "function".')
     }
+
+    console.log('subscribe with fn: ', fn)
     
     if (!started) {
       start()
