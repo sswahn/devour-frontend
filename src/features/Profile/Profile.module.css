@@ -13,15 +13,12 @@
 
 .profile > div {
   background-color: var(--surface-raised);
-  height: 100dvh;
-  left: 0;
+  inset: 0;
   overflow-y: scroll;
   overscroll-behavior-y: contain;
   padding: 8px;
   position: fixed;
   touch-action: none;
-  top: 0;
-  width: 100%;
   z-index: 200;
 }
 
