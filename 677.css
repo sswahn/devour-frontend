@@ -97,7 +97,7 @@
 .RDylejBr3Rzb8YpYfiDx {
   align-items: center;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end; 
   left: 0;
   position: absolute;
   top: 0;
@@ -105,6 +105,10 @@
   z-index: 20;
   
   border: 1px dashed red;
+}
+
+.W6qoA_m7RFH_67_5bFhK {
+  justify-content: space-between;
 }
 
 /* Video Overlay Buttons Like Button */
