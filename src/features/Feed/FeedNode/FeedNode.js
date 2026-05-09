@@ -23,17 +23,17 @@ function FeedNode({ item, index, count }) {
   }
 
   const enterFullScreen = async () => {
-    await feedNodeRef.current.parentElement.requestFullscreen()
-    await screen.orientation?.lock?.('portrait')
+    if (!document.fullscreenElement) {
+      await feedNodeRef.current.parentElement.requestFullscreen()
+      await screen.orientation?.lock?.('portrait')
+    }
   }
 
   const exitFullScreen = async () => {
-    screen.orientation?.unlock?.()
-    await document.exitFullscreen()
-  }
-
-  const toggleFullScreenMode = async () => {
-    !!document.fullscreenElement ? exitFullScreen() : enterFullScreen()
+    if (!!document.fullscreenElement) {
+      screen.orientation?.unlock?.()
+      await document.exitFullscreen()
+    }
   }
 
   const onFullScreenChange = event => {
@@ -99,7 +99,9 @@ function FeedNode({ item, index, count }) {
         <SideNav 
           isDoubleTap={isDoubleTap} 
           isLongPress={isLongPress}
-          toggleFullScreenMode={toggleFullScreenMode}
+          isFullScreen={isFullScreen}
+          enterFullScreen={enterFullScreen}
+          exitFullScreen={exitFullScreenMode}
         />
       </figure>
 
