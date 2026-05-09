@@ -49,7 +49,7 @@
 }
 
 .expand {
-  --sheet-y: 8px;
+  --sheet-y: 0;
   overflow: auto;
   scrollbar-width: none;
 }
