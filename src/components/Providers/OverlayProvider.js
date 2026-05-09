@@ -23,9 +23,10 @@ function OverlayProvider({ children }) {
 
   const openOverlay = (id, focusElement) => {
     if (history.state?.overlayOpen === id) {
-      return
+      history.replaceState({ overlayOpen: id }, '')
+    } else {
+      history.pushState({ overlayOpen: id }, '')
     }
-    history.pushState({ overlayOpen: id }, '')
     push(focusElement)
     setIsActive(id)
   }
