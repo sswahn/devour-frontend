@@ -24,20 +24,16 @@ function FeedNode({ item, index, count }) {
 
   const enterFullScreen = async () => {
     await feedNodeRef.current.parentElement.requestFullscreen()
-    // await lock portrait
+    await screen.orientation?.lock('portrait')
   }
 
   const exitFullScreen = async () => {
     await document.exitFullscreen()
-    // await unlock portrait
+    await screen.orientation?.unlock()
   }
 
   const toggleFullScreenMode = async () => {
-    if () {
-      exitFullScreen()
-    } else {
-      enterFullScreen()
-    }
+    isFullScreen ? exitFullScreen() : enterFullScreen()
   }
 
   const onFullScreenChange = () => {
