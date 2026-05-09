@@ -56,7 +56,7 @@ function useScrollEffect() {
   }
 
   useEffect(() => {
-    const unsubscribe = scroll.subscribe(updateElement)
+    const unsubscribe = scroll.subscribe(updateElement) // move this into the useScroll hook, and here subscribe from hook.
     return () => {
       unsubscribe()
     }
