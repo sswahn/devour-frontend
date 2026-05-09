@@ -1,3 +1,4 @@
+import { ScrollProvider } from './components/Providers/ScrollProvider'
 import { SessionProvider } from './components/Providers/SessionProvider'
 import { OverlayProvider } from './components/Providers/OverlayProvider'
 import { ProfileProvider } from './components/Providers/ProfileProvider'
@@ -6,17 +7,19 @@ import { ContentProvider } from './components/Providers/ContentProvider'
 
 function Providers({ children }) {
   return (
-    <SessionProvider>
-      <OverlayProvider>
-        <ProfileProvider>
-          <DialogProvider>
-            <ContentProvider>
-              {children}
-            </ContentProvider>
-          </DialogProvider>
-        </ProfileProvider>
-      </OverlayProvider>
-    </SessionProvider>
+    <ScrollProvider>
+      <SessionProvider>
+        <OverlayProvider>
+          <ProfileProvider>
+            <DialogProvider>
+              <ContentProvider>
+                {children}
+              </ContentProvider>
+            </DialogProvider>
+          </ProfileProvider>
+        </OverlayProvider>
+      </SessionProvider>
+    </ScrollProvider>
   )
 }
 
