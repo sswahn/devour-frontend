@@ -25,19 +25,11 @@ function FullscreenButton() {
     action()
   }
   
-  const onKeyDown = event => {
-    if (event.key === 'Enter') {
-      event.preventDefault()
-      action()
-    }
-  }
-  
   return (
     <button 
       className={styles.fullscreenButton}
       ref={buttonRef} 
       onClick={onClick} 
-      onKeyDown={onKeyDown} 
       type="button" 
       aria-label="enter fullscreen mode">
       <ExpandIcon />
