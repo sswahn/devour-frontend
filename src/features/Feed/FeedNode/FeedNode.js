@@ -24,26 +24,30 @@ function FeedNode({ item, index, count }) {
 
   const enterFullScreen = async () => {
     await feedNodeRef.current.parentElement.requestFullscreen()
-    setIsFullScreen(true)
+    // await lock portrait
   }
 
   const exitFullScreen = async () => {
     await document.exitFullscreen()
-    setIsFullScreen(false)
+    // await unlock portrait
   }
 
   const toggleFullScreenMode = async () => {
-    if (document.fullscreenElement) {
+    if () {
       exitFullScreen()
     } else {
       enterFullScreen()
     }
   }
 
+  const onFullScreenChange = () => {
+    setFullScreen(!!document.fullscreenElement)
+  }
+
   useEffect(() => {
-    document.addEventListener('fullscreenchange', toggleFullScreenMode)
+    document.addEventListener('fullscreenchange', onFullScreenChange)
     return () => {
-      document.removeEventListener('fullscreenchange', toggleFullScreenMode)
+      document.removeEventListener('fullscreenchange', onFullScreenChange)
     }
   }, [])
   
