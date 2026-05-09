@@ -1,7 +1,7 @@
 /* Feed Node */
 
 .feedNode figure {
-  contain: layout paint size;
+  contain: layout paint;
   display: block;
   height: 100dvh;
   position: relative;
