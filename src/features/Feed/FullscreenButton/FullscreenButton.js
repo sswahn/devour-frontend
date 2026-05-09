@@ -7,7 +7,8 @@ function FullscreenButton({ isFullScreen, enterFullScreen, exitFullScreen }) {
   
   const onClick = event => {
     navigator.vibrate?.(50)
-    !!document.fullscreenElement ? exitFullScreen() : enterFullScreen()
+    console.log('FullScreenButton onClick: !document.fullscreenElement: ', !document.fullscreenElement)
+    !document.fullscreenElement ? enterFullScreen() : exitFullScreen() 
   }
 
   // button needs to toggle icon from expand to contract, 
