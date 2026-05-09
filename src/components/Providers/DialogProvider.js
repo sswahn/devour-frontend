@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback, createContext } from 'react'
+import { useState, useRef, useEffect, createContext } from 'react'
 import Dialog from '../Dialog/Dialog'
 
 const DialogContext = createContext(null)
@@ -7,13 +7,13 @@ function DialogProvider({ children }) {
   const [content, setContent] = useState(null)
   const dialogRef = useRef(null)
 
-  const openDialog = useCallback(component => {
+  const openDialog = component => {
     setContent(component)
-  }, [])
+  }
   
-  const closeDialog = useCallback(() => {
+  const closeDialog = () => {
     setContent(null)
-  }, [])
+  }
 
   const action = () => {
     const dialog = dialogRef.current
