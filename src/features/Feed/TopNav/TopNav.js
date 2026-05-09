@@ -3,7 +3,7 @@ import Dropdown from '../../../components/Dropdown/Dropdown'
 import styles from './TopNav.module.css'
 
 function TopNav() {
-  const isFullscreen = document.fullscreenElement
+  const isFullscreen = !document.fullscreenElement
   
   return (
     <nav className={`topNav ${styles.topNav} ${isFullscreen ? styles.fullscreen : ''}`} aria-label="top menu">
