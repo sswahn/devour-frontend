@@ -23,18 +23,29 @@ function FeedNode({ item, index, count }) {
   }
 
   const enterFullScreen = async () => {
-    await feedNodeRef.current.requestFullscreen()
-    if (document.fullscreenElement) {
-      setIsFullScreen(true)
-    }
+    await feedNodeRef.current.parentElement.requestFullscreen()
+    setIsFullScreen(true)
   }
 
   const exitFullScreen = async () => {
-    if (isFullScreen) {
-      await document.exitFullscreen()
-      setIsFullScreen(false)
+    await document.exitFullscreen()
+    setIsFullScreen(false)
+  }
+
+  const toggleFullScreenMode = async () => {
+    if (document.fullscreenElement) {
+      exitFullScreen()
+    } else {
+      enterFullScreen()
     }
   }
+
+  useEffect(() => {
+    document.addEventListener('fullscreenchange', toggleFullScreenMode)
+    return () => {
+      document.removeEventListener('fullscreenchange', toggleFullScreenMode)
+    }
+  }, [])
   
   const onPointerDown = event => {
     if (event.target.closest('.sideNav') || event.target.closest('.topNav')) {
@@ -85,7 +96,11 @@ function FeedNode({ item, index, count }) {
         {/* item.videoUrl && <video ref={ref} src={item.videoUrl} preload="metadata" muted playsInline loop /> */}
         {item.caption && <figcaption>{item.caption}</figcaption>}
         
-        <SideNav isDoubleTap={isDoubleTap} isLongPress={isLongPress} />
+        <SideNav 
+          isDoubleTap={isDoubleTap} 
+          isLongPress={isLongPress}
+          toggleFullScreenMode={toggleFullScreenMode}
+        />
       </figure>
 
       <Comments />
