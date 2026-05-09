@@ -101,7 +101,7 @@ function FeedNode({ item, index, count }) {
           isLongPress={isLongPress}
           isFullScreen={isFullScreen}
           enterFullScreen={enterFullScreen}
-          exitFullScreen={exitFullScreenMode}
+          exitFullScreen={exitFullScreen}
         />
       </figure>
 
