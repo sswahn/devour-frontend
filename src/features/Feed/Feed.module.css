@@ -5,15 +5,16 @@
 
   height: 100dvh;
   overflow-x: hidden;
-  overflow-y: auto;
-  scroll-snap-type: y mandatory;
-
-  scroll-behavior: smooth;  
   
+  overflow-y: auto;
   overscroll-behavior-y: contain;
-
+  scroll-behavior: smooth;  
+  scroll-snap-type: y mandatory;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch; 
+  scrollbar-width: none;
   transform: translateZ(0);
   will-change: scroll-position;
   
-   z-index: 0;
+  z-index: 0;
 }
