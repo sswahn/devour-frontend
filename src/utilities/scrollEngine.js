@@ -1,5 +1,5 @@
 // scrollEngine.js
-
+let element = null
 let subscribers = new Set()
 let started = false
 let ticking = false
@@ -69,18 +69,21 @@ function onScrollEnd(event) {
 }
 
 function start() {
-  window.addEventListener('scroll', onScroll, { passive: true })
-  window.addEventListener("scrollend", onScrollEnd, { passive: true })
+  element.addEventListener('scroll', onScroll, { passive: true })
+  element.addEventListener("scrollend", onScrollEnd, { passive: true })
   started = true
 }
 
 function stop() {
-  window.removeEventListener('scroll', onScroll)
-  window.removeEventListener('scrollend', onScrollEnd)
+  element.removeEventListener('scroll', onScroll)
+  element.removeEventListener('scrollend', onScrollEnd)
   started = false
 }
 
 const scroll = {
+  get(feed) {
+    element = feed
+  },
   subscribe(fn) {
     if (typeof fn !== 'function') {
       throw new TypeError('scroll.subscribe arugument must be of type "function".')
