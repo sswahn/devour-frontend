@@ -33,10 +33,10 @@ function FeedNode({ item, index, count }) {
   }
 
   const toggleFullScreenMode = async () => {
-    isFullScreen ? exitFullScreen() : enterFullScreen()
+    !!document.fullscreenElement ? exitFullScreen() : enterFullScreen()
   }
 
-  const onFullScreenChange = () => {
+  const onFullScreenChange = event => {
     setFullScreen(!!document.fullscreenElement)
   }
 
