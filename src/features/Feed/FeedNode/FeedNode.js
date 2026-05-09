@@ -28,7 +28,7 @@ function FeedNode({ item, index, count }) {
   }
 
   const exitFullScreen = async () => {
-    screen.orientation?.unlock()
+    screen.orientation?.unlock?.()
     await document.exitFullscreen()
   }
 
