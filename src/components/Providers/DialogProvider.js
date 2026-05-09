@@ -31,7 +31,7 @@ function DialogProvider({ children }) {
   return (
     <DialogContext.Provider value={{ openDialog, closeDialog }}>
       {children}
-      <Dialog dialogRef={dialogRef} content={content} />
+      <Dialog dialogRef={dialogRef} content={content} close={closeDialog} />
     </DialogContext.Provider>
   )
 }
