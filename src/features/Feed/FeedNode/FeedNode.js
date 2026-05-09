@@ -28,8 +28,8 @@ function FeedNode({ item, index, count }) {
   }
 
   const exitFullScreen = async () => {
-    await document.exitFullscreen()
     screen.orientation?.unlock()
+    await document.exitFullscreen()
   }
 
   const toggleFullScreenMode = async () => {
