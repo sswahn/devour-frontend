@@ -21,7 +21,7 @@ function FullscreenButton({ isFullScreen, enterFullScreen, exitFullScreen }) {
       onClick={onClick} 
       type="button" 
       aria-label="enter fullscreen mode">
-      <ExpandIcon /> {/* isFullScreen ? <ContractIcon /> : <ExpandIcon /> */}
+      <ExpandIcon />
     </button>
   )
 }
