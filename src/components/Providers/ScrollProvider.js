@@ -3,18 +3,18 @@ import { useRef, useCallback, createContext } from 'react'
 const ScrollContext = createContext(null)
 
 function ScrollProvider({ children }) {
-  const scrollRef = useRef(null)
-  const overlayRef = useCallback(node => {
+  const getScrollRef = useRef(null)
+  const setScrollRef = useCallback(node => {
     if (node) {
-      
-    
-      return () => {
-        // cleanup function
-      }
+      getScrollRef.current = node  
+    }
+    return () => {
+      getScrollRef.current = null
     }
   }, [])
+  
   return (
-    <ScrollContext.Provider value={}>
+    <ScrollContext.Provider value={{ getScrollRef, setScrollRef }}>
       {children}
     </ScrollContext.Provider>
   )
