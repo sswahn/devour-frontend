@@ -1,5 +1,6 @@
 import { useRef } from 'react'
-import ExpandIcon from '../../../components/Icons/ExpandIcon/ExpandIcon'
+import MaximizeIcon from '../../../components/Icons/MaximizeIcon/MaximizeIcon'
+import MinimizeIcon from '../../../components/Icons/MinimizeIcon/MinimizeIcon'
 import styles from './FullscreenButton.module.css'
 
 function FullscreenButton({ isFullScreen, enterFullScreen, exitFullScreen }) {
@@ -20,7 +21,7 @@ function FullscreenButton({ isFullScreen, enterFullScreen, exitFullScreen }) {
       onClick={onClick} 
       type="button" 
       aria-label="enter fullscreen mode">
-      <ExpandIcon />
+      {isFullScreen ? <MinimizeIcon /> : <MaximizeIcon />}
     </button>
   )
 }
