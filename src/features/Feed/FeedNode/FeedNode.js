@@ -21,31 +21,6 @@ function FeedNode({ item, index, count }) {
       setIsLongPress(longPress)
     }
   }
-
-  const enterFullScreen = async () => {
-    if (!document.fullscreenElement) {
-      await feedNodeRef.current.parentElement.requestFullscreen()
-      await screen.orientation?.lock?.('portrait')
-    }
-  }
-
-  const exitFullScreen = async () => {
-    if (!!document.fullscreenElement) {
-      screen.orientation?.unlock?.()
-      await document.exitFullscreen()
-    }
-  }
-
-  const onFullScreenChange = event => {
-    setFullScreen(!!document.fullscreenElement)
-  }
-
-  useEffect(() => {
-    document.addEventListener('fullscreenchange', onFullScreenChange)
-    return () => {
-      document.removeEventListener('fullscreenchange', onFullScreenChange)
-    }
-  }, [])
   
   const onPointerDown = event => {
     if (event.target.closest('.sideNav') || event.target.closest('.topNav')) {
@@ -71,6 +46,31 @@ function FeedNode({ item, index, count }) {
   const onPointerCancel = event => {
     onGestureCancel(event)
   }
+
+  const enterFullScreen = async () => {
+    if (!document.fullscreenElement) {
+      await feedNodeRef.current.parentElement.requestFullscreen()
+      await screen.orientation?.lock?.('portrait')
+    }
+  }
+
+  const exitFullScreen = async () => {
+    if (!!document.fullscreenElement) {
+      screen.orientation?.unlock?.()
+      await document.exitFullscreen()
+    }
+  }
+  
+  const onFullScreenChange = event => {
+    setFullScreen(!!document.fullscreenElement)
+  }
+
+  useEffect(() => {
+    document.addEventListener('fullscreenchange', onFullScreenChange)
+    return () => {
+      document.removeEventListener('fullscreenchange', onFullScreenChange)
+    }
+  }, [])
 
   useEffect(() => {
     if (content.id !== item.id) {
