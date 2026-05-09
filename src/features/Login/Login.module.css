@@ -24,7 +24,6 @@
   overscroll-behavior-y: contain;
   padding: 16px 24px;
   position: fixed;
-  scrollbar-width: none;
   top: 0;
   touch-action: none;
   width: 100%;
