@@ -12,7 +12,7 @@ function MobileNav() {
   const navRef = useRef(null)
 
   useEffect(() => {
-    navRef && scrollEffect(navRef.current, styles.hidden)
+    navRef.current && scrollEffect(navRef.current, styles.hidden)
   }, [])
   
   return (
