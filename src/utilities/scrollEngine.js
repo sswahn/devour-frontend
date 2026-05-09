@@ -38,6 +38,8 @@ function update(timestamp) {
   // Formula: (currentRawVelocity * smoothingFactor) + (PreviousSmoothedVelocity * (1 - Factor))
   // (smoothingFactor: 0 < factor <= 1. Smaller = smoother.
   velocity = (rawVelocity * 0.05) + (velocity * (1 - 0.05))
+  // try for a buttery scroll:
+  //velocity = (rawVelocity * 0.03) + (velocity * 0.97)
 
   console.log('velocity: ', velocity)
   
