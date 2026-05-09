@@ -2,10 +2,8 @@
 
 
 .feed {
-
   height: 100dvh;
   overflow-x: hidden;
-  
   overflow-y: auto;
   overscroll-behavior-y: contain;
   scroll-behavior: smooth;  
@@ -15,6 +13,5 @@
   scrollbar-width: none;
   transform: translateZ(0);
   will-change: scroll-position;
-  
   z-index: 0;
 }
