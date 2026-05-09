@@ -2,18 +2,8 @@ import { useRef } from 'react'
 import ExpandIcon from '../../../components/Icons/ExpandIcon/ExpandIcon'
 import styles from './FullscreenButton.module.css'
 
-function FullscreenButton({ isFullScreen }) {
+function FullscreenButton({ isFullScreen, enterFullScreen, exitFullScreen }) {
   const buttonRef = useRef(null)
-
-  const enterFullScreen = async () => {
-    await buttonRef.current.closest('section').requestFullscreen()
-    await screen.orientation?.lock?.('portrait')
-  }
-
-  const exitFullScreen = async () => {
-    screen.orientation?.unlock?.()
-    await document.exitFullscreen()
-  }
   
   const onClick = event => {
     navigator.vibrate?.(50)
