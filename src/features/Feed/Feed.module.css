@@ -2,7 +2,7 @@
 
 
 .feed {
-/*
+
   height: 100dvh;
   overflow-x: hidden;
   overflow-y: auto;
@@ -14,6 +14,6 @@
 
   transform: translateZ(0);
   will-change: scroll-position;
-  */
+  
    z-index: 0;
 }
