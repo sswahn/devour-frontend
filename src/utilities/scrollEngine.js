@@ -82,6 +82,7 @@ function stop() {
 
 const scroll = {
   get(feed) {
+    console.log('getting scroll ref in scroll.get(): ', feed)
     element = feed
   },
   subscribe(fn) {
