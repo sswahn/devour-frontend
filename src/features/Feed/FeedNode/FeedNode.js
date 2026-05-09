@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import useContent from '../../../hooks/useContent'
 import useGestures from '../../../hooks/useGestures'
 import TopNav from '../TopNav/TopNav'
@@ -10,6 +10,8 @@ function FeedNode({ item, index, count }) {
   const { content, setContent } = useContent()
   const [isDoubleTap, setIsDoubleTap] = useState(null)
   const [isLongPress, setIsLongPress] = useState(null)
+  const [isFullScreen, setIsFullScreen] = useState(false)
+  const feedNodeRef = useRef(null)
   const { onGestureDown, onGestureMove, onGestureUp, onGestureCancel } = useGestures()
 
   // need a function to pass to the swipeFromEdge(func) hook
@@ -17,6 +19,20 @@ function FeedNode({ item, index, count }) {
   const getLongPress = longPress => {
     if (longPress) {
       setIsLongPress(longPress)
+    }
+  }
+
+  const enterFullScreen = async () => {
+    await feedNodeRef.current.requestFullscreen()
+    if (document.fullscreenElement) {
+      setIsFullScreen(true)
+    }
+  }
+
+  const exitFullScreen = async () => {
+    if (isFullScreen) {
+      await document.exitFullscreen()
+      setIsFullScreen(false)
     }
   }
   
@@ -57,14 +73,14 @@ function FeedNode({ item, index, count }) {
   // create <Figure /> and <CommentsSection /> components
   
   return (
-    <div className={styles.feedNode}>
+    <div ref={feedNodeRef} className={styles.feedNode}>
       <figure aria-posinset={index} aria-setsize={count}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
         onPointerCancel={onPointerCancel}>
         
-        <TopNav />
+        <TopNav isFullSreen={isFullScreen} exitFullScreen={exitFullScreen} />
   
         {/* item.videoUrl && <video ref={ref} src={item.videoUrl} preload="metadata" muted playsInline loop /> */}
         {item.caption && <figcaption>{item.caption}</figcaption>}
