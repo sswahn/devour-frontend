@@ -4,6 +4,8 @@ import useOverlay from '../../hooks/useOverlay'
 import useSession from '../../hooks/useSession'
 import useProfile from '../../hooks/useProfile'
 import useSwipeFromEdge from '../../hooks/useSwipeFromEdge'
+import SearchIcon from '../../components/Icons/SearchIcon/SearchIcon'
+import MessageIcon from '../../components/Icons/MessageIcon/MessageIcon'
 import FlagIcon from '../../components/Icons/FlagIcon/FlagIcon'
 import UserXmarkIcon from '../../components/Icons/UserXmarkIcon/UserXmarkIcon'
 import CloseButton from '../../components/CloseButton/CloseButton'
@@ -15,8 +17,8 @@ import FollowStats from './FollowStats/FollowStats'
 import EditButton from './EditButton/EditButton'
 import styles from './Profile.module.css'
 const dropDownItems = [
-  { icon: <FlagIcon />, text: 'Search profile', method: () => alert('Profile reported.') },
-  { icon: <FlagIcon />, text: 'Direct message', method: () => alert('Profile reported.') },
+  { icon: <SearchIcon />, text: 'Search profile', method: () => alert('Opened search.') },
+  { icon: <MessageIcon />, text: 'Send direct message', method: () => alert('DM opened.') },
   { icon: <FlagIcon />, text: 'Flag profile', method: () => alert('Profile reported.') },
   { icon: <UserXmarkIcon />, text: 'Block user', method: () => alert('User blocked.') }
 ]
