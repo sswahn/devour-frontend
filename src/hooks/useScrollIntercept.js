@@ -24,8 +24,7 @@ function useScrollIntercept() {
 
     console.log('animating...')
     
-    const current = element.scrollTop
-    const distance = targetScroll.current - current
+    const distance = targetScroll.current - element.scrollTop
     // Snap-friendly settling: yield control back to the browser near the end
     if (Math.abs(distance) < 1) {
       targetScroll.current = element.scrollTop
@@ -36,8 +35,12 @@ function useScrollIntercept() {
     const step = Math.max(-MAX_STEP, Math.min(MAX_STEP, distance * SMOOTHING))
     element.scrollTop += step
 
-
-    console.log('element.scrollTop: ', element.scrollTop)
+    console.log({
+      element.scrollTop,
+      target: targetScroll.current,
+      distance,
+      step
+    })
     
     frame.current = requestAnimationFrame(animate)
   }
