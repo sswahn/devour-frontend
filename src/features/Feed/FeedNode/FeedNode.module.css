@@ -23,6 +23,11 @@
 
   background: #666; 
   border-radius: 10px;
+
+
+  transform: translateZ(-3px) scale(4);
+  transform-origin: center;
+  transform-style: preserve-3d;
 }
 
 .feedNode figcaption {
