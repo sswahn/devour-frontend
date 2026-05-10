@@ -25,6 +25,7 @@ function useScrollIntercept() {
   }
 
   const interceptScroll = deltaY => {
+    const element = scrollRef.current
     const newScroll = targetScroll.current + deltaY * MULTIPLIER
     const maxScroll = element.scrollHeight - element.clientHeight // Clamp target scroll
     targetScroll.current = Math.max(0, Math.min(newScroll, maxScroll))
