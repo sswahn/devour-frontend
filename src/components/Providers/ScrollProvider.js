@@ -57,7 +57,7 @@ const ScrollProvider = ({ children }) => {
   }
 
   function onScroll(event) {
-    if (!ticking.curret) {
+    if (!ticking.current) {
       ticking.current = true
       requestAnimationFrame(timestamp => {
         update(timestamp)
