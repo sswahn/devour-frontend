@@ -16,9 +16,6 @@ function useScrollIntercept() {
   }
 
   const animate = () => {
-
-    console.log('entered animate function loop...')
-    
     const element = targetElement.current
     if (!element) {
       frame.current = null
@@ -39,16 +36,10 @@ function useScrollIntercept() {
   }
 
   const interceptScroll = deltaY => {
-
-    console.log('entered interceptScroll...')
-    
     const element = targetElement.current
     if (!element) {
       return
     }
-
-    console.log('element is set and executing code...')
-    
     const newScroll = targetScroll.current + deltaY * MULTIPLIER
     const maxScroll = element.scrollHeight - element.clientHeight // Clamp target scroll
     targetScroll.current = Math.max(0, Math.min(newScroll, maxScroll))
