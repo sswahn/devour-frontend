@@ -8,6 +8,7 @@ const ScrollProvider = ({ children }) => {
   const deltaY = useRef(0)
   const scrollStart = useRef(0)
   const prevScrollY = useRef(0)
+  const prevTimestamp = useRef(0)
   const ticking = useRef(0)
   const scrollRef = useRef(null)
   const setScrollRef = useCallback(node => {
@@ -48,9 +49,9 @@ const ScrollProvider = ({ children }) => {
     prevScrollY.current = scrollY
   
     // Calculate scroll velocity
-    const deltaTime = timestamp - prevTimestamp
+    const deltaTime = timestamp - prevTimestamp.current
     const velocity = dY / deltaTime
-    prevTimestamp = timestamp
+    prevTimestamp.current = timestamp
     
     notify({ deltaY: deltaY.current, direction, velocity })
   }
