@@ -1,7 +1,7 @@
-import { useRef, useEffect } from 'react'
-import { scrollRef } from '../components/Providers/ScrollProvider'
+import { useState, useRef, useEffect } from 'react'
 
 function useScrollIntercept() {
+  const [isSet, setIsSet] = useState(false)
   const targetElement = useRef(null)
   const targetScroll = useRef(0)
   const prevY = useRef(0)
@@ -10,8 +10,13 @@ function useScrollIntercept() {
   const SMOOTHING = 0.08 // Lower: heavier, thicker, more delayed, Higher: tighter, more responsive - try 0.12 if change above
   const MAX_STEP = 80
 
+  const setTargetElement = element => {
+    targetElement.current = element
+    setIsSet(true)
+  }
+
   const animate = () => {
-    const element = scrollRef.current
+    const element = targetElement.current
     if (!element) {
       frame.current = null
       return
@@ -31,7 +36,7 @@ function useScrollIntercept() {
   }
 
   const interceptScroll = deltaY => {
-    const element = scrollRef.current
+    const element = targetElement.current
     if (!element) {
       return
     }
@@ -79,7 +84,7 @@ function useScrollIntercept() {
   }
 
   const onScroll = event => {
-    const element = scrollRef.current
+    const element = targetElement.current
     if (!element) {
       return
     }
@@ -91,7 +96,7 @@ function useScrollIntercept() {
   }
 
   useEffect(() => {
-    const element = scrollRef.current
+    const element = targetElement.current
     if (!element) {
       return
     }
@@ -110,7 +115,9 @@ function useScrollIntercept() {
         cancelAnimationFrame(frame.current)
       }
     }
-  }, [])
+  }, [isSet])
+
+  return { setTargetElement }
 }
 
 export default useScrollIntercept
