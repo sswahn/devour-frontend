@@ -3,6 +3,7 @@ import useOverlay from '../../hooks/useOverlay'
 import useScrollLock from '../../hooks/useScrollLock'
 import useSelectionToSpeech from '../../hooks/useSelectionToSpeech'
 import useContextMenu from '../../hooks/useContextMenu'
+import useScrollIntercept from '../../hooks/useScrollIntercept'
 import Header from '../Header/Header'
 import Main from '../Main/Main'
 import MobileNav from '../MobileNav/MobileNav'
@@ -14,6 +15,7 @@ function Interface() {
   useScrollLock(isActive)
   useSelectionToSpeech()
   useContextMenu()
+  useScrollIntercept()
   
   return (
     <>
