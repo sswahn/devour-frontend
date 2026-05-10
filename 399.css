@@ -210,14 +210,11 @@
   width: 100%;
   z-index: 10;
 
-
   max-width: 500px;
   margin: 0 auto 4px auto;
 
   background: #666; 
   border-radius: 10px;
-
-  transform: translateZ(-3px) scale(4);
 }
 
 .QNshFBXSoGNyBxo7mpBY figcaption {
