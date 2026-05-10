@@ -14,9 +14,11 @@ const ScrollProvider = ({ children }) => {
   const setScrollRef = useCallback(node => {
     if (node) {
       scrollRef.current = node  
+      addListeners(node)
     }
     return () => {
       scrollRef.current = null
+      removeListeners(node)
     }
   }, [])
 
@@ -71,18 +73,15 @@ const ScrollProvider = ({ children }) => {
     notify({ deltaY: deltaY.current, direction: 'idle', velocity: 0 })
   }
 
-  useEffect(() => {
-    const element = scrollRef.current
-    if (!element) {
-      return
-    }
+  const addListeners = element => {
     element.addEventListener('scroll', onScroll, { passive: true })
     element.addEventListener("scrollend", onScrollEnd, { passive: true })
-    return () => {
-      element.removeEventListener('scroll', onScroll)
-      element.removeEventListener('scrollend', onScrollEnd)
-    }
-  }, [])
+  }
+
+  const removeListeners = element => {
+    element.removeEventListener('scroll', onScroll)
+    element.removeEventListener('scrollend', onScrollEnd)
+  }
   
   return (
     <ScrollContext.Provider value={{ subscribe, scrollRef, setScrollRef }}>
