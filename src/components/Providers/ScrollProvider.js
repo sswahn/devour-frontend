@@ -9,15 +9,14 @@ const ScrollProvider = ({ children }) => {
   const scrollStart = useRef(0)
   const prevScrollY = useRef(0)
   const ticking = useRef(0)
-  const ScrollRef = useRef(null)
+  const scrollRef = useRef(null)
   
   const setScrollRef = useCallback(node => {
     if (node) {
-      getScrollRef.current = node  
-      scroll.get(node)
+      scrollRef.current = node  
     }
     return () => {
-      getScrollRef.current = null
+      scrollRef.current = null
     }
   }, [])
 
