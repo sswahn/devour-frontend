@@ -4,10 +4,12 @@ import scroll from '../../utilities/scrollEngine'
 const ScrollContext = createContext(null)
 
 const ScrollProvider = ({ children }) => {
+  const deltaY = useRef(0)
   const scrollStart = useRef(0)
   const prevScrollY = useRef(0)
   const ticking = useRef(0)
   const ScrollRef = useRef(null)
+  
   const setScrollRef = useCallback(node => {
     if (node) {
       getScrollRef.current = node  
@@ -22,7 +24,7 @@ const ScrollProvider = ({ children }) => {
     const scrollY = element.scrollTop
 
     // Calculate change in Y
-    deltaY = scrollY - scrollStart.current
+    deltaY.current = scrollY - scrollStart.current
     
     // Calculate current scroll direction
     const dY = scrollY - prevScrollY.current
@@ -37,7 +39,7 @@ const ScrollProvider = ({ children }) => {
   
     // Formula: (currentRawVelocity * smoothingFactor) + (PreviousSmoothedVelocity * (1 - Factor))
     // (smoothingFactor: 0 < factor <= 1. Smaller = smoother.
-    velocity = (rawVelocity * 0.05) + (velocity * (1 - 0.05))
+    velocity.current = (rawVelocity * 0.05) + (velocity.current * (1 - 0.05))
     // try for a buttery scroll:
     //velocity = (rawVelocity * 0.03) + (velocity * 0.97)
   
@@ -46,7 +48,7 @@ const ScrollProvider = ({ children }) => {
     // Set prevTimestamp for use in next frame
     prevTimestamp = timestamp
     
-    notify({ deltaY, direction, velocity })
+    notify({ deltaY: deltaY.current, direction, velocity: velocity.current })
   }
 
   function onScroll(event) {
