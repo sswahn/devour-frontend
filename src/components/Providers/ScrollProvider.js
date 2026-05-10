@@ -31,9 +31,6 @@ const ScrollProvider = ({ children }) => {
     fn({ deltaY: deltaY.current, direction: 'idle', velocity: 0 })
     return () => {
       subscribers.current.delete(fn)
-      if (subscribers.current.size === 0) {
-        stop()
-      }
     }
   }
 
