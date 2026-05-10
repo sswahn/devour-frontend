@@ -23,12 +23,12 @@ const ScrollProvider = ({ children }) => {
     if (typeof fn !== 'function') {
       throw new TypeError('scroll.subscribe arugument must be of type "function".')
     }
-    const subscribers = subscribers.current
-    subscribers.add(fn)
+    const { add, delete, size } = subscribers.current
+    add(fn)
     fn({ deltaY: deltaY.current, direction: 'idle', velocity: 0 })
     return () => {
-      subscribers.delete(fn)
-      if (subscribers.size === 0) {
+      delete(fn)
+      if (size === 0) {
         stop()
       }
     }
