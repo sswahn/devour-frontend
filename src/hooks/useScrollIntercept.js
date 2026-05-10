@@ -106,6 +106,9 @@ function useScrollIntercept() {
       element.removeEventListener('touchmove', onTouchMove, { passive: false })
       element.removeEventListener('keydown', onKeyDown)
       element.removeEventListener('scroll', onScroll)
+      if (frame.current) {
+        cancelAnimationFrame(frame.current)
+      }
     }
   }, [])
 }
