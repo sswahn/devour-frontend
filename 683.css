@@ -205,17 +205,17 @@
 
 @keyframes za4wk6tcflzJN4WHogg5 {
   from {
-    transform: translateY(100px);
+    transform: translateY(15%);
   }
   to {
-    transform: translateY(0);
+    transform: translateY(-15%);
   }
 }
 
 .QNshFBXSoGNyBxo7mpBY figure {
   animation: za4wk6tcflzJN4WHogg5 linear both;
   animation-timeline: view();
-  animation-range: cover 0% cover 100%;
+  animation-range: cover -20% cover 120%;
   
   contain: layout paint;
   display: block;
