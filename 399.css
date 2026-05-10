@@ -259,13 +259,12 @@
 }
 
 :root {
-  /* When NOT in fullscreen, use a default 20px offset */
-  --notch-height: 20px;
+  /* set in global root:  When NOT in fullscreen, use a default offset */
+  --notch-height: 0px;
 }
 
 /* Automatically detect when the page or element enters fullscreen */
-:is(:fullscreen, :root:fullscreen, body:fullscreen) {
-  /* In fullscreen, use the actual notch height (0px if no notch) */
+.FXju5x6KeXy0fnVXd9I2:fullscreen {
   --notch-height: env(safe-area-inset-top);
 }
 
