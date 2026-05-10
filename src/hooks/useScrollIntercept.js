@@ -71,6 +71,12 @@ function useScrollIntercept() {
     }
   }
 
+  const onScroll = event => {
+    if (!frame.current) {
+      targetScroll.current = scrollRef.current.scrollTop
+    }
+  }
+
   useEffect(() => {
     const element = scrollRef.current
     if (!element) {
@@ -80,11 +86,13 @@ function useScrollIntercept() {
     element.addEventListener('touchstart', onTouchStart, { passive: false })
     element.addEventListener('touchmove', onTouchMove, { passive: false })
     element.addEventListener('keydown', onKeyDown)
+    element.addEventListener('scroll', onScroll)
     return () => {
       element.removeEventListener('wheel', onWheel, { passive: false })
       element.removeEventListener('touchstart', onTouchStart, { passive: false })
       element.removeEventListener('touchmove', onTouchMove, { passive: false })
       element.removeEventListener('keydown', onKeyDown)
+      element.removeEventListener('scroll', onScroll)
     }
   }, [])
 }
