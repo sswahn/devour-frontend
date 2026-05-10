@@ -23,6 +23,7 @@ const ScrollProvider = ({ children }) => {
     if (typeof fn !== 'function') {
       throw new TypeError('scroll.subscribe arugument must be of type "function".')
     }
+    const subscribers = subscribers.current
     subscribers.add(fn)
     fn({ deltaY: deltaY.current, direction: 'idle', velocity: 0 })
     return () => {
