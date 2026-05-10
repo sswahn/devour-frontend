@@ -6,13 +6,38 @@ function useScrollIntercept() {
   const latestDeltaY = useRef(null)
   const prevY = useRef(0)
   const ticking = useRef(false)
+  const velocity = useRef(0)
+  const frame = useRef(null)
+  const MULTIPLIER = 0.2
+  const FRICTION = 0.9
+
+  const animate = () => {
+    const element = scrollRef.current
+
+    if (!element) {
+      frame.current = null
+      return
+    }
+
+    velocity.current *= FRICTION
+
+    if (Math.abs(velocity.current) < 0.1) {
+      velocity.current = 0
+      frame.current = null
+      return
+    }
+
+    element.scrollTop += velocity.current
+
+    frame.current = requestAnimationFrame(animate)
+  }
   
   const interceptScroll = deltaY => {
     latestDeltaY.current = deltaY
     if (!ticking.current) {
       ticking.current = true
       requestAnimationFrame(() => {
-        scrollRef.current.scrollTop += latestDeltaY.current * 0.2
+        scrollRef.current.scrollTop += latestDeltaY.current * MULTIPLIER
         ticking.current = false
       })
     }
