@@ -4,6 +4,7 @@ import scroll from '../../utilities/scrollEngine'
 const ScrollContext = createContext(null)
 
 const ScrollProvider = ({ children }) => {
+  const subscribers = useRef(new Set())
   const deltaY = useRef(0)
   const scrollStart = useRef(0)
   const prevScrollY = useRef(0)
@@ -21,7 +22,7 @@ const ScrollProvider = ({ children }) => {
   }, [])
 
   const notify = data => {
-    for (const fn of subscribers) {
+    for (const fn of subscribers.current) {
       fn(data)
     }
   }
