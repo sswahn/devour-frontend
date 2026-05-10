@@ -40,9 +40,9 @@ function useScrollIntercept() {
     const map = {
       'ArrowDown': 40, 
       'ArrowUp': -40, 
-      ' ': 200, 
       'PageDown': 400, 
-      'PageUp': -400 
+      'PageUp': -400,
+      ' ': 200, 
     }
     if (map[event.key]) {
       event.preventDefault()
