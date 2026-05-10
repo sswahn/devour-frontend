@@ -1,13 +1,10 @@
 import { useState, useRef, useEffect } from 'react'
 import { overlay } from '../../config'
+import { dropdown } from './config'
 import useOverlay from '../../hooks/useOverlay'
 import useSession from '../../hooks/useSession'
 import useProfile from '../../hooks/useProfile'
 import useSwipeFromEdge from '../../hooks/useSwipeFromEdge'
-import SearchIcon from '../../components/Icons/SearchIcon/SearchIcon'
-import MessageIcon from '../../components/Icons/MessageIcon/MessageIcon'
-import FlagIcon from '../../components/Icons/FlagIcon/FlagIcon'
-import UserXmarkIcon from '../../components/Icons/UserXmarkIcon/UserXmarkIcon'
 import CloseButton from '../../components/CloseButton/CloseButton'
 import Dropdown from '../../components/Dropdown/Dropdown'
 import ImageField from './ImageField/ImageField'
@@ -16,12 +13,6 @@ import FollowButton from './FollowButton/FollowButton'
 import FollowStats from './FollowStats/FollowStats'
 import EditButton from './EditButton/EditButton'
 import styles from './Profile.module.css'
-const dropDownItems = [ // move this to a local config file
-  { icon: <SearchIcon />, text: 'Search profile', method: () => alert('Opened search.') },
-  { icon: <MessageIcon />, text: 'Send direct message', method: () => alert('DM opened.') },
-  { icon: <FlagIcon />, text: 'Flag profile', method: () => alert('Profile reported.') },
-  { icon: <UserXmarkIcon />, text: 'Block user', method: () => alert('User blocked.') }
-]
 
 function Profile() {
   const { closeOverlay } = useOverlay()
@@ -65,7 +56,7 @@ function Profile() {
         onPointerCancel={onPointerCancel}>
         <nav>
           <CloseButton overlay={overlay.profile} close={closeOverlay} />
-          <Dropdown items={dropDownItems} />
+          <Dropdown items={dropdown} />
         </nav>
         <header>
           <div>
