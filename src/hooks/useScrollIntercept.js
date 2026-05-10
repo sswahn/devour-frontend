@@ -32,7 +32,7 @@ const MAX_STEP = 240
     if (Math.abs(distance) < 1) {
       targetScroll.current = element.scrollTop
       frame.current = null
-      return console.log('snap friendly condition exit.')
+      return
     }
     // Smoothed movement
     const step = Math.max(-MAX_STEP, Math.min(MAX_STEP, distance * SMOOTHING))
@@ -42,11 +42,7 @@ const MAX_STEP = 240
     
     element.scrollTop += step
 
-    console.log({
-      scrollHeight: element.scrollHeight,
-      clientHeight: element.clientHeight,
-      overflowY: getComputedStyle(element).overflowY
-    })
+    console.log('element.scrollTop: ', element.scrollTop)
     
     frame.current = requestAnimationFrame(animate)
   }
