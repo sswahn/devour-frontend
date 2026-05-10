@@ -11,7 +11,7 @@ const ScrollProvider = ({ children }) => {
   const prevTimestamp = useRef(0)
   const ticking = useRef(false)
   const scrollRef = useRef(null)
-  useScrollIntercept(scrollRef)
+  useScrollIntercept(scrollRef.current)
   const setScrollRef = useCallback(node => {
     if (node && scrollRef.current !== node) {
       scrollRef.current = node  
