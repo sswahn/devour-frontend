@@ -87,7 +87,7 @@ function Profile() {
         <FollowStats />
           
         <div id="profile-feed" role="feed">
-          {/* feed role="feed" must have article elements as children */}
+          {/* import <Feed /> and use it here */}
         </div>
       </div>
     </section>
