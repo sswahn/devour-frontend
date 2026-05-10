@@ -12,7 +12,7 @@ const ScrollProvider = ({ children }) => {
   const ticking = useRef(false)
   const scrollRef = useRef(null)
   const setScrollRef = useCallback(node => {
-    if (node) {
+    if (node && scrollRef.current !== node) {
       scrollRef.current = node  
       addListeners(node)
     }
