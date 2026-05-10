@@ -45,6 +45,7 @@ function DropdownList({ id, items, isOpen, open, close, isMounted, mountList, bu
           <ListItemButton 
            buttonRef={buttonRef} 
            listRef={listRef}
+           icon={item.icon}
            text={item.text} 
            method={item.method} 
            close={close} 
