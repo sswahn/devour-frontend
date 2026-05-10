@@ -54,6 +54,9 @@ function useScrollIntercept() {
 
   useEffect(() => {
     const element = scrollRef.current
+    if (!element) {
+      return
+    }
     element.addEventListener('wheel', onWheel, { passive: false })
     element.addEventListener('touchstart', onTouchStart, { passive: false })
     element.addEventListener('touchmove', onTouchMove, { passive: false })
