@@ -17,7 +17,6 @@ const ScrollProvider = ({ children }) => {
       addListeners(node)
     }
     return () => {
-      scrollRef.current = null
       removeListeners(node)
     }
   }, [])
