@@ -20,6 +20,12 @@ const ScrollProvider = ({ children }) => {
     }
   }, [])
 
+  const notify = data => {
+    for (const fn of subscribers) {
+      fn(data)
+    }
+  }
+
   const update = timestamp => {
     const scrollY = element.scrollTop
 
