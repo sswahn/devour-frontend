@@ -4,7 +4,8 @@ import styles from './ShareButton.module.css'
 
 function ShareButton({ isLongPress }) {
 
-  const action = () => {
+  const onClick = event => {
+    navigator.vibrate?.(50)
     // check navigator.canShare(file) to verify file sharing support 
     navigator.share({
       title: 'Check this out!',
@@ -15,32 +16,15 @@ function ShareButton({ isLongPress }) {
       ]
     })
   }
-  
-  const onClick = event => {
-    navigator.vibrate?.(50)
-    action()
-  }
-  
-  const onKeyDown = event => {
-    if (event.key === 'Enter') {
-      event.preventDefault()
-      action()
-    }
-  }
-
-  const gesture = () => {
-    if (isLongPress) {
-      navigator.vibrate?.(50)
-      action()
-    }
-  }
 
   useEffect(() => {
-    gesture()
+    if (isLongPress) {
+      onClick()
+    }
   }, [isLongPress])
   
   return (
-    <button className={styles.shareButton} onClick={onClick} onKeyDown={onKeyDown} type="button" aria-label="share this video">
+    <button className={styles.shareButton} onClick={onClick} type="button" aria-label="share this video">
       <ShareIcon />
     </button>
   )
