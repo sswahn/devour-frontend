@@ -36,7 +36,7 @@ const MAX_STEP = 240
     }
     // Smoothed movement
     const step = Math.max(-MAX_STEP, Math.min(MAX_STEP, distance * SMOOTHING))
-    element.scrollTop += step
+    element.scrollTop += 240//step
 
     console.log({
       scrollHeight: element.scrollHeight,
