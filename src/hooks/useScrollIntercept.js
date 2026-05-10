@@ -32,7 +32,7 @@ function useScrollIntercept() {
   window.addEventListener('touchmove', event => {
     event.preventDefault()
     const y = event.touches[0].pageY
-    const delta = lastY - y
+    const deltaY = lastY - y
     interceptScroll(deltaY)
     lastY = y
   }, { passive: false })
