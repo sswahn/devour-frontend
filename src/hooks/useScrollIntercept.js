@@ -31,6 +31,15 @@ function useScrollIntercept() {
 
     frame.current = requestAnimationFrame(animate)
   }
+
+  /* replace with this
+    const interceptScroll = deltaY => {
+      velocity.current += deltaY * multiplier
+      if (!frame.current) {
+        frame.current = requestAnimationFrame(animate)
+      }
+    }
+  */
   
   const interceptScroll = deltaY => {
     latestDeltaY.current = deltaY
