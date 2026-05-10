@@ -6,8 +6,8 @@ function useScrollIntercept() {
   const targetScroll = useRef(0)
   const prevY = useRef(0)
   const frame = useRef(null)
-  const MULTIPLIER = 0.2 // Slows scroll - if to slow, try 0.35
-  const SMOOTHING = 0.08 // Lower: heavier, thicker, more delayed, Higher: tighter, more responsive - try 0.14 if change above
+  const MULTIPLIER = 0.2 // Slows scroll - if to slow, try 0.3
+  const SMOOTHING = 0.08 // Lower: heavier, thicker, more delayed, Higher: tighter, more responsive - try 0.12 if change above
   const MAX_STEP = 80
 
   const animate = () => {
