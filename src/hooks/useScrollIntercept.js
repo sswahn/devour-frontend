@@ -1,9 +1,10 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import useScroll from './useScroll'
 
 function useScrollIntercept() {
   const { scrollRef } = useScroll()
   const latestDeltaY = useRef(null)
+  const prevY = useRef(0)
   const ticking = useRef(false)
   
   const interceptScroll = deltaY => {
@@ -18,27 +19,26 @@ function useScrollIntercept() {
   }
 
   // 1. Mouse/Trackpad
-  window.addEventListener('wheel', event => {
+  const onWheel = event => {
     event.preventDefault()
     interceptScroll(event.deltaY)
-  }, { passive: false })
+  }
   
   // 2. Touch (Mobile)
-  let prevY = 0
-  window.addEventListener('touchstart', event => {
-    prevY = event.touches[0].pageY
-  }, { passive: false })
+  const onTouchStart = event => {
+    prevY.current = event.touches[0].pageY
+  }
 
-  window.addEventListener('touchmove', event => {
+  const onTouchMove = event => {
     event.preventDefault()
     const y = event.touches[0].pageY
-    const deltaY = prevY - y
+    const deltaY = prevY.current - y
     interceptScroll(deltaY)
-    prevY = y
-  }, { passive: false })
+    prevY.current = y
+  }
   
   // 3. Keyboard
-  window.addEventListener('keydown', event => {
+  const onKeyDown = event => {
     const map = {
       'ArrowDown': 40, 
       'ArrowUp': -40, 
@@ -50,7 +50,22 @@ function useScrollIntercept() {
       event.preventDefault()
       interceptScroll(map[event.key])
     }
-  })
+  }
+
+  useEffect(() => {
+    const element = scrollRef.current
+    element.addEventListener('wheel', onWheel, { passive: false })
+    element.addEventListener('touchstart', onTouchStart, { passive: false })
+    element.addEventListener('touchmove', onTouchMove, { passive: false })
+    element.addEventListener('keydown', onKeyDown)
+    return () => {
+      element.removeEventListener('wheel', onWheel, { passive: false })
+      element.removeEventListener('touchstart', onTouchStart, { passive: false })
+      element.removeEventListener('touchmove', onTouchMove, { passive: false })
+      element.removeEventListener('keydown', onKeyDown)
+      element.removeEventListener('keydown', onKeyDown)
+    }
+  }, [])
 }
 
 export default useScrollIntercept
