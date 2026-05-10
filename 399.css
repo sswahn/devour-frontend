@@ -38,11 +38,14 @@
   cursor: pointer;
   display: flex;
   flex: 1;
+  gap: 32px;
   height: 44px;
   justify-content: flex-start;
   padding: 0 8px;
   width: 100%;
 }
+
+
 
 /* Dropdown List */
 
