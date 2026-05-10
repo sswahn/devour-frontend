@@ -31,13 +31,6 @@ function LikeButton({ isDoubleTap, likedByUser = false }) {
     action()
   }
 
-  const onKeyDown = event => {
-    if (event.key === 'Enter') {
-      event.preventDefault()
-      action()
-    }
-  }
-
   useEffect(() => {
     gesture()
   }, [isDoubleTap])
@@ -47,7 +40,7 @@ function LikeButton({ isDoubleTap, likedByUser = false }) {
   }, [likedByUser])
   
   return (
-    <button className={styles.likeButton} onClick={onClick} onKeyDown={onKeyDown} disabled={loading} type="button" aria-label="like this" aria-pressed={liked}>
+    <button className={styles.likeButton} onClick={onClick} disabled={loading} type="button" aria-label="like this" aria-pressed={liked}>
       {liked ? <HeartIconFill /> : <HeartIconStroke />}
     </button>
   )
