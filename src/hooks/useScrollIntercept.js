@@ -1,6 +1,8 @@
 import { useRef, useEffect } from 'react'
+import { scrollRef } from '../components/Providers/ScrollProvider'
 
-function useScrollIntercept(element) {
+function useScrollIntercept() {
+  const targetElement = useRef(null)
   const targetScroll = useRef(0)
   const prevY = useRef(0)
   const frame = useRef(null)
@@ -9,6 +11,7 @@ function useScrollIntercept(element) {
   const MAX_STEP = 80
 
   const animate = () => {
+    const element = scrollRef.current
     if (!element) {
       frame.current = null
       return
@@ -28,6 +31,7 @@ function useScrollIntercept(element) {
   }
 
   const interceptScroll = deltaY => {
+    const element = scrollRef.current
     if (!element) {
       return
     }
@@ -75,6 +79,7 @@ function useScrollIntercept(element) {
   }
 
   const onScroll = event => {
+    const element = scrollRef.current
     if (!element) {
       return
     }
@@ -86,6 +91,7 @@ function useScrollIntercept(element) {
   }
 
   useEffect(() => {
+    const element = scrollRef.current
     if (!element) {
       return
     }
