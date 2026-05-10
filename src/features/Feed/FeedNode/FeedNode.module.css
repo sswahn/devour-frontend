@@ -1,19 +1,6 @@
 /* Feed Node */
 
-@keyframes slow-reveal {
-  from {
-    transform: translateY(15%);
-  }
-  to {
-    transform: translateY(-15%);
-  }
-}
-
 .feedNode figure {
-  animation: slow-reveal linear both;
-  animation-timeline: view();
-  animation-range: cover -20% cover 120%;
-  
   contain: layout paint;
   display: block;
   height: 100vh;
