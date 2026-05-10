@@ -15,6 +15,8 @@ const ScrollProvider = ({ children }) => {
     if (node && scrollRef.current !== node) {
       scrollRef.current = node  
       addListeners(node)
+      prevScrollY.current = node.scrollTop
+      scrollStart.current = node.scrollTop
     }
     return () => {
       removeListeners(node)
