@@ -1,5 +1,4 @@
-import { useRef, useCallback, useEffect, createContext } from 'react'
-import useScrollIntercept from '../../hooks/useScrollIntercept'
+import { useRef, useCallback, createContext } from 'react'
 
 const ScrollContext = createContext(null)
 
