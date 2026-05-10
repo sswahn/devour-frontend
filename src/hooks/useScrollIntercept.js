@@ -40,9 +40,13 @@ const MAX_STEP = 240
 
     console.log('STEP: ', step)
     
-    element.scrollTop += step
+    //element.scrollTop += step
 
-    console.log('element.scrollTop: ', element.scrollTop)
+    element.scrollTo({
+      top: step,
+      behavior: 'auto'
+    })
+
     
     frame.current = requestAnimationFrame(animate)
   }
