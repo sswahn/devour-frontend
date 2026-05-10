@@ -22,7 +22,7 @@ describe('HomeButton', () => {
     scrollToMock = jest.fn()
 
     useScroll.mockReturnValue({
-      getScrollRef: {
+      scrollRef: {
         current: {
           scrollTo: scrollToMock
         }
