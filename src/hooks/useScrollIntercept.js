@@ -36,7 +36,7 @@ function useScrollIntercept() {
     element.scrollTop += step
 
     console.log({
-      element.scrollTop,
+      scrollTop: element.scrollTop,
       target: targetScroll.current,
       distance,
       step
