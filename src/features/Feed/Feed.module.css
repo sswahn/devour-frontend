@@ -5,6 +5,13 @@
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior-y: contain;
+
+  padding: 
+    env(safe-area-inset-top)
+    env(safe-area-inset-right)
+    env(safe-area-inset-bottom)
+    env(safe-area-inset-left);
+  
   scroll-behavior: smooth;  
   scroll-snap-type: y mandatory;
   overscroll-behavior-y: contain;
