@@ -104,10 +104,15 @@ const MAX_STEP = 240
     if (!element) {
       return
     }
+
+    console.log('In onScroll.')
+    
     const scrollTop = element.scrollTop
     const difference = Math.abs(scrollTop - targetScroll.current)
     if (!frame.current || difference > 24) { // Browser/snap took over
       targetScroll.current = scrollTop
+
+      console.log('In onScroll bottom condition.')
     }
   }
 
