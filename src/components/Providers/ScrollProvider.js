@@ -9,7 +9,7 @@ const ScrollProvider = ({ children }) => {
   const scrollStart = useRef(0)
   const prevScrollY = useRef(0)
   const prevTimestamp = useRef(0)
-  const ticking = useRef(0)
+  const ticking = useRef(false)
   const scrollRef = useRef(null)
   const setScrollRef = useCallback(node => {
     if (node) {
