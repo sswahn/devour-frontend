@@ -10,9 +10,12 @@ function useScrollIntercept() {
   const SMOOTHING = 0.25 // 0.08 // Lower: heavier, thicker, more delayed, Higher: tighter, more responsive - try 0.12 if change above
   const MAX_STEP = 80
 
+  const ticking = useRef(false)
+  const accumulatedDelta = useRef(0)
+
   const setTargetElement = element => {
     targetElement.current = element
-    setIsSet(true)
+    addEventListeners(element)
   }
 
   const animate = () => {
@@ -35,7 +38,7 @@ function useScrollIntercept() {
     frame.current = requestAnimationFrame(animate)
   }
 
-  const interceptScroll = deltaY => {
+  const interceptScroll_X = deltaY => {
     const element = targetElement.current
     if (!element) {
       return
@@ -46,6 +49,21 @@ function useScrollIntercept() {
     // Start animation loop
     if (!frame.current) {
       frame.current = requestAnimationFrame(animate)
+    }
+  }
+
+  const interceptScroll = deltaY => {
+    accumulatedDelta.current += deltaY
+
+    if (!ticking.current) {
+      ticking.current = true
+
+      requestAnimationFrame(() => {
+        scrollRef.current.scrollTop += accumulatedDelta.current * 0.2
+
+        accumulatedDelta.current = 0
+        ticking.current = false
+      })
     }
   }
 
@@ -95,6 +113,15 @@ function useScrollIntercept() {
     }
   }
 
+  const addEventListeners = element => {
+    element.addEventListener('wheel', onWheel, { passive: false })
+    element.addEventListener('touchstart', onTouchStart, { passive: false })
+    element.addEventListener('touchmove', onTouchMove, { passive: false })
+    element.addEventListener('keydown', onKeyDown)
+    element.addEventListener('scroll', onScroll)
+  }
+
+  /*
   useEffect(() => {
     const element = targetElement.current
     if (!element) {
@@ -116,6 +143,7 @@ function useScrollIntercept() {
       }
     }
   }, [isSet])
+  */
 
   return { setTargetElement }
 }
