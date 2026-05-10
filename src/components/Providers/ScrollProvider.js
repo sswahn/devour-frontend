@@ -53,7 +53,8 @@ const ScrollProvider = ({ children }) => {
     prevScrollY.current = scrollY
   
     // Calculate scroll velocity
-    const deltaTime = timestamp - prevTimestamp.current
+    const prevTime = prevTimestamp.current === 0 ? performance.now() : prevTimestamp.current
+    const deltaTime = timestamp - prevTime
     const velocity = dY / deltaTime
     prevTimestamp.current = timestamp
     
