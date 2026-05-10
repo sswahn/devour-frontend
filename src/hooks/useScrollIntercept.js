@@ -24,19 +24,17 @@ function useScrollIntercept() {
   }, { passive: false })
   
   // 2. Touch (Mobile)
-  let startY = 0
-  let lastY = 0
+  let prevY = 0
   window.addEventListener('touchstart', event => {
-    startY = event.touches[0].pageY
-    lastY = startY
+    prevY = event.touches[0].pageY
   }, { passive: false })
 
   window.addEventListener('touchmove', event => {
     event.preventDefault()
     const y = event.touches[0].pageY
-    const deltaY = lastY - y
+    const deltaY = prevY - y
     interceptScroll(deltaY)
-    lastY = y
+    prevY = y
   }, { passive: false })
   
   // 3. Keyboard
