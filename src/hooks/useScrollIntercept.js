@@ -85,7 +85,7 @@ function useScrollIntercept() {
     }
     const scrollTop = element.scrollTop
     const difference = Math.abs(scrollTop - targetScroll.current)
-    if (difference > 2) { // Browser/snap took over
+    if (!frame.current || difference > 24) { // Browser/snap took over
       targetScroll.current = scrollTop
     }
   }
