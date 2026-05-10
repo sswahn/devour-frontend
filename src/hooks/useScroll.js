@@ -2,9 +2,9 @@ import { useContext } from 'react'
 import { ScrollContext } from '../components/Providers/ScrollProvider'
 
 function useScroll() {
-  const { getScrollRef, setScrollRef } = useContext(ScrollContext)
+  const { subscribe, scrollRef, setScrollRef } = useContext(ScrollContext)
 
-  return { getScrollRef, setScrollRef }
+  return { subscribe, scrollRef, setScrollRef }
 }
 
 export default useScroll
