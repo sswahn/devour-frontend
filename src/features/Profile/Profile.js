@@ -60,10 +60,8 @@ function Profile() {
         <nav>
           <CloseButton overlay={overlay.profile} close={action} />
           <Dropdown items={[
-            { text: 'alert message', method: () => alert('dropdown item clicked.') },
-            { text: 'console log message', method: () => console.log('dropdown item clicked.') },
-            { text: 'console log message', method: () => console.log('dropdown item clicked.') },
-            { text: 'console log message', method: () => console.log('dropdown item clicked.') }
+            { icon: <FlagIcon />, text: 'Flag this profile', method: () => alert('Profile reported.') },
+            { icon: <UserXmarkIcon />, text: 'Block this user', method: () => alert('User blocked.') }
           ]} />
         </nav>
         <header>
