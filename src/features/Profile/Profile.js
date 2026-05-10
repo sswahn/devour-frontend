@@ -44,7 +44,6 @@ function Profile() {
       className={styles.profile} 
       ref={overlayRef} 
       onKeyDown={onKeyDown}
-      // tabIndex={-1} 
       role="dialog" 
       aria-modal="true" 
       aria-labelledby="username" 
