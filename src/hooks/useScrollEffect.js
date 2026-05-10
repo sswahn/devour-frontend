@@ -1,7 +1,8 @@
 import { useRef, useEffect } from 'react'
-import scroll from '../utilities/scrollEngine'
+import useScroll from './useScroll'
 
 function useScrollEffect() {
+  const { subscribe } = useScroll()
   const elementRef = useRef(null)
   const styleRef = useRef(null)
   const isHidden = useRef(false)
@@ -56,7 +57,7 @@ function useScrollEffect() {
   }
 
   useEffect(() => {
-    const unsubscribe = scroll.subscribe(updateElement) // move this into the useScroll hook, and here subscribe from hook.
+    const unsubscribe = subscribe(updateElement)
     return () => {
       unsubscribe()
     }
