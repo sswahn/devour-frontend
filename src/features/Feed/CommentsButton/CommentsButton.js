@@ -1,33 +1,21 @@
 import { useRef } from 'react'
 import { overlay } from '../../../config'
 import useOverlay from '../../../hooks/useOverlay'
-import CommentIcon from '../../../components/Icons/CommentIcon/CommentIcon'
+import MessageIcon from '../../../components/Icons/MessageIcon/MessageIcon'
 import styles from './CommentsButton.module.css'
 
 function CommentsButton() {
   const buttonRef = useRef(null)
   const { openOverlay } = useOverlay()
   
-  const action = () => {
+  const onClick = event => {
+    navigator.vibrate?.(50)
     openOverlay(overlay.comments, buttonRef.current)
   }
   
-  const onClick = event => {
-    event.stopPropagation()
-    navigator.vibrate?.(50)
-    action()
-  }
-  
-  const onKeyDown = event => {
-    if (event.key === 'Enter') {
-      event.preventDefault()
-      action()
-    }
-  }
-  
   return (
-    <button className={styles.commentsButton} onClick={onClick} onKeyDown={onKeyDown} ref={buttonRef} type="button" aria-label="leave a comment">
-      <CommentIcon />
+    <button className={styles.commentsButton} onClick={onClick} ref={buttonRef} type="button" aria-label="leave a comment">
+      <MessageIcon />
     </button>
   )
 }
