@@ -4,14 +4,20 @@ function useScrollIntercept() {
   const { scrollRef } = useScroll()
   const multiplier = 0.2
   
-  const handleManualScroll = delta => {
+  const handleScroll = delta => {
     scrollRef.current.scrollTop += delta * multiplier
   }
 
   // 1. Mouse/Trackpad
   window.addEventListener('wheel', event => {
     event.preventDefault()
-    handleManualScroll(event.deltaY)
+    if (!ticking) {
+      ticking = true
+      requestAnimationFrame(() => {
+        handleScroll(event.deltaY)
+        ticking = false
+      })
+    }
   }, { passive: false })
   
   // 2. Touch (Mobile)
