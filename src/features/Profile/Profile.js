@@ -14,6 +14,10 @@ import FollowButton from './FollowButton/FollowButton'
 import FollowStats from './FollowStats/FollowStats'
 import EditButton from './EditButton/EditButton'
 import styles from './Profile.module.css'
+const dropDownItems = [
+  { icon: <FlagIcon />, text: 'Flag profile', method: () => alert('Profile reported.') },
+  { icon: <UserXmarkIcon />, text: 'Block user', method: () => alert('User blocked.') }
+]
 
 function Profile() {
   const { closeOverlay } = useOverlay()
@@ -57,10 +61,7 @@ function Profile() {
         onPointerCancel={onPointerCancel}>
         <nav>
           <CloseButton overlay={overlay.profile} close={closeOverlay} />
-          <Dropdown items={[
-            { icon: <FlagIcon />, text: 'Flag profile', method: () => alert('Profile reported.') },
-            { icon: <UserXmarkIcon />, text: 'Block user', method: () => alert('User blocked.') }
-          ]} />
+          <Dropdown items={dropDownItems} />
         </nav>
         <header>
           <div>
