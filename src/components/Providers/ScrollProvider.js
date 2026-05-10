@@ -10,7 +10,6 @@ const ScrollProvider = ({ children }) => {
   const prevScrollY = useRef(0)
   const ticking = useRef(0)
   const scrollRef = useRef(null)
-  
   const setScrollRef = useCallback(node => {
     if (node) {
       scrollRef.current = node  
@@ -23,9 +22,6 @@ const ScrollProvider = ({ children }) => {
   const subscribe = fn => {
     if (typeof fn !== 'function') {
       throw new TypeError('scroll.subscribe arugument must be of type "function".')
-    }
-    if (!started) {
-      start()
     }
     subscribers.add(fn)
     fn({ deltaY: deltaY.current, direction: 'idle', velocity: 0 })
