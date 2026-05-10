@@ -21,3 +21,22 @@
   will-change: scroll-position;
   z-index: 0;
 }
+
+:root {
+  /* When NOT in fullscreen, use a default 20px offset */
+  --notch-height: 20px;
+}
+
+/* Automatically detect when the page or element enters fullscreen */
+:is(:fullscreen, :root:fullscreen, body:fullscreen) {
+  /* In fullscreen, use the actual notch height (0px if no notch) */
+  --notch-height: env(safe-area-inset-top);
+}
+
+/*.topNav {
+  /* Shift your header down using the variable 
+  margin-top: var(--notch-height); */
+  
+  /* Optional: Use max() to ensure a minimum 20px even in fullscreen */
+  /* margin-top: max(20px, var(--notch-height)); 
+} */
