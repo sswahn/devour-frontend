@@ -202,7 +202,7 @@
 .QNshFBXSoGNyBxo7mpBY figure {
   contain: layout paint;
   display: block;
-  height: 100vh;
+  height: 100%;
   position: relative;
   scroll-snap-align: start;
   scroll-snap-stop: always;
