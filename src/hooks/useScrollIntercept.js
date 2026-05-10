@@ -5,7 +5,6 @@ function useScrollIntercept() {
   const { scrollRef } = useScroll()
   const targetScroll = useRef(0)
   const prevY = useRef(0)
-  const velocity = useRef(0)
   const frame = useRef(null)
   const MULTIPLIER = 0.2 // Slows scroll
   const SMOOTHING = 0.08 // Lower: heavier, thicker, more delayed, Higher: tighter, more responsive
