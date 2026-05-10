@@ -66,7 +66,7 @@ const ScrollProvider = ({ children }) => {
   }
   
   function onScrollEnd(event) {
-    scrollStart.current = element.scrollTop
+    scrollStart.current = scrollRef.current.scrollTop
     notify({ deltaY: deltaY.current, direction: 'idle', velocity: 0 })
   }
 
