@@ -3,7 +3,6 @@ import useScroll from './useScroll'
 
 function useScrollIntercept() {
   const { scrollRef } = useScroll()
-  const latestDeltaY = useRef(null)
   const prevY = useRef(0)
   const velocity = useRef(0)
   const frame = useRef(null)
