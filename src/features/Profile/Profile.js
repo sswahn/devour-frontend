@@ -28,15 +28,11 @@ function Profile() {
    })
 
   const updateProfile = obj => setProfile(prev => ({ ...prev, ...obj }))
-
-  const action = () => {
-    closeOverlay()
-  }
   
   const onKeyDown = event => {
     if (event.key === 'Escape') {
       event.preventDefault()
-      action()
+      closeOverlay()
     }
   }
   
@@ -60,10 +56,10 @@ function Profile() {
         onPointerUp={onPointerUp}
         onPointerCancel={onPointerCancel}>
         <nav>
-          <CloseButton overlay={overlay.profile} close={action} />
+          <CloseButton overlay={overlay.profile} close={closeOverlay} />
           <Dropdown items={[
-            { icon: <FlagIcon />, text: 'Flag this profile', method: () => alert('Profile reported.') },
-            { icon: <UserXmarkIcon />, text: 'Block this user', method: () => alert('User blocked.') }
+            { icon: <FlagIcon />, text: 'Flag profile', method: () => alert('Profile reported.') },
+            { icon: <UserXmarkIcon />, text: 'Block user', method: () => alert('User blocked.') }
           ]} />
         </nav>
         <header>
