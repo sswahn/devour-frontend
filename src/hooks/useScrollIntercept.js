@@ -27,11 +27,11 @@ function useScrollIntercept() {
     const current = element.scrollTop
     const distance = targetScroll.current - current
     // Snap-friendly settling: yield control back to the browser near the end
-   /* if (Math.abs(distance) < 1) {
+    if (Math.abs(distance) < 1) {
       targetScroll.current = element.scrollTop
       frame.current = null
-      return
-    } */
+      return console.log('snap friendly condition exit.')
+    }
     // Smoothed movement
     const step = Math.max(-MAX_STEP, Math.min(MAX_STEP, distance * SMOOTHING))
     element.scrollTop += step
