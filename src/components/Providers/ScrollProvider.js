@@ -41,7 +41,11 @@ const ScrollProvider = ({ children }) => {
   }
 
   const update = timestamp => {
-    const scrollY = scrollRef.current.scrollTop
+    const element = scrollRef.current
+    if (!element) {
+      return
+    }
+    const scrollY = element.scrollTop
     deltaY.current = scrollY - scrollStart.current
     
     const dY = scrollY - prevScrollY.current
