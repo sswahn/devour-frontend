@@ -37,10 +37,16 @@ function useScrollIntercept() {
   
   // 3. Keyboard
   window.addEventListener('keydown', event => {
-    const keys = { 'ArrowDown': 40, 'ArrowUp': -40, ' ': 200, 'PageDown': 400, 'PageUp': -400 }
-    if (keys[event.key]) {
+    const map = {
+      'ArrowDown': 40, 
+      'ArrowUp': -40, 
+      ' ': 200, 
+      'PageDown': 400, 
+      'PageUp': -400 
+    }
+    if (map[event.key]) {
       event.preventDefault()
-      handleScroll(keys[event.key])
+      handleScroll(map[event.key])
     }
   })
 }
