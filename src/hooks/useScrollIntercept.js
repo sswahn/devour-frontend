@@ -21,6 +21,9 @@ function useScrollIntercept() {
       frame.current = null
       return
     }
+
+    console.log('animating...')
+    
     const current = element.scrollTop
     const distance = targetScroll.current - current
     // Snap-friendly settling: yield control back to the browser near the end
