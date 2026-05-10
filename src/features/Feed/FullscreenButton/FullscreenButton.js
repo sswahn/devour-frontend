@@ -15,12 +15,7 @@ function FullscreenButton({ isFullScreen, enterFullScreen, exitFullScreen }) {
   // have aria pressed, and label accordingly.
   
   return (
-    <button 
-      className={styles.fullscreenButton}
-      ref={buttonRef} 
-      onClick={onClick} 
-      type="button" 
-      aria-label="enter fullscreen mode">
+    <button className={styles.fullscreenButton} ref={buttonRef} onClick={onClick} type="button" aria-label="enter fullscreen mode">
       {isFullScreen ? <MinimizeIcon /> : <MaximizeIcon />}
     </button>
   )
