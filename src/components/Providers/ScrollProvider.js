@@ -4,6 +4,8 @@ import scroll from '../../utilities/scrollEngine'
 const ScrollContext = createContext(null)
 
 const ScrollProvider = ({ children }) => {
+  const scrollStart = useRef(0)
+  const prevScrollY = useRef(0)
   const ticking = useRef(0)
   const ScrollRef = useRef(null)
   const setScrollRef = useCallback(node => {
@@ -20,14 +22,14 @@ const ScrollProvider = ({ children }) => {
     const scrollY = element.scrollTop
 
     // Calculate change in Y
-    deltaY = scrollY - scrollStart 
+    deltaY = scrollY - scrollStart.current
     
     // Calculate current scroll direction
-    const dY = scrollY - prevScrollY
-    direction = dY > 0 ? 'down' : dY < 0 ? 'up' : 'idle'
+    const dY = scrollY - prevScrollY.current
+    const direction = dY > 0 ? 'down' : dY < 0 ? 'up' : 'idle'
     
     // Set prevScrollY for use in next frame
-    prevScrollY = scrollY
+    prevScrollY.current = scrollY
   
     // Calculate scroll velocity
     const deltaTime = timestamp - prevTimestamp
@@ -58,7 +60,7 @@ const ScrollProvider = ({ children }) => {
   }
   
   function onScrollEnd(event) {
-    scrollStart = element.scrollTop
+    scrollStart.current = element.scrollTop
     notify({ deltaY, direction, velocity: 0 })
   }
 
