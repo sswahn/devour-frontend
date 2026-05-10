@@ -1,4 +1,4 @@
-function UserXmarkIcon({ size }) {
+function UserXmarkIcon({ size = 24 }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width={size} height={size} aria-hidden="true">
       {/* Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc. */}
