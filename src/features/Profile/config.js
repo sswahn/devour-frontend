@@ -6,6 +6,6 @@ import UserXmarkIcon from '../../components/Icons/UserXmarkIcon/UserXmarkIcon'
 export const dropdown = [
   { icon: <SearchIcon />, text: 'Search profile', method: () => alert('Opened search.') },
   { icon: <MessageIcon />, text: 'Send message', method: () => alert('DM opened.') },
-  { icon: <FlagIcon />, text: 'Flag profile', method: () => alert('Profile reported.') },
-  { icon: <UserXmarkIcon />, text: 'Block user', method: () => alert('User blocked.') }
+  { icon: <FlagIcon />, text: 'Flag profile', method: () => confirm('Report profile?') },
+  { icon: <UserXmarkIcon />, text: 'Block user', method: () => confirm('Block user?') }
 ]
