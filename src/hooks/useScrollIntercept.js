@@ -36,10 +36,9 @@ function useScrollIntercept() {
     element.scrollTop += step
 
     console.log({
-      scrollTop: element.scrollTop,
-      target: targetScroll.current,
-      distance,
-      step
+      scrollHeight: element.scrollHeight,
+      clientHeight: element.clientHeight,
+      overflowY: getComputedStyle(element).overflowY
     })
     
     frame.current = requestAnimationFrame(animate)
