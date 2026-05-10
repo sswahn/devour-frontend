@@ -223,7 +223,8 @@
   cursor: pointer;
   display: flex;
   flex: 1;
-  gap: 32px;
+  font-weight: bold;
+  gap: 16px;
   height: 44px;
   justify-content: flex-start;
   padding: 0 8px;
