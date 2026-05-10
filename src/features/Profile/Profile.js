@@ -15,6 +15,8 @@ import FollowStats from './FollowStats/FollowStats'
 import EditButton from './EditButton/EditButton'
 import styles from './Profile.module.css'
 const dropDownItems = [
+  { icon: <FlagIcon />, text: 'Search profile', method: () => alert('Profile reported.') },
+  { icon: <FlagIcon />, text: 'Direct message', method: () => alert('Profile reported.') },
   { icon: <FlagIcon />, text: 'Flag profile', method: () => alert('Profile reported.') },
   { icon: <UserXmarkIcon />, text: 'Block user', method: () => alert('User blocked.') }
 ]
