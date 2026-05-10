@@ -18,21 +18,16 @@ function LikeButton({ isDoubleTap, likedByUser = false }) {
     // dounce request to update stored like state
     
   }
-
-  const gesture = () => {
-    if (!liked) {
-      navigator.vibrate?.(50)
-      action()
-    }
-  }
-
+  
   const onClick = event => {
     navigator.vibrate?.(50)
     action()
   }
 
   useEffect(() => {
-    gesture()
+    if (!liked) {
+      onClick()
+    }
   }, [isDoubleTap])
 
   useEffect(() => {
