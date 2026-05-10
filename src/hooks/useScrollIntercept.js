@@ -3,31 +3,32 @@ import useScroll from './useScroll'
 
 function useScrollIntercept() {
   const { scrollRef } = useScroll()
+  const targetScroll = useRef(0)
   const prevY = useRef(0)
   const velocity = useRef(0)
   const frame = useRef(null)
   const MULTIPLIER = 0.2
-  const FRICTION = 0.9
+  const SMOOTHING = 0.08
+  const MAX_STEP = 80
 
   const animate = () => {
     const element = scrollRef.current
-    if (!element) {
+    const scrollTop = element.scrollTop
+    const distance = targetScroll.current - scrollTop
+    if (Math.abs(distance) < 0.1) { // Stop animation when close enough
       frame.current = null
       return
     }
-    velocity.current *= FRICTION
-    if (Math.abs(velocity.current) < 0.1) {
-      velocity.current = 0
-      frame.current = null
-      return
-    }
-    element.scrollTop += velocity.current
+    const step = Math.max(-MAX_STEP, Math.min(MAX_STEP, distance * smoothing)) // Smoothed movement
+    element.scrollTop += step
     frame.current = requestAnimationFrame(animate)
   }
 
-
   const interceptScroll = deltaY => {
-    velocity.current += deltaY * MULTIPLIER
+    const newScroll = targetScroll.current + deltaY * MULTIPLIER
+    const maxScroll = element.scrollHeight - element.clientHeight // Clamp target scroll
+    targetScroll.current = Math.max(0, Math.min(newScroll, maxScroll))
+    // Start animation loop
     if (!frame.current) {
       frame.current = requestAnimationFrame(animate)
     }
