@@ -1,8 +1,10 @@
 import { useRef, useCallback, createContext } from 'react'
+import useScrollIntercept from '../../hooks/useScrollIntercept'
 
 const ScrollContext = createContext(null)
 
 const ScrollProvider = ({ children }) => {
+  const { setTargetElement } = useScrollIntercept()
   const subscribers = useRef(new Set())
   const deltaY = useRef(0)
   const scrollStart = useRef(0)
@@ -14,6 +16,7 @@ const ScrollProvider = ({ children }) => {
     if (node && scrollRef.current !== node) {
       scrollRef.current = node  
       addListeners(node)
+      setTargetElement(node)
       prevScrollY.current = node.scrollTop
       scrollStart.current = node.scrollTop
     }
