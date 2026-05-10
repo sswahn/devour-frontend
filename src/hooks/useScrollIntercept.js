@@ -1,7 +1,9 @@
+import { useRef } from 'react'
 import useScroll from './useScroll'
 
 function useScrollIntercept() {
   const { scrollRef } = useScroll()
+  const ticking = false
   
   const handleScroll = deltaY => {
     if (!ticking) {
