@@ -16,7 +16,7 @@ import FollowButton from './FollowButton/FollowButton'
 import FollowStats from './FollowStats/FollowStats'
 import EditButton from './EditButton/EditButton'
 import styles from './Profile.module.css'
-const dropDownItems = [
+const dropDownItems = [ // move this to a local config file
   { icon: <SearchIcon />, text: 'Search profile', method: () => alert('Opened search.') },
   { icon: <MessageIcon />, text: 'Send direct message', method: () => alert('DM opened.') },
   { icon: <FlagIcon />, text: 'Flag profile', method: () => alert('Profile reported.') },
