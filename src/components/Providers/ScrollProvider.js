@@ -1,5 +1,5 @@
 import { useRef, useCallback, useEffect, createContext } from 'react'
-import scroll from '../../utilities/scrollEngine'
+import useScrollIntercept from '../../hooks/useScrollIntercept'
 
 const ScrollContext = createContext(null)
 
@@ -15,6 +15,7 @@ const ScrollProvider = ({ children }) => {
     if (node && scrollRef.current !== node) {
       scrollRef.current = node  
       addListeners(node)
+      useScrollIntercept(node)
       prevScrollY.current = node.scrollTop
       scrollStart.current = node.scrollTop
     }
