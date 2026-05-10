@@ -13,4 +13,6 @@
   transform: translateZ(0);
   will-change: scroll-position;
   z-index: 0;
+
+  perspective: 1px;
 }
