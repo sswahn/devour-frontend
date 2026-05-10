@@ -20,6 +20,23 @@ const ScrollProvider = ({ children }) => {
     }
   }, [])
 
+  const subscribe = fn => {
+    if (typeof fn !== 'function') {
+      throw new TypeError('scroll.subscribe arugument must be of type "function".')
+    }
+    if (!started) {
+      start()
+    }
+    subscribers.add(fn)
+    fn({ deltaY: deltaY.current, direction: 'idle', velocity: 0 })
+    return () => {
+      subscribers.delete(fn)
+      if (subscribers.size === 0) {
+        stop()
+      }
+    }
+  }
+
   const notify = data => {
     for (const fn of subscribers.current) {
       fn(data)
@@ -36,12 +53,10 @@ const ScrollProvider = ({ children }) => {
   
     // Calculate scroll velocity
     const deltaTime = timestamp - prevTimestamp
-    const rawVelocity = dY / deltaTime
-    velocity.current = (rawVelocity * 0.05) + (velocity.current * (1 - 0.05))
-    // try for a buttery scroll:
-    //velocity = (rawVelocity * 0.03) + (velocity * 0.97)
+    const velocity = dY / deltaTime
     prevTimestamp = timestamp
-    notify({ deltaY: deltaY.current, direction, velocity: velocity.current })
+    
+    notify({ deltaY: deltaY.current, direction, velocity })
   }
 
   function onScroll(event) {
@@ -56,7 +71,7 @@ const ScrollProvider = ({ children }) => {
   
   function onScrollEnd(event) {
     scrollStart.current = element.scrollTop
-    notify({ deltaY, direction, velocity: 0 })
+    notify({ deltaY: deltaY.current, direction: 'idle', velocity: 0 })
   }
 
   useEffect(() => {
@@ -73,7 +88,7 @@ const ScrollProvider = ({ children }) => {
   }, [])
   
   return (
-    <ScrollContext.Provider value={{ scrollRef, setScrollRef }}>
+    <ScrollContext.Provider value={{ subscribe, scrollRef, setScrollRef }}>
       {children}
     </ScrollContext.Provider>
   )
