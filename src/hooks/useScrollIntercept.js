@@ -5,7 +5,6 @@ function useScrollIntercept() {
   const { scrollRef } = useScroll()
   const latestDeltaY = useRef(null)
   const prevY = useRef(0)
-  const ticking = useRef(false)
   const velocity = useRef(0)
   const frame = useRef(null)
   const MULTIPLIER = 0.2
@@ -13,42 +12,25 @@ function useScrollIntercept() {
 
   const animate = () => {
     const element = scrollRef.current
-
     if (!element) {
       frame.current = null
       return
     }
-
     velocity.current *= FRICTION
-
     if (Math.abs(velocity.current) < 0.1) {
       velocity.current = 0
       frame.current = null
       return
     }
-
     element.scrollTop += velocity.current
-
     frame.current = requestAnimationFrame(animate)
   }
 
-  /* replace with this
-    const interceptScroll = deltaY => {
-      velocity.current += deltaY * multiplier
-      if (!frame.current) {
-        frame.current = requestAnimationFrame(animate)
-      }
-    }
-  */
-  
+
   const interceptScroll = deltaY => {
-    latestDeltaY.current = deltaY
-    if (!ticking.current) {
-      ticking.current = true
-      requestAnimationFrame(() => {
-        scrollRef.current.scrollTop += latestDeltaY.current * MULTIPLIER
-        ticking.current = false
-      })
+    velocity.current += deltaY * MULTIPLIER
+    if (!frame.current) {
+      frame.current = requestAnimationFrame(animate)
     }
   }
 
