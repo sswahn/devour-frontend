@@ -80,7 +80,7 @@ const ScrollProvider = ({ children }) => {
   }, [])
   
   return (
-    <ScrollContext.Provider value={{ getScrollRef, setScrollRef }}>
+    <ScrollContext.Provider value={{ scrollRef, setScrollRef }}>
       {children}
     </ScrollContext.Provider>
   )
