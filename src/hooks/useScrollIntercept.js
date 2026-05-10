@@ -66,7 +66,6 @@ function useScrollIntercept() {
       element.removeEventListener('touchstart', onTouchStart, { passive: false })
       element.removeEventListener('touchmove', onTouchMove, { passive: false })
       element.removeEventListener('keydown', onKeyDown)
-      element.removeEventListener('keydown', onKeyDown)
     }
   }, [])
 }
