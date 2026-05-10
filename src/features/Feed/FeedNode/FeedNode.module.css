@@ -3,7 +3,7 @@
 .feedNode figure {
   contain: layout paint;
   display: block;
-  height: 100%;
+  height: 100vh;
   position: relative;
   scroll-snap-align: start;
   scroll-snap-stop: always;
