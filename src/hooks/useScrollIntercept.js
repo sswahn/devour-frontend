@@ -3,14 +3,14 @@ import useScroll from './useScroll'
 
 function useScrollIntercept() {
   const { scrollRef } = useScroll()
-  const ticking = false
+  const ticking = useRef(false)
   
   const handleScroll = deltaY => {
-    if (!ticking) {
-      ticking = true
+    if (!ticking.current) {
+      ticking.current = true
       requestAnimationFrame(() => {
         scrollRef.current.scrollTop += deltaY * 0.2
-        ticking = false
+        ticking.current = false
       })
     }
   }
