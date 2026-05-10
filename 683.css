@@ -203,7 +203,20 @@
 
 /* Feed Node */
 
+@keyframes za4wk6tcflzJN4WHogg5 {
+  from {
+    transform: scale(0.8) translateY(100px);
+  }
+  to {
+    transform: scale(1) translateY(0);
+  }
+}
+
 .QNshFBXSoGNyBxo7mpBY figure {
+  animation: za4wk6tcflzJN4WHogg5 linear both;
+  animation-timeline: view();
+  animation-range: cover 0% cover 100%;
+  
   contain: layout paint;
   display: block;
   height: 100vh;
