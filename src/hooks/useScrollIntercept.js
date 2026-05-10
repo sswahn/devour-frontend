@@ -5,7 +5,7 @@ function useScrollIntercept() {
   const { scrollRef } = useScroll()
   const ticking = useRef(false)
   
-  const handleScroll = deltaY => {
+  const interceptScroll = deltaY => {
     if (!ticking.current) {
       ticking.current = true
       requestAnimationFrame(() => {
@@ -18,7 +18,7 @@ function useScrollIntercept() {
   // 1. Mouse/Trackpad
   window.addEventListener('wheel', event => {
     event.preventDefault()
-    handleScroll(event.deltaY)
+    interceptScroll(event.deltaY)
   }, { passive: false })
   
   // 2. Touch (Mobile)
@@ -33,7 +33,7 @@ function useScrollIntercept() {
     event.preventDefault()
     const y = event.touches[0].pageY
     const delta = lastY - y
-    handleScroll(deltaY)
+    interceptScroll(deltaY)
     lastY = y
   }, { passive: false })
   
@@ -48,7 +48,7 @@ function useScrollIntercept() {
     }
     if (map[event.key]) {
       event.preventDefault()
-      handleScroll(map[event.key])
+      interceptScroll(map[event.key])
     }
   })
 }
