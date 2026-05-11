@@ -10,7 +10,7 @@ import Avatar from '../../components/Avatar/Avatar'
 
 function Notifications() {
   const { closeOverlay } = useOverlay()
-  const [state, setState] = useState('')
+  const [mode, setMode] = useState('')
   const dragging = useRef(false)
   const startY = useRef(0)
   const startTime = useRef(0)
@@ -21,7 +21,7 @@ function Notifications() {
   const bottomSheetRef = useRef(null)
 
   const close = () => {
-    setState('close')
+    setMode('close')
     bottomSheetRef.current.addEventListener('transitionend', closeOverlay, {
       once: true,
     })
@@ -95,11 +95,11 @@ function Notifications() {
     const threshold = height * 0.15
     const movement = Math.abs(deltaY)
     if (direction === 'up' && movement > threshold) {
-      setState('expand')
+      setMode('expand')
     } else if (direction === 'down' && movement > threshold) {
       close()
     } else {
-      setState(prev => prev === 'expand' ? 'expand' : 'peek')
+      setMode(prev => prev === 'expand' ? 'expand' : 'peek')
     }
   }
   
@@ -117,7 +117,7 @@ function Notifications() {
   useEffect(() => {
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        setState('peek')
+        setMode('peek')
       })
     })
   }, [])
@@ -126,7 +126,7 @@ function Notifications() {
     <div 
       id={overlay.notifications} 
       ref={overlayRef} 
-      className={`${styles.notifications} ${state === 'close' ? styles.closeOverlay : ''}`} 
+      className={`${styles.notifications} ${mode === 'close' ? styles.closeOverlay : ''}`} 
       onClick={onClick} 
       onKeyDown={onKeyDown} 
       tabIndex={-1} 
@@ -136,9 +136,9 @@ function Notifications() {
         ref={bottomSheetRef}  
         className={[
           styles.bottomSheet,
-          state === 'peek' && styles.peek,
-          state === 'expand' && styles.expand,
-          state === 'close' && styles.close
+          mode === 'peek' && styles.peek,
+          mode === 'expand' && styles.expand,
+          mode === 'close' && styles.close
         ].filter(Boolean).join(' ')}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
