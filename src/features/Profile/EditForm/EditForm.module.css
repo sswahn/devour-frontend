@@ -2,3 +2,17 @@
 .editForm {
   
 }
+
+.editForm label {
+  width: 100%;
+}
+
+.editForm input {
+  border-radius: 10px;
+  width: 100%;
+}
+
+.editForm textarea {
+  border-radius: 10px;
+  width: 100%;
+}
