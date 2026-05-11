@@ -60,10 +60,10 @@ function useScrollIntercept() {
   const onWheel = event => {
     //event.preventDefault()
     //interceptScroll(event.deltaY)
-        e.preventDefault();
+        event.preventDefault();
 
     window.scrollBy({
-      top: e.deltaY * 0.0003, // 👈 throttle factor
+      top: e.deltaY * 0.3, // 👈 throttle factor
       behavior: "auto",
     });
 
