@@ -28,7 +28,7 @@
   border: none;
   border-radius: 50px;
   color: var(--input-text);
-  height: 72%;
+  height: calc(100% - 16px);
   text-align: center;
 }
 
