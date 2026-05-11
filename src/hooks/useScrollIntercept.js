@@ -59,7 +59,14 @@ function useScrollIntercept() {
   // 1. Mouse/Trackpad
   const onWheel = event => {
     //event.preventDefault()
-    interceptScroll(event.deltaY)
+    //interceptScroll(event.deltaY)
+        e.preventDefault();
+
+    window.scrollBy({
+      top: e.deltaY * 0.03, // 👈 throttle factor
+      behavior: "auto",
+    });
+
   }
   
   // 2. Touch (Mobile)
