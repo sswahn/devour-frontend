@@ -713,10 +713,9 @@
   display: flex;
   position: relative;
   margin: 8px auto;
-  min-width: 150px;
+  max-width: calc(100% - 48px);
   height: 24px;
-  width: calc(100% - 48px);
-
+  
   border: 1px dashed orange;
 }
 
