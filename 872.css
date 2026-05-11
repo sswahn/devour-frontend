@@ -330,7 +330,7 @@
   overflow-y: auto;
   overscroll-behavior-y: contain;
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
+  scrollbar-width: none; /* create a global remove scrollbar css */
 }
 
 .Xbr3YpUie58bMj6nUAbA {
