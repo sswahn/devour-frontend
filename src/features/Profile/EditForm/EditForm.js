@@ -1,6 +1,7 @@
-import { useRef, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 function EditForm({ username, location, biography }) {
+  const [image, setImage] = useState(null)
   const canvasRef = useRef(null)
   const fileInputRef = useRef(null)
 
@@ -22,7 +23,7 @@ function EditForm({ username, location, biography }) {
     if (!files.length) {
       return
     }
-    // handle file
+    setImage(files[0])
   }
 
   useEffect(() => {
