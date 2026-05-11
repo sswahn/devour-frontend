@@ -713,8 +713,8 @@
   display: flex;
   position: relative;
   margin: 8px auto;
-  max-width: calc(100% - 48px);
   height: 24px;
+  width: fit-content;
   
   border: 1px dashed orange;
 }
