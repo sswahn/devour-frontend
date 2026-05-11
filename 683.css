@@ -204,9 +204,8 @@
 /* Feed Node */
 
 .QNshFBXSoGNyBxo7mpBY figure {
-  contain: layout paint;
   display: block;
-  height: 100vh;
+  height: 100dvh;
 
   padding: 
     env(safe-area-inset-top)
