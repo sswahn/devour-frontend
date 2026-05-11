@@ -9,6 +9,7 @@ import useSwipeFromEdge from '../../hooks/useSwipeFromEdge'
 import CloseButton from '../../components/CloseButton/CloseButton'
 import Dropdown from '../../components/Dropdown/Dropdown'
 import ImageEditor from './ImageEditor/ImageEditor'
+import EditImageButton from './EditImageButton/EditImageButton'
 import ImageField from './ImageField/ImageField'
 import TextField from './TextField/TextField'
 import FollowButton from './FollowButton/FollowButton'
@@ -62,8 +63,8 @@ function Profile() {
         <nav>
           <CloseButton overlay={overlay.profile} close={closeOverlay} />
           <Dropdown items={dropdown} />
-          {/* move edit button into drop down to be rendered conditionally... how to get state into config 
-          <EditButton open={openEditor} /> */}
+          {/* move edit button into drop down to be rendered conditionally... how to get state into config */}
+          <EditImageButton open={openEditor} /> 
         </nav>
         <header>
           <div>
