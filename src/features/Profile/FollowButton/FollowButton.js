@@ -5,27 +5,16 @@ import styles from './FollowButton.module.css'
 
 function FollowButton() {
   const [following, setFollowing] = useState(false)
-
-  const action = () => {
-    navigator.vibrate(50)
-    setFollowing(prevState => !prevState)
-  }
   
   const onClick = event => {
-    action()
-  }
-
-  const onKeyDown = event => {
-    if (event.key === 'Enter') {
-      action()
-    }
+    navigator.vibrate?.(50)
+    setFollowing(prevState => !prevState)
   }
   
   return (
     <button 
       className={styles.followButton} 
       onClick={onClick}
-      onKeyDown={onKeyDown}
       type="button" 
       aria-label={`{${following ? 'unfollow' : 'follow'}`} 
       aria-pressed={following}>
