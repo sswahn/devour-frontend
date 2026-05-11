@@ -63,7 +63,6 @@ function EditForm({ picture, username, location, biography }) {
         <label htmlFor="upload">Profile picture:</label>
         {/* update accept to only take selected image types: */}
         <input id="upload" ref={fileInputRef} onChange={handleImageFile} type="file" name="upload" accept="image/*" aria-label="update your profile picture" />
-        {/* hide the input, use the button onClick to click the file input, then onChange on the input set image state */}
         <button onClick={handleUploadImage} type="button">Upload Image</button>
       </div>
     
