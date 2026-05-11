@@ -8,6 +8,7 @@ import useDialog from '../../hooks/useDialog'
 import useSwipeFromEdge from '../../hooks/useSwipeFromEdge'
 import CloseButton from '../../components/CloseButton/CloseButton'
 import Dropdown from '../../components/Dropdown/Dropdown'
+import EditForm from './EditForm/EditForm'
 import ImageEditor from './ImageEditor/ImageEditor'
 import EditImageButton from './EditImageButton/EditImageButton'
 import ImageField from './ImageField/ImageField'
@@ -39,7 +40,7 @@ function Profile() {
   }
 
   const openEditor = () => {
-    openDialog(<ImageEditor />)
+    openDialog(<EditForm />)
   }
   
   // profileUsername used to render profile
