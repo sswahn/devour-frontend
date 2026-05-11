@@ -731,7 +731,7 @@
 }
 
 .klXrR4Fk65hNe19HFYR6 input {
-  background: none;
+  background: var(--light-gray);
   
   border: 1px dashed magenta;
   
