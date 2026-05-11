@@ -8,6 +8,7 @@ function TextField({ type, text, update }) {
 
   const open = () => {
     setIsOpen(true)
+    inputRef.current.focus()
   }
   
   const close = () => {
