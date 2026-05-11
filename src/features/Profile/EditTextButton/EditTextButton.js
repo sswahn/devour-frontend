@@ -1,18 +1,19 @@
+import XmarkIcon from '../../../components/Icons/XmarkIcon/XmarkIcon'
 import EditIcon from '../../../components/Icons/EditIcon/EditIcon'
-import styles from './EditImageButton.module.css'
+import styles from './EditTextButton.module.css'
 
-function EditImageButton({ open, close }) {
+function EditTextButton({ field, isOpen, open, close }) {
 
   const onClick = event => {
     navigation.vibrate?.()
-    open()
+    isOpen ? close() : open()
   }
 
   return (
-    <button className={styles.editImageButton} onClick={onClick} type="button" aria-label="edit profile image">
-      <EditIcon size={16} />
+    <button className={styles.editTextButton} onClick={onClick} type="button" aria-label={`edit profile ${field}`}>
+      {isOpen ? <XmarkIcon /> : <EditIcon size={16} />}
     </button>
   )
 }
 
-export default EditImageButton
+export default EditTextButton
