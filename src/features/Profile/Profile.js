@@ -11,7 +11,6 @@ import ImageField from './ImageField/ImageField'
 import TextField from './TextField/TextField'
 import FollowButton from './FollowButton/FollowButton'
 import FollowStats from './FollowStats/FollowStats'
-import EditButton from './EditButton/EditButton'
 import styles from './Profile.module.css'
 
 function Profile() {
