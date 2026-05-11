@@ -10,7 +10,6 @@
   overflow: hidden;
   position: fixed;
   transition: opacity 0.5s ease-out;
-  width: 100%;
   z-index: 200;
 }
 
