@@ -1,5 +1,11 @@
 /* Feed Node */
 
+@keyframes reveal-slowly {
+  from { transform: translateY(50px); }
+  to { transform: translateY(0); }
+}
+
+
 .feedNode figure {
   contain: layout paint;
   display: block;
@@ -29,10 +35,7 @@
   animation-range: entry 20% cover 50%;
 }
 
-@keyframes reveal-slowly {
-  from { transform: translateY(50px); }
-  to { transform: translateY(0); }
-}
+
 
 .feedNode figcaption {
   bottom: 72px;
