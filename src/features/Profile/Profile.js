@@ -72,19 +72,9 @@ function Profile() {
             <ImageField src={profile.image} alt={`${profile.username}'s profile picture`} />
           </div>
           <div>
-            <h1 id="username">
-              <TextField type="username" text={profile.username} update={updateProfile} />
-            </h1>
-            <address>
-              <TextField type="location" text={profile.location} update={updateProfile} />
-            </address>
-            
-            {/* 
-            <div>
-              <p id="biography">Some biographical information about Username.</p>
-              {<EditButton info="biography" current={profile.biography} />
-            </div>   
-            */}
+            <h1 id="username">{profile.username}</h1>
+            <address>{profile.location}</address>
+            {profile.biography && <p id="biography">{profile.biography}</p>}
           </div>
         </header>
   
