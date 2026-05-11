@@ -689,7 +689,21 @@
 
 
 .y_cz856M8GOdtyqdojxR {
-  
+  align-items: center; 
+  background: none;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  height: 44px;
+  justify-content: center;
+  cursor: pointer;
+  padding: 10px;
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  width: 44px;
+
+  border: 1px dashed red;
 }
 
 /* Text Field for Profile Text Editing (username, address) */
