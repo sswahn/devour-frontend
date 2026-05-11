@@ -1,6 +1,7 @@
 /* Text Field for Profile Text Editing (username, address) */
 
 .textField {
+  color: var(--text);
   display: flex;
   position: relative;
   margin: 8px auto;
