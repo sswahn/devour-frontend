@@ -67,7 +67,6 @@ function EditForm({ picture, username, location, biography }) {
       </div>
     
       <label htmlFor="username">Username:</label>
-      <input id="username" type="text" />
       <input id="username" type="text" name="username" defaultValue={username} aria-label="update your username" />
       <label htmlFor="location">Location:</label>
       <input id="location" type="text" name="location" defaultValue={location} aria-label="update your location" />
