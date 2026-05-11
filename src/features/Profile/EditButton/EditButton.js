@@ -4,27 +4,15 @@ import styles from './EditButton.module.css'
 
 function EditButton({ field, isOpen, open, close }) {
 
-  const action = () => {
-    isOpen ? close() : open()
-  }
-
   const onClick = event => {
     navigation.vibrate?.()
-    action()
-  }
-  
-  const onKeyDown = event => {
-    if (event.key === 'Enter') {
-      event.preventDefault()
-      action()
-    }
+    isOpen ? close() : open()
   }
 
   return (
     <button 
       className={styles.editButton} 
       onClick={onClick} 
-      onKeyDown={onKeyDown} 
       type="button" 
       aria-pressed={isOpen}
       aria-label={!isOpen ? `edit profile ${field}` : `close to update ${field}`}>
