@@ -63,7 +63,7 @@ function useScrollIntercept() {
         e.preventDefault();
 
     window.scrollBy({
-      top: e.deltaY * 0.03, // 👈 throttle factor
+      top: e.deltaY * 0.0003, // 👈 throttle factor
       behavior: "auto",
     });
 
