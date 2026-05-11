@@ -733,9 +733,10 @@
 .klXrR4Fk65hNe19HFYR6 input {
   background: none;
   
-  border: 1px dashed pink;
+  border: 1px dashed magenta;
   
   color: var(--text);
+  font-size: 20px;
   height: 100%;
   text-align: center;
 }
