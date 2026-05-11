@@ -24,7 +24,7 @@
 }
 
 .textField input {
-  background: none;
+  background: var(--light-gray);
   
   border: 1px dashed magenta;
   
