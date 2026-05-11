@@ -33,7 +33,7 @@ function TextField({ type, text, update }) {
 
   return (
     <div className={styles.textField}>
-      {!isOpen // make this a component?
+      {!isOpen
         ? <span>{text}</span>
         : <input id={`${type}-input`} ref={inputRef} onKeyDown={onKeyDown} type="text" defaultValue={text} aria-label={`input your new ${type}`} />
       }
