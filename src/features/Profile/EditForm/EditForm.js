@@ -16,7 +16,7 @@ function EditForm({ picture, username, location, biography }) {
   }
 
   const handleImageFile = event => {
-    const files = fileInputRef.current.files
+    const { files } = event.target
     if (!files.length) {
       return
     }
