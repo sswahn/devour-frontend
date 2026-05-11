@@ -62,6 +62,7 @@ function Profile() {
         <nav>
           <CloseButton overlay={overlay.profile} close={closeOverlay} />
           <Dropdown items={dropdown} />
+          {/* move edit button into drop down to be rendered conditionally... how to get state into config */}
           <EditImageButton open={openEditor} />
         </nav>
         <header>
