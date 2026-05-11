@@ -203,6 +203,12 @@
 
 /* Feed Node */
 
+@keyframes ekeetZ_4N0xvm1eIa1RK {
+  from { transform: translateY(50px); }
+  to { transform: translateY(0); }
+}
+
+
 .QNshFBXSoGNyBxo7mpBY figure {
   contain: layout paint;
   display: block;
@@ -232,10 +238,7 @@
   animation-range: entry 20% cover 50%;
 }
 
-@keyframes ekeetZ_4N0xvm1eIa1RK {
-  from { transform: translateY(50px); }
-  to { transform: translateY(0); }
-}
+
 
 .QNshFBXSoGNyBxo7mpBY figcaption {
   bottom: 72px;
