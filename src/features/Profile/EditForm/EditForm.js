@@ -45,14 +45,14 @@ function EditForm({ picture, username, location, biography }) {
   }, [picture])
   
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} aria-label="update your profile">
       <div>
         <canvas ref={canvasRef} />
       </div>
       <div>
         <label htmlFor="upload">Profile picture:</label>
         {/* update accept to only take selected image types: */}
-        <input id="upload" ref={fileInputRef} type="file"  name="upload" accept="image/*" aria-label="update your profile picture" />
+        <input id="upload" ref={fileInputRef} type="file" name="upload" accept="image/*" aria-label="update your profile picture" />
         <button onClick={handleImageUpload} type="button">Upload Image</button>
       </div>
     
