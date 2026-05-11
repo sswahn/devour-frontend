@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import EditButton from '../EditButton/EditButton'
+import EditTextButton from '../EditButton/EditButton'
 import styles from './TextField.module.css'
 
 function TextField({ type, text, update }) {
@@ -35,7 +35,7 @@ function TextField({ type, text, update }) {
         ? <span>{text}</span>
         : <input id={`${type}-input`} ref={inputRef} onKeyDown={onKeyDown} type="text" inputMode="email" defaultValue={text} aria-label={`input your new ${type}`} />
       }
-      <EditButton field={type} isOpen={isOpen} open={open} close={close} />
+      <EditTextButton field={type} isOpen={isOpen} open={open} close={close} />
     </div>
   )
 }
