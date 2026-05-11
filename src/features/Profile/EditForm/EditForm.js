@@ -4,6 +4,19 @@ function EditForm({ username, location, biography }) {
   const canvasRef = useRef(null)
   const fileInputRef = useRef(null)
 
+  const loadImage = event => {
+    const canvas = canvasRef.current
+    const ctx = canvas.getContext('2d')
+    canvas.width = image.width
+    canvas.height = image.height
+    ctx.drawImage(image, 0, 0)
+    URL.revokeObjectURL(image.src)
+  }
+
+  const loadImageError = event => {
+    throw event.error
+  }
+  
   const handleImageUpload = event => {
     const files = fileInputRef.current.files
     if (!files.length) {
