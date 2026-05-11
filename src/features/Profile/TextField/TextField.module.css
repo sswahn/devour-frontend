@@ -10,8 +10,6 @@
   margin: 8px auto;
   height: 24px;
   width: fit-content;
-  
-  border: 1px dashed orange;
 }
 
 /* The "Condition": Only triggers if a button is present */
