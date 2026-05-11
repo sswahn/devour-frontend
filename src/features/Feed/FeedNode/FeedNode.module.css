@@ -1,7 +1,7 @@
 /* Feed Node */
 
 @keyframes reveal-slowly {
-  from { transform: translateY(50px); }
+  from { transform: translateY(200px); }
   to { transform: translateY(0); }
 }
 
@@ -30,7 +30,7 @@
   background: #666; 
   border-radius: 10px;
 
-  margin-bottom: -42px;
+  margin-bottom: -175px;
   animation: reveal-slowly ease-out both;
   animation-timeline: view();
   animation-range: entry 0% cover 100%;
