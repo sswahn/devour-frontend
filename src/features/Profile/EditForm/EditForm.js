@@ -5,6 +5,11 @@ function EditForm({ picture, username, location, biography }) {
   const canvasRef = useRef(null)
   const fileInputRef = useRef(null)
 
+  const onSubmit = event => {
+    event.preventDefault()
+    
+  }
+
   const loadImage = event => {
     const canvas = canvasRef.current
     const ctx = canvas.getContext('2d')
