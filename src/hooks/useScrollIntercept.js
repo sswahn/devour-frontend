@@ -35,7 +35,9 @@ function useScrollIntercept() {
     // Smoothed movement
     const step = Math.max(-MAX_STEP, Math.min(MAX_STEP, distance * SMOOTHING))
     
-    element.scrollTop += step
+    //element.scrollTop += step
+
+    element.scrollBy(0, deltaY * MULTIPLIER)
     
     frame.current = requestAnimationFrame(animate)
   }
