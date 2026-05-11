@@ -15,3 +15,7 @@
   margin: 24px auto 0 auto;
   width: calc(100% - 48px);
 }
+
+.followButton:focus {
+  background: initial;
+}
