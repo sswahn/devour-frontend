@@ -714,10 +714,15 @@
   position: relative;
   margin: 8px auto;
   height: 24px;
-  padding-right: 44px;
   width: fit-content;
   
   border: 1px dashed orange;
+}
+
+/* The "Condition": Only triggers if a button is present */
+.klXrR4Fk65hNe19HFYR6:has(button) {
+  padding-right: 44px;
+  margin-right: -44px;
 }
 
 .klXrR4Fk65hNe19HFYR6 input {
