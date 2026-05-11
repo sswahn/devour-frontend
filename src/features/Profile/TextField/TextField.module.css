@@ -25,6 +25,7 @@
 
 .textField input {
   background: var(--input-bg);
+  border: none;
   border-radius: 50px;
   color: var(--input-text);
   height: 100%;
