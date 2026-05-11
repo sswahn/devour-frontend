@@ -710,8 +710,10 @@
 /* Text Field for Profile Text Editing (username, address) */
 
 .klXrR4Fk65hNe19HFYR6 {
+  align-items: center;
   color: var(--text);
   display: flex;
+  justify-content: center;
   padding: 0;
   position: relative;
   margin: 8px auto;
@@ -739,8 +741,7 @@
 }
 
 .klXrR4Fk65hNe19HFYR6 span {
-  display: inline-block;
-  margin: 0 auto;
+
 }
 
 /* Profile Follow Button */
