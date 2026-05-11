@@ -660,12 +660,13 @@
   cursor: pointer;
   padding: 10px;
   position: absolute;
-  right: -10px;
-  bottom: -10px;
+  right: -44px;
+  bottom: -44px;
   width: 44px;
 
   border: 1px dashed red;
 }
+
 
 /* Profile Image Editor */
 
@@ -711,6 +712,7 @@
 .klXrR4Fk65hNe19HFYR6 {
   color: var(--text);
   display: flex;
+  padding: 0;
   position: relative;
   margin: 8px auto;
   height: 24px;
@@ -722,6 +724,10 @@
 /* The "Condition": Only triggers if a button is present */
 .klXrR4Fk65hNe19HFYR6:has(button) {
   padding: 0 44px;
+}
+
+.klXrR4Fk65hNe19HFYR6:has(input) {
+  padding: 0;
 }
 
 .klXrR4Fk65hNe19HFYR6 input {
