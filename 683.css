@@ -237,7 +237,7 @@
 /* Feed */
 
 .FXju5x6KeXy0fnVXd9I2 {  
-  height: 100dvh;
+  height: 100vh; /* 100dvh; */
   
   padding: 
     env(safe-area-inset-top)
@@ -250,24 +250,23 @@
   overscroll-behavior-y: contain;
   -webkit-overflow-scrolling: touch; 
 
-  /* Hide scrollbar for Chrome, Safari and Opera (Mobile & Desktop) */
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  /* Hide scrollbar for Firefox (Standard) */
-  scrollbar-width: none;
-  /* Hide scrollbar for IE and Edge */
-  -ms-overflow-style: none;
+  scrollbar-width: none; /* Hide scrollbar for Firefox (Standard) */  
+  -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
 
-  /* Ensure scrolling is still enabled */
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: auto;   /* Ensure scrolling is still enabled */
   overscroll-behavior-y: contain;
   
   transform: translateZ(0);
   will-change: scroll-position;
   z-index: 0;
 }
+
+/* Hide scrollbar for Chrome, Safari and Opera (Mobile & Desktop) */
+.FXju5x6KeXy0fnVXd9I2::-webkit-scrollbar {
+  display: none;
+}
+
 
 :root {
   /* set in global root:  When NOT in fullscreen, use a default offset */
