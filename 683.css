@@ -245,7 +245,7 @@
     env(safe-area-inset-bottom)
     env(safe-area-inset-left);
   
-  scroll-behavior: auto;  
+  scroll-behavior: smooth;  
   scroll-snap-type: y mandatory;
   overscroll-behavior-y: contain;
   -webkit-overflow-scrolling: touch; 
