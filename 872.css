@@ -807,24 +807,6 @@
   margin: 24px;
 }
 
-.NqptCRcHAXkX4aK4ROWp li {
-  
-}
-
-.NqptCRcHAXkX4aK4ROWp li button {
-  background: none;
-  border: 0;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 18px;
-  padding: 8px 16px;
-  user-select: none;
-}
-
-.NqptCRcHAXkX4aK4ROWp li button:active {
-  background: var(--button-active);
-}
-
 /* User Profile */
 
 .KIIoXhhSaQeQ2LSTtavI {
