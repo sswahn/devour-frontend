@@ -226,6 +226,15 @@
 
   background: #666; 
   border-radius: 10px;
+
+  animation: ekeetZ_4N0xvm1eIa1RK linear both;
+  animation-timeline: view();
+  animation-range: entry 20% cover 50%;
+}
+
+@keyframes ekeetZ_4N0xvm1eIa1RK {
+  from { transform: translateY(50px); }
+  to { transform: translateY(0); }
 }
 
 .QNshFBXSoGNyBxo7mpBY figcaption {
