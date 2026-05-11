@@ -775,11 +775,10 @@
   cursor: pointer;
   font-size: 18px;
   padding: 8px 16px;
-  user-select: none;
 }
 
-.LFQXA2zLBGoClhFiLyQh:active {
-  background: var(--button-active);
+.LFQXA2zLBGoClhFiLyQh:focus {
+  background: initial;
 }
 
 /* Profile User Stat Following Button */
