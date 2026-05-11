@@ -721,8 +721,7 @@
 
 /* The "Condition": Only triggers if a button is present */
 .klXrR4Fk65hNe19HFYR6:has(button) {
-  padding-right: 44px;
-  margin-right: -44px;
+  padding: 0 44px;
 }
 
 .klXrR4Fk65hNe19HFYR6 input {
