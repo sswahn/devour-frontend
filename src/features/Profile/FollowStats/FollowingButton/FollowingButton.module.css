@@ -7,9 +7,8 @@
   cursor: pointer;
   font-size: 18px;
   padding: 8px 16px;
-  user-select: none;
 }
 
-.followingButton:active {
-  background: var(--button-active);
+.followingButton:focus {
+  background: initial;
 }
