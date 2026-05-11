@@ -44,7 +44,7 @@ function Notifications() {
   const handleGrabberClick = event => {
     event.stopPropagation()
     navigator.vibrate?.(50)
-    state === 'expand' ? close() : setState('expand')
+    mode === 'expand' ? close() : setMode('expand')
   }
 
   const applyElasticDrag = deltaY => {
