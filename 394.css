@@ -711,11 +711,12 @@
   align-items: center;
   color: var(--text);
   display: flex;
+  height: 44px;
   justify-content: center;
+  margin: 0 auto;
   padding: 0;
   position: relative;
-  margin: 8px auto;
-  height: 44px;
+  
   width: fit-content;
 
   border: 1px dashed yellow;
