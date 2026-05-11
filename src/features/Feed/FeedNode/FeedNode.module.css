@@ -30,7 +30,7 @@
   background: #666; 
   border-radius: 10px;
 
-  margin-bottom: -46px;
+  margin-bottom: -42px;
   animation: reveal-slowly linear both;
   animation-timeline: view();
   animation-range: entry -20% cover 80%;
