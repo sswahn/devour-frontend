@@ -7,7 +7,10 @@ function TextField({ type, text, update }) {
   const inputRef = useRef(null)
 
   const open = () => setIsOpen(true)
-  const close = () => setIsOpen(false)
+  const close = () => {
+    setIsOpen(false)
+    updateField()
+  }
 
   const updateField = event => {
     const value = inputRef.current?.value.trim()
@@ -24,12 +27,6 @@ function TextField({ type, text, update }) {
       close()
     }
   }
-
-  useEffect(() => {
-    if (!isOpen) {
-      updateField()
-    }
-  }, [isOpen])
 
   return (
     <div className={styles.textField}>
