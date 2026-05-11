@@ -16,6 +16,10 @@
   padding: 0 44px;
 }
 
+.textField:has(input) {
+  padding: 0;
+}
+
 .textField input {
   background: var(--input-bg);
   border-radius: 50px;
