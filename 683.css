@@ -236,25 +236,7 @@
 
 /* Feed */
 
-@scroll-timeline scrollMove {
-  source: auto;
-  orientation: block;
-}
-
-@keyframes cuPETIH5dIBDPIqFthOn {
-  from {
-    transform: translateY(0px);
-  }
-  to {
-    transform: translateY(-40px);
-  }
-}
-
-.FXju5x6KeXy0fnVXd9I2 {
-  animation: cuPETIH5dIBDPIqFthOn linear both;
-  animation-timeline: scrollMove;
-
-  
+.FXju5x6KeXy0fnVXd9I2 {  
   height: 100dvh;
   
   padding: 
