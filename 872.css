@@ -793,8 +793,8 @@
   user-select: none;
 }
 
-.OiYeL661hs5Ulbu4Wv0W:active {
-  background: var(--button-active);
+.OiYeL661hs5Ulbu4Wv0W:focus {
+  background: initial;
 }
 
 /* Follow Stats List */
