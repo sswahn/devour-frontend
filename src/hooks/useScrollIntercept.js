@@ -67,7 +67,7 @@ const MAX_STEP = 240
 
   // 1. Mouse/Trackpad
   const onWheel = event => {
-    event.preventDefault()
+    //event.preventDefault()
     interceptScroll(event.deltaY)
   }
   
