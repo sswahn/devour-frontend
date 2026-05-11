@@ -24,7 +24,7 @@ function Profile() {
   const { onPointerDown, onPointerMove, onPointerUp, onPointerCancel } = useSwipeFromEdge(closeOverlay)
   const overlayRef = useRef(null)
   const [profile, setProfile] = useState({
-    image: '',
+    picture: '',
     username: 'test_user',
     location: 'new york',
     biography: ''
@@ -40,7 +40,7 @@ function Profile() {
   }
 
   const openEditor = () => {
-    openDialog(<EditForm />)
+    openDialog(<EditForm {...profile} />)
   }
   
   // profileUsername used to render profile
