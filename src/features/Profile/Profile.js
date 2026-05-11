@@ -69,7 +69,7 @@ function Profile() {
         </nav>
         <header>
           <div>
-            <img src={profile.image} alt={`${profile.username}'s profile picture`} />
+            <img src={profile.picture} alt={`${profile.username}'s profile picture`} />
           </div>
           <div>
             <h1 id="username">{profile.username}</h1>
