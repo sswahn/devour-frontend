@@ -1,6 +1,24 @@
 /* Feed */
 
+@scroll-timeline scrollMove {
+  source: auto;
+  orientation: block;
+}
+
+@keyframes drift {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-40px);
+  }
+}
+
 .feed {
+  animation: drift linear both;
+  animation-timeline: scrollMove;
+
+  
   height: 100dvh;
   
   padding: 
