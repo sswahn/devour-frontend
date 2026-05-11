@@ -33,7 +33,7 @@ function TextField({ type, text, update }) {
     <div className={styles.textField}>
       {!isOpen // make this a component?
         ? <span>{text}</span>
-        : <input id={`${type}-input`} ref={inputRef} onKeyDown={onKeyDown} type="text" inputMode="email" defaultValue={text} aria-label={`input your new ${type}`} />
+        : <input id={`${type}-input`} ref={inputRef} onKeyDown={onKeyDown} type="text" defaultValue={text} aria-label={`input your new ${type}`} />
       }
       <EditTextButton field={type} isOpen={isOpen} open={open} close={close} />
     </div>
