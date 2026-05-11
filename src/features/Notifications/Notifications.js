@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { overlay } from '../../config'
+import { dropdown, test_data } from './config'
 import useOverlay from '../../hooks/useOverlay'
 import useGestures from '../../hooks/useGestures'
 import Dropdown from '../../components/Dropdown/Dropdown'
@@ -18,31 +19,6 @@ function Notifications() {
   const { onGestureDown, onGestureMove, onGestureUp, onGestureCancel } = useGestures()
   const overlayRef = useRef(null)
   const bottomSheetRef = useRef(null)
-  
-  const context = { 
-    notifications: [
-      {username: 'username1', text: '12345678901234567890123456', timestamp: '5 days ago' },
-      {username: 'username2', text: 'testing user notification section', timestamp: '5 days ago' },
-      {username: 'username3', text: 'testing user notification section', timestamp: '5 days ago' },
-      {username: 'username4', text: 'testing user notification section', timestamp: '5 days ago' },
-      {username: 'username5', text: 'testing user notification section', timestamp: '5 days ago' },
-      {username: 'username6', text: '12345678901234567890123456', timestamp: '5 days ago' },
-      {username: 'username7', text: 'testing user notification section', timestamp: '5 days ago' },
-      {username: 'username8', text: 'testing user notification section', timestamp: '5 days ago' },
-      {username: 'username9', text: 'testing user notification section', timestamp: '5 days ago' },
-      {username: 'username10', text: 'testing user notification section', timestamp: '5 days ago' },
-      {username: 'username11', text: '12345678901234567890123456', timestamp: '5 days ago' },
-      {username: 'username12', text: 'testing user notification section', timestamp: '5 days ago' },
-      {username: 'username13', text: 'testing user notification section', timestamp: '5 days ago' },
-      {username: 'username14', text: 'testing user notification section', timestamp: '5 days ago' },
-      {username: 'username15', text: 'testing user notification section', timestamp: '5 days ago' },
-      {username: 'username16', text: '12345678901234567890123456', timestamp: '5 days ago' },
-      {username: 'username17', text: 'testing user notification section', timestamp: '5 days ago' },
-      {username: 'username18', text: 'testing user notification section', timestamp: '5 days ago' },
-      {username: 'username19', text: 'testing user notification section', timestamp: '5 days ago' },
-      {username: 'username20', text: 'testing user notification section', timestamp: '5 days ago' },
-    ]
-  }
 
   const close = () => {
     setState('close')
@@ -171,7 +147,7 @@ function Notifications() {
         aria-label="notifications">
         <div id="grabber" onClick={handleGrabberClick} role="presentation"></div>
         <ul aria-label="user notifications">
-          {context.notifications?.map((notification, index) => 
+          {test_data.notifications?.map((notification, index) => 
             <li key={index}>
               <Avatar username={notification.username} image={null} />
               <div>
@@ -181,7 +157,7 @@ function Notifications() {
                 </div>
                 <p>{notification.text}</p>
               </div>
-              <Dropdown />
+              <Dropdown items={dropdown} />
             </li>                                                           
           )}
         </ul>
