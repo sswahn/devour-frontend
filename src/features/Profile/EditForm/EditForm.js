@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 
-function EditForm({ username, location, biography }) {
+function EditForm({ picture, username, location, biography }) {
   const [image, setImage] = useState(null)
   const canvasRef = useRef(null)
   const fileInputRef = useRef(null)
@@ -25,7 +25,7 @@ function EditForm({ username, location, biography }) {
     }
     setImage(files[0])
   }
-
+  
   useEffect(() => {
     if (!image) {
       return
@@ -37,6 +37,12 @@ function EditForm({ username, location, biography }) {
       image.removeEventListener('error', loadImageError)
     }
   }, [image])
+
+  useEffect(() => {
+    if (picture) {
+      setImage(picture)
+    }
+  }, [picture])
   
   return (
     <form onSubmit={onSubmit}>
@@ -44,18 +50,19 @@ function EditForm({ username, location, biography }) {
         <canvas ref={canvasRef} />
       </div>
       <div>
-        <label htmlFor="upload">Select an image:</label>
-        <input id="upload" ref={fileInputRef} type="file"  name="upload" accept="image/*" />
+        <label htmlFor="upload">Profile picture:</label>
+        {/* update accept to only take selected image types: */}
+        <input id="upload" ref={fileInputRef} type="file"  name="upload" accept="image/*" aria-label="update your profile picture" />
         <button onClick={handleImageUpload} type="button">Upload Image</button>
       </div>
     
       <label htmlFor="username">Username:</label>
       <input id="username" type="text" />
-      <input id="username" type="text" defaultValue={username} aria-label="update your username" />
+      <input id="username" type="text" name="username" defaultValue={username} aria-label="update your username" />
       <label htmlFor="location">Location:</label>
-      <input id="location" type="text" defaultValue={location} aria-label="update your location" />
+      <input id="location" type="text" name="location" defaultValue={location} aria-label="update your location" />
       <label htmlFor="biography">Bio:</label>
-      <input id="biography" type="text" defaultValue={biography} aria-label="update your bio" />
+      <input id="biography" type="text" name="biography" defaultValue={biography} aria-label="update your bio" />
     </form>
   )
 }
