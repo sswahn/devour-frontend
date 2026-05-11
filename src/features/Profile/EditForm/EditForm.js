@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import styles from './EditForm.module.css'
 
 function EditForm({ picture, username, location, biography }) {
   const [image, setImage] = useState(null)
@@ -50,7 +51,7 @@ function EditForm({ picture, username, location, biography }) {
   }, [picture])
   
   return (
-    <form onSubmit={onSubmit} aria-label="update your profile">
+    <form className={styles.editForm} onSubmit={onSubmit} aria-label="update your profile">
       <div>
         <canvas ref={canvasRef} />
       </div>
