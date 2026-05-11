@@ -13,8 +13,7 @@
 
 /* The "Condition": Only triggers if a button is present */
 .textField:has(button) {
-  padding-right: 44px;
-  margin-right: -44px;
+  padding: 0 44px;
 }
 
 .textField input {
