@@ -110,10 +110,6 @@ function Notifications() {
     onGestureCancel(event)
   }
 
-  const handleDropDown = event => {
-    alert('Dropdown button fires.')
-  }
-
   useEffect(() => {
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
