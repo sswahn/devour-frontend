@@ -645,34 +645,9 @@
 }
 
 
-
-.vbsjK61eJpBq2ev3NCQg {
-  
-}
-
-.vbsjK61eJpBq2ev3NCQg label {
-  width: 100%;
-}
-
-.vbsjK61eJpBq2ev3NCQg input {
-  border-radius: 10px;
-  width: 100%;
-}
-
-.vbsjK61eJpBq2ev3NCQg textarea {
-  border-radius: 10px;
-  width: 100%;
-}
-
-/* Profile Image Editor */
-
-.W3nLI9489YhiY9a5Vjay {
-  
-}
-
 /* User Profile Edit Button */
 
-.AC2DRYRjk9aqnDb9iXuT {
+.kSRV1SGvCF_0rvvsxWcg {
   align-items: center; 
   background: none;
   border: none;
@@ -691,78 +666,23 @@
 }
 
 
-/* Image Field for Profile Image Editing */ 
 
-.vKj8KylyFqGrO2mxDn8w {
-  border-radius: 50%;
-  display: block;
-  height: 128px;
-  margin: 0 auto 8px auto;
-  position: relative;
-  width: 128px;
+.vbsjK61eJpBq2ev3NCQg {
   
-  background: gray;
 }
 
-/* Profile Edit Text Field Button */
-
-.y_cz856M8GOdtyqdojxR {
-  align-items: center; 
-  background: none;
-  border: none;
-  border-radius: 50%;
-  display: flex;
-  height: 44px;
-  justify-content: center;
-  cursor: pointer;
-  padding: 10px;
-  position: absolute;
-  right: -10px;
-  top: 0;
-  width: 44px;
-
-  border: 1px dashed red;
+.vbsjK61eJpBq2ev3NCQg label {
+  width: 100%;
 }
 
-/* Text Field for Profile Text Editing (username, address) */
-
-.klXrR4Fk65hNe19HFYR6 {
-  align-items: center;
-  color: var(--text);
-  display: flex;
-  height: 44px;
-  justify-content: center;
-  margin: 0 auto;
-  padding: 0;
-  position: relative;
-  width: fit-content;
-
-  border: 1px dashed yellow;
+.vbsjK61eJpBq2ev3NCQg input {
+  border-radius: 10px;
+  width: 100%;
 }
 
-/* The "Condition": Only triggers if a button is present */
-.klXrR4Fk65hNe19HFYR6:has(button) {
-  padding: 0 44px;
-}
-
-.klXrR4Fk65hNe19HFYR6:has(input) {
-  padding: 0;
-}
-
-.klXrR4Fk65hNe19HFYR6 input {
-  background: var(--light-gray);
-  
-  border: 1px dashed magenta;
-  
-  border-radius: 50%;
-  color: var(--text);
-  font-size: 20px;
-  height: 100%;
-  text-align: center;
-}
-
-.klXrR4Fk65hNe19HFYR6 span {
-
+.vbsjK61eJpBq2ev3NCQg textarea {
+  border-radius: 10px;
+  width: 100%;
 }
 
 /* Profile Follow Button */
