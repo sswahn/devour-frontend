@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { overlay } from '../../config'
-import { dropdown, test_data } from './config'
+import { dropdown, test_data } from './config' // delete test_data
 import useOverlay from '../../hooks/useOverlay'
 import useGestures from '../../hooks/useGestures'
 import Dropdown from '../../components/Dropdown/Dropdown'
