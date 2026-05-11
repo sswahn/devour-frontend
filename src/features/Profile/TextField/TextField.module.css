@@ -1,6 +1,7 @@
 /* Text Field for Profile Text Editing (username, address) */
 
 .textField {
+  display: flex;
   position: relative;
   margin: 0 auto;
   max-width: 200px;
@@ -13,9 +14,8 @@
 .textField input {
   background: var(--input-bg);
   border-radius: 50px;
-  box-sizing: border-box;
   color: var(--input-text);
-  display: block;
+  flex: 1;
   height: 100%;
   padding: 4px 8px;
   width: 100%;
