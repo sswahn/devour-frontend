@@ -6,7 +6,10 @@ function EditForm({ username, location, biography }) {
 
   const handleImageUpload = event => {
     const files = fileInputRef.current.files
-    
+    if (!files.length) {
+      return
+    }
+    // handle file
   }
   
   return (
