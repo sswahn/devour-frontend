@@ -24,6 +24,8 @@ function TextField({ type, text, update }) {
       close()
     }
   }
+
+  console.log('text: ', text)
   
   useEffect(() => {
     updateField()
