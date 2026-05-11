@@ -6,7 +6,10 @@ function TextField({ type, text, update }) {
   const [isOpen, setIsOpen] = useState(false)
   const inputRef = useRef(null)
 
-  const open = () => setIsOpen(true)
+  const open = () => {
+    setIsOpen(true)
+  }
+  
   const close = () => {
     setIsOpen(false)
     updateField()
