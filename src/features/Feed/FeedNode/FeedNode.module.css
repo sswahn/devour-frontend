@@ -33,7 +33,7 @@
   margin-bottom: -42px;
   animation: reveal-slowly ease-out both;
   animation-timeline: view();
-  animation-range: entry -20% cover 80%;
+  animation-range: entry 0% cover 100%;
 }
 
 
