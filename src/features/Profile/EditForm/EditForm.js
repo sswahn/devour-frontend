@@ -3,7 +3,9 @@ function EditForm({ username, location, biography }) {
 
   return (
     <form onSubmit={onSubmit}>
-
+      <div>
+        <canvas />
+      </div>
     
       <label htmlFor="username">Username:</label>
       <input id="username" type="text" />
