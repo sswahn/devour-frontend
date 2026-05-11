@@ -3,6 +3,7 @@
 .textField {
   color: var(--text);
   display: flex;
+  padding: 0;
   position: relative;
   margin: 8px auto;
   height: 24px;
