@@ -3,7 +3,6 @@ import useContent from '../../../hooks/useContent'
 import useGestures from '../../../hooks/useGestures'
 import TopNav from '../TopNav/TopNav'
 import SideNav from '../SideNav/SideNav'
-import Comments from '../../Comments/Comments'
 import styles from './FeedNode.module.css'
 
 function FeedNode({ item, index, count }) {
@@ -98,8 +97,6 @@ function FeedNode({ item, index, count }) {
           exitFullScreen={exitFullScreen}
         />
       </figure>
-
-      <Comments />
     </div>
   )
 }
