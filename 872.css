@@ -709,6 +709,7 @@
 /* Text Field for Profile Text Editing (username, address) */
 
 .klXrR4Fk65hNe19HFYR6 {
+  color: var(--text);
   display: flex;
   position: relative;
   margin: 8px auto;
