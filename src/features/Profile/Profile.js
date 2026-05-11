@@ -8,11 +8,8 @@ import useDialog from '../../hooks/useDialog'
 import useSwipeFromEdge from '../../hooks/useSwipeFromEdge'
 import CloseButton from '../../components/CloseButton/CloseButton'
 import Dropdown from '../../components/Dropdown/Dropdown'
+import EditButton from './EditButton/EditButton'
 import EditForm from './EditForm/EditForm'
-import ImageEditor from './ImageEditor/ImageEditor'
-import EditImageButton from './EditImageButton/EditImageButton'
-import ImageField from './ImageField/ImageField'
-import TextField from './TextField/TextField'
 import FollowButton from './FollowButton/FollowButton'
 import FollowStats from './FollowStats/FollowStats'
 import styles from './Profile.module.css'
@@ -65,7 +62,7 @@ function Profile() {
           <CloseButton overlay={overlay.profile} close={closeOverlay} />
           <Dropdown items={dropdown} />
           {/* move edit button into drop down to be rendered conditionally... how to get state into config */}
-          <EditImageButton open={openEditor} /> 
+          <EditButton open={openEditor} /> 
         </nav>
         <header>
           <div>
