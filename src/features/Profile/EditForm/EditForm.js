@@ -11,6 +11,18 @@ function EditForm({ picture, username, location, biography }) {
     
   }
 
+  const handleUploadImage = event => {
+    fileInputRef.current.click()
+  }
+
+  const handleImageFile = event => {
+    const files = fileInputRef.current.files
+    if (!files.length) {
+      return
+    }
+    setImage(files[0])
+  }
+
   const loadImage = event => {
     const canvas = canvasRef.current
     const ctx = canvas.getContext('2d')
@@ -22,14 +34,6 @@ function EditForm({ picture, username, location, biography }) {
 
   const loadImageError = event => {
     throw event.error
-  }
-  
-  const handleImageUpload = event => {
-    const files = fileInputRef.current.files
-    if (!files.length) {
-      return
-    }
-    setImage(files[0])
   }
   
   useEffect(() => {
@@ -58,8 +62,9 @@ function EditForm({ picture, username, location, biography }) {
       <div>
         <label htmlFor="upload">Profile picture:</label>
         {/* update accept to only take selected image types: */}
-        <input id="upload" ref={fileInputRef} type="file" name="upload" accept="image/*" aria-label="update your profile picture" />
-        <button onClick={handleImageUpload} type="button">Upload Image</button>
+        <input id="upload" ref={fileInputRef} onChange={handleImageFile} type="file" name="upload" accept="image/*" aria-label="update your profile picture" />
+        {/* hide the input, use the button onClick to click the file input, then onChange on the input set image state */}
+        <button onClick={handleUploadImage} type="button">Upload Image</button>
       </div>
     
       <label htmlFor="username">Username:</label>
