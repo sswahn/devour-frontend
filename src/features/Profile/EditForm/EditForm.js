@@ -1,10 +1,21 @@
+import { useRef } from 'react'
 
 function EditForm({ username, location, biography }) {
+  const canvasRef = useRef(null)
 
+  const handleImageUpload = event => {
+    
+  }
+  
   return (
     <form onSubmit={onSubmit}>
       <div>
-        <canvas />
+        <canvas ref={canvasRef} />
+      </div>
+      <div>
+        <label htmlFor="upload">Select an image:</label>
+        <input id="upload" type="file"  name="upload" accept="image/*" />
+        <button onClick={handleImageUpload} type="button">Upload Image</button>
       </div>
     
       <label htmlFor="username">Username:</label>
