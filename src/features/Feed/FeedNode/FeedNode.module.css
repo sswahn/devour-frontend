@@ -23,6 +23,15 @@
 
   background: #666; 
   border-radius: 10px;
+
+  animation: reveal-slowly linear both;
+  animation-timeline: view();
+  animation-range: entry 20% cover 50%;
+}
+
+@keyframes reveal-slowly {
+  from { transform: translateY(50px); }
+  to { transform: translateY(0); }
 }
 
 .feedNode figcaption {
