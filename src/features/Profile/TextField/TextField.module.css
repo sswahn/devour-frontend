@@ -3,7 +3,7 @@
 .textField {
   display: flex;
   position: relative;
-  margin: 0 auto;
+  margin: 8px auto;
   max-width: 200px;
   height: 24px;
 
