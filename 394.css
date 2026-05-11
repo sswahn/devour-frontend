@@ -731,11 +731,12 @@
 }
 
 .klXrR4Fk65hNe19HFYR6 input {
-  background: var(--input-bg);
-  border: none;
-  border-radius: 50px;
-  color: var(--input-text);
-  height: calc(100% - 16px);
+  background: none;
+  
+  border: 1px dashed pink;
+  
+  color: var(--text);
+  height: 100%;
   text-align: center;
 }
 
