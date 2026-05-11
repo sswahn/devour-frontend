@@ -185,22 +185,6 @@
   z-index: 20;
 }
 
-/* Feed Node Comments System */
-
-.uoscghNXGwijRME3XZY7 {
-  position: absolute;
-  top: 0;
-  left: 0
-}
-
-.uoscghNXGwijRME3XZY7 textarea {
-  field-sizing: content;
-  max-height: 152px;
-  min-height: 48px;
-  overflow: hidden; /* Hide scrollbars */
-  resize: none; /* Disable manual resize */
-}
-
 /* Feed Node */
 
 .QNshFBXSoGNyBxo7mpBY figure {
