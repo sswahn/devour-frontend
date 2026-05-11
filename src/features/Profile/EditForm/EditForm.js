@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 
 function EditForm({ username, location, biography }) {
   const canvasRef = useRef(null)
@@ -24,6 +24,18 @@ function EditForm({ username, location, biography }) {
     }
     // handle file
   }
+
+  useEffect(() => {
+    if (!image) {
+      return
+    }
+    image.addEventListener('load', loadImage)
+    image.addEventListener('error', loadImageError)
+    return () => {
+      image.removeEventListener('load', loadImage)
+      image.removeEventListener('error', loadImageError)
+    }
+  }, [image])
   
   return (
     <form onSubmit={onSubmit}>
