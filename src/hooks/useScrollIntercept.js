@@ -35,9 +35,7 @@ function useScrollIntercept() {
     // Smoothed movement
     const step = Math.max(-MAX_STEP, Math.min(MAX_STEP, distance * SMOOTHING))
     
-    //element.scrollTop += step
-
-    element.scrollBy(0, deltaY * MULTIPLIER)
+    element.scrollTop += step
     
     frame.current = requestAnimationFrame(animate)
   }
@@ -58,15 +56,8 @@ function useScrollIntercept() {
 
   // 1. Mouse/Trackpad
   const onWheel = event => {
-    //event.preventDefault()
-    //interceptScroll(event.deltaY)
-        event.preventDefault();
-
-    window.scrollBy({
-      top: e.deltaY * 0.3, // 👈 throttle factor
-      behavior: "auto",
-    });
-
+    event.preventDefault()
+    interceptScroll(event.deltaY)
   }
   
   // 2. Touch (Mobile)
