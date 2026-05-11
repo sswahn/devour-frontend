@@ -4,6 +4,7 @@ import { dropdown } from './config'
 import useOverlay from '../../hooks/useOverlay'
 import useSession from '../../hooks/useSession'
 import useProfile from '../../hooks/useProfile'
+import useDialog from '../../../hooks/useDialog'
 import useSwipeFromEdge from '../../hooks/useSwipeFromEdge'
 import CloseButton from '../../components/CloseButton/CloseButton'
 import Dropdown from '../../components/Dropdown/Dropdown'
@@ -16,6 +17,7 @@ import styles from './Profile.module.css'
 function Profile() {
   const { closeOverlay } = useOverlay()
   const { userProfile } = useProfile() // username of profile to be displayed.
+  const { openDialog } = useDialog()
   const { onPointerDown, onPointerMove, onPointerUp, onPointerCancel } = useSwipeFromEdge(closeOverlay)
   const overlayRef = useRef(null)
   const [profile, setProfile] = useState({
@@ -32,6 +34,10 @@ function Profile() {
       event.preventDefault()
       closeOverlay()
     }
+  }
+
+  const openEditor = () => {
+    openDialog(<ImageEditor />)
   }
   
   // profileUsername used to render profile
@@ -55,6 +61,7 @@ function Profile() {
         <nav>
           <CloseButton overlay={overlay.profile} close={closeOverlay} />
           <Dropdown items={dropdown} />
+          <EditImageButton open={openEditor} />
         </nav>
         <header>
           <div>
