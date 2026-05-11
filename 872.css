@@ -309,17 +309,15 @@
   flex-direction: column;
   height: 100dvh; 
   left: 0;
-  overscroll-behavior-y: contain;
-  padding-top: 8px;
   position: fixed;
   transform: translate3d(0, calc(var(--sheet-y) + var(--drag-y)), 0);
   transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-  touch-action: none;
+  touch-action: none; /* pan-y; */
   width: 100%;
   will-change: transform;
-  /* This extra padding acts as a "buffer" so the bottom never shows when bouncing */
+  /* This extra padding acts as a "buffer" so the bottom never shows when bouncing 
   padding-bottom: 50vh; 
-  margin-bottom: -50vh;
+  margin-bottom: -50vh; */
   box-sizing: content-box;
 }
 
