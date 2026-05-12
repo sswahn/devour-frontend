@@ -1,4 +1,5 @@
-export function createObserver({ root = null, rootMargin = '0px', threshold = 0 } = {}) {
+
+function createObserver({ root = null, rootMargin = '0px', threshold = 0 } = {}) {
   const elementCallbacks = new Map()
 
   const observer = new IntersectionObserver(entries => {
@@ -31,3 +32,5 @@ export function createObserver({ root = null, rootMargin = '0px', threshold = 0 
     disconnect
   }
 }
+
+export default createObserver
