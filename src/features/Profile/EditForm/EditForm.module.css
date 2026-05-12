@@ -8,13 +8,19 @@
 }
 
 .editForm input {
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
   border-radius: 10px;
+  color: var(--input-text);
   height: 44px;
   width: 100%;
 }
 
 .editForm textarea {
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
   border-radius: 10px;
+  color: var(--input-text);
   height: 88px;
   width: 100%;
 }
