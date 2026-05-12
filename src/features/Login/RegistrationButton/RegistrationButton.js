@@ -1,37 +1,19 @@
-import { useRef, useEffect } from 'react'
+import { useRef } from 'react'
 import { overlay } from '../../../config'
 import useOverlay from '../../../hooks/useOverlay'
 import styles from './RegistrationButton.module.css'
 
 function RegistrationButton() {
   const buttonRef = useRef(null)
-  const { isActive, openOverlay, closeOverlay } = useOverlay()
-  
-  const action = () => {
-    closeOverlay(overlay.register)
-  }
+  const { openOverlay } = useOverlay()
   
   const onClick = event => {
     navigator.vibrate?.(50)
-    action()
-  }
-  
-  const onKeyDown = event => {
-    if (event.key === 'Enter') {
-      event.preventDefault()
-      action()
-    }
+    openOverlay(overlay.register, buttonRef.current)
   }
 
   return (
-    <button 
-      id="register-passkey"
-      className={styles.registrationButton} 
-      ref={buttonRef}
-      onClick={onClick} 
-      onKeyDown={onKeyDown} 
-      type="button" 
-      aria-label="create a new account">
+    <button id="register-passkey" className={styles.registrationButton} ref={buttonRef} onClick={onClick} type="button" aria-label="create a new account">
       Sign Up
     </button>
   )
