@@ -15,6 +15,10 @@ function TopNav({ profile }) {
   const openEditor = () => {
     openDialog(<EditForm {...profile} />)
   }
+
+
+  // need conditional rendering on Edit button:
+  // ...[{}]
   
   const dropdown = [
     { icon: <EditIcon />, text: 'Edit profile', method: () => openEditor() },
