@@ -1,4 +1,5 @@
 import useDialog from '../../hooks/useDialog'
+import EditForm from './EditForm/EditForm'
 import CloseButton from '../../components/CloseButton/CloseButton'
 import Dropdown from '../../components/Dropdown/Dropdown'
 import EditIcon from '../../../components/Icons/EditIcon/EditIcon'
