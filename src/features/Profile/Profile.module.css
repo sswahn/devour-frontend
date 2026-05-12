@@ -14,6 +14,7 @@
 .profile > div {
   background-color: var(--surface-raised);
   inset: 0;
+  overflow-x: hidden;
   overflow-y: scroll;
   overscroll-behavior-y: contain;
   padding: 8px;
