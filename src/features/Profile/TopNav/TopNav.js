@@ -12,6 +12,7 @@ import styles from './TopNav.module.css'
 
 function TopNav({ profile }) {
   const { openDialog } = useDialog()
+  const { closeOverlay } = useOverlay()
   
   const openEditor = () => {
     openDialog(<EditForm {...profile} />)
