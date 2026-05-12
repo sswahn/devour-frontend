@@ -9,11 +9,13 @@
 
 .editForm input {
   border-radius: 10px;
+  height: 44px;
   width: 100%;
 }
 
 .editForm textarea {
   border-radius: 10px;
+  height: 88px;
   width: 100%;
 }
 
