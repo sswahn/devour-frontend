@@ -27,7 +27,9 @@ function Profile() {
     biography: ''
    })
 
-  const updateProfile = obj => setProfile(prev => ({ ...prev, ...obj }))
+  const updateProfile = obj => {
+    setProfile(prev => ({ ...prev, ...obj }))
+  }
   
   const onKeyDown = event => {
     if (event.key === 'Escape') {
@@ -39,6 +41,15 @@ function Profile() {
   const openEditor = () => {
     openDialog(<EditForm {...profile} />)
   }
+
+  const dropdown = [
+    { icon: <SearchIcon />, text: 'Search profile', method: () => alert('Opened search.') },
+    { icon: <MessageIcon />, text: 'Send message', method: () => alert('DM opened.') },
+    { icon: <FlagIcon />, text: 'Flag profile', method: () => confirm('Report profile?') },
+    { icon: <UserXmarkIcon />, text: 'Block user', method: () => confirm('Block user?') }
+  ]
+
+  
   
   // profileUsername used to render profile
   // session.username used to edit profile
