@@ -20,7 +20,7 @@ function Feed() {
 
   const observerCallback = node => {
     console.log('feed node observer called.')
-    if (node !== prevNode.current) {
+    if (node !== prevNode.current) { // handle roving index (for key navigation)
       node.tabIndex = -1
       prevNode.current.tabIndex = 0
       prevNode.current = node
