@@ -11,6 +11,7 @@ import styles from './Feed.module.css'
 function Feed() {
   const { setScrollRef } = useScroll()
   const { observe, unobserve, disconnect } = createObserver()
+  const prevNode = useRef(null)
   const [data, setData] = useState([
     { video: 1, caption: 'test 1' },
     { video: 2, caption: 'test 2' },
@@ -18,9 +19,12 @@ function Feed() {
   ])
 
   const observerCallback = node => {
-    // handle Roving Index, etc.
-    node.tabIndex = -1
     console.log('feed node observer called.')
+    if (node !== prevNode.current) {
+      node.tabIndex = -1
+      prevNode.current.tabIndex = 0
+      prevNode.current = node
+    }
   }
 
   const setObserver = node => {
