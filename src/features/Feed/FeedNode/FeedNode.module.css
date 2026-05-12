@@ -1,8 +1,9 @@
 /* Feed Node */
 
 .feedNode figure {
+ /* 
   contain: layout style;
-  /* content-visibility: auto;
+  content-visibility: auto;
   contain-intrinsic-size: 100dvh; */
   display: block;
   height: 100dvh;
