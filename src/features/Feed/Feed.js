@@ -18,7 +18,7 @@ function Feed() {
     { video: 3, caption: 'test 3' }
   ])
 
-  const observerCallback = entry => {
+  const observerCallback = entry => { // eventually lazy loading video here 
     if (entry.isIntersecting) {
       const node = entry.target
       node.tabIndex = -1  // handle roving index (for key navigation)
