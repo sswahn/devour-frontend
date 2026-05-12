@@ -22,8 +22,8 @@ function Feed() {
     console.log('node in observerCallback: ', node)
     console.log('prevNode.current: ', prevNode.current)
     // handle roving index (for key navigation)
-    node.tabIndex = -1
-    prevNode.current?.tabIndex = 0
+    node.tabIndex = '-1'
+    prevNode.current?.tabIndex = '0'
     prevNode.current = node
   }
 
