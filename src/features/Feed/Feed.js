@@ -18,7 +18,7 @@ function Feed() {
   ])
 
   const observerCallback = () => {
-    // pass to observer
+    // handle Roving Index, etc.
     console.log('feed node observer called.')
   }
 
