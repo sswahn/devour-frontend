@@ -18,14 +18,18 @@ function Feed() {
     { video: 3, caption: 'test 3' }
   ])
 
-  const observerCallback = (entry, node) => {
+  const observerCallback = entry => {
     // handle roving index (for key navigation)
+    console.log('entry.target: ', entry.target)
+    
     if (entry.isIntersecting) {
+      const node = entry.target
       node.tabIndex = -1
       if (prevNode.current) {
         prevNode.current.tabIndex = 0
       }
       prevNode.current = node
+      
       unobserve(node)
     }
   }
@@ -33,7 +37,7 @@ function Feed() {
   const setObserver = node => {
     console.log('node in setObserver: ', node)
     if (node) {
-      observe(node, (entry) => observerCallback(entry, node))
+      observe(node, observerCallback)
     }
   }
 
