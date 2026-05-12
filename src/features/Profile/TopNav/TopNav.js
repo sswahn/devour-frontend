@@ -1,3 +1,4 @@
+import EditIcon from '../../../components/Icons/EditIcon/EditIcon'
 import SearchIcon from '../../components/Icons/SearchIcon/SearchIcon'
 import MessageIcon from '../../components/Icons/MessageIcon/MessageIcon'
 import FlagIcon from '../../components/Icons/FlagIcon/FlagIcon'
