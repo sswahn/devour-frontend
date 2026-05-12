@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { overlay } from '../../config'
+import { server } from '../../utilities/server'
 import useOverlay from '../../hooks/useOverlay'
 import useProfile from '../../hooks/useProfile'
 import useSwipeFromEdge from '../../hooks/useSwipeFromEdge'
@@ -32,8 +33,13 @@ function Profile() {
   }  
 
   const loadData = () => {
-    // profileUsername used to request profile data
+    // userProfile used to request profile data
+    // setProfile(response.data)
   }
+
+  useEffect(() => {
+    // loadData()
+  }, [])
 
   return (
     <section 
