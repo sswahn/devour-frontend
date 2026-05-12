@@ -5,12 +5,11 @@ import TopNav from '../TopNav/TopNav'
 import SideNav from '../SideNav/SideNav'
 import styles from './FeedNode.module.css'
 
-function FeedNode({ item, index, count }) {
+function FeedNode({ item, setObserver, index, count }) {
   const { content, setContent } = useContent()
   const [isDoubleTap, setIsDoubleTap] = useState(null)
   const [isLongPress, setIsLongPress] = useState(null)
   const [isFullScreen, setIsFullScreen] = useState(false)
-  const feedNodeRef = useRef(null)
   const { onGestureDown, onGestureMove, onGestureUp, onGestureCancel } = useGestures()
 
   // need a function to pass to the swipeFromEdge(func) hook
@@ -77,27 +76,25 @@ function FeedNode({ item, index, count }) {
   // create <Figure /> and <CommentsSection /> components
   
   return (
-    <div ref={feedNodeRef} className={styles.feedNode}>
-      <figure aria-posinset={index} aria-setsize={count}
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={onPointerUp}
-        onPointerCancel={onPointerCancel}>
-        
-        <TopNav isFullSreen={isFullScreen} exitFullScreen={exitFullScreen} />
-  
-        {/* item.videoUrl && <video ref={ref} src={item.videoUrl} preload="metadata" muted playsInline loop /> */}
-        {item.caption && <figcaption>{item.caption}</figcaption>}
-        
-        <SideNav 
-          isDoubleTap={isDoubleTap} 
-          isLongPress={isLongPress}
-          isFullScreen={isFullScreen}
-          enterFullScreen={enterFullScreen}
-          exitFullScreen={exitFullScreen}
-        />
-      </figure>
-    </div>
+    <figure ref={setObserver} className={styles.feedNode} tabIndex={0} aria-posinset={index} aria-setsize={count}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerCancel={onPointerCancel}>
+      
+      <TopNav isFullSreen={isFullScreen} exitFullScreen={exitFullScreen} />
+
+      {/* item.videoUrl && <video ref={ref} src={item.videoUrl} preload="metadata" muted playsInline loop /> */}
+      {item.caption && <figcaption>{item.caption}</figcaption>}
+      
+      <SideNav 
+        isDoubleTap={isDoubleTap} 
+        isLongPress={isLongPress}
+        isFullScreen={isFullScreen}
+        enterFullScreen={enterFullScreen}
+        exitFullScreen={exitFullScreen}
+      />
+    </figure>
   )
 }
 
