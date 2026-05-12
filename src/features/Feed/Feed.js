@@ -19,9 +19,9 @@ function Feed() {
   ])
 
   const observerCallback = entry => {
-    if (entry.isIntersecting) { // handle roving index (for key navigation)
+    if (entry.isIntersecting) {
       const node = entry.target
-      node.tabIndex = -1
+      node.tabIndex = -1  // handle roving index (for key navigation)
       if (prevNode.current) {
         prevNode.current.tabIndex = 0
       }
