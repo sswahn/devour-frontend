@@ -44,7 +44,7 @@ function Profile() {
       role="dialog" 
       aria-modal="true" 
       aria-labelledby="username" 
-      aria-describedby="biography">
+      aria-describedby={profile.biography ? 'biography' : undefined}>
       <div
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
