@@ -6,6 +6,8 @@ import useSession from '../../hooks/useSession'
 import useProfile from '../../hooks/useProfile'
 import useDialog from '../../hooks/useDialog'
 import useSwipeFromEdge from '../../hooks/useSwipeFromEdge'
+import TopNav from './TopNav/TopNav'
+
 import CloseButton from '../../components/CloseButton/CloseButton'
 import Dropdown from '../../components/Dropdown/Dropdown'
 import EditButton from './EditButton/EditButton'
