@@ -655,7 +655,7 @@
 }
 
 .vbsjK61eJpBq2ev3NCQg input {
-  border-radius: 50%;
+  border-radius: 10px;
   width: 100%;
 }
 
@@ -680,7 +680,7 @@
   align-items: center;
   background: none;
   border: none;
-  border-radius: 50%;
+  border-radius: 10px;
   display: flex;
   height: 44px;
   justify-content: center;
