@@ -14,7 +14,7 @@ function DashboardButton() {
   }
   
   return (
-    <button className={styles.dashboardButton} onClick={onClick} onKeyDown={onKeyDown} ref={buttonRef} type="button" aria-label="open dashboard">
+    <button className={styles.dashboardButton} onClick={onClick} ref={buttonRef} type="button" aria-label="open dashboard">
       <LineChartIcon />
     </button>
   )
