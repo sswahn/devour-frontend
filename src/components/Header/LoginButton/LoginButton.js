@@ -8,24 +8,13 @@ function LoginButton() {
   const buttonRef = useRef(null)
   const { openOverlay } = useOverlay()
   
-  const action = () => {
+  const onClick = event => {
+    navigator.vibrate?.(50)
     openOverlay(overlay.login, buttonRef.current)  
   }
   
-  const onClick = event => {
-    navigator.vibrate?.(50)
-    action()
-  }
-  
-  const onKeyDown = event => {
-    if (event.key === 'Enter') {
-      event.preventDefault()
-      action()
-    }
-  }
-  
   return (
-    <button className={styles.loginButton} ref={buttonRef} onClick={onClick} onKeyDown={onKeyDown} type="button" aria-label="sign in">
+    <button className={styles.loginButton} ref={buttonRef} onClick={onClick} type="button" aria-label="sign in">
       <RightToBracketIcon />
     </button>
   )
