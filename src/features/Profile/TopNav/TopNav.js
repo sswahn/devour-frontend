@@ -1,4 +1,5 @@
 import { overlay } from '../../config'
+import useSession from '../../hooks/useSession'
 import useDialog from '../../../hooks/useDialog'
 import EditForm from '../EditForm/EditForm'
 import CloseButton from '../../../components/CloseButton/CloseButton'
@@ -13,6 +14,7 @@ import styles from './TopNav.module.css'
 function TopNav({ profile }) {
   const { openDialog } = useDialog()
   const { closeOverlay } = useOverlay()
+  const { session } = useSession()
   
   const openEditor = () => {
     openDialog(<EditForm {...profile} />)
