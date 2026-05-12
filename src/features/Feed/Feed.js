@@ -19,6 +19,7 @@ function Feed() {
 
   const observerCallback = () => {
     // pass to observer
+    console.log('feed node observer called.')
   }
 
   const setObserver = node => {
