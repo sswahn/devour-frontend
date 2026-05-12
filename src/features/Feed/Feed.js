@@ -1,4 +1,4 @@
-import { useState, useRef, memo } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { api } from '../../config'
 import createObserver from '../../utilities/observer'
 import server from '../../utilities/server'
@@ -10,12 +10,19 @@ import styles from './Feed.module.css'
 
 function Feed() {
   const { setScrollRef } = useScroll()
-  const { observer } = createObserver()
+  const { observe, unobserve, disconnect } = createObserver()
   const [data, setData] = useState([
     { video: 1, caption: 'test 1' },
     { video: 2, caption: 'test 2' },
     { video: 3, caption: 'test 3' }
   ])
+
+  useEffect(() => {
+    
+    return () => {
+      disconnect()
+    }
+  }, [])
   
   return (
     <section ref={setScrollRef} className={styles.feed} role="feed">
