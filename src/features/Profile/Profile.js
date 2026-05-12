@@ -30,9 +30,10 @@ function Profile() {
       closeOverlay()
     }
   }  
-  
-  // profileUsername used to render profile
-  // session.username used to edit profile
+
+  const loadData = () => {
+    // profileUsername used to request profile data
+  }
 
   return (
     <section 
