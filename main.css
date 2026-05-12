@@ -127,22 +127,19 @@ dialog::backdrop {
 
 @keyframes hM4c7jIc3EU9mwjKA04L {
   from {
-   transform: rotate(0deg);
+    transform: translate(-50%, -50%) rotate(0deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
 
 .JSakJNmRTraPgvlafis2 {
   animation: hM4c7jIc3EU9mwjKA04L .7s linear infinite;
   display: block;
-  margin: 0 auto;
-  fill: var(--white);
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 /* Main */
