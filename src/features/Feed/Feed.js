@@ -27,6 +27,7 @@ function Feed() {
       prevNode.current.tabIndex = 0
     }
     prevNode.current = node
+    unobserve()
   }
 
   const setObserver = node => {
