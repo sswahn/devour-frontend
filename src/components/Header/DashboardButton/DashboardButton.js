@@ -8,20 +8,9 @@ function DashboardButton() {
   const buttonRef = useRef(null)
   const { openOverlay } = useOverlay()
   
-  const action = () => {
-    openOverlay(overlay.dashboard, buttonRef.current)
-  }
-  
   const onClick = event => {
     navigator.vibrate?.(50)
-    action()
-  }
-  
-  const onKeyDown = event => {
-    if (event.key === 'Enter') {
-      event.preventDefault()
-      action()
-    }
+    openOverlay(overlay.dashboard, buttonRef.current)
   }
   
   return (
