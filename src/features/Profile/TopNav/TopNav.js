@@ -9,7 +9,7 @@ import FlagIcon from '../../components/Icons/FlagIcon/FlagIcon'
 import UserXmarkIcon from '../../components/Icons/UserXmarkIcon/UserXmarkIcon'
 import styles from './TopNav.module.css'
 
-function TopNav() {
+function TopNav({ profile }) {
   const { openDialog } = useDialog()
   
   const openEditor = () => {
