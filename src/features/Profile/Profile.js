@@ -7,11 +7,6 @@ import useProfile from '../../hooks/useProfile'
 import useDialog from '../../hooks/useDialog'
 import useSwipeFromEdge from '../../hooks/useSwipeFromEdge'
 import TopNav from './TopNav/TopNav'
-
-import CloseButton from '../../components/CloseButton/CloseButton'
-import Dropdown from '../../components/Dropdown/Dropdown'
-import EditButton from './EditButton/EditButton'
-import EditForm from './EditForm/EditForm'
 import FollowButton from './FollowButton/FollowButton'
 import FollowStats from './FollowStats/FollowStats'
 import styles from './Profile.module.css'
@@ -19,7 +14,6 @@ import styles from './Profile.module.css'
 function Profile() {
   const { closeOverlay } = useOverlay()
   const { userProfile } = useProfile() // username of profile to be displayed.
-  const { openDialog } = useDialog()
   const { onPointerDown, onPointerMove, onPointerUp, onPointerCancel } = useSwipeFromEdge(closeOverlay)
   const overlayRef = useRef(null)
   const [profile, setProfile] = useState({
@@ -38,20 +32,7 @@ function Profile() {
       event.preventDefault()
       closeOverlay()
     }
-  }
-
-  const openEditor = () => {
-    openDialog(<EditForm {...profile} />)
-  }
-
-  const dropdown = [
-    { icon: <SearchIcon />, text: 'Search profile', method: () => alert('Opened search.') },
-    { icon: <MessageIcon />, text: 'Send message', method: () => alert('DM opened.') },
-    { icon: <FlagIcon />, text: 'Flag profile', method: () => confirm('Report profile?') },
-    { icon: <UserXmarkIcon />, text: 'Block user', method: () => confirm('Block user?') }
-  ]
-
-  
+  }  
   
   // profileUsername used to render profile
   // session.username used to edit profile
@@ -71,12 +52,7 @@ function Profile() {
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
         onPointerCancel={onPointerCancel}>
-        <nav>
-          <CloseButton overlay={overlay.profile} close={closeOverlay} />
-          <Dropdown items={dropdown} />
-          {/* move edit button into drop down to be rendered conditionally... how to get state into config */}
-          <EditButton open={openEditor} /> 
-        </nav>
+        <TopNav />
         <header>
           <div>
             <img src={profile.picture} alt={`${profile.username}'s profile picture`} />
