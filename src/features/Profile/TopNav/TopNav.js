@@ -16,9 +16,8 @@ function TopNav({ profile }) {
     openDialog(<EditForm {...profile} />)
   }
 
-
   // need conditional rendering on Edit button:
-  // ...[{}]
+  // ...(session.isAuthenticated ? [{ icon: <EditIcon />, text: 'Edit profile', method: () => openEditor() }] : [])
   
   const dropdown = [
     { icon: <EditIcon />, text: 'Edit profile', method: () => openEditor() },
