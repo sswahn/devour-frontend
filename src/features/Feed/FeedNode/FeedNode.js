@@ -76,9 +76,7 @@ function FeedNode({ item, setObserver, index, count }) {
   // create <Figure /> and <CommentsSection /> components
   
   return (
-    <figure 
-    //ref={setObserver} 
-  className={styles.feedNode} tabIndex={0} aria-posinset={index} aria-setsize={count}
+    <figure ref={setObserver} className={styles.feedNode} tabIndex={0} aria-posinset={index} aria-setsize={count}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
