@@ -21,7 +21,7 @@ function ContextMenu({ items }) {
 
   //focus controls should work almost the same as in dropdown, without the return focus.
 
-  // contextmenu[element][type].map(x => x)'
+  // contextmenu[element][type].map(x => <button>{x}</button>)'
   
   return (
     <menu className={styles.contextMenu} role="menu" aria-label="context menu">
