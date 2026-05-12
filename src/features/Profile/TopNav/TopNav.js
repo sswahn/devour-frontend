@@ -1,5 +1,5 @@
-import { overlay } from '../../config'
-import useSession from '../../hooks/useSession'
+import { overlay } from '../../../config'
+import useSession from '../../../hooks/useSession'
 import useDialog from '../../../hooks/useDialog'
 import EditForm from '../EditForm/EditForm'
 import CloseButton from '../../../components/CloseButton/CloseButton'
