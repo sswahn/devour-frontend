@@ -7,7 +7,7 @@ export const dropdown = [
 ]
 
 // delete this:
-export const text_data = { 
+export const test_data = { 
   notifications: [
     {username: 'username1', text: '12345678901234567890123456', timestamp: '5 days ago' },
     {username: 'username2', text: 'testing user notification section', timestamp: '5 days ago' },
