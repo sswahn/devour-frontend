@@ -17,9 +17,13 @@ function Feed() {
     { video: 3, caption: 'test 3' }
   ])
 
+  const observerCallback = () => {
+    // pass to observer
+  }
+
   const setObserver = node => {
     if (node) {
-      observe(node, () => console.log(`Observed: `))
+      observe(node, observerCallback)
     }
   }
 
