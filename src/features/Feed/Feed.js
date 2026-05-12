@@ -20,8 +20,6 @@ function Feed() {
 
   const observerCallback = entry => {
     // handle roving index (for key navigation)
-    console.log('entry.target: ', entry.target)
-    
     if (entry.isIntersecting) {
       const node = entry.target
       node.tabIndex = -1
