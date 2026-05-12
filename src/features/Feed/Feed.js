@@ -19,7 +19,6 @@ function Feed() {
   ])
 
   const observerCallback = node => {
-    console.log('feed node observer called.')
     console.log('node in observerCallback: ', node)
     console.log('prevNode.current: ', prevNode.current)
     // handle roving index (for key navigation)
