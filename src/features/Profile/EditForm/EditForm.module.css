@@ -12,7 +12,9 @@
   border: 1px solid var(--input-border);
   border-radius: 10px;
   color: var(--input-text);
+  font-size: var(--font-size);
   height: 44px;
+  padding: 0 8px;
   width: 100%;
 }
 
@@ -21,7 +23,9 @@
   border: 1px solid var(--input-border);
   border-radius: 10px;
   color: var(--input-text);
+  font-size: var(--font-size);
   height: 88px;
+  padding: 0 8px;
   width: 100%;
 }
 
