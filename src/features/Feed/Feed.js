@@ -24,7 +24,6 @@ function Feed() {
   }
 
   useEffect(() => {
-    
     return () => {
       disconnect()
     }
