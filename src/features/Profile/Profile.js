@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
 import { overlay } from '../../config'
-import { dropdown } from './config'
 import useOverlay from '../../hooks/useOverlay'
 import useSession from '../../hooks/useSession'
 import useProfile from '../../hooks/useProfile'
