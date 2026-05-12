@@ -188,6 +188,9 @@
 /* Feed Node */
 
 .QNshFBXSoGNyBxo7mpBY figure {
+  contain: layout style;
+  content-visibility: auto;
+  contain-intrinsic-size: 100dvh;
   display: block;
   height: 100dvh;
 
