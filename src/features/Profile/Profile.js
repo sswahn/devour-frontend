@@ -4,7 +4,6 @@ import { dropdown } from './config'
 import useOverlay from '../../hooks/useOverlay'
 import useSession from '../../hooks/useSession'
 import useProfile from '../../hooks/useProfile'
-import useDialog from '../../hooks/useDialog'
 import useSwipeFromEdge from '../../hooks/useSwipeFromEdge'
 import TopNav from './TopNav/TopNav'
 import FollowButton from './FollowButton/FollowButton'
@@ -52,7 +51,7 @@ function Profile() {
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
         onPointerCancel={onPointerCancel}>
-        <TopNav />
+        <TopNav profile={profile} />
         <header>
           <div>
             <img src={profile.picture} alt={`${profile.username}'s profile picture`} />
