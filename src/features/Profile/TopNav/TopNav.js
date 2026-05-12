@@ -1,3 +1,4 @@
+import { overlay } from '../../config'
 import useDialog from '../../../hooks/useDialog'
 import EditForm from '../EditForm/EditForm'
 import CloseButton from '../../../components/CloseButton/CloseButton'
