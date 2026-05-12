@@ -1,4 +1,5 @@
 import { overlay } from '../../../config'
+import useOverlay from '../../../hooks/useOverlay'
 import useSession from '../../../hooks/useSession'
 import useDialog from '../../../hooks/useDialog'
 import EditForm from '../EditForm/EditForm'
