@@ -12,21 +12,14 @@
 }
 
 .register > div {
-  align-items: center;
-  background-color: var(--surface);
-  contain: layout paint style;
-  display: flex;
-  flex-direction: column;
-  height: 100dvh;
-  justify-content: safe center;
-  left: 0;
-  overflow-y: auto;
+  background-color: var(--surface-raised);
+  inset: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
   overscroll-behavior-y: contain;
-  padding: 16px 24px;
+  padding: 8px;
   position: fixed;
-  top: 0;
   touch-action: none;
-  width: 100%;
   z-index: 200;
 }
 
