@@ -1,3 +1,6 @@
+import useDialog from '../../hooks/useDialog'
+import CloseButton from '../../components/CloseButton/CloseButton'
+import Dropdown from '../../components/Dropdown/Dropdown'
 import EditIcon from '../../../components/Icons/EditIcon/EditIcon'
 import SearchIcon from '../../components/Icons/SearchIcon/SearchIcon'
 import MessageIcon from '../../components/Icons/MessageIcon/MessageIcon'
@@ -5,8 +8,13 @@ import FlagIcon from '../../components/Icons/FlagIcon/FlagIcon'
 import UserXmarkIcon from '../../components/Icons/UserXmarkIcon/UserXmarkIcon'
 import styles from './TopNav.module.css'
 
-function TopNav({ openEditor }) {
-
+function TopNav() {
+  const { openDialog } = useDialog()
+  
+  const openEditor = () => {
+    openDialog(<EditForm {...profile} />)
+  }
+  
   const dropdown = [
     { icon: <EditIcon />, text: 'Edit profile', method: () => openEditor() },
     { icon: <SearchIcon />, text: 'Search profile', method: () => alert('Search profile.') },
