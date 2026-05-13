@@ -12,6 +12,7 @@ function useValidation() {
     if (value.length < 3 || value.length > 30) {
       return false
     }
+    return true
   }
 
   const validateContact = contact => {
@@ -24,6 +25,7 @@ function useValidation() {
     if (value.length < 3 || value.length > 254) {
       return false
     }
+    return true
   }
 
 }
