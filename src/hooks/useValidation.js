@@ -11,7 +11,7 @@ function useValidation() {
     if (!regex.test(value)) {
       throw new Error('Please use a valid username format.')
     }
-    return true
+    return username
   }
 
   const validateContact = contact => {
@@ -22,12 +22,12 @@ function useValidation() {
       throw new Error('Contact must be a valid length.')
     }
     if (emailRegex.test(value)) {
-      return true
+      return contact
     }
     if (phoneRegex.test(value)) {
       const totalDigits = value.replace(/\D/g, '').length;
       if (totalDigits >= 7 && totalDigits <= 15) {
-        return true
+        return contact
       }
     }
     throw new Error('Please use a valid email or phone number.')
