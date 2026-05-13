@@ -855,7 +855,7 @@
   top: 8px;
 }
 
-.oSMoVZYW2HrKOJTgWNU2 button {
+.oSMoVZYW2HrKOJTgWNU2 button:last-of-type {
   align-items: center;
   background: var(--button-bar-bg);
   border: var(--button-border);
