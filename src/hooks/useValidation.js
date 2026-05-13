@@ -4,27 +4,25 @@ function useValidation() {
 
   const validateUsername = username => {
     const regex = /^[\p{L}\p{N}](?:[\p{L}\p{N}_]*[\p{L}\p{N}])?$/u
-    const value = username.trim()
-    if (value.length < 3 || value.length > 30) {
+    if (username.length < 3 || username.length > 30) {
       throw new Error('Username must be between 3 and 30 characters.')
     }
-    if (!regex.test(value)) {
+    if (!regex.test(username)) {
       throw new Error('Please use a valid username format.')
     }
     return username
   }
 
   const validateContact = contact => {
-    const value = contact.trim()
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/u
     const phoneRegex = /^\+?\(?\d{1,4}\)?[\s.-]?\(?\d{1,4}\)?[\s.-]?\d{3,4}[\s.-]?\d{3,4}$/
-    if (value.length < 3 || value.length > 254) {
+    if (contact.length < 3 || contact.length > 254) {
       throw new Error('Contact must be a valid length.')
     }
-    if (emailRegex.test(value)) {
+    if (emailRegex.test(contact)) {
       return contact
     }
-    if (phoneRegex.test(value)) {
+    if (phoneRegex.test(contact)) {
       const totalDigits = value.replace(/\D/g, '').length;
       if (totalDigits >= 7 && totalDigits <= 15) {
         return contact
