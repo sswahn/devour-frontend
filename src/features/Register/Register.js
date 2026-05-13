@@ -42,24 +42,24 @@ function Register() {
     <section id={overlay.login} className={styles.login} ref={overlayRef} role="dialog" aria-modal="true" aria-label="user registration">
       <div onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={onPointerCancel}>
         <form className={styles.registrationForm} onSubmit={onSubmit} aria-label="registration form">
-          <label htmlFor="username">Username: <span aria-hidden="true">*</span></label>
-          <input 
-            id="username" 
-            type="text" 
-            name="username" 
-            autoComplete="username webauthn" 
+          <Input 
+            id="username"
+            type="text"
+            label="Username"
+            inputMode="email"
+            autoComplete="username webauthn"
             autoCapitalize="none"
             minLength={2} 
             maxLength={50} 
             pattern="^[a-zA-Z0-9](?:[a-zA-Z0-9_]*[a-zA-Z0-9])?$" 
             title="Username must be between 2 and 50 alphanumeric characters and cannot start or end with an underscore."
             required />
-          <label htmlFor="contact">Email or phone: <span aria-hidden="true">*</span></label>
-          <input 
-            id="contact" 
-            type="text" 
-            name="contact" 
+          <Input 
+            id="contact"
+            type="text"
+            label="Email or phone"
             inputMode="email"
+            autoComplete="username webauthn"
             autoCapitalize="none"
             pattern="^([^@\s]+@[^@\s]+\.[^@\s]+|\+?[\d\s\-()]{7,15})$"
             title="Please enter a valid email address or an international phone number (e.g., +1 234 567 8900)."
