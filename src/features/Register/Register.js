@@ -43,8 +43,6 @@ function Register() {
     }
   }
 
-  // remove html validation and use it in javascript to set error to pass to input
-
   return (
     <section id={overlay.register} className={styles.register} role="dialog" aria-modal="true" aria-label="user registration">
       <div onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={onPointerCancel}>
