@@ -79,6 +79,8 @@
 
   --button-bar-text: var(--white);
 
+  --button-bar-active: var(--surface-raised);
+
   --button-bg: var(--surface-raised);
   
   --button-text: var(--text);
