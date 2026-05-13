@@ -40,15 +40,11 @@ function Search() {
     localStorage.setItem(key, JSON.stringify(data))
     setRecentSearches(data)
   }
-
-  const action = () => {
-    closeOverlay()
-  }
   
   const onKeyDown = event => {
     if (event.key === 'Escape') {
       event.preventDefault()
-      action()
+      closeOverlay()
     }
   }
 
