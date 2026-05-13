@@ -57,7 +57,7 @@ function Register() {
             autoCapitalize="none"
             minLength={2} 
             maxLength={50} 
-            pattern="^[a-zA-Z0-9](?:[a-zA-Z0-9_]*[a-zA-Z0-9])?$" 
+            pattern="[a-zA-Z0-9](?:[a-zA-Z0-9_]*[a-zA-Z0-9])?" 
             title="Username must be between 2 and 50 alphanumeric characters and cannot start or end with an underscore."
             required />
           <Input 
