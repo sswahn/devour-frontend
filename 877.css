@@ -727,9 +727,11 @@
   width: calc(100% - 48px);
 }
 
-.lPq22vgzV_SkRROgFQcA:focus {
+/*
+.followButton:focus {
   background: initial;
 }
+*/
 
 .lPq22vgzV_SkRROgFQcA:active {
   background: var(--button-bar-active);
