@@ -2,8 +2,6 @@
 
 function useValidation() {
 
-  // consider using state to set specific Error messages
-
   const validateUsername = username => {
     const regex = /^[\p{L}\p{N}](?:[\p{L}\p{N}_]*[\p{L}\p{N}])?$/u
     const value = username.trim()
@@ -11,7 +9,7 @@ function useValidation() {
       throw new Error('Username must be between 3 and 30 characters.')
     }
     if (!regex.test(value)) {
-      throw new Error('')
+      throw new Error('Please use a valid username format.')
     }
     return true
   }
@@ -21,7 +19,7 @@ function useValidation() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/u
     const phoneRegex = /^\+?\(?\d{1,4}\)?[\s.-]?\(?\d{1,4}\)?[\s.-]?\d{3,4}[\s.-]?\d{3,4}$/
     if (value.length < 3 || value.length > 254) {
-      throw new Error('Please use a valid length.')
+      throw new Error('Contact must be a valid length.')
     }
     if (emailRegex.test(value)) {
       return true
