@@ -42,6 +42,39 @@ function Comments() {
     // loadComments()
   }, [])
 
+
+  const sanitizeComment = comment => {
+    const value = comment.trim()
+  
+    // 1. Standard social app length check
+    if (value.length < 3 || value.length > 1000) {
+      throw new Error('Comments must be between 3 and 1000 characters.')
+    }
+
+    // 2. Map dangerous characters to safe HTML entities
+    const htmlEntities = {
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#x27;',
+      '/': '&#x2F;',
+      '&': '&amp;'
+    }
+
+    // 3. Replace characters using a secure global regex
+    const sanitizedValue = value.replace(/[<>"'&/]/g, match => htmlEntities[match])
+  
+    return sanitizedValue
+  }
+
+  // 🧪 Test Results:
+  console.log(sanitizeComment("I love this app (score: 10/10)!"))
+  // Output: "I love this app (score: 10&#x2F;10)!" (Completely safe, no error thrown)
+  
+  console.log(sanitizeComment("<script>alert('hack')</script>"))
+  // Output: "&lt;script&gt;alert(&#x27;hack&#x27;)&lt;&#x2F;script&gt;" (Rendered safely as text)
+
+
   // start with only a single line height, then dynamically grow as user input moves to the next line
   
   return (
