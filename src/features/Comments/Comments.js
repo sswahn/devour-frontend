@@ -43,7 +43,8 @@ function Comments() {
   }, [])
 
 
-  const sanitizeComment = comment => {
+  // use this in profile bio as well.
+  const sanitize = comment => {
     const value = comment.trim()
   
     // 1. Standard social app length check
