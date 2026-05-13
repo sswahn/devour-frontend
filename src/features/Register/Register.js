@@ -24,13 +24,13 @@ function Register() {
     return hasPlus ? `+${digits}` : digits
   }
 
-  const onSubmit = async event => {
-
-    return setMessage('Account successfully created.')
-    
+  const onSubmit = async event => {    
     try {
       event.preventDefault()
       navigator.vibrate?.(50)
+
+      return setMessage('Account successfully created.');
+      
       const formData = new FormData(event.target)
       const username = formData.get('username')
       const contact = formatContact(formData.get('contact'))
@@ -39,7 +39,7 @@ function Register() {
       const response = await server.post(api.register, request)
       setMessage('Account successfully created.')
     } catch (error) {
-      setErrorMessage(error)
+      setErrorMessage(error) // this should be a generic 'whoops' error.
     }
   }
 
