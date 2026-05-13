@@ -2,6 +2,8 @@
 
 function useValidation() {
 
+  // consider using state to set Error messages
+
   const validateUsername = username => {
     const regex = /^[\p{L}\p{N}](?:[\p{L}\p{N}_]*[\p{L}\p{N}])?$/u
     const value = username.trim()
