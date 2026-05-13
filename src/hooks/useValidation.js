@@ -26,7 +26,7 @@ function useValidation() {
     if (phoneRegex.test(value)) {
       result = false
     }
-    if (value.length < 3 || value.length < 50) {
+    if (value.length < 3 || value.length > 254) {
       result = false
     }
     return result
