@@ -22,24 +22,11 @@ function Search() {
   const { onPointerDown, onPointerMove, onPointerUp, onPointerCancel } = useSwipeFromEdge(closeOverlay)
   const overlayRef = useRef(null)
 
-  
   const onSubmit = event => {
     event.preventDefault()
   }
 
   const requestSearchResults = useDebounce(async () => {}, 600)
-
-  const storeSearchTermLocally = value => {
-    const key = config.storage.search.terms
-    const item = localStorage.getItem(key)
-    const existing = item ? JSON.parse(item) : []
-    if (existing.includes(value)) {
-      return
-    }
-    const data = [value, ...existing].slice(0, 5)
-    localStorage.setItem(key, JSON.stringify(data))
-    setRecentSearches(data)
-  }
   
   const onKeyDown = event => {
     if (event.key === 'Escape') {
