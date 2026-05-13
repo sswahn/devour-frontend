@@ -7,10 +7,10 @@ const Input = ({ id, type, label, inputMode, autoComplete, error, required, ...p
 
   const focusInvalidInput = () => {
     const form = inputRef.current?.closest('form')
-    const input = Array.from(form.elements).find(
+    const invalidInput = Array.from(form.elements).find(
       input => input.hasAttribute('aria-invalid')
     )
-    input.focus()
+    invalidInput.focus()
   }
 
   const handleError = err => {
