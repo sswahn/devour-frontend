@@ -3,14 +3,13 @@
 function useValidation() {
 
   const validateUsername = username => {
-    const pattern = /^[\p{L}\p{N}](?:[\p{L}\p{N}_]*[\p{L}\p{N}])?$/u
-    const regex = new RegExp(pattern)
+    const regex = /^[\p{L}\p{N}](?:[\p{L}\p{N}_]*[\p{L}\p{N}])?$/u
     const value = username.trim()
     let result = true
     if (!regex.test(value)) {
       result = false
     }
-    if (value.length < 3 || value.length < 30) {
+    if (value.length < 3 || value.length > 30) {
       result = false
     }
     return result
