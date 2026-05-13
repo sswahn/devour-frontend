@@ -67,7 +67,7 @@ function Register() {
             type="text"
             label="Email or phone"
             inputMode="email"
-            autoComplete="username webauthn"
+            autoComplete="email tel"
             autoCapitalize="none"
             pattern="[^@\s]+@[^@\s]+\.[^@\s]+|\+?[\d\s\-()]{7,15}"
             title="Please enter a valid email address or an international phone number (e.g., +1 234 567 8900)."
