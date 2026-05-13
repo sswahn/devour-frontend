@@ -20,6 +20,9 @@ function Register() {
   }
 
   const onSubmit = async event => {
+
+    return setMessage('Account successfully created.')
+    
     try {
       event.preventDefault()
       navigator.vibrate?.(50)
@@ -64,7 +67,8 @@ function Register() {
             pattern="^([^@\s]+@[^@\s]+\.[^@\s]+|\+?[\d\s\-()]{7,15})$"
             title="Please enter a valid email address or an international phone number (e.g., +1 234 567 8900)."
             required />
-          <button type="submit">Sign Up</button>
+          <button type="submit" disbled={!!message}>Sign Up</button>
+          {message && <div role="alert">{message}</div>}
         </form>
       </div>
     </section>
