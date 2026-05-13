@@ -7,34 +7,40 @@ import styles from './LoginForm.module.css'
 function LoginForm() {
   const { setSession } = useSession() 
   const [loading, setLoading] = useState(false)
+  const [errorMessage, setErrorMessage] = useState(false)
   
   const onSubmit = async event => {
-    event.preventDefault()
-    navigator.vibrate?.(50)
-    setLoading(true)
-    const formData = new FormData(event.target)
-    const username = formData.get('username')
-    
-    // initiate auth call to backend
-    // response returns challenge
-   //  const challenge = await server.get(api.passkey)
-    
-    // challenge is signed by browser/device:
-    // (call navigator.credentials.get() for signature)
-    // send signature to backend for verification and tokens
-    
-    const credentials = '' // await navigator.credentials.get({
-   //   publicKey: publicKeyCredentialRequestOptions
-  //  })
-    
-    const request = {
-      username,
-      credentials
+    try {
+      event.preventDefault()
+      navigator.vibrate?.(50)
+      setLoading(true)
+      const formData = new FormData(event.target)
+      const username = validateUsername(formData.get('username'))
+      
+      // initiate auth call to backend
+      // response returns challenge
+     //  const challenge = await server.get(api.passkey)
+      
+      // challenge is signed by browser/device:
+      // (call navigator.credentials.get() for signature)
+      // send signature to backend for verification and tokens
+      
+      const credentials = '' // await navigator.credentials.get({
+     //   publicKey: publicKeyCredentialRequestOptions
+    //  })
+      
+      const request = {
+        username,
+        credentials
+      }
+      // const response = await server.post(api.login, request)
+      // setSession({ user: { isAuthenticated: true, data: response.data })
+      
+    } catch (error) {
+      setErrorMessage(error)
+    } finally {
+      setLoading(false)
     }
-    // const response = await server.post(api.login, request)
-    // setSession({ user: { isAuthenticated: true, data: response.data })
-    setLoading(false)
-  
   }
   
   return (
@@ -45,6 +51,7 @@ function LoginForm() {
         label="Email or username"
         inputMode="email"
         autoComplete="username webauthn"
+        error={errorMessage}
         required />
       <button type="submit" disabled={loading}>Sign In</button>
     </form>
