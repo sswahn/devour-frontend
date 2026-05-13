@@ -18,7 +18,7 @@ function Search() {
   const [searchResults, setSearchResults] = useState([])
   const [recentSearches, setRecentSearches] = useState([])
   const [loading, setLoading] = useState(false)
-  const [errorMessage, setErrorMessage] = useState(false)
+  const [error, setError] = useState(false)
   const { onPointerDown, onPointerMove, onPointerUp, onPointerCancel } = useSwipeFromEdge(closeOverlay)
   const overlayRef = useRef(null)
 
@@ -50,9 +50,9 @@ function Search() {
           <SearchIcon size={10} />
           <SearchInput 
             searchValue={searchValue} 
-            errorMessage={errorMessage}
+            error={error}
             setSearchValue={setSearchValue}
-            setErrorMessage={setErrorMessage}
+            setError={setError}
           />
           <SpeechRecognitionButton setSearchValue={setSearchValue} />
         </form>
