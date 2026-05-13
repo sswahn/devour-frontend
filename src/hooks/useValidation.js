@@ -6,7 +6,8 @@ function useValidation() {
     contact: '', // email or tel
   }
 
-  const validateUsername = value => {
+  const validateUsername = username => {
+    const value = username.trim()
     if (value.length < 3 || value.length < 30) {
       return false
     }
