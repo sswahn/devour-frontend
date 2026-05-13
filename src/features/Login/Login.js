@@ -1,4 +1,3 @@
-import { useRef, useEffect } from 'react'
 import { overlay } from '../../config'
 import useOverlay from '../../hooks/useOverlay'
 import useSwipeFromEdge from '../../hooks/useSwipeFromEdge'
@@ -13,8 +12,7 @@ import styles from './Login.module.css'
 function Login() {
   const { closeOverlay } = useOverlay()
   const { onPointerDown, onPointerMove, onPointerUp, onPointerCancel } = useSwipeFromEdge(closeOverlay)
-  const overlayRef = useRef()
-
+  
   const onKeyDown = event => {
     if (event.key === 'Escape') {
       event.preventDefault()
@@ -23,19 +21,8 @@ function Login() {
   }
   
   return (
-    <section 
-      id={overlay.login} 
-      className={styles.login} 
-      ref={overlayRef} 
-      onKeyDown={onKeyDown} 
-      role="dialog" 
-      aria-modal="true"
-      aria-label="user login">
-      <div
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={onPointerUp}
-        onPointerCancel={onPointerCancel}>
+    <section id={overlay.login} className={styles.login} onKeyDown={onKeyDown} role="dialog" aria-modal="true" aria-label="user login">
+      <div onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={onPointerCancel}>
         <CloseButton overlay={overlay.login} close={closeOverlay} />
         <LoginForm />
         <RegistrationButton />
