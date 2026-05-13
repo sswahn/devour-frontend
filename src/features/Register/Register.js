@@ -38,9 +38,6 @@ function Register() {
     }
   }
 
-  // highlight fields with red border when input is invalid.
-  // also dynamically add aria-invalid="true" only when invalid, remove once valid.
-  
   return (
     <section id={overlay.login} className={styles.login} ref={overlayRef} role="dialog" aria-modal="true" aria-label="user registration">
       <div onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={onPointerCancel}>
