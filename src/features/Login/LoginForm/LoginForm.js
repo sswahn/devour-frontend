@@ -46,7 +46,7 @@ function LoginForm() {
         inputMode="email"
         autoComplete="username webauthn"
         required />
-      <button type="submit">Sign In</button>
+      <button type="submit" disabled={loading}>Sign In</button>
     </form>
   )
 }
