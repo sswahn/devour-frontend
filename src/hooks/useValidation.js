@@ -43,7 +43,7 @@ function useValidation() {
   }
 
   
-  return { validateUsername, validateContact }
+  return { validateUsername, validateContact, validateSearchTerm }
 }
 
 export default useValidation
