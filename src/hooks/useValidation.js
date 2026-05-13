@@ -2,15 +2,15 @@
 
 function useValidation() {
 
-  const validateSearch = search => {
+  const validateSearchTerm = term => {
     const regex = /^[^<>()\[\]\\/|;=~%^]+$/
-    if (search.length < 3 || search.length > 100) {
+    if (term.length < 3 || term.length > 100) {
       throw new Error('Search query must be between 3 and 100 characters.')
     }
-    if (!regex.test(search)) {
+    if (!regex.test(term)) {
       throw new Error('Special characters are not allowed.')
     }
-    return search
+    return term
   }
 
   const validateUsername = username => {
