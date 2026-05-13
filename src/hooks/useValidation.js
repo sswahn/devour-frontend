@@ -3,7 +3,7 @@
 function useValidation() {
 
   const validateSearch = search => {
-    const regex = [^<>\(\)\{\}\[\]\\\/\|;=~%^]+
+    const regex = /^[^<>()\[\]\\/|;=~%^]+$/
     if (search.length < 3 || search.length > 254) {
       throw new Error('Search query must be between 3 and 254 characters.')
     }
