@@ -19,7 +19,7 @@ function useValidation() {
     const value = contact.trim()
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/u
     const phoneRegex = /^\+?\(?\d{1,4}\)?[\s.-]?\(?\d{1,4}\)?[\s.-]?\d{3,4}[\s.-]?\d{3,4}$/
-    if (!emailRegex.test(value) || phoneRegex.test(value)) {
+    if (!emailRegex.test(value) || !phoneRegex.test(value)) {
       return false
     }
     if (value.length < 3 || value.length > 254) {
