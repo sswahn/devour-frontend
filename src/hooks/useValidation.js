@@ -13,17 +13,6 @@ function useValidation() {
     return term
   }
 
-  const validateComment = comment => {
-    if (comment.length < 3 || comment.length > 1000) {
-      throw new Error('Comments must be between 3 and 1000 characters.')
-    }
-    const xssHtmlRegex = /<[^>]*>/
-    if (xssHtmlRegex.test(comment)) {
-      throw new Error('HTML tags and scripts are not allowed in comments.')
-    }
-    return comment
-  }
-
   const validateUsername = username => {
     if (username.length < 3 || username.length > 30) {
       throw new Error('Username must be between 3 and 30 characters.')
