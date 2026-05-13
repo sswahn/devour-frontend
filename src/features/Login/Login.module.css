@@ -13,7 +13,7 @@
 
 .login > div {
   align-items: center;
-  background-color: var(--surface);
+  background-color: var(--surface-raised);
   contain: layout paint style;
   display: flex;
   flex-direction: column;
