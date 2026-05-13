@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { overlay, api } from '../../config'
 import useOverlay from '../../hooks/useOverlay'
 import useSwipeFromEdge from '../../hooks/useSwipeFromEdge'
+import CloseButton from '../../components/CloseButton/CloseButton'
 import Input from '../../components/Input/Input'
 import styles from './Register.module.css'
 
@@ -45,6 +46,7 @@ function Register() {
   return (
     <section id={overlay.register} className={styles.register} role="dialog" aria-modal="true" aria-label="user registration">
       <div onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={onPointerCancel}>
+        <CloseButton overlay={overlay.register} close={closeOverlay} />
         <form className={styles.registrationForm} onSubmit={onSubmit} aria-label="registration form">
           <Input 
             id="username"
