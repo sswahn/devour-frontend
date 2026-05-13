@@ -53,18 +53,8 @@ function Search() {
   }
 
   return (
-    <search 
-      id={overlay.search} 
-      className={styles.search} 
-      ref={overlayRef} 
-      onKeyDown={onKeyDown}
-      role="dialog" 
-      aria-modal="true">
-      <div       
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={onPointerUp}
-        onPointerCancel={onPointerCancel}>
+    <search id={overlay.search} className={styles.search} ref={overlayRef} onKeyDown={onKeyDown} role="dialog" aria-modal="true">
+      <div onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={onPointerCancel}>
         <nav>
           <CloseButton overlay={overlay.search} close={action} />
           {/* dont forget dropdown requires icons too. */}
