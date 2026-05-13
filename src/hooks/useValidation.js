@@ -31,6 +31,8 @@ function useValidation() {
     throw new Error('Please use a valid email or phone number.')
   }
 
+  
+  return { validateUsername, validateContact }
 }
 
 export default useValidation
