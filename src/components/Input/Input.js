@@ -5,17 +5,16 @@ const Input = ({ id, type, label, inputMode, autoComplete, error, required, ...p
   const [errorMessage, setErrorMessage] = useState('')
   const inputRef = useRef(null)
 
-  const focusInput = () => {
-    const input = inputRef.current
-    if (input?.closest('form').elements[0] === input) { // needs to focus the first input WITH Error
-      input.focus()
-    }
+  const focusInvalidInput = () => {
+    const form = inputRef.current?.closest('form')
+    const input = form.find(element => element.hasAttribute('aria-invalid'))
+    input.focus()
   }
 
   const handleError = err => {
     if (err) {
       setErrorMessage(err)
-      focusInput()
+      focusInvalidInput()
     }
   }
 
