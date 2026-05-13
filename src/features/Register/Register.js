@@ -39,7 +39,7 @@ function Register() {
   }
 
   return (
-    <section id={overlay.login} className={styles.login} ref={overlayRef} role="dialog" aria-modal="true" aria-label="user registration">
+    <section id={overlay.register} className={styles.register} ref={overlayRef} role="dialog" aria-modal="true" aria-label="user registration">
       <div onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={onPointerCancel}>
         <form className={styles.registrationForm} onSubmit={onSubmit} aria-label="registration form">
           <Input 
