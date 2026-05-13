@@ -45,7 +45,7 @@ function useValidation() {
     }
     const phoneRegex = /^\+?\(?\d{1,4}\)?[\s.-]?\(?\d{1,4}\)?[\s.-]?\d{3,4}[\s.-]?\d{3,4}$/
     if (phoneRegex.test(contact)) {
-      const totalDigits = value.replace(/\D/g, '').length;
+      const totalDigits = contact.replace(/\D/g, '').length
       if (totalDigits >= 7 && totalDigits <= 15) {
         return contact
       }
