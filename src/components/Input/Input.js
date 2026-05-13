@@ -7,7 +7,7 @@ const Input = ({ id, type, label, inputMode, autoComplete, error, required, ...p
 
   const focusInput = () => {
     const input = inputRef.current
-    if (input?.closest('form').elements[0] === input) {
+    if (input?.closest('form').elements[0] === input) { // needs to focus the first input WITH Error
       input.focus()
     }
   }
