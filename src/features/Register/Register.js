@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { overlay, api } from '../../config'
 import useOverlay from '../../hooks/useOverlay'
+import useValidation from '../../hooks/useValidation'
 import useSwipeFromEdge from '../../hooks/useSwipeFromEdge'
 import CloseButton from '../../components/CloseButton/CloseButton'
 import Input from '../../components/Input/Input'
@@ -11,6 +12,7 @@ function Register() {
   const [message, setMessage] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
   const { closeOverlay } = useOverlay()
+  const { validateUsername, validateContact } = useValidation()
   const { onPointerDown, onPointerMove, onPointerUp, onPointerCancel } = useSwipeFromEdge(closeOverlay)
 
   const formatContact = value => {
@@ -32,8 +34,8 @@ function Register() {
       return setMessage('Account successfully created.');
       
       const formData = new FormData(event.target)
-      const username = formData.get('username')
-      const contact = formatContact(formData.get('contact'))
+      const username = validateUsername(formData.get('username'))
+      const contact = formatContact(validateContact(formData.get('contact')))
       const credentials = await navigator.credentials.create()
       const request = { username, contact, credentials }
       const response = await server.post(api.register, request)
