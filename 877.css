@@ -713,9 +713,9 @@
 
 .lPq22vgzV_SkRROgFQcA {
   align-items: center;
+  background: var(--button-bar-bg);
   border: 0;
   border-radius: 8px;
-  background: var(--button-bar-bg);
   color: var(--button-bar-text);
   display: flex;
   font-weight: bold;
@@ -729,6 +729,10 @@
 
 .lPq22vgzV_SkRROgFQcA:focus {
   background: initial;
+}
+
+.lPq22vgzV_SkRROgFQcA:active {
+  background: var(--button-bar-active);
 }
 
 /* Profile User Stat Following Button */
