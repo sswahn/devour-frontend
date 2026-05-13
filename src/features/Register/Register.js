@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { api } from '../../config'
+import { overlay, api } from '../../config'
 import Input from '../../components/Input/Input'
 import styles from './Register.module.css'
 
