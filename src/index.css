@@ -21,13 +21,14 @@
 
   color-scheme: light dark;
 
-  --lighter-black: #303030;
-  --light-black: #202020;/* #2b2b2b; */
   --dark-black: #121212; /* #181818; */
-  --white: white; /* #f9fafb; */
-  --lighter-gray: #e8e8e8;
-  --light-gray: #606060;
+  --light-black: #202020;/* #2b2b2b; */
+  --lighter-black: #303030;
   --gray: #484848;
+  --light-gray: #606060;
+  --lighter-gray: #e8e8e8;
+  --white: white; /* #f9fafb; */
+  
   --purple: #663399; 
   --purple-alt: #8a2be2;
 
@@ -75,11 +76,11 @@
   
   /* Buttons */
 
-  --button-bar-bg: light-dark(var(--dark-black), var(--surface));
+  --button-bar-bg: var(--surface-elevated);
 
   --button-bar-text: var(--white);
 
-  --button-bar-active: var(--surface-elevated);
+  --button-bar-active: var(--gray);
 
   --button-bg: var(--surface-raised);
   
