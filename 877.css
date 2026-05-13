@@ -406,18 +406,6 @@
   gap: 10px;
 }
 
-.F9PYmx_5X6rU17dx6cCf ul li button {
-  background: none;
-  border: 0;
-  border-radius: 50px;
-  height: 48px;
-  pointer-events: auto;
-  width: 48px;
-}
-
-.F9PYmx_5X6rU17dx6cCf ul li button:active {
-  background: var(--button-active);
-}
 
 
 /* Close Overlay Button */
