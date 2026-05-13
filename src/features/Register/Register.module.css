@@ -30,6 +30,14 @@
   top: 8px;
 }
 
+.success {
+  background-color: var(--success);
+}
+
+.danger {
+  background-color: var(--danger);
+}
+
 .register button:last-of-type {
   align-items: center;
   background: var(--button-bar-bg);
