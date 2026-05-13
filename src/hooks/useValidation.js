@@ -7,7 +7,7 @@ function useValidation() {
     const regex = new RegExp(pattern)
     const value = username.trim()
     let result = true
-    if (!regex.test(value) {
+    if (!regex.test(value)) {
       result = false
     }
     if (value.length < 3 || value.length < 30) {
