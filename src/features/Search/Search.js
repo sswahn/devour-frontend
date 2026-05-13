@@ -18,7 +18,7 @@ function Search() {
   const [searchResults, setSearchResults] = useState([])
   const [recentSearches, setRecentSearches] = useState([])
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(false)
+  const [errorMessage, setErrorMessage] = useState(false)
   const { onPointerDown, onPointerMove, onPointerUp, onPointerCancel } = useSwipeFromEdge(closeOverlay)
   const overlayRef = useRef(null)
 
