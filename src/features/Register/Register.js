@@ -7,6 +7,7 @@ function Register() {
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
+  const overlayRef = useRef()
 
   const formatContact = value => {
     const input = value.trim()
