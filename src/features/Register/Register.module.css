@@ -30,7 +30,7 @@
   top: 8px;
 }
 
-.register button {
+.register button:last-of-type {
   align-items: center;
   background: var(--button-bar-bg);
   border: var(--button-border);
