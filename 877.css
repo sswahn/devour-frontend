@@ -695,6 +695,7 @@
   border-radius: 10px;
   color: var(--button-bar-text);
   display: flex;
+  font-size: bold;
   height: 44px;
   justify-content: center;
   width: 100%;
