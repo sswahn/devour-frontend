@@ -1,4 +1,7 @@
 
+.input {
+  margin-bottom: 8px;
+}
 
 .input label {
   color: var(--text);
