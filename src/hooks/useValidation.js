@@ -21,10 +21,16 @@ function useValidation() {
     if (value.length < 3 || value.length > 254) {
       return false
     }
-    if (!emailRegex.test(value) || !phoneRegex.test(value)) {
-      return false
+    if (emailRegex.test(value)) {
+      return true
     }
-    return true
+    if (phoneRegex.test(value)) {
+      const totalDigits = value.replace(/\D/g, '').length;
+      if (totalDigits >= 7 && totalDigits <= 15) {
+        return true
+      }
+    }
+    return false
   }
 
 }
