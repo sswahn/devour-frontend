@@ -23,38 +23,19 @@
   z-index: 200;
 }
 
-.register label {
-  color: var(--text);
-  display: block;
-  font-size: var(--font-size);
-  margin: 0 0 8px 8px;
-}
-
-.register label span {
-  color: red;
-}
-
-.register input {
-  background-color: var(--input-bg);
-  border: 1px solid var(--input-border);
-  border-radius: 5px;
-  color: var(--input-text);
-  font-size: 18px;
-  height: 44px;
-  padding: 0 8px;
-  width: 100%;
-}
-
-.register input:focus {
-  outline: none;
+/* Close button */
+.login > div > button:first-of-type {
+  left: 8px;
+  position: absolute;
+  top: 8px;
 }
 
 .register button {
   align-items: center;
-  background: var(--button-bg);
+  background: var(--button-bar-bg);
   border: var(--button-border);
   border-radius: 50px;
-  color: var(--button-text);
+  color: var(--button-bar-text);
   cursor: pointer;
   display: flex;
   font-size: 18px;
