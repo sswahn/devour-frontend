@@ -19,7 +19,8 @@ function useValidation() {
   const validateContact = contact => {
     const value = contact.trim()
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/u
-    const phonePattern = /^\+?[\d\s\-()]{7,25}$/
+    const phoneStructureRegex = /^\+?[\d\s\-()]{7,25}$/
+
 
   }
 
