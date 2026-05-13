@@ -64,7 +64,7 @@ function Register() {
             pattern="^([^@\s]+@[^@\s]+\.[^@\s]+|\+?[\d\s\-()]{7,15})$"
             title="Please enter a valid email address or an international phone number (e.g., +1 234 567 8900)."
             required />
-          <button type="submit" disbled={!!message}>Sign Up</button>
+          <button type="submit" disbled={!!message || loading}>Sign Up</button>
           {message && <div role="alert">{message}</div>}
         </form>
       </div>
