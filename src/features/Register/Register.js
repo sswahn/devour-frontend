@@ -71,7 +71,8 @@ function Register() {
             title="Please enter a valid email address or an international phone number (e.g., +1 234 567 8900)."
             required />
           <button type="submit" disbled={!!message || loading}>Sign Up</button>
-          {message && <div role="alert">{message}</div>}
+          {message && <div className={styles.success} role="alert">{message}</div>}
+          {errorMessage && <div className={styles.danger} role="alert">{errorMessage}</div>}
         </form>
       </div>
     </section>
