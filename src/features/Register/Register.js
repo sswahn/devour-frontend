@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { overlay, api } from '../../config'
+import useOverlay from '../../hooks/useOverlay'
+import useSwipeFromEdge from '../../hooks/useSwipeFromEdge'
 import Input from '../../components/Input/Input'
 import styles from './Register.module.css'
 
@@ -7,6 +9,8 @@ function Register() {
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
+  const { closeOverlay } = useOverlay()
+  const { onPointerDown, onPointerMove, onPointerUp, onPointerCancel } = useSwipeFromEdge(closeOverlay)
 
   const formatContact = value => {
     const input = value.trim()
