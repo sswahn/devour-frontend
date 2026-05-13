@@ -43,9 +43,10 @@
 
 .editForm button {
   align-items: center;
-  background: none;
+  background: var(--button-bar-bg);
   border: none;
   border-radius: 10px;
+  color: var(--button-bar-text);
   display: flex;
   height: 44px;
   justify-content: center;
