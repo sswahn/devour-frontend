@@ -698,9 +698,10 @@
   border-radius: 10px;
   color: var(--button-bar-text);
   display: flex;
-  font-size: bold;
+  font-weight: bold;
   height: 44px;
   justify-content: center;
+  text-transform: uppercase;
   width: 100%;
 }
 
