@@ -13,6 +13,7 @@
 
 .editForm label {
   width: 100%;
+  margin-bottom: 8px;
 }
 
 .editForm input {
@@ -22,6 +23,7 @@
   color: var(--input-text);
   font-size: var(--font-size);
   height: 44px;
+  margin-bottom: 8px;
   padding: 0 8px;
   width: 100%;
 }
@@ -33,6 +35,7 @@
   color: var(--input-text);
   font-size: var(--font-size);
   height: 88px;
+  margin-bottom: 8px;
   padding: 0 8px;
   width: 100%;
 }
