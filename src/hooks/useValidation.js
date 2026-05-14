@@ -30,7 +30,7 @@ function useValidation() {
       img.onload = () => {
         // Clean up memory allocated for the object URL
         URL.revokeObjectURL(img.src)
-        // Verify image meets the 2026 platform minimum standards (e.g., Instagram/Threads 320px)
+        // Verify image meets the 2026 platform minimum standards 320px
         if (img.width < options.minDimension || img.height < options.minDimension) {
           return reject(new Error(`Image dimensions are too small. Minimum resolution is ${options.minDimension}x${options.minDimension}px.`))
         }
