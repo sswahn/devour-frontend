@@ -645,6 +645,7 @@
   border: 1px dashed red;
   border-radius: 50%;
   height: 170px;
+  margin: 0 auto;
   width: 170px;
 }
 
