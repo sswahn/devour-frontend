@@ -97,7 +97,9 @@ function EditForm({ profile, setProfile }) {
           onChange={handleImageFile} 
           type="file" 
           name="upload"
-          accept="image/webp, image/png, image/jpeg, .webp, .png, .jpg, .jpeg" />
+          tabIndex="-1"
+          accept="image/webp, image/png, image/jpeg, .webp, .png, .jpg, .jpeg"
+          aria-hidden="true" />
         <button onClick={handleUploadImage} type="button" aria-label="update your profile picture">Upload Image</button>
       </div>
     
