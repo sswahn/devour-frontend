@@ -65,10 +65,10 @@ function EditForm({ profile, setProfile }) {
   }, [image])
 
   useEffect(() => {
-    if (picture) {
-      setImage(picture)
+    if (profile.picture) {
+      setImage(profile.picture)
     }
-  }, [picture])
+  }, [profile.picture])
   
   return (
     <form className={styles.editForm} onSubmit={onSubmit} aria-label="update your profile">
