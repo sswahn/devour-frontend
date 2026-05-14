@@ -2,15 +2,13 @@
 
 function useValidation() {
 
-  function validateImage(file) {
+  const validateImage = async file => {
     if (!file) {
       throw new Error('No image file found.')
     }
-  
     // Define allowed MIME types and extensions
     const allowedMimeTypes = ['image/webp', 'image/png', 'image/jpeg']
     const allowedExtensions = /(\.webp|\.png|\.jpg|\.jpeg)$/i
-  
     // Validate both the MIME type and the file extension
     const isValidMime = allowedMimeTypes.includes(file.type)
     const isValidExtension = allowedExtensions.test(file.name)
@@ -18,17 +16,6 @@ function useValidation() {
       throw new Error('Invalid file type, must be .webp .png or .jpg')
     }
     return file
-  }
-
-  const validateSearchTerm = term => {
-    if (term.length < 3 || term.length > 100) {
-      throw new Error('Search query must be between 3 and 100 characters.')
-    }
-    const regex = /^[^<>()\[\]\\/|;=~%^]+$/
-    if (!regex.test(term)) {
-      throw new Error('Special characters are not allowed.')
-    }
-    return term
   }
 
   const validateUsername = username => {
@@ -60,8 +47,18 @@ function useValidation() {
     throw new Error('Please use a valid email or phone number.')
   }
 
+  const validateSearchTerm = term => {
+    if (term.length < 3 || term.length > 100) {
+      throw new Error('Search query must be between 3 and 100 characters.')
+    }
+    const regex = /^[^<>()\[\]\\/|;=~%^]+$/
+    if (!regex.test(term)) {
+      throw new Error('Special characters are not allowed.')
+    }
+    return term
+  }
   
-  return { validateUsername, validateContact, validateSearchTerm }
+  return { validateImage, validateUsername, validateContact, validateSearchTerm }
 }
 
 export default useValidation
