@@ -10,7 +10,7 @@ function EditForm({ profile, setProfile }) {
   const canvasRef = useRef(null)
   const fileInputRef = useRef(null)
 
-  const onSubmit = event => {
+  const onSubmit = event => { // need to style image circular css
     event.preventDefault()
 
     const formData = new FormData(event.target)
