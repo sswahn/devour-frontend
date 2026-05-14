@@ -2,7 +2,7 @@
 
 function useValidation() {
 
-  const validateImage = async file => {
+  const validateImage = async (file, options = { maxSizeMB: 5, minDimension: 320 }) => {
     if (!file) {
       throw new Error('No image file found.')
     }
@@ -15,7 +15,34 @@ function useValidation() {
     if (!isValidMime || !isValidExtension) {
       throw new Error('Invalid file type, must be .webp .png or .jpg')
     }
-    return file
+    // 2. File Size Validation
+    const maxSizeBytes = options.maxSizeMB * 1024 * 1024
+    if (file.size > maxSizeBytes) {
+      throw new Error(`File is too large. Maximum allowed size is ${options.maxSizeMB}MB.`)
+    }
+    // 3. Image Dimensions Validation (Asynchronous)
+    return new Promise((resolve, reject) => {
+      const img = new Image()
+      
+      // Create an object URL from the file blob to load into the Image object
+      img.src = URL.createObjectURL(file)
+  
+      img.onload = () => {
+        // Clean up memory allocated for the object URL
+        URL.revokeObjectURL(img.src)
+        // Verify image meets the 2026 platform minimum standards (e.g., Instagram/Threads 320px)
+        if (img.width < options.minDimension || img.height < options.minDimension) {
+          return reject(new Error(`Image dimensions are too small. Minimum resolution is ${options.minDimension}x${options.minDimension}px.`))
+        }
+        // If all checks pass, return the original file object
+        resolve(file)
+      }
+  
+      img.onerror = () => {
+        URL.revokeObjectURL(img.src)
+        reject(new Error('Failed to parse image file. The file may be corrupted.'))
+      }
+    })
   }
 
   const validateUsername = username => {
