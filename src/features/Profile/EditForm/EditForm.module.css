@@ -3,7 +3,7 @@
   
 }
 
-.editForm div:first-of-type {
+.editForm canvas {
   border: 1px dashed red;
   border-radius: 50%;
 }
