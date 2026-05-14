@@ -29,6 +29,10 @@
   width: 100%;
 }
 
+.editForm input:focus {
+  outline: none;
+}
+
 .editForm textarea {
   background-color: var(--input-bg);
   border: 1px solid var(--input-border);
