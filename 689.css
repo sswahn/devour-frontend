@@ -667,6 +667,10 @@
   width: 100%;
 }
 
+.vbsjK61eJpBq2ev3NCQg input:focus {
+  outline: none;
+}
+
 .vbsjK61eJpBq2ev3NCQg textarea {
   background-color: var(--input-bg);
   border: 1px solid var(--input-border);
