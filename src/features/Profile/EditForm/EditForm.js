@@ -42,20 +42,25 @@ function EditForm({ profile, setProfile }) {
     setFile(files[0])
   }
 
-  const loadImage = () => {
-    const url = URL.createObjectURL(file)
-    const img = new Image()
-    img.onload = event => {
-      console.log('image loaded.')
-      URL.revokeObjectURL(url)
-    }
-    img.onerror = event => {
-      console.error('image errored: ', event.error)
-      URL.revokeObjectURL(url)
-      throw event.error
-    }
-    img.src = url
-    createCanvas(img)
+  const createImage = async file => {
+    const image = await loadImage(file)
+    createCanvas(image)
+  }
+
+  const loadImage = file => {
+    return new Promise((resolve, reject) => {
+      const url = URL.createObjectURL(file)
+      const img = new Image()
+      img.onload = () => {
+        URL.revokeObjectURL(url)
+        resolve(img)
+      }
+      img.onerror = (error) => {
+        URL.revokeObjectURL(url)
+        reject(error)
+      }
+      img.src = url
+    })
   }
 
   const createCanvas = image => {
@@ -67,13 +72,16 @@ function EditForm({ profile, setProfile }) {
     URL.revokeObjectURL(image.src)
   }
 
-
   useEffect(() => {
-    createCanvas(profile.picture)
+    if (profile.picture) {
+      createCanvas(profile.picture)
+    }
   }, [profile.picture])
 
   useEffect(() => {
-    loadImage()
+    if (file) {
+      createImage(file)
+    }
   }, [file])
   
   return (
