@@ -2,7 +2,7 @@
 
 function useValidation() {
 
-  const validateImage = async (file, options = { maxSizeMB: 5, minDimension: 320 }) => {
+  const validateImage = async (file, options = { maxSizeMB: 5, minDimension: 320, maxDimension: 4096 }) => {
     if (!file) {
       throw new Error('No image file found.')
     }
