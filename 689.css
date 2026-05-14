@@ -641,6 +641,11 @@
   
 }
 
+.vbsjK61eJpBq2ev3NCQg div:first-of-type {
+  border: 1px dashed red;
+  border-radius: 50%;
+}
+
 .vbsjK61eJpBq2ev3NCQg label {
   width: 100%;
 }
