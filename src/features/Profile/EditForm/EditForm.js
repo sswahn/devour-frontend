@@ -15,13 +15,13 @@ function EditForm({ profile, setProfile }) {
     event.preventDefault()
 
     const formData = new FormData(event.target)
-
+    const biography = formData.get('biography')
     // biography is optional, image too, need a condition for that.
     const request = {
-      picture: validateImage(image),
+      picture: image && validateImage(image),
       username: validateUsername(formData.get('username')),
       location: formData.get('location'), // validateLocation
-      biography: formData.get('biography') // validateBiography
+      biography: biography && validateBiography(biography)
     }
 
     setProfile(prev => ({ ...prev, ...request }))
