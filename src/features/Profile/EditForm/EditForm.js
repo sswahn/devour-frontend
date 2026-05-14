@@ -5,7 +5,7 @@ import styles from './EditForm.module.css'
 // picture, username, location, biography
 
 function EditForm({ profile, setProfile }) {
-  const { validateUsername } = useValidation()
+  const { validateUsername, validateImage } = useValidation()
   const [image, setImage] = useState(null)
   const canvasRef = useRef(null)
   const fileInputRef = useRef(null)
@@ -16,8 +16,8 @@ function EditForm({ profile, setProfile }) {
     const formData = new FormData(event.target)
 
     const request = {
-      picture: image, // validateImage
-      username: validateUsername(formData.get('username')), // validateUsername
+      picture: validateImage(image),
+      username: validateUsername(formData.get('username')),
       location: formData.get('location'), // validateLocation
       biography: formData.get('biography') // validateBiography
     }
