@@ -58,6 +58,7 @@ function EditForm({ profile, setProfile }) {
     if (!image) {
       return
     }
+    console.log('setting image event listeners: ', image)
     image.addEventListener('load', loadImage)
     image.addEventListener('error', loadImageError)
     return () => {
