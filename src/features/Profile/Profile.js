@@ -56,7 +56,7 @@ function Profile() {
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
         onPointerCancel={onPointerCancel}>
-        <TopNav profile={profile} />
+        <TopNav profile={profile} setProfile={setProfile} />
         <header>
           <div>
             <img src={profile.picture} alt={`${profile.username}'s profile picture`} />
