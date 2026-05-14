@@ -850,13 +850,6 @@
   z-index: 200;
 }
 
-/* Close button */
-.DGkNcYO4I6sY6eH4dCUv > div > button:first-of-type {
-  left: 8px;
-  position: absolute;
-  top: 8px;
-}
-
 .gwvl3FGlxxJKPHo8y6lN {
   background-color: var(--success);
 }
@@ -880,6 +873,13 @@
   margin: 32px 0;
   text-transform: uppercase;
   width: 100%;
+}
+
+/* Close button */
+.DGkNcYO4I6sY6eH4dCUv > div > button:first-of-type {
+  left: 8px;
+  position: absolute;
+  top: 8px;
 }
 
 /* Search Form Input */
