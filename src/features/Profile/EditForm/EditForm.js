@@ -86,23 +86,17 @@ function EditForm({ profile, setProfile }) {
   
   return (
     <form className={styles.editForm} onSubmit={onSubmit} aria-label="update your profile">
-      <div>
-        <canvas ref={canvasRef} />
-      </div>
-      <div>
-        <label htmlFor="upload">Profile picture:</label>
-        <input 
-          id="upload" 
-          ref={fileInputRef} 
-          onChange={handleImageFile} 
-          type="file" 
-          name="upload"
-          tabIndex="-1"
-          accept="image/webp, image/png, image/jpeg, .webp, .png, .jpg, .jpeg"
-          aria-hidden="true" />
-        <button onClick={handleUploadImage} type="button" aria-label="update your profile picture">Upload Image</button>
-      </div>
-    
+      <canvas ref={canvasRef} />
+      <input 
+        id="upload" 
+        ref={fileInputRef} 
+        onChange={handleImageFile} 
+        type="file" 
+        name="upload"
+        tabIndex="-1"
+        accept="image/webp, image/png, image/jpeg, .webp, .png, .jpg, .jpeg"
+        aria-hidden="true" />
+      <button onClick={handleUploadImage} type="button" aria-label="update your profile picture">Upload Image</button>
       <label htmlFor="username">Username:</label>
       <input id="username" type="text" name="username" defaultValue={profile.username} aria-label="update your username" />
       <label htmlFor="location">Location:</label>
