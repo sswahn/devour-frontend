@@ -7,7 +7,6 @@ import styles from './EditForm.module.css'
 function EditForm({ profile, setProfile }) {
   const { validateUsername, validateImage } = useValidation()
   const [file, setFile] = useState(null)
-  const [image, setImage] = useState(null)
   const [loading, setLoading] = useState(false)
   const canvasRef = useRef(null)
   const fileInputRef = useRef(null)
@@ -20,8 +19,9 @@ function EditForm({ profile, setProfile }) {
     const formData = new FormData(event.target)
     const biography = formData.get('biography')
     // biography is optional, image too, need a condition for that.
+    // must store the raw file.
     const request = {
-      picture: image && validateImage(image),
+      picture: file && validateImage(file),
       username: validateUsername(formData.get('username')),
       location: formData.get('location'), // validate with mapbox
       biography: biography // && validateBiography(biography)
