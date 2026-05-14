@@ -42,8 +42,8 @@ function EditForm({ profile, setProfile }) {
   const loadImage = event => {
     const canvas = canvasRef.current
     const ctx = canvas.getContext('2d')
-    canvas.width = 170 // image.width
-    canvas.height = 170 // image.height
+    canvas.width = image.width
+    canvas.height = image.height
     ctx.drawImage(image, 0, 0)
     URL.revokeObjectURL(image.src)
   }
