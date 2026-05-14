@@ -20,8 +20,8 @@ function EditForm({ profile, setProfile }) {
     const request = {
       picture: image && validateImage(image),
       username: validateUsername(formData.get('username')),
-      location: formData.get('location'), // validateLocation
-      biography: biography && validateBiography(biography)
+      location: formData.get('location'), // validate with mapbox
+      biography: biography // && validateBiography(biography)
     }
 
     setProfile(prev => ({ ...prev, ...request }))
