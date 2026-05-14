@@ -502,7 +502,7 @@
 
 .JGSQMGJEsXFrIiWPZmsd button[type="submit"] {
   align-items: center;
-  background: var(--button-bg);
+  background: var(--button-bar-bg);
   border: var(--button-border);
   border-radius: 50px;
   color: var(--button-text);
