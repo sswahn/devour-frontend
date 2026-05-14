@@ -34,6 +34,10 @@ function useValidation() {
         if (img.width < options.minDimension || img.height < options.minDimension) {
           return reject(new Error(`Image dimensions are too small. Minimum resolution is ${options.minDimension}x${options.minDimension}px.`))
         }
+        // Maximum bounds verification (Prevents downstream memory/processing crash)
+        if (img.width > options.maxDimension || img.height > options.maxDimension) {
+          return reject(new Error(`Image dimensions are too large. Maximum allowed resolution is ${options.maxDimension}x${options.maxDimension}px.`))
+        }
         // If all checks pass, return the original file object
         resolve(file)
       }
