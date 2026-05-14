@@ -23,6 +23,16 @@
   z-index: 200;
 }
 
+.profile header img {
+  border: 1px dashed red;
+  border-radius: 50%;
+  display: block;
+  height: 170px;
+  margin: 0 auto 16px auto;
+  width: 170px;
+}
+
+
 .profile header > div {
   padding: 0 16px;
 }
