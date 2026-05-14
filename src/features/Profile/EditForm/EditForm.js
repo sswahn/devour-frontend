@@ -14,6 +14,8 @@ function EditForm({ profile, setProfile }) {
   const onSubmit = event => { // need to style image circular css
     event.preventDefault()
 
+    return;
+    
     const formData = new FormData(event.target)
     const biography = formData.get('biography')
     // biography is optional, image too, need a condition for that.
