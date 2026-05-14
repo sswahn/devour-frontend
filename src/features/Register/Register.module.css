@@ -23,13 +23,6 @@
   z-index: 200;
 }
 
-/* Close button */
-.login > div > button:first-of-type {
-  left: 8px;
-  position: absolute;
-  top: 8px;
-}
-
 .success {
   background-color: var(--success);
 }
@@ -53,4 +46,11 @@
   margin: 32px 0;
   text-transform: uppercase;
   width: 100%;
+}
+
+/* Close button */
+.login > div > button:first-of-type {
+  left: 8px;
+  position: absolute;
+  top: 8px;
 }
