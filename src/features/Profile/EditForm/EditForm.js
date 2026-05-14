@@ -77,9 +77,14 @@ function EditForm({ profile, setProfile }) {
       </div>
       <div>
         <label htmlFor="upload">Profile picture:</label>
-        {/* update accept to only take selected image types: */}
-        <input id="upload" ref={fileInputRef} onChange={handleImageFile} type="file" name="upload" accept="image/*" aria-label="update your profile picture" />
-        <button onClick={handleUploadImage} type="button">Upload Image</button>
+        <input 
+          id="upload" 
+          ref={fileInputRef} 
+          onChange={handleImageFile} 
+          type="file" 
+          name="upload"
+          accept="image/webp, image/png, image/jpeg, .webp, .png, .jpg, .jpeg" />
+        <button onClick={handleUploadImage} type="button" aria-label="update your profile picture">Upload Image</button>
       </div>
     
       <label htmlFor="username">Username:</label>
