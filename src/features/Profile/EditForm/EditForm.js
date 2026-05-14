@@ -2,8 +2,6 @@ import { useState, useRef, useEffect } from 'react'
 import useValidation from '../../../hooks/useValidation'
 import styles from './EditForm.module.css'
 
-// picture, username, location, biography
-
 function EditForm({ profile, setProfile }) {
   const { validateUsername, validateImage } = useValidation()
   const [file, setFile] = useState(null)
