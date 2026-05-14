@@ -1,9 +1,11 @@
 import { useState, useRef, useEffect } from 'react'
+import useValidation from '../../../hooks/useValidation'
 import styles from './EditForm.module.css'
 
 // picture, username, location, biography
 
 function EditForm({ profile, setProfile }) {
+  const { validateUsername } = useValidation()
   const [image, setImage] = useState(null)
   const canvasRef = useRef(null)
   const fileInputRef = useRef(null)
@@ -15,7 +17,7 @@ function EditForm({ profile, setProfile }) {
 
     const request = {
       picture: image, // validateImage
-      username: formData.get('username'), // validateUsername
+      username: validateUsername(formData.get('username')), // validateUsername
       location: formData.get('location'), // validateLocation
       biography: formData.get('biography') // validateBiography
     }
