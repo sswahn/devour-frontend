@@ -375,7 +375,7 @@ dialog::backdrop {
   
   /* Buttons */
 
-  --button-bar-bg: var(--surface-elevated);
+  --button-bar-bg: var(--surface);
 
   --button-bar-text: var(--white);
 
