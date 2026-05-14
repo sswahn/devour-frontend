@@ -1,14 +1,26 @@
 import { useState, useRef, useEffect } from 'react'
 import styles from './EditForm.module.css'
 
-function EditForm({ picture, username, location, biography }) {
+// picture, username, location, biography
+
+function EditForm({ profile, setProfile }) {
   const [image, setImage] = useState(null)
   const canvasRef = useRef(null)
   const fileInputRef = useRef(null)
 
   const onSubmit = event => {
     event.preventDefault()
-    
+
+    const formData = new FormData(event.target)
+
+    const request = {
+      picture: image, // validateImage
+      username: formData.get('username'), // validateUsername
+      location: formData.get('location'), // validateLocation
+      biography: formData.get('biography') // validateBiography
+    }
+
+    setProfile(pref => ({ ...prev, ...request }))
   }
 
   const handleUploadImage = event => {
@@ -67,11 +79,11 @@ function EditForm({ picture, username, location, biography }) {
       </div>
     
       <label htmlFor="username">Username:</label>
-      <input id="username" type="text" name="username" defaultValue={username} aria-label="update your username" />
+      <input id="username" type="text" name="username" defaultValue={profile.username} aria-label="update your username" />
       <label htmlFor="location">Location:</label>
-      <input id="location" type="text" name="location" defaultValue={location} aria-label="update your location" />
+      <input id="location" type="text" name="location" defaultValue={profile.location} aria-label="update your location" />
       <label htmlFor="biography">Bio:</label>
-      <textarea id="biography" name="biography" aria-label="update your bio">{biography}</textarea>
+      <textarea id="biography" name="biography" aria-label="update your bio">{profile.biography}</textarea>
       <button type="submit">Submit</button>
     </form>
   )
