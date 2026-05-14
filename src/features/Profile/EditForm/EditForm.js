@@ -7,6 +7,7 @@ import styles from './EditForm.module.css'
 function EditForm({ profile, setProfile }) {
   const { validateUsername, validateImage } = useValidation()
   const [image, setImage] = useState(null)
+  const [loading, setLoading] = useState(false)
   const canvasRef = useRef(null)
   const fileInputRef = useRef(null)
 
@@ -23,7 +24,7 @@ function EditForm({ profile, setProfile }) {
       biography: formData.get('biography') // validateBiography
     }
 
-    setProfile(pref => ({ ...prev, ...request }))
+    setProfile(prev => ({ ...prev, ...request }))
   }
 
   const handleUploadImage = event => {
@@ -87,7 +88,7 @@ function EditForm({ profile, setProfile }) {
       <input id="location" type="text" name="location" defaultValue={profile.location} aria-label="update your location" />
       <label htmlFor="biography">Bio:</label>
       <textarea id="biography" name="biography" aria-label="update your bio">{profile.biography}</textarea>
-      <button type="submit">Submit</button>
+      <button type="submit" disabled={loading}>Submit</button>
     </form>
   )
 }
