@@ -15,6 +15,7 @@ function EditForm({ profile, setProfile }) {
 
     const formData = new FormData(event.target)
 
+    // biography is optional, image too, need a condition for that.
     const request = {
       picture: validateImage(image),
       username: validateUsername(formData.get('username')),
