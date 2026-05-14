@@ -18,7 +18,7 @@ function TopNav({ profile }) {
   const { session } = useSession()
   
   const openEditor = () => {
-    openDialog(<EditForm {...profile} />)
+    openDialog(<EditForm profile={profile} setProfile={setProfile} />)
   }
 
   // need conditional rendering on Edit button:
