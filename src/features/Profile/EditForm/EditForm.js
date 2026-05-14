@@ -6,6 +6,7 @@ import styles from './EditForm.module.css'
 
 function EditForm({ profile, setProfile }) {
   const { validateUsername, validateImage } = useValidation()
+  const [file, setFile] = useState(null)
   const [image, setImage] = useState(null)
   const [loading, setLoading] = useState(false)
   const canvasRef = useRef(null)
@@ -38,10 +39,26 @@ function EditForm({ profile, setProfile }) {
     if (!files?.length) {
       return
     }
-    setImage(files[0])
+    setFile(files[0])
   }
 
-  const loadImage = event => {
+  const loadImage = () => {
+    const url = URL.createObjectURL(file)
+    const img = new Image()
+    img.onload = event => {
+      console.log('image loaded.')
+      URL.revokeObjectURL(url)
+    }
+    img.onerror = event => {
+      console.error('image errored: ', event.error)
+      URL.revokeObjectURL(url)
+      throw event.error
+    }
+    img.src = url
+    createCanvas(img)
+  }
+
+  const createCanvas = image => {
     const canvas = canvasRef.current
     const ctx = canvas.getContext('2d')
     canvas.width = image.width
@@ -50,28 +67,14 @@ function EditForm({ profile, setProfile }) {
     URL.revokeObjectURL(image.src)
   }
 
-  const loadImageError = event => {
-    throw event.error
-  }
-  
-  useEffect(() => {
-    if (!image) {
-      return
-    }
-    console.log('setting image event listeners: ', image)
-    image.addEventListener('load', loadImage)
-    image.addEventListener('error', loadImageError)
-    return () => {
-      image.removeEventListener('load', loadImage)
-      image.removeEventListener('error', loadImageError)
-    }
-  }, [image])
 
   useEffect(() => {
-    if (profile.picture) {
-      setImage(profile.picture)
-    }
+    createCanvas(profile.picture)
   }, [profile.picture])
+
+  useEffect(() => {
+    loadImage()
+  }, [file])
   
   return (
     <form className={styles.editForm} onSubmit={onSubmit} aria-label="update your profile">
