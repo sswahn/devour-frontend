@@ -3,6 +3,11 @@
   
 }
 
+.editForm div:first-of-type {
+  border: 1px dashed red;
+  border-radius: 50%;
+}
+
 .editForm label {
   width: 100%;
 }
