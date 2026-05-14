@@ -12,7 +12,7 @@ import FlagIcon from '../../../components/Icons/FlagIcon/FlagIcon'
 import UserXmarkIcon from '../../../components/Icons/UserXmarkIcon/UserXmarkIcon'
 import styles from './TopNav.module.css'
 
-function TopNav({ profile }) {
+function TopNav({ profile, setProfile }) {
   const { openDialog } = useDialog()
   const { closeOverlay } = useOverlay()
   const { session } = useSession()
