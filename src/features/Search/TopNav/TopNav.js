@@ -2,7 +2,7 @@ import BackButton from '../../../components/BackButton/BackButton'
 import Dropdown from '../../../components/Dropdown/Dropdown'
 import styles from './TopNav.module.css'
 
-function TopNav() {
+function TopNav({ close }) {
 
   // might need something other than search filters
   const dropdown = [
@@ -12,7 +12,7 @@ function TopNav() {
   
   return (
     <nav className={styles.topNav}>
-      <BackButton overlay={overlay.search} close={action} />
+      <BackButton overlay={overlay.search} close={close} />
       {/* dont forget dropdown requires icons too. */}
       <Dropdown items={dropdown} />
     </nav>
