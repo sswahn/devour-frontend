@@ -16,6 +16,7 @@
   background-color: var(--surface-raised);
   display: flex;
   inset: 0;
+  justify-content: center;
   overflow-x: hidden;
   overflow-y: scroll;
   overscroll-behavior-y: contain;
