@@ -12,7 +12,9 @@
 }
 
 .register > div {
+  align-items: center;
   background-color: var(--surface-raised);
+  display: flex;
   inset: 0;
   overflow-x: hidden;
   overflow-y: scroll;
