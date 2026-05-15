@@ -68,7 +68,7 @@
   border-radius: 3px;
   height: 6px;
   margin: 0 auto;
-  touch-action: none;
+  /* touch-action: none; */
   width: 40px;
 
   position: absolute;
@@ -107,8 +107,7 @@
 .notifications ul li div:nth-child(2) {
   flex: 1;
   margin-left: 8px;
-  touch-action: none;
-  user-select: text; 
+  pointer-events: none;
 
   border: 1px dashed red;
 }
