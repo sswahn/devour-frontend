@@ -77,9 +77,7 @@ function FeedNode({ item, setObserver, index, count }) {
   
   return (
     <figure 
-      //ref={setObserver} 
       className={styles.feedNode} 
-      // tabIndex={0} 
       aria-posinset={index} 
       aria-setsize={count}
       onPointerDown={onPointerDown}
