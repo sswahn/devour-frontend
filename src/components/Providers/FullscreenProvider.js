@@ -17,10 +17,10 @@ function FullscreenProvider({ children }) {
   }, [])
   
   return (
-    <FullScreenContext.Provider value={{ isFullscreen }}>
+    <FullscreenContext.Provider value={{ isFullscreen }}>
       {children}
-    </FullScreenContext.Provider>
+    </FullscreenContext.Provider>
   )
 }
 
-export { FullscreenContext, FullScreenProvider }
+export { FullscreenContext, FullscreenProvider }
