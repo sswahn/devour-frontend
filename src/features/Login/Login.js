@@ -2,7 +2,7 @@ import { overlay } from '../../config'
 import useOverlay from '../../hooks/useOverlay'
 import useSwipeFromEdge from '../../hooks/useSwipeFromEdge'
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner'
-import CloseButton from '../../components/CloseButton/CloseButton'
+import BackButton from '../../components/BackButton/BackButton'
 import LoginForm from './LoginForm/LoginForm'
 import RegistrationButton from './RegistrationButton/RegistrationButton'
 import GoogleButton from './GoogleButton/GoogleButton'
@@ -23,7 +23,7 @@ function Login() {
   return (
     <section id={overlay.login} className={styles.login} onKeyDown={onKeyDown} role="dialog" aria-modal="true" aria-label="user login">
       <div onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={onPointerCancel}>
-        <CloseButton overlay={overlay.login} close={closeOverlay} />
+        <BackButton overlay={overlay.login} close={closeOverlay} />
         <LoginForm />
         <RegistrationButton />
         <GoogleButton />
