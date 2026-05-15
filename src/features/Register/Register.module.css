@@ -29,6 +29,10 @@
   z-index: 200;
 }
 
+.register form {
+  width: 100%;
+}
+
 .success {
   background-color: var(--success);
 }
