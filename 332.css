@@ -384,7 +384,7 @@
   flex: 1; /* Takes up remaining space */
 }
 
-.F9PYmx_5X6rU17dx6cCf section > ul li {
+.F9PYmx_5X6rU17dx6cCf section > ul > li {
   align-items: center;
   color: var(--text);
   display: flex;
