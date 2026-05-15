@@ -1,3 +1,4 @@
+import CloseButton from './CloseButton/CloseButton'
 import styles from './Dialog.module.css'
 
 function Dialog({ dialogRef, content, close }) { 
@@ -10,6 +11,7 @@ function Dialog({ dialogRef, content, close }) {
 
   return (
     <dialog id="dialog" ref={dialogRef} className={styles.dialog} onClick={onClick}>
+      <CloseButton close={close} />
       {content}
     </dialog>
   )
