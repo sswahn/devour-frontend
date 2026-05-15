@@ -16,9 +16,8 @@ function Register() {
   const { validateUsername, validateContact } = useValidation()
   const { onPointerDown, onPointerMove, onPointerUp, onPointerCancel } = useSwipeFromEdge(closeOverlay)
 
-
   const openLogin = () => {
-    openOverlay(overlay.login, buttonRef.current)  
+    openOverlay(overlay.login, null)  
   }
   
   const formatContact = value => {
