@@ -85,7 +85,7 @@
   flex: 1; /* Takes up remaining space */
 }
 
-.notifications section > ul li {
+.notifications section > ul > li {
   align-items: center;
   color: var(--text);
   display: flex;
