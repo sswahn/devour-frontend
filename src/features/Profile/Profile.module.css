@@ -27,9 +27,9 @@
   background: gray;
   border-radius: 50%;
   display: block;
-  height: 170px;
+  height: 128px;
   margin: 0 auto 16px auto;
-  width: 170px;
+  width: 128px;
 }
 
 .profile header > div {
