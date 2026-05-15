@@ -407,6 +407,7 @@
   flex: 1;
   margin-left: 8px;
   touch-action: none;
+  user-select: text; 
 }
 
 /*
