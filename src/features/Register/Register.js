@@ -35,7 +35,7 @@ function Register() {
     try {
       event.preventDefault()
       navigator.vibrate?.(50)
-
+     // setLoading(true)
       return setMessage('Account successfully created.');
       
       const formData = new FormData(event.target)
@@ -47,6 +47,8 @@ function Register() {
       setMessage('Account successfully created.')
     } catch (error) {
       setErrorMessage(error) // this should be a generic error.
+    } finally {
+      setLoading(false)
     }
   }
 
