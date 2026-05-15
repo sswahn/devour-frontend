@@ -1,3 +1,21 @@
+/* Close Button for Profile Editor */
+
+.ESEKRD_oHszPSaPpoqmG {
+  align-items: center; 
+  background: none;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  height: 44px;
+  justify-content: center;
+  cursor: pointer;
+  padding: 10px;
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  width: 44px;
+}
+
 /* Dialog Modal */
 
 .ZWJzr7wpZVh1FbHdy6Q2 {
