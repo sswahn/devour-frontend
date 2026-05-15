@@ -16,11 +16,11 @@
   width: calc(100% - 48px);
 }
 
-/*
+
 .followButton:focus {
-  background: initial;
+  background: var(--button-bar-bg);
 }
-*/
+
 
 .followButton:active {
   background: var(--button-bar-active);
