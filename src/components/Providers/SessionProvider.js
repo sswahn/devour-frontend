@@ -1,6 +1,6 @@
 import { useState, createContext, useMemo } from 'react'
 
-const SessionContext = createContext()
+const SessionContext = createContext(null)
 
 function SessionProvider({ children }) {
   const [session, setSession] = useState({
@@ -11,7 +11,10 @@ function SessionProvider({ children }) {
   // login sets session (setSession)
   // app gets session
 
-  const memo = useMemo(() => ({ session, setSession }))
+  const memo = useMemo(() => ({ 
+    session, 
+    setSession 
+  }), [session])
   
   return (
     <SessionContext.Provider value={memo}>
