@@ -738,11 +738,11 @@
   width: calc(100% - 48px);
 }
 
-/*
-.followButton:focus {
-  background: initial;
+
+.lPq22vgzV_SkRROgFQcA:focus {
+  background: var(--button-bar-bg);
 }
-*/
+
 
 .lPq22vgzV_SkRROgFQcA:active {
   background: var(--button-bar-active);
