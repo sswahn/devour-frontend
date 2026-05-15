@@ -1,4 +1,4 @@
-import CloseButton from '../../../components/CloseButton/CloseButton'
+import BackButton from '../../../components/BackButton/BackButton'
 import Dropdown from '../../../components/Dropdown/Dropdown'
 import styles from './TopNav.module.css'
 
@@ -12,7 +12,7 @@ function TopNav() {
   
   return (
     <nav className={styles.topNav}>
-      <CloseButton overlay={overlay.search} close={action} />
+      <BackButton overlay={overlay.search} close={action} />
       {/* dont forget dropdown requires icons too. */}
       <Dropdown items={dropdown} />
     </nav>
