@@ -12,10 +12,15 @@ function Register() {
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
-  const { closeOverlay } = useOverlay()
+  const { openOverlay, closeOverlay } = useOverlay()
   const { validateUsername, validateContact } = useValidation()
   const { onPointerDown, onPointerMove, onPointerUp, onPointerCancel } = useSwipeFromEdge(closeOverlay)
 
+
+  const openLogin = () => {
+    openOverlay(overlay.login, buttonRef.current)  
+  }
+  
   const formatContact = value => {
     const input = value.trim()
     if (input.includes('@')) {
@@ -49,7 +54,7 @@ function Register() {
   return (
     <section id={overlay.register} className={styles.register} role="dialog" aria-modal="true" aria-label="user registration">
       <div onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={onPointerCancel}>
-        <BackButton overlay={overlay.register} close={closeOverlay} />
+        <BackButton overlay={overlay.register} close={openLogin} />
         <form className={styles.registrationForm} onSubmit={onSubmit} aria-label="registration form">
           <Input 
             id="username"
