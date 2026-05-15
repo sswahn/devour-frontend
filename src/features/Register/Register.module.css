@@ -32,7 +32,7 @@
 }
 
 /* Close button */
-.register button:first-of-type {
+.register > div > button {
   left: 8px;
   position: absolute;
   top: 8px;
