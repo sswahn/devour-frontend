@@ -9,7 +9,7 @@ function SessionProvider({ children }) {
   })
   
   return (
-    <SessionContext.Provider value={{session, setSession}}>
+    <SessionContext.Provider value={{ session, setSession }}>
       {children}
     </SessionContext.Provider>
   )
