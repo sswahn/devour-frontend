@@ -5,7 +5,7 @@ import TopNav from '../TopNav/TopNav'
 import SideNav from '../SideNav/SideNav'
 import styles from './FeedNode.module.css'
 
-function FeedNode({ item, setObserver, index, count }) {
+function FeedNode({ item, index, count }) {
   const { content, setContent } = useContent()
   const [isDoubleTap, setIsDoubleTap] = useState(null)
   const [isLongPress, setIsLongPress] = useState(null)
