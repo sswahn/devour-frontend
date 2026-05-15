@@ -58,14 +58,10 @@ function Profile() {
         onPointerCancel={onPointerCancel}>
         <TopNav profile={profile} setProfile={setProfile} />
         <header>
-          <div>
-            <img src={profile.picture} alt={`${profile.username}'s profile picture`} />
-          </div>
-          <div>
-            <h1 id="username">{profile.username}</h1>
-            <address>{profile.location}</address>
-            {profile.biography && <p id="biography">{profile.biography}</p>}
-          </div>
+          <img src={profile.picture} alt={`${profile.username}'s profile picture`} />
+          <h1 id="username">{profile.username}</h1>
+          <address>{profile.location}</address>
+          {profile.biography && <p id="biography">{profile.biography}</p>}
         </header>
   
         <FollowButton />
