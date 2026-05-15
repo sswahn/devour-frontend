@@ -1,6 +1,6 @@
 import { useState, useEffect, createContext } from 'react'
 
-const FullScreenContext = createContext(null)
+const FullscreenContext = createContext(null)
 
 function FullscreenProvider({ children }) {
   const [isFullscreen, setFullscreen] = useState(false)
