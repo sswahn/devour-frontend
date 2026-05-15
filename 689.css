@@ -701,7 +701,7 @@
   background: var(--button-bar-bg);
   border: none;
   border-radius: 10px;
-  color: var(--button-bar-text);
+  color: var(--button-text);
   display: flex;
   font-weight: bold;
   height: 44px;
