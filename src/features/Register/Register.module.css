@@ -14,15 +14,19 @@
 .register > div {
   align-items: center;
   background-color: var(--surface-raised);
+  contain: layout paint style;
   display: flex;
-  inset: 0;
-  justify-content: center;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  flex-direction: column;
+  height: 100dvh;
+  justify-content: safe center;
+  left: 0;
+  overflow-y: auto;
   overscroll-behavior-y: contain;
-  padding: 8px;
+  padding: 16px 24px;
   position: fixed;
+  top: 0;
   touch-action: none;
+  width: 100%;
   z-index: 200;
 }
 
