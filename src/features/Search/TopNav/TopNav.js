@@ -1,3 +1,4 @@
+import { overlay } from '../../config'
 import BackButton from '../../../components/BackButton/BackButton'
 import Dropdown from '../../../components/Dropdown/Dropdown'
 import styles from './TopNav.module.css'
