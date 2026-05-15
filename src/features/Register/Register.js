@@ -74,6 +74,7 @@ function Register() {
           <SubmitButton disabled={loading || !!message} />
           {message && <div className={styles.success} role="alert">{message}</div>}
           {errorMessage && <div className={styles.danger} role="alert">{errorMessage}</div>}
+          {/* show Login Button with border and no bg */}
         </form>
       </div>
     </section>
