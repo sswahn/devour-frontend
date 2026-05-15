@@ -5,6 +5,7 @@ import useValidation from '../../hooks/useValidation'
 import useSwipeFromEdge from '../../hooks/useSwipeFromEdge'
 import BackButton from '../../components/BackButton/BackButton'
 import Input from '../../components/Input/Input'
+import SubmitButton from './SubmitButton/SubmitButton'
 import styles from './Register.module.css'
 
 function Register() {
@@ -74,7 +75,7 @@ function Register() {
             pattern="[^@\s]+@[^@\s]+\.[^@\s]+|\+?[\d\s\-()]{7,15}"
             title="Please enter a valid email address or an international phone number (e.g., +1 234 567 8900)."
             required />
-          <button type="submit" disbled={!!message || loading}>Sign Up</button>
+          <SubmitButton loading={loading} />
           {message && <div className={styles.success} role="alert">{message}</div>}
           {errorMessage && <div className={styles.danger} role="alert">{errorMessage}</div>}
         </form>
