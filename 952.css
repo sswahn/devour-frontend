@@ -26,6 +26,7 @@
   height: 44px;
   justify-content: center;
   padding: 10px;
+  touch-action: auto;
   width: 44px;
 }
 
