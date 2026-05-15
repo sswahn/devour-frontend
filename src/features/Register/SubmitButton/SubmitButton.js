@@ -1,8 +1,8 @@
 import styles from './SubmitButton.module.css'
 
-function SubmitButton({ loading, message }) {
+function SubmitButton({ disabled }) {
   return (
-    <button className={styles.submitButton} type="submit" disbled={!!message || loading}>Sign Up</button>
+    <button className={styles.submitButton} type="submit" disbled={disabled}>Sign Up</button>
   )
 }
 
