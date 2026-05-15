@@ -16,7 +16,7 @@ function Interface() {
   return (
     <>
       <div id="app-shell" inert={!!isActive}>
-        <Header />
+        {!document.fullscreenElement && <Header />}
         <Main />
         <MobileNav />
       </div>
