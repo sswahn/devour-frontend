@@ -37,7 +37,7 @@ function Search() {
   return (
     <search id={overlay.search} className={styles.search} ref={overlayRef} onKeyDown={onKeyDown} role="dialog" aria-modal="true">
       <div onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={onPointerCancel}>
-        <TopNav />
+        <TopNav close={closeOverlay} />
         <form onSubmit={onSubmit}>
           <SearchIcon size={10} />
           <SearchInput 
