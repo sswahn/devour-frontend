@@ -29,7 +29,7 @@
   position: fixed;
   transform: translate3d(0, calc(var(--sheet-y) + var(--drag-y)), 0);
   transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-  touch-action: pan-y;
+  /* touch-action: none; */
   width: 100%;
   will-change: transform;
   /* This extra padding acts as a "buffer" so the bottom never shows when bouncing 
@@ -109,6 +109,8 @@
   margin-left: 8px;
   touch-action: none;
   user-select: text; 
+
+  border: 1px dashed red;
 }
 
 /*
