@@ -6,6 +6,7 @@ function FullscreenProvider({ children }) {
   const [isFullscreen, setFullscreen] = useState(false)
 
   const onFullscreenChange = event => {
+    console.log('!!document.fullscreenElement: ', !!document.fullscreenElement)
     setState(!!document.fullscreenElement)
   }
 
