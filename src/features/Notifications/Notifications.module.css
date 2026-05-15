@@ -107,6 +107,7 @@
 .notifications ul li div:nth-child(2) {
   flex: 1;
   margin-left: 8px;
+  touch-action: none;
 }
 
 .notifications ul li img {
