@@ -2,9 +2,9 @@ import { useContext } from 'react'
 import { FullscreenContext } from '../components/Providers/FullscreenProvider'
 
 function useFullscreen() {
-  const { isFullscreen } = useContext(FullscreenContext)
+  const isFullscreen = useContext(FullscreenContext)
 
-  return { isFullscreen }
+  return isFullscreen
 }
 
 export default useFullscreen
