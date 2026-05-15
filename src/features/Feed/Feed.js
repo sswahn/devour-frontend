@@ -18,20 +18,14 @@ function Feed() {
     { video: 3, caption: 'test 3' }
   ])
 
-  const observerCallback = entry => { // eventually lazy loading video here 
+  const observerCallback = entry => { 
     if (entry.isIntersecting) {
-      const node = entry.target
-      node.tabIndex = -1  // handle roving index (for key navigation)
-      if (prevNode.current) {
-        prevNode.current.tabIndex = 0
-      }
-      prevNode.current = node
-      
+      // could handle lazy loading video here 
       unobserve(node)
     }
   }
 
-  const setObserver = node => {
+  const setObserver = node => { // gets passed into ref={setObserver} in FeedNode
     if (node) {
       //observe(node, observerCallback)
     }
@@ -45,7 +39,7 @@ function Feed() {
   
   return (
     <section ref={setScrollRef} className={styles.feed} role="feed">
-      {data.map((item, index) => <FeedNode key={index} setObserver={setObserver} item={item} index={index + 1} count={data.length} />)}
+      {data.map((item, index) => <FeedNode key={index} item={item} index={index + 1} count={data.length} />)}
       
       {/* <Sentinel onVisible={loadMoreData} /> */}
     </section>
