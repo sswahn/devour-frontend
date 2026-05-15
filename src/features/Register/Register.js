@@ -61,24 +61,14 @@ function Register() {
             label="Username"
             inputMode="email"
             autoComplete="username webauthn"
-            autoCapitalize="none"
-            minLength={3} 
-            maxLength={30} 
-            pattern="[a-zA-Z0-9](?:[a-zA-Z0-9_]*[a-zA-Z0-9])?" 
-            title="Username must be between 3 and 30 alphanumeric characters and cannot start or end with an underscore."
-            required />
+            autoCapitalize="none" />
           <Input 
             id="contact"
             type="text"
             label="Email or phone"
             inputMode="email"
             autoComplete="email tel"
-            autoCapitalize="none"
-            minLength={3}
-            maxLength={254}
-            pattern="[^@\s]+@[^@\s]+\.[^@\s]+|\+?[\d\s\-()]{7,15}"
-            title="Please enter a valid email address or an international phone number (e.g., +1 234 567 8900)."
-            required />
+            autoCapitalize="none" />
           <SubmitButton disabled={loading || !!message} />
           {message && <div className={styles.success} role="alert">{message}</div>}
           {errorMessage && <div className={styles.danger} role="alert">{errorMessage}</div>}
