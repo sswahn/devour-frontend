@@ -1,4 +1,4 @@
-import { useState, createContext } from 'react'
+import { useState, createContext, useMemo } from 'react'
 
 const SessionContext = createContext()
 
@@ -11,8 +11,10 @@ function SessionProvider({ children }) {
   // login sets session (setSession)
   // app gets session
 
+  const memo = useMemo(() => ({ session, setSession }))
+  
   return (
-    <SessionContext.Provider value={{ session, setSession }}>
+    <SessionContext.Provider value={memo}>
       {children}
     </SessionContext.Provider>
   )
