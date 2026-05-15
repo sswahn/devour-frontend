@@ -3,7 +3,7 @@ import useOverlay from '../../../hooks/useOverlay'
 import useSession from '../../../hooks/useSession'
 import useDialog from '../../../hooks/useDialog'
 import EditForm from '../EditForm/EditForm'
-import CloseButton from '../../../components/CloseButton/CloseButton'
+import BackButton from '../../../components/BackButton/BackButton'
 import Dropdown from '../../../components/Dropdown/Dropdown'
 import EditIcon from '../../../components/Icons/EditIcon/EditIcon'
 import SearchIcon from '../../../components/Icons/SearchIcon/SearchIcon'
@@ -34,7 +34,7 @@ function TopNav({ profile, setProfile }) {
 
   return (
     <nav className={styles.topNav}>
-      <CloseButton overlay={overlay.profile} close={closeOverlay} />
+      <BackButton overlay={overlay.profile} close={closeOverlay} />
       <Dropdown items={dropdown} />
     </nav>
   )
