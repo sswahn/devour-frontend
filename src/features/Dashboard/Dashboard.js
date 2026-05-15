@@ -1,4 +1,5 @@
 import { overlay } from '../../config'
+import BackButton from '../../components/BackButton/BackButton'
 import styles from './Dashboard.module.css'
 
 function Dashboard() {
