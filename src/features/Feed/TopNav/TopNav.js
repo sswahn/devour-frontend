@@ -1,4 +1,4 @@
-import CloseButton from '../../../components/CloseButton/CloseButton'
+import BackButton from '../../../components/BackButton/BackButton'
 import Dropdown from '../../../components/Dropdown/Dropdown'
 import AlignLeftIcon from '../../../components/Icons/AlignLeftIcon/AlignLeftIcon'
 import UserPlusIcon from '../../../components/Icons/UserPlusIcon/UserPlusIcon'
@@ -17,7 +17,7 @@ function TopNav({ isFullScreen, exitFullScreen }) {
   
   return (
     <nav className={`topNav ${styles.topNav} ${isFullScreen ? styles.fullScreen : ''}`} aria-label="top menu">
-      {isFullScreen && <CloseButton overlay="feed overlay" close={exitFullScreen} />}
+      {isFullScreen && <BackButton overlay="feed overlay" close={exitFullScreen} />}
       <Dropdown items={dropdown} />
     </nav>
   )
