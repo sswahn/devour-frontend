@@ -1,26 +1,15 @@
 import XmarkIcon from '../../../components/Icons/XmarkIcon/XmarkIcon'
 import styles from './CloseButton.module.css'
 
-function CloseButton({ field, close }) {
- 
-  const action = () => {
-    close()
-  }
+function CloseButton({ close }) {
 
   const onClick = event => {
     navigation.vibrate?.()
-    action()
+    close()
   }
-  
-  const onKeyDown = event => {
-    if (event.key === 'Enter') {
-      event.preventDefault()
-      action()
-    }
-  }
-
+ 
   return (
-    <button className={styles.closeButton} onClick={onClick} onKeyDown={onKeyDown} type="button" aria-label={`submit new ${field}`}>
+    <button className={styles.closeButton} onClick={onClick} type="button" aria-label="close dialog">
       <XmarkIcon size={16} />
     </button>
   )
