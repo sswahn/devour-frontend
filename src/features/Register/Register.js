@@ -63,14 +63,16 @@ function Register() {
             label="Username"
             inputMode="email"
             autoComplete="username webauthn"
-            autoCapitalize="none" />
+            autoCapitalize="none"
+            required />
           <Input 
             id="contact"
             type="text"
             label="Email or phone"
             inputMode="email"
             autoComplete="email tel"
-            autoCapitalize="none" />
+            autoCapitalize="none"
+            required />
           <SubmitButton disabled={loading || !!message} />
           {message && <div className={styles.success} role="alert">{message}</div>}
           {errorMessage && <div className={styles.danger} role="alert">{errorMessage}</div>}
