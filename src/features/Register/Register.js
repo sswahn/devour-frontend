@@ -75,7 +75,7 @@ function Register() {
             pattern="[^@\s]+@[^@\s]+\.[^@\s]+|\+?[\d\s\-()]{7,15}"
             title="Please enter a valid email address or an international phone number (e.g., +1 234 567 8900)."
             required />
-          <SubmitButton loading={loading} />
+          <SubmitButton disabled={loading || !!message} />
           {message && <div className={styles.success} role="alert">{message}</div>}
           {errorMessage && <div className={styles.danger} role="alert">{errorMessage}</div>}
         </form>
