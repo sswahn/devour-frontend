@@ -1,4 +1,5 @@
 import { Suspense, lazy } from 'react'
+import useFullscreen from '../../hooks/useFullscreen'
 import useOverlay from '../../hooks/useOverlay'
 import useSelectionToSpeech from '../../hooks/useSelectionToSpeech'
 import useContextMenu from '../../hooks/useContextMenu'
@@ -10,13 +11,14 @@ const Overlays = lazy(() => import('../Overlays/Overlays'))
 
 function Interface() {
   const { isActive } = useOverlay()
+  const isFullscreen = useFullscreen()
   useSelectionToSpeech()
   useContextMenu()
   
   return (
     <>
       <div id="app-shell" inert={!!isActive}>
-        {!document.fullscreenElement && <Header />}
+        {!isFullscreen && <Header />}
         <Main />
         <MobileNav />
       </div>
