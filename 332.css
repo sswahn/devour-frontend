@@ -821,13 +821,10 @@
   width: 128px;
 }
 
-.KIIoXhhSaQeQ2LSTtavI header > div {
-  padding: 0 16px;
-}
-
 .KIIoXhhSaQeQ2LSTtavI header h1 {
   font-size: 22px;
   font-weight: normal;
+  margin-bottom: 8px;
   text-align: center;
 }
 
