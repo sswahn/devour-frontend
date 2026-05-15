@@ -33,7 +33,7 @@ function Feed() {
 
   const setObserver = node => {
     if (node) {
-      observe(node, observerCallback)
+      //observe(node, observerCallback)
     }
   }
 
