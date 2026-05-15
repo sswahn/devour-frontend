@@ -110,14 +110,12 @@
   touch-action: none;
 }
 
+/*
 .notifications ul li img {
   border-radius: 50px;
   height: 56px;
   width: 56px;
-
-  /* remove the following, probably replace img with the custom "avatar" */
-  border: 1px dotted white;
-}
+} */
 
 .notifications ul li div > div {
   display: flex;
