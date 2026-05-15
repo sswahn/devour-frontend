@@ -56,7 +56,7 @@ function Register() {
     <section id={overlay.register} className={styles.register} role="dialog" aria-modal="true" aria-label="user registration">
       <div onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={onPointerCancel}>
         <BackButton overlay={overlay.register} close={openLogin} />
-        <form className={styles.registrationForm} onSubmit={onSubmit} aria-label="registration form">
+        <form onSubmit={onSubmit} aria-label="registration form">
           <Input 
             id="username"
             type="text"
