@@ -892,23 +892,6 @@
   background-color: var(--danger);
 }
 
-.oSMoVZYW2HrKOJTgWNU2 button:last-of-type {
-  align-items: center;
-  background: var(--button-bar-bg);
-  border: var(--button-border);
-  border-radius: 50px;
-  color: var(--button-bar-text);
-  cursor: pointer;
-  display: flex;
-  font-size: 18px;
-  font-weight: bold;
-  height: 44px;
-  justify-content: center;
-  margin: 32px 0;
-  text-transform: uppercase;
-  width: 100%;
-}
-
 /* Close button */
 .oSMoVZYW2HrKOJTgWNU2 button:first-of-type {
   left: 8px;
