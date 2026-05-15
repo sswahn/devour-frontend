@@ -19,15 +19,13 @@
   display: flex;
   flex-direction: column;
   height: 100dvh;
+  inset: 0;
   justify-content: safe center;
-  left: 0;
   overflow-y: auto;
   overscroll-behavior-y: contain;
   padding: 16px 24px;
   position: fixed;
-  top: 0;
   touch-action: none;
-  width: 100%;
   z-index: 200;
 }
 
