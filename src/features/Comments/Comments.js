@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { api } from '../../config'
 import useContent from '../../hooks/useContent'
 import server from '../../utilities/server'
+import BackButton from '../../components/BackButton/BackButton'
 import styles from './Comments.module.css'
 
 function Comments() {
