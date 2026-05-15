@@ -738,11 +738,9 @@
   width: calc(100% - 48px);
 }
 
-
 .lPq22vgzV_SkRROgFQcA:focus {
   background: var(--button-bar-bg);
 }
-
 
 .lPq22vgzV_SkRROgFQcA:active {
   background: var(--button-bar-active);
