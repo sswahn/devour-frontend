@@ -102,17 +102,21 @@ function EditForm({ profile, setProfile }) {
       <button onClick={handleUploadImage} type="button" aria-label="update your profile picture">Upload Image</button>
       <Input
         id="username"
-        type="type"
+        type="text"
         label="Username"
         autoComplete="username webauthn"
         error={errorMessage}
         defaultValue={profile.username}
         required
         aria-label="update your username" />
-        
-        {/*<input id="username" type="text" name="username" defaultValue={profile.username} aria-label="update your username" /> */}
-      <label htmlFor="location">Location:</label>
-      <input id="location" type="text" name="location" defaultValue={profile.location} aria-label="update your location" />
+      <Input
+        id="location"
+        type="text"
+        label="Location"
+        error={errorMessage} // needs work
+        defaultValue={profile.location}
+        required
+        aria-label="update your location" />
       <label htmlFor="biography">Bio:</label>
       <textarea id="biography" name="biography" aria-label="update your bio">{profile.biography}</textarea>
       <button type="submit" disabled={loading}>Submit</button>
