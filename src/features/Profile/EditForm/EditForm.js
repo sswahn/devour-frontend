@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import Input from '../../components/Input/Input'
+import Input from '../../../components/Input/Input'
 import useValidation from '../../../hooks/useValidation'
 import styles from './EditForm.module.css'
 
