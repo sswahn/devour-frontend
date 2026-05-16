@@ -12,6 +12,7 @@
   width: 170px;
 }
 
+/*
 .editForm label {
   display: block;
   width: 100%;
@@ -33,6 +34,7 @@
 .editForm input:focus {
   outline: none;
 }
+*/
 
 .editForm textarea {
   background-color: var(--input-bg);
