@@ -1,6 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import HomeButton from './HomeButton'
-import useScroll from '../../../hooks/useScroll'
 
 // Mock CSS module
 jest.mock('./HomeButton.module.css', () => ({
