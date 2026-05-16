@@ -10,7 +10,7 @@ function CloseButton({ close }) {
  
   return (
     <button className={styles.closeButton} onClick={onClick} type="button" aria-label="close dialog">
-      <XmarkIcon size={16} />
+      <XmarkIcon />
     </button>
   )
 }
