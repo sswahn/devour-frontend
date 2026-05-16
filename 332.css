@@ -458,14 +458,16 @@
   width: 100%;
 }
 
-.JGSQMGJEsXFrIiWPZmsd label {
+/*
+
+.loginForm label {
   color: var(--text);
   display: block;
   font-size: var(--font-size);
   margin: 0 0 8px 8px;
 }
 
-.JGSQMGJEsXFrIiWPZmsd input {
+.loginForm input {
   background-color: var(--input-bg);
   border: 1px solid var(--input-border);
   border-radius: 5px;
@@ -476,18 +478,21 @@
   width: 100%;
 }
 
-.JGSQMGJEsXFrIiWPZmsd input:focus {
+
+.loginForm input:focus {
   outline: none;
 }
 
-.ur4LjOV5j0lq6DRgWvDI {
+.invalid {
   border: 2px solid red;
 }
 
-.JGSQMGJEsXFrIiWPZmsd p {
+.loginForm p {
   color: red;
   margin: 4px 0 0 8px;
 }
+
+*/
 
 .JGSQMGJEsXFrIiWPZmsd button[type="submit"] {
   align-items: center;
