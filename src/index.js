@@ -1,4 +1,4 @@
-//import * as serviceWorker from './serviceWorker'
+//import * as serviceWorker from './sw'
 import { createRoot } from 'react-dom/client'
 import App from './App'
 import logError from "./utilities/logError"
