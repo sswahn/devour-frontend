@@ -1,5 +1,6 @@
 import { Suspense, lazy } from 'react'
 import useFullscreen from '../../hooks/useFullscreen'
+import useScrollLock from '../../hooks/useScrollLock'
 import useOverlay from '../../hooks/useOverlay'
 import useSelectionToSpeech from '../../hooks/useSelectionToSpeech'
 import useContextMenu from '../../hooks/useContextMenu'
@@ -12,6 +13,7 @@ const Overlays = lazy(() => import('../Overlays/Overlays'))
 function Interface() {
   const { isActive } = useOverlay()
   const { isFullscreen } = useFullscreen()
+  useScrollLock()
   useSelectionToSpeech()
   useContextMenu()
   
