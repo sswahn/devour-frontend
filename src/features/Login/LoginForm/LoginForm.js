@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react'
 import { api } from '../../../config'
 import useSession from '../../../hooks/useSession'
-import useValidation from '../../../hooks/useValidation'
+import validate from '../../../utilities/validate'
 import Input from '../../../components/Input/Input'
 import styles from './LoginForm.module.css'
 
 function LoginForm() {
   const { setSession } = useSession() 
-  const { validateUsername } = useValidation()
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState(false)
   
@@ -17,7 +16,7 @@ function LoginForm() {
       navigator.vibrate?.(50)
       setLoading(true)
       const formData = new FormData(event.target)
-      const username = validateUsername(formData.get('username'))
+      const username = validate.username(formData.get('username'))
       
       // initiate auth call to backend
       // response returns challenge
