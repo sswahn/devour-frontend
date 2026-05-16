@@ -194,7 +194,7 @@
   content-visibility: auto;
   contain-intrinsic-size: 100dvh; 
   display: block;
-  min-height: 100dvh;
+  height: var(--feed-height);
 
   padding: 
     env(safe-area-inset-top)
@@ -215,11 +215,6 @@
   background: #666; 
   border-radius: 10px;
 }
-
-.QNshFBXSoGNyBxo7mpBY:fullscreen {
-  height: 100vh;
-}
-
 
 .QNshFBXSoGNyBxo7mpBY figcaption {
   bottom: 72px;
