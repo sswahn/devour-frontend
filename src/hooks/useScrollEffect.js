@@ -2,7 +2,6 @@ import { useRef, useEffect } from 'react'
 import scroll from '../utilities/scrollEngine'
 
 function useScrollEffect() {
-  const { subscribe } = useScroll()
   const elementRef = useRef(null)
   const styleRef = useRef(null)
   const isHidden = useRef(false)
