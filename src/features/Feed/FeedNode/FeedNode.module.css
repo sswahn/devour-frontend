@@ -1,6 +1,7 @@
 /* Feed Node */
 
 .feedNode {
+  box-sizing: border-box;
   contain: layout style;
   content-visibility: auto;
   contain-intrinsic-size: 100dvh; 
