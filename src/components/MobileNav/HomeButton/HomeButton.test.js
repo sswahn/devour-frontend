@@ -17,19 +17,12 @@ jest.mock('../../../hooks/useScroll')
 
 describe('HomeButton', () => {
   let scrollToMock
-
+  
   beforeEach(() => {
+    // Arrange: Spy on window.scrollTo
     scrollToMock = jest.fn()
-
-    useScroll.mockReturnValue({
-      scrollRef: {
-        current: {
-          scrollTo: scrollToMock
-        }
-      }
-    })
-
-    // Mock navigator.vibrate
+    window.scrollTo = scrollToMock
+    // Arrange: Mock navigator.vibrate
     navigator.vibrate = jest.fn()
   })
 
