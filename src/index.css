@@ -144,7 +144,7 @@ html {
 
 body {
   background-color: transparent;
-  
+  overflow: hidden;
   padding: 
     env(safe-area-inset-top)
     env(safe-area-inset-right)
