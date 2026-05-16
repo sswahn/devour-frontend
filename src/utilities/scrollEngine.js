@@ -1,5 +1,4 @@
 // scrollEngine.js
-let element = null
 let subscribers = new Set()
 let started = false
 let ticking = false
@@ -17,9 +16,7 @@ function notify(data) {
 }
 
 function update(timestamp) {
-  const scrollY = element.scrollTop
-
-  console.log('update onScroll: ', scrollY)
+  const scrollY = window.scrollY
   
   // Calculate change in Y
   deltaY = scrollY - scrollStart 
@@ -65,7 +62,7 @@ function onScroll(event) {
 }
 
 function onScrollEnd(event) {
-  scrollStart = element.scrollTop
+  scrollStart = window.scrollY
   
   notify({
     deltaY,
@@ -75,33 +72,22 @@ function onScrollEnd(event) {
 }
 
 function start() {
-  console.log('start: ', element)
-  if (element) {
-    console.log('inside start condition, setting listeners.')
-    element.addEventListener('scroll', onScroll, { passive: true })
-    element.addEventListener("scrollend", onScrollEnd, { passive: true })
-    started = true
-  }
+  window.addEventListener('scroll', onScroll, { passive: true })
+  window.addEventListener("scrollend", onScrollEnd, { passive: true })
+  started = true
 }
 
 function stop() {
-  if (element) {
-    element.removeEventListener('scroll', onScroll)
-    element.removeEventListener('scrollend', onScrollEnd)
-    started = false
-  }
+  window.removeEventListener('scroll', onScroll)
+  window.removeEventListener('scrollend', onScrollEnd)
+  started = false
 }
 
 const scroll = {
-  get(feed) {
-    element = feed
-  },
   subscribe(fn) {
     if (typeof fn !== 'function') {
       throw new TypeError('scroll.subscribe arugument must be of type "function".')
     }
-
-    console.log('subscribe with fn: ', fn)
     
     if (!started) {
       start()
