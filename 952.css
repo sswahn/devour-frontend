@@ -269,6 +269,8 @@
 /* Automatically detect when the page or element enters fullscreen */
 .FXju5x6KeXy0fnVXd9I2:fullscreen {
   --notch-height: env(safe-area-inset-top);
+  width: 100vw;
+  height: 100vh;
 }
 
 /*.topNav {
