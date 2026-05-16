@@ -447,7 +447,7 @@ html {
   font-feature-settings: "cv11", "ss01";
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
-  /*
+
   overflow-y: auto;
   scrollbar-width: none;
   scroll-snap-type: y mandatory;
@@ -456,8 +456,6 @@ html {
   -webkit-overflow-scrolling: touch; 
 
   width: 100%;
-  */
-
   z-index: 0;
 }
 
