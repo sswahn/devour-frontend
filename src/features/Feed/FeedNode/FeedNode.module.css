@@ -29,7 +29,7 @@
 }
 
 .feedNode:fullscreen {
-  
+  height: 100vh;
 }
 
 
