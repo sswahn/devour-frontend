@@ -6,7 +6,7 @@
   content-visibility: auto;
   contain-intrinsic-size: 100dvh; 
   display: block;
-  min-height: 100dvh;
+  height: var(--feed-height);
 
   padding: 
     env(safe-area-inset-top)
@@ -27,11 +27,6 @@
   background: #666; 
   border-radius: 10px;
 }
-
-.feedNode:fullscreen {
-  height: 100vh;
-}
-
 
 .feedNode figcaption {
   bottom: 72px;
