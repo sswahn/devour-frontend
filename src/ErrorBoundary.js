@@ -13,6 +13,10 @@ class ErrorBoundary extends Component {
   }
 
   componentDidCatch(error, info) {
+
+    console.log("React Component Stack:", errorInfo.componentStack)
+    console.log("Original Error:", error.stack)
+    
     logError(error, {
       source: 'react.errorBoundary',
       componentStack: info.componentStack
@@ -28,7 +32,7 @@ class ErrorBoundary extends Component {
           background: 'black',
           color: 'white',
           height: '100%',
-          padding: '200px 0 0 200px',
+          padding: '200px 0 0 8px',
           width: '100%',
         }}>
           <h1>Oops! Something went wrong.</h1>
