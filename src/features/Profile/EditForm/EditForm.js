@@ -12,22 +12,25 @@ function EditForm({ profile, setProfile }) {
   const fileInputRef = useRef(null)
 
   const onSubmit = event => { // need to style image circular css
-    event.preventDefault()
-
-    return;
-    
-    const formData = new FormData(event.target)
-    const biography = formData.get('biography')
-    // biography is optional, image too, need a condition for that.
-    // must store the raw file.
-    const request = {
-      picture: file && validateImage(file),
-      username: validateUsername(formData.get('username')),
-      location: formData.get('location'), // validate with mapbox
-      biography: biography // && validateBiography(biography)
+    try {
+      event.preventDefault()
+      setLoading(true)
+      const formData = new FormData(event.target)
+      const biography = formData.get('biography')
+      const request = {
+        picture: file && validateImage(file), // must store the raw file.
+        username: validateUsername(formData.get('username')),
+        location: formData.get('location'), // validate with mapbox
+        biography: biography // && validateBiography(biography)
+      }
+  
+      setProfile(prev => ({ ...prev, ...request }))
+      
+    } catch (error) {
+      setError(error)
+    } finally {
+      setLoading(false)
     }
-
-    setProfile(prev => ({ ...prev, ...request }))
   }
 
   const handleUploadImage = event => {
