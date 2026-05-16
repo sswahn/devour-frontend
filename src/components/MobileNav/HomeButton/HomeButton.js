@@ -12,11 +12,7 @@ function HomeButton() {
   }
   
   return (
-    <button 
-      className={styles.homeButton} 
-      onClick={onClick} 
-      type="button" 
-      aria-label="scroll to top">
+    <button className={styles.homeButton} onClick={onClick} type="button" aria-label="scroll to top">
       <HomeIcon />  
     </button>
   )
