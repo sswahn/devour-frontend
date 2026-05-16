@@ -13,10 +13,6 @@ class ErrorBoundary extends Component {
   }
 
   componentDidCatch(error, info) {
-
-    console.log("React Component Stack:", errorInfo.componentStack)
-    console.log("Original Error:", error.stack)
-    
     logError(error, {
       source: 'react.errorBoundary',
       componentStack: info.componentStack
