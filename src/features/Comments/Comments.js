@@ -86,10 +86,9 @@ function Comments() {
           id="comment"
           name="comment"
           maxLength="1000"
-          pattern="[^<>\(\)\{\}\[\]\\\/\|;=~%^]+"
-          title="Special characters are not allowed."
           placeholder="Leave a comment..."
           spellCheck="true"
+          enterkeyhint="send"
           required
           aria-label="comment input">
           </textarea>
