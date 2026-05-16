@@ -215,6 +215,10 @@
   border-radius: 10px;
 }
 
+.QNshFBXSoGNyBxo7mpBY:fullscreen {
+  --notch-height: env(safe-area-inset-top);
+}
+
 
 .QNshFBXSoGNyBxo7mpBY figcaption {
   bottom: 72px;
