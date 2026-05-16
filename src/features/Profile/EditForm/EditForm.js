@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import Input from '../../components/Input/Input'
 import useValidation from '../../../hooks/useValidation'
 import styles from './EditForm.module.css'
 
@@ -95,8 +96,17 @@ function EditForm({ profile, setProfile }) {
         accept="image/webp, image/png, image/jpeg, .webp, .png, .jpg, .jpeg"
         aria-hidden="true" />
       <button onClick={handleUploadImage} type="button" aria-label="update your profile picture">Upload Image</button>
-      <label htmlFor="username">Username:</label>
-      <input id="username" type="text" name="username" defaultValue={profile.username} aria-label="update your username" />
+      <Input
+        id="username"
+        type="type"
+        label="Username"
+        autoComplete="username webauthn"
+        error={errorMessage}
+        defaultValue={profile.username}
+        required
+        aria-label="update your username" />
+        
+        {/*<input id="username" type="text" name="username" defaultValue={profile.username} aria-label="update your username" /> */}
       <label htmlFor="location">Location:</label>
       <input id="location" type="text" name="location" defaultValue={profile.location} aria-label="update your location" />
       <label htmlFor="biography">Bio:</label>
