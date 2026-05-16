@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
+import validate from '../../../utilities/validate'
 import Input from '../../../components/Input/Input'
-import useValidation from '../../../hooks/useValidation'
 import styles from './EditForm.module.css'
 
 function EditForm({ profile, setProfile }) {
@@ -18,8 +18,8 @@ function EditForm({ profile, setProfile }) {
       const formData = new FormData(event.target)
       const biography = formData.get('biography')
       const request = {
-        picture: file && validateImage(file), // must store the raw file.
-        username: validateUsername(formData.get('username')),
+        picture: file && validate.image(file), // must store the raw file.
+        username: validate.username(formData.get('username')),
         location: formData.get('location'), // validate with mapbox
         biography: biography // && validateBiography(biography)
       }
