@@ -11,8 +11,8 @@
   cursor: pointer;
   padding: 10px;
   position: absolute;
-  right: -10px;
-  top: -10px;
+  left: 8px;
+  top: 8px;
   width: 44px;
 }
 
