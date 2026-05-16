@@ -8,6 +8,10 @@ context = {
 */
 
 function logError(error, context = {}) {
+  
+  console.error('error: ', JSON.stringify(error))
+  console.log("React Component Stack:", error.componentStack)
+  console.log("Original Error:", error.stack)
 
   console.error('Temp error: ', error)
   return
