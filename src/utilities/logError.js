@@ -18,7 +18,6 @@ function logError(error, context = {}) {
   }
   
   console.error('error payload: ', payload)
-  console.log('JSON.stringify(payload): ', JSON.stringify(payload))
   
   // make request to sentry
 }
