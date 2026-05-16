@@ -1,6 +1,6 @@
 
 const validate = {
-  async image (file, options = { maxSizeMB: 5, minDimension: 320, maxDimension: 4096 }) => {
+  async image (file, options = { maxSizeMB: 5, minDimension: 320, maxDimension: 4096 }) {
     if (!file) {
       throw new Error('No image file found.')
     }
