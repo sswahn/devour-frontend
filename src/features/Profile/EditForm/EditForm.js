@@ -104,7 +104,6 @@ function EditForm({ profile, setProfile }) {
         id="username"
         type="text"
         label="Username"
-        autoComplete="username webauthn"
         error={errorMessage}
         defaultValue={profile.username}
         required
