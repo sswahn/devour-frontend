@@ -230,6 +230,7 @@
 /* Feed */
 
 .FXju5x6KeXy0fnVXd9I2 {  
+  --feed-height: 100dvh;
   height: 100dvh;
   
   padding: 
@@ -268,6 +269,7 @@
 
 /* Automatically detect when the page or element enters fullscreen */
 .FXju5x6KeXy0fnVXd9I2:fullscreen {
+  --feed-height: 100vh;
   --notch-height: env(safe-area-inset-top);
   width: 100vw;
   height: 100vh;
