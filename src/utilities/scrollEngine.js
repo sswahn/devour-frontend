@@ -30,11 +30,12 @@ function update(timestamp) {
 
   // Calculate scroll velocity
   const deltaTime = timestamp - prevTimestamp
-  const rawVelocity = dY / deltaTime
+  const velocity = dY / deltaTime
 
+  // Pass raw velocity from here, and use smoothed in implementation within component
   // Formula: (currentRawVelocity * smoothingFactor) + (PreviousSmoothedVelocity * (1 - Factor))
   // (smoothingFactor: 0 < factor <= 1. Smaller = smoother.
-  velocity = (rawVelocity * 0.05) + (velocity * (1 - 0.05))
+  //velocity = (rawVelocity * 0.05) + (velocity * (1 - 0.05))
   // try for a buttery scroll:
   //velocity = (rawVelocity * 0.03) + (velocity * 0.97)
 
