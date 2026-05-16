@@ -28,7 +28,7 @@
 }
 
 .feedNode:fullscreen {
-  --notch-height: env(safe-area-inset-top);
+  
 }
 
 
