@@ -1,11 +1,11 @@
 
-export const sanitize = (value, length = 1000) => {
+export const sanitize = (value, maxLength = 1000) => {
   if (typeof value !== 'string') {
     throw new TypeError('Sanitize value must be a valid string.')
   }
 
-  // 1. Standard social app length check
-  if (value.length < 3 || value.length > length) {
+  const length = value.trim().length
+  if (length < 3 || length > maxLength) {
     throw new Error(`Comments must be between 3 and ${length} characters.`)
   }
 
