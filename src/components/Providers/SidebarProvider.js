@@ -1,12 +1,12 @@
 import { useState, useRef, useEffect, createContext } from 'react'
-import Sidbar from '../Sidbar/Sidbar'
+import Sidebar from '../Sidebar/Sidebar'
 
-const SidbarContext = createContext(null)
+const SidebarContext = createContext(null)
 
-function SidbarProvider({ children }) {
+function SidebarProvider({ children }) {
   const [isOpen, setIsOpen] = useState(false)
   const [content, setContent] = useState(null)
-  const sidbarRef = useRef(null)
+  const sidebarRef = useRef(null)
 
   const openSidebar = component => {
     setContent(component)
@@ -30,11 +30,11 @@ function SidbarProvider({ children }) {
   }, [content])
 
   return (
-    <SidbarContext.Provider value={{ openSidebar, closeSidebar }}>
+    <SidebarContext.Provider value={{ openSidebar, closeSidebar }}>
       {children}
-      <Sidbar sidebarRef={sidebarRef} content={content} close={closeSidebar} />
-    </SidbarContext.Provider>
+      <Sidebar sidebarRef={sidebarRef} content={content} close={closeSidebar} />
+    </SidebarContext.Provider>
   )
 }
 
-export { SidbarContext, SidbarProvider }
+export { SidebarContext, SidebarProvider }
