@@ -1,16 +1,16 @@
 import Avatar from '../../../components/Avatar'
+import Dropdown from '../../../components/Dropdown'
 
-
-function SearchResults() {
+function SearchResults({ searchResults }) {
+  
+  const dropdown =  []
 
   return (
     <ul id="suggestions" role="listbox" aria-live="polite" aria-busy={loading}>
-      {loading ? <LoadingSpinner /> : searchResults?.map((result, index) =>
-        <li key={index} role="option">
+      {loading ? <LoadingSpinner /> : searchResults.map((result, index) =>
+        <li key={result.id} role="option">
           <div>
-            <div>
-              <Avatar username={result.username} />
-            </div>
+            <Avatar username={result.username} />
             <div>
               <strong>{result.username}</strong>
               <time datetime={result.timestamp}>{result.timestamp}</time>
@@ -19,6 +19,7 @@ function SearchResults() {
               <span>{result.location}</span>
               <span>{result.cuisine}</span>
             </div>
+            <Dropdown items={dropdown} />
           </div>
         </li>
       )}    
