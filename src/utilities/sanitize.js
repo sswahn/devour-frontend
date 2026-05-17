@@ -4,7 +4,7 @@ function sanitize(value, maxLength = 1000) {
     throw new TypeError('Sanitize value must be a valid string.')
   }
 
-  if (value.length < 3 || value.length > maxLength) {
+  if (value.length < 3 || value.length > maxLength) { // this should be in the validation utility...
     throw new Error(`Comments must be between 3 and ${maxLength} characters.`)
   }
 
