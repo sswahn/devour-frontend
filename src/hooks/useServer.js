@@ -39,7 +39,8 @@ function useServer() {
       throw new Error(`Failed to execute POST request. ${error}`)
     }
   }
-  
+
+  return { post }
 }
 
 export default useServer
