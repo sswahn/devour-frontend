@@ -14,7 +14,9 @@ export const api = {
   login: '/api/v1/login',
   logout: '/api/v1/logout',
   register: '/api/v1/register',
-  session: '/api/v1/session'
+  session: '/api/v1/session',
+  posts: '/api/v1/posts',
+  comments: '/api/v1/comments'
 }
 
 export const contextmenu = {
