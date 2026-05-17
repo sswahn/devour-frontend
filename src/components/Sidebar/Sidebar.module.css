@@ -1,5 +1,16 @@
 
 
 .sidebar {
-  
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(1px);
+  contain: layout paint style;
+  inset: 0;
+  opacity: 1;
+  position: fixed;
+  transition: opacity 0.5s ease-out;
+  z-index: 150;
+}
+
+.open {
+  transform: translateX(0);
 }
