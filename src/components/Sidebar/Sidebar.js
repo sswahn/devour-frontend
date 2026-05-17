@@ -1,14 +1,23 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import CloseButton from './CloseButton/CloseButton'
 import styles from './Sidebar.module.css'
 
-function Sidebar({ sidebarRef, content, isOpen, close }) {
-
+function Sidebar({ sidebarRef, content, close }) {
+  const [isOpen, setIsOpen] = useState(false)
+  
   const onClick = event => {
     if (event.target === event.currentTarget) {
       close()
     }
   }
+
+  useEffect(() => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        setIsOpen(true)
+      })
+    })
+  }, [])  
   
   return (
     <aside className={styles.sidebar} ref={sidebarRef} onClick={onClick}>
