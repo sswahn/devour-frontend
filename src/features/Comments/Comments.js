@@ -49,23 +49,25 @@ function Comments() {
   
   return (
     <section className={styles.comments}>
-      <form onSubmit={onSubmit} aria-label="comment form">
-        <textarea
-          id="comment"
-          name="comment"
-          maxLength="1000"
-          placeholder="Leave a comment..."
-          spellCheck="true"
-          enterkeyhint="send"
-          required
-          aria-label="comment input">
-          </textarea>
-        <button type="submit" aria-label="submit comment">Submit</button>
-      </form>
       <div>
-        {/* data.comments.map(comment => 
-          <div key={comment.id}>{comment}</div>            
-        ) */}
+        <form onSubmit={onSubmit} aria-label="comment form">
+          <textarea
+            id="comment"
+            name="comment"
+            maxLength="1000"
+            placeholder="Leave a comment..."
+            spellCheck="true"
+            enterkeyhint="send"
+            required
+            aria-label="comment input">
+            </textarea>
+          <button type="submit" aria-label="submit comment">Submit</button>
+        </form>
+        <div>
+          {/* data.comments.map(comment => 
+            <div key={comment.id}>{comment}</div>            
+          ) */}
+        </div>
       </div>
     </section>
   )
