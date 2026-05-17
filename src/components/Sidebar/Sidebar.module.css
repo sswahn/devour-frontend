@@ -13,6 +13,7 @@
 }
 
 .sidebar div {
+  background-color: var(--surface-raised);
   height: 100dvh;
   inset: 0;
   transform: translateX(-100%);
