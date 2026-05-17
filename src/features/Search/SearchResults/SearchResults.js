@@ -1,13 +1,13 @@
 import Avatar from '../../../components/Avatar'
 import Dropdown from '../../../components/Dropdown'
 
-function SearchResults({ searchResults }) {
+function SearchResults({ searchResults, loading }) {
   
   const dropdown =  []
 
   return (
     <ul id="suggestions" role="listbox" aria-live="polite" aria-busy={loading}>
-      {loading ? <LoadingSpinner /> : searchResults.map((result, index) =>
+      {searchResults.map(result =>
         <li key={result.id} role="option">
           <div>
             <Avatar username={result.username} />
