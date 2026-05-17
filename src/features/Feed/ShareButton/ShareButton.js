@@ -9,7 +9,7 @@ function ShareButton({ isLongPress }) {
     // check navigator.canShare(file) to verify file sharing support 
     navigator.share({
       title: 'post.title',
-      text: 'post.location',
+      text: 'post.location', // this is the display text, consider what to actually put here
       url: 'https://sswahn.github.io/devour-frontend/post-id',
       files: [
         //new File([blob], 'snapshot.png', { type: 'image/png' })
