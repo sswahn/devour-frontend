@@ -19,8 +19,8 @@ function Search() {
     id: 0,
     username: 'test_user',
     location: 'ny',
-    cuisine: '',
-    timestamp: '',
+    cuisine: 'middle eastern',
+    timestamp: Date.now(),
   }])
   const [recentSearches, setRecentSearches] = useState([])
   const [loading, setLoading] = useState(false)
