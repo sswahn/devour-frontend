@@ -76,16 +76,31 @@ const validate = {
     throw new Error('Please use a valid email or phone number.')
   },
 
-  searchTerm(term) {
-    if (term.length < 3 || term.length > 100) {
+  search(search) {
+    if (search.length < 3 || search.length > 100) {
       throw new Error('Search query must be between 3 and 100 characters.')
     }
     const regex = /^[^<>()\[\]\\/|;=~%^]+$/
-    if (!regex.test(term)) {
+    if (!regex.test(search)) {
       throw new Error('Special characters are not allowed.')
     }
-    return term
+    return search
+  },
+
+  comment(comment) {
+    if (comment.length < 3 || comment.length > 1000) {
+      throw new Error('Comment length must be between 3 and 1000 characters.')
+    }
+    return comment
+  },
+  
+  biography(biography) {
+    if (biography.length < 3 || biography.length > 250) {
+      throw new Error('Bio length must be between 3 and 250 characters.')
+    }
+    return biography
   }
+  
 }
 
 export default validate
