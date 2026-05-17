@@ -74,6 +74,8 @@ function FeedNode({ item, index, count }) {
 
   // gestures should swipe back and forth between <figure>, and <section id="comments">
   // create <Figure /> and <CommentsSection /> components
+
+  // consider markup as <article><figure></figure><aside>comments</aside></article>
   
   return (
     <figure 
