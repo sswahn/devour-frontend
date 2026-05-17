@@ -4,7 +4,7 @@ import Sidebar from '../Sidebar/Sidebar'
 const SidebarContext = createContext(null)
 
 function SidebarProvider({ children }) {
-  const [content, setContent] = useRef(null)
+  const [content, setContent] = useState(null)
   const sidebarRef = useRef(null)
 
   const openSidebar = component => {
