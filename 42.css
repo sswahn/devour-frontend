@@ -1187,16 +1187,24 @@
 .L5vDWmbThsw3ZFpe87dA div:nth-child(2) {
   flex: 1;
   margin-left: 8px;
-  pointer-events: none;
 
   border: 1px dashed red;
 }
 
-.L5vDWmbThsw3ZFpe87dA div:nth-child(2) div {
+.L5vDWmbThsw3ZFpe87dA div:nth-child(2) div:first-of-type {
   display: flex;
   gap: 10px;
-  pointer-events: none;
+
+  border: 1px dashed orange;
 }
+
+.L5vDWmbThsw3ZFpe87dA div:nth-child(2) div:last-of-type {
+  display: flex;
+  gap: 10px;
+
+  border: 1px dashed magenta;
+}
+
 
 /* Search Form */
 
