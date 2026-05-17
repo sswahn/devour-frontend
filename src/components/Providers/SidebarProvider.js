@@ -32,7 +32,7 @@ function SidebarProvider({ children }) {
   return (
     <SidebarContext.Provider value={{ openSidebar, closeSidebar }}>
       {children}
-      <Sidebar sidebarRef={sidebarRef} content={content} close={closeSidebar} />
+      <Sidebar sidebarRef={sidebarRef} content={content} isOpen={isOpen} close={closeSidebar} />
     </SidebarContext.Provider>
   )
 }
