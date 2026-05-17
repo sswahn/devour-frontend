@@ -3,7 +3,7 @@ import styles from './CloseButton.modules.css'
 function CloseButton({ close }) {
 
   const onClick = event => {
-    navigation.vibrate?.()
+    navigator.vibrate?.()
     close()
   }
   
