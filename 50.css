@@ -189,30 +189,6 @@
   width: 44px;
 }
 
-/* Feed Node Comments System */
-
-.uoscghNXGwijRME3XZY7 {
-  position: absolute;
-  top: 0;
-  left: 0
-}
-
-.uoscghNXGwijRME3XZY7 textarea {
-  field-sizing: content;
-  max-height: 152px;
-  min-height: 48px;
-  overflow: hidden; /* Hide scrollbars */
-  resize: none; /* Disable manual resize */
-}
-
-/* User Dashboard */
-
-.FlKf9UiiLCEgBH_Mh5z0 {
-  color: white;
-  height: 100dvh;
-  width: 100%;
-}
-
 /* Dropdown Button */
 
 .abpuI_3Na2ydJj24PSqD {
@@ -296,6 +272,47 @@
   position: relative;
 }
 
+
+/* Feed Node Comments System */
+
+.uoscghNXGwijRME3XZY7 {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(1px);
+  contain: layout paint style;
+  inset: 0;
+  opacity: 1;
+  position: fixed;
+  transition: opacity 0.5s ease-out;
+  z-index: 150;
+}
+
+.uoscghNXGwijRME3XZY7 > div {
+  background-color: var(--surface-raised);
+  inset: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  overscroll-behavior-y: contain;
+  padding: 8px;
+  position: fixed;
+  touch-action: none;
+  z-index: 200;
+}
+
+.uoscghNXGwijRME3XZY7 textarea {
+  field-sizing: content;
+  max-height: 152px;
+  min-height: 48px;
+  overflow: hidden; /* Hide scrollbars */
+  resize: none; /* Disable manual resize */
+}
+
+/* User Dashboard */
+
+.FlKf9UiiLCEgBH_Mh5z0 {
+  color: white;
+  height: 100dvh;
+  width: 100%;
+}
 
 /* User Notifications */
 
@@ -780,6 +797,175 @@
   list-style: none;
   margin: 24px;
 }
+
+/* Feed Node Top Nav */
+
+.RDylejBr3Rzb8YpYfiDx {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end; 
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 20;
+}
+
+.REkiBsBquIxux6uYLtzV {
+  justify-content: space-between;
+}
+
+/* Video Overlay Buttons Like Button */
+
+.tPgn6_d8EcB9qbtXe5Ke {
+  align-items: center; 
+  background: none;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  height: 44px;
+  justify-content: center;
+  cursor: pointer;
+  padding: 10px;
+  width: 44px;
+}
+
+/* Video Overlay Buttons Comments Button */
+
+.u93giZHNw1r8XONVVjuT {
+  align-items: center; 
+  background: none;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  height: 44px;
+  justify-content: center;
+  cursor: pointer;
+  padding: 10px;
+  width: 44px;
+}
+
+/* Video Overlay Buttons Share Button */
+
+.QyOWKukTcDhXHdC6M19r {
+  align-items: center; 
+  background: none;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  height: 44px;
+  justify-content: center;
+  cursor: pointer;
+  padding: 10px;
+  width: 44px;
+}
+
+/* Feed Node Overlay Buttons Fullscreen Button */
+
+.gwFM11KfM2Zh3vK3llzI {
+  align-items: center; 
+  background: none;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  height: 44px;
+  justify-content: center;
+  cursor: pointer;
+  padding: 10px;
+  width: 44px;
+}
+
+/* Feed Node Side Nav */
+
+.e2IegedGqgKHDJ9K5GKq {
+  bottom: 64px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 0;
+  width: 48px;
+  z-index: 20;
+}
+
+/* Feed Node */
+
+.QNshFBXSoGNyBxo7mpBY {
+  box-sizing: border-box;
+  contain: layout style;
+  content-visibility: auto;
+  contain-intrinsic-size: 100dvh; 
+  display: block;
+  height: var(--feed-height);
+
+  padding: 
+    env(safe-area-inset-top)
+    env(safe-area-inset-right)
+    env(safe-area-inset-bottom)
+    env(safe-area-inset-left);
+  
+  position: relative;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  /* touch-action: none; */
+  width: 100%;
+  z-index: 10;
+
+  max-width: 500px;
+  margin: 0 auto 4px auto;
+
+  background: #666; 
+  border-radius: 10px;
+}
+
+.QNshFBXSoGNyBxo7mpBY figcaption {
+  bottom: 72px;
+  left: 16px;
+  position: absolute;
+}
+
+/* Feed */
+
+.FXju5x6KeXy0fnVXd9I2 {  
+  --feed-height: 100dvh;
+  height: 100dvh;
+  /*
+  padding: 
+    env(safe-area-inset-top)
+    env(safe-area-inset-right)
+    env(safe-area-inset-bottom)
+    env(safe-area-inset-left);
+  
+  scroll-behavior: smooth;  
+  scroll-snap-type: y mandatory;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch; 
+
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+
+  overflow-x: hidden;
+  overflow-y: auto;  
+  overscroll-behavior-y: contain;
+  
+  transform: translateZ(0);
+  will-change: scroll-position;
+  */
+  z-index: 0;
+}
+
+
+:root {
+  /* set in global root:  When NOT in fullscreen, use a default offset */
+  --notch-height: 0px;
+}
+
+/*.topNav {
+  /* Shift your header down using the variable 
+  margin-top: var(--notch-height); */
+  
+  /* Optional: Use max() to ensure a minimum 20px even in fullscreen */
+  /* margin-top: max(20px, var(--notch-height)); 
+} */
 
 /* User Profile */
 
