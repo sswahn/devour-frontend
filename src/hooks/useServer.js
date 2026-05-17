@@ -22,7 +22,19 @@ function useServer() {
         }
       }
       const response = await fetch(api, options)
-      return handleResponse(response)
+      if (!response.ok) {
+        const errorMessage = await response.text()
+        throw new Error(`${response.status}: ${errorMessage}`)
+      }
+      // Handle 204 No Content or empty body
+      if (response.status === 204 || response.headers.get('Content-Length') === '0') {
+        return { success: true, message: 'No content' }
+      }
+      // Handle API response errors
+      if (response.error) {
+        throw new Error(response.error)
+      }
+      return response.json()
     } catch (error) {
       throw new Error(`Failed to execute POST request. ${error}`)
     }
