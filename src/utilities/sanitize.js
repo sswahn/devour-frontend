@@ -1,5 +1,8 @@
 
 export const sanitize = (value, length = 1000) => {
+  if (typeof value !== 'string') {
+    throw new TypeError('Sanitize value must be a valid string.')
+  }
 
   // 1. Standard social app length check
   if (value.length < 3 || value.length > length) {
