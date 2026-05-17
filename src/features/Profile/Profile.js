@@ -40,6 +40,9 @@ function Profile() {
 
   useEffect(() => {
     // loadData()
+    return () => {
+      URL.revokeObjectURL(profile.picture)
+    }
   }, [])
 
   return (
