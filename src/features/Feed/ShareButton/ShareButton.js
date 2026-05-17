@@ -8,9 +8,9 @@ function ShareButton({ isLongPress }) {
     navigator.vibrate?.(50)
     // check navigator.canShare(file) to verify file sharing support 
     navigator.share({
-      title: 'Check this out!',
-      text: 'I found this video.',
-      url: 'https://sswahn.github.io/devour-frontend',
+      title: 'post.title',
+      text: 'post.location',
+      url: 'https://sswahn.github.io/devour-frontend/post-id',
       files: [
         //new File([blob], 'snapshot.png', { type: 'image/png' })
       ]
