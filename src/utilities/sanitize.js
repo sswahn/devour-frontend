@@ -1,5 +1,5 @@
 
-export const sanitize = (value, maxLength = 1000) => {
+function sanitize(value, maxLength = 1000) {
   if (typeof value !== 'string') {
     throw new TypeError('Sanitize value must be a valid string.')
   }
@@ -23,3 +23,5 @@ export const sanitize = (value, maxLength = 1000) => {
 
   return sanitizedValue
 }
+
+export default sanitize
