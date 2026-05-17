@@ -14,7 +14,9 @@ function Sidebar({ sidebarRef, content, close }) {
   useEffect(() => {
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        setIsOpen(true)
+        if (!isOpen) { 
+          setIsOpen(true)
+        }
       })
     })
   }, [])  
