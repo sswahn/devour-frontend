@@ -22,8 +22,8 @@ function Sidebar({ sidebarRef, content, close }) {
   }, [])  
   
   return (
-    <aside className={styles.sidebar} ref={sidebarRef} onClick={onClick}>
-      <div className={`${isOpen ? styles.open : undefined}`}>
+    <aside className={styles.overlay} ref={sidebarRef} onClick={onClick}>
+      <div className={`${styles.sidebar} ${isOpen ? styles.open : ''}`}>
         <CloseButton close={close} />
         {content}
       </div>
