@@ -61,7 +61,7 @@ function Search() {
           Results will include, avatar, user, food, location
           Filters, location, popularity, etc.
         */}
-        {searchResults.length === 0 ? <LoadingSpinner /> : <SearchResults searchResults={searchResults} />}
+        {searchResults.length === 0 ? <LoadingSpinner /> : <SearchResults searchResults={searchResults} loading={loading} />}
       </div>
     </search>
   )
