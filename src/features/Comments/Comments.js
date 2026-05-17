@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { api } from '../../config'
+import validate from '../../utilities/validate'
 import server from '../../utilities/server'
 import useContent from '../../hooks/useContent'
 import BackButton from '../../components/BackButton/BackButton'
@@ -25,9 +26,10 @@ function Comments() {
       navigator.vibrate?.(50)
       setLoading(true)
       const formData = new FormData(event.target)
+      const comment = formData.get('comment').trim()
       const request = {
         post: content.id,
-        comment: formData.get('comment').trim() // needs validation, at least length
+        comment: validate.comment(comment)
       }
       const response = await server.post(api.comment, request)
       // loadComments or append comment to state?
