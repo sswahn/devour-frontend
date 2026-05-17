@@ -20,7 +20,7 @@ function EditForm({ profile, setProfile }) {
       const biography = formData.get('biography').trim()
       
       const request = {
-        picture: file ? URL.createObjectURL(validate.image(file)) : null, // needs to be revoked in the profile component
+        picture: file ? URL.createObjectURL(validate.image(file)) : null, // needs to revoke with the file in the profile component
         username: validate.username(username),
         location: location, // validate.location(location), // add to validate util
         biography: biography ? validate.biography(biography) : ''
