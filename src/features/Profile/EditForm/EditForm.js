@@ -19,9 +19,9 @@ function EditForm({ profile, setProfile }) {
       const biography = formData.get('biography')
       const request = {
         picture: file && validate.image(file), // must store the raw file.
-        username: validate.username(formData.get('username')),
-        location: formData.get('location'), // validate with mapbox
-        biography: biography // && validateBiography(biography)
+        username: validate.username(formData.get('username').trim()),
+        location: formData.get('location').trim(), // validate with mapbox
+        biography: biography // && validateBiography(biography.trim()) should validate length at least
       }
   
       setProfile(prev => ({ ...prev, ...request }))
