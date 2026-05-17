@@ -55,11 +55,10 @@ function Comments() {
           <textarea
             id="comment"
             name="comment"
-            maxLength="1000"
-            placeholder="Leave a comment..."
             spellCheck="true"
             enterkeyhint="send"
             required
+            placeholder="Leave a comment..."
             aria-label="comment input">
             </textarea>
           <button type="submit" aria-label="submit comment">Submit</button>
