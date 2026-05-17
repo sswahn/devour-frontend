@@ -31,21 +31,18 @@ function Comments() {
         comment: sanitize(formData.get('comment').trim())
       }
       const response = await server.post(api.comment, request)
-      setLoading(false)
       // loadComments or append comment to state?
       // update feed. perhaps a snackbar sucess message.
     } catch (error) {
-      setLoading(false)
       setErrorMessage(error)
+    } finally {
+      setLoading(false)
     }
   }
 
   useEffect(() => {
     // loadComments()
   }, [])
-
-
-
 
   // start with only a single line height, then dynamically grow as user input moves to the next line
   
