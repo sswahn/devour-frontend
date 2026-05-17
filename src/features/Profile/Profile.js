@@ -7,7 +7,7 @@ import useSwipeFromEdge from '../../hooks/useSwipeFromEdge'
 import TopNav from './TopNav/TopNav'
 import FollowButton from './FollowButton/FollowButton'
 import FollowStats from './FollowStats/FollowStats'
-import Feed from '../../Feed/Feed'
+import Feed from '../Feed/Feed'
 import styles from './Profile.module.css'
 
 function Profile() {
