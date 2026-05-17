@@ -15,12 +15,15 @@ function EditForm({ profile, setProfile }) {
       event.preventDefault()
       setLoading(true)
       const formData = new FormData(event.target)
-      const biography = formData.get('biography')
+      const username = formData.get('username').trim() // 
+      const location = formData.get('location').trim()
+      const biography = formData.get('biography').trim()
+      
       const request = {
         picture: file && validate.image(file), // must store the raw file.
-        username: validate.username(formData.get('username').trim()),
-        location: formData.get('location').trim(), // validate with mapbox
-        biography: biography // && validateBiography(biography.trim()) should validate length at least
+        username: validate.username(username),
+        location: location, // validate.location(location), // add to validate util
+        biography: biography && validate.biography(biography)
       }
   
       setProfile(prev => ({ ...prev, ...request }))
