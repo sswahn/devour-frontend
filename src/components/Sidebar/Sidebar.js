@@ -12,7 +12,7 @@ function Sidebar({ sidebarRef, content, isOpen, close }) {
   
   return (
     <aside className={styles.sidebar} ref={sidebarRef} onClick={onClick}>
-      <div className={`${isOpen ? styles.open : null}`}>
+      <div className={`${isOpen ? styles.open : undefined}`}>
         <CloseButton close={close} />
         {content}
       </div>
