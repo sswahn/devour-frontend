@@ -1,3 +1,5 @@
+import Avatar from '../../../components/Avatar'
+
 
 function SearchResults() {
 
@@ -6,7 +8,17 @@ function SearchResults() {
       {loading ? <LoadingSpinner /> : searchResults?.map((result, index) =>
         <li key={index} role="option">
           <div>
-            {result}
+            <div>
+              <Avatar username={result.username} />
+            </div>
+            <div>
+              <strong>{result.username}</strong>
+              <time>{result.timestamp}</time>
+            </div>
+            <div>
+              <span>{result.location}</span>
+              <span>{result.cuisine}</span>
+            </div>
           </div>
         </li>
       )}    
