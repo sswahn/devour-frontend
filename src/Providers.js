@@ -12,13 +12,13 @@ function Providers({ children }) {
       <FullscreenProvider>
         <OverlayProvider>
           <ProfileProvider>
-            <SidebarProvider>
-              <DialogProvider>
-                <ContentProvider>
+            <ContentProvider>
+              <SidebarProvider>
+                <DialogProvider>
                   {children}
-                </ContentProvider>
-              </DialogProvider>
-            </SidebarProvider>
+                </DialogProvider>
+              </SidebarProvider>
+            </ContentProvider>
           </ProfileProvider>
         </OverlayProvider>
       </FullscreenProvider>
