@@ -1,12 +1,13 @@
 import Avatar from '../../../components/Avatar/Avatar'
 import Dropdown from '../../../components/Dropdown/Dropdown'
+import styles from './SearchResults.module.css'
 
 function SearchResults({ searchResults, loading }) {
   
   const dropdown =  []
 
   return searchResults.map(result =>
-    <li key={result.id} role="option">
+    <li className={styles.searchResults} key={result.id} role="option">
       <div>
         <Avatar username={result.username} />
         <div>
