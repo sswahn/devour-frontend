@@ -7,19 +7,17 @@ function SearchResults({ searchResults, loading }) {
   const dropdown =  []
 
   return searchResults.map(result =>
-    <li className={styles.searchResults} key={result.id} role="option">
+    <li className={styles.searchResults} key={result.id} role="option"> 
+      <Avatar username={result.username} />
       <div>
-        <Avatar username={result.username} />
-        <div>
-          <strong>{result.username}</strong>
-          <time datetime={result.timestamp}>{result.timestamp}</time>
-        </div>
-        <div>
-          <span>{result.location}</span>
-          <span>{result.cuisine}</span>
-        </div>
-        <Dropdown items={dropdown} />
+        <strong>{result.username}</strong>
+        <time datetime={result.timestamp}>{result.timestamp}</time>
       </div>
+      <div>
+        <span>{result.location}</span>
+        <span>{result.cuisine}</span>
+      </div>
+      <Dropdown items={dropdown} />
     </li>
   )
 }
