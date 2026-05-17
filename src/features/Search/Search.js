@@ -8,13 +8,20 @@ import TopNav from './TopNav/TopNav'
 import SearchIcon from '../../components/Icons/SearchIcon/SearchIcon'
 import SearchInput from './SearchInput/SearchInput'
 import SpeechRecognitionButton from './SpeechRecognitionButton/SpeechRecognitionButton'
+import SearchResults from './SearchResults/SearchResults'
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner'
 import styles from './Search.module.css'
 
 function Search() {
   const { closeOverlay } = useOverlay()
   const [searchValue, setSearchValue] = useState('')
-  const [searchResults, setSearchResults] = useState([])
+  const [searchResults, setSearchResults] = useState([{
+    id: 0,
+    username: 'test_user',
+    location: 'ny',
+    cuisine: '',
+    timestamp: '',
+  }])
   const [recentSearches, setRecentSearches] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
@@ -54,12 +61,7 @@ function Search() {
           Results will include, avatar, user, food, location
           Filters, location, popularity, etc.
         */}
-        
-        <ul id="suggestions" role="listbox" aria-live="polite" aria-busy={loading}>
-          {loading ? <LoadingSpinner /> : recentSearches?.map((search, index) =>
-            <li key={index} role="option">{search}</li>
-          )}    
-        </ul>  
+        {searchResults.length === 0 ? <LoadingSpinner /> : <SearchResults searchResults={searchResults} />}
       </div>
     </search>
   )
