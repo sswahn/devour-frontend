@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import { api } from '../../config'
-import useContent from '../../hooks/useContent'
+import sanitize from '../../utilities/sanitize'
 import server from '../../utilities/server'
+import useContent from '../../hooks/useContent'
 import BackButton from '../../components/BackButton/BackButton'
 import styles from './Comments.module.css'
 
@@ -27,7 +28,7 @@ function Comments() {
       const formData = new FormData(event.target)
       const request = {
         post: content.id,
-        comment: formData.get('comment')
+        comment: sanitize(formData.get('comment').trim())
       }
       const response = await server.post(api.comment, request)
       setLoading(false)
