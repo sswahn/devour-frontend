@@ -13,7 +13,7 @@ function SearchResults() {
             </div>
             <div>
               <strong>{result.username}</strong>
-              <time>{result.timestamp}</time>
+              <time datetime={result.timestamp}>{result.timestamp}</time>
             </div>
             <div>
               <span>{result.location}</span>
