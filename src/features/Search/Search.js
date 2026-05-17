@@ -61,7 +61,9 @@ function Search() {
           Results will include, avatar, user, food, location
           Filters, location, popularity, etc.
         */}
-        {loading ? <LoadingSpinner /> : <SearchResults searchResults={searchResults} />}
+        <ul id="search-results" role="listbox" aria-live="polite" aria-busy={loading}>
+          {loading ? <LoadingSpinner /> : <SearchResults searchResults={searchResults} />}
+        </ul>
       </div>
     </search>
   )
