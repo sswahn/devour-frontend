@@ -1,5 +1,5 @@
-import Avatar from '../../../components/Avatar'
-import Dropdown from '../../../components/Dropdown'
+import Avatar from '../../../components/Avatar/Avatar'
+import Dropdown from '../../../components/Dropdown/Dropdown'
 
 function SearchResults({ searchResults, loading }) {
   
