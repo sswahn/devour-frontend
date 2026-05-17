@@ -1,31 +1,27 @@
-import { useState, useRef, createContext } from 'react'
+import { useState, useRef, useEffect, createContext } from 'react'
 import Sidebar from '../Sidebar/Sidebar'
 
 const SidebarContext = createContext(null)
 
 function SidebarProvider({ children }) {
-  const [isOpen, setIsOpen] = useState(false)
-  const contentRef = useRef(null)
+  const [content, setContent] = useRef(null)
   const sidebarRef = useRef(null)
 
   const openSidebar = component => {
     
     console.log('openSidebar fired: ', component)
     
-    contentRef.current = component
-    setIsOpen(true)
+    setContent(component)
   }
   
   const closeSidebar = () => {
-    contentRef.current = null
-    setIsOpen(false)
+    setContent(null)
   }
-
 
   return (
     <SidebarContext.Provider value={{ openSidebar, closeSidebar }}>
       {children}
-      {isOpen && <Sidebar sidebarRef={sidebarRef} content={contentRef.current} close={closeSidebar} />}
+      {!!content && <Sidebar sidebarRef={sidebarRef} content={content} close={closeSidebar} />}
     </SidebarContext.Provider>
   )
 }
