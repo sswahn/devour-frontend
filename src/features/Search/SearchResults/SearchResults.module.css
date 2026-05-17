@@ -19,17 +19,11 @@
   border: 1px dashed red;
 }
 
-.searchResults div:nth-child(2) div:first-of-type {
+.searchResults div:nth-child(2) :nth-child(1) {
   display: flex;
   gap: 10px;
 
   border: 1px dashed orange;
 }
 
-.searchResults div:nth-child(2) div:last-of-type {
-  display: flex;
-  gap: 10px;
-
-  border: 1px dashed magenta;
-}
 
