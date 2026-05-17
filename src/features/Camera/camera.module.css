@@ -2,6 +2,7 @@
 
 .camera {
   contain: layout paint style;
+  height: 100dvh;
   inset: 0;
   margin: 0 auto;
   max-width: 500px; 
