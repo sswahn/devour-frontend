@@ -1191,19 +1191,13 @@
   border: 1px dashed red;
 }
 
-.L5vDWmbThsw3ZFpe87dA div:nth-child(2) div:first-of-type {
+.L5vDWmbThsw3ZFpe87dA div:nth-child(2) :nth-child(1) {
   display: flex;
   gap: 10px;
 
   border: 1px dashed orange;
 }
 
-.L5vDWmbThsw3ZFpe87dA div:nth-child(2) div:last-of-type {
-  display: flex;
-  gap: 10px;
-
-  border: 1px dashed magenta;
-}
 
 
 /* Search Form */
