@@ -24,9 +24,11 @@
 }
 
 .comments textarea {
+  border-radius: 10px;
   field-sizing: content;
   max-height: 152px;
   min-height: 48px;
   overflow: hidden; /* Hide scrollbars */
   resize: none; /* Disable manual resize */
+  width: 100%;
 }
