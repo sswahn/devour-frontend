@@ -1,9 +1,26 @@
 /* Feed Node Comments System */
 
 .comments {
-  position: absolute;
-  top: 0;
-  left: 0
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(1px);
+  contain: layout paint style;
+  inset: 0;
+  opacity: 1;
+  position: fixed;
+  transition: opacity 0.5s ease-out;
+  z-index: 150;
+}
+
+.comments > div {
+  background-color: var(--surface-raised);
+  inset: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  overscroll-behavior-y: contain;
+  padding: 8px;
+  position: fixed;
+  touch-action: none;
+  z-index: 200;
 }
 
 .comments textarea {
