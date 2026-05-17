@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { api } from '../../config'
-import sanitize from '../../utilities/sanitize'
 import server from '../../utilities/server'
 import useContent from '../../hooks/useContent'
 import BackButton from '../../components/BackButton/BackButton'
@@ -28,7 +27,7 @@ function Comments() {
       const formData = new FormData(event.target)
       const request = {
         post: content.id,
-        comment: sanitize(formData.get('comment').trim())
+        comment: formData.get('comment').trim() // needs validation, at least length
       }
       const response = await server.post(api.comment, request)
       // loadComments or append comment to state?
