@@ -14,9 +14,9 @@ function Comments() {
 
   const loadComments = async () => {
     const request = {
-      comment: content.id
+      id: content.id
     }
-    const response = await server.get(`${api.comment}/${request.comment}`)
+    const response = await server.get(`${api.comment}/${request.id}`)
     setData(response.data)
   }
   
@@ -28,7 +28,7 @@ function Comments() {
       const formData = new FormData(event.target)
       const comment = formData.get('comment').trim()
       const request = {
-        post: content.id,
+        id: content.id,
         comment: validate.comment(comment)
       }
       const response = await server.post(api.comment, request)
