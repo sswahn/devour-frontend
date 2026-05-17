@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, createContext } from 'react'
+import { useState, useRef, createContext } from 'react'
 import Sidebar from '../Sidebar/Sidebar'
 
 const SidebarContext = createContext(null)
