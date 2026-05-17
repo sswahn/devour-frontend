@@ -20,10 +20,10 @@ function EditForm({ profile, setProfile }) {
       const biography = formData.get('biography').trim()
       
       const request = {
-        picture: file && validate.image(file), // must store the raw file.
+        picture: file ? validate.image(file) : null,
         username: validate.username(username),
         location: location, // validate.location(location), // add to validate util
-        biography: biography && validate.biography(biography)
+        biography: biography ? validate.biography(biography) : ''
       }
   
       setProfile(prev => ({ ...prev, ...request }))
