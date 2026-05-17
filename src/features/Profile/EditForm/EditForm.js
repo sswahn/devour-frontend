@@ -15,7 +15,7 @@ function EditForm({ profile, setProfile }) {
       event.preventDefault()
       setLoading(true)
       const formData = new FormData(event.target)
-      const username = formData.get('username').trim() // 
+      const username = formData.get('username').trim()
       const location = formData.get('location').trim()
       const biography = formData.get('biography').trim()
       
