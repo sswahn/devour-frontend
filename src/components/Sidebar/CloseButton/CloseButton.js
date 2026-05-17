@@ -1,3 +1,4 @@
+import XmarkIcon from '../../Icons/XmarkIcon/XmarkIcon'
 import styles from './CloseButton.modules.css'
 
 function CloseButton({ close }) {
@@ -8,7 +9,9 @@ function CloseButton({ close }) {
   }
   
   return (
-    <button className={styles.closeButton} onClick={onClick} type="button" aria-label="close sidebar"></button>
+    <button className={styles.closeButton} onClick={onClick} type="button" aria-label="close sidebar">
+      <XmarkIcon />
+    </button>
   )
 }
 
