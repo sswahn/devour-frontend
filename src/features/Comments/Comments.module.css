@@ -29,6 +29,7 @@
   max-height: 152px;
   min-height: 48px;
   overflow: hidden; /* Hide scrollbars */
+  padding: 8px;
   resize: none; /* Disable manual resize */
   width: 100%;
 }
