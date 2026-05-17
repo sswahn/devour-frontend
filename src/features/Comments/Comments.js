@@ -46,6 +46,10 @@ function Comments() {
   }, [])
 
   // start with only a single line height, then dynamically grow as user input moves to the next line
+
+
+  // no longer an overlay, so need to remove css that makes it that way.
+  // it is now a child of <Sidebar />
   
   return (
     <section className={styles.comments}>
