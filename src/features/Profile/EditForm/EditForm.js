@@ -4,7 +4,6 @@ import Input from '../../../components/Input/Input'
 import styles from './EditForm.module.css'
 
 function EditForm({ profile, setProfile }) {
-  const { validateUsername, validateImage } = useValidation()
   const [file, setFile] = useState(null)
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState(false)
