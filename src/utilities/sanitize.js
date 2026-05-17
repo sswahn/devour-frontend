@@ -4,8 +4,7 @@ export const sanitize = (value, maxLength = 1000) => {
     throw new TypeError('Sanitize value must be a valid string.')
   }
 
-  const length = value.trim().length
-  if (length < 3 || length > maxLength) {
+  if (value.length < 3 || value.length > maxLength) {
     throw new Error(`Comments must be between 3 and ${maxLength} characters.`)
   }
 
