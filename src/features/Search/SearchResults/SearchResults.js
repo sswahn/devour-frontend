@@ -10,12 +10,14 @@ function SearchResults({ searchResults, loading }) {
     <li className={styles.searchResults} key={result.id} role="option"> 
       <Avatar username={result.username} />
       <div>
-        <strong>{result.username}</strong>
-        <time datetime={result.timestamp}>{result.timestamp}</time>
-      </div>
-      <div>
-        <span>{result.location}</span>
-        <span>{result.cuisine}</span>
+        <div>
+          <strong>{result.username}</strong>
+          <time datetime={result.timestamp}>{result.timestamp}</time>
+        </div>
+        <div>
+          <span>{result.location}</span>
+          <span>{result.cuisine}</span>
+        </div>
       </div>
       <Dropdown items={dropdown} />
     </li>
