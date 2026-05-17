@@ -3,7 +3,7 @@ import { api } from '../../config'
 import validate from '../../utilities/validate'
 import server from '../../utilities/server'
 import useContent from '../../hooks/useContent'
-import BackButton from '../../components/BackButton/BackButton'
+import TopNav from './TopNav/TopNav'
 import styles from './Comments.module.css'
 
 function Comments() {
@@ -50,6 +50,7 @@ function Comments() {
   return (
     <section className={styles.comments}>
       <div>
+        <TopNav />
         <form onSubmit={onSubmit} aria-label="comment form">
           <textarea
             id="comment"
