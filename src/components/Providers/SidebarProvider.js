@@ -9,6 +9,7 @@ function SidebarProvider({ children }) {
   const sidebarRef = useRef(null)
 
   const openSidebar = component => {
+    console.log('openSidebar fired: ', component)
     setContent(component)
   }
   
@@ -17,12 +18,9 @@ function SidebarProvider({ children }) {
   }
 
   const action = () => {
-    const sidebar = sidebarRef.current
-    if (sidebar) {
-      content !== null 
-        ? setIsOpen(true) 
-        : setIsOpen(false)
-    }
+    console.log('toggling sidebar.')
+    
+    content !== null ? setIsOpen(true) : setIsOpen(false)
   }
 
   useEffect(() => {
