@@ -1206,6 +1206,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(1px);
   contain: layout paint style;
+  height: 100dvh;
   inset: 0;
   opacity: 1;
   position: fixed;
@@ -1215,6 +1216,7 @@
 
 .FJMCQdB5zc5RgmizOMOi > div {
   background-color: var(--surface-raised);
+  height: 100dvh;
   inset: 0;
   overflow-y: scroll;
   overscroll-behavior-y: contain;
