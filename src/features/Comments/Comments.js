@@ -16,7 +16,7 @@ function Comments() {
     const request = {
       id: content.id
     }
-    const response = await server.get(`${api.comment}/${request.id}`)
+    const response = await server.get(`${api.comments}/${request.id}`)
     setData(response.data)
   }
   
@@ -31,7 +31,7 @@ function Comments() {
         id: content.id,
         comment: validate.comment(comment)
       }
-      const response = await server.post(api.comment, request)
+      const response = await server.post(api.comments, request)
       // loadComments or append comment to state?
       // update feed. perhaps a snackbar sucess message.
     } catch (error) {
