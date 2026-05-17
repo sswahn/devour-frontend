@@ -1,22 +1,14 @@
 import { useState } from 'react'
 import CloseButton from './CloseButton/CloseButton'
-import styles from 'Sidebar.module.css'
+import styles from './Sidebar.module.css'
 
-// like dialog, needs a context provider, at least for open
-// probably close for off click, and just pass close to Sidebar as well.
-
-function Sidebar({ children }) {
-  const [isOpen, setIsOpen] = useState(false)
-
-  const close = () => {
-    setIsOpen(prev => !prev)
-  }
+function Sidebar({ sidebarRef, content, isOpen, close }) {
 
   return (
-    <aside className={`${styles.sidebar} ${isOpen && styles.open}`}>
-      <div className={`${styles}`}>
+    <aside className={styles.sidebar} ref={sidebarRef}>
+      <div className={`${isOpen ? styles.open : null}`}>
         <CloseButton close={close} />
-        {children}
+        {content}
       </div>
     </aside>
   )
