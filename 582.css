@@ -318,7 +318,18 @@
 }
 
 .uoscghNXGwijRME3XZY7 button {
-  
+  align-items: center;
+  background: var(--button-bar-bg);
+  border: none;
+  border-radius: 10px;
+  color: var(--button-text);
+  display: flex;
+  font-weight: bold;
+  height: 44px;
+  justify-content: center;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  width: 100%;
 }
 
 
