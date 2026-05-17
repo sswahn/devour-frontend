@@ -76,6 +76,7 @@ function FeedNode({ item, index, count }) {
   // create <Figure /> and <CommentsSection /> components
 
   // consider markup as <article><figure></figure><aside>comments</aside></article>
+  // open aside as a sidebar
   
   return (
     <figure 
