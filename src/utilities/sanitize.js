@@ -6,7 +6,7 @@ export const sanitize = (value, maxLength = 1000) => {
 
   const length = value.trim().length
   if (length < 3 || length > maxLength) {
-    throw new Error(`Comments must be between 3 and ${length} characters.`)
+    throw new Error(`Comments must be between 3 and ${maxLength} characters.`)
   }
 
   // 2. Map dangerous characters to safe HTML entities
