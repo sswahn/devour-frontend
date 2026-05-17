@@ -8,9 +8,6 @@ function SidebarProvider({ children }) {
   const sidebarRef = useRef(null)
 
   const openSidebar = component => {
-    
-    console.log('openSidebar fired: ', component)
-    
     setContent(component)
   }
   
