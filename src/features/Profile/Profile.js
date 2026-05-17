@@ -7,6 +7,7 @@ import useSwipeFromEdge from '../../hooks/useSwipeFromEdge'
 import TopNav from './TopNav/TopNav'
 import FollowButton from './FollowButton/FollowButton'
 import FollowStats from './FollowStats/FollowStats'
+import Feed from '../../Feed/Feed'
 import styles from './Profile.module.css'
 
 function Profile() {
@@ -67,9 +68,7 @@ function Profile() {
         <FollowButton />
         <FollowStats />
           
-        <div id="profile-feed" role="feed">
-          {/* import <Feed /> and use it here */}
-        </div>
+          {/* <Feed data={feedData} /> */}
       </div>
     </section>
   )
