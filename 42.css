@@ -310,6 +310,7 @@
 .uoscghNXGwijRME3XZY7 textarea {
   border-radius: 10px;
   field-sizing: content;
+  font-size: var(--font-size);
   max-height: 152px;
   min-height: 48px;
   overflow: hidden; /* Hide scrollbars */
