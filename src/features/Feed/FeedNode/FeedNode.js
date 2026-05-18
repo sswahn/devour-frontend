@@ -79,28 +79,23 @@ function FeedNode({ item, index, count }) {
   // open aside as a sidebar
   
   return (
-    <figure 
-      className={styles.feedNode} 
-      aria-posinset={index} 
-      aria-setsize={count}
-      onPointerDown={onPointerDown}
-      onPointerMove={onPointerMove}
-      onPointerUp={onPointerUp}
-      onPointerCancel={onPointerCancel}>
-      
-      <TopNav isFullSreen={isFullScreen} exitFullScreen={exitFullScreen} />
-
-      {/* item.videoUrl && <video ref={ref} src={item.videoUrl} preload="metadata" muted playsInline loop /> */}
-      {item.caption && <figcaption>{item.caption}</figcaption>}
-      
-      <SideNav 
-        isDoubleTap={isDoubleTap} 
-        isLongPress={isLongPress}
-        isFullScreen={isFullScreen}
-        enterFullScreen={enterFullScreen}
-        exitFullScreen={exitFullScreen}
-      />
-    </figure>
+    <article className={styles.feedNode} aria-posinset={index} aria-setsize={count}>
+      <figure onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={onPointerCancel}>
+        <TopNav isFullSreen={isFullScreen} exitFullScreen={exitFullScreen} />
+  
+        {/* item.videoUrl && <video ref={ref} src={item.videoUrl} preload="metadata" muted playsInline loop /> */}
+        {item.caption && <figcaption>{item.caption}</figcaption>}
+        
+        <SideNav 
+          isDoubleTap={isDoubleTap} 
+          isLongPress={isLongPress}
+          isFullScreen={isFullScreen}
+          enterFullScreen={enterFullScreen}
+          exitFullScreen={exitFullScreen}
+        />
+      </figure>
+      <aside></aside>
+    </article>
   )
 }
 
