@@ -6,6 +6,9 @@ function SearchResults({ searchResults, loading }) {
   
   const dropdown =  []
 
+  // for better accessibility:
+  // use article, header, h2, username
+
   return searchResults.map(result =>
     <li className={styles.searchResults} key={result.id} role="option"> 
       <Avatar username={result.username} />
