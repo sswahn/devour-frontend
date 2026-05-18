@@ -56,11 +56,8 @@ function Comments({ closeComments }) {
     })
   }, [])
 
-  // start with only a single line height, then dynamically grow as user input moves to the next line
 
-
-  // no longer an overlay, so need to remove css that makes it that way.
-  // it is now a child of <Sidebar />
+  // needs PointerEvents and hook swipeToClose; should only swipe closed to the side it opened from.
   
   return (
     <aside className={styles.overlay}>
