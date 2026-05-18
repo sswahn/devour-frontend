@@ -25,6 +25,14 @@
   z-index: 200;
 }
 
+.comments form {
+  background: var(--surface-raised);
+  bottom: 0;
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+  position: sticky;
+  z-index: 10;
+}
+
 .comments textarea {
   border-radius: 10px;
   field-sizing: content;
