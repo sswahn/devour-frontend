@@ -301,7 +301,7 @@
 
 .QNshFBXSoGNyBxo7mpBY {
   box-sizing: border-box;
-  contain: layout style;
+ /* contain: layout style; */
   content-visibility: auto;
   contain-intrinsic-size: 100dvh; 
   display: block;
