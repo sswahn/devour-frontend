@@ -64,7 +64,7 @@ function Comments({ closeComments }) {
   
   return (
     <aside className={styles.overlay}>
-      <div className={`${styles.comments} ${isOpen ? styles.open : ''}`}>
+      <div className={`${styles.comments} ${isOpen ? styles.open : styles.close}`}>
         <TopNav closeComments={closeComments} />
         <ul>
           {data.length === 0 
