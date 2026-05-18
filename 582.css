@@ -862,8 +862,7 @@
 
 /* Feed Node Comments System */
 
-/*
-.comments {
+.uoscghNXGwijRME3XZY7 {
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(1px);
   contain: layout paint style;
@@ -871,28 +870,23 @@
   inset: 0;
   opacity: 1;
   position: fixed;
-  transition: opacity 0.5s ease-out;
+  transition: opacity 0.1s ease-in, opacity 0.5s ease-out;
   z-index: 150;
 }
 
-
-.comments > div {
+.uoscghNXGwijRME3XZY7 > div {
   background-color: var(--surface-raised);
   height: 100dvh;
   inset: 0;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  overscroll-behavior-y: contain;
   padding: 8px;
   position: fixed;
-  touch-action: none;
+  transform: translateX(-100%);
+  transition: transform 0.3 ease-in-out;
   z-index: 200;
 }
-*/
 
-
-.uoscghNXGwijRME3XZY7 {
-  height: 100dvh;
+.jxIdzEO4hgkWkmA8kQQ7 {
+  transform: translateX(0);
 }
 
 .uoscghNXGwijRME3XZY7 form {
