@@ -14,7 +14,6 @@ function FeedNode({ item, index, count }) {
   const [commentsIsOpen, setCommentsIsOpen] = useState(false)
   const { onGestureDown, onGestureMove, onGestureUp, onGestureCancel } = useGestures()
 
-
   const openComments = () => {
     setCommentsIsOpen(true)
   }
@@ -22,9 +21,6 @@ function FeedNode({ item, index, count }) {
   const closeComments = () => {
     setCommentsIsOpen(false)
   }
-
-
-
   
   // need a function to pass to the swipeFromEdge(func) hook
   
