@@ -1,5 +1,5 @@
-//import * as serviceWorker from './sw'
 import { createRoot } from 'react-dom/client'
+import registerServiceWorker from './registerServiceWorker'
 import App from './App'
 import logError from "./utilities/logError"
 
@@ -12,13 +12,4 @@ window.addEventListener('unhandledrejection', event => {
 })
 
 createRoot(document.getElementById('root')).render(<App />)
-
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', async () => {
-    try {
-      navigator.serviceWorker.register('/sw.js')
-    } catch (error) { 
-      logError(error, { source: "serviceWorkerRegistration" }))
-    }
-  })
-}
+registerServiceWorker()
