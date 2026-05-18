@@ -977,7 +977,7 @@
   margin: 0 auto 4px auto;
 
   background: #666; 
-  border-radius: 10px;
+  border-bottom: 4px solid var(--black);
 }
 
 .QNshFBXSoGNyBxo7mpBY figcaption {
