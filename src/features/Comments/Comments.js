@@ -3,6 +3,7 @@ import { api } from '../../config'
 import validate from '../../utilities/validate'
 import server from '../../utilities/server'
 import useContent from '../../hooks/useContent'
+import TopNav from './TopNav/TopNav'
 import CommentsListItem from './CommentsListItem/CommentsListItem'
 import PaperPlaneIcon from '../../components/Icons/PaperPlaneIcon/PaperPlaneIcon'
 import styles from './Comments.module.css'
@@ -64,6 +65,7 @@ function Comments() {
   return (
     <aside className={styles.overlay}>
       <div className={`${styles.comments} ${isOpen ? styles.open : ''}`}>
+        <TopNav />
         <ul>
           {data.length === 0 
             ? <li>No comments yet.</li> 
