@@ -11,8 +11,17 @@ function FeedNode({ item, index, count }) {
   const [isDoubleTap, setIsDoubleTap] = useState(null)
   const [isLongPress, setIsLongPress] = useState(null)
   const [isFullScreen, setIsFullScreen] = useState(false)
+  const [commentsIsOpen, setCommentsIsOpen] = useState(false)
   const { onGestureDown, onGestureMove, onGestureUp, onGestureCancel } = useGestures()
 
+
+  const openComments = () => {
+    setCommentsIsOpen(true)
+  }
+
+
+
+  
   // need a function to pass to the swipeFromEdge(func) hook
   
   const getLongPress = longPress => {
@@ -93,9 +102,10 @@ function FeedNode({ item, index, count }) {
           isFullScreen={isFullScreen}
           enterFullScreen={enterFullScreen}
           exitFullScreen={exitFullScreen}
+          openComments={openComments}
         />
       </figure>
-      <Comments />
+      {commentsIsOpen && <Comments />}
     </article>
   )
 }
