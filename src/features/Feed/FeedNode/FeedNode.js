@@ -88,7 +88,6 @@ function FeedNode({ item, index, count }) {
           openComments={openComments}
         />
       </figure>
-      {/* might need to portal comments, to elevate above header, and mobileNav */}
       {commentsIsOpen && <Comments closeComments={closeComments} />}
     </article>
   )
