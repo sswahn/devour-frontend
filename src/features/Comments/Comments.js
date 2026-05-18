@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { api } from '../../config'
 import validate from '../../utilities/validate'
 import server from '../../utilities/server'
@@ -14,6 +14,12 @@ function Comments({ closeComments }) {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
+  const commentsRef = useRef(null)
+
+  const close = () => {
+    commentsRef.current.addEventListener()
+    setIsOpen(false)
+  }
 
   const loadComments = async () => {
     const request = {
@@ -60,7 +66,7 @@ function Comments({ closeComments }) {
   // needs PointerEvents and hook swipeToClose; should only swipe closed to the side it opened from.
   
   return (
-    <aside className={styles.overlay}>
+    <aside className={styles.overlay} ref={commentsRef}>
       <div className={[
           styles.comments,
           isOpen === true && styles.open,
