@@ -1017,7 +1017,6 @@
   transform: translateZ(0);
   will-change: scroll-position;
   */
-  z-index: 0;
 }
 
 
