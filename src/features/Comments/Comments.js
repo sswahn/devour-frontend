@@ -3,6 +3,7 @@ import { api } from '../../config'
 import validate from '../../utilities/validate'
 import server from '../../utilities/server'
 import useContent from '../../hooks/useContent'
+import PaperPlaneIcon from '../../components/Icons/PaperPlaneIcon/PaperPlaneIcon'
 import styles from './Comments.module.css'
 
 function Comments() {
@@ -67,8 +68,9 @@ function Comments() {
           placeholder="Leave a comment..."
           aria-label="comment input">
           </textarea>
-        <button type="submit" aria-label="submit comment">Submit</button> 
-        {/* use a airplane send icon */}
+        <button type="submit" aria-label="submit comment">
+          <PaperPlaneIcon />    
+        </button>
       </form>
     </aside>
   )
