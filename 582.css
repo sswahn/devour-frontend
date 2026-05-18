@@ -788,7 +788,8 @@
 
 /* Feed Node Comments System */
 
-.uoscghNXGwijRME3XZY7 {
+/*
+.comments {
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(1px);
   contain: layout paint style;
@@ -800,7 +801,8 @@
   z-index: 150;
 }
 
-.uoscghNXGwijRME3XZY7 > div {
+
+.comments > div {
   background-color: var(--surface-raised);
   height: 100dvh;
   inset: 0;
@@ -812,6 +814,7 @@
   touch-action: none;
   z-index: 200;
 }
+*/
 
 .uoscghNXGwijRME3XZY7 form {
   align-items: center;
