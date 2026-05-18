@@ -220,11 +220,13 @@
 .uoscghNXGwijRME3XZY7 {
   background-color: var(--surface-raised);
   height: 100dvh;
-  inset: 0;
   padding: 8px;
   position: fixed;
+  right: 0;
+  top: 0;
   transform: translateX(-100%);
-  transition: transform 0.3 ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  width: 100%;
   z-index: 200;
 }
 
