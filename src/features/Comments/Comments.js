@@ -9,6 +9,7 @@ import styles from './Comments.module.css'
 
 function Comments() {
   const { content } = useContent()
+  const [isOpen, setIsOpen] = useState(false)
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
@@ -46,6 +47,14 @@ function Comments() {
     // loadComments()
   }, [])
 
+  useEffect(() => {
+    requestAnimationFrame(() => {
+      if (!isOpen) {
+        setIsOpen(true)
+      }
+    })
+  }, [])
+
   // start with only a single line height, then dynamically grow as user input moves to the next line
 
 
@@ -53,8 +62,8 @@ function Comments() {
   // it is now a child of <Sidebar />
   
   return (
-    <aside className={styles.comments}>
-      <div>
+    <aside className={styles.overlay}>
+      <div className={`${styles.comments} ${isOpen ? styles.open : ''}`}>
         <ul>
           {data.length === 0 
             ? <li>No comments yet.</li> 
