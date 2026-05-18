@@ -55,21 +55,10 @@ function Comments() {
   return (
     <aside className={styles.comments}>
       <ul>
-        {data.comments.length === 0 ? <p>No comments yet.</p> : data.comments.map(comment => 
-          <li key={comment.id}>
-            <article>
-              <header>
-                <h4>{comment.username}</h4>
-                <time datetime={comment.datetime}>comment.datetime</time>
-                {/* <Dropdown /> */}
-              </header>
-              <p>{comment.text}</p>
-              <div>
-                {/* like button */}
-              </div>
-            </article>
-          </li>
-        )}
+        {data.comments.length === 0 
+          ? <p>No comments yet.</p> 
+          : data.comments.map(comment => <CommentsListItem comment={comment} />)
+        }
       </ul>
       <form onSubmit={onSubmit} aria-label="comment form">
         <textarea
