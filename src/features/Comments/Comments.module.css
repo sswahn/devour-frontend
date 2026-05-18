@@ -9,7 +9,7 @@
   opacity: 1;
   position: fixed;
   transition: opacity 0.1s ease-in, opacity 0.5s ease-out;
-  z-index: 250;
+  z-index: 150;
 }
 
 .comments {
@@ -22,7 +22,7 @@
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out;
   width: 100%;
-  z-index: 260;
+  z-index: 200;
 }
 
 .open {
