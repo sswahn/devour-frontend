@@ -4,12 +4,12 @@ import useOverlay from '../../../hooks/useOverlay'
 import MessageIcon from '../../../components/Icons/MessageIcon/MessageIcon'
 import styles from './CommentsButton.module.css'
 
-function CommentsButton({ openComment }) {
+function CommentsButton({ openComments }) {
   const buttonRef = useRef(null)
   
   const onClick = event => {
     navigator.vibrate?.(50)
-    openComment()
+    openComments()
   }
   
   return (
