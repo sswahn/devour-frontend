@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import useFullscreen from '../../hooks/useFullscreen'
 import useScrollEffect from '../../hooks/useScrollEffect'
 import HomeButton from './HomeButton/HomeButton'
 import SearchButton from './SearchButton/SearchButton'
@@ -8,11 +9,14 @@ import ProfileButton from './ProfileButton/ProfileButton'
 import styles from './MobileNav.module.css'
 
 function MobileNav() {
+  const { isFullscreen } = useFullscreen()
   const { scrollEffect } = useScrollEffect()
   const navRef = useRef(null)
 
   useEffect(() => {
-    navRef.current && scrollEffect(navRef.current, styles.hidden)
+    if (!isFullscreen) {
+      navRef.current && scrollEffect(navRef.current, styles.hidden)
+    }
   }, [])
   
   return (
