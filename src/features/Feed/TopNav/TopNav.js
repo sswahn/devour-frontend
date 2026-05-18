@@ -1,3 +1,4 @@
+import useFullscreen from '../../hooks/useFullscreen'
 import BackButton from '../../../components/BackButton/BackButton'
 import Dropdown from '../../../components/Dropdown/Dropdown'
 import AlignLeftIcon from '../../../components/Icons/AlignLeftIcon/AlignLeftIcon'
@@ -6,8 +7,9 @@ import FlagIcon from '../../../components/Icons/FlagIcon/FlagIcon'
 import UserXmarkIcon from '../../../components/Icons/UserXmarkIcon/UserXmarkIcon'
 import styles from './TopNav.module.css'
 
-function TopNav({ isFullScreen, exitFullScreen }) {
-
+function TopNav({ exitFullScreen }) {
+  const { isFullscreen } = useFullscreen()
+  
   const dropdown = [
     { icon: <AlignLeftIcon />, text: 'Description', method: () => alert('Read post description.') },
     { icon: <UserPlusIcon />, text: 'Follow', method: () => alert('User followed.') },
