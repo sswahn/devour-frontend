@@ -56,7 +56,7 @@ function Comments() {
     <aside className={styles.comments}>
       <ul>
         {data.comments.length === 0 
-          ? <p>No comments yet.</p> 
+          ? <li>No comments yet.</li> 
           : data.comments.map(comment => <CommentsListItem comment={comment} />)
         }
       </ul>
