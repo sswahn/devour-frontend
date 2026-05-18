@@ -10,7 +10,6 @@ function FeedNode({ item, index, count }) {
   const { content, setContent } = useContent()
   const [isDoubleTap, setIsDoubleTap] = useState(null)
   const [isLongPress, setIsLongPress] = useState(null)
-  const [isFullScreen, setIsFullScreen] = useState(false)
   const [commentsIsOpen, setCommentsIsOpen] = useState(false)
   const { onGestureDown, onGestureMove, onGestureUp, onGestureCancel } = useGestures()
 
@@ -64,17 +63,6 @@ function FeedNode({ item, index, count }) {
     screen.orientation?.unlock?.()
     await document.exitFullscreen()
   }
-  
-  const onFullScreenChange = event => {
-    setIsFullScreen(!!document.fullscreenElement)
-  }
-
-  useEffect(() => {
-    document.addEventListener('fullscreenchange', onFullScreenChange)
-    return () => {
-      document.removeEventListener('fullscreenchange', onFullScreenChange)
-    }
-  }, [])
 
   useEffect(() => {
     if (content.id !== item.id) {
@@ -87,7 +75,7 @@ function FeedNode({ item, index, count }) {
   return (
     <article className={styles.feedNode} aria-posinset={index} aria-setsize={count}>
       <figure onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={onPointerCancel}>
-        <TopNav isFullSreen={isFullScreen} exitFullScreen={exitFullScreen} />
+        <TopNav exitFullScreen={exitFullScreen} />
   
         {/* item.videoUrl && <video ref={ref} src={item.videoUrl} preload="metadata" muted playsInline loop /> */}
         {item.caption && <figcaption>{item.caption}</figcaption>}
@@ -95,7 +83,6 @@ function FeedNode({ item, index, count }) {
         <SideNav 
           isDoubleTap={isDoubleTap} 
           isLongPress={isLongPress}
-          isFullScreen={isFullScreen}
           enterFullScreen={enterFullScreen}
           exitFullScreen={exitFullScreen}
           openComments={openComments}
