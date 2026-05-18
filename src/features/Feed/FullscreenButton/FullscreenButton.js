@@ -2,11 +2,11 @@ import MaximizeIcon from '../../../components/Icons/MaximizeIcon/MaximizeIcon'
 import MinimizeIcon from '../../../components/Icons/MinimizeIcon/MinimizeIcon'
 import styles from './FullscreenButton.module.css'
 
-function FullscreenButton({ isFullScreen, enterFullScreen, exitFullScreen }) {
+function FullscreenButton({ enterFullScreen, exitFullScreen }) {
 
   const onClick = event => {
     navigator.vibrate?.(50)
-    !document.fullscreenElement ? enterFullScreen() : exitFullScreen() 
+    !isFullscreen ? enterFullScreen() : exitFullScreen() 
   }
 
   // button needs to toggle icon from expand to contract, 
@@ -14,7 +14,7 @@ function FullscreenButton({ isFullScreen, enterFullScreen, exitFullScreen }) {
   
   return (
     <button className={styles.fullscreenButton} onClick={onClick} type="button" aria-label="enter fullscreen mode">
-      {isFullScreen ? <MinimizeIcon /> : <MaximizeIcon />}
+      {isFullscreen ? <MinimizeIcon /> : <MaximizeIcon />}
     </button>
   )
 }
