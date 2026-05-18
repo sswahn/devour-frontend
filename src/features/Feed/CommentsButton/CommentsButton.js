@@ -1,18 +1,15 @@
 import { useRef } from 'react'
 import { overlay } from '../../../config'
 import useOverlay from '../../../hooks/useOverlay'
-import useSidebar from '../../../hooks/useSidebar'
 import MessageIcon from '../../../components/Icons/MessageIcon/MessageIcon'
-import Comments from '../../Comments/Comments'
 import styles from './CommentsButton.module.css'
 
-function CommentsButton() {
+function CommentsButton({ openComment }) {
   const buttonRef = useRef(null)
-  const { openSidebar } = useSidebar()
   
   const onClick = event => {
     navigator.vibrate?.(50)
-    openSidebar(<Comments />)
+    openComment()
   }
   
   return (
