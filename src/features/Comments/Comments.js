@@ -54,7 +54,7 @@ function Comments() {
   return (
     <aside className={styles.comments}>
       <section>
-        {/* data.comments.map(comment => 
+        {data.comments.length === 0 ? <p>No comments yet.</p> : data.comments.map(comment => 
           <div key={comment.id}>{comment}</div>            
         ) */}
       </section>
