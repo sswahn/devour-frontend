@@ -6,7 +6,7 @@ function SearchResults({ searchResults, loading }) {
   
   const dropdown =  []
 
-  // for better accessibility:
+  // for better accessibility: screen readers use quick keys to navigate between headings, so:
   // use article, header, h2, username
 
   return searchResults.map(result =>
