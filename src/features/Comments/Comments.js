@@ -3,6 +3,7 @@ import { api } from '../../config'
 import validate from '../../utilities/validate'
 import server from '../../utilities/server'
 import useContent from '../../hooks/useContent'
+import CommentsListItem from './CommentsListItem/CommentsListItem'
 import PaperPlaneIcon from '../../components/Icons/PaperPlaneIcon/PaperPlaneIcon'
 import styles from './Comments.module.css'
 
