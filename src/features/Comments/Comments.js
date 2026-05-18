@@ -8,7 +8,7 @@ import CommentsListItem from './CommentsListItem/CommentsListItem'
 import PaperPlaneIcon from '../../components/Icons/PaperPlaneIcon/PaperPlaneIcon'
 import styles from './Comments.module.css'
 
-function Comments() {
+function Comments({ closeComments }) {
   const { content } = useContent()
   const [isOpen, setIsOpen] = useState(false)
   const [data, setData] = useState([])
@@ -65,7 +65,7 @@ function Comments() {
   return (
     <aside className={styles.overlay}>
       <div className={`${styles.comments} ${isOpen ? styles.open : ''}`}>
-        <TopNav />
+        <TopNav closeComments={closeComments} />
         <ul>
           {data.length === 0 
             ? <li>No comments yet.</li> 
