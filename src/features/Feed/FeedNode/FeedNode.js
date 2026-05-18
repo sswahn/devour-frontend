@@ -19,6 +19,10 @@ function FeedNode({ item, index, count }) {
     setCommentsIsOpen(true)
   }
 
+  const closeComments = () => {
+    setCommentsIsOpen(false)
+  }
+
 
 
   
@@ -82,11 +86,7 @@ function FeedNode({ item, index, count }) {
     }
   }, [])
 
-  // gestures should swipe back and forth between <figure>, and <section id="comments">
-  // create <Figure /> and <CommentsSection /> components
-
-  // consider markup as <article><figure></figure><aside>comments</aside></article>
-  // open aside as a sidebar
+  // swipeTo close on comments sidebar
   
   return (
     <article className={styles.feedNode} aria-posinset={index} aria-setsize={count}>
@@ -105,7 +105,7 @@ function FeedNode({ item, index, count }) {
           openComments={openComments}
         />
       </figure>
-      {commentsIsOpen && <Comments />}
+      {commentsIsOpen && <Comments closeComments={closeComments} />}
     </article>
   )
 }
