@@ -1015,10 +1015,8 @@
   */
 }
 
-
-:root {
-  /* set in global root:  When NOT in fullscreen, use a default offset */
-  --notch-height: 0px;
+.FXju5x6KeXy0fnVXd9I2:fullscreen {
+  --notch-height: env(safe-area-inset-top);
 }
 
 /*.topNav {
