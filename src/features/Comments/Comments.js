@@ -55,9 +55,9 @@ function Comments() {
   return (
     <aside className={styles.comments}>
       <ul>
-        {data.comments.length === 0 
+        {data.length === 0 
           ? <li>No comments yet.</li> 
-          : data.comments.map(comment => <CommentsListItem comment={comment} />)
+          : data.map(comment => <CommentsListItem comment={comment} />)
         }
       </ul>
       <form onSubmit={onSubmit} aria-label="comment form">
