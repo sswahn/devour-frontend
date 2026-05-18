@@ -111,11 +111,11 @@ function Notifications() {
   }
 
   useEffect(() => {
-    requestAnimationFrame(() => {
+  //  requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         setMode('peek')
       })
-    })
+ //   })
   }, [])
   
   return (
