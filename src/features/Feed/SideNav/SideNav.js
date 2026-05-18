@@ -11,12 +11,12 @@ function SideNav({
   isFullScreen, 
   enterFullScreen, 
   exitFullScreen,
-  openComment
+  openComments
 }) {
   return (
     <nav className={`sideNav ${styles.sideNav}`} aria-label="video actions">
       <LikeButton isDoubleTap={isDoubleTap} />
-      <CommentsButton openComment={openComment} />
+      <CommentsButton openComments={openComments} />
       <ShareButton isLongPress={isLongPress} />
       <FullscreenButton 
         isFullScreen={isFullScreen} 
