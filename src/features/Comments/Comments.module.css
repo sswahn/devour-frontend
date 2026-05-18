@@ -28,6 +28,11 @@
 }
 */
 
+
+.comments {
+  height: 100dvh;
+}
+
 .comments form {
   align-items: center;
   background: var(--surface-raised);
