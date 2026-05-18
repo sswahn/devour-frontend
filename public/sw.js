@@ -1,6 +1,6 @@
 const STATIC_CACHE = 'static-v1'
 const RUNTIME_CACHE = 'runtime-v1'
-const PRECACHE_ASSETS = ['/', '/index.html', '/index.css']
+const PRECACHE_ASSETS = ['/', '/index.html']
 const MAX_RUNTIME_ENTRIES = 50
 
 
