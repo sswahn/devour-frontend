@@ -58,15 +58,13 @@ function Comments() {
           <li key={comment.id}>
             <article>
               <header>
-                <!-- Heading hierarchy matches the entry significance -->
-                <h4>Sarah Jenkins</h4>
-                <time datetime="2026-05-18T09:30">May 18, 2026 at 9:30 AM</time>
+                <h4>{comment.username}</h4>
+                <time datetime={comment.datetime}>comment.datetime</time>
+                {/* <Dropdown /> */}
               </header>
+              <p>{comment.text}</p>
               <div>
-                <p>This layout explanation is incredibly practical, thank you!</p>
-              </div>
-              <div>
-                <button aria-label="Reply to Sarah Jenkins">Reply</button>
+                {/* like button */}
               </div>
             </article>
           </li>
