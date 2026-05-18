@@ -1,4 +1,4 @@
-import useFullscreen from '../../hooks/useFullscreen'
+import useFullscreen from '../../../hooks/useFullscreen'
 import BackButton from '../../../components/BackButton/BackButton'
 import Dropdown from '../../../components/Dropdown/Dropdown'
 import AlignLeftIcon from '../../../components/Icons/AlignLeftIcon/AlignLeftIcon'
