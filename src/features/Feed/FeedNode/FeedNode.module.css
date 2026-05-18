@@ -21,7 +21,7 @@
   margin: 0 auto 4px auto;
 
   background: #666; 
-  border-bottom: 4px solid var(--black);
+  border-bottom: 4px solid var(--dark-black);
 }
 
 .feedNode figcaption {
