@@ -129,77 +129,6 @@
   width: 44px;
 }
 
-/* Feed Node Comments System */
-
-/*
-.comments {
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(1px);
-  contain: layout paint style;
-  height: 100dvh;
-  inset: 0;
-  opacity: 1;
-  position: fixed;
-  transition: opacity 0.5s ease-out;
-  z-index: 150;
-}
-
-
-.comments > div {
-  background-color: var(--surface-raised);
-  height: 100dvh;
-  inset: 0;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  overscroll-behavior-y: contain;
-  padding: 8px;
-  position: fixed;
-  touch-action: none;
-  z-index: 200;
-}
-*/
-
-.uoscghNXGwijRME3XZY7 form {
-  align-items: center;
-  background: var(--surface-raised);
-  bottom: 0;
-  box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
-  display: flex;
-  position: sticky;
-  z-index: 250;
-}
-
-.uoscghNXGwijRME3XZY7 form textarea {
-  border-radius: 10px;
-  field-sizing: content;
-  font-size: var(--font-size);
-  margin-bottom: 16px;
-  max-height: 152px;
-  min-height: 48px;
-  overflow: hidden; /* Hide scrollbars */
-  padding: 8px;
-  resize: none; /* Disable manual resize */
-  width: 100%;
-}
-
-.uoscghNXGwijRME3XZY7 form textarea:focus {
-  outline: none;
-}
-
-.uoscghNXGwijRME3XZY7 form button {
-  align-items: center; 
-  background: none;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-  height: 44px;
-  width: 44px;
-}
-
-
 /* Video Overlay Buttons Comments Button */
 
 .u93giZHNw1r8XONVVjuT {
@@ -273,6 +202,77 @@
 
   border: 1px dashed red;
 }
+
+/* Feed Node Comments System */
+
+/*
+.comments {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(1px);
+  contain: layout paint style;
+  height: 100dvh;
+  inset: 0;
+  opacity: 1;
+  position: fixed;
+  transition: opacity 0.5s ease-out;
+  z-index: 150;
+}
+
+
+.comments > div {
+  background-color: var(--surface-raised);
+  height: 100dvh;
+  inset: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  overscroll-behavior-y: contain;
+  padding: 8px;
+  position: fixed;
+  touch-action: none;
+  z-index: 200;
+}
+*/
+
+.uoscghNXGwijRME3XZY7 form {
+  align-items: center;
+  background: var(--surface-raised);
+  bottom: 0;
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+  display: flex;
+  position: sticky;
+  z-index: 250;
+}
+
+.uoscghNXGwijRME3XZY7 form textarea {
+  border-radius: 10px;
+  field-sizing: content;
+  font-size: var(--font-size);
+  margin-bottom: 16px;
+  max-height: 152px;
+  min-height: 48px;
+  overflow: hidden; /* Hide scrollbars */
+  padding: 8px;
+  resize: none; /* Disable manual resize */
+  width: 100%;
+}
+
+.uoscghNXGwijRME3XZY7 form textarea:focus {
+  outline: none;
+}
+
+.uoscghNXGwijRME3XZY7 form button {
+  align-items: center; 
+  background: none;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  height: 44px;
+  width: 44px;
+}
+
 
 /* Feed Node */
 
