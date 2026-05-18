@@ -48,8 +48,11 @@ module.exports = (env, argv) => {
     plugins: [
       new CopyPlugin({
         patterns: [{
-            from: 'public',
-            to: ''
+          from: 'public',
+          to: '',
+          globOptions: {
+            ignore: ['**/index.html']
+          }
         }]
       }),
       new HtmlWebpackPlugin({
