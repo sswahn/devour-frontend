@@ -975,7 +975,6 @@
   scroll-snap-stop: always;
   /* touch-action: none; */
   width: 100%;
-  z-index: 10;
 
   max-width: 500px;
   margin: 0 auto 4px auto;
