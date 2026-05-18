@@ -68,8 +68,8 @@ function Comments({ closeComments }) {
   // needs PointerEvents and hook swipeToClose; should only swipe closed to the side it opened from.
   
   return (
-    <aside className={styles.overlay} ref={commentsRef}>
-      <div className={[
+    <aside className={styles.overlay}>
+      <div ref={commentsRef} className={[
           styles.comments,
           isOpen === true && styles.open,
           isOpen === false && styles.close
