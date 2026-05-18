@@ -17,8 +17,10 @@ function Comments({ closeComments }) {
   const commentsRef = useRef(null)
 
   const close = () => {
-    commentsRef.current.addEventListener()
     setIsOpen(false)
+    commentsRef.current.addEventListener('transitionend', closeComments, {
+      once: true,
+    })
   }
 
   const loadComments = async () => {
@@ -72,7 +74,7 @@ function Comments({ closeComments }) {
           isOpen === true && styles.open,
           isOpen === false && styles.close
         ].filter(Boolean).join(' ')}>
-        <TopNav closeComments={closeComments} />
+        <TopNav close={close} />
         <ul>
           {data.length === 0 
             ? <li>No comments yet.</li> 
