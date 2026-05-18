@@ -54,26 +54,28 @@ function Comments() {
   
   return (
     <aside className={styles.comments}>
-      <ul>
-        {data.length === 0 
-          ? <li>No comments yet.</li> 
-          : data.map(comment => <CommentsListItem comment={comment} />)
-        }
-      </ul>
-      <form onSubmit={onSubmit} aria-label="comment form">
-        <textarea
-          id="comment"
-          name="comment"
-          spellCheck="true"
-          enterkeyhint="send"
-          required
-          placeholder="Leave a comment..."
-          aria-label="comment input">
-          </textarea>
-        <button type="submit" aria-label="submit comment">
-          <PaperPlaneIcon />    
-        </button>
-      </form>
+      <div>
+        <ul>
+          {data.length === 0 
+            ? <li>No comments yet.</li> 
+            : data.map(comment => <CommentsListItem comment={comment} />)
+          }
+        </ul>
+        <form onSubmit={onSubmit} aria-label="comment form">
+          <textarea
+            id="comment"
+            name="comment"
+            spellCheck="true"
+            enterkeyhint="send"
+            required
+            placeholder="Leave a comment..."
+            aria-label="comment input">
+            </textarea>
+          <button type="submit" aria-label="submit comment">
+            <PaperPlaneIcon />    
+          </button>
+        </form>
+      </div>
     </aside>
   )
 }
