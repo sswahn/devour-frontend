@@ -385,7 +385,9 @@ dialog::backdrop {
 :root {
 
   color-scheme: light dark;
-
+  
+  --notch-height: 0px;
+  
   --dark-black: #121212; /* #181818; */
   --light-black: #202020;/* #2b2b2b; */
   --lighter-black: #303030;
