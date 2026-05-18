@@ -862,7 +862,7 @@
 
 /* Feed Node Comments System */
 
-.uoscghNXGwijRME3XZY7 {
+.B1u4yoaXrqQwWpu_SIbH {
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(1px);
   contain: layout paint style;
@@ -874,7 +874,7 @@
   z-index: 150;
 }
 
-.uoscghNXGwijRME3XZY7 > div {
+.uoscghNXGwijRME3XZY7 {
   background-color: var(--surface-raised);
   height: 100dvh;
   inset: 0;
@@ -890,7 +890,7 @@
 }
 
 .uoscghNXGwijRME3XZY7 ul {
-  
+  /* list style none etc. */
 }
 
 .uoscghNXGwijRME3XZY7 form {
