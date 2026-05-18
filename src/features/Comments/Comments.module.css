@@ -26,14 +26,16 @@
 }
 
 .comments form {
+  align-items: center;
   background: var(--surface-raised);
   bottom: 0;
   box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+  display: flex;
   position: sticky;
-  z-index: 10;
+  z-index: 250;
 }
 
-.comments textarea {
+.comments form textarea {
   border-radius: 10px;
   field-sizing: content;
   font-size: var(--font-size);
@@ -46,7 +48,7 @@
   width: 100%;
 }
 
-.comments textarea:focus {
+.comments form textarea:focus {
   outline: none;
 }
 
