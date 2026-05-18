@@ -13,4 +13,6 @@ window.addEventListener('unhandledrejection', event => {
 
 createRoot(document.getElementById('root')).render(<App />)
 
-//serviceWorker.register()
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js')
+}
