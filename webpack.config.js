@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = (env, argv) => {
   const isDev = argv.mode === 'development'
@@ -45,6 +46,12 @@ module.exports = (env, argv) => {
     },
 
     plugins: [
+      new CopyPlugin({
+        patterns: [{
+            from: 'public',
+            to: ''
+        }]
+      }),
       new HtmlWebpackPlugin({
         template: path.join(process.cwd(), 'public', 'index.html')
       }),
