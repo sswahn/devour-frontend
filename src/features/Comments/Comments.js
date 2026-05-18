@@ -53,11 +53,25 @@ function Comments() {
   
   return (
     <aside className={styles.comments}>
-      <section>
+      <ul>
         {data.comments.length === 0 ? <p>No comments yet.</p> : data.comments.map(comment => 
-          <div key={comment.id}>{comment}</div>            
-        ) */}
-      </section>
+          <li key={comment.id}>
+            <article>
+              <header>
+                <!-- Heading hierarchy matches the entry significance -->
+                <h4>Sarah Jenkins</h4>
+                <time datetime="2026-05-18T09:30">May 18, 2026 at 9:30 AM</time>
+              </header>
+              <div>
+                <p>This layout explanation is incredibly practical, thank you!</p>
+              </div>
+              <div>
+                <button aria-label="Reply to Sarah Jenkins">Reply</button>
+              </div>
+            </article>
+          </li>
+        )}
+      </ul>
       <form onSubmit={onSubmit} aria-label="comment form">
         <textarea
           id="comment"
