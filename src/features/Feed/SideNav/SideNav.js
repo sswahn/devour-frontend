@@ -8,7 +8,6 @@ import styles from './SideNav.module.css'
 function SideNav({ 
   isDoubleTap, 
   isLongPress, 
-  isFullScreen, 
   enterFullScreen, 
   exitFullScreen,
   openComments
@@ -19,7 +18,6 @@ function SideNav({
       <CommentsButton openComments={openComments} />
       <ShareButton isLongPress={isLongPress} />
       <FullscreenButton 
-        isFullScreen={isFullScreen} 
         enterFullScreen={enterFullScreen} 
         exitFullScreen={exitFullScreen} />
       <LocationButton />
