@@ -53,9 +53,13 @@ function Comments({ closeComments }) {
   }
 
   useEffect(() => {
-    navigator.virtualKeyboard?.overlaysContent = true
+    if (navigator.virtualKeyboard) {
+      navigator.virtualKeyboard.overlaysContent = true
+    }
     return () => {
-      navigator.virtualKeyboard?.overlaysContent = false
+      if (navigator.virtualKeyboard) {
+        navigator.virtualKeyboard.overlaysContent = false
+      }
     }
   }, [])
 
