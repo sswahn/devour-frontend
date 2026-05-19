@@ -503,7 +503,8 @@ html {
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;  
   overscroll-behavior-y: contain;
-  -webkit-overflow-scrolling: touch; 
+  scroll-padding-bottom: 64px;
+  -webkit-overflow-scrolling: touch;
 
   width: 100%;
   z-index: 0;
