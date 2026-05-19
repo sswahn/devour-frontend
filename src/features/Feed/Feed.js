@@ -4,6 +4,7 @@ import createObserver from '../../utilities/observer'
 import server from '../../utilities/server'
 import database from '../../utilities/database'
 import FeedNode from './FeedNode/FeedNode'
+import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner'
 import Sentinel from './Sentinel/Sentinel' 
 import styles from './Feed.module.css'
 
@@ -14,7 +15,8 @@ function Feed() {
     { video: 2, caption: 'test 2' },
     { video: 3, caption: 'test 3' }
   ])
-
+  const [loading, setLoading] = useState(false)
+  
   const observerCallback = entry => { 
     if (entry.isIntersecting) {
       // could handle lazy loading video here 
@@ -37,8 +39,8 @@ function Feed() {
   return (
     <section className={styles.feed} role="feed">
       {data.map((item, index) => <FeedNode key={index} item={item} index={index + 1} count={data.length} />)}
-      
-      <Sentinel loadMoreData={loadMoreData} />
+      {loading && <LoadingSpinner />}
+      <Sentinel loadMore={loadMore} hasMore={hasMore && !loading} />
     </section>
   )
 }
