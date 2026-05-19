@@ -868,7 +868,7 @@
   border-radius: 50%;
   display: flex;
   height: 44px;
-  justify-content: center;
+  justify-content: flex-start;
   cursor: pointer;
   padding: 10px;
   position: absolute;
