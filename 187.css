@@ -209,7 +209,7 @@
 
 .nXoS5gL32zb6iiymIjaR {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-bottom: 16px;
   width: 100%;
 }
