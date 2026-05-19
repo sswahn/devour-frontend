@@ -2,18 +2,15 @@
 
 .topNav {
   align-items: center;
-  display: flex;
-  justify-content: flex-end; 
+  display: block;
   left: 0;
-  margin-top: env(safe-area-inset-top);
   position: absolute;
-  top: 0;
+  top: env(safe-area-inset-top);
   width: 100%;
-  z-index: 20;
 }
 
 @media (display-mode: standalone) {
   .topNav {
-    margin-top: env(safe-area-inset-top); /* Hide browser-like navigation */
+    top: env(safe-area-inset-top); /* PWA camera notch margin */
   }
 }
