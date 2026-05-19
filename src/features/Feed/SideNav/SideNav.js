@@ -17,9 +17,10 @@ function SideNav({
       <LikeButton isDoubleTap={isDoubleTap} />
       <CommentsButton openComments={openComments} />
       <ShareButton isLongPress={isLongPress} />
-      <FullscreenButton 
+{/*     <FullscreenButton 
         enterFullScreen={enterFullScreen} 
         exitFullScreen={exitFullScreen} />
+*/}
       <LocationButton />
     </nav>
   )
