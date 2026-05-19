@@ -922,8 +922,11 @@
 }
 
 .uoscghNXGwijRME3XZY7 ul {
+  flex: 1;
   list-style: none;
   margin-top: 16px;
+  min-height: 50dvh;
+  overflow-y: auto;
   width: 100%;
   padding-bottom: 48px; /* needs padding to not get stuck behind sticky form */
 }
@@ -931,10 +934,9 @@
 .uoscghNXGwijRME3XZY7 form {
   align-items: center;
   background: var(--surface-raised);
-  bottom: 0;
   box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
   display: flex;
-  position: fixed;
+  width: 100%;
   z-index: 250;
 }
 
