@@ -183,9 +183,6 @@
   position: absolute;
   right: 0;
   width: 48px;
-  z-index: 20;
-
-  border: 1px dashed red;
 }
 
 /* Close Overlay Back Button */
