@@ -1,4 +1,4 @@
-import createObserver from '../../utilities/observer'
+import createObserver from '../../../utilities/observer'
 
 function Sentinel({ setLoadMore }) {
   const { observe, unobserve, disconnect } = createObserver()
