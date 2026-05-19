@@ -15,7 +15,7 @@ function TopNav({ exitFullScreen }) {
   ]
   
   return (
-    <nav className={`topNav ${styles.topNav} ${isFullscreen ? styles.fullScreen : ''}`} aria-label="top menu">
+    <nav className={`topNav ${styles.topNav}`} aria-label="top menu">
       <Dropdown items={dropdown} />
     </nav>
   )
