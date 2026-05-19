@@ -8,13 +8,9 @@ import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner'
 import Sentinel from './Sentinel/Sentinel' 
 import styles from './Feed.module.css'
 
-function Feed() {
+function Feed({ data }) {
   const { observe, unobserve, disconnect } = createObserver()
-  const [data, setData] = useState([
-    { video: 1, caption: 'test 1' },
-    { video: 2, caption: 'test 2' },
-    { video: 3, caption: 'test 3' }
-  ])
+  const [loadMore, setLoadMore] = useState()
   const [loading, setLoading] = useState(false)
   
   const observerCallback = entry => { 
@@ -30,6 +26,17 @@ function Feed() {
     }
   }
 
+  const loadData = async () => {
+    // since data is passed from parent
+    // loadData/updateData should be passed from there as well.
+  }
+
+  useEffect(() => {
+    if (loadMore) {
+      // loadData()
+    }
+  }, [loadMore])
+
   useEffect(() => {
     return () => {
       disconnect()
@@ -40,7 +47,7 @@ function Feed() {
     <section className={styles.feed} role="feed">
       {data.map((item, index) => <FeedNode key={index} item={item} index={index + 1} count={data.length} />)}
       {loading && <LoadingSpinner />}
-      <Sentinel loadMore={loadMore} />
+      <Sentinel setLoadMore={setLoadMore} />
     </section>
   )
 }
