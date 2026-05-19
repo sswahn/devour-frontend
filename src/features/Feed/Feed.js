@@ -29,6 +29,8 @@ function Feed({ data }) {
   const loadData = async () => {
     // since data is passed from parent
     // loadData/updateData should be passed from there as well.
+    // need to set loading here though so it would execute 
+    // inside this function
   }
 
   useEffect(() => {
