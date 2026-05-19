@@ -10,7 +10,7 @@ import styles from './Feed.module.css'
 
 function Feed({ data }) {
   const { observe, unobserve, disconnect } = createObserver()
-  const [loadMore, setLoadMore] = useState()
+  const [loadMore, setLoadMore] = useState(false)
   const [loading, setLoading] = useState(false)
   
   const observerCallback = entry => { 
@@ -33,6 +33,7 @@ function Feed({ data }) {
 
   useEffect(() => {
     if (loadMore) {
+      console.log('sentinel intersected, loading more data!')
       // loadData()
     }
   }, [loadMore])
