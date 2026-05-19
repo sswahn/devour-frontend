@@ -1,4 +1,4 @@
-import CloseButton from './CloseButton/CloseButton'
+import CloseButton from '../CloseButton/CloseButton'
 import styles from './TopNav.module.css'
 
 function TopNav({ close }) {
