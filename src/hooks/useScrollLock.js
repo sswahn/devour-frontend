@@ -1,8 +1,6 @@
 import { useEffect } from 'react'
-import useOverlay from './useOverlay'
 
-function useScrollLock() {
-  const { isActive } = useOverlay()
+function useScrollLock(isActive) {
   
   const lockScroll = () => {
     const { scrollY } = window
