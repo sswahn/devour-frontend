@@ -948,7 +948,6 @@
   border-radius: 10px;
   field-sizing: content;
   font-size: var(--font-size);
-  margin-bottom: 16px;
   max-height: 152px;
   min-height: 48px;
   overflow: hidden; /* Hide scrollbars */
