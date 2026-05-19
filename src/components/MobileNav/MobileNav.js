@@ -15,7 +15,7 @@ function MobileNav() {
 
   useEffect(() => {
     if (!isFullscreen) {
-      navRef.current && scrollEffect(navRef.current, styles.hidden)
+     // navRef.current && scrollEffect(navRef.current, styles.hidden)
     }
   }, [])
   
