@@ -2,7 +2,8 @@
 
 .topNav {
   align-items: center;
-  display: block;
+  display: flex;
+  justify-content: flex-end;
   left: 0;
   position: absolute;
   top: env(safe-area-inset-top);
