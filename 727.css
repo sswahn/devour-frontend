@@ -922,10 +922,8 @@
 }
 
 .uoscghNXGwijRME3XZY7 ul {
-  flex: 1;
   list-style: none;
   margin-top: 16px;
-  min-height: 50dvh;
   overflow-y: auto;
   width: 100%;
   padding-bottom: 48px; /* needs padding to not get stuck behind sticky form */
