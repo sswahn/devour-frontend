@@ -53,6 +53,13 @@ function Comments({ closeComments }) {
   }
 
   useEffect(() => {
+    navigator.virtualKeyboard?.overlaysContent = true
+    return () => {
+      navigator.virtualKeyboard?.overlaysContent = false
+    }
+  }, [])
+
+  useEffect(() => {
     // loadComments()
   }, [])
 
