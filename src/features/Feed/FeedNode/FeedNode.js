@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import useContent from '../../../hooks/useContent'
 import useGestures from '../../../hooks/useGestures'
+import useScrollLock from '../../hooks/useScrollLock'
 import TopNav from '../TopNav/TopNav'
 import SideNav from '../SideNav/SideNav'
 import Comments from '../../Comments/Comments'
@@ -12,7 +13,8 @@ function FeedNode({ item, index, count }) {
   const [isLongPress, setIsLongPress] = useState(null)
   const [commentsIsOpen, setCommentsIsOpen] = useState(false)
   const { onGestureDown, onGestureMove, onGestureUp, onGestureCancel } = useGestures()
-
+  useScrollLock(commentsIsOpen)
+  
   const openComments = () => {
     setCommentsIsOpen(true)
   }
