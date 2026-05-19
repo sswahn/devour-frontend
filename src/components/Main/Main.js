@@ -17,7 +17,7 @@ function Main() {
       {/* <Suggestions /> etc. */}
 
       <Suspense fallback={<LoadingSpinner />}>
-        <Feed data={data} />
+        <Feed data={data} setData={setData} />
       </Suspense>
     </main>
   )
