@@ -12,4 +12,4 @@ window.addEventListener('unhandledrejection', event => {
 })
 
 createRoot(document.getElementById('root')).render(<App />)
-registerServiceWorker()
+// registerServiceWorker()
