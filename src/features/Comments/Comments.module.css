@@ -46,7 +46,7 @@
   box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
   display: flex;
   left: 0;
-  padding: 8px;
+  padding: 8pxn 0 8px 8px;
   position: fixed;
   bottom: env(keyboard-inset-height, 0);
   width: 100%;
