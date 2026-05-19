@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import useContent from '../../../hooks/useContent'
 import useGestures from '../../../hooks/useGestures'
-import useScrollLock from '../../hooks/useScrollLock'
+import useScrollLock from '../../../hooks/useScrollLock'
 import TopNav from '../TopNav/TopNav'
 import SideNav from '../SideNav/SideNav'
 import Comments from '../../Comments/Comments'
