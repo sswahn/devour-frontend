@@ -333,8 +333,8 @@
 /* Feed */
 
 .FXju5x6KeXy0fnVXd9I2 {  
-  --feed-height: 100dvh;
   height: 100dvh;
+  
   /*
   padding: 
     env(safe-area-inset-top)
