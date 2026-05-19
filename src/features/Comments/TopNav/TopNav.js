@@ -8,7 +8,7 @@ function TopNav({ close }) {
   
   return (
     <nav className={styles.topNav}>
-      <BackButton overlay={overlay.comments} close={close} />
+      <CloseButton overlay={overlay.comments} close={close} />
     </nav>
   )
 }
