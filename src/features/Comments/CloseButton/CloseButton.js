@@ -1,4 +1,4 @@
-import XmarkIcon from '../../Icons/XmarkIcon/XmarkIcon'
+import XmarkIcon from '../../../Icons/XmarkIcon/XmarkIcon'
 import styles from './CloseButton.module.css'
 
 function CloseButton({ close }) {
