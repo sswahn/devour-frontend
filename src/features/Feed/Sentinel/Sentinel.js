@@ -1,38 +1,33 @@
 import { useRef } from 'react'
+import createObserver from '../../utilities/observer'
 
-function Sentinel({ loadMore }) {
+function Sentinel({ setLoadMore }) {
+  const { observe, unobserve, disconnect } = createObserver()
   const observer = useRef(null)
 
-  const sentinelRef = useCallback(node => {
-    if (observer.current) { // Disconnect previous observer if it exists
-      observer.current.disconnect()
+  const observerCallback = entry => { 
+    if (entry.isIntersecting) {
+      setLoadMore(true)
+      unobserve(node)
     }
-    if (!node || !hasMore) { // Do nothing if node is null (unmounted) or no more data to fetch
-      return
+  }
+
+  const setObserver = node => { // gets passed into ref={setObserver}
+    if (node) {
+      observe(node, observerCallback)
     }
-    observer.current = new IntersectionObserver(([entry]) => { // Create and connect new observer
-      if (entry.isIntersecting) {
-        onIntersect();
-      }
-    }, {
-      rootMargin: '200px', // Fetch 200px before user hits bottom
-  })
-  // Clean up observer when 
-  // component unmounts entirely
-  
+  }
+
   useEffect(() => {
     return () => {
-      if (observer.current) {
-        observer.current.disconnect()
-      }
+      disconnect()
     }
   }, [])
+
   
   return (
     <div>
-    
-      // Only render the DOM node if there is actually more data to fetch
-      {hasMore ? <div ref={sentinelRef} style={{ height: '10px' }} /> : null}
+      {!loadMore && <div ref={setObserver} style={{ height: '64px' }} />}
     </div>
   )
 }
