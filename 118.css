@@ -303,7 +303,7 @@
 .QNshFBXSoGNyBxo7mpBY {
   box-sizing: border-box;
   display: block;
-  height: var(--feed-height);
+  height: calc(var(--feed-height) - 64px);
 
   padding: 
     env(safe-area-inset-top)
