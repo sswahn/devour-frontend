@@ -40,7 +40,7 @@ function Feed() {
     <section className={styles.feed} role="feed">
       {data.map((item, index) => <FeedNode key={index} item={item} index={index + 1} count={data.length} />)}
       {loading && <LoadingSpinner />}
-      <Sentinel loadMore={loadMore} hasMore={hasMore && !loading} />
+      <Sentinel loadMore={loadMore} />
     </section>
   )
 }
