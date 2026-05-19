@@ -4,9 +4,10 @@ function Sentinel({ setLoadMore }) {
   const { observe, unobserve, disconnect } = createObserver()
   
   const observerCallback = entry => { 
-    if (entry.isIntersecting) {
+    const { target, isIntersecting } = entry
+    if (isIntersecting) {
       setLoadMore(true)
-      unobserve(node)
+      unobserve(target)
     }
   }
 
