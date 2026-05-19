@@ -37,7 +37,7 @@
   list-style: none;
   margin-top: 16px;
   width: 100%;
-  padding-bottom: 12px; /* needs padding to not get stuck behind sticky form */
+  padding-bottom: 48px; /* needs padding to not get stuck behind sticky form */
 }
 
 .comments form {
