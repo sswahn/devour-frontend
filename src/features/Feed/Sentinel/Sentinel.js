@@ -1,10 +1,8 @@
-import { useRef } from 'react'
 import createObserver from '../../utilities/observer'
 
 function Sentinel({ setLoadMore }) {
   const { observe, unobserve, disconnect } = createObserver()
-  const observer = useRef(null)
-
+  
   const observerCallback = entry => { 
     if (entry.isIntersecting) {
       setLoadMore(true)
