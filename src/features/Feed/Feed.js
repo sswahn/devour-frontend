@@ -38,7 +38,7 @@ function Feed() {
     <section className={styles.feed} role="feed">
       {data.map((item, index) => <FeedNode key={index} item={item} index={index + 1} count={data.length} />)}
       
-      {/* <Sentinel onVisible={loadMoreData} /> */}
+      <Sentinel loadMoreData={loadMoreData} />
     </section>
   )
 }
