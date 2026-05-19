@@ -104,15 +104,17 @@
   display: flex;
   justify-content: flex-end; 
   left: 0;
-  margin-top: var(--notch-height);
+  margin-top: env(safe-area-inset-top);
   position: absolute;
   top: 0;
   width: 100%;
   z-index: 20;
 }
 
-.REkiBsBquIxux6uYLtzV {
-  justify-content: space-between;
+@media (display-mode: standalone) {
+  .RDylejBr3Rzb8YpYfiDx {
+    margin-top: env(safe-area-inset-top); /* Hide browser-like navigation */
+  }
 }
 
 /* Video Overlay Buttons Like Button */
