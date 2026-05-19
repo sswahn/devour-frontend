@@ -4,14 +4,13 @@ function Sentinel({ setLoadMore }) {
   const { observe, unobserve, disconnect } = createObserver()
   
   const observerCallback = entry => { 
-    const { target, isIntersecting } = entry
-    if (isIntersecting) {
+    if (entry.isIntersecting) {
       setLoadMore(true)
-      unobserve(target)
+      unobserve(entry.target)
     }
   }
 
-  const setObserver = node => { // gets passed into ref={setObserver}
+  const setObserver = node => {
     if (node) {
       observe(node, observerCallback)
     }
@@ -23,7 +22,6 @@ function Sentinel({ setLoadMore }) {
     }
   }, [])
 
-  
   return (
     <div>
       <div ref={setObserver} style={{ height: '64px' }} />
