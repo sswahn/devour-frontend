@@ -1,7 +1,7 @@
 import createObserver from '../../../utilities/observer'
 
 function Sentinel({ setLoadMore }) {
-  const { observe, unobserve, disconnect } = createObserver()
+  const { observe, unobserve, disconnect } = createObserver({ rootMargin = '64px' })
   
   const observerCallback = entry => { 
     if (entry.isIntersecting) {
