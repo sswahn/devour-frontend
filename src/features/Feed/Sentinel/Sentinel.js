@@ -26,7 +26,7 @@ function Sentinel({ setLoadMore }) {
   
   return (
     <div>
-      {!loadMore && <div ref={setObserver} style={{ height: '64px' }} />}
+      <div ref={setObserver} style={{ height: '64px' }} />
     </div>
   )
 }
