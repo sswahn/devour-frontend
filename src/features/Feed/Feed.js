@@ -8,7 +8,7 @@ import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner'
 import Sentinel from './Sentinel/Sentinel' 
 import styles from './Feed.module.css'
 
-function Feed({ data }) {
+function Feed({ data, setData }) {
   const { observe, unobserve, disconnect } = createObserver()
   const [loadMore, setLoadMore] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -30,7 +30,8 @@ function Feed({ data }) {
     // since data is passed from parent
     // loadData/updateData should be passed from there as well.
     // need to set loading here though so it would execute 
-    // inside this function
+    // inside this function. something like: 
+    // setData(prev => [...prev, ...response.data])
   }
 
   useEffect(() => {
