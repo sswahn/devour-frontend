@@ -925,6 +925,7 @@
   list-style: none;
   overflow-y: auto;
   width: 100%;
+  margin-top: 56px;
   padding-bottom: 48px; /* needs padding to not get stuck behind sticky form */
 }
 
