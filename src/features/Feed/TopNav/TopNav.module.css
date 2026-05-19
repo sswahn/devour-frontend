@@ -9,6 +9,7 @@
   width: 100%;
 }
 
+/* Standalone = downloaded PWA (not browser) */
 @media (display-mode: standalone) {
   .topNav {
     top: env(safe-area-inset-top); /* PWA camera notch margin */
