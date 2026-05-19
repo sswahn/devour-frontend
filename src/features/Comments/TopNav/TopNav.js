@@ -1,6 +1,5 @@
 import { overlay } from '../../../config'
-import BackButton from '../../../components/BackButton/BackButton'
-import Dropdown from '../../../components/Dropdown/Dropdown'
+import CloseButton from './CloseButton/CloseButton'
 import styles from './TopNav.module.css'
 
 function TopNav({ close }) {
@@ -10,7 +9,6 @@ function TopNav({ close }) {
   return (
     <nav className={styles.topNav}>
       <BackButton overlay={overlay.comments} close={close} />
-      <Dropdown items={dropdown} />
     </nav>
   )
 }
