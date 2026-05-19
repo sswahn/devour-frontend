@@ -1,4 +1,3 @@
-import { overlay } from '../../../config'
 import CloseButton from './CloseButton/CloseButton'
 import styles from './TopNav.module.css'
 
@@ -8,7 +7,7 @@ function TopNav({ close }) {
   
   return (
     <nav className={styles.topNav}>
-      <CloseButton overlay={overlay.comments} close={close} />
+      <CloseButton close={close} />
     </nav>
   )
 }
