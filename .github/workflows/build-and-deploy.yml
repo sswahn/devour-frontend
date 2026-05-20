@@ -5,7 +5,8 @@ on:
     branches:
       - development
 
-
+permissions:
+  contents: write
 
 jobs:
   build-and-deploy:
@@ -20,37 +21,38 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
-          node-version: 24
+          node-version: 22
+          cache: npm
 
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
 
       - name: Run Unit Tests
         run: npm test -- --ci --coverage
 
       - name: Build
-        run: webpack --config webpack.config.js
+        run: npm run build
 
       - name: Verify Build Output
         run: ls -la ./build
 
+      - name: Install MemLab Dependencies
+        run: npm install -g serve wait-on memlab
 
       - name: Run MemLab Memory Leak Tests
-          run: |
-            # 1. Install a simple local server to host your build folder
-            npm install -g serve
-            
-            # 2. Start the server in the background and wait for it to be ready
-            serve -s build -l 3000 &
-            npx wait-on http://localhost:3000
-            
-            # 3. Execute MemLab against your local production build
-            memlab run --scenario ./memlab-scenario.js --work-dir ./memlab-results
-      
+        run: |
+          serve -s build -l 3000 &
+          npx wait-on http://localhost:3000
+
+          npx memlab run \
+            --scenario ./memlab-scenario.js \
+            --work-dir ./memlab-results
+
       - name: Publish MemLab Results to Actions Tab
         if: always()
         run: |
           echo "### 🧠 MemLab Memory Leak Detection Report" >> $GITHUB_STEP_SUMMARY
+
           if [ -f "./memlab-results/data/cur/leaks.txt" ]; then
             echo "\`\`\`text" >> $GITHUB_STEP_SUMMARY
             cat ./memlab-results/data/cur/leaks.txt >> $GITHUB_STEP_SUMMARY
@@ -66,8 +68,6 @@ jobs:
           name: memlab-leak-reports
           path: ./memlab-results/
 
-      
-      
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
