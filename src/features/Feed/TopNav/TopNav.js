@@ -1,3 +1,4 @@
+import Avatar from '../../../components/Avatar/Avatar'
 import Dropdown from '../../../components/Dropdown/Dropdown'
 import AlignLeftIcon from '../../../components/Icons/AlignLeftIcon/AlignLeftIcon'
 import UserPlusIcon from '../../../components/Icons/UserPlusIcon/UserPlusIcon'
