@@ -36,17 +36,17 @@ jobs:
 
 
       - name: Run MemLab Memory Leak Tests
-        run: |
-          # 1. Install a simple local server to host your build folder
-          npm install -g serve
-          
-          # 2. Start the server in the background and wait for it to be ready
-          serve -s build -l 3000 &
-          npx wait-on http://localhost:3000
-          
-          # 3. Execute MemLab against your local production build
-          memlab run --scenario ./memlab-scenario.js --work-dir ./memlab-results
-
+          run: |
+            # 1. Install a simple local server to host your build folder
+            npm install -g serve
+            
+            # 2. Start the server in the background and wait for it to be ready
+            serve -s build -l 3000 &
+            npx wait-on http://localhost:3000
+            
+            # 3. Execute MemLab against your local production build
+            memlab run --scenario ./memlab-scenario.js --work-dir ./memlab-results
+      
       - name: Publish MemLab Results to Actions Tab
         if: always()
         run: |
@@ -66,6 +66,7 @@ jobs:
           name: memlab-leak-reports
           path: ./memlab-results/
 
+      
       
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
