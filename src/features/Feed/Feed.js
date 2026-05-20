@@ -32,6 +32,7 @@ function Feed({ data, setData }) {
     // need to set loading here though so it would execute 
     // inside this function. something like: 
     // setData(prev => [...prev, ...response.data])
+    // loadMore(false)
   }
 
   useEffect(() => {
