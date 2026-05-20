@@ -77,7 +77,7 @@ function FeedNode({ item, index, count }) {
   return (
     <article className={styles.feedNode} aria-posinset={index} aria-setsize={count}>
       <figure onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={onPointerCancel}>
-        <TopNav exitFullScreen={exitFullScreen} />
+        <TopNav image={item.picture} username={item.username} />
   
         {/* item.videoUrl && <video ref={ref} src={item.videoUrl} preload="metadata" muted playsInline loop /> */}
         {item.caption && <figcaption>{item.caption}</figcaption>}
