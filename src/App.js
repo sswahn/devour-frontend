@@ -4,7 +4,6 @@ import Providers from './Providers'
 import Interface from './components/Interface/Interface'
 import './index.css'
 
-
 function App() {
   return (
     <StrictMode> 
