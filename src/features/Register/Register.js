@@ -13,7 +13,6 @@ function Register() {
   const [message, setMessage] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
   const { openOverlay, closeOverlay } = useOverlay()
-  const { validateUsername, validateContact } = useValidation()
   const { onPointerDown, onPointerMove, onPointerUp, onPointerCancel } = useSwipeFromEdge(closeOverlay)
 
   const openLogin = () => {
