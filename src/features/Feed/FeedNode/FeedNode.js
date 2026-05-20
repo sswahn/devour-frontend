@@ -4,7 +4,6 @@ import useGestures from '../../../hooks/useGestures'
 import useScrollLock from '../../../hooks/useScrollLock'
 import TopNav from '../TopNav/TopNav'
 import SideNav from '../SideNav/SideNav'
-import Avatar from '../../../components/Avatar/Avatar'
 import Comments from '../../Comments/Comments'
 import styles from './FeedNode.module.css'
 
@@ -82,8 +81,6 @@ function FeedNode({ item, index, count }) {
   
         {/* item.videoUrl && <video ref={ref} src={item.videoUrl} preload="metadata" muted playsInline loop /> */}
         {item.caption && <figcaption>{item.caption}</figcaption>}
-
-        {/* Not sure where to put <Avatar /> */}
          
         <SideNav 
           isDoubleTap={isDoubleTap} 
