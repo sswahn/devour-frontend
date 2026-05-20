@@ -1,14 +1,13 @@
 {
   "name": "devour-frontend",
   "version": "1.0.0",
-  "description": "Share pictures, video, and locations from the best dining experiences around the world.",
+  "description": "Share video and locations from the best dining experiences around the world.",
   "author": "sswahn",
   "main": "./src/index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "start": "http-server build",
-    "test": "jest",
-    "memlab": "memlab run --scenario ./memlab-scenario.js --work-dir ./memlab-results"
+    "test": "jest"
   },
   "dependencies": {
     "react": "^19.0.0",
@@ -36,7 +35,6 @@
     "@testing-library/jest-dom": "^6.0.0",
     "@testing-library/react": "^16.0.0",
     "jest-environment-jsdom": "^29.0.0",
-    "identity-obj-proxy": "3.0.0",
-    "memlab": "^1.0.0"
+    "identity-obj-proxy": "3.0.0"
   }
 }
