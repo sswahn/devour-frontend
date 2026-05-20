@@ -1,11 +1,14 @@
+
 module.exports = {
   url: 'http://localhost:3000',
 
   action: async function (page) {
-    await page.waitForSelector('body')
+    await page.waitForSelector('body');
   },
 
-  back: async function (page) {
-    await page.goBack()
+  getHeadlessBrowserOptions: function () {
+    return {
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
+    };
   }
-}
+};
