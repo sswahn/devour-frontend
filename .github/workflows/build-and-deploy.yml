@@ -38,6 +38,13 @@ jobs:
       - name: Install MemLab Dependencies
         run: npm install -g serve wait-on memlab
 
+
+      - name: Debug MemLab version
+        run: |
+          npx memlab --version || true
+          npx memlab run --help || true
+              
+
       - name: Run MemLab Memory Leak Tests
         run: |
           serve -s build -l 3000 &
