@@ -24,14 +24,21 @@ jobs:
           node-version: 22
           cache: npm
 
-      - name: Install Dependencies (bootstrap lockfile if missing)
+
+      - name: Install Dependencies (always generate lockfile if missing)
         run: |
           if [ ! -f package-lock.json ]; then
-            echo "No lockfile found → generating one..."
+            echo "No lockfile found → running npm install to generate it"
             npm install
           else
+            echo "Lockfile exists → using npm ci"
             npm ci
           fi
+      
+          echo "Checking lockfile..."
+          ls -la package-lock.json || echo "❌ STILL NO LOCKFILE"
+
+      
       
       - name: Run Unit Tests
         run: npm test -- --ci --coverage
