@@ -22,10 +22,11 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: 22
+          cache: npm
 
       - name: Install Dependencies
         run: npm install
-      
+
       - name: Run Unit Tests
         run: npm test -- --ci --coverage
 
@@ -35,14 +36,19 @@ jobs:
       - name: Verify Build Output
         run: ls -la ./build
 
+      # ----------------------------
+      # MemLab Setup (clean + local)
+      # ----------------------------
       - name: Install MemLab Dependencies
-        run: npm install -g serve wait-on memlab
+        run: npm install --save-dev memlab serve wait-on
 
-
-      - name: Debug MemLab version
+      - name: Debug MemLab CLI
         run: |
           npx memlab --version || true
-          npx memlab run --help || true
+          npx memlab snapshot --help || true
+
+      - name: Ensure MemLab Results Directory
+        run: mkdir -p ./memlab-results
 
       - name: Run MemLab Memory Leak Tests
         run: |
