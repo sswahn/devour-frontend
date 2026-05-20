@@ -44,14 +44,12 @@ jobs:
           npx memlab --version || true
           npx memlab run --help || true
 
-  
-
       - name: Run MemLab Memory Leak Tests
         run: |
           npx serve -s build -l 3000 &
           npx wait-on http://localhost:3000
 
-          npx memlab run \
+          npx memlab snapshot \
             --scenario ./memlab-scenario.js \
             --work-dir ./memlab-results
 
