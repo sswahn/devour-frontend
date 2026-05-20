@@ -87,7 +87,7 @@
 .RDylejBr3Rzb8YpYfiDx {
   align-items: center;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   left: 0;
   position: absolute;
   top: env(safe-area-inset-top);
