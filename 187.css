@@ -89,8 +89,9 @@
   display: flex;
   justify-content: space-between;
   left: 0;
+  padding-left: 8px;
   position: absolute;
-  top: env(safe-area-inset-top);
+  top: 0;
   width: 100%;
 }
 
