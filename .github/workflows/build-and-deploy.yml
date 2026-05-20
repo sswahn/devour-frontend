@@ -34,6 +34,7 @@ jobs:
       - name: Verify Build Output
         run: ls -la ./build
 
+
       - name: Run MemLab Memory Leak Tests
         run: |
           # 1. Install a simple local server to host your build folder
@@ -45,6 +46,26 @@ jobs:
           
           # 3. Execute MemLab against your local production build
           memlab run --scenario ./memlab-scenario.js --work-dir ./memlab-results
+
+      - name: Publish MemLab Results to Actions Tab
+        if: always()
+        run: |
+          echo "### 🧠 MemLab Memory Leak Detection Report" >> $GITHUB_STEP_SUMMARY
+          if [ -f "./memlab-results/data/cur/leaks.txt" ]; then
+            echo "\`\`\`text" >> $GITHUB_STEP_SUMMARY
+            cat ./memlab-results/data/cur/leaks.txt >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ No memory leak trace files found. Your app is clean!" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Upload MemLab Leak Reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: memlab-leak-reports
+          path: ./memlab-results/
+
 
       - name: Upload MemLab Leak Reports
         if: always()
