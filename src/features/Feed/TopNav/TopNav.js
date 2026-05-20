@@ -6,7 +6,7 @@ import FlagIcon from '../../../components/Icons/FlagIcon/FlagIcon'
 import UserXmarkIcon from '../../../components/Icons/UserXmarkIcon/UserXmarkIcon'
 import styles from './TopNav.module.css'
 
-function TopNav() {
+function TopNav({ image, username }) {
   
   const dropdown = [
     { icon: <AlignLeftIcon />, text: 'Description', method: () => alert('Read post description.') },
@@ -17,7 +17,7 @@ function TopNav() {
   
   return (
     <nav className={`topNav ${styles.topNav}`} aria-label="top menu">
-      {/* Not sure where to put <Avatar /> */}
+      <Avatar image={image} username={username} />
       <Dropdown items={dropdown} />
     </nav>
   )
