@@ -6,9 +6,9 @@ import styles from './Main.module.css'
 
 function Main() {
   const [data, setData] = useState([
-    { video: 1, caption: 'test 1' },
-    { video: 2, caption: 'test 2' },
-    { video: 3, caption: 'test 3' }
+    { picture: '', username: 'test_user1', video: 1, caption: 'test 1' },
+    { picture: '', username: 'test_user2',  video: 2, caption: 'test 2' },
+    { picture: '', username: 'test_user3', video: 3, caption: 'test 3' }
   ])
   
   return (
