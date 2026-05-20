@@ -7,7 +7,8 @@
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "start": "http-server build",
-    "test": "jest"
+    "test": "jest",
+    "memlab": "memlab run --scenario ./memlab-scenario.js --work-dir ./memlab-results"
   },
   "dependencies": {
     "react": "^19.0.0",
