@@ -48,7 +48,9 @@ function Camera() {
   }
   
   useEffect(() => {
+    console.log('firing in useEffect')
     if (!streamRef.current) {
+      console.log('in useEffect condition, starting Camera: ')
       startCamera()
     }
     return () => {
