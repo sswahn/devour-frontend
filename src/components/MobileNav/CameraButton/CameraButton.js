@@ -12,7 +12,7 @@ function CameraButton() {
     navigator.vibrate?.(50)
     await document.getElementById('portal').requestFullscreen()
     if ('orientation' in screen && 'lock' in screen.orientation) {
-      await screen.orientationlock('portrait')
+      await screen.orientation.lock('portrait')
     }
     openOverlay(overlay.camera, buttonRef.current)
   }
