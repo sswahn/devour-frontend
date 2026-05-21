@@ -2,14 +2,14 @@ import { useEffect } from 'react'
 import database from '../../../utilities/database'
 import styles from './recordtimer.module.css'
 
-function RecordTimer({ mode, timer, setTimer }) {
+function RecordTimer({ mode, timer, setTimer, stopCamera }) {
 
   const createInterval = () => {
     if (mode === 'on') {
       return setInterval(() => {
         if (timer < 1) {
           clearInterval(interval)
-          return handleStopRecordVideo() // fix: this function is not available here, maybe dispatch recording false or modal message
+          return stopCamera() // fix: this function is not available here, maybe dispatch recording false or modal message
         }
         setTimer(timer - 1)
       }, 1000)
