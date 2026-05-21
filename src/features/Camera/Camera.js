@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from 'react'
+import { overlays } from '../../config'
 import camera from '../../utilities/camera'
 import ViewPort from './ViewPort/ViewPort'
-import BackButton from './BackButton/BackButton'
+import BackButton from '../../components/BackButton/BackButton'
 import RecordTimer from './RecordTimer/RecordTimer'
 import LightButton from './LightButton/LightButton'
 import MuteButton from './MuteButton/MuteButton'
@@ -36,6 +37,13 @@ function Camera() {
       streamRef.current = null
     }
   }
+
+  const closeCamera = event => {
+    stopCamera()
+    if (document.fullscreenElement) {
+      document.exitFullscreen()
+    }
+  }
   
   useEffect(() => {
     if (!streamRef.current) {
@@ -48,7 +56,7 @@ function Camera() {
   
   return (
     <section className={styles.camera}>
-      <BackButton stopCamera={stopCamera} />
+      <BackButton overlay={overlays.camera} close={closeCamera} />
       <RecordTimer mode={mode} timer={timer} setTimer={setTimer} />
       <LightButton streamRef={streamRef} />
   
