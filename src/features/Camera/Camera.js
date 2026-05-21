@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { overlays } from '../../config'
+import { overlay } from '../../config'
 import camera from '../../utilities/camera'
 import ViewPort from './ViewPort/ViewPort'
 import BackButton from '../../components/BackButton/BackButton'
@@ -60,7 +60,7 @@ function Camera() {
   
   return (
     <section className={styles.camera}>
-      <BackButton overlay={overlays.camera} close={closeCamera} />
+      <BackButton overlay={overlay.camera} close={closeCamera} />
       <RecordTimer mode={mode} timer={timer} setTimer={setTimer} stopCamera={stopCamera} />
       <LightButton streamRef={streamRef} />
   
