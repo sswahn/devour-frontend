@@ -1,10 +1,8 @@
-import { useContext, useEffect } from 'react'
-import { Context } from '../../../archive/Provider'
+import { useEffect } from 'react'
 import database from '../../../utilities/database'
 import styles from './recordtimer.module.css'
 
 function RecordTimer({ mode, timer, setTimer }) {
- const [context, provider] = useContext(Context)
 
   const createInterval = () => {
     if (mode === 'on') {
