@@ -7,12 +7,9 @@ function LocationButton() {
     
   }
 
-  // onHover tool tips dont work on touch screen. consider a fix.
-  
   return (
-    <button className={styles.locationButton} onClick={handleOpenLocation} type="button" aria-label="select your location" aria-haspopup="dialog">
+    <button className={styles.locationButton} onClick={handleOpenLocation} type="button" aria-haspopup="dialog" aria-label="select your location">
       <LocationIcon />
-      <div className="tooltip" role="tooltip">Location</div>
     </button>
   )
 }
