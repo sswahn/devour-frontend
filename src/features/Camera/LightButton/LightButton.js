@@ -14,7 +14,6 @@ function LightButton({ streamRef }) {
   return (
     <button className={styles.lightButton} onClick={handleTurnOnLight} type="button" aria-label="camera light button">
       {light ? <DarkSunIcon /> : <SunIcon />}
-      <div className="tooltip" role="tooltip">Light</div>
     </button>
   )
 }
