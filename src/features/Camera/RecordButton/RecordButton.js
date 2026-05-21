@@ -1,5 +1,6 @@
 import { useContext, useRef } from 'react'
 import { Context } from '../../../archive/Provider'
+// import useFootage from '../../../hooks/useFootage'
 import camera from '../../../utilities/camera'
 import database from '../../../utilities/database'
 import styles from './recordbutton.module.css'
@@ -36,7 +37,7 @@ function RecordButton({ mode, setMode, streamRef, timer }) {
       const duration = [ ...context.video_duration, 300 - timer - currentDuration ]
 
       // camera doesnt use context, so this legacy code is most likely for Preview related components.
-      // Editor provider will be neccessary. with something like: { footage: [], duration }
+      // FootageProvider will be neccessary. with something like: { footage: [], duration }
       dispatch({ type: 'video_duration', payload: duration })
       dispatch({ type: 'video', payload: video })
   
