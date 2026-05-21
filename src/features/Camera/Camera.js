@@ -18,13 +18,10 @@ function Camera() {
  
   const startCamera = async () => {
     try {
-      console.log('fireing camera.on()')
-      
       const stream = await camera.on()
       streamRef.current = stream
       videoRef.current.srcObject = stream
 
-      console.log('stream set')
       // const caps = camera.getCapabilities(stream)
       // alert(JSON.stringify(caps))
     
@@ -48,9 +45,7 @@ function Camera() {
   }
   
   useEffect(() => {
-    console.log('firing in useEffect')
     if (!streamRef.current) {
-      console.log('in useEffect condition, starting Camera: ')
       startCamera()
     }
     return () => {
