@@ -11,7 +11,7 @@ function CameraButton() {
   const openFullscreen = async () => {
     try {
       await document.getElementById('portal')?.requestFullscreen()
-      if ('orientation' in screen && 'lock' in screen.orientation) {
+      if (screen.orientation && typeof screen.orientation.lock === 'function') {
         console.log('somehow inside the screen lock condition.')
         await screen.orientation.lock('portrait')
       }
