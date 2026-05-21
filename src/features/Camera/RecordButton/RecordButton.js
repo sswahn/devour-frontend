@@ -1,5 +1,6 @@
 import { useContext, useRef } from 'react'
 import { Context } from '../../../archive/Provider'
+import camera from '../../../utilities/camera'
 import database from '../../../utilities/database'
 import styles from './recordbutton.module.css'
 
