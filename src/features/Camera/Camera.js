@@ -56,7 +56,7 @@ function Camera() {
   return (
     <section className={styles.camera}>
       <BackButton overlay={overlays.camera} close={closeCamera} />
-      <RecordTimer mode={mode} timer={timer} setTimer={setTimer} />
+      <RecordTimer mode={mode} timer={timer} setTimer={setTimer} stopCamera={stopCamera} />
       <LightButton streamRef={streamRef} />
   
       <MuteButton streamRef={streamRef} />
