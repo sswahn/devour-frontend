@@ -1,5 +1,5 @@
 
-export const overlay = {
+export const overlays = {
   camera: 'camera',
   comments: 'comments',
   dashboard: 'dashboard',
