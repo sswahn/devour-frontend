@@ -3,11 +3,11 @@ import { Context } from '../../../archive/Provider'
 import database from '../../../utilities/database'
 import styles from './recordtimer.module.css'
 
-function RecordTimer({ timer, setTimer }) {
+function RecordTimer({ mode, timer, setTimer }) {
  const [context, provider] = useContext(Context)
 
   const createInterval = () => {
-    if (context.recording) {
+    if (mode === 'on') {
       return setInterval(() => {
         if (timer < 1) {
           clearInterval(interval)
@@ -32,7 +32,7 @@ function RecordTimer({ timer, setTimer }) {
     return () => {
       clearInterval(interval)
     }
-  }, [timer, context.recording])
+  }, [timer, mode])
 
   useEffect(() => {
     loadFromStorage()
