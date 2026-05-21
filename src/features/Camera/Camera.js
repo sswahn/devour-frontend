@@ -8,7 +8,7 @@ import LightButton from './LightButton/LightButton'
 import MuteButton from './MuteButton/MuteButton'
 import RecordButton from './RecordButton/RecordButton'
 import LocationButton from './LocationButton/LocationButton'
-import styles from './camera.module.css'
+import styles from './Camera.module.css'
 
 function Camera() {
   const [mode, setMode] = useState('off')
