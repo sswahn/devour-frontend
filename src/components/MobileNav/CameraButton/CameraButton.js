@@ -12,6 +12,7 @@ function CameraButton() {
     try {
       await document.getElementById('portal')?.requestFullscreen()
       if ('orientation' in screen && 'lock' in screen.orientation) {
+        console.log('somehow inside the screen lock condition.')
         await screen.orientation.lock('portrait')
       }
     } catch (error) {
