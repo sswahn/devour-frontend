@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { overlay } from '../../../config'
+import { overlays } from '../../../config'
 import useOverlay from '../../../hooks/useOverlay'
 import SearchIcon from '../../Icons/SearchIcon/SearchIcon'
 import styles from './SearchButton.module.css'
@@ -10,7 +10,7 @@ function SearchButton() {
   
   const onClick = event => {
     navigator.vibrate?.(50)
-    openOverlay(overlay.search, buttonRef.current)
+    openOverlay(overlays.search, buttonRef.current)
   }
   
   return (
