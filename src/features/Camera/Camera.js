@@ -16,7 +16,6 @@ function Camera() {
   const streamRef = useRef(null)
   const videoRef = useRef(null)
  
-
   const startCamera = async () => {
     try {
       const stream = await camera.on()
