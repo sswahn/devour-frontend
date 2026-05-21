@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { overlays } from '../../../config'
+import { overlay } from '../../../config'
 import useOverlay from '../../../hooks/useOverlay'
 import BellIcon from '../../Icons/BellIcon/BellIcon'
 import styles from './NotificationsButton.module.css'
@@ -10,7 +10,7 @@ function NotificationsButton() {
   
   const onClick = event => {
     navigator.vibrate?.(50)
-    openOverlay(overlays.notifications, buttonRef.current)
+    openOverlay(overlay.notifications, buttonRef.current)
   }
   
   return (
