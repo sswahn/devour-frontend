@@ -3,7 +3,7 @@ import { Context } from '../../../archive/Provider'
 import database from '../../../utilities/database'
 import styles from './recordbutton.module.css'
 
-function RecordButton({ streamRef, timer }) {
+function RecordButton({ mode, setMode, streamRef, timer }) {
   const [context, dispatch] = useContext(Context)
   const framesRef = useRef([])
   const recorderRef = useRef(null)
@@ -12,32 +12,32 @@ function RecordButton({ streamRef, timer }) {
     if (timer < 1) {
       return alert('No recording time remaining.')
     }
-    dispatch({ type: 'recording', payload: true })
+    setMode('on')
     const recorder = camera.startRecording(streamRef.current, framesRef.current)
     recorderRef.current = recorder
   }
 
   const handleStopRecordVideo = async () => {
     try {
-      dispatch({ type: 'recording', payload: false })
-
-      alert('handlingStopVideo')
+      setMode('off')
+      
+      console.log('handlingStopVideo')
       
       const blob = await camera.stopRecording(recorderRef.current, framesRef.current)
 
-      alert('after blob')
+      console.log('after blob')
       
       const video = [ ...context.video, blob ]
       const currentDuration = context.video_duration.reduce((acc, val) => acc + val, 0)
 
-      alert('after currentDuration')
+      console.log('after currentDuration')
       
       const duration = [ ...context.video_duration, 300 - timer - currentDuration ]
       
       dispatch({ type: 'video_duration', payload: duration })
       dispatch({ type: 'video', payload: video })
   
-      alert('saving the following: video: ' + JSON.stringify(video) + 'and duration: ' + duration)
+      console.log('saving the following: video: ' + JSON.stringify(video) + 'and duration: ' + duration)
 
       const db = database()
       db.put({ id: 'video', video, duration })
@@ -48,14 +48,14 @@ function RecordButton({ streamRef, timer }) {
   }
   
   const handleRecordButton = event => {
-    context.recording ? handleStopRecordVideo() : handleRecordVideo()
+    mode === 'on' ? handleStopRecordVideo() : handleRecordVideo()
   }
   
   return (
     <div className={styles.recordButtonContainer}>
       <button className={styles.recordButton} onClick={handleRecordButton} type="button" aria-label="record button" style={{
-        backgroundColor: context.recording ? '#cb4154' : '#e5e4e2', 
-        borderColor: context.recording ? '#eb4c42' : 'white'
+        backgroundColor: mode === 'on' ? '#cb4154' : '#e5e4e2', 
+        borderColor: mode === 'on' ? '#eb4c42' : 'white'
       }}></button>
     </div>
   )
