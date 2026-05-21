@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { overlays } from '../../../config'
+import { overlay } from '../../../config'
 import useOverlay from '../../../hooks/useOverlay'
 import PlusIcon from '../../Icons/PlusIcon/PlusIcon'
 import styles from './CameraButton.module.css'
@@ -20,7 +20,7 @@ function CameraButton() {
   const onClick = async event => {
     navigator.vibrate?.(50)
     await openFullscreen()
-    openOverlay(overlays.camera, buttonRef.current)
+    openOverlay(overlay.camera, buttonRef.current)
   }
   
   return (
