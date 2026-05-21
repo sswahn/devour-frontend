@@ -34,7 +34,9 @@ function RecordButton({ mode, setMode, streamRef, timer }) {
       console.log('after currentDuration')
       
       const duration = [ ...context.video_duration, 300 - timer - currentDuration ]
-      
+
+      // camera doesnt use context, so this legacy code is most likely for Preview related components.
+      // Editor provider will be neccessary. with something like: { footage: [], duration }
       dispatch({ type: 'video_duration', payload: duration })
       dispatch({ type: 'video', payload: video })
   
