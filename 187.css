@@ -310,7 +310,6 @@
   position: relative;
   scroll-snap-align: start;
   scroll-snap-stop: always;
- /* touch-action: none; */
   width: 100%;
 
   max-width: 500px;
