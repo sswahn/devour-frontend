@@ -7,13 +7,21 @@ import styles from './CameraButton.module.css'
 function CameraButton() {
   const buttonRef = useRef(null)
   const { openOverlay } = useOverlay()
+
+  const openFullscreen = async () => {
+    try {
+      await document.getElementById('portal').requestFullscreen()
+      if ('orientation' in screen && 'lock' in screen.orientation) {
+        await screen.orientation.lock('portrait')
+      }
+    } catch (error) {
+      console.error('Open fullscreen error: ', error )
+    }
+  }
  
   const onClick = async event => {
     navigator.vibrate?.(50)
-    await document.getElementById('portal').requestFullscreen()
-    if ('orientation' in screen && 'lock' in screen.orientation) {
-      await screen.orientation.lock('portrait')
-    }
+    await openFullscreen()
     openOverlay(overlay.camera, buttonRef.current)
   }
   
