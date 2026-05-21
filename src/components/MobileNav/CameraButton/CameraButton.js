@@ -15,7 +15,7 @@ function CameraButton() {
         await screen.orientation.lock('portrait')
       }
     } catch (error) {
-      console.error('Open fullscreen error: ', error )
+      console.warn('Open fullscreen error: ', error )
     }
   }
  
