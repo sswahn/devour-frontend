@@ -307,13 +307,6 @@
   box-sizing: border-box;
   display: block;
   height: calc(100dvh - 64px);
-
-  padding: 
-    env(safe-area-inset-top)
-    env(safe-area-inset-right)
-    env(safe-area-inset-bottom)
-    env(safe-area-inset-left);
-  
   position: relative;
   scroll-snap-align: start;
   scroll-snap-stop: always;
