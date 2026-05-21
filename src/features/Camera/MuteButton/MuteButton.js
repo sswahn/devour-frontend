@@ -15,7 +15,6 @@ function MuteButton({ streamRef }) {
   return (
     <button className={styles.muteButton} onClick={toggleMute} type="button" aria-label={mute ? 'unmute' : 'mute'}>
       {mute ? <MicrophoneSlashIcon /> : <MicrophoneIcon />}
-      <div className="tooltip" role="tooltip">{mute ? 'Unmute' : 'Mute'}</div>
     </button>
   )
 }
