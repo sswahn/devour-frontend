@@ -11,7 +11,9 @@ function CameraButton() {
   const onClick = async event => {
     navigator.vibrate?.(50)
     await document.getElementById('portal').requestFullscreen()
-    await screen.orientation?.lock?.('portrait')
+    if ('orientation' in screen && 'lock' in screen.orientation) {
+      await screen.orientationlock('portrait')
+    }
     openOverlay(overlay.camera, buttonRef.current)
   }
   
