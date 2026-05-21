@@ -21,7 +21,7 @@ function RecordTimer({ mode, timer, setTimer }) {
     const video = await db.get('video')
     const totalDuration = video?.duration.reduce((acc, val) => acc + val, 0)
     if (totalDuration) {
-      setTimer(300 - totalDuration)
+      setTimer(60 - totalDuration)
     }
   }
 
