@@ -18,10 +18,13 @@ function Camera() {
  
   const startCamera = async () => {
     try {
+      console.log('fireing camera.on()')
+      
       const stream = await camera.on()
       streamRef.current = stream
       videoRef.current.srcObject = stream
 
+      console.log('stream set')
       // const caps = camera.getCapabilities(stream)
       // alert(JSON.stringify(caps))
     
