@@ -3,8 +3,10 @@
 .viewPort { 
   object-fit: cover;
   height: 100dvh;
+  inset: 0;
   image-rendering: crisp-edges;
   image-rendering: pixelated;
+  position: fixed;
   width: 100%;
   will-change: transform, opacity;
   transform: translateZ(0);
