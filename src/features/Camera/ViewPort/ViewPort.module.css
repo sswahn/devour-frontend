@@ -7,7 +7,7 @@
   image-rendering: crisp-edges;
   image-rendering: pixelated;
   padding-top: env(safe-area-inset-top);
-  position: fixed;
+  position: absolute;
   width: 100%;
   will-change: transform, opacity;
   transform: translateZ(0);
