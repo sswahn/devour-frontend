@@ -26,6 +26,7 @@
   cursor: pointer;
   padding: 10px;
   width: 44px;
+  z-index: 250;
 }
 
 /* Camera Record Timer CSS Module */
