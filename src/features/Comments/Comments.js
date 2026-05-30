@@ -5,15 +5,13 @@ import server from '../../utilities/server'
 import useContent from '../../hooks/useContent'
 import TopNav from './TopNav/TopNav'
 import CommentsListItem from './CommentsListItem/CommentsListItem'
-import PaperPlaneIcon from '../../components/Icons/PaperPlaneIcon/PaperPlaneIcon'
+import CommentsForm from './CommentsForm/CommentsForm'
 import styles from './Comments.module.css'
 
 function Comments({ closeComments }) {
   const { content } = useContent()
   const [isOpen, setIsOpen] = useState(false)
   const [data, setData] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [errorMessage, setErrorMessage] = useState('')
   const commentsRef = useRef(null)
 
   const close = () => {
@@ -29,27 +27,6 @@ function Comments({ closeComments }) {
     }
     const response = await server.get(`${api.comments}/${request.id}`)
     setData(response.data)
-  }
-  
-  const onSubmit = async event => {
-    try {
-      event.preventDefault()
-      navigator.vibrate?.(50)
-      setLoading(true)
-      const formData = new FormData(event.target)
-      const comment = formData.get('comment').trim()
-      const request = {
-        id: content.id,
-        comment: validate.comment(comment)
-      }
-      const response = await server.post(api.comments, request)
-      // loadComments or append comment to state?
-      // update feed. perhaps a snackbar sucess message.
-    } catch (error) {
-      setErrorMessage(error)
-    } finally {
-      setLoading(false)
-    }
   }
 
   useEffect(() => {
@@ -80,32 +57,17 @@ function Comments({ closeComments }) {
   
   return (
     <aside className={styles.overlay}>
-      <div ref={commentsRef} className={[
-          styles.comments,
-          isOpen === true && styles.open,
-          isOpen === false && styles.close
-        ].filter(Boolean).join(' ')}>
+      <div ref={commentsRef} className={[ styles.comments, isOpen === true && styles.open, isOpen === false && styles.close ].filter(Boolean).join(' ')}>
         <TopNav close={close} />
+  
         <ul>
           {data.length === 0 
             ? <li>No comments yet.</li> 
             : data.map(comment => <CommentsListItem comment={comment} />)
           }
         </ul>
-        <form onSubmit={onSubmit} aria-label="comment form">
-          <textarea
-            id="comment"
-            name="comment"
-            spellCheck="true"
-            enterkeyhint="send"
-            required
-            placeholder="Leave a comment..."
-            aria-label="comment input">
-            </textarea>
-          <button type="submit" aria-label="submit comment">
-            <PaperPlaneIcon />    
-          </button>
-        </form>
+                       
+        <CommentsForm />
       </div>
     </aside>
   )
