@@ -35,9 +35,7 @@ function Comments({ closeComments }) {
 
   useEffect(() => {
     requestAnimationFrame(() => {
-      console.log('comments loaded: isOpen: ', isOpen)
       if (!isOpen) {
-        console.log('setting isOpen true')
         setIsOpen(true)
       }
     })
