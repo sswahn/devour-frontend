@@ -1,9 +1,8 @@
-import { useState, useRef, useEffect } from 'react'
-import useOverlay from '../../hooks/useOverlay'
+import { useRef } from 'react'
+
 const selector = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
 
 function FocusTrap({ children }) {
-  const [isMounted, setIsMounted] = useState(false)
   const focusTrapRef = useRef(null)
 
   const focusLast = event => {
