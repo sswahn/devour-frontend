@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from 'react'
-import { FocusTrapProvider } from '../../components/Providers/FocusTrapProvider'
 import { api } from '../../config'
 import server from '../../utilities/server'
 import useContent from '../../hooks/useContent'
+import FocusTrap from '../../components/FocusTrap/FocusTrap'
 import TopNav from './TopNav/TopNav'
 import CommentsListItem from './CommentsListItem/CommentsListItem'
 import CommentsForm from './CommentsForm/CommentsForm'
@@ -62,7 +62,7 @@ function Comments({ closeComments }) {
         isOpen === true && styles.open, 
         isOpen === false && styles.close 
       ].filter(Boolean).join(' ')}>
-        <FocusTrapProvider>
+        <FocusTrap>
           <TopNav close={close} />
     
           <ul>
@@ -83,7 +83,7 @@ function Comments({ closeComments }) {
           </div>
                          
           <CommentsForm />
-        </FocusTrapProvider>
+        </FocusTrap>
       </div>
     </aside>
   )
