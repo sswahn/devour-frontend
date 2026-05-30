@@ -71,6 +71,16 @@ function Comments({ closeComments }) {
               : data.map(comment => <CommentsListItem comment={comment} />)
             }
           </ul>
+
+          <div>
+            <button>Test button 1</button>
+          </div>
+          <div>
+            <button>Test button 2</button>
+          </div>
+          <div>
+            <button>Test button 3</button>
+          </div>
                          
           <CommentsForm />
         </div>
