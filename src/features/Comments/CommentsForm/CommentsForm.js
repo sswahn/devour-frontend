@@ -1,7 +1,8 @@
 import { useState } from 'react'
+import { api } from '../../../config'
 import useContent from '../../../hooks/useContent'
-import validate from '../../utilities/validate'
-import server from '../../utilities/server'
+import validate from '../../../utilities/validate'
+import server from '../../../utilities/server'
 import PaperPlaneIcon from '../../../components/Icons/PaperPlaneIcon/PaperPlaneIcon'
 import styles from './CommentsForm.module.css'
 
