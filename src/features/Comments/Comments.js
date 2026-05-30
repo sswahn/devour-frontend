@@ -58,13 +58,13 @@ function Comments({ closeComments }) {
   // should only swipe closed to the side it opened from.
   
   return (
-    <FocusTrapProvider>
-      <aside className={styles.overlay}>
-        <div ref={commentsRef} className={[ 
-          styles.comments, 
-          isOpen === true && styles.open, 
-          isOpen === false && styles.close 
-        ].filter(Boolean).join(' ')}>
+    <aside className={styles.overlay}>
+      <div ref={commentsRef} className={[ 
+        styles.comments, 
+        isOpen === true && styles.open, 
+        isOpen === false && styles.close 
+      ].filter(Boolean).join(' ')}>
+        <FocusTrapProvider>
           <TopNav close={close} />
     
           <ul>
@@ -85,9 +85,9 @@ function Comments({ closeComments }) {
           </div>
                          
           <CommentsForm />
-        </div>
-      </aside>
-    </FocusTrapProvider>
+        </FocusTrapProvider>
+      </div>
+    </aside>
   )
 }
 
