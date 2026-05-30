@@ -3,6 +3,7 @@ import { api } from '../../config'
 import validate from '../../utilities/validate'
 import server from '../../utilities/server'
 import useContent from '../../hooks/useContent'
+import { FocusTrapProvider } from '../../../components/Providers/FocusTrapProvider'
 import TopNav from './TopNav/TopNav'
 import CommentsListItem from './CommentsListItem/CommentsListItem'
 import CommentsForm from './CommentsForm/CommentsForm'
@@ -55,20 +56,26 @@ function Comments({ closeComments }) {
   // needs PointerEvents and hook swipeToClose; should only swipe closed to the side it opened from.
   
   return (
-    <aside className={styles.overlay}>
-      <div ref={commentsRef} className={[ styles.comments, isOpen === true && styles.open, isOpen === false && styles.close ].filter(Boolean).join(' ')}>
-        <TopNav close={close} />
-  
-        <ul>
-          {data.length === 0 
-            ? <li>No comments yet.</li> 
-            : data.map(comment => <CommentsListItem comment={comment} />)
-          }
-        </ul>
-                       
-        <CommentsForm />
-      </div>
-    </aside>
+    <FocusTrapProvider>
+      <aside className={styles.overlay}>
+        <div ref={commentsRef} className={[ 
+          styles.comments, 
+          isOpen === true && styles.open, 
+          isOpen === false && styles.close 
+        ].filter(Boolean).join(' ')}>
+          <TopNav close={close} />
+    
+          <ul>
+            {data.length === 0 
+              ? <li>No comments yet.</li> 
+              : data.map(comment => <CommentsListItem comment={comment} />)
+            }
+          </ul>
+                         
+          <CommentsForm />
+        </div>
+      </aside>
+    </FocusTrapProvider>
   )
 }
 
