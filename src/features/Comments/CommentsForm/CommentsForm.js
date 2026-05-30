@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import useContent from '../../hooks/useContent'
+import useContent from '../../../hooks/useContent'
 import PaperPlaneIcon from '../../../components/Icons/PaperPlaneIcon/PaperPlaneIcon'
 import styles from './CommentsForm.module.css'
 
