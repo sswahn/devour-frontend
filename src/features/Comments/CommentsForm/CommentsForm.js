@@ -3,6 +3,7 @@ import PaperPlaneIcon from '../../../components/Icons/PaperPlaneIcon/PaperPlaneI
 import styles from './CommentsForm.module.css'
 
 function CommentsForm() {
+  const { content } = useContent()
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
 
