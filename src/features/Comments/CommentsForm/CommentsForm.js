@@ -1,7 +1,10 @@
+import { useState } from 'react'
 import PaperPlaneIcon from '../../../components/Icons/PaperPlaneIcon/PaperPlaneIcon'
 import styles from './CommentsForm.module.css'
 
 function CommentsForm() {
+  const [loading, setLoading] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
 
   const onSubmit = async event => {
     try {
