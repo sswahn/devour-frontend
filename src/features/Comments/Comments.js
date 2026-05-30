@@ -1,7 +1,4 @@
 import { useState, useRef, useEffect } from 'react'
-import { api } from '../../config'
-import validate from '../../utilities/validate'
-import server from '../../utilities/server'
 import useContent from '../../hooks/useContent'
 import { FocusTrapProvider } from '../../components/Providers/FocusTrapProvider'
 import TopNav from './TopNav/TopNav'
