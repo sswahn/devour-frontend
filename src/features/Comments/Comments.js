@@ -31,6 +31,7 @@ function Comments({ closeComments }) {
   }
 
   useEffect(() => {
+    console.log('comments loaded')
     // loadComments()
   }, [])
 
