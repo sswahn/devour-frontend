@@ -1,3 +1,4 @@
+import PaperPlaneIcon from '../../../components/Icons/PaperPlaneIcon/PaperPlaneIcon'
 import styles from './CommentsForm.module.css'
 
 function CommentsForm() {
