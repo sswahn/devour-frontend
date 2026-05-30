@@ -54,7 +54,8 @@ function Comments({ closeComments }) {
     }
   }, [])
 
-  // needs PointerEvents and hook swipeToClose; should only swipe closed to the side it opened from.
+  // needs PointerEvents and hook swipeToClose; 
+  // should only swipe closed to the side it opened from.
   
   return (
     <FocusTrapProvider>
