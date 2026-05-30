@@ -865,6 +865,51 @@
   width: 100%;
 }
 
+/* Feed Comments Form */
+
+.Ncbs8UQPXbDntYupAwAK {
+  align-items: center;
+  background: var(--surface-raised);
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+  display: flex;
+  left: 0;
+  padding: 8px 0 8px 8px;
+  position: fixed;
+  bottom: env(keyboard-inset-height, 0);
+  width: 100%;
+  z-index: 250;
+}
+
+.Ncbs8UQPXbDntYupAwAK textarea {
+  border-radius: 10px;
+  field-sizing: content;
+  font-size: var(--font-size);
+  max-height: 152px;
+  min-height: 48px;
+  overflow: hidden; /* Hide scrollbars */
+  padding: 8px;
+  resize: none; /* Disable manual resize */
+  width: 100%;
+}
+
+.Ncbs8UQPXbDntYupAwAK textarea:focus {
+  outline: none;
+}
+
+.Ncbs8UQPXbDntYupAwAK button {
+  align-items: center; 
+  background: none;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  height: 44px;
+  width: 44px;
+}
+
+
 /* Feed Node Comments System */
 
 .B1u4yoaXrqQwWpu_SIbH {
