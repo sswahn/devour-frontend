@@ -31,13 +31,14 @@ function Comments({ closeComments }) {
   }
 
   useEffect(() => {
-    console.log('comments loaded')
     // loadComments()
   }, [])
 
   useEffect(() => {
     requestAnimationFrame(() => {
+      console.log('comments loaded: isOpen: ', isOpen)
       if (!isOpen) {
+        console.log('setting isOpen true')
         setIsOpen(true)
       }
     })
