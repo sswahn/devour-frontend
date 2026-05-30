@@ -30,17 +30,6 @@ function Comments({ closeComments }) {
   }
 
   useEffect(() => {
-    if (navigator.virtualKeyboard) {
-      navigator.virtualKeyboard.overlaysContent = true
-    }
-    return () => {
-      if (navigator.virtualKeyboard) {
-        navigator.virtualKeyboard.overlaysContent = false
-      }
-    }
-  }, [])
-
-  useEffect(() => {
     // loadComments()
   }, [])
 
@@ -52,6 +41,16 @@ function Comments({ closeComments }) {
     })
   }, [])
 
+  useEffect(() => {
+    if (navigator.virtualKeyboard) {
+      navigator.virtualKeyboard.overlaysContent = true
+    }
+    return () => {
+      if (navigator.virtualKeyboard) {
+        navigator.virtualKeyboard.overlaysContent = false
+      }
+    }
+  }, [])
 
   // needs PointerEvents and hook swipeToClose; should only swipe closed to the side it opened from.
   
