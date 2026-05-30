@@ -1,13 +1,10 @@
-import { useState, useRef, useEffect, createContext } from 'react'
-import useOverlay from '../../hooks/useOverlay'
+import { useRef, createContext } from 'react'
 
 const FocusTrapContext = createContext(null)
 
 const selector = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
 
 function FocusTrapProvider({ children }) {
-  const { isActive } = useOverlay()
-  const [isMounted, setIsMounted] = useState(false)
   const focusTrapRef = useRef(null)
 
   const focusLast = event => {
@@ -19,22 +16,14 @@ function FocusTrapProvider({ children }) {
     const elements = focusTrapRef.current.querySelectorAll(selector)
     elements[1]?.focus()
   }
-
-  useEffect(() => {
-    if (isActive) {
-      setIsMounted(true)
-    }
-  }, [isActive])
     
   return (
     <FocusTrapContext.Provider>
-      {isMounted &&  (
-        <div ref={focusTrapRef}>
-          <div onFocus={focusLast} tabIndex={0}></div>
-            {children}
-          <div onFocus={focusFirst} tabIndex={0}></div>
-        </div>
-      )}
+      <div ref={focusTrapRef}>
+        <div onFocus={focusLast} tabIndex={0}></div>
+          {children}
+        <div onFocus={focusFirst} tabIndex={0}></div>
+      </div>
     </FocusTrapContext.Provider>
   )
 }
