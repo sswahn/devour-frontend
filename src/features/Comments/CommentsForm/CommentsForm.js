@@ -2,6 +2,27 @@ import styles from './CommentsForm.module.css'
 
 function CommentsForm() {
 
+  const onSubmit = async event => {
+    try {
+      event.preventDefault()
+      navigator.vibrate?.(50)
+      setLoading(true)
+      const formData = new FormData(event.target)
+      const comment = formData.get('comment').trim()
+      const request = {
+        id: content.id,
+        comment: validate.comment(comment)
+      }
+      const response = await server.post(api.comments, request)
+      // loadComments or append comment to state?
+      // update feed. perhaps a snackbar sucess message.
+    } catch (error) {
+      setErrorMessage(error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
     <form className={styles.commentsForm} onSubmit={onSubmit} aria-label="comment form">
       <textarea
