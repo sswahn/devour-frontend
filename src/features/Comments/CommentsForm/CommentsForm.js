@@ -19,7 +19,7 @@ function CommentsForm() {
         id: content.id,
         comment: validate.comment(comment)
       }
-      const response = await server.post(api.comments, request)
+      // const response = await server.post(api.comments, request)
       // loadComments or append comment to state?
       // update feed. perhaps a snackbar sucess message.
     } catch (error) {
