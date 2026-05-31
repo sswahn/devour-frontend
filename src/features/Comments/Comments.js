@@ -62,6 +62,14 @@ function Comments({ closeComments }) {
   // should only swipe closed to the side it opened from.
 
 
+  
+  const applyElasticDrag = deltaX => {
+    const limit = mode === 'expand' && deltaX < 0 ? 10 : 200
+    const k = 300 // Increase to make growth feel heavier
+    const absDeltaX = Math.abs(deltaX)
+    const translation = limit * (absDeltaX / (absDeltaX + k))
+    return Math.sign(deltaX) * translation
+  }
 
 
   const throttleTransition = (deltaX, currentTarget) => {
@@ -78,11 +86,9 @@ function Comments({ closeComments }) {
   const onPointerDown = event => {
     const { clientX, currentTarget } = event
     const EDGE_THRESHOLD = 35
-    const width = window.innerWidth
-    // Only capture if actually hitting an edge
     const isLeft = clientX < EDGE_THRESHOLD
-    const isRight = clientX > width - EDGE_THRESHOLD
-    if (isLeft || isRight) {
+    // Only capture if actually hitting left edge
+    if (isLeft) {
       onGestureDown(event)
       currentTarget.style.transition = 'none'
       currentTarget.style.willChange = 'transform'
