@@ -14,6 +14,7 @@ function Comments({ closeComments }) {
   const [isOpen, setIsOpen] = useState(false)
   const [data, setData] = useState([])
   const commentsRef = useRef(null)
+  
   const ticking = useRef(false)
   const latestDeltaX = useRef(0)
   const { onGestureDown, onGestureMove, onGestureUp, onGestureCancel } = useGestures()
