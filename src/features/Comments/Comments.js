@@ -62,16 +62,6 @@ function Comments({ closeComments }) {
   // should only swipe closed to the side it opened from.
 
 
-  
-  const applyElasticDrag = deltaX => {
-    const limit = mode === 'expand' && deltaX < 0 ? 10 : 200
-    const k = 300 // Increase to make growth feel heavier
-    const absDeltaX = Math.abs(deltaX)
-    const translation = limit * (absDeltaX / (absDeltaX + k))
-    return Math.sign(deltaX) * translation
-  }
-
-
   const throttleTransition = (deltaX, currentTarget) => {
     latestDeltaX.current = deltaX
     if (!ticking.current) {
