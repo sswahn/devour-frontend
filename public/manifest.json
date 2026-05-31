@@ -6,8 +6,8 @@
   "scope": "/devour-frontend/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#181818",
-  "theme_color": "#181818",
+  "background_color": "#202020",
+  "theme_color": "#202020",
   "icons": [
     {
       "src": "/devour-frontend/icons/icon-192.png",
