@@ -120,7 +120,7 @@ function Comments({ closeComments }) {
           
           currentTarget.style.transform = `translate3d(${translation}, 0, 0)`
           currentTarget.parentElement.style.opacity = 0
-          currentTarget.addEventListener('transitionend', close, { once: true })
+          close()
         } else {
           currentTarget.style.transform = 'translate3d(0, 0, 0)'
           
