@@ -141,15 +141,18 @@ function Comments({ closeComments }) {
   }
 
 
-
-  
   return (
     <aside className={styles.overlay}>
-      <div ref={commentsRef} className={[ 
-        styles.comments, 
-        isOpen === true && styles.open, 
-        isOpen === false && styles.close 
-      ].filter(Boolean).join(' ')}>
+      <div ref={commentsRef} 
+        className={[ 
+          styles.comments, 
+          isOpen === true && styles.open, 
+          isOpen === false && styles.close 
+        ].filter(Boolean).join(' ')}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerUp}
+        onPointerCancel={onPointerCancel}>
         <FocusTrap>
           <TopNav close={close} />
     
@@ -159,16 +162,6 @@ function Comments({ closeComments }) {
               : data.map(comment => <CommentsListItem comment={comment} />)
             }
           </ul>
-
-          <div>
-            <button>Test button 1</button>
-          </div>
-          <div>
-            <button>Test button 2</button>
-          </div>
-          <div>
-            <button>Test button 3</button>
-          </div>
                          
           <CommentsForm />
         </FocusTrap>
