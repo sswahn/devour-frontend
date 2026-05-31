@@ -94,7 +94,7 @@ function Comments({ closeComments }) {
     if (deltaX === undefined || axis === 'y' || edge === 'right') {
       return
     }
-    const raw = edge === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
+    const raw = Math.max(0, deltaX) 
     const resisted = raw / (1 + Math.abs(raw) / 300)
     throttleTransition(resisted, currentTarget)
   }
@@ -106,7 +106,7 @@ function Comments({ closeComments }) {
     // 1. Kill the move throttle immediately
     ticking.current = false
   
-    const raw = edge === 'left' ? Math.max(0, deltaX) : Math.min(0, deltaX)
+    const raw = Math.max(0, deltaX)
     const resisted = raw / (1 + Math.abs(raw) / 300)
     const shouldClose = Math.abs(resisted) >= 150
   
@@ -119,7 +119,7 @@ function Comments({ closeComments }) {
       requestAnimationFrame(() => {
         if (shouldClose) {
           navigation.vibrate?.(50)
-          const translation = edge === 'left' ? '100vw' : '-100vw'
+          const translation = '100vw'
           
           currentTarget.style.transform = `translate3d(${translation}, 0, 0)`
           currentTarget.parentElement.style.opacity = 0
