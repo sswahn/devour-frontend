@@ -92,7 +92,7 @@ function Comments({ closeComments }) {
 
     console.log('deltaX: ' + deltaX, 'axis: ' + axis)
     
-    if (deltaX === undefined || axis === 'y') {
+    if (deltaX === undefined || axis !== 'x') {
       return
     }
     const raw = Math.max(0, deltaX) 
