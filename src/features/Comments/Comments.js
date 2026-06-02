@@ -89,7 +89,7 @@ function Comments({ closeComments }) {
   const onPointerMove = event => {
     const { currentTarget } = event
     const { deltaX, edge, axis } = onGestureMove(event)
-    if (deltaX === undefined || axis === 'y' || edge === 'right') {
+    if (deltaX === undefined || axis === 'y') {
       return
     }
     const raw = Math.max(0, deltaX) 
