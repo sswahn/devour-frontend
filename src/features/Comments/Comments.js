@@ -106,7 +106,7 @@ function Comments({ closeComments }) {
   
     const raw = Math.max(0, deltaX)
     const resisted = raw / (1 + Math.abs(raw) / 300)
-    const shouldClose = Math.abs(resisted) >= 150
+    const shouldClose = resisted >= 150
   
     // 2. State Prep: Switch transition ON
     currentTarget.style.transition = 'transform 0.25s cubic-bezier(0.2, 0, 0, 1)'
