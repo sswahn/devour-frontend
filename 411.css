@@ -281,9 +281,9 @@
   position: fixed;
   right: 0;
   top: 0;
+  touch-action: pan-y;
   transform: translateX(100%);
   transition: transform 0.3s ease-in-out;
-  touch-action: none;
   width: 100%;
   z-index: 200;
 }
