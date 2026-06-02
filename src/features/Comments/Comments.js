@@ -21,6 +21,9 @@ function Comments({ closeComments }) {
 
 
   const close = () => {
+    commentsRef.current.style.transform = ''
+    commentsRef.current.style.willChange = ''
+
     setIsOpen(false)
     commentsRef.current.addEventListener('transitionend', closeComments, {
       once: true,
