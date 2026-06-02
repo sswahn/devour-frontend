@@ -78,11 +78,12 @@ function Comments({ closeComments }) {
     const EDGE_THRESHOLD = 35
     const isLeft = clientX < EDGE_THRESHOLD
     // Only capture if actually hitting left edge
-    if (isLeft) {
-      onGestureDown(event)
-      currentTarget.style.transition = 'none'
-      currentTarget.style.willChange = 'transform'
+    if (!isLeft) {
+      return
     }
+    onGestureDown(event)
+    currentTarget.style.transition = 'none'
+    currentTarget.style.willChange = 'transform'
   }
   
   const onPointerMove = event => {
@@ -98,7 +99,7 @@ function Comments({ closeComments }) {
 
   const onPointerUp = event => {
     const { currentTarget } = event
-    const { deltaX, edge, velocity, timestamp } = onGestureUp(event)
+    const { deltaX } = onGestureUp(event)
   
     // 1. Kill the move throttle immediately
     ticking.current = false
@@ -116,9 +117,8 @@ function Comments({ closeComments }) {
       requestAnimationFrame(() => {
         if (shouldClose) {
           navigation.vibrate?.(50)
-          const translation = '100vw'
           
-          currentTarget.style.transform = `translate3d(${translation}, 0, 0)`
+          currentTarget.style.transform = 'translate3d(100vw, 0, 0)'
           currentTarget.parentElement.style.opacity = 0
           close()
         } else {
