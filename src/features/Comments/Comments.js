@@ -89,9 +89,6 @@ function Comments({ closeComments }) {
   const onPointerMove = event => {
     const { currentTarget } = event
     const { deltaX, axis } = onGestureMove(event)
-
-    console.log('deltaX: ' + deltaX, 'axis: ' + axis)
-    
     if (deltaX === undefined || axis !== 'x') {
       return
     }
