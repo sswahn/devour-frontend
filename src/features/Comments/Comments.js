@@ -93,7 +93,7 @@ function Comments({ closeComments }) {
       return
     }
     const raw = Math.max(0, deltaX) 
-    const resisted = raw / (1 + Math.abs(raw) / 300)
+    const resisted = raw / (1 + raw / 300)
     throttleTransition(resisted, currentTarget)
   }
 
@@ -105,7 +105,7 @@ function Comments({ closeComments }) {
     ticking.current = false
   
     const raw = Math.max(0, deltaX)
-    const resisted = raw / (1 + Math.abs(raw) / 300)
+    const resisted = raw / (1 + raw / 300)
     const shouldClose = resisted >= 150
   
     // 2. State Prep: Switch transition ON
