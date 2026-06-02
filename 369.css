@@ -932,18 +932,18 @@
   right: 0;
   top: 0;
   touch-action: pan-y;
-  transform: translateX(100%);
+  transform: translate3d(100%, 0, 0);
   transition: transform 0.3s ease-in-out;
   width: 100%;
   z-index: 200;
 }
 
 .jxIdzEO4hgkWkmA8kQQ7 {
-  transform: translateX(0);
+  transform: translate3d(0, 0, 0);
 }
 
 .S6Ix9GDpnIoFxzyIpZtA {
-  transform: translateX(100%);
+  transform: translate3d(100%, 0, 0);
 }
 
 .uoscghNXGwijRME3XZY7 ul {
