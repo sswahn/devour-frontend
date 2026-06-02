@@ -129,6 +129,7 @@ function Comments({ closeComments }) {
           
           // Cleanup transition when snap-back finishes
           currentTarget.addEventListener('transitionend', () => {
+            currentTarget.style.transform = ''
             currentTarget.style.transition = ''
             currentTarget.style.willChange = ''
           }, { once: true })
