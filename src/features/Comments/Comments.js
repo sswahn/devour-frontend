@@ -88,7 +88,7 @@ function Comments({ closeComments }) {
   
   const onPointerMove = event => {
     const { currentTarget } = event
-    const { deltaX, edge, axis } = onGestureMove(event)
+    const { deltaX, axis } = onGestureMove(event)
     if (deltaX === undefined || axis === 'y') {
       return
     }
