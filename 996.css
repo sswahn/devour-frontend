@@ -175,8 +175,7 @@
   height: 100dvh;
   inset: 0;
   margin: 0 auto;
-  max-width: 500px; 
-  padding-top: env(safe-area-inset-top);
+  max-width: 500px;
   overflow: hidden;
   position: fixed;
 }
