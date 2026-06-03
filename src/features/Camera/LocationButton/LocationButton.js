@@ -1,5 +1,5 @@
 import LocationIcon from '../../../components/Icons/LocationIcon/LocationIcon'
-import styles from './locationbutton.module.css'
+import styles from './LocationButton.module.css'
 
 function LocationButton() {
 
