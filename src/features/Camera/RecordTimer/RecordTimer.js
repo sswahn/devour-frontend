@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import database from '../../../utilities/database'
-import styles from './recordtimer.module.css'
+import styles from './RecordTimer.module.css'
 
 function RecordTimer({ mode, timer, setTimer, stopCamera }) {
 
