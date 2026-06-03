@@ -8,6 +8,7 @@ function TopNav({ close }) {
   return (
     <nav className={styles.topNav}>
       <CloseButton close={close} />
+      <h3>Comments</h3>
     </nav>
   )
 }
