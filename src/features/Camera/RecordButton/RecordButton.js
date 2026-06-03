@@ -47,7 +47,7 @@ function RecordButton({ mode, setMode, streamRef, timer }) {
       db.put({ id: 'video', video, duration })
         
     } catch (error) {
-      alert(JSON.stringify(error))
+      alert(error.message)
     }
   }
   
