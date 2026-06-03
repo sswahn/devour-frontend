@@ -2,9 +2,9 @@ import { useContext } from 'react'
 import { FootageContext } from '../components/Providers/FootageProvider'
 
 function useFootage() {
-  const { content, setContent } = useContext(FootageContext)
+  const { footage, setFootage, duration, setDuration } = useContext(FootageContext)
 
-  return { content, setContent }
+  return { footage, setFootage, duration, setDuration }
 }
 
 export default useFootage
