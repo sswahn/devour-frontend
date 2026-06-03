@@ -208,12 +208,10 @@
 .nXoS5gL32zb6iiymIjaR {
   align-items: center;
   display: flex;
-  gap: 16px;
+  gap: 8px;
   justify-content: flex-start;
   margin-bottom: 16px;
   width: 100%;
-
-  border: 1px dashed red;
 }
 
 
