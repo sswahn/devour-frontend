@@ -19,5 +19,6 @@
 .feedNode figcaption {
   bottom: 8px;
   left: 16px;
+  margin-top: auto;
   position: absolute;
 }
