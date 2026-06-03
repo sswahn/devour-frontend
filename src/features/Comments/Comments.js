@@ -74,9 +74,9 @@ function Comments({ closeComments }) {
   }
 
   const onPointerDown = event => {
-    console.log('event.target: ', event.target)
-    console.log('event.currentTarget: ', event.currentTarget)
-    
+    if (event.target.tagName === 'BUTTON') {
+      return
+    }
     const { clientX, currentTarget } = event
     const EDGE_THRESHOLD = 35
     const isLeft = clientX < EDGE_THRESHOLD
