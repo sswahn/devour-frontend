@@ -19,6 +19,7 @@
 .feedNode figcaption {
   bottom: 8px;
   left: 16px;
+  line-height: var(--line-height);
   margin-top: auto;
   margin-right: 48px;
   position: absolute;
