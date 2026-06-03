@@ -186,6 +186,7 @@ button:active {
 }
 
 svg {
+  background-color: none;
   fill: var(--text);
   flex-shrink: 0;
   pointer-events: none;
