@@ -53,7 +53,7 @@ function Camera() {
   
   return (
     <section className={styles.camera}>
-      <TopNav close={closeCamera} mode={mode} timer={timer} setTimer={setTimer} stopCamera={stopCamera} streamRef={streamRef} />
+      <TopNav closeCamera={closeCamera} mode={mode} timer={timer} setTimer={setTimer} stopCamera={stopCamera} streamRef={streamRef} />
   
       <MuteButton streamRef={streamRef} />
       <RecordButton mode={mode} setMode={setMode} streamRef={streamRef} timer={timer} />
