@@ -72,6 +72,16 @@
   transform: translate(-50%, -50%);
 }
 
+/* Camera Top Nav */
+
+.hsMMxPOGMwYePPF8X1Uw {
+  left: 0;
+  padding-top: env(safe-area-inset-top);
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
 /* Camera Mute Button CSS Module */
 
 .AZOIeRKTIYCyq6xhU5pg {
