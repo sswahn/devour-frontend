@@ -334,6 +334,8 @@
   margin-top: auto;
   margin-right: 48px;
   position: absolute;
+
+  border: 1px dashed red;
 }
 
 /* Feed */
