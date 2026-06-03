@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import useFootage from '../../../hooks/useFootage'
 import camera from '../../../utilities/camera'
 import database from '../../../utilities/database'
-import styles from './recordbutton.module.css'
+import styles from './RecordButton.module.css'
 
 function RecordButton({ mode, setMode, streamRef, timer }) {
   const { setFootage, setDuration } = useFootage()
