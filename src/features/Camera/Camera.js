@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { overlay } from '../../config'
+import useOverlay from '../../hooks/useOverlay'
 import camera from '../../utilities/camera'
 import TopNav from './TopNav/TopNav'
 import MuteButton from './MuteButton/MuteButton'
@@ -9,6 +10,7 @@ import ViewPort from './ViewPort/ViewPort'
 import styles from './Camera.module.css'
 
 function Camera() {
+  const { closeOverlay } = useOverlay()
   const [mode, setMode] = useState('off')
   const [timer, setTimer] = useState(60)
   const streamRef = useRef(null)
@@ -37,8 +39,9 @@ function Camera() {
     }
   }
 
-  const closeCamera = event => { // needs to set isActive(null)
+  const closeCamera = event => {
     stopCamera()
+    closeOverlay()
     if (document.fullscreenElement) {
       document.exitFullscreen()
     }
