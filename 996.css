@@ -77,14 +77,14 @@
   background-color: rgba(0, 0, 0, 0.5);
   border: 0;
   border-radius: 50%;
-  bottom: 0; /* 20px */
+  bottom: 8px;
   color: white;
   cursor: pointer;
   font-size: 22px; 
   height: 45px;
   /* padding: 5px 10px; */
   position: absolute;
-  right: 0;
+  right: 8px;
   width: 45px; 
   z-index: 300;
 }
