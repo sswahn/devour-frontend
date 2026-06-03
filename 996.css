@@ -876,11 +876,10 @@
   justify-content: flex-start;
   margin-bottom: 16px;
   width: 100%;
+
+  border: 1px dashed red;
 }
 
-.nXoS5gL32zb6iiymIjaR h3 {
-  
-}
 
 /* Feed Comments Form */
 
