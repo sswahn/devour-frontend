@@ -1,12 +1,11 @@
-import { useContext, useRef } from 'react'
-import { Context } from '../../../archive/Provider'
-// import useFootage from '../../../hooks/useFootage'
+import { useRef } from 'react'
+import useFootage from '../../../hooks/useFootage'
 import camera from '../../../utilities/camera'
 import database from '../../../utilities/database'
 import styles from './recordbutton.module.css'
 
 function RecordButton({ mode, setMode, streamRef, timer }) {
-  const [context, dispatch] = useContext(Context)
+  const { setFootage, setDuration } = useFootage()
   const framesRef = useRef([])
   const recorderRef = useRef(null)
   
