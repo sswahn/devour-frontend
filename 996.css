@@ -29,16 +29,16 @@
 /* Camera Light Button CSS Module */
 
 .qeDCFHmOLLQ6RhZ3jRgv {
+  align-items: center; 
   background-color: rgba(0, 0, 0, 0.5);
-  border: 0;
+  border: none;
   border-radius: 50%;
-  color: white;
+  display: flex;
+  height: 44px;
+  justify-content: center;
   cursor: pointer;
-  font-size: 22px; 
-  cursor: pointer;
-  font-size: 18px;
-  height: 45px;
-  width: 45px;
+  padding: 10px;
+  width: 44px;
   z-index: 300;
 }
 
