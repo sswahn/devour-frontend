@@ -209,14 +209,16 @@
 /* Comments Top Nav Bar */
 
 .nXoS5gL32zb6iiymIjaR {
+  align-items: center;
   display: flex;
+  gap: 16px;
   justify-content: flex-start;
   margin-bottom: 16px;
   width: 100%;
 }
 
 .nXoS5gL32zb6iiymIjaR h3 {
-  margin-left: 56px;
+  
 }
 
 /* Feed Comments Form */
