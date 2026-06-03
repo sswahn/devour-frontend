@@ -2,7 +2,7 @@ import { useState } from 'react'
 import camera from '../../../utilities/camera'
 import MicrophoneIcon from '../../../components/Icons/MicrophoneIcon/MicrophoneIcon'
 import MicrophoneSlashIcon from '../../../components/Icons/MicrophoneIcon/MicrophoneSlashIcon'
-import styles from './mutebutton.module.css'
+import styles from './MuteButton.module.css'
 
 function MuteButton({ streamRef }) {
   const [mute, setMute] = useState(false)
