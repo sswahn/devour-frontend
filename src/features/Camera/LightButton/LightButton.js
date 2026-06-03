@@ -2,7 +2,7 @@ import { useState } from 'react'
 import camera from '../../../utilities/camera'
 import SunIcon from '../../../components/Icons/SunIcon/SunIcon'
 import DarkSunIcon from '../../../components/Icons/SunIcon/DarkSunIcon'
-import styles from './lightbutton.module.css'
+import styles from './LightButton.module.css'
 
 function LightButton({ streamRef }) {
   const [light, setLight] = useState(false)
