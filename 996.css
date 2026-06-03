@@ -161,11 +161,9 @@
   inset: 0;
   image-rendering: crisp-edges;
   image-rendering: pixelated;
-  padding-top: env(safe-area-inset-top);
   position: absolute;
   width: 100%;
-  will-change: transform, opacity;
-  transform: translateZ(0);
+  z-index: 250;
 }
 
 /* camera */
