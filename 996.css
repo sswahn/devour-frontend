@@ -65,6 +65,9 @@
   position: absolute;
   top: 0;
   width: 100%;
+  z-index: 300;
+
+  border: 1px dashed red;
 }
 
 /* Camera Mute Button CSS Module */
