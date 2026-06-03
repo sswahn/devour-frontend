@@ -7,9 +7,9 @@ function FootageProvider({ children }) {
   const [duration, setDuration] = useState([])
 
   return (
-    <CameraContext.Provider value={{ footage, setFootage, duration, setDuration }}>
+    <FootageContext.Provider value={{ footage, setFootage, duration, setDuration }}>
       {children}
-    </CameraContext.Provider>
+    </FootageContext.Provider>
   )
 }
 
