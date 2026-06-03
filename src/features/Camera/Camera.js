@@ -2,9 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { overlay } from '../../config'
 import camera from '../../utilities/camera'
 import ViewPort from './ViewPort/ViewPort'
-import BackButton from '../../components/BackButton/BackButton'
-import RecordTimer from './RecordTimer/RecordTimer'
-import LightButton from './LightButton/LightButton'
+import TopNav from './TopNav/TopNav'
 import MuteButton from './MuteButton/MuteButton'
 import RecordButton from './RecordButton/RecordButton'
 import LocationButton from './LocationButton/LocationButton'
@@ -55,9 +53,7 @@ function Camera() {
   
   return (
     <section className={styles.camera}>
-      <BackButton overlay={overlay.camera} close={closeCamera} />
-      <RecordTimer mode={mode} timer={timer} setTimer={setTimer} stopCamera={stopCamera} />
-      <LightButton streamRef={streamRef} />
+      <TopNav close={closeCamera} mode={mode} timer={timer} setTimer={setTimer} stopCamera={stopCamera} streamRef={streamRef} />
   
       <MuteButton streamRef={streamRef} />
       <RecordButton mode={mode} setMode={setMode} streamRef={streamRef} timer={timer} />
