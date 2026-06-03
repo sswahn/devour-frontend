@@ -1,18 +1,3 @@
-/* Camera View Port CSS Module */
-
-.WO59Lztrgm4QDJ43r9SB { 
-  object-fit: cover;
-  height: 100dvh;
-  inset: 0;
-  image-rendering: crisp-edges;
-  image-rendering: pixelated;
-  padding-top: env(safe-area-inset-top);
-  position: absolute;
-  width: 100%;
-  will-change: transform, opacity;
-  transform: translateZ(0);
-}
-
 /* Close Overlay Back Button */
 
 ._4sofJChA5hme8ZvWn_aX {
@@ -163,6 +148,21 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+/* Camera View Port CSS Module */
+
+.WO59Lztrgm4QDJ43r9SB { 
+  object-fit: cover;
+  height: 100dvh;
+  inset: 0;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+  padding-top: env(safe-area-inset-top);
+  position: absolute;
+  width: 100%;
+  will-change: transform, opacity;
+  transform: translateZ(0);
 }
 
 /* camera */
