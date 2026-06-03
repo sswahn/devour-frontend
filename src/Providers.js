@@ -5,6 +5,7 @@ import { ProfileProvider } from './components/Providers/ProfileProvider'
 import { SidebarProvider } from './components/Providers/SidebarProvider'
 import { DialogProvider } from './components/Providers/DialogProvider'
 import { ContentProvider } from './components/Providers/ContentProvider'
+import { FootageProvider } from './components/Providers/FootageProvider'
 
 function Providers({ children }) {
   return (
@@ -15,7 +16,9 @@ function Providers({ children }) {
             <ContentProvider>
               <SidebarProvider>
                 <DialogProvider>
-                  {children}
+                  <FootageProvider>
+                    {children}
+                  </FootageProvider>
                 </DialogProvider>
               </SidebarProvider>
             </ContentProvider>
