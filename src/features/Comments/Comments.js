@@ -73,6 +73,8 @@ function Comments({ closeComments }) {
     }
   }
 
+  // refactor to use css classes instead of inline (like notifications)
+
   const onPointerDown = event => {
     if (event.target.tagName === 'BUTTON') {
       return
