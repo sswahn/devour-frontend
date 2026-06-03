@@ -38,9 +38,6 @@
   cursor: pointer;
   font-size: 18px;
   height: 45px;
-  position: absolute;
-  right: 0px;
-  top: 0px;
   width: 45px;
   z-index: 300;
 }
