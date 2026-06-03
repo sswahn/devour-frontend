@@ -1,11 +1,11 @@
 import { useState, useRef, useEffect } from 'react'
 import { overlay } from '../../config'
 import camera from '../../utilities/camera'
-import ViewPort from './ViewPort/ViewPort'
 import TopNav from './TopNav/TopNav'
 import MuteButton from './MuteButton/MuteButton'
 import RecordButton from './RecordButton/RecordButton'
 import LocationButton from './LocationButton/LocationButton'
+import ViewPort from './ViewPort/ViewPort'
 import styles from './Camera.module.css'
 
 function Camera() {
