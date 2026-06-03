@@ -13,3 +13,8 @@
 
   border: 1px dashed red;
 }
+
+
+.topNav :first-child {
+  background: rgba(0, 0, 0, 0.5);
+}
