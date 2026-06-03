@@ -25,6 +25,8 @@ function Camera() {
     
     } catch (error) {
       console.error('Error accessing camera: ', error)
+      // display error then close overlay or recover
+      closeCamera()
     }
   }
   
