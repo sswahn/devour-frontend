@@ -47,7 +47,7 @@ function Camera() {
       startCamera()
     }
     return () => {
-      stopCamera()
+      closeCamera()
     }
   }, [])
   
