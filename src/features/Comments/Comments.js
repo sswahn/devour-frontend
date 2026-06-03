@@ -76,8 +76,11 @@ function Comments({ closeComments }) {
   // refactor to use css classes instead of inline (like notifications)
 
   const onPointerDown = event => {
+    console.log('event.target: ', event.target)
+    console.log('event.currentTarget: ', event.currentTarget)
+    
     if (event.target.tagName === 'BUTTON') {
-      return
+      return console.log('button detected.')
     }
     const { clientX, currentTarget } = event
     const EDGE_THRESHOLD = 35
