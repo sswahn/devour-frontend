@@ -8,4 +8,5 @@
   max-width: 500px;
   overflow: hidden;
   position: fixed;
+  z-index: 200;
 }
