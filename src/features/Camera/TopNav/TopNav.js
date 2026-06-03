@@ -4,7 +4,7 @@ import RecordTimer from '../RecordTimer/RecordTimer'
 import LightButton from '../LightButton/LightButton'
 import styles from './TopNav.module.css'
 
-function TopNav({ closeCamaera, mode, timer, setTimer, stopCamera, streamRef }) {
+function TopNav({ closeCamera, mode, timer, setTimer, stopCamera, streamRef }) {
   return (
     <nav className={styles.topNav}>
       <BackButton overlay={overlay.camera} close={closeCamera} />
