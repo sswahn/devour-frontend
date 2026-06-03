@@ -4,12 +4,12 @@
   background-color: rgba(0, 0, 0, 0.5);
   border: 0;
   border-radius: 50%;
-  bottom: 0;
+  bottom: 8px;
   color: white;
   cursor: pointer;
   font-size: 22px; 
   height: 45px;
-  left: 0;
+  left: 8px;
   position: absolute;
   width: 45px; 
   z-index: 300;
