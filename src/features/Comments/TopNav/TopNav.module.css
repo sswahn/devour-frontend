@@ -1,12 +1,14 @@
 /* Comments Top Nav Bar */
 
 .topNav {
+  align-items: center;
   display: flex;
+  gap: 16px;
   justify-content: flex-start;
   margin-bottom: 16px;
   width: 100%;
 }
 
 .topNav h3 {
-  margin-left: 56px;
+  
 }
