@@ -37,7 +37,7 @@ function Camera() {
     }
   }
 
-  const closeCamera = event => {
+  const closeCamera = event => { // needs to set isActive(null)
     stopCamera()
     if (document.fullscreenElement) {
       document.exitFullscreen()
