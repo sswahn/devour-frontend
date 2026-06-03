@@ -336,11 +336,6 @@
   height: 100dvh;
   
   /*
-  padding: 
-    env(safe-area-inset-top)
-    env(safe-area-inset-right)
-    env(safe-area-inset-bottom)
-    env(safe-area-inset-left);
   
   scroll-behavior: smooth;  
   scroll-snap-type: y mandatory;
@@ -358,16 +353,4 @@
   will-change: scroll-position;
   */
 }
-
-.FXju5x6KeXy0fnVXd9I2:fullscreen {
-  --notch-height: env(safe-area-inset-top);
-}
-
-/*.topNav {
-  /* Shift your header down using the variable 
-  margin-top: var(--notch-height); */
-  
-  /* Optional: Use max() to ensure a minimum 20px even in fullscreen */
-  /* margin-top: max(20px, var(--notch-height)); 
-} */
 
