@@ -3,7 +3,7 @@
 .feedNode {
   box-sizing: border-box;
   display: block;
-  height: calc(100dvh - 64px);
+  min-height: calc(100dvh - 64px);
   position: relative;
   scroll-snap-align: start;
   scroll-snap-stop: always;
