@@ -96,6 +96,13 @@
   width: 100%;
 }
 
+.RDylejBr3Rzb8YpYfiDx div {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-start;
+}
+
 @media (display-mode: standalone) {
   .RDylejBr3Rzb8YpYfiDx {
     padding-top: env(safe-area-inset-top);
