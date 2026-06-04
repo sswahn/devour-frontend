@@ -17,7 +17,10 @@ function TopNav({ image, username }) {
   
   return (
     <nav className={`topNav ${styles.topNav}`} aria-label="top menu">
-      <Avatar username={username} image={image} />
+      <div>
+        <Avatar username={username} image={image} />
+        <strong>{username}</strong>
+      </div>
       <Dropdown items={dropdown} />
     </nav>
   )
