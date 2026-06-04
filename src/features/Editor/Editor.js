@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from 'react'
 import useFootage from '../../hooks/useFootage'
-import styles from './VideoEditor.module.css'
+import styles from './Editor.module.css'
 
-function VideoEditor() {
+function Editor() {
   const { footage, duration } = useFootage()
   const [source, setSource] = useState('')
   const url = useRef(null)
@@ -22,7 +22,7 @@ function VideoEditor() {
   }, [])
   
   return (
-    <section className={styles.videoEditor}>
+    <section className={styles.editor}>
 
       <video src={source} loop playsinline />
     
@@ -30,4 +30,4 @@ function VideoEditor() {
   )
 }
 
-export default VideoEditor
+export default Editor
