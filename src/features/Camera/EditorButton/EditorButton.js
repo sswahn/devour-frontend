@@ -1,4 +1,4 @@
-import VideoFileIcon from '../../components/Icons/VideoFileIcon/VideoFileIcon'
+import FileVideoIcon from '../../components/Icons/FileVideoIcon/FileVideoIcon'
 import styles from './EditorButton.module.css'
 
 function EditorButton() {
@@ -9,7 +9,7 @@ function EditorButton() {
   
   return (
     <button className={styles.editorButton} onClick={onClick} type="button" aria-label="view footage">
-      <VideoFileIcon />
+      <FileVideoIcon />
     </button>
   )
 }
