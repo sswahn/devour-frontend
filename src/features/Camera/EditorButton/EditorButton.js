@@ -1,4 +1,4 @@
-import FileVideoIcon from '../../components/Icons/FileVideoIcon/FileVideoIcon'
+import FileVideoIcon from '../../../components/Icons/FileVideoIcon/FileVideoIcon'
 import styles from './EditorButton.module.css'
 
 function EditorButton() {
