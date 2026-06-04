@@ -64,7 +64,6 @@ function Camera() {
       <TopNav closeCamera={closeCamera} mode={mode} timer={timer} setTimer={setTimer} stopCamera={stopCamera} streamRef={streamRef} />
 
       {!!footage.length && <EditorButton />}
-    
       <MuteButton streamRef={streamRef} />
       <RecordButton mode={mode} setMode={setMode} streamRef={streamRef} timer={timer} />
       <LocationButton /> 
