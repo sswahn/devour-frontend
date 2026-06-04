@@ -1,7 +1,7 @@
 /* Feed */
 
 .feed {  
-  height: 100dvh;
+  min-height: 100dvh;
   
   /*
   scroll-behavior: smooth;  
