@@ -748,6 +748,7 @@
   justify-content: space-between;
   left: 0;
   padding-left: 8px;
+  padding-top: env();
   position: absolute;
   top: 0;
   width: 100%;
