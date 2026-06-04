@@ -15,6 +15,7 @@ function Editor() {
   }
 
   useEffect(() => {
+    alert('Loading Editor.')
     combineFootage()
     return () => {
       URL.revokeObjectURL(url.current)
