@@ -13,7 +13,15 @@
 }
 
 .videoEditor div {
-  
+  background-color: var(--surface-raised);
+  height: 100dvh;
+  inset: 0;
+  overflow-y: scroll;
+  overscroll-behavior-y: contain;
+  padding: 8px;
+  position: fixed;
+  touch-action: none;
+  z-index: 200;
 }
 
 .videoEditor video {
