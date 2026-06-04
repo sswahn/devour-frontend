@@ -1,26 +1,13 @@
 /* Video Editor */
 
 .videoEditor {
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(1px);
   contain: content;
   height: 100dvh;
   inset: 0;
-  opacity: 1;
+  margin: 0 auto;
+  max-width: 500px;
+  overflow: hidden;
   position: fixed;
-  transition: opacity 0.5s ease-out;
-  z-index: 150;
-}
-
-.videoEditor div {
-  background-color: var(--surface-raised);
-  height: 100dvh;
-  inset: 0;
-  overflow-y: scroll;
-  overscroll-behavior-y: contain;
-  padding: 8px;
-  position: fixed;
-  touch-action: none;
   z-index: 200;
 }
 
