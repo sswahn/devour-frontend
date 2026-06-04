@@ -96,9 +96,10 @@
 /* Camera SideNav */
 
 .xcS5b9aZN9n2q2WQQ389 {
-  position: absolute;
   bottom: 8px;
+  position: absolute;
   right: 8px;
+  z-index: 300;
 
   border: 1px dashed red;
 }
