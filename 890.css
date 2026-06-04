@@ -97,8 +97,11 @@
 
 .xcS5b9aZN9n2q2WQQ389 {
   bottom: 8px;
+  display: flex;
+  flex-direction: column;
   position: absolute;
   right: 8px;
+  width: 48px;
   z-index: 300;
 
   border: 1px dashed red;
