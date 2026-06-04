@@ -9,7 +9,7 @@ function RecordButton({ mode, setMode, streamRef, timer }) {
   const framesRef = useRef([])
   const recorderRef = useRef(null)
   
-  const handleRecordVideo = () => {
+  const startRecord = () => {
     if (timer < 1) {
       return alert('No recording time remaining.')
     }
@@ -18,7 +18,7 @@ function RecordButton({ mode, setMode, streamRef, timer }) {
     recorderRef.current = recorder
   }
 
-  const handleStopRecordVideo = async () => {
+  const stopRecord = async () => {
     try {
       setMode('off')
       const blob = await camera.stopRecording(recorderRef.current, framesRef.current)
@@ -37,13 +37,13 @@ function RecordButton({ mode, setMode, streamRef, timer }) {
     }
   }
   
-  const handleRecordButton = event => {
-    mode === 'on' ? handleStopRecordVideo() : handleRecordVideo()
+  const toggleRecord = event => {
+    mode === 'on' ? stopRecord() : startRecord()
   }
   
   return (
     <div className={styles.recordButtonContainer}>
-      <button className={styles.recordButton} onClick={handleRecordButton} type="button" aria-label="record button" style={{
+      <button className={styles.recordButton} onClick={toggleRecord} type="button" aria-label="record button" style={{
         backgroundColor: mode === 'on' ? '#cb4154' : '#e5e4e2', 
         borderColor: mode === 'on' ? '#eb4c42' : 'white'
       }}></button>
