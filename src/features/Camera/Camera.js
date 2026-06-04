@@ -58,6 +58,8 @@ function Camera() {
       closeCamera()
     }
   }, [])
+
+  // need a load from storage function that sets indexeddb video to footage state
   
   return (
     <section className={styles.camera}>
