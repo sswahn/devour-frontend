@@ -24,7 +24,7 @@ function RecordButton({ mode, setMode, streamRef, timer }) {
       const blob = await camera.stopRecording(recorderRef.current, framesRef.current)
       const totalDuration = duration.reduce((acc, val) => acc + val, 0)
       const currentDuration = 60 - timer - totalDuration
-      const newDuration = [ ...duration, newDuration ]
+      const newDuration = [ ...duration, currentDuration ]
       const newFootage = [ ...footage, blob ]
       setFootage(newFootage)
       setDuration(newDuration)
