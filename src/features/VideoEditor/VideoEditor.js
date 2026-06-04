@@ -15,9 +15,7 @@ function VideoEditor() {
   }
 
   useEffect(() => {
-    if (!source) {
-      combineFootage()
-    }
+    combineFootage()
     return () => {
       URL.revokeObjectURL(url.current)
     }
