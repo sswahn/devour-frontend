@@ -12,7 +12,7 @@
   width: 100%;
 }
 
-.topNav div {
+.topNav > div:first-of-type {
   align-items: center;
   display: flex;
   gap: 8px;
