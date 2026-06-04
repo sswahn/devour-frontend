@@ -1021,7 +1021,7 @@
 .KIIoXhhSaQeQ2LSTtavI {
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(1px);
-  contain: layout paint style;
+  contain: content;
   height: 100dvh;
   inset: 0;
   opacity: 1;
