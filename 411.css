@@ -96,7 +96,7 @@
   width: 100%;
 }
 
-.RDylejBr3Rzb8YpYfiDx div {
+.RDylejBr3Rzb8YpYfiDx > div:first-of-type {
   align-items: center;
   display: flex;
   gap: 8px;
