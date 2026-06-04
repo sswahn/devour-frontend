@@ -7,4 +7,6 @@
   position: absolute;
   right: 0;
   width: 48px;
+
+  border: 1px dashed red;
 }
