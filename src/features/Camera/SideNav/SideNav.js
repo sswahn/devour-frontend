@@ -1,4 +1,4 @@
-import useFootage from '../../hooks/useFootage'
+import useFootage from '../../../hooks/useFootage'
 import EditorButton from '../EditorButton/EditorButton'
 import MuteButton from '../MuteButton/MuteButton'
 import styles from './SideNav.module.css'
