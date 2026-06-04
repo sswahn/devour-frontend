@@ -11,4 +11,6 @@
   cursor: pointer;
   padding: 10px;
   width: 44px;
+
+  border: 1px dashed red;
 }
