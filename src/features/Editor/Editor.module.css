@@ -1,6 +1,6 @@
 /* Video Editor */
 
-.videoEditor {
+.editor {
   contain: content;
   height: 100dvh;
   inset: 0;
@@ -11,7 +11,7 @@
   z-index: 200;
 }
 
-.videoEditor video {
+.editor video {
   object-fit: cover;
   height: 100dvh;
   inset: 0;
