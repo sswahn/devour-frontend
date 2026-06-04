@@ -12,6 +12,13 @@
   width: 100%;
 }
 
+.topNav div {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-start;
+}
+
 @media (display-mode: standalone) {
   .topNav {
     padding-top: env(safe-area-inset-top);
