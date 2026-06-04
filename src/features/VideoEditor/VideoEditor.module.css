@@ -8,8 +8,6 @@
   object-fit: cover;
   height: 100dvh;
   inset: 0;
-  image-rendering: crisp-edges;
-  image-rendering: pixelated;
   position: absolute;
   width: 100%;
   z-index: 250;
