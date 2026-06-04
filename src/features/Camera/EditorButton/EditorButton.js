@@ -7,9 +7,11 @@ import styles from './EditorButton.module.css'
 function EditorButton() {
   const buttonRef = useRef(null)
   
-  const onClick = event => {
+  const onClick = event => {    
     navigator.vibrate?.(50)
     openOverlay(overlay.editor, buttonRef.current)
+
+     console.log('clicked open editor overlay.')
   }
   
   return (
