@@ -8,7 +8,7 @@ function VideoEditor() {
     <section className={styles.videoEditor}>
       <div>
 
-        <video src="">
+        <video src={videoUrl} preload="metadata" muted playsInline loop />
     
       </div>
     </section>
