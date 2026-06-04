@@ -129,11 +129,14 @@
   background-color: rgba(0, 0, 0, 0.5);
   border: none;
   border-radius: 50%;
+  bottom: 8px;
   display: flex;
   height: 44px;
   justify-content: center;
+  left: 8px;
   cursor: pointer;
   padding: 10px;
+  position: absolute;
   width: 44px;
   z-index: 300;
 }
