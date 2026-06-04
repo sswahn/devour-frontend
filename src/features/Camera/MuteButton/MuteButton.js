@@ -7,13 +7,14 @@ import styles from './MuteButton.module.css'
 function MuteButton({ streamRef }) {
   const [mute, setMute] = useState(false)
   
-  const toggleMute = event => {
+  const onClick = event => {
+    navigator.vibrate?.(50)
     !mute ? camera.mute(streamRef.current) : camera.unmute(streamRef.current)
     setMute(!mute)
   }
   
   return (
-    <button className={styles.muteButton} onClick={toggleMute} type="button" aria-label={mute ? 'unmute' : 'mute'}>
+    <button className={styles.muteButton} onClick={onClick} type="button" aria-label={mute ? 'unmute' : 'mute'}>
       {mute ? <MicrophoneSlashIcon /> : <MicrophoneIcon />}
     </button>
   )
