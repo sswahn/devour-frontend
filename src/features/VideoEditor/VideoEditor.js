@@ -16,6 +16,9 @@ function VideoEditor() {
     if (!source) {
       combineFootage()
     }
+    return () => {
+      URL.revokeObjectURL(source)
+    }
   }, [])
   
   return (
