@@ -198,6 +198,28 @@
   width: 100%;
 }
 
+/* Video Editor */
+
+.CAdCu73p1zUC0PuOriuX {
+  contain: content;
+  height: 100dvh;
+  inset: 0;
+  margin: 0 auto;
+  max-width: 500px;
+  overflow: hidden;
+  position: fixed;
+  z-index: 200;
+}
+
+.CAdCu73p1zUC0PuOriuX video {
+  object-fit: cover;
+  height: 100dvh;
+  inset: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 250;
+}
+
 /* Dropdown Button */
 
 .abpuI_3Na2ydJj24PSqD {
