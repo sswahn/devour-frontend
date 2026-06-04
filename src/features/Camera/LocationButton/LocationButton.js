@@ -3,12 +3,12 @@ import styles from './LocationButton.module.css'
 
 function LocationButton() {
 
-  const handleOpenLocation = event => {
-    
+  const onClick = event => {
+    navigator.vibrate?.(50)
   }
 
   return (
-    <button className={styles.locationButton} onClick={handleOpenLocation} type="button" aria-haspopup="dialog" aria-label="select your location">
+    <button className={styles.locationButton} onClick={onClick} type="button" aria-haspopup="dialog" aria-label="select your location">
       <LocationIcon />
     </button>
   )
