@@ -1,5 +1,9 @@
 /* Camera SideNav */
 
 .sideNav {
-  
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+
+  border: 1px dashed red;
 }
