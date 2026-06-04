@@ -22,7 +22,7 @@ function VideoEditor() {
     <section className={styles.videoEditor}>
       <div>
 
-        <video src={source} />
+        <video src={source} loop playsinline />
     
       </div>
     </section>
