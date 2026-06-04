@@ -5,7 +5,7 @@ import database from '../../../utilities/database'
 import styles from './RecordButton.module.css'
 
 function RecordButton({ mode, setMode, streamRef, timer }) {
-  const { setFootage, setDuration } = useFootage()
+  const { footage, setFootage, duration, setDuration } = useFootage()
   const framesRef = useRef([])
   const recorderRef = useRef(null)
   
@@ -21,26 +21,17 @@ function RecordButton({ mode, setMode, streamRef, timer }) {
   const handleStopRecordVideo = async () => {
     try {
       setMode('off')
-      
       const blob = await camera.stopRecording(recorderRef.current, framesRef.current)
-      
-      const video = [ ...context.video, blob ]
-      const currentDuration = context.video_duration.reduce((acc, val) => acc + val, 0)
-      
-      const duration = [ ...context.video_duration, 300 - timer - currentDuration ]
-
-      // camera doesnt use context, so this legacy code is most likely for Preview related components.
-      // FootageProvider will be neccessary. with something like: { footage: [], duration }
-      dispatch({ type: 'video_duration', payload: duration })
-      dispatch({ type: 'video', payload: video })
-  
-      console.log('saving the following: video: ' + JSON.stringify(video) + 'and duration: ' + duration)
-
+      const totalDuration = duration.reduce((acc, val) => acc + val, 0)
+      const newDuration = 60 - timer - currentDuration
+      setFootage([ ...footage, blob ])
+      setDuration([ ...duration, newDuration ])
       const db = database()
-      db.put({ id: 'video', video, duration })
-        
+      db.put({ id: 'footage', footage, duration })
+      
     } catch (error) {
       alert(error.message)
+      console.log(error)
     }
   }
   
