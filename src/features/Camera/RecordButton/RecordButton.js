@@ -37,13 +37,14 @@ function RecordButton({ mode, setMode, streamRef, timer }) {
     }
   }
   
-  const toggleRecord = event => {
+  const onClick = event => {
+    navigator.vibrate?.(50)
     mode === 'on' ? stopRecord() : startRecord()
   }
   
   return (
     <div className={styles.recordButtonContainer}>
-      <button className={styles.recordButton} onClick={toggleRecord} type="button" aria-label="record button" style={{
+      <button className={styles.recordButton} onClick={onClick} type="button" aria-label="record button" style={{
         backgroundColor: mode === 'on' ? '#cb4154' : '#e5e4e2', 
         borderColor: mode === 'on' ? '#eb4c42' : 'white'
       }}></button>
