@@ -65,11 +65,12 @@ function Camera() {
     <section className={styles.camera}>
       <TopNav closeCamera={closeCamera} mode={mode} timer={timer} setTimer={setTimer} stopCamera={stopCamera} streamRef={streamRef} />
 
-      {!!footage.length && <EditorButton />}
+      {/* consider SideNav for drop-in button additions */}
+      {/* !!footage.length && */}
+      <EditorButton />
       <MuteButton streamRef={streamRef} />
+      
       <RecordButton mode={mode} setMode={setMode} streamRef={streamRef} timer={timer} />
-      <LocationButton /> 
-  
       <ViewPort videoRef={videoRef} />
     </section>
   )
