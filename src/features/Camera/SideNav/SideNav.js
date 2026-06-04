@@ -3,7 +3,7 @@ import styles from './SideNav.module.css'
 function SideNav() {
 
   return (
-    <nav>
+    <nav className={styles.sideNav}>
     
     </nav>
   )
