@@ -23,11 +23,9 @@ function VideoEditor() {
   
   return (
     <section className={styles.videoEditor}>
-      <div>
 
-        <video src={source} loop playsinline />
+      <video src={source} loop playsinline />
     
-      </div>
     </section>
   )
 }
