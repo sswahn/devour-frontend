@@ -90,10 +90,16 @@
   justify-content: space-between;
   left: 0;
   padding-left: 8px;
-  padding-top: env(safe-area-inset-top, 8px);
+  padding-top: 8px;
   position: absolute;
   top: 0;
   width: 100%;
+}
+
+@media (display-mode: standalone) {
+  .RDylejBr3Rzb8YpYfiDx {
+    padding-top: env(safe-area-inset-top, 8px);
+  }
 }
 
 /* Video Overlay Buttons Like Button */
