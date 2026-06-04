@@ -23,11 +23,13 @@ function RecordButton({ mode, setMode, streamRef, timer }) {
       setMode('off')
       const blob = await camera.stopRecording(recorderRef.current, framesRef.current)
       const totalDuration = duration.reduce((acc, val) => acc + val, 0)
-      const newDuration = 60 - timer - currentDuration
-      setFootage([ ...footage, blob ])
-      setDuration([ ...duration, newDuration ])
+      const currentDuration = 60 - timer - totalDuration
+      const newDuration = [ ...duration, newDuration ]
+      const newFootage = [ ...footage, blob ]
+      setFootage(newFootage)
+      setDuration(newDuration)
       const db = database()
-      db.put({ id: 'footage', footage, duration })
+      db.put({ id: 'footage', newFootage, newDuration })
       
     } catch (error) {
       alert(error.message)
