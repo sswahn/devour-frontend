@@ -979,7 +979,7 @@
 /* Feed */
 
 .FXju5x6KeXy0fnVXd9I2 {  
-  height: 100dvh;
+  min-height: 100dvh;
   
   /*
   scroll-behavior: smooth;  
