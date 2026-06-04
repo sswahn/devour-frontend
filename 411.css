@@ -90,7 +90,7 @@
   justify-content: space-between;
   left: 0;
   padding-left: 8px;
-  padding-top: env();
+  padding-top: env(safe-area-inset-top, 8px);
   position: absolute;
   top: 0;
   width: 100%;
