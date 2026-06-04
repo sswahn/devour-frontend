@@ -5,6 +5,7 @@ import useOverlay from '../../hooks/useOverlay'
 import FocusTrap from '../FocusTrap/FocusTrap'
 import Camera from '../../features/Camera/Camera'
 import Dashboard from '../../features/Dashboard/Dashboard'
+import Editor from '../../features/Editor/Editor'
 import Notifications from '../../features/Notifications/Notifications'
 import Login from '../../features/Login/Login'
 import Profile from '../../features/Profile/Profile'
@@ -18,6 +19,7 @@ function Overlays() {
     <FocusTrap>
       {overlay.camera === isActive && <Camera />}
       {overlay.dashboard === isActive && <Dashboard />}
+      {overlay.editor === isActive && <Editor />}
       {overlay.notifications === isActive && <Notifications />}
       {overlay.login === isActive && <Login />}
       {overlay.profile === isActive && <Profile />}
