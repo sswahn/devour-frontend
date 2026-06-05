@@ -79,7 +79,7 @@ function Comments({ closeComments }) {
     console.log('onPointerDown - event.target: ', event.target)
     
     if (event.target.tagName === 'BUTTON') {
-      return console.log('button detected.')
+      return console.log('button detected on down.')
     }
     const { clientX, currentTarget } = event
     const EDGE_THRESHOLD = 35
@@ -108,6 +108,10 @@ function Comments({ closeComments }) {
 
   const onPointerUp = event => {
     console.log('onPointerUp - event.target: ', event.target)
+
+    if (event.target.tagName === 'BUTTON') {
+      return console.log('button detected on up.')
+    }
     
     const { currentTarget } = event
     const { deltaX } = onGestureUp(event)
