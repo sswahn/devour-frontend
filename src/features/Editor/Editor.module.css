@@ -1,6 +1,8 @@
 /* Video Editor */
 
 .editor {
+  background: gray;
+  
   contain: content;
   height: 100dvh;
   inset: 0;
