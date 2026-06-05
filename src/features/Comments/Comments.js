@@ -145,6 +145,9 @@ function Comments({ closeComments }) {
 
   const onPointerCancel = event => {
     onGestureCancel(event)
+    currentTarget.style.transform = ''
+    currentTarget.style.transition = ''
+    currentTarget.style.willChange = ''
   }
 
 
@@ -156,10 +159,10 @@ function Comments({ closeComments }) {
           isOpen === true && styles.open, 
           isOpen === false && styles.close 
         ].filter(Boolean).join(' ')}
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={onPointerUp}
-        onPointerCancel={onPointerCancel}>
+     //   onPointerDown={onPointerDown}
+     //   onPointerMove={onPointerMove}
+     //   onPointerUp={onPointerUp}
+     //   onPointerCancel={onPointerCancel}>
         <FocusTrap>
           <TopNav close={close} />
     
