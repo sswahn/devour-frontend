@@ -10,9 +10,9 @@ function Editor() {
   const combineFootage = () => {
     alert('combineFootage()')
     const combinedBlob = new Blob(footage, { type: 'video/webm' })
-    alert('combinedBlob: ', combinedBlob)
+    alert('combinedBlob: ', typeof combinedBlob)
     const videoUrl = URL.createObjectURL(combinedBlob)
-    alert('videoUrl: ', videoUrl)
+    alert('videoUrl: ', typeof videoUrl)
     url.current = videoUrl
     setSource(videoUrl)
   }
