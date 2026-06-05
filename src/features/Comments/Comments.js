@@ -76,10 +76,8 @@ function Comments({ closeComments }) {
   // refactor to use css classes instead of inline (like notifications)
 
   const onPointerDown = event => {
-    console.log('onPointerDown - event.target: ', event.target)
-    
     if (event.target.tagName === 'BUTTON') {
-      return console.log('button detected on down.')
+      return
     }
     const { clientX, currentTarget } = event
     const EDGE_THRESHOLD = 35
@@ -94,8 +92,6 @@ function Comments({ closeComments }) {
   }
   
   const onPointerMove = event => {
-    console.log('onPointerMove - event.target: ', event.target)
-    
     const { currentTarget } = event
     const { deltaX, axis } = onGestureMove(event)
     if (deltaX === undefined || axis !== 'x') {
@@ -107,12 +103,9 @@ function Comments({ closeComments }) {
   }
 
   const onPointerUp = event => {
-    console.log('onPointerUp - event.target: ', event.target)
-
     if (event.target.tagName === 'BUTTON') {
-      return console.log('button detected on up.')
+      return
     }
-    
     const { currentTarget } = event
     const { deltaX } = onGestureUp(event)
   
@@ -151,14 +144,13 @@ function Comments({ closeComments }) {
   }
 
   const onPointerCancel = event => {
-    console.log('onPointerCancel - event.target: ', event.target)
-    
     currentTarget.style.transform = ''
     currentTarget.style.transition = ''
     currentTarget.style.willChange = ''
     onGestureCancel(event)
   }
 
+  // refactor to use classes instead of inline css on pointer events (see Notifications)
 
   return (
     <aside className={styles.overlay}>
