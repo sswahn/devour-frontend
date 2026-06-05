@@ -8,10 +8,11 @@ function EditorButton() {
   const buttonRef = useRef(null)
   
   const onClick = event => {    
+    alert('onClick::First.')
     navigator.vibrate?.(50)
+    alert('onClick::Second.')
     openOverlay(overlay.editor, buttonRef.current)
-
-    alert('clicked open editor overlay.')
+    alert('onClick::Third.')
   }
   
   return (
