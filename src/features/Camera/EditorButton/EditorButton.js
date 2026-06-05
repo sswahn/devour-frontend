@@ -11,7 +11,7 @@ function EditorButton() {
     navigator.vibrate?.(50)
     openOverlay(overlay.editor, buttonRef.current)
 
-     console.log('clicked open editor overlay.')
+    alert('clicked open editor overlay.')
   }
   
   return (
