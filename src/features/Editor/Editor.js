@@ -8,14 +8,16 @@ function Editor() {
   const url = useRef(null)
 
   const combineFootage = () => {
+    alert('combineFootage()')
     const combinedBlob = new Blob(footage, { type: 'video/webm' })
+    alert('combinedBlob: ', combinedBlob)
     const videoUrl = URL.createObjectURL(combinedBlob)
+    alert('videoUrl: ', videoUrl)
     url.current = videoUrl
     setSource(videoUrl)
   }
 
   useEffect(() => {
-    alert('Loading editor overlay.')
     combineFootage()
     return () => {
       URL.revokeObjectURL(url.current)
