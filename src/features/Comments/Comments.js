@@ -144,10 +144,10 @@ function Comments({ closeComments }) {
   }
 
   const onPointerCancel = event => {
-    onGestureCancel(event)
     currentTarget.style.transform = ''
     currentTarget.style.transition = ''
     currentTarget.style.willChange = ''
+    onGestureCancel(event)
   }
 
 
