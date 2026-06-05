@@ -76,8 +76,7 @@ function Comments({ closeComments }) {
   // refactor to use css classes instead of inline (like notifications)
 
   const onPointerDown = event => {
-    console.log('event.target: ', event.target)
-    console.log('event.currentTarget: ', event.currentTarget)
+    console.log('onPointerDown - event.target: ', event.target)
     
     if (event.target.tagName === 'BUTTON') {
       return console.log('button detected.')
@@ -95,6 +94,8 @@ function Comments({ closeComments }) {
   }
   
   const onPointerMove = event => {
+    console.log('onPointerMove - event.target: ', event.target)
+    
     const { currentTarget } = event
     const { deltaX, axis } = onGestureMove(event)
     if (deltaX === undefined || axis !== 'x') {
@@ -106,6 +107,8 @@ function Comments({ closeComments }) {
   }
 
   const onPointerUp = event => {
+    console.log('onPointerUp - event.target: ', event.target)
+    
     const { currentTarget } = event
     const { deltaX } = onGestureUp(event)
   
@@ -144,6 +147,8 @@ function Comments({ closeComments }) {
   }
 
   const onPointerCancel = event => {
+    console.log('onPointerCancel - event.target: ', event.target)
+    
     currentTarget.style.transform = ''
     currentTarget.style.transition = ''
     currentTarget.style.willChange = ''
@@ -159,11 +164,10 @@ function Comments({ closeComments }) {
           isOpen === true && styles.open, 
           isOpen === false && styles.close 
         ].filter(Boolean).join(' ')}
-     //   onPointerDown={onPointerDown}
-     //   onPointerMove={onPointerMove}
-     //   onPointerUp={onPointerUp}
-     //   onPointerCancel={onPointerCancel}
->
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerUp}
+        onPointerCancel={onPointerCancel}>
         <FocusTrap>
           <TopNav close={close} />
     
