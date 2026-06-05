@@ -5,8 +5,8 @@ import FileVideoIcon from '../../../components/Icons/FileVideoIcon/FileVideoIcon
 import styles from './EditorButton.module.css'
 
 function EditorButton() {
-  const { openOverlay } = useOverlay()
   const buttonRef = useRef(null)
+  const { openOverlay } = useOverlay()
   
   const onClick = event => {    
     alert('onClick::First.')
