@@ -162,7 +162,8 @@ function Comments({ closeComments }) {
      //   onPointerDown={onPointerDown}
      //   onPointerMove={onPointerMove}
      //   onPointerUp={onPointerUp}
-     //   onPointerCancel={onPointerCancel}>
+     //   onPointerCancel={onPointerCancel}
+>
         <FocusTrap>
           <TopNav close={close} />
     
