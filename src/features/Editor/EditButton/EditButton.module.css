@@ -1,5 +1,27 @@
 /* Editor Edit Button */
 
 .editButton {
-  
+  align-items: center; 
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 50%;
+  bottom: 8px;
+  display: flex;
+  height: 44px;
+  justify-content: center;
+  cursor: pointer;
+  margin-top: 8px;
+  padding: 10px;
+  position: absolute;
+  right: 8px;
+  width: 44px;
+  z-index: 300;
+}
+
+.editButton:focus {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.editButton:active {
+  background: rgba(0, 0, 0, 0.5);
 }
