@@ -241,6 +241,10 @@
   z-index: 300;
 }
 
+.C_ZpIG2VEr74P55yNrig > button:first-child {
+  background: rgba(0, 0, 0, 0.5);
+}
+
 .C_ZpIG2VEr74P55yNrig div {
   align-items: center;
   display: flex;
