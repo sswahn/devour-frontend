@@ -193,6 +193,14 @@
   z-index: 300;
 }
 
+.IJOtT_cBtyaXMSGQddo3:focus {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.IJOtT_cBtyaXMSGQddo3:active {
+  background: rgba(0, 0, 0, 0.5);
+}
+
 /* Editor Mute Button */
 
 .W_0ifa3sSCG7el4sjngQ {
