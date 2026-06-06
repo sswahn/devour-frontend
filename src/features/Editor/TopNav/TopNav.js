@@ -9,7 +9,7 @@ function TopNav({ videoRef }) {
   
   return (
     <nav className={styles.topNav}>
-      <Avatar username={session.username} image={session.picture || ''} />
+      <Avatar username={session.username} image={session.picture} />
       <strong>{session.username}</strong>
       <PauseButton videoRef={videoRef}
       <MuteButton videoRef={videoRef} />
