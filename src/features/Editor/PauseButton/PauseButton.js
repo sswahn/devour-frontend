@@ -7,7 +7,7 @@ function PauseButton({ videoRef }) {
   const [pause, setPause] = useState(false)
     
   const togglePause = event => {
-    pause ? videoRefs.current.play() : videoRefs.current.pause()
+    pause ? videoRef.current.play() : videoRef.current.pause()
     setPause(prev => !prev) 
   }
 
