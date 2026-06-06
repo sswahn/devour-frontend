@@ -1,13 +1,16 @@
+import useSession from '../../../../hooks/useSession'
 import Avatar from '../../../../components/Avatar/Avatar'
 import PauseButton from './PauseButton/PauseButton'
 import MuteButton from './MuteButton/MuteButton'
 import styles from './TopNav.module.css'
 
 function TopNav({ videoRef }) {
+  const { session } = useSession()
+  
   return (
     <nav className={styles.topNav}>
-      <Avatar username={username} />
-      <strong>{username}</strong>
+      <Avatar username={session.username} />
+      <strong>{session.username}</strong>
       <PauseButton videoRef={videoRef}
       <MuteButton videoRef={videoRef} />
     </nav>
