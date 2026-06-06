@@ -4,7 +4,7 @@ import TopNav from './TopNav/TopNav'
 import MenuButton from './MenuButton/MenuButton'
 import styles from './Editor.module.css'
 
-function Editor({  }) {
+function Editor({ setEditorIsOpen }) {
   const { footage, duration } = useFootage()
   const [source, setSource] = useState('')
   const url = useRef(null)
@@ -26,7 +26,7 @@ function Editor({  }) {
 
   return (
     <section className={styles.editor}>
-      <TopNav videoRef={videoRef} />
+      <TopNav videoRef={videoRef} setEditorIsOpen={setEditorIsOpen} />
       <MenuButton />
       <video id="video-editor" ref={videoRef} src={source} loop playsinline />
     </section>
