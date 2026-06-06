@@ -12,7 +12,12 @@ function PauseButton({ videoRef }) {
   }
 
   return (
-    <button className={styles.pauseButton} onClick={togglePause} type="button" aria-label={`${pause ? 'play' : 'pause'} video`}>
+    <button 
+      className={styles.pauseButton} 
+      onClick={togglePause} 
+      type="button" 
+      aria-label={`${pause ? 'play' : 'pause'} video`} 
+      aria-controls="video-editor">
       {pause ? <PlayIcon /> : <PauseIcon />}
     </button>
   )
