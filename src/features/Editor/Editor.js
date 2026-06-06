@@ -8,6 +8,7 @@ function Editor() {
   const [mute, setMute] = useState(false)
   const [source, setSource] = useState('')
   const url = useRef(null)
+  const videoRef = useRef(null)
 
   const combineFootage = () => {
     const combinedBlob = new Blob(footage, { type: 'video/webm' })
@@ -47,7 +48,7 @@ function Editor() {
           <div className="tooltip" role="tooltip">Mute</div>
         </button>
       )}
-      <video src={source} onPlay={onPlay} onPause={onPause}  loop playsinline />
+      <video ref={videoRef} src={source} onPlay={onPlay} onPause={onPause} loop playsinline />
     
     </section>
   )
