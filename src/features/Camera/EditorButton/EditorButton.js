@@ -4,13 +4,14 @@ import useOverlay from '../../../hooks/useOverlay'
 import FileVideoIcon from '../../../components/Icons/FileVideoIcon/FileVideoIcon'
 import styles from './EditorButton.module.css'
 
-function EditorButton() {
+function EditorButton({ setEditorIsOpen }) {
   const buttonRef = useRef(null)
   const { openOverlay } = useOverlay()
   
   const onClick = event => {    
     navigator.vibrate?.(50)
-    openOverlay(overlay.editor, buttonRef.current)
+    //openOverlay(overlay.editor, buttonRef.current)
+    setEditorIsOpen(true)
   }
   
   return (
