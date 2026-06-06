@@ -1,10 +1,15 @@
+import { useState } from 'react'
 import PlayIcon from '../../../components/Icons/PlayIcon/PlayIcon'
 import PauseIcon from '../../../components/Icons/PauseIcon/PauseIcon'
 import styles from './PauseButton.module.css'
 
-function PauseButton({ pause }) {
-
-  
+function PauseButton({ videoRef }) {
+  const [pause, setPause] = useState(false)
+    
+  const togglePause = event => {
+    pause ? videoRefs.current.play() : videoRefs.current.pause()
+    setPause(prev => !prev) 
+  }
 
   return (
     <button className="icon-btn-alt" onClick={togglePause} type="button" aria-label={`${pause ? 'play' : 'pause'} video`}>
