@@ -3,7 +3,6 @@ import VolumeHighIcon from '../../../components/Icons/VolumeHighIcon/VolumeHighI
 import VolumeXIcon from '../../../components/Icons/VolumeXIcon/VolumeXIcon'
 import styles from './MuteButton.module.css'
 
-
 function MuteButton({ videoRef }) {
   const [mute, setMute] = useState(false)
 
