@@ -4,7 +4,7 @@ import TopNav from './TopNav/TopNav'
 import MenuButton from './MenuButton/MenuButton'
 import styles from './Editor.module.css'
 
-function Editor() {
+function Editor({  }) {
   const { footage, duration } = useFootage()
   const [source, setSource] = useState('')
   const url = useRef(null)
