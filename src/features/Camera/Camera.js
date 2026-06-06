@@ -8,6 +8,7 @@ import RecordButton from './RecordButton/RecordButton'
 import MuteButton from './MuteButton/MuteButton'
 import LocationButton from './LocationButton/LocationButton'
 import ViewPort from './ViewPort/ViewPort'
+import Editor from '../Editor/Editor'
 import styles from './Camera.module.css'
 
 function Camera() {
