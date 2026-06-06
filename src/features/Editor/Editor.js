@@ -17,6 +17,9 @@ function Editor() {
     setSource(videoUrl)
   }
 
+  const onPlay = event => {}
+  const onPause = event => {}
+
   useEffect(() => {
     combineFootage()
     return () => {
@@ -27,7 +30,7 @@ function Editor() {
   return (
     <section className={styles.editor}>
 
-      <video src={source} loop playsinline />
+      <video src={source} onPlay={onPlay} onPause={onPause}  loop playsinline />
     
     </section>
   )
