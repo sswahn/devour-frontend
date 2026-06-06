@@ -11,7 +11,8 @@ import ViewPort from './ViewPort/ViewPort'
 import styles from './Camera.module.css'
 
 function Camera() {
-  const { closeOverlay } = useOverlay()
+  const { closeOverlay } = useOverlay
+  const [editorIsOpen, setEditorIsOpen] = useState(false)
   const [mode, setMode] = useState('off')
   const [timer, setTimer] = useState(60)
   const streamRef = useRef(null)
@@ -61,11 +62,14 @@ function Camera() {
   
   return (
     <section className={styles.camera}>
+    {!editorIsOpen && <>
       <TopNav closeCamera={closeCamera} mode={mode} timer={timer} setTimer={setTimer} stopCamera={stopCamera} streamRef={streamRef} />
-      <SideNav streamRef={streamRef} />
+      <SideNav setEditorIsOpen={setEditorIsOpen} />
       <RecordButton mode={mode} setMode={setMode} streamRef={streamRef} timer={timer} />
       <MuteButton streamRef={streamRef} />
       <ViewPort videoRef={videoRef} />
+    </>}
+    {editorIsOpen && <Editor />}
     </section>
   )
 }
