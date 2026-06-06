@@ -178,12 +178,55 @@
 
 /* Editor Pause Button */
 
-.IJOtT_cBtyaXMSGQddo3 {}
+.IJOtT_cBtyaXMSGQddo3 {
+  align-items: center; 
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  height: 44px;
+  justify-content: center;
+  cursor: pointer;
+  padding: 10px;
+  width: 44px;
+  z-index: 300;
+}
 
 /* Editor Mute Button */
 
 .W_0ifa3sSCG7el4sjngQ {
-  
+  align-items: center; 
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  height: 44px;
+  justify-content: center;
+  cursor: pointer;
+  padding: 10px;
+  width: 44px;
+  z-index: 300;
+}
+
+/* Editor TopNav */
+
+.C_ZpIG2VEr74P55yNrig {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  left: 0;
+  padding: 0 8px;
+  padding-top: env(safe-area-inset-top);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 300;
+}
+
+.C_ZpIG2VEr74P55yNrig div {
+  align-items: center;
+  display: flex;
+  gap: 16px;
 }
 
 /* Video Editor */
