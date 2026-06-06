@@ -5,6 +5,7 @@ const SessionContext = createContext(null)
 function SessionProvider({ children }) {
   const [session, setSession] = useState({
     username: 'testUser',
+    picture: '',
     isAuthenticated: true// false
   })
   
