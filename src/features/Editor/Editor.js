@@ -17,9 +17,6 @@ function Editor() {
     setSource(videoUrl)
   }
 
-  const onPlay = event => {}
-  const onPause = event => {}
-
   useEffect(() => {
     combineFootage()
     return () => {
@@ -27,13 +24,11 @@ function Editor() {
     }
   }, [])
 
-  // should be single buttons
-  
   return (
     <section className={styles.editor}>
       <PauseButton videoRef={videoRef} />
       <MuteButton videoRef={videoRef} />
-      <video ref={videoRef} src={source} onPlay={onPlay} onPause={onPause} loop playsinline />
+      <video ref={videoRef} src={source} loop playsinline />
     </section>
   )
 }
