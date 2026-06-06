@@ -9,9 +9,7 @@ function TopNav({ videoRef,  }) {
   
   return (
     <nav className={styles.topNav}>
-      <div>
-        <BackButton overlay={} close={} />
-      </div>
+      <BackButton overlay={} close={} />
       <div>
         <PauseButton videoRef={videoRef} />
         <MuteButton videoRef={videoRef} />
