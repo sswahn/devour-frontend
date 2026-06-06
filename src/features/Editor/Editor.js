@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import useFootage from '../../hooks/useFootage'
 import TopNav from './TopNav/TopNav'
+import MenuButton from './MenuButton/MenuButton'
 import styles from './Editor.module.css'
 
 function Editor() {
@@ -26,6 +27,7 @@ function Editor() {
   return (
     <section className={styles.editor}>
       <TopNav videoRef={videoRef} />
+      <MenuButton />
       <video id="video-editor" ref={videoRef} src={source} loop playsinline />
     </section>
   )
