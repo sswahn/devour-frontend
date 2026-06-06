@@ -1,13 +1,15 @@
 import { useState } from 'react'
+import VolumeHighIcon from '../../../components/Icons/VolumeHighIcon/VolumeHighIcon'
+import VolumeXIcon from '../../../components/Icons/VolumeXIcon/VolumeXIcon'
 import styles from './MuteButton.module.css'
 
 
-function MuteButton() {
+function MuteButton({ videoRef }) {
   const [mute, setMute] = useState(false)
 
   const toggleMute = event => {
-    mute ? videoRefs.current.play() : videoRefs.current.pause()
-    setPause(prev => !prev) 
+    videoRef.current.muted = !mute
+    setMute(prev => !prev) 
   }
 
   return (
