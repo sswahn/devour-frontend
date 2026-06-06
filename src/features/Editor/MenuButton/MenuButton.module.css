@@ -16,8 +16,6 @@
   right: 8px;
   width: 44px;
   z-index: 300;
-
-  border: 1px dashed red;
 }
 
 .menuButton:focus {
