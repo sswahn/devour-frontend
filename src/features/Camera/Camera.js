@@ -70,7 +70,7 @@ function Camera() {
       <MuteButton streamRef={streamRef} />
       <ViewPort videoRef={videoRef} />
     </>}
-    {editorIsOpen && <Editor />}
+    {editorIsOpen && <Editor setEditorIsOpen={setEditorIsOpen} />}
     </section>
   )
 }
