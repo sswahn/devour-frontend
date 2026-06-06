@@ -12,7 +12,7 @@ function MuteButton({ videoRef }) {
   }
 
   return (
-    <button className="icon-btn-alt" onClick={toggleMute} type="button" aria-label="unmute video" aria-controls={`video-preview-${index}`}>
+    <button className={styles.muteButton} onClick={toggleMute} type="button" aria-label="unmute video" aria-controls="video-editor">
       {mute ? <VolumeXIcon /> : <VolumeHighIcon />}
     </button>
   )
