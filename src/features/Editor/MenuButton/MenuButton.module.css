@@ -1,6 +1,6 @@
 /* Editor Edit Button */
 
-.editButton {
+.menuButton {
   align-items: center; 
   background: rgba(0, 0, 0, 0.5);
   border: none;
@@ -20,10 +20,10 @@
   border: 1px dashed red;
 }
 
-.editButton:focus {
+.menuButton:focus {
   background: rgba(0, 0, 0, 0.5);
 }
 
-.editButton:active {
+.menuButton:active {
   background: rgba(0, 0, 0, 0.5);
 }
