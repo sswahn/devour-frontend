@@ -12,3 +12,8 @@
   width: 100%;
   z-index: 300;
 }
+
+.topNav div {
+  display: flex;
+  gap: 16px;
+}
