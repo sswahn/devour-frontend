@@ -12,7 +12,12 @@ function MuteButton({ videoRef }) {
   }
 
   return (
-    <button className={styles.muteButton} onClick={toggleMute} type="button" aria-label={`${mute ? 'unmute' : 'mute'} video`} aria-controls="video-editor">
+    <button 
+      className={styles.muteButton} 
+      onClick={toggleMute} 
+      type="button" 
+      aria-label={`${mute ? 'unmute' : 'mute'} video`} 
+      aria-controls="video-editor">
       {mute ? <VolumeXIcon /> : <VolumeHighIcon />}
     </button>
   )
