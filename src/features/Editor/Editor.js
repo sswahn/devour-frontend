@@ -26,7 +26,7 @@ function Editor() {
   return (
     <section className={styles.editor}>
       <TopNav videoRef={videoRef} />
-      <video ref={videoRef} src={source} loop playsinline />
+      <video id="video-editor" ref={videoRef} src={source} loop playsinline />
     </section>
   )
 }
