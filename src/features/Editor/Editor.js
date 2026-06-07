@@ -12,8 +12,7 @@ function Editor({ setEditorIsOpen }) {
   const videoRef = useRef(null)
 
   const combineFootage = () => {
-    const combinedBlob = new Blob(footage, { type: 'video/webm' }) // this is done in camera
-    const videoUrl = URL.createObjectURL(combinedBlob)
+    const videoUrl = URL.createObjectURL(footage)
     url.current = videoUrl
     setSource(videoUrl)
   }
