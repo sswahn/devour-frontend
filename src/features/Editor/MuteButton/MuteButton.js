@@ -7,6 +7,7 @@ function MuteButton({ videoRef }) {
   const [mute, setMute] = useState(false)
 
   const toggleMute = event => {
+    navigator.vibrate?.(50)
     videoRef.current.muted = !mute
     setMute(prev => !prev) 
   }
