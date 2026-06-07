@@ -1,21 +1,15 @@
-import { useRef } from 'react'
-import { overlay } from '../../../config'
-import useOverlay from '../../../hooks/useOverlay'
 import FileVideoIcon from '../../../components/Icons/FileVideoIcon/FileVideoIcon'
 import styles from './EditorButton.module.css'
 
-function EditorButton({ setEditorIsOpen }) {
-  const buttonRef = useRef(null)
-  const { openOverlay } = useOverlay()
-  
+function EditorButton({ openEditor }) {
+
   const onClick = event => {    
     navigator.vibrate?.(50)
-    //openOverlay(overlay.editor, buttonRef.current)
-    setEditorIsOpen(true)
+    openEditor()
   }
   
   return (
-    <button className={styles.editorButton} ref={buttonRef} onClick={onClick} type="button" aria-label="view footage">
+    <button className={styles.editorButton} onClick={onClick} type="button" aria-label="view footage">
       <FileVideoIcon />
     </button>
   )
