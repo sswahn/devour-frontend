@@ -72,6 +72,7 @@ function Camera() {
     if (storage.length) {
       setFootage(storage.footage)
       setDuration(storage.duration)
+      setTimer(60 - storage.duration)
     }
   }
 
