@@ -64,17 +64,16 @@ function Camera() {
   const getVideoDuration = blob => {
     return new Promise((resolve, reject) => {
       const video = document.createElement('video')
+      const cleanup = () => URL.revokeObjectURL(video.src)
       video.preload = 'metadata'
-  
       video.onloadedmetadata = () => {
-        window.URL.revokeObjectURL(video.src)
+        cleanup()
         resolve(video.duration) // Time length in seconds
       }
-  
       video.onerror = error => {
+        cleanup()
         reject(error)
       }
-  
       video.src = URL.createObjectURL(blob)
     })
   }
