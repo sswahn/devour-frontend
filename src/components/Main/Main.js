@@ -15,9 +15,6 @@ function Main() {
   const loadFromStorage = async () => {
     const db = database()
     const storage = await db.get('footage')
-    
-    console.log('storage: ', storage)
-    
     if (storage) {
       setData(storage.footage)
     }
