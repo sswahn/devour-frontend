@@ -21,7 +21,7 @@ function ProgressBar({ videoRef }) {
     }
     videoRef.current.addEventListener('timeupdate', onTimeUpdate)
     return () => {
-      videoRef.current.removeEventListener('timeupdate', onTimeUpdate)
+      videoRef.current?.removeEventListener('timeupdate', onTimeUpdate)
     }
   }, [])
   
