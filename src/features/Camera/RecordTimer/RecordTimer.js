@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import database from '../../../utilities/database'
 import styles from './RecordTimer.module.css'
 
 function RecordTimer({ mode, timer, setTimer, stopCamera }) {
@@ -16,25 +15,12 @@ function RecordTimer({ mode, timer, setTimer, stopCamera }) {
     }
   }
 
-  const loadFromStorage = async () => {
-    const db = database()
-    const video = await db.get('video')
-    const totalDuration = video?.duration.reduce((acc, val) => acc + val, 0)
-    if (totalDuration) {
-      setTimer(60 - totalDuration)
-    }
-  }
-
   useEffect(() => {
     let interval = createInterval()
     return () => {
       clearInterval(interval)
     }
   }, [timer, mode])
-
-  useEffect(() => {
-    loadFromStorage()
-  }, [])
 
   return (
     <div className={styles.recordTimer}>
