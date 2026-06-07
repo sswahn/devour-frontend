@@ -6,7 +6,7 @@ import ProgressBar from './ProgressBar/ProgressBar'
 import styles from './Editor.module.css'
 
 function Editor({ setEditorIsOpen }) {
-  const { footage, duration } = useFootage()
+  const { footage } = useFootage()
   const [source, setSource] = useState('')
   const url = useRef(null)
   const videoRef = useRef(null)
