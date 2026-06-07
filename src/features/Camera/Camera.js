@@ -14,7 +14,7 @@ import styles from './Camera.module.css'
 
 function Camera() {
   const { closeOverlay } = useOverlay
-  const { footage, setFootage, setDuration } = useFootage() // is duration needed in useFootage?
+  const { footage, setFootage } = useFootage() // is duration needed in useFootage?
   const [editorIsOpen, setEditorIsOpen] = useState(false)
   const [mode, setMode] = useState('off')
   const [timer, setTimer] = useState(60)
@@ -61,7 +61,23 @@ function Camera() {
     }
   }, [])
 
-  // need a load from storage function that sets indexeddb video to footage state
+  const getVideoDuration = blob => {
+    return new Promise((resolve, reject) => {
+      const video = document.createElement('video')
+      video.preload = 'metadata'
+  
+      video.onloadedmetadata = () => {
+        window.URL.revokeObjectURL(video.src)
+        resolve(video.duration) // Time length in seconds
+      }
+  
+      video.onerror = error => {
+        reject(error)
+      }
+  
+      video.src = URL.createObjectURL(blob)
+    })
+  }
 
   const loadFromStorage = async () => {
     const db = database()
@@ -71,9 +87,8 @@ function Camera() {
     
     if (!!storage.length) {
       setFootage(storage.footage)
-      setDuration(storage.duration)
-      const totalDuration = storage.duration.reduce((acc, val) => acc + val, 0)
-      setTimer(60 - totalDuration)
+      const duration = await getVideoDuration(storage.footage)
+      setTimer(60 - duration)
     }
   }
 
