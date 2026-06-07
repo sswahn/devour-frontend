@@ -1,4 +1,5 @@
 import { useState,  Suspense, lazy } from 'react'
+import database from '../../utilities/database' // temp to test frontend
 import Suggestions from '../Suggestions/Suggestions'
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 const Feed = lazy(() => import('../../features/Feed/Feed'))
@@ -10,6 +11,23 @@ function Main() {
     { picture: '', username: 'test_user2',  video: 2, caption: 'testing captions with multiple lines. It should expand upward instead of downward.' },
     { picture: '', username: 'test_user3', video: 3, caption: 'test captions 3' }
   ])
+
+  const loadFromStorage = async () => {
+    const db = database()
+    const storage = await db.get('footage')
+    
+    console.log('storage: ', storage)
+    
+    if (!!storage.length) {
+      setData(storage.footage)
+    }
+  }
+
+  useEffect(() => {
+    if (!data.length) {
+      loadFromStorage()
+    }
+  }, [])
   
   return (
     <main className={styles.main} aria-description="When text is highlighted, it will automatically be read aloud.">
