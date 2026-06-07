@@ -7,6 +7,7 @@ function PauseButton({ videoRef }) {
   const [pause, setPause] = useState(false)
     
   const togglePause = event => {
+    navigator.vibrate?.(50)
     pause ? videoRef.current.play() : videoRef.current.pause()
     setPause(prev => !prev) 
   }
