@@ -18,7 +18,7 @@ function Main() {
     
     console.log('storage: ', storage)
     
-    if (!!storage.length) {
+    if (storage) {
       setData(storage.footage)
     }
   }
