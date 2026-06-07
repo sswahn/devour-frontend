@@ -5,10 +5,10 @@
   bottom: 56px;
   cursor: pointer;
   height: 8px;
-  left: 8px;
+  left: 50%;
   position: absolute;
-  right: 8px;
-  width: 100%;
+  transform: translateX(-50%);
+  width: calc(100% - 16px);
   z-index: 300;
 }
 
