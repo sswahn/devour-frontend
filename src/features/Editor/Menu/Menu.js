@@ -1,11 +1,17 @@
 import { useRef } from 'react'
+import CloseButton from './CloseButton/CloseButton'
 import styles from './Menu.module.css'
 
-function Menu() {
+function Menu({ setMenuIsOpen }) {
   const listRef = useRef(null)
+
+  const closeMenu = () => {
+    setMenuIsOpen(false)
+  }
   
   return (
     <div className={styles.menu} aria-label="menu">
+      <CloseButton overlay="menu" close={closeMenu} />
       <ul ref={listRef}>
         <li>
           <button type="button">Location</button>
