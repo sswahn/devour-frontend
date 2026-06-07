@@ -3,7 +3,7 @@ import styles from './CloseButton.module.css'
 
 // make to a global CloseButton
 
-function CloseButton({ close }) {
+function CloseButton({ overlay, close }) {
 
   const onClick = event => {
     navigator.vibrate?.(50)
@@ -11,7 +11,7 @@ function CloseButton({ close }) {
   }
   
   return (
-    <button className={styles.closeButton} onClick={onClick} type="button" aria-label="close sidebar">
+    <button className={styles.closeButton} onClick={onClick} type="button" aria-label={`close ${overlay}`}>
       <XmarkIcon />
     </button>
   )
