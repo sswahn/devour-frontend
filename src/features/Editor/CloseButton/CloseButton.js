@@ -1,6 +1,8 @@
 import XmarkIcon from '../../../components/Icons/XmarkIcon/XmarkIcon'
 import styles from './CloseButton.module.css'
 
+// make to a global CloseButton
+
 function CloseButton({ close }) {
 
   const onClick = event => {
