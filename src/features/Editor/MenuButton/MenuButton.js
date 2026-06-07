@@ -1,10 +1,10 @@
 import BarsIcon from '../../../components/Icons/BarsIcon/BarsIcon'
 import styles from './MenuButton.module.css'
 
-function MenuButton() {
+function MenuButton({ setMenuIsOpen }) {
 
   const onClick = event => {
-    // open editor menu
+    setMenuIsOpen(true)
   }
 
   return (
