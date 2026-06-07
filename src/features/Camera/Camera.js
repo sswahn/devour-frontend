@@ -52,6 +52,10 @@ function Camera() {
       document.exitFullscreen()
     }
   }
+
+  const closeEditor = () => {
+    setEditorIsOpen(false)
+  }
   
   useEffect(() => {
     if (!streamRef.current) {
@@ -110,7 +114,7 @@ function Camera() {
       <MuteButton streamRef={streamRef} />
       <ViewPort videoRef={videoRef} />
     </>}
-    {editorIsOpen && <Editor setEditorIsOpen={setEditorIsOpen} />}
+    {editorIsOpen && <Editor closeEditor={closeEditor} />}
     </section>
   )
 }
