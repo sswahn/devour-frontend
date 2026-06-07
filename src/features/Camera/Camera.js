@@ -85,15 +85,18 @@ function Camera() {
     
     console.log('storage: ', storage)
     
-    if (!!storage.length) {
-      setFootage(storage.footage)
+    if (storage) {
       const duration = await getVideoDuration(storage.footage)
+
+      console.log('duration: ', duration)
+      
+      setFootage(storage.footage)
       setTimer(60 - duration)
     }
   }
 
   useEffect(() => {
-    if (!footage.length) {
+    if (footage) {
       loadFromStorage()
     }
   }, [])
