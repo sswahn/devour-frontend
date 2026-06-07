@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import CloseButton from '../CloseButton/CloseButton'
+import CloseButton from '../../../components/CloseButton/CloseButton'
 import styles from './Menu.module.css'
 
 function Menu({ setMenuIsOpen }) {
