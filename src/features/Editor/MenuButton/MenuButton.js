@@ -4,6 +4,7 @@ import styles from './MenuButton.module.css'
 function MenuButton({ openMenu }) {
 
   const onClick = event => {
+    navigation?.vibrate?.(50)
     openMenu()
   }
 
