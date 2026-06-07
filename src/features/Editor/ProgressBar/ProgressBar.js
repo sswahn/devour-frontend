@@ -5,6 +5,7 @@ function ProgressBar({ videoRef }) {
   const progressBarRef = useRef(null)
 
   const onClick = event => {
+    navigator.vibrate?.(50)
     const rect = event.currentTarget.getBoundingClientRect()
     const clickX = event.clientX - rect.left // Click position inside the bar
     videoRef.current.currentTime = (clickX / rect.width) * video.duration // Calculate new video time and apply it
