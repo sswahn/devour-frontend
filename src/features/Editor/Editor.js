@@ -27,7 +27,7 @@ function Editor({ setEditorIsOpen }) {
       <MenuButton setMenuIsOpen={setMenuIsOpen} />
       <ProgressBar videoRef={videoRef} />
       <video id="video-editor" ref={videoRef} src={source} loop playsinline />
-      {menuIsOpen && <Menu />}
+      {menuIsOpen && <Menu setMenuIsOpen={setMenuIsOpen} />}
     </section>
   )
 }
