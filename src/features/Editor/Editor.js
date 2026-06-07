@@ -8,19 +8,16 @@ import styles from './Editor.module.css'
 function Editor({ setEditorIsOpen }) {
   const { footage } = useFootage()
   const [source, setSource] = useState('')
-  const url = useRef(null)
   const videoRef = useRef(null)
 
-  const combineFootage = () => {
-    const videoUrl = URL.createObjectURL(footage)
-    url.current = videoUrl
-    setSource(videoUrl)
-  }
-
   useEffect(() => {
-    combineFootage()
+    if (source) {
+      return
+    }
+    const videoUrl = URL.createObjectURL(footage)
+    setSource(videoUrl)
     return () => {
-      URL.revokeObjectURL(url.current)
+      URL.revokeObjectURL(videoUrl)
     }
   }, [])
 
