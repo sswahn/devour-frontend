@@ -96,7 +96,7 @@ function Camera() {
   }
 
   useEffect(() => {
-    if (footage) {
+    if (!footage) {
       loadFromStorage()
     }
   }, [])
