@@ -1,4 +1,4 @@
-import { useState,  Suspense, lazy } from 'react'
+import { useState, useEffect, Suspense, lazy } from 'react'
 import database from '../../utilities/database' // temp to test frontend
 import Suggestions from '../Suggestions/Suggestions'
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
