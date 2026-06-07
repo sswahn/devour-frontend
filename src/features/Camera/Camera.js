@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { overlay } from '../../config'
 import useOverlay from '../../hooks/useOverlay'
+import useFootage from '../../hooks/useFootage'
 import camera from '../../utilities/camera'
 import TopNav from './TopNav/TopNav'
 import SideNav from './SideNav/SideNav'
@@ -13,6 +14,7 @@ import styles from './Camera.module.css'
 
 function Camera() {
   const { closeOverlay } = useOverlay
+  const { footage, setFootage, setDuration } = useFootage() // is duration needed in useFootage?
   const [editorIsOpen, setEditorIsOpen] = useState(false)
   const [mode, setMode] = useState('off')
   const [timer, setTimer] = useState(60)
@@ -60,6 +62,24 @@ function Camera() {
   }, [])
 
   // need a load from storage function that sets indexeddb video to footage state
+
+  const loadFromStorage = async () => {
+    const db = database()
+    const storage = await db.get('footage')
+    
+    console.log('storage: ', storage)
+    
+    if (storage.length) {
+      setFootage(storage.footage)
+      setDuration(storage.duration)
+    }
+  }
+
+  useEffect(() => {
+    if (!footage.length) {
+      loadFromStorage()
+    }
+  }, [])
   
   return (
     <section className={styles.camera}>
