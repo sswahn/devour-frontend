@@ -24,7 +24,7 @@ function RecordTimer({ mode, timer, setTimer, stopCamera }) {
 
   return (
     <div className={styles.recordTimer}>
-      {`${Math.floor(timer / 60)}:${String(timer % 60).padStart(2, "0")}`}
+      {`${Math.floor(timer / 60)}:${String(timer % 60).padStart(2, '0')}`}
     </div>
   )
 }
