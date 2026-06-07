@@ -11,7 +11,8 @@ function Editor({ setEditorIsOpen }) {
   const videoRef = useRef(null)
 
   useEffect(() => {
-    const videoUrl = URL.createObjectURL(footage)
+    const blob = footage || new Blob()
+    const videoUrl = URL.createObjectURL(blob) // pass footage directly, after testing complete
     setSource(videoUrl)
     return () => {
       URL.revokeObjectURL(videoUrl)
