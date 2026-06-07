@@ -72,8 +72,8 @@ function Camera() {
     if (!!storage.length) {
       setFootage(storage.footage)
       setDuration(storage.duration)
-      const duration = storage.duration.reduce((acc, val) => acc + val, 0)
-      setTimer(60 - duration)
+      const totalDuration = storage.duration.reduce((acc, val) => acc + val, 0)
+      setTimer(60 - totalDuration)
     }
   }
 
