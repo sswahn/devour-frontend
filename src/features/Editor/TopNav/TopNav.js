@@ -5,12 +5,8 @@ import PauseButton from '../PauseButton/PauseButton'
 import MuteButton from '../MuteButton/MuteButton'
 import styles from './TopNav.module.css'
 
-function TopNav({ videoRef, setEditorIsOpen }) {
+function TopNav({ videoRef, closeEditor }) {
   const { session } = useSession()
-
-  const closeEditor = () => {
-    setEditorIsOpen(false)
-  }
   
   return (
     <nav className={styles.topNav}>
