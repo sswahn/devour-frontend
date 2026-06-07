@@ -6,7 +6,7 @@ import ProgressBar from './ProgressBar/ProgressBar'
 import Menu from './Menu/Menu'
 import styles from './Editor.module.css'
 
-function Editor({ setEditorIsOpen }) {
+function Editor({ closeEditor }) {
   const { footage } = useFootage()
   const { menuIsOpen, setMenuIsOpen } = useState(false)
   const [source, setSource] = useState('')
@@ -31,7 +31,7 @@ function Editor({ setEditorIsOpen }) {
 
   return (
     <section className={styles.editor}>
-      <TopNav videoRef={videoRef} setEditorIsOpen={setEditorIsOpen} />
+      <TopNav videoRef={videoRef} closeEditor={closeEditor} />
       <MenuButton openMenu={openMenu} />
       {menuIsOpen && <Menu closeMenu={closeMenu} />}
       <ProgressBar videoRef={videoRef} />
