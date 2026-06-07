@@ -86,8 +86,6 @@
   position: absolute;
   right: 8px;
   z-index: 300;
-
-  border: 1px dashed red;
 }
 
 /* Camera Record Button CSS Module */
