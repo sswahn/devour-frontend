@@ -8,7 +8,7 @@ function RecordTimer({ mode, timer, setTimer, stopCamera }) {
       return setInterval(() => {
         if (timer < 1) {
           clearInterval(interval)
-          return stopCamera() // fix: this function is not available here, maybe dispatch recording false or modal message
+          return stopCamera()
         }
         setTimer(timer - 1)
       }, 1000)
