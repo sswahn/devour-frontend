@@ -290,6 +290,7 @@
   position: absolute;
   right: 8px;
   width: 100%;
+  z-index: 300;
 }
 
 .wt5dHgSjceSJyM7Sz9yE div {
