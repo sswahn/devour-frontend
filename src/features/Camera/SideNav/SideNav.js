@@ -2,7 +2,7 @@ import useFootage from '../../../hooks/useFootage'
 import EditorButton from '../EditorButton/EditorButton'
 import styles from './SideNav.module.css'
 
-function SideNav({ setEditorIsOpen }) {
+function SideNav({ openEditor }) {
   const { footage } = useFootage()
 
   // if this nav doesnt need more buttons added to it,
@@ -12,7 +12,7 @@ function SideNav({ setEditorIsOpen }) {
   
   return (
     <nav className={styles.sideNav}>
-      <EditorButton setEditorIsOpen={setEditorIsOpen} />
+      <EditorButton openEditor={openEditor} />
     </nav>
   )
 }
