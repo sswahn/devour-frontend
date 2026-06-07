@@ -22,7 +22,7 @@ function RecordButton({ mode, setMode, streamRef, timer }) {
     try {
       setMode('off')
       const blob = await camera.stopRecording(recorderRef.current, framesRef.current)
-      const newFootage = [ ...footage, blob ] // consider not using an array, (currently serves no purpose)
+      const newFootage = new Blob([ footage, blob ], { type: 'video/webm' }) 
       setFootage(newFootage)
       const db = database()
       db.put({ id: 'footage', footage: newFootage })
