@@ -3,10 +3,12 @@ import useFootage from '../../hooks/useFootage'
 import TopNav from './TopNav/TopNav'
 import MenuButton from './MenuButton/MenuButton'
 import ProgressBar from './ProgressBar/ProgressBar'
+import Menu from './Menu/Menu'
 import styles from './Editor.module.css'
 
 function Editor({ setEditorIsOpen }) {
   const { footage } = useFootage()
+  const { menuIsOpen, setMenuIsOpen } = useState(false)
   const [source, setSource] = useState('')
   const videoRef = useRef(null)
 
@@ -22,9 +24,10 @@ function Editor({ setEditorIsOpen }) {
   return (
     <section className={styles.editor}>
       <TopNav videoRef={videoRef} setEditorIsOpen={setEditorIsOpen} />
-      <MenuButton />
+      <MenuButton setMenuIsOpen={setMenuIsOpen} />
       <ProgressBar videoRef={videoRef} />
       <video id="video-editor" ref={videoRef} src={source} loop playsinline />
+      {menuIsOpen && <Menu />}
     </section>
   )
 }
