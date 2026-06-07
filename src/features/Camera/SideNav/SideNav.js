@@ -8,7 +8,7 @@ function SideNav({ setEditorIsOpen }) {
   // if this nav doesnt need more buttons added to it,
   // move EditButton to camera directly
   
-  // conditionally render EditorButton with !!footage.length
+  // conditionally render EditorButton with footage !== null
   
   return (
     <nav className={styles.sideNav}>
