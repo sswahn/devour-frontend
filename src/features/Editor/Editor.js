@@ -12,6 +12,14 @@ function Editor({ setEditorIsOpen }) {
   const [source, setSource] = useState('')
   const videoRef = useRef(null)
 
+  const openMenu = () => {
+    setMenuIsOpen(true)
+  }
+  
+  const closeMenu = () => {
+    setMenuIsOpen(false)
+  }
+
   useEffect(() => {
     const blob = footage || new Blob()
     const videoUrl = URL.createObjectURL(blob) // pass footage directly, after testing complete
@@ -24,10 +32,10 @@ function Editor({ setEditorIsOpen }) {
   return (
     <section className={styles.editor}>
       <TopNav videoRef={videoRef} setEditorIsOpen={setEditorIsOpen} />
-      <MenuButton setMenuIsOpen={setMenuIsOpen} />
+      <MenuButton openMenu={openMenu} />
+      {menuIsOpen && <Menu closeMenu={closeMenu} />}
       <ProgressBar videoRef={videoRef} />
       <video id="video-editor" ref={videoRef} src={source} loop playsinline />
-      {menuIsOpen && <Menu setMenuIsOpen={setMenuIsOpen} />}
     </section>
   )
 }
