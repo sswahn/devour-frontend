@@ -1,10 +1,33 @@
+import { useEffect, useRef } from 'react'
 import styles from './ProgressBar.module.css'
 
-function ProgressBar() {
+function ProgressBar({ videoRef }) {
+  const progressBarRef = useRef(null)
 
+  const onClick = event => {
+    const rect = progressContainer.getBoundingClientRect()
+    const clickX = event.clientX - rect.left // Click position inside the bar
+    videoRef.current.currentTime = (clickX / rect.width) * video.duration // Calculate new video time and apply it
+  }
+
+  const onTimeUpdate = event => {
+    const video = videoRef.current
+    if (video.duration) {
+      const percentage = (video.currentTime / video.duration) * 100;
+      progressBarRef.current.style.width = `${percentage}%`;
+    }
+  }
+
+  useEffect(() => {
+    videoRef.current?.addEventListener('timeupdate', onTimeUpdate)
+    return () => {
+      videoRef.current.removeEventListener('timeupdate', onTimeUpdate)
+    }
+  }, [])
+  
   return (
-    <div id="progressContainer" className="progress-container">
-      <div id="progressBar" className="progress-bar"></div>
+    <div className={styles.progressBar}>
+      <div ref={progressBarRef} onClick={onClick}></div>
     </div>
   )
 }
