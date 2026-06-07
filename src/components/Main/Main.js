@@ -12,11 +12,14 @@ function Main() {
     { picture: '', username: 'test_user3', video: 3, caption: 'test captions 3' }
   ])
 
+  // consider not using figcaption, but embeding into video.caption
+  // HTMLMediaElement.addTextTrack() for timed display of captions.
+
   const loadFromStorage = async () => {
     const db = database()
     const storage = await db.get('footage')
     if (storage) {
-      setData(storage.footage)
+      setData([ ...data, storage.footage ])
     }
   }
 
