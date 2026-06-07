@@ -5,7 +5,7 @@ import database from '../../../utilities/database'
 import styles from './RecordButton.module.css'
 
 function RecordButton({ mode, setMode, streamRef, timer }) {
-  const { footage, setFootage, duration, setDuration } = useFootage()
+  const { footage, setFootage } = useFootage()
   const framesRef = useRef([])
   const recorderRef = useRef(null)
   
@@ -22,15 +22,10 @@ function RecordButton({ mode, setMode, streamRef, timer }) {
     try {
       setMode('off')
       const blob = await camera.stopRecording(recorderRef.current, framesRef.current)
-      const totalDuration = duration.reduce((acc, val) => acc + val, 0)
-      const currentDuration = 60 - timer - totalDuration
-      const newDuration = [ ...duration, currentDuration ]
-      const newFootage = [ ...footage, blob ]
+      const newFootage = [ ...footage, blob ] // consider not using an array, (currently serves no purpose)
       setFootage(newFootage)
-      setDuration(newDuration)
       const db = database()
-      db.put({ id: 'footage', newFootage, newDuration })
-      
+      db.put({ id: 'footage', footage: newFootage })
     } catch (error) {
       alert(error.message)
       console.log(error)
