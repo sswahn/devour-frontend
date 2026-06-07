@@ -11,15 +11,15 @@ function ProgressBar({ videoRef }) {
   }
 
   const onTimeUpdate = event => {
-    const video = videoRef.current
-    if (video.duration) {
-      const percentage = (video.currentTime / video.duration) * 100;
-      progressBarRef.current.style.width = `${percentage}%`;
-    }
+    const percentage = (videoRef.current.currentTime / videoRef.current.duration) * 100
+    progressBarRef.current.style.width = `${percentage}%`
   }
 
   useEffect(() => {
-    videoRef.current?.addEventListener('timeupdate', onTimeUpdate)
+    if (!videoRef.current) {
+      return
+    }
+    videoRef.current.addEventListener('timeupdate', onTimeUpdate)
     return () => {
       videoRef.current.removeEventListener('timeupdate', onTimeUpdate)
     }
