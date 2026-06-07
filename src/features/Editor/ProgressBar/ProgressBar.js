@@ -26,7 +26,7 @@ function ProgressBar({ videoRef }) {
   }, [])
   
   return (
-    <div className={styles.progressBar} onClick={onClick}>>
+    <div className={styles.progressBar} onClick={onClick}>
       <div ref={progressBarRef}></div>
     </div>
   )
