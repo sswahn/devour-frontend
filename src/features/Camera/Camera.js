@@ -53,6 +53,10 @@ function Camera() {
     }
   }
 
+  const openEditor = () => {
+    setEditorIsOpen(true)
+  }
+
   const closeEditor = () => {
     setEditorIsOpen(false)
   }
@@ -109,7 +113,7 @@ function Camera() {
     <section className={styles.camera}>
     {!editorIsOpen && <>
       <TopNav closeCamera={closeCamera} mode={mode} timer={timer} setTimer={setTimer} stopCamera={stopCamera} streamRef={streamRef} />
-      <SideNav setEditorIsOpen={setEditorIsOpen} />
+      <SideNav openEditor={openEditor} />
       <RecordButton mode={mode} setMode={setMode} streamRef={streamRef} timer={timer} />
       <MuteButton streamRef={streamRef} />
       <ViewPort videoRef={videoRef} />
