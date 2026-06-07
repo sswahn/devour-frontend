@@ -1,0 +1,18 @@
+/* Editor Video Custom Progress Bar */
+
+.progressBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+}
+
+.progressBar div {
+  width: 0%;
+  height: 100%;
+  background: #ff0000; /* Red progress bar */
+  transition: width 0.1s linear;
+}
