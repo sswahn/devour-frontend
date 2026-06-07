@@ -11,9 +11,6 @@ function Editor({ setEditorIsOpen }) {
   const videoRef = useRef(null)
 
   useEffect(() => {
-    if (source) {
-      return
-    }
     const videoUrl = URL.createObjectURL(footage)
     setSource(videoUrl)
     return () => {
