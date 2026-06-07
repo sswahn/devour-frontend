@@ -5,7 +5,7 @@ function ProgressBar({ videoRef }) {
   const progressBarRef = useRef(null)
 
   const onClick = event => {
-    const rect = progressContainer.getBoundingClientRect()
+    const rect = event.currentTarget.getBoundingClientRect()
     const clickX = event.clientX - rect.left // Click position inside the bar
     videoRef.current.currentTime = (clickX / rect.width) * video.duration // Calculate new video time and apply it
   }
@@ -26,8 +26,8 @@ function ProgressBar({ videoRef }) {
   }, [])
   
   return (
-    <div className={styles.progressBar}>
-      <div ref={progressBarRef} onClick={onClick}></div>
+    <div className={styles.progressBar} onClick={onClick}>>
+      <div ref={progressBarRef}</div>
     </div>
   )
 }
