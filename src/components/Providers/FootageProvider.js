@@ -3,7 +3,7 @@ import { useState, createContext } from 'react'
 const FootageContext = createContext(null)
 
 function FootageProvider({ children }) {
-  const [footage, setFootage] = useState([])
+  const [footage, setFootage] = useState(null)
 
   return (
     <FootageContext.Provider value={{ footage, setFootage }}>
