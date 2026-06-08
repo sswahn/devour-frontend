@@ -330,12 +330,6 @@
   background: rgba(0, 0, 0, 0.5);
   margin: 8px 0 0 8px;
   z-index: 450;
-
-  border: 1px dashed red;
-}
-
-.pqVzoMNn04RuymDNZ8zc > button:active {
-  background: red;
 }
 
 .pqVzoMNn04RuymDNZ8zc ul {
