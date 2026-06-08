@@ -42,7 +42,9 @@ function Menu({ data, setData, closeMenu }) {
   }
   
   const handleDescription = event => {
-    // textarea
+    openDialog(
+      <textarea id="description" name="description" aria-label="add a description">{data.description}</textarea>
+    )
   }
   
   return (
