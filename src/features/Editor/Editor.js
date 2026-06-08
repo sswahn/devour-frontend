@@ -33,8 +33,7 @@ function Editor({ closeEditor }) {
     <section className={styles.editor}>
       <TopNav videoRef={videoRef} closeEditor={closeEditor} />
       <MenuButton openMenu={openMenu} />
-      {/*menuIsOpen && <Menu closeMenu={closeMenu} /> */}
-      <Menu closeMenu={closeMenu} />
+      {menuIsOpen && <Menu closeMenu={closeMenu} />}
       <ProgressBar videoRef={videoRef} />
       <video id="video-editor" ref={videoRef} src={source} loop playsinline />
     </section>
