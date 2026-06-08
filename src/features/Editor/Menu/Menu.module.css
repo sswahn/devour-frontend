@@ -15,12 +15,6 @@
   background: rgba(0, 0, 0, 0.5);
   margin: 8px 0 0 8px;
   z-index: 450;
-
-  border: 1px dashed red;
-}
-
-.menu > button:active {
-  background: red;
 }
 
 .menu ul {
