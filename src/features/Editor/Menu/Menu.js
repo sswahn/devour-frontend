@@ -14,7 +14,7 @@ function Menu({ data, setData, closeMenu }) {
     console.log('data.location: ', data.location)
     
     openDialog(
-      <div style={{marginTop: '16px'}}>
+      <div style={{marginTop: '24px'}}>
         <Input
           id="location"
           type="text"
