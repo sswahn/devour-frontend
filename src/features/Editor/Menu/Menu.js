@@ -9,10 +9,9 @@ function Menu({ data, setData, closeMenu }) {
   const [errorMessage, setErrorMessage] = useState('')
   const listRef = useRef(null)
 
+
+  // need set functions
   const handleLocation = event => {
-    
-    console.log('data.location: ', data.location)
-    
     openDialog(
       <div style={{marginTop: '24px'}}>
         <Input
@@ -32,20 +31,24 @@ function Menu({ data, setData, closeMenu }) {
   
   const handleCaption = event => {
     openDialog(
-      <Input
-        id="caption"
-        type="text"
-        label="caption"
-        inputMode="text"
-        defaultValue={data.caption}
-        error={errorMessage} 
-      />
+      <div style={{marginTop: '24px'}}>
+        <Input
+          id="caption"
+          type="text"
+          label="caption"
+          inputMode="text"
+          defaultValue={data.caption}
+          error={errorMessage} 
+        />
+      </div>
     )
   }
   
   const handleDescription = event => {
     openDialog(
-      <textarea id="description" name="description" aria-label="add a description">{data.description}</textarea>
+      <div style={{marginTop: '24px'}}>
+        <textarea id="description" name="description" aria-label="add a description">{data.description}</textarea>
+      </div>
     )
   }
   
