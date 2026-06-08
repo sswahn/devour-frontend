@@ -1,13 +1,19 @@
 import { useRef } from 'react'
+import useDialog from '../../../hooks/useDialog'
 import CloseButton from '../../../components/CloseButton/CloseButton'
 import Input from '../../../components/Input/Input'
 import styles from './Menu.module.css'
 
 function Menu({ data, setData, closeMenu }) {
+  const { openDialog } = useDialog()
   const listRef = useRef(null)
 
   const onClick = event => {
-    console.log('button clicked.')
+    openDialog(
+      <Input
+    
+      />
+    )
   }
   
   return (
