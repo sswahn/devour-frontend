@@ -26,15 +26,13 @@
   z-index: 400;
 }
 
-.menu li {
-  
-}
+.menu ul li {}
 
-.menu button {
+.menu ul li button {
   align-items: center; 
   background: none;
   border: 1px solid rgba(0, 0, 0, 0.8);
-  border-top: none;
+  border-top: 0;
   cursor: pointer;
   display: flex;
   height: 44px;
@@ -43,6 +41,6 @@
   width: 100%;
 }
 
-.menu li:first-of-type button {
+.menu ul li:first-of-type button {
   border-top: 1px solid rgba(0, 0, 0, 0.8);
 }
