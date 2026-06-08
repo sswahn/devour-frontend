@@ -14,15 +14,17 @@ function Menu({ data, setData, closeMenu }) {
     console.log('data.location: ', data.location)
     
     openDialog(
-      <Input
-        id="location"
-        type="text"
-        label="location"
-        inputMode="text"
-        defaultValue={data.location}
-        error={errorMessage}
-        required 
-      />
+      <div style={{marginTop: '16px'}}>
+        <Input
+          id="location"
+          type="text"
+          label="location"
+          inputMode="text"
+          defaultValue={data.location}
+          error={errorMessage}
+          required 
+        />
+      </div>
     )
   }
 
