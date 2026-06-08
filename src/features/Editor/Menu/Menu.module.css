@@ -34,7 +34,7 @@
 
 .menu button {
   align-items: center; 
-  background: rgba(0, 0, 0, 0.5);
+  background: none;
   border: none;
   display: flex;
   height: 44px;
