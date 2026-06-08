@@ -364,6 +364,14 @@
   border-top: 1px solid rgba(0, 0, 0, 0.5);
 }
 
+.pqVzoMNn04RuymDNZ8zc ul li button:focus {
+  background: none;
+}
+
+.pqVzoMNn04RuymDNZ8zc ul li button:active {
+  background: rgba(0, 0, 0, 0.5);
+}
+
 /* Video Editor */
 
 .CAdCu73p1zUC0PuOriuX {
