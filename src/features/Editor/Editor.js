@@ -10,10 +10,11 @@ function Editor({ closeEditor }) {
   const { footage } = useFootage()
   const [menuIsOpen, setMenuIsOpen] = useState(false)
   const [source, setSource] = useState('')
-  // consider using an object for portability
-  const [location, setLocation] = useState(localStorage.getItem('location') || '')
-  const [caption, setCaption] = useState(localStorage.getItem('caption') || '')
-  const [description, setDescription] = useState(localStorage.getItem('description') || '')
+  const [data, setData] = useState({
+    location: localStorage.getItem('location') || '',
+    caption: localStorage.getItem('caption') || '',
+    description: localStorage.getItem('description') || ''
+  })
   const videoRef = useRef(null)
 
   const openMenu = () => {
@@ -37,7 +38,7 @@ function Editor({ closeEditor }) {
   return (
     <section className={styles.editor}>
       <TopNav videoRef={videoRef} closeEditor={closeEditor} />
-      <MenuButton openMenu={openMenu} />
+      <MenuButton data={data} setData={setData} openMenu={openMenu} />
       {menuIsOpen && <Menu closeMenu={closeMenu} />}
       <ProgressBar videoRef={videoRef} />
       <video id="video-editor" ref={videoRef} src={source} loop playsinline />
