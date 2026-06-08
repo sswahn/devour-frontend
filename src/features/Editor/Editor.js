@@ -22,7 +22,6 @@ function Editor({ closeEditor }) {
   }
   
   const closeMenu = () => {
-    console.log('close button pressed.')
     setMenuIsOpen(false)
   }
 
