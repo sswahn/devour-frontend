@@ -20,14 +20,16 @@ function Editor({ closeEditor }) {
     setMenuIsOpen(false)
   }
 
+  /*
   useEffect(() => {
-   // const blob = footage || new Blob()
- //   const videoUrl = URL.createObjectURL(blob) // pass footage directly, after testing complete
-  //  setSource(videoUrl)
+    const blob = footage || new Blob()
+    const videoUrl = URL.createObjectURL(blob) // pass footage directly, after testing complete
+    setSource(videoUrl)
     return () => {
-  //    URL.revokeObjectURL(videoUrl)
+      URL.revokeObjectURL(videoUrl)
     }
   }, [])
+  */
 
   return (
     <section className={styles.editor}>
