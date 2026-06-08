@@ -329,6 +329,7 @@
 .pqVzoMNn04RuymDNZ8zc > button {
   background: rgba(0, 0, 0, 0.5);
   margin: 8px 0 0 8px;
+  z-index: 400;
 }
 
 .pqVzoMNn04RuymDNZ8zc ul {
