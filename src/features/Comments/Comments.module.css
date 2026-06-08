@@ -1,0 +1,43 @@
+/* Feed Node Comments System */
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(1px);
+  contain: content;
+  height: 100dvh;
+  inset: 0;
+  opacity: 1;
+  position: fixed;
+  transition: opacity 0.1s ease-in, opacity 0.5s ease-out;
+  z-index: 150;
+}
+
+.comments {
+  background-color: var(--surface-raised);
+  height: 100dvh;
+  padding: 8px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  touch-action: pan-y;
+  transform: translate3d(100%, 0, 0);
+  transition: transform 0.3s ease-in-out;
+  width: 100%;
+  z-index: 200;
+}
+
+.open {
+  transform: translate3d(0, 0, 0);
+}
+
+.close {
+  transform: translate3d(100%, 0, 0);
+}
+
+.comments ul {
+  list-style: none;
+  overflow-y: auto;
+  width: 100%;
+  margin-top: 56px;
+  padding-bottom: 48px; /* needs padding to not get stuck behind sticky form */
+}

@@ -1,0 +1,40 @@
+import { contextmenu } from '../../config'
+import styles from './Menu.module.css'
+
+function ContextMenu({ items }) {
+
+  // global element that spawns at pointer location, yet doesnt go off screen.
+  // when a specific element is targeted, if it is in the list of elements with instructions
+  // add the info icon and information text to open a dialog element
+  // also some elements have specific actions, such as feed node: Like, Share, Flag, etc.
+  // perhaps use a config for ContextMenu, that uses "info", "actions" and contains keys to the elements,
+  // and related content
+
+  /* Example: 
+  const contextmenu = {
+    feednode: {
+      actions: ['like', 'comment', 'share', 'fullscreen', 'report', 'blockuser'],
+      information: []
+    },
+  }
+  */
+
+  //focus controls should work almost the same as in dropdown, without the return focus.
+
+  // contextmenu[element][type].map(x => <button>{x}</button>)'
+  
+  return (
+    <menu className={styles.contextMenu} role="menu" aria-label="context menu">
+      {items.map(item => 
+        <li>
+          <button type="button" role="menuitem">
+            {item.icon}
+            <span>{item.text}</span>
+          </button>
+        </li>
+      )}
+    </menu>
+  )
+}
+
+export default ContextMenu

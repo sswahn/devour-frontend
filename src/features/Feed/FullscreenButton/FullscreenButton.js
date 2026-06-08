@@ -1,42 +1,21 @@
-import { useRef } from 'react'
-import useFocusStack from '../../../hooks/useFocusStack'
-import ExpandIcon from '../../../components/Icons/ExpandIcon/ExpandIcon'
+import useFullscreen from '../../../hooks/useFullscreen'
+import MaximizeIcon from '../../../components/Icons/MaximizeIcon/MaximizeIcon'
+import MinimizeIcon from '../../../components/Icons/MinimizeIcon/MinimizeIcon'
 import styles from './FullscreenButton.module.css'
 
-function FullscreenButton({ openFeed }) {
-  const { push } = useFocusStack()
-  const buttonRef = useRef(null)
-  
-  const action = async () => {
-    await document.getElementById('portal').requestFullscreen()
-    await screen.orientation.lock('portrait')
-    push(buttonRef.current)
-    openFeed()
-
-    // make sure current video focused
-  }
+function FullscreenButton({ enterFullScreen, exitFullScreen }) {
+  const { isFullscreen } = useFullscreen()
   
   const onClick = event => {
     navigator.vibrate?.(50)
-    action()
+    !isFullscreen ? enterFullScreen() : exitFullScreen() 
   }
-  
-  const onKeyDown = event => {
-    if (event.key === 'Enter') {
-      event.preventDefault()
-      action()
-    }
-  }
+
+  // have aria pressed, and label accordingly.
   
   return (
-    <button 
-      className={styles.fullscreenButton}
-      onClick={onClick} 
-      onKeyDown={onKeyDown} 
-      ref={buttonRef} 
-      type="button" 
-      aria-label="enter fullscreen mode">
-      <ExpandIcon />
+    <button className={styles.fullscreenButton} onClick={onClick} type="button" aria-pressed={isFullscreen} aria-label="enter fullscreen mode">
+      {isFullscreen ? <MinimizeIcon /> : <MaximizeIcon />}
     </button>
   )
 }

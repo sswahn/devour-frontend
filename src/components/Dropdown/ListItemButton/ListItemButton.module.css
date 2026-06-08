@@ -7,10 +7,12 @@
   cursor: pointer;
   display: flex;
   flex: 1;
+  font-weight: bold;
+  gap: 8px;
   height: 44px;
   justify-content: flex-start;
   padding: 0 8px;
   width: 100%;
-
-  border: 1px dashed red;
 }
+
+

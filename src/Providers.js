@@ -1,15 +1,30 @@
 import { SessionProvider } from './components/Providers/SessionProvider'
-import { FocusTrapProvider } from './components/Providers/FocusTrapProvider'
-import { FocusStackProvider } from './components/Providers/FocusStackProvider'
+import { FullscreenProvider } from './components/Providers/FullscreenProvider'
+import { OverlayProvider } from './components/Providers/OverlayProvider'
+import { ProfileProvider } from './components/Providers/ProfileProvider'
+import { SidebarProvider } from './components/Providers/SidebarProvider'
+import { DialogProvider } from './components/Providers/DialogProvider'
+import { ContentProvider } from './components/Providers/ContentProvider'
+import { FootageProvider } from './components/Providers/FootageProvider'
 
 function Providers({ children }) {
   return (
     <SessionProvider>
-      <FocusTrapProvider>
-        <FocusStackProvider>
-          {children}
-        </FocusStackProvider>
-      </FocusTrapProvider>
+      <FullscreenProvider>
+        <OverlayProvider>
+          <ProfileProvider>
+            <ContentProvider>
+              <SidebarProvider>
+                <DialogProvider>
+                  <FootageProvider>
+                    {children}
+                  </FootageProvider>
+                </DialogProvider>
+              </SidebarProvider>
+            </ContentProvider>
+          </ProfileProvider>
+        </OverlayProvider>
+      </FullscreenProvider>
     </SessionProvider>
   )
 }

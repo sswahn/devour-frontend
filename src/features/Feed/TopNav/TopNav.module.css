@@ -5,10 +5,21 @@
   display: flex;
   justify-content: space-between;
   left: 0;
+  padding-left: 8px;
+  padding-top: 4px;
   position: absolute;
   top: 0;
   width: 100%;
-  z-index: 200;
-  
-  border: 1px dashed red;
+}
+
+.topNav > div:first-of-type {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+@media (display-mode: standalone) {
+  .topNav {
+    padding-top: env(safe-area-inset-top);
+  }
 }

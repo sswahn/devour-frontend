@@ -1,0 +1,11 @@
+/* Comments Top Nav Bar */
+
+.topNav {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-start;
+  margin-bottom: 16px;
+  width: 100%;
+}
+

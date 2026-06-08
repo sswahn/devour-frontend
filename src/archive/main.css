@@ -1,0 +1,1123 @@
+:root {
+  --light-contrast: black;
+  --light-background-color: white;
+  --light-background-color-secondary: #eee;
+  --light-background-color-tertiary: #ccc;
+  --light-background-color-quaternary: #999;
+  --light-border-color: #888;
+  --light-color: black;
+  --light-color-secondary: #222;
+  
+  --dark-contrast: white;
+  --dark-background-color: #000;
+  --dark-background-color-secondary: #111;
+  --dark-background-color-tertiary: #222;
+  --dark-background-color-quaternary: #333;
+  --dark-border-color: #444;
+  --dark-color: white;
+  --dark-color-secondary: #ccc; 
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url(/fc2b5060f7accec5cf74.ttf) format('truetype');
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background: var(--dark-background-color);
+  color: var(--dark-color);
+  height: 100%;
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+}
+
+a:link,
+a:visited,
+a:active {
+  color: var(--dark-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: #f0ad4e;
+  text-decoration: underline;
+}
+
+ .spinner {
+    color: var(--dark-color);
+  }
+
+.avatar {
+  font-size: 35px;
+  padding-right: 5px;
+  position: relative;
+}
+
+.pro-badge svg {
+  bottom: 3px;
+  position: absolute;
+  right: 0px;
+}
+
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.header {
+  background: none;
+  position: fixed;
+  width: 100%;
+}
+
+.icon-btn {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 0;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  font-size: 22px; 
+  height: 45px;
+  position: relative;
+  width: 45px; 
+}
+
+.icon-btn:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.icon-btn:active {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.icon-btn-alt {
+  background: none;
+  border: 0;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  font-size: 22px; 
+  height: 45px;
+  position: relative;
+  width: 45px; 
+}
+
+.icon-btn-alt:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.menu {
+  background: none;
+  display: block;
+  margin: 6px 8px 0 auto;
+}
+
+.notifications-badge {
+  background-color: darkorange;
+  border-radius: 50%;
+  height: 8px;
+  left: 30px;
+  position: absolute;
+  top: 15px;
+  width: 8px;
+}
+
+.badge {
+  background-color: darkorange;
+  border-radius: 50%;
+  font-size: 12px;
+  height: 15px;
+  left: 25px;
+  position: absolute;
+  top: 10px;
+  width: 15px;
+}
+
+.tooltip {
+  background-color: #575a62;
+  border-radius: 5px;
+  bottom: -30px;
+  font-size: 12px;
+  left: -3px;
+  opacity: 0;
+  padding: 4px 8px;
+  position: absolute;
+  transition: opacity 0.3s, visibility 0.3s;
+  visibility: hidden;
+}
+
+.sidebar {
+  background-color: var(--dark-background-color-secondary);
+  height: 100%;
+  max-width: 500px;
+  position: absolute;
+  top: 0;
+  transition: transform 0.3s ease-in-out, right 0.3s ease-in-out;
+  width: 100%;
+}
+
+.sidebar-closed {
+  right: -500px;
+  transform: translateX(0);
+}
+
+.sidebar-open {
+  right: 0;
+  transform: translateX(0);
+}
+
+.navigation {
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--dark-border-color);
+  color: var(--dark-color);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 20px 0 20px 20px;
+  position: relative;
+  text-align: left;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.navigation:hover {
+  background-color: var(--dark-background-color-tertiary);
+}
+
+.navigation:first-of-type {
+  border-top: 1px solid var(--dark-border-color);
+  margin-top: 5px;
+}
+
+.navigation span {
+  margin-left: 30px;
+}
+
+dialog::backdrop {
+  background-color: rgba(4,4,5, 0.5);
+}
+
+dialog:not([open]) {
+  display: none;
+}
+
+.modal {
+  align-items: center; 
+  background: none;
+  border: 0;
+  display: flex; 
+  height: calc(100% - 40px);
+  justify-content: center; 
+  overflow-y: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+}
+
+.close-modal { 
+  background: none;
+  border: 0;
+  color: var(--dark-color);
+  cursor: pointer;
+  display: none;
+  font-size: 22px;
+  margin: 5px 0 0 5px;
+  position: absolute;
+  top: 5px;
+  left: 190px;
+  z-index: 9999999;
+}
+
+.close-modal:hover .tooltip {
+  display: block;
+}
+
+#preview-dialog {
+  z-index: 99999;
+}
+
+/*
+  AUTH FORMS
+*/
+
+.auth-form-wrapper {
+  background-color: var(--dark-background-color-secondary);
+  max-width: 500px; 
+  width: 100%;
+}
+
+.auth-form {
+  background-color: var(--dark-background-color-secondary); 
+  border: 1px solid var(--dark-border-color);
+  border-radius: 10px; 
+  color: var(--dark-color);
+  max-width: 500px; 
+  padding: 10px 15px 50px 15px;
+  width: 100%; 
+}
+
+.auth-form h2 {
+  font-size: 26px; 
+  font-weight: normal;
+  margin: 15px 0;
+  text-align: center;
+}
+
+.auth-actions { 
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  padding: 0 15px;
+}
+
+.auth-details {
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 10px 0 5px 0;
+}
+
+.auth-details summary {
+  cursor: pointer;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.auth-details ul {
+  list-style-type: none;
+}
+
+.auth-details ul li {
+  margin-left: 12px;
+}
+
+.auth-details ul li:last-of-type {
+  margin-bottom: 10px;
+}
+
+.auth-form small {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.auth-button { 
+  background: none;
+  border: 0;
+  color: var(--dark-color);
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.auth-button:hover { 
+  text-decoration: underline;
+}
+
+
+.checkbox-container {
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+
+.checkbox-container svg {
+ /* fa icon, position on top of checkbox */
+  display: block;
+  height: 20px;
+  left: 12px;
+  position: absolute;
+  width: 20px;
+  z-index: 9999;
+}
+
+.checkbox-label {
+  font-size: 16px;
+  margin-left: 40px;
+}
+
+.checkbox {
+ /* make checkbox small enough to hide behind icon*/
+  height: 1px;
+  left: 0;
+  position: absolute;
+  width: 1px;
+}
+
+
+
+/*
+  END AUTH FORMS
+*/
+
+
+/*
+  Input Component
+*/
+
+.input-component {
+  margin-bottom: 20px;
+}
+
+.input-container {
+  position: relative;
+}
+
+.input-field {
+  background-color: var(--dark-background-color-tertiary);
+  border-color: var(--dark-border-color);
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  color: var(--dark-color);
+  font-size: 16px;
+  padding: 15px 15px 15px 37px;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  width: 100%;
+}
+
+.input-field:hover {
+  border-color: var(--dark-contrast);
+}
+
+.input-field:focus {
+  background-color: var(--dark-background-color-quaternary);
+}
+
+.input-icon {
+  left: 15px;
+  color: var(--dark-color);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.input-message {
+  font-size: 13px;
+  padding: 5px 0 0 10px;
+}
+
+.input-error {
+  color: red;
+  font-size: 13px;
+  padding: 5px 0 0 10px;
+}
+
+/*
+  End Input Component
+*/
+
+
+
+.caption-btn {
+  font-size: 16px;
+  position: absolute;
+  right: 0;
+  top: 5px;
+}
+
+.caption-btn > .tooltip {
+  z-index: 9999;
+}
+
+.caption-wrapper {
+  margin-top: 10px;
+  position: relative;
+  
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.caption-header {
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 0 0 5px 5px;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  width: 100%;
+}
+
+.caption-header button {
+  background: none;
+  border: 0;
+  border-radius: 5px;
+  color: white;
+  height: 40px;
+  width: 40px;
+}
+
+.caption-container {
+  margin: 0 auto;
+  position: relative;
+  width: 95%;
+}
+
+.caption-input-empty:before {
+  color: gray;
+  content: 'Add a caption';
+}
+
+.caption-input {
+  background: rgba(0, 0, 0, .7);
+  border: 0;
+  border-radius: 5px 5px 0 0;
+  color: white;
+  padding: 15px 15px 5px 15px;
+  width: 100%;
+}
+
+.caption-input:focus {
+  outline: none;
+}
+
+.caption {
+  bottom: 0;
+  color: white;
+  padding: 10px;
+  position: absolute;
+  width: 100%;
+}
+
+.font-size-menu {
+  align-items: center;
+  background-color: white;
+  border-radius: 0 0 5px 5px;
+  color: black;
+  
+  font-size: 13px;
+  padding: 20px 15px;
+  width: 100%;
+}
+
+.font-size-menu label {
+  margin-right: 10px;
+}
+
+.font-size-menu input {
+  height: 5px;
+}
+
+.font-size-menu span {
+  margin-left: 10px;
+}
+
+.text-align-menu {
+  align-items: center;
+  background-color: white;
+  border-radius: 0 0 5px 5px;
+  display: flex;
+  font-size: 13px;
+  padding: 15px;
+  width: 100%;
+}
+
+.text-align-menu span {
+  margin-right: 5px; 
+}
+
+.text-align-menu button {
+  background: none;
+  border: 1px solid #888;
+  border-radius: 5px;
+  margin: 0 10px;
+  padding: 5px 10px;
+}
+
+.color-menu {
+  background-color: white;
+  border-radius: 0 0 5px 5px;
+  display: flex;
+  font-size: 13px;
+  padding: 15px;
+  width: 100%;
+}
+
+.color-menu div {
+  align-items: center;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.color-menu div input {
+  background: none;
+  border: 0;
+}
+
+.color-menu div input[type=checkbox] {
+  height: 15px;
+  width: 15px;
+}
+
+.color-menu div:last-child {
+  margin-bottom: 0;
+}
+
+.color-menu div:first-child label {
+  margin-right: 20px; 
+}
+
+.color-menu div label {
+  margin-right: 10px;
+}
+
+.emoji-container button {
+  background: none;
+  border: 0;
+  padding: 5px;
+}
+
+.caption-emoji-menu {
+  background: white;
+  border-radius: 0 0 5px 5px;
+  height: 150px;
+  overflow-y: scroll;
+  padding: 15px;
+}
+
+.caption-suggestions {
+  background-color: white;
+  border-radius: 5px;
+  bottom: -150px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.caption-suggestions > div {
+  display: flex;
+  padding: 15px;
+}
+
+.caption-suggestions > div div:nth-of-type(2) {
+  margin-left: 15px;
+}
+
+/*
+  SubmitButton Component
+*/
+
+.submit-button-message {
+  background-color: green;
+  border-radius: 4px;
+  margin: 20px 0 0 0;
+  padding: 15px;
+  width: 100%;
+}
+
+.submit-button-message span {
+  margin-left: 15px;
+}
+
+.submit-button-error {
+  background-color: red;
+  border-radius: 4px;
+  margin: 20px 0 0 0;
+  padding: 15px;
+  width: 100%;
+}
+
+.submit-button-error span {
+  margin-left: 15px;
+}
+
+.submit-button {
+  background-color: var(--dark-background-color-tertiary);
+  border-color: var(--dark-border-color);
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  color: var(--dark-color);
+  font-size: 15px;
+  font-weight: bold;
+  margin: 15px 0;
+  padding: 12px 20px;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.submit-button:hover {
+  background-color: var(--dark-background-color-quaternary);
+}
+
+
+/*
+  End SubmitButton Component
+*/
+
+.card {
+  max-width: 500px;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.card-header {
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+  height: 60px;
+  left: 50%;
+  max-width: 500px;
+  position: fixed;
+  top: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  z-index: 9999;
+}
+
+.card-content {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.card-actions {
+  bottom: 0; 
+  left: 0; 
+  padding: 0; 
+  position: absolute; 
+  width: 100%;
+}
+
+.camera-light {
+  background: none;
+  border: 0;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 5px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 9999;
+}
+
+.camera { 
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.camera-button-container { 
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50px;
+  margin: 0 auto 25px auto;
+  padding: 10px;
+  width: 78px;
+}
+
+.camera-button {
+  background-color: #e5e4e2;
+  border: 3px solid white;
+  border-radius: 50px;
+  color: white;
+  height: 56px;
+  padding: 0 26px; 
+}
+
+.camera-button:hover {
+  background-color: #f2f3f4;
+}
+
+.camera-navigation {
+  background: none; 
+  border-radius: 10px; 
+  bottom: 10px; 
+  display: flex; 
+  flex-direction: column; 
+  height: 250px; 
+  justify-content: space-between; 
+  padding: 20px 0; 
+  position: absolute; 
+  right: 10px; 
+  width: 50px; 
+  z-index: 9999;
+}
+
+.video-mute {
+  bottom: 20px;
+  left: 10px;
+  padding: 5px 10px; 
+  position: absolute;
+  z-index: 9999;
+}
+
+.video-timer {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  color: white; 
+  font-size: 24px;
+  font-weight: bold;
+  left: 50%;
+  top: 10px;
+  padding: 5px 10px;
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+.post-form {
+  background-color: #202124; 
+  height: 100%; 
+  max-height: 100%;  
+  max-width: 500px; 
+  width: 100%;
+}
+
+.post-form-submit {
+  position: absolute; 
+  bottom: 0;
+}
+
+.user-header {
+  align-items: center;
+  color: white;
+  display: flex;
+  padding: 10px 0 0 10px;
+}
+
+.header-text {
+  font-size: 15px; 
+  font-weight: bold;
+  margin-left: 1px;
+}
+
+.header-text > div:last-child {
+  color: var(--dark-color-secondary);
+  font-size: 12px;
+  font-weight: normal;
+  margin-left: 5px;
+}
+
+.media-component {
+  height: 100%;
+  overflow-x: scroll; 
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.video-controls {
+  display: flex; 
+  position: absolute; 
+  top: 5px; 
+  right: 45px; 
+  z-index: 9999;
+}
+
+.video-controls button {
+  font-size: 16px;
+}
+
+.media-item {
+  display: inline-block;
+  height: 100%;
+  pointer-events: none;
+  scroll-snap-align: center;
+  width: 100%;
+}
+
+.cheveron-right {
+  position: absolute; 
+  right: 0; 
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9999;
+}
+
+.cheveron-left {
+  position: absolute; 
+  left: 0; 
+  top: 50%; 
+  transform: translateY(-50%);
+  z-index: 9999;
+}
+
+.dropdown-menu {
+  background-color: rgba(0, 0, 0, .7);
+  border-radius: 5px;
+  list-style: none;
+  position: absolute;
+  right: 10px;
+  top: 45px;
+  width: 200px;
+  z-index: 99999;
+}
+
+
+.dropdown-menu button {
+  background: none;
+  border: 0;
+  color: var(--dark-color);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 15px 0 15px 15px;
+  position: relative;
+  text-align: left;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.dropdown-menu button:hover {
+  background-color: var(--dark-background-color-tertiary);
+}
+
+
+.dropdown-menu span {
+  margin-left: 15px;
+}
+
+.preview-button-container {
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 5px;
+}
+
+.save-btn:hover {
+  color: green;
+}
+
+.delete-btn:hover {
+  color: red;
+}
+
+
+/**
+ * Media Editor
+ */
+
+.media-editor {
+  background: rgba(0, 0, 0, .7);
+  border: 0;
+  border-radius: 5px;
+  color: white;
+  margin: 10px auto;
+  padding: 5px 15px;
+  position: relative;
+  width: 95%;
+}
+
+.media-editor div:first-child {
+  display: flex;
+  justify-content: space-between;
+}
+
+.media-editor button {
+  background: none;
+  border: 0;
+  border-radius: 5px;
+  color: white;
+  font-size: 20px;
+  height: 40px;
+  width: 40px;
+}
+
+.swap-segment-menu {
+  justif-content: space-evenly;
+}
+
+
+/**
+ *  Slideshow
+ */
+ 
+/* Slider container */
+.slider {
+  height: 100%;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Slider wrapper to hold slides */
+.slider .wrapper {
+  display: flex;
+  transition: left 0.5s ease;
+}
+
+/* Individual slide items */
+.slider .items {
+  display: flex;
+}
+
+.slider .slide {
+  width: 100%;
+  min-width: 100%;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  font-size: 24px;
+}
+
+/* Control buttons */
+.slider .control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  padding: 10px;
+  font-size: 18px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.slider .prev {
+  left: 10px;
+}
+
+.slider .next {
+  right: 10px;
+}
+
+
+
+/* End Slideshow */
+
+
+@media screen and (max-width: 500px) {
+  
+  .tooltip {
+    display: none;  
+  }
+  
+  .modal {
+    height: 100%;
+    margin: 0;
+    max-height: 100%;
+    max-width: 100%;
+    padding: 0;
+    width: 100%;
+  }
+  
+  .close-modal {
+    cursor: default;
+    display: block;
+    left: 10px;
+  }
+  
+  .navigation,
+  .icon-btn,
+  .icon-btn-alt,
+  .camera-light {
+    cursor: default;
+  }
+  
+  .auth-form-wrapper {
+     align-items: center;
+     display: flex;
+     height: 100%;
+  }
+  
+  .auth-form {
+    border: 0;
+  }
+  
+  .card {
+    left: 0;
+    margin: 0;
+    position: absolute;
+    top: 0;
+  }
+  
+  .camera {
+    height: 100%;
+    min-height: 100%;
+  }
+  
+  .camera-button-container {
+    margin-bottom: 10px 
+  }
+  
+}
+
+@media screen and (prefers-color-scheme: light) {
+  
+  html, body {
+    background-color: var(--light-background-color);
+    color: var(--light-color);
+  }
+  
+  .spinner {
+    color: var(--light-color);
+  }
+  
+  .menu {
+    color: var(--light-color);
+  }
+  
+  .sidebar {
+    background-color: var(--light-background-color-secondary);
+  }
+  
+  .close-modal {
+    color: var(--light-color);
+  }
+  
+  .auth-form {
+    background-color: var(--light-background-color); 
+    border-color: var(--light-border-color);
+    color: var(--light-color);
+  }
+  
+  .input-field {
+    background-color: var(--light-background-color-secondary);
+    border-color: var(--light-border-color);
+    color: var(--light-color);
+  }
+  
+  .input-field:hover {
+    border-color: var(--light-contrast);
+  }
+
+  .input-field:focus {
+    background-color: var(--light-background-color-tertiary);
+  }
+  
+  .submit-button {
+    background-color: var(--light-background-color-secondary);
+    border-color: var(--light-border-color);
+    color: var(--light-color);
+  }
+  
+  .submit-button:hover {
+    background-color: var(--light-background-color-tertiary);
+  }
+  
+  .auth-button {
+    color: var(--light-color);
+  }
+  
+  .tooltip {
+    color: white;
+  }
+  
+  .navigation {
+    border-bottom: 1px solid var(--light-border-color);
+    color: var(--light-color);
+  }
+  
+  .navigation:hover {
+    background-color: var(--light-background-color-tertiary);
+  }
+  
+  .navigation:first-of-type {
+    border-top: 1px solid var(--light-border-color);
+  }
+}

@@ -1,13 +1,28 @@
-import CloseButton from '../../../components/CloseButton/CloseButton'
+import Avatar from '../../../components/Avatar/Avatar'
 import Dropdown from '../../../components/Dropdown/Dropdown'
+import AlignLeftIcon from '../../../components/Icons/AlignLeftIcon/AlignLeftIcon'
+import UserPlusIcon from '../../../components/Icons/UserPlusIcon/UserPlusIcon'
+import FlagIcon from '../../../components/Icons/FlagIcon/FlagIcon'
+import UserXmarkIcon from '../../../components/Icons/UserXmarkIcon/UserXmarkIcon'
 import styles from './TopNav.module.css'
 
-function TopNav() {
+function TopNav({ image, username }) {
+  
+  const dropdown = [
+    { icon: <AlignLeftIcon />, text: 'Description', method: () => alert('Read post description.') },
+    { icon: <UserPlusIcon />, text: 'Follow', method: () => alert('User followed.') },
+    { icon: <FlagIcon />, text: 'Flag content', method: () => confirm('Report content?') },
+    { icon: <UserXmarkIcon />, text: 'Block user', method: () => confirm('Block user?') }
+  ]
+  
   return (
-    <div className={styles.topNav}>
-      {/* isFullscreen && <CloseButton overlay="feed overlay" close={closeFeed} /> */}
-      <Dropdown items={[1,2,3]} />
-    </div>
+    <nav className={`topNav ${styles.topNav}`} aria-label="top menu">
+      <div>
+        <Avatar username={username} image={image} />
+        <strong>{username}</strong>
+      </div>
+      <Dropdown items={dropdown} />
+    </nav>
   )
 }
 

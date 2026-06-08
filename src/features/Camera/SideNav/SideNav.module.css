@@ -1,0 +1,10 @@
+/* Camera SideNav */
+
+.sideNav {
+  bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 8px;
+  z-index: 300;
+}

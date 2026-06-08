@@ -1,27 +1,16 @@
 import { useRef } from 'react'
-import useFocusStack from '../../../hooks/useFocusStack'
+import { overlay } from '../../../config'
+import useOverlay from '../../../hooks/useOverlay'
 import SearchIcon from '../../Icons/SearchIcon/SearchIcon'
 import styles from './SearchButton.module.css'
 
-function SearchButton({ openSearch }) {
+function SearchButton() {
   const buttonRef = useRef(null)
-  const { push } = useFocusStack()
-  
-  const action = async () => {
-    push(buttonRef.current)
-    openSearch()
-  }
+  const { openOverlay } = useOverlay()
   
   const onClick = event => {
     navigator.vibrate?.(50)
-    action()
-  }
-
-  const onKeyDown = event => {
-    if (event.key === 'Enter') {
-      event.preventDefault()
-      action()
-    }
+    openOverlay(overlay.search, buttonRef.current)
   }
   
   return (
@@ -29,7 +18,6 @@ function SearchButton({ openSearch }) {
       className={styles.searchButton} 
       ref={buttonRef} 
       onClick={onClick} 
-      onKeyDown={onKeyDown} 
       type="button" 
       aria-label="search" 
       aria-haspopup="dialog">

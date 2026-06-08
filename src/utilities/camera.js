@@ -13,7 +13,7 @@ const camera = {
         sampleRate: 48000
       },
       video: {
-        facingMode: 'user', // 'environment',
+        facingMode: { ideal: 'environment' },
         width: { ideal: 3840 },
         height: { ideal: 2160 },
         frameRate: { ideal: 60 },

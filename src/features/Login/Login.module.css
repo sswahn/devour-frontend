@@ -1,0 +1,38 @@
+/* User Authentication Flow, Login */
+
+.login {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(1px);
+  contain: content;
+  height: 100dvh;
+  inset: 0;
+  opacity: 1;
+  position: fixed;
+  transition: opacity 0.5s ease-out;
+  z-index: 150;
+}
+
+.login > div {
+  align-items: center;
+  background-color: var(--surface-raised);
+  contain: layout paint style;
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  inset: 0;
+  justify-content: safe center;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  padding: 16px 24px;
+  position: fixed;
+  touch-action: none;
+  z-index: 200;
+}
+
+/* Close button */
+.login > div > button:first-of-type {
+  left: 8px;
+  position: absolute;
+  top: 8px;
+}
+

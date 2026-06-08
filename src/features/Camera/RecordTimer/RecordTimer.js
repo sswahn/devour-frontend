@@ -1,29 +1,17 @@
-import { useContext, useEffect } from 'react'
-import { Context } from '../../../Provider'
-import database from '@sswahn/database'
-import styles from './recordtimer.module.css'
+import { useEffect } from 'react'
+import styles from './RecordTimer.module.css'
 
-function RecordTimer({ timer, setTimer }) {
- const [context, provider] = useContext(Context)
+function RecordTimer({ mode, timer, setTimer, stopCamera }) {
 
   const createInterval = () => {
-    if (context.recording) {
+    if (mode === 'on') {
       return setInterval(() => {
         if (timer < 1) {
           clearInterval(interval)
-          return handleStopRecordVideo() // fix: this function is not available here, maybe dispatch recording false or modal message
+          return stopCamera()
         }
         setTimer(timer - 1)
       }, 1000)
-    }
-  }
-
-  const loadFromStorage = async () => {
-    const db = database()
-    const video = await db.get('video')
-    const totalDuration = video?.duration.reduce((acc, val) => acc + val, 0)
-    if (totalDuration) {
-      setTimer(300 - totalDuration)
     }
   }
 
@@ -32,15 +20,11 @@ function RecordTimer({ timer, setTimer }) {
     return () => {
       clearInterval(interval)
     }
-  }, [timer, context.recording])
-
-  useEffect(() => {
-    loadFromStorage()
-  }, [])
+  }, [timer, mode])
 
   return (
     <div className={styles.recordTimer}>
-      {`${Math.floor(timer / 60)}:${String(timer % 60).padStart(2, "0")}`}
+      {`${Math.floor(timer / 60)}:${String(timer % 60).padStart(2, '0')}`}
     </div>
   )
 }

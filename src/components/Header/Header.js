@@ -14,7 +14,7 @@ const Header = ({ openAuthentication, openDashboard }) => {
   const headerRef = useRef(null)
 
   useEffect(() => {
-    headerRef && scrollEffect(headerRef.current, styles.hidden)
+    headerRef.current && scrollEffect(headerRef.current, styles.hidden)
   }, [])
 
   return (
@@ -29,7 +29,7 @@ const Header = ({ openAuthentication, openDashboard }) => {
         {session.isAuthenticated && ( // && .isProUser &&
           <DashboardButton openDashboard={openDashboard} />
         )}
-        {/* should be not authed: !session... */}
+        {/* login button should be replaced with another button, perhaps sidebar or dropdown */}
         {session.isAuthenticated && <LoginButton openAuthentication={openAuthentication} />}
         </nav>
       </div>

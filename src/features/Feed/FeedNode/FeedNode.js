@@ -1,99 +1,98 @@
-import { useState, useRef } from 'react'
-import useGesture from '../../../hooks/useGesture'
+import { useState, useRef, useEffect } from 'react'
+import useContent from '../../../hooks/useContent'
+import useGestures from '../../../hooks/useGestures'
+import useScrollLock from '../../../hooks/useScrollLock'
+import TopNav from '../TopNav/TopNav'
 import SideNav from '../SideNav/SideNav'
+import Comments from '../../Comments/Comments'
+import styles from './FeedNode.module.css'
 
 function FeedNode({ item, index, count }) {
-  const {doubleTap, longPress, handlers} = useGesture()
-  /*
-  const [doubleTap, setDoubleTap] = useState(0)
-  const [longPress, setLongPress] = useState(0)
-  const timerRef = useRef(null)
-  const startPos = useRef(null)
-  const hasFired = useRef(false)
-  const prevClick = useRef(0)
+  const { content, setContent } = useContent()
+  const [isDoubleTap, setIsDoubleTap] = useState(null)
+  const [isLongPress, setIsLongPress] = useState(null)
+  const [commentsIsOpen, setCommentsIsOpen] = useState(false)
+  const { onGestureDown, onGestureMove, onGestureUp, onGestureCancel } = useGestures()
+  useScrollLock(commentsIsOpen)
   
-  const doubleClick = event => {
-    const now = performance.now()
-    const deltaT = now - prevClick.current
-    if (deltaT > 0 && deltaT < 300) {
-      setDoubleTap(now)
-      prevClick.current = 0
-    } else {
-      prevClick.current = now
-    }
+  const openComments = () => {
+    setCommentsIsOpen(true)
   }
 
-  const cancelLongPress = () => {
-    if (timerRef.current) {
-      clearTimeout(timerRef.current)
-      timerRef.current = null
-    }
-    startPos.current = null
+  const closeComments = () => {
+    setCommentsIsOpen(false)
   }
-
+  
+  // need a function to pass to the swipeFromEdge(func) hook
+  
+  const getLongPress = longPress => {
+    if (longPress) {
+      setIsLongPress(longPress)
+    }
+  }
+  
   const onPointerDown = event => {
-    hasFired.current = false
-    startPos.current = { 
-      x: event.clientX, 
-      y: event.clientY 
-    }
-    timerRef.current = setTimeout(() => {
-      navigation.vibrate?.(50)
-      hasFired.current = true
-      setLongPress(performance.now())
-      cancelLongPress()
-    }, 500)
-  }
-
-  const onPointerMove = event => {
-    if (!startPos.current || hasFired.current) {
+    if (event.target.closest('.sideNav') || event.target.closest('.topNav')) {
       return
     }
-    const deltaX = Math.abs(event.clientX - startPos.current.x)
-    const deltaY = Math.abs(event.clientY - startPos.current.y)
-    if (deltaX > 10 || deltaY > 10) {
-      cancelLongPress() 
-    }
+    onGestureDown(event, getLongPress)
+  }
+  
+  const onPointerMove = event => {
+    onGestureMove(event)
   }
   
   const onPointerUp = event => {
-    cancelLongPress()
+    if (event.target.closest('.sideNav') || event.target.closest('.topNav')) {
+      return
+    }
+    const { tapCount } = onGestureUp(event)
+    if (tapCount === 2) {
+      setIsDoubleTap(tapCount)
+    }
   }
   
   const onPointerCancel = event => {
-    cancelLongPress() 
+    onGestureCancel(event)
   }
 
-*/
-  
-  // all gestures go here. eventually abstracted to hooks, using gestrue engine.
+  const enterFullScreen = async () => {
+    await document.documentElement.requestFullscreen()
+    await screen.orientation?.lock?.('portrait')
+  }
 
+  const exitFullScreen = async () => {
+    screen.orientation?.unlock?.()
+    await document.exitFullscreen()
+  }
+
+  useEffect(() => {
+    if (content.id !== item.id) {
+      setContent({ id: item.id })
+    }
+  }, [])
+
+  // swipeTo close on comments sidebar
   
-  // this tabIndex etc. breaks the natural flow of the page, header gets skipped...
   return (
-    <article 
-     // onClick={doubleClick} 
-      {...handlers}
-      // onPointerCancel={onPointerCancel}
-      tabIndex={index} aria-posinset={index} aria-setsize={count}>
-      <header>
-      {/*
-        <AuthorButton />
-        <LocationButton />
-
-        Change 'data' back to 'item'
-      */}
-      </header>
-      <figure style={{ background: '#666', borderRadius: '10px', height: '100%', width: '100%' }}>
-        {/* data.videoUrl && <video ref={ref} src={data.videoUrl} preload="metadata" muted playsInline loop /> */}
-        {/* data.caption ?? <figcaption>{data.caption}</figcaption> */}
+    <article className={styles.feedNode} aria-posinset={index} aria-setsize={count}>
+      <figure onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={onPointerCancel}>
+        <TopNav image={item.picture} username={item.username} />
+  
+        {/* item.videoUrl && <video ref={ref} src={item.videoUrl} preload="metadata" muted playsInline loop /> */}
+        {item.caption && <figcaption>{item.caption}</figcaption>}
+         
+        <SideNav 
+          isDoubleTap={isDoubleTap} 
+          isLongPress={isLongPress}
+          enterFullScreen={enterFullScreen}
+          exitFullScreen={exitFullScreen}
+          openComments={openComments}
+        />
       </figure>
-      <footer>
-        // static captions, meta text, etc.
-      </footer>
-      <SideNav doubleTap={doubleTap} longPress={longPress} />
+      {commentsIsOpen && <Comments closeComments={closeComments} />}
     </article>
   )
 }
 
-export default FeedNode // memo(FeedNode)
+export default FeedNode

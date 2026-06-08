@@ -1,0 +1,18 @@
+/* Register User Form Submit Button */
+
+.submitButton {
+  align-items: center;
+  background: var(--button-bar-bg);
+  border: var(--button-border);
+  border-radius: 50px;
+  color: var(--button-bar-text);
+  cursor: pointer;
+  display: flex;
+  font-size: 18px;
+  font-weight: bold;
+  height: 44px;
+  justify-content: center;
+  margin: 32px 0;
+  text-transform: uppercase;
+  width: 100%;
+}

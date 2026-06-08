@@ -1,0 +1,114 @@
+/* User Notifications */
+
+/* the transparent div overlay */
+.notifications {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(1px);
+  contain: content;
+  inset: 0;
+  opacity: 1;
+  overflow: hidden;
+  position: fixed;
+  transition: opacity 0.5s ease-out;
+  z-index: 200;
+}
+
+/* the bottom sheet */
+.bottomSheet {
+  --sheet-y: 100dvh;
+  --drag-y: 0px;
+
+  background-color: var(--surface);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100dvh; 
+  left: 0;
+  position: fixed;
+  transform: translate3d(0, calc(var(--sheet-y) + var(--drag-y)), 0);
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  touch-action: none;
+  width: 100%;
+  will-change: transform;
+  box-sizing: content-box;
+}
+
+.peek {
+  --sheet-y: 50dvh;
+}
+
+.expand {
+  --sheet-y: 8px;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* create a global remove scrollbar css */
+}
+
+.close {
+  --sheet-y: 100dvh;
+}
+
+.closeOverlay {
+  opacity: 0;
+}
+
+.dragging {
+  transition: none !important;
+}
+
+/* the grabber handle */
+.notifications section > div {
+  background-color: #ccc;
+  border-radius: 3px;
+  height: 6px;
+  margin: 0 auto;
+  width: 40px;
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* the grabber handle active */
+.notifications section div:active {
+  background-color: #888;
+}
+
+.notifications section > ul {
+  list-style-type: none;
+  margin-top: 16px;
+  width: 100%;
+  padding-bottom: 12px;
+  flex: 1; /* Takes up remaining space */
+}
+
+.notifications section > ul > li {
+  align-items: center;
+  color: var(--text);
+  display: flex;
+  font-size: var(--font-size);
+  justify-content: space-between;
+  line-height: var(--line-height);
+  margin-bottom: 8px;
+  padding: 8px;
+  width: 100%;
+}
+
+.notifications section > ul li div:nth-child(2) {
+  flex: 1;
+  margin-left: 8px;
+  pointer-events: none;
+
+  border: 1px dashed red;
+}
+
+.notifications section > ul li div:nth-child(2) div {
+  display: flex;
+  gap: 10px;
+  pointer-events: none;
+}
+
+

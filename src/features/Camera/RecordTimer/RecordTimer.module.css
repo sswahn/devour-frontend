@@ -1,0 +1,11 @@
+/* Camera Record Timer CSS Module */
+
+.recordTimer {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  color: white; 
+  font-size: 24px;
+  font-weight: bold;
+  padding: 5px 10px;
+  z-index: 300;
+}

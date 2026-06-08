@@ -1,0 +1,22 @@
+/* Video Editor */
+
+.editor {
+  background: gray;
+  
+ /* contain: content; */
+  height: 100dvh;
+  inset: 0;
+  margin: 0 auto;
+  max-width: 500px;
+  overflow: hidden;
+  position: fixed;
+  z-index: 200;
+}
+
+.editor video {
+  object-fit: cover;
+  height: 100dvh;
+  inset: 0;
+  position: absolute;
+  z-index: 250;
+}

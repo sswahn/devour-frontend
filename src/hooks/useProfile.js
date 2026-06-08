@@ -1,11 +1,10 @@
 import { useContext } from 'react'
-import { GetProfileContext, SetProfileContext } from '../components/Providers/ProfileProvider'
+import { ProfileContext } from '../components/Providers/ProfileProvider'
 
 function useProfile() {
-  const username = useContext(GetProfileContext)
-  const setUsername = useContext(SetProfileContext)
+  const { userProfile, setUserProfile } = useContext(ProfileContext)
   
-  return { username, setUsername }
+  return { userProfile, setUserProfile }
 }
 
 export default useProfile

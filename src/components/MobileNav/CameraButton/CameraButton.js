@@ -1,31 +1,26 @@
 import { useRef } from 'react'
-import useFocusStack from '../../../hooks/useFocusStack'
+import { overlay } from '../../../config'
+import useOverlay from '../../../hooks/useOverlay'
 import PlusIcon from '../../Icons/PlusIcon/PlusIcon'
 import styles from './CameraButton.module.css'
 
-function CameraButton({ openCamera }) {
+function CameraButton() {
   const buttonRef = useRef(null)
-  const { push } = useFocusStack()
-  
-  const action = async () => {
-    return;
-   
-    // await document.getElementById('portal').requestFullscreen()
-    // await screen.orientation.lock('portrait')
-    push(buttonRef.current)
-    openCamera()
+  const { openOverlay } = useOverlay()
+
+  const openFullscreen = async () => {
+    try {
+      await document.getElementById('portal')?.requestFullscreen()
+      await screen.orientation?.lock?.('portrait')
+    } catch (error) {
+      console.warn('Opening in fullscreen not supported on this device.')
+    }
   }
  
-  const onClick = event => {
+  const onClick = async event => {
     navigator.vibrate?.(50)
-    action()
-  }
-
-   const onKeyDown = event => {
-    if (event.key === 'Enter') {
-      event.preventDefault()
-      action()
-    }
+    await openFullscreen()
+    openOverlay(overlay.camera, buttonRef.current)
   }
   
   return (
@@ -33,7 +28,6 @@ function CameraButton({ openCamera }) {
       className={styles.cameraButton} 
       ref={buttonRef} 
       onClick={onClick} 
-      onKeyDown={onKeyDown}
       type="button" 
       aria-label="open camera" 
       aria-haspopup="dialog">

@@ -1,33 +1,23 @@
 import { useState, useRef } from 'react'
+import { overlay } from '../../config'
 import useProfile from '../../hooks/useProfile'
-import useFocusStack from '../../hooks/useFocusStack'
+import useOverlay from '../../hooks/useOverlay'
 import Identicon from '../Identicon/Identicon'
 import styles from './Avatar.module.css'
 
 function Avatar({ username, image, size = 24 }) {
-  const { openProfile } = useProfile()
-  const { push } = useFocusStack()
+  const { openOverlay } = useOverlay()
+  const { setUserProfile } = useProfile()
   const avatarRef = useRef(null)
-  
-  const action = () => {
-    push(avatarRef.current)
-    openProfile(username)
-  }
   
   const onClick = event => {
     navigator.vibrate?.(50)
-    action()
-  }
-
-  const onKeyDown = event => {
-    if (event.key === 'Enter') {
-      event.preventDefault()
-      action()
-    }
+    setUserProfile(username)
+    openOverlay(overlay.profile, avatarRef.current)
   }
   
   return (
-    <button className={styles.avatar} ref={avatarRef} onClick={onClick} onKeyDown={onKeyDown} type="button" aria-label={`${username}'s avatar`}>
+    <button className={styles.avatar} ref={avatarRef} onClick={onClick} type="button" aria-label={`${username}'s avatar`}>
       {image 
         ? <img src={image} alt={`${username}'s avatar`} loading="lazy" width={size} height={size} />
         : <Identicon seed={username} />

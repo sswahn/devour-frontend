@@ -1,5 +1,4 @@
 // scrollEngine.js
-
 let subscribers = new Set()
 let started = false
 let ticking = false
@@ -31,11 +30,7 @@ function update(timestamp) {
 
   // Calculate scroll velocity
   const deltaTime = timestamp - prevTimestamp
-  const rawVelocity = deltaY / deltaTime
-
-  // Formula: (currentRawVelocity * smoothingFactor) + (PreviousSmoothedVelocity * (1 - Factor))
-  // (smoothingFactor: 0 < factor <= 1. Smaller = smoother.
-  velocity = (rawVelocity * 0.05) + (velocity * (1 - 0.05))
+  const velocity = dY / deltaTime
 
   // Set prevTimestamp for use in next frame
   prevTimestamp = timestamp

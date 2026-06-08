@@ -1,0 +1,20 @@
+/* Dialog Modal */
+
+.dialog {
+  background: var(--surface-elevated);
+  border: none;
+  border-radius: 10px;
+  margin: 0 auto;
+  max-width: 400px;
+  overflow: hidden;
+  padding: 24px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: calc(100% - 16px);
+}
+
+dialog::backdrop {
+  backdrop-filter: blur(1px);
+  background-color: rgba(0, 0, 0, 0.5);
+}

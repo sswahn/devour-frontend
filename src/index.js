@@ -1,5 +1,5 @@
-//import * as serviceWorker from './serviceWorker'
 import { createRoot } from 'react-dom/client'
+import registerServiceWorker from './registerServiceWorker'
 import App from './App'
 import logError from "./utilities/logError"
 
@@ -12,5 +12,4 @@ window.addEventListener('unhandledrejection', event => {
 })
 
 createRoot(document.getElementById('root')).render(<App />)
-
-//serviceWorker.register()
+// registerServiceWorker()

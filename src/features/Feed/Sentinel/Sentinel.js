@@ -1,9 +1,30 @@
+import { useEffect } from 'react'
+import createObserver from '../../../utilities/observer'
 
-function Sentinel() {
-  // used for infinite scrolling:
-  // on visible load more data
+function Sentinel({ setLoadMore }) {
+  const { observe, unobserve, disconnect } = createObserver({ rootMargin: '200px' })
+  
+  const observerCallback = entry => { 
+    if (entry.isIntersecting) {
+      setLoadMore(true)
+      unobserve(entry.target)
+    }
+  }
+
+  const setObserver = node => {
+    if (node) {
+      observe(node, observerCallback)
+    }
+  }
+
+  useEffect(() => {
+    return () => {
+      disconnect()
+    }
+  }, [])
+
   return (
-    <div></div>
+    <div ref={setObserver} style={{ height: '64px' }} />
   )
 }
 

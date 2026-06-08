@@ -3,32 +3,16 @@ import styles from './HomeButton.module.css'
 
 function HomeButton() {
 
-  const action = () => {
+  const onClick = event => {
+    navigator.vibrate?.(50)
     window.scrollTo({
       behavior: 'smooth',
       top: 0
     })
   }
   
-  const onClick = event => {
-    navigator.vibrate?.(50)
-    action()
-  }
-
-  const onKeyDown = event => {
-    if (event.key === 'Enter') {
-      event.preventDefault()
-      action()
-    }
-  }
-  
   return (
-    <button 
-      className={styles.homeButton} 
-      onClick={onClick} 
-     // onKeyDown={onKeyDown} 
-      type="button" 
-      aria-label="scroll to top">
+    <button className={styles.homeButton} onClick={onClick} type="button" aria-label="scroll to top">
       <HomeIcon />  
     </button>
   )

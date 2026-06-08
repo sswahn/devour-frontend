@@ -1,35 +1,23 @@
 import { useRef } from 'react'
-import useFocusStack from '../../../hooks/useFocusStack'
+import { overlay } from '../../../config'
+import useOverlay from '../../../hooks/useOverlay'
 import BellIcon from '../../Icons/BellIcon/BellIcon'
 import styles from './NotificationsButton.module.css'
 
-function NotificationsButton({ openNotifications }) {
+function NotificationsButton() {
   const buttonRef = useRef(null)
-  const { push } = useFocusStack()
-  
-  const action = () => {
-    push(buttonRef.current)
-    openNotifications()
-  }
+  const { openOverlay } = useOverlay()
   
   const onClick = event => {
     navigator.vibrate?.(50)
-    action()
-  }
-
-  const onKeyDown = event => {
-    if (event.key === 'Enter') {
-      event.preventDefault()
-      action()
-    }
+    openOverlay(overlay.notifications, buttonRef.current)
   }
   
   return (
     <button 
       className={styles.notificationsButton} 
       ref={buttonRef} 
-      onClick={onClick} 
-      onKeyDown={onKeyDown}
+      onClick={onClick}
       type="button" 
       aria-label="open notifications" 
       aria-haspopup="dialog">

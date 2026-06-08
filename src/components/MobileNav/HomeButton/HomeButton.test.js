@@ -1,48 +1,83 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import HomeButton from './HomeButton'
 
-// mock the icon so the test focuses only on HomeButton
-jest.mock('../../Icons/HomeIcon/HomeIcon', () => () => <svg data-testid="home-icon" />)
+// Mock CSS module
+jest.mock('./HomeButton.module.css', () => ({
+  homeButton: 'homeButton'
+}))
+
+// Mock HomeIcon component
+jest.mock('../../Icons/HomeIcon/HomeIcon', () => () => (
+  <svg data-testid="home-icon" />
+))
+
+// Mock useScroll hook
+jest.mock('../../../hooks/useScroll')
 
 describe('HomeButton', () => {
-
+  let scrollToMock
+  
   beforeEach(() => {
-    // mock browser APIs
-    global.navigator.vibrate = jest.fn()
-    window.scrollTo = jest.fn()
+    // Arrange: Spy on window.scrollTo
+    scrollToMock = jest.fn()
+    window.scrollTo = scrollToMock
+    // Arrange: Mock navigator.vibrate
+    navigator.vibrate = jest.fn()
   })
 
   afterEach(() => {
     jest.clearAllMocks()
   })
 
-  test('renders the button', () => {
+  it('renders the button with correct accessibility label', () => {
     render(<HomeButton />)
 
-    const button = screen.getByRole('button', { name: /scroll to top/i })
+    const button = screen.getByRole('button', {
+      name: /scroll to top/i
+    })
 
     expect(button).toBeInTheDocument()
   })
 
-  test('renders the HomeIcon', () => {
+  it('renders the HomeIcon component', () => {
     render(<HomeButton />)
 
     expect(screen.getByTestId('home-icon')).toBeInTheDocument()
   })
 
-  test('vibrates and scrolls to top when clicked', () => {
+  it('vibrates and scrolls to top when clicked', () => {
     render(<HomeButton />)
 
-    const button = screen.getByRole('button', { name: /scroll to top/i })
+    const button = screen.getByRole('button', {
+      name: /scroll to top/i
+    })
 
     fireEvent.click(button)
 
     expect(navigator.vibrate).toHaveBeenCalledWith(50)
 
-    expect(window.scrollTo).toHaveBeenCalledWith({
+    expect(scrollToMock).toHaveBeenCalledWith({
       behavior: 'smooth',
       top: 0
     })
   })
 
+  it('does not throw if navigator.vibrate is unavailable', () => {
+    navigator.vibrate = undefined
+
+    render(<HomeButton />)
+
+    const button = screen.getByRole('button', {
+      name: /scroll to top/i
+    })
+
+    expect(() => {
+      fireEvent.click(button)
+    }).not.toThrow()
+
+    expect(scrollToMock).toHaveBeenCalledWith({
+      behavior: 'smooth',
+      top: 0
+    })
+  })
 })

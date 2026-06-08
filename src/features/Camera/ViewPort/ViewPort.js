@@ -1,4 +1,4 @@
-import styles from './viewport.module.css'
+import styles from './ViewPort.module.css'
 
 function ViewPort({ videoRef }) {
   return (

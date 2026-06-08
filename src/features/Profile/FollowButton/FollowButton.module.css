@@ -1,0 +1,25 @@
+/* Profile Follow Button */
+
+.followButton {
+  align-items: center;
+  background: var(--button-bar-bg);
+  border: 0;
+  border-radius: 8px;
+  color: var(--button-text);
+  display: flex;
+  font-weight: bold;
+  font-size: 18px;
+  gap: 10px;
+  height: 44px;
+  justify-content: center;  
+  margin: 24px auto 0 auto;
+  width: calc(100% - 48px);
+}
+
+.followButton:focus {
+  background: var(--button-bar-bg);
+}
+
+.followButton:active {
+  background: var(--button-active);
+}

@@ -1,0 +1,8 @@
+/* Profile Top Nav Bar */
+
+.topNav {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  width: 100%;
+}

@@ -1,0 +1,9 @@
+/* Follow Stats List */
+
+.followStats {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  margin: 24px;
+}

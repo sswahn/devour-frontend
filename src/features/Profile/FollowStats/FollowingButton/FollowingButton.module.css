@@ -1,0 +1,14 @@
+/* Profile User Stat Following Button */
+
+.followingButton {
+  background: none;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 8px 16px;
+}
+
+.followingButton:focus {
+  background: initial;
+}

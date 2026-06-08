@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import ErrorBoundary from './ErrorBoundary'
 import Providers from './Providers'
-import AppRoot from './components/AppRoot/AppRoot'
+import Interface from './components/Interface/Interface'
 import './index.css'
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <StrictMode> 
       <ErrorBoundary> 
         <Providers>
-          <AppRoot />
+          <Interface />
         </Providers>
       </ErrorBoundary> 
     </StrictMode>

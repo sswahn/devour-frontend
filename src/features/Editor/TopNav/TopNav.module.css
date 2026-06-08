@@ -1,0 +1,24 @@
+/* Editor TopNav */
+
+.topNav {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  left: 0;
+  padding: 0 8px;
+  padding-top: env(safe-area-inset-top);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 300;
+}
+
+.topNav > button:first-child {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.topNav div {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+}

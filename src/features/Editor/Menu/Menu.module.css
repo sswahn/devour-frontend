@@ -1,0 +1,55 @@
+/* Editor Menu */
+
+.menu {
+  background-color: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(1px);
+  contain: content;
+  height: 100dvh;
+  inset: 0;
+  opacity: 1;
+  position: fixed;
+  z-index: 350;
+}
+
+.menu > button {
+  background: rgba(0, 0, 0, 0.5);
+  margin: 8px 0 0 8px;
+  z-index: 450;
+}
+
+.menu ul {
+  background: none;
+  list-style: none;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  overscroll-behavior-y: contain;
+  margin-top: 56px;
+  z-index: 400;
+}
+
+.menu ul li {}
+
+.menu ul li button {
+  align-items: center; 
+  background: none;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-top: none;
+  cursor: pointer;
+  display: flex;
+  height: 44px;
+  justify-content: center;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.menu ul li:first-of-type button {
+  border-top: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.menu ul li button:focus {
+  background: none;
+}
+
+.menu ul li button:active {
+  background: rgba(0, 0, 0, 0.5);
+}

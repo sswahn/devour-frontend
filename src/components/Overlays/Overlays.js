@@ -1,37 +1,31 @@
 import { useEffect } from 'react'
 import { createPortal } from 'react-dom'
-import { FocusTrapProvider } from '../Providers/FocusTrapProvider'
-import Authentication from '../../features/Authentication/Authentication'
-import Dashboard from '../Dashboard/Dashboard'
-import SearchForm from '../SearchForm/SearchForm'
+import { overlay } from '../../config'
+import useOverlay from '../../hooks/useOverlay'
+import FocusTrap from '../FocusTrap/FocusTrap'
 import Camera from '../../features/Camera/Camera'
-import Notifications from '../Notifications/Notifications'
-import Profile from '../Profile/Profile'
+import Dashboard from '../../features/Dashboard/Dashboard'
+import Editor from '../../features/Editor/Editor'
+import Notifications from '../../features/Notifications/Notifications'
+import Login from '../../features/Login/Login'
+import Profile from '../../features/Profile/Profile'
+import Register from '../../features/Register/Register'
+import Search from '../../features/Search/Search'
 
-function Overlays({ 
-  authenticationIsOpen,
-  dashboardIsOpen,
-  searchIsOpen, 
-  cameraIsOpen, 
-  notificationsIsOpen, 
-  profileIsOpen, 
-  closeAuthentication,
-  closeDashboard,
-  closeSearch, 
-  closeCamera, 
-  closeNotifications, 
-  closeProfile 
-}) {
-
-  return createPortal(
-    <FocusTrapProvider>
-      {authenticationIsOpen && <Authentication closeAuthentication={closeAuthentication} />}
-      {dashboardIsOpen && <Dashboard closeDashboard={closeDashboard} />}
-      {searchIsOpen && <SearchForm closeSearch={closeSearch} />}
-      {cameraIsOpen && <Camera closeCamera={closeCamera} />}
-      {notificationsIsOpen && <Notifications closeNotifications={closeNotifications} />}
-      {profileIsOpen && <Profile closeProfile={closeProfile} />}
-    </FocusTrapProvider>, 
+function Overlays() {
+  const { isActive } = useOverlay()
+  
+  return !!isActive && createPortal(
+    <FocusTrap>
+      {overlay.camera === isActive && <Camera />}
+      {overlay.dashboard === isActive && <Dashboard />}
+      {overlay.editor === isActive && <Editor />}
+      {overlay.notifications === isActive && <Notifications />}
+      {overlay.login === isActive && <Login />}
+      {overlay.profile === isActive && <Profile />}
+      {overlay.register === isActive && <Register />}
+      {overlay.search === isActive && <Search />}
+    </FocusTrap>, 
     document.getElementById('portal')
   )
 }

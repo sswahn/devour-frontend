@@ -1,31 +1,56 @@
-export const config = {
-  cookie: {
-    session: 'session'
+
+export const overlay = {
+  camera: 'camera',
+  comments: 'comments',
+  dashboard: 'dashboard',
+  editor: 'editor',
+  notifications: 'notifications',
+  login: 'login',
+  profile: 'profile',
+  register: 'register',
+  search: 'search'
+}
+
+export const api = {
+  login: '/api/v1/login',
+  logout: '/api/v1/logout',
+  register: '/api/v1/register',
+  session: '/api/v1/session',
+  posts: '/api/v1/posts',
+  comments: '/api/v1/comments'
+}
+
+export const contextmenu = {
+  default: {
+    actions: [],
+    information: []
   },
-  storage: {
-    search: {
-      terms: 'searchTerms'
-    }
+  feednode: {
+    actions: ['like', 'comment', 'share', 'fullscreen', 'report', 'blockuser'],
+    information: []
   },
-  api: {
-    search: 'https://devour.social/api/v1/search',
-    turnstile: '/api/v1/turnstile',
-    posts: '/api/v1/posts',
-    test: '/api/v1/test',
-    likes: '',
-    shares: '',
-    views: '',
-    comments: '',
-    user: {
-      logout: '/api/v1/logout',
-      login: '/api/v1/login',
-      register: '/api/v1/register',
-      forgot_password: '/api/v1/forgot-password',
-      confirm_forgot_password: '/api/v1/confirm-forgot-password',
-      session: '/api/v1/session'
-    },
-    log: {
-      errors: ''
-    }
-  }
+  camera: {
+    actions: [],
+    information: []
+  },
+  search: {
+    actions: [],
+    information: []
+  },
+  profile: {
+    actions: [],
+    information: []
+  },
+  notifications: {
+    actions: [],
+    information: []
+  },
+  dashboard: {
+    actions: [],
+    information: []
+  },
+  login: {
+    actions: [],
+    information: []
+  },
 }

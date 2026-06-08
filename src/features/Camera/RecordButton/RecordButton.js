@@ -1,61 +1,47 @@
-import { useContext, useRef } from 'react'
-import { Context } from '../../../Provider'
-import database from '@sswahn/database'
-import styles from './recordbutton.module.css'
+import { useRef } from 'react'
+import useFootage from '../../../hooks/useFootage'
+import camera from '../../../utilities/camera'
+import database from '../../../utilities/database'
+import styles from './RecordButton.module.css'
 
-function RecordButton({ streamRef, timer }) {
-  const [context, dispatch] = useContext(Context)
+function RecordButton({ mode, setMode, streamRef, timer }) {
+  const { footage, setFootage } = useFootage()
   const framesRef = useRef([])
   const recorderRef = useRef(null)
   
-  const handleRecordVideo = () => {
+  const startRecord = () => {
     if (timer < 1) {
       return alert('No recording time remaining.')
     }
-    dispatch({ type: 'recording', payload: true })
+    setMode('on')
     const recorder = camera.startRecording(streamRef.current, framesRef.current)
     recorderRef.current = recorder
   }
 
-  const handleStopRecordVideo = async () => {
+  const stopRecord = async () => {
     try {
-      dispatch({ type: 'recording', payload: false })
-
-      alert('handlingStopVideo')
-      
+      setMode('off')
       const blob = await camera.stopRecording(recorderRef.current, framesRef.current)
-
-      alert('after blob')
-      
-      const video = [ ...context.video, blob ]
-      const currentDuration = context.video_duration.reduce((acc, val) => acc + val, 0)
-
-      alert('after currentDuration')
-      
-      const duration = [ ...context.video_duration, 300 - timer - currentDuration ]
-      
-      dispatch({ type: 'video_duration', payload: duration })
-      dispatch({ type: 'video', payload: video })
-  
-      alert('saving the following: video: ' + JSON.stringify(video) + 'and duration: ' + duration)
-
+      const newFootage = new Blob([ footage, blob ], { type: 'video/webm' }) 
+      setFootage(newFootage)
       const db = database()
-      db.put({ id: 'video', video, duration })
-        
+      db.put({ id: 'footage', footage: newFootage })
     } catch (error) {
-      alert(JSON.stringify(error))
+      alert(error.message)
+      console.log(error)
     }
   }
   
-  const handleRecordButton = event => {
-    context.recording ? handleStopRecordVideo() : handleRecordVideo()
+  const onClick = event => {
+    navigator.vibrate?.(50)
+    mode === 'on' ? stopRecord() : startRecord()
   }
   
   return (
     <div className={styles.recordButtonContainer}>
-      <button className={styles.recordButton} onClick={handleRecordButton} type="button" aria-label="record button" style={{
-        backgroundColor: context.recording ? '#cb4154' : '#e5e4e2', 
-        borderColor: context.recording ? '#eb4c42' : 'white'
+      <button className={styles.recordButton} onClick={onClick} type="button" aria-label="record button" style={{
+        backgroundColor: mode === 'on' ? '#cb4154' : '#e5e4e2', 
+        borderColor: mode === 'on' ? '#eb4c42' : 'white'
       }}></button>
     </div>
   )

@@ -1,0 +1,49 @@
+/* User Authentication Flow, Register User */
+
+.register {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(1px);
+  contain: content;
+  height: 100dvh;
+  inset: 0;
+  opacity: 1;
+  position: fixed;
+  transition: opacity 0.5s ease-out;
+  z-index: 150;
+}
+
+.register > div {
+  align-items: center;
+  background-color: var(--surface-raised);
+  contain: layout paint style;
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  inset: 0;
+  justify-content: safe center;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  padding: 16px 24px;
+  position: fixed;
+  touch-action: none;
+  z-index: 200;
+}
+
+.register form {
+  width: 100%;
+}
+
+.success {
+  background-color: var(--success);
+}
+
+.danger {
+  background-color: var(--danger);
+}
+
+/* Close button */
+.register > div > button {
+  left: 8px;
+  position: absolute;
+  top: 8px;
+}

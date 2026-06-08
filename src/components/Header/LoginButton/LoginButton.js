@@ -1,31 +1,20 @@
 import { useRef } from 'react'
-import useFocusStack from '../../../hooks/useFocusStack'
+import { overlay } from '../../../config'
+import useOverlay from '../../../hooks/useOverlay'
 import RightToBracketIcon from '../../Icons/RightToBracketIcon/RightToBracketIcon'
 import styles from './LoginButton.module.css'
 
-function LoginButton({ openAuthentication }) {
+function LoginButton() {
   const buttonRef = useRef(null)
-  const { push } = useFocusStack()
-  
-  const action = () => {
-    push(buttonRef.current)
-    openAuthentication()  
-  }
+  const { openOverlay } = useOverlay()
   
   const onClick = event => {
     navigator.vibrate?.(50)
-    action()
-  }
-  
-  const onKeyDown = event => {
-    if (event.key === 'Enter') {
-      event.preventDefault()
-      action()
-    }
+    openOverlay(overlay.login, buttonRef.current)  
   }
   
   return (
-    <button className={styles.loginButton} ref={buttonRef} onClick={onClick} onKeyDown={onKeyDown} type="button" aria-label="sign in">
+    <button className={styles.loginButton} ref={buttonRef} onClick={onClick} type="button" aria-label="sign in">
       <RightToBracketIcon />
     </button>
   )
