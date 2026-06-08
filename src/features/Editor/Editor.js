@@ -10,11 +10,9 @@ function Editor({ closeEditor }) {
   const { footage } = useFootage()
   const [menuIsOpen, setMenuIsOpen] = useState(false)
   const [source, setSource] = useState('')
-  const [data, setData] = useState({
-    location: '',
-    caption: '',
-    description: '',
-  })
+  const [location, setLocation] = useState(localStorage.getItem('location') || '')
+  const [caption, setCaption] = useState(localStorage.getItem('caption') || '')
+  const [description, setDescription] = useState(localStorage.getItem('description') || '')
   const videoRef = useRef(null)
 
   const openMenu = () => {
@@ -24,10 +22,6 @@ function Editor({ closeEditor }) {
   const closeMenu = () => {
     console.log('close button pressed.')
     setMenuIsOpen(false)
-  }
-
-  const loadFromStorage = () => {
-    // load from local storage
   }
 
   useEffect(() => {
