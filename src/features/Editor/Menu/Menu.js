@@ -7,7 +7,7 @@ function Menu({ closeMenu }) {
   
   return (
     <div className={styles.menu} aria-label="menu">
-      <CloseButton overlay="menu" close={closeMenu} />
+{/* <CloseButton overlay="menu" close={closeMenu} /> */}
       <ul ref={listRef}>
         <li>
           <button type="button">Location</button>
