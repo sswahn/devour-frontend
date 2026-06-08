@@ -348,14 +348,18 @@
 .pqVzoMNn04RuymDNZ8zc button {
   align-items: center; 
   background: none;
-  border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  border-top: none;
   cursor: pointer;
   display: flex;
   height: 44px;
   justify-content: center;
   padding: 10px 0;
   width: 100%;
+}
+
+.pqVzoMNn04RuymDNZ8zc button:first-of-type {
+  border-top: 1px solid rgba(0, 0, 0, 0.8);
 }
 
 /* Video Editor */
