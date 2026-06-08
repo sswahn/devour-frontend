@@ -43,6 +43,6 @@
   width: 100%;
 }
 
-.menu button:first-of-type {
+.menu li:first-of-type button {
   border-top: 1px solid rgba(0, 0, 0, 0.8);
 }
