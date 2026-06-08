@@ -17,7 +17,7 @@ function Menu({ data, setData, closeMenu }) {
         <Input
           id="location"
           type="text"
-          label="location"
+          label="Location"
           inputMode="text"
           defaultValue={data.location}
           error={errorMessage}
@@ -35,7 +35,7 @@ function Menu({ data, setData, closeMenu }) {
         <Input
           id="caption"
           type="text"
-          label="caption"
+          label="Caption"
           inputMode="text"
           defaultValue={data.caption}
           error={errorMessage} 
@@ -47,6 +47,7 @@ function Menu({ data, setData, closeMenu }) {
   const handleDescription = event => {
     openDialog(
       <div style={{marginTop: '24px'}}>
+        <label htmlFor="description">Description</label>
         <textarea id="description" name="description" aria-label="add a description">{data.description}</textarea>
       </div>
     )
