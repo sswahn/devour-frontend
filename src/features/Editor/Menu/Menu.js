@@ -22,6 +22,7 @@ function Menu({ data, setData, closeMenu }) {
         defaultValue={data.location}
         error={errorMessage}
         required 
+        style={{marginTop: '16px'}}
       />
     )
   }
