@@ -334,6 +334,10 @@
   border: 1px dashed red;
 }
 
+.pqVzoMNn04RuymDNZ8zc > button:active {
+  background: red;
+}
+
 .pqVzoMNn04RuymDNZ8zc ul {
   background: none;
   height: 100dvh;
