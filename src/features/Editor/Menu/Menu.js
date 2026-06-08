@@ -1,8 +1,9 @@
 import { useRef } from 'react'
 import CloseButton from '../../../components/CloseButton/CloseButton'
+import Input from '../../../components/Input/Input'
 import styles from './Menu.module.css'
 
-function Menu({ closeMenu }) {
+function Menu({ data, setData, closeMenu }) {
   const listRef = useRef(null)
 
   const onClick = event => {
