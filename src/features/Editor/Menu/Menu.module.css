@@ -14,7 +14,7 @@
 .menu > button {
   background: rgba(0, 0, 0, 0.5);
   margin: 8px 0 0 8px;
-  z-index: 400;
+  z-index: 450;
 
   border: 1px dashed red;
 }
@@ -25,14 +25,11 @@
 
 .menu ul {
   background: none;
-  height: 100dvh;
-  inset: 0;
   list-style: none;
   overflow-x: hidden;
   overflow-y: scroll;
   overscroll-behavior-y: contain;
-  padding-top: 56px;
-  position: fixed;
+  margin-top: 56px;
   z-index: 400;
 }
 
