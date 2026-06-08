@@ -13,9 +13,10 @@
 }
 
 .menu ul {
-  background-color: var(--surface-raised);
+  background: none;
   height: 100dvh;
   inset: 0;
+  list-style: none;
   overflow-x: hidden;
   overflow-y: scroll;
   overscroll-behavior-y: contain;
@@ -23,11 +24,12 @@
   position: fixed;
   touch-action: none;
   z-index: 400;
+
+  border: 1px dashed purple;
 }
 
 .menu li {
   
-  border: 1px dashed orange;
 }
 
 .menu button {
