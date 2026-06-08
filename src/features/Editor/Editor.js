@@ -10,6 +10,7 @@ function Editor({ closeEditor }) {
   const { footage } = useFootage()
   const [menuIsOpen, setMenuIsOpen] = useState(false)
   const [source, setSource] = useState('')
+  // consider using an object for portability
   const [location, setLocation] = useState(localStorage.getItem('location') || '')
   const [caption, setCaption] = useState(localStorage.getItem('caption') || '')
   const [description, setDescription] = useState(localStorage.getItem('description') || '')
