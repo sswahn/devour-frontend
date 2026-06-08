@@ -25,7 +25,7 @@ function Main() {
 
   useEffect(() => {
     if (!data.length) {
-      loadFromStorage()
+    //  loadFromStorage()
     }
   }, [])
   
