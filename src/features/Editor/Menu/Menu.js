@@ -13,7 +13,7 @@ function Menu({ data, setData, closeMenu }) {
   // need set functions
   const handleLocation = event => {
     openDialog(
-      <div style={{marginTop: '24px'}}>
+      <div style={{marginTop: '32px'}}>
         <Input
           id="location"
           type="text"
@@ -31,7 +31,7 @@ function Menu({ data, setData, closeMenu }) {
   
   const handleCaption = event => {
     openDialog(
-      <div style={{marginTop: '24px'}}>
+      <div style={{marginTop: '32px'}}>
         <Input
           id="caption"
           type="text"
@@ -46,7 +46,7 @@ function Menu({ data, setData, closeMenu }) {
   
   const handleDescription = event => {
     openDialog(
-      <div style={{marginTop: '24px'}}>
+      <div style={{marginTop: '32px'}}>
         <label htmlFor="description">Description</label>
         <textarea id="description" name="description" aria-label="add a description">{data.description}</textarea>
       </div>
