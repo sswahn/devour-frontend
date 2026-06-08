@@ -10,6 +10,10 @@ function Editor({ closeEditor }) {
   const { footage } = useFootage()
   const [menuIsOpen, setMenuIsOpen] = useState(false)
   const [source, setSource] = useState('')
+  const [data, setData] = useState({
+    location: '',
+    description: '',
+  })
   const videoRef = useRef(null)
 
   const openMenu = () => {
@@ -19,6 +23,10 @@ function Editor({ closeEditor }) {
   const closeMenu = () => {
     console.log('close button pressed.')
     setMenuIsOpen(false)
+  }
+
+  const loadFromStorage = () => {
+    // load from local storage
   }
 
   useEffect(() => {
