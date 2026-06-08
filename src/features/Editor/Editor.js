@@ -12,6 +12,7 @@ function Editor({ closeEditor }) {
   const [source, setSource] = useState('')
   const [data, setData] = useState({
     location: '',
+    caption: '',
     description: '',
   })
   const videoRef = useRef(null)
