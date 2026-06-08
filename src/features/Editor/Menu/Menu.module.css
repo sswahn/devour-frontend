@@ -48,3 +48,11 @@
 .menu ul li:first-of-type button {
   border-top: 1px solid rgba(0, 0, 0, 0.5);
 }
+
+.menu ul li button:focus {
+  background: none;
+}
+
+.menu ul li button:active {
+  background: rgba(0, 0, 0, 0.5);
+}
