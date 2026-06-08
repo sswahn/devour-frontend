@@ -11,9 +11,9 @@ function Editor({ closeEditor }) {
   const [menuIsOpen, setMenuIsOpen] = useState(false)
   const [source, setSource] = useState('')
   const [data, setData] = useState({
-    location: localStorage.getItem('location') || '',
-    caption: localStorage.getItem('caption') || '',
-    description: localStorage.getItem('description') || ''
+    location: '',
+    caption: '',
+    description: ''
   })
   const videoRef = useRef(null)
 
@@ -24,6 +24,18 @@ function Editor({ closeEditor }) {
   const closeMenu = () => {
     setMenuIsOpen(false)
   }
+
+  const loadFromStorage = () => {
+    const editor = localStorage.getItem('editor')
+    if (editor !== null) {
+      const obj = JSON.parse(editor)
+      setData({ ...data, ...obj })
+    }
+  }
+
+  useEffect(() => {
+    //loadFromStorage()
+  }, [])
 
   useEffect(() => {
     const blob = footage || new Blob()
