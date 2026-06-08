@@ -11,6 +11,10 @@
   z-index: 350;
 }
 
+.menu > button {
+  background: rgba(0, 0, 0, 0.5);
+}
+
 .menu ul {
   background: none;
   height: 100dvh;
