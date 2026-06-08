@@ -14,7 +14,9 @@
 .menu > button {
   background: rgba(0, 0, 0, 0.5);
   margin: 8px 0 0 8px;
-  z-index: 450;
+  z-index: 400;
+
+  border: 1px dashed red;
 }
 
 .menu ul {
@@ -55,8 +57,4 @@
 
 .menu ul li button:active {
   background: rgba(0, 0, 0, 0.5);
-}
-
-.menu * {
-  border: 1px dashed red;
 }
