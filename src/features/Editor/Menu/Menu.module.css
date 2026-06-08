@@ -56,3 +56,7 @@
 .menu ul li button:active {
   background: rgba(0, 0, 0, 0.5);
 }
+
+.menu * {
+  border: 1px dashed red;
+}
