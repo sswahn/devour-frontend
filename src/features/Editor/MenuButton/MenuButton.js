@@ -5,7 +5,9 @@ function MenuButton({ openMenu }) {
 
   const onClick = event => {
     navigator.vibrate?.(50)
+    console.log('before openMenu()')
     openMenu()
+    console.log('after openMenu()')
   }
 
   return (
