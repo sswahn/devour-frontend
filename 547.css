@@ -335,12 +335,10 @@
   overflow-x: hidden;
   overflow-y: scroll;
   overscroll-behavior-y: contain;
-  padding: 8px;
+  padding-top: 48px;
   position: fixed;
   touch-action: none;
   z-index: 400;
-
-  border: 1px dashed purple;
 }
 
 .pqVzoMNn04RuymDNZ8zc li {
@@ -350,15 +348,13 @@
 .pqVzoMNn04RuymDNZ8zc button {
   align-items: center; 
   background: none;
-  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
   display: flex;
   height: 44px;
   justify-content: center;
   cursor: pointer;
   padding: 10px 0;
   width: 100%;
-
-  border: 1px dashed red;
 }
 
 /* Video Editor */
