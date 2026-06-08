@@ -10,6 +10,9 @@ function Menu({ data, setData, closeMenu }) {
   const listRef = useRef(null)
 
   const handleLocation = event => {
+    
+    console.log('data.location: ', data.location)
+    
     openDialog(
       <Input
         id="location"
