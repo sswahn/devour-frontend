@@ -5,6 +5,7 @@ function CloseButton({ overlay, close }) {
 
   const onClick = event => {
     navigator.vibrate?.(50)
+    console.log('CloseButton onClick fired.')
     close()
   }
   
