@@ -5,12 +5,10 @@ import useFootage from '../../hooks/useFootage'
 import camera from '../../utilities/camera'
 import database from '../../utilities/database'
 import TopNav from './TopNav/TopNav'
-import SideNav from './SideNav/SideNav'
+import EditorButton from './EditorButton/EditorButton'
 import RecordButton from './RecordButton/RecordButton'
 import MuteButton from './MuteButton/MuteButton'
-import LocationButton from './LocationButton/LocationButton'
 import ViewPort from './ViewPort/ViewPort'
-import Editor from '../Editor/Editor'
 import styles from './Camera.module.css'
 
 function Camera({ openEditor }) {
@@ -103,7 +101,7 @@ function Camera({ openEditor }) {
   return (
     <section className={styles.camera}>
       <TopNav closeCamera={closeCamera} mode={mode} timer={timer} setTimer={setTimer} stopCamera={stopCamera} streamRef={streamRef} />
-      <SideNav openEditor={openEditor} />
+      <EditButton openEditor={openEditor} />
       <RecordButton mode={mode} setMode={setMode} streamRef={streamRef} timer={timer} />
       <MuteButton streamRef={streamRef} />
       <ViewPort videoRef={videoRef} />
