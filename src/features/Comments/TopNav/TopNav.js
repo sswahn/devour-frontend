@@ -1,4 +1,4 @@
-import CloseButton from '../CloseButton/CloseButton'
+import CloseButton from '../../../components/CloseButton/CloseButton'
 import styles from './TopNav.module.css'
 
 function TopNav({ close }) {
@@ -7,7 +7,7 @@ function TopNav({ close }) {
   
   return (
     <nav className={styles.topNav}>
-      <CloseButton close={close} />
+      <CloseButton overlay="comments" close={close} />
       <h3>Comments</h3>
     </nav>
   )
