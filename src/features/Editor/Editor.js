@@ -14,10 +14,10 @@ function Editor({ openCamera, openPublisher }) {
   const [data, setData] = useState({
     caption: ''
   })
-   */
   const [source, setSource] = useState('')
   const videoRef = useRef(null)
-
+  
+ */
   /*
   
   const openMenu = () => {
@@ -61,8 +61,9 @@ function Editor({ openCamera, openPublisher }) {
       {menuIsOpen && <Menu data={data} setData={setData} closeMenu={closeMenu} />}
   
       <MenuButton openMenu={openMenu} /> 
-      <SubmitButton openPublisher={openPublisher} /> */}
+      <SubmitButton openPublisher={openPublisher} /> 
       <video id="video-editor" ref={videoRef} src={source} loop playsinline />
+      */}
     </section>
   )
 }
