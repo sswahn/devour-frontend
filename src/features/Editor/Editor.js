@@ -24,22 +24,21 @@ function Editor({ openCamera, openPublisher }) {
     setMenuIsOpen(false)
   }
 
-  /*
   const loadFromStorage = () => {
     const editor = localStorage.getItem('editor')
     if (editor !== null) {
       const obj = JSON.parse(editor)
       setData(prev => ({ ...prev, ...obj }))
     }
-  } */
-
-  useEffect(() => {
-    //loadFromStorage()
-  }, [])
+  }
 
   useEffect(() => {
     console.log('Editor opened!')
-    
+    //loadFromStorage()
+  }, [])
+  
+/*
+  useEffect(() => {
     const blob = footage || new Blob()
     const videoUrl = URL.createObjectURL(blob) // pass footage directly, after testing complete
     setSource(videoUrl)
@@ -47,6 +46,7 @@ function Editor({ openCamera, openPublisher }) {
       URL.revokeObjectURL(videoUrl)
     }
   }, [])
+  */
 
   return (
     <section className={styles.editor}>
