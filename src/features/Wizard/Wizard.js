@@ -21,9 +21,9 @@ function Wizard() {
   
   return (
     <section className={styles.wizard}>
-      {overlay === 'camera' && <Camera />}
-      {overlay === 'editor' && <Editor />}
-      {overlay === 'publisher' && <Publisher />}
+      {overlay === 'camera' && <Camera openEditor={openEditor} />}
+      {overlay === 'editor' && <Editor openCamera={openCamera} openPublisher={openPublisher} />}
+      {overlay === 'publisher' && <Publisher openEditor={openEditor} />}
     </section>
   )
 }
