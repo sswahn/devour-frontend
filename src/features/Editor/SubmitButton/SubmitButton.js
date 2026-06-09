@@ -8,7 +8,7 @@ function SubmitButton() {
   }
 
   return (
-    <button onClick={onClick} type="button" aria-label="submit video">
+    <button className={styles.submitButton} onClick={onClick} type="button" aria-label="submit video">
       <PaperPlaneIcon />
     </button>
   )
