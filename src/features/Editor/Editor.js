@@ -37,6 +37,8 @@ function Editor({ openCamera, openPublisher }) {
   }, [])
 
   useEffect(() => {
+    console.log('Editor opened!')
+    
     const blob = footage || new Blob()
     const videoUrl = URL.createObjectURL(blob) // pass footage directly, after testing complete
     setSource(videoUrl)
