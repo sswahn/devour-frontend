@@ -51,7 +51,7 @@ function FeedNode({ item, index, count }) {
     console.log('tapCount: ', tapCount)
     
     if (tapCount === 2) {
-      setIsDoubleTap(tapCount)
+      setIsDoubleTap(performance.now())
     }
   }
   
