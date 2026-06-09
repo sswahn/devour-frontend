@@ -29,7 +29,7 @@ function Editor({ closeEditor }) {
     const editor = localStorage.getItem('editor')
     if (editor !== null) {
       const obj = JSON.parse(editor)
-      setData({ ...data, ...obj })
+      setData(prev => ({ ...prev, ...obj }))
     }
   }
 
