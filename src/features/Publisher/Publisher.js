@@ -19,6 +19,10 @@ function Publisher({ openEditor }) {
     localStorage.setItem('description', value)
     setDescription(value)
   }
+
+  const publish = event => {
+    // get s3 auth
+  }
   
   return (
     <section className={styles.publisher}>
@@ -33,6 +37,7 @@ function Publisher({ openEditor }) {
         required 
       />
       <textarea id="description" name="description" aria-label="add a description">{description}</textarea>
+      <button onClick={publish} type="button">Submit</button>
     </section>
   )
 }
