@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from 'react'
-import { overlay } from '../../config'
 import useOverlay from '../../hooks/useOverlay'
 import useFootage from '../../hooks/useFootage'
 import camera from '../../utilities/camera'
