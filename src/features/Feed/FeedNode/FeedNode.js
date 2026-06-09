@@ -47,6 +47,9 @@ function FeedNode({ item, index, count }) {
       return
     }
     const { tapCount } = onGestureUp(event)
+
+    console.log('tapCount: ', tapCount)
+    
     if (tapCount === 2) {
       setIsDoubleTap(tapCount)
     }
