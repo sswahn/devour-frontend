@@ -1,10 +1,11 @@
 import PaperPlaneIcon from '../../../components/Icons/PaperPlaneIcon/PaperPlaneIcon'
 import styles from './SubmitButton.module.css'
 
-function SubmitButton() {
+function SubmitButton({ openPublisher }) {
 
   const onClick = event => {
-    // open Add text overlay
+    navigator.vibrate?.(50)
+    openPublisher()
   }
 
   return (
