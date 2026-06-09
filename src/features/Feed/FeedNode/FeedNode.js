@@ -32,9 +32,11 @@ function FeedNode({ item, index, count }) {
   }
   
   const onPointerDown = event => {
+    console.log('onPointerDown')
     if (event.target.closest('.sideNav') || event.target.closest('.topNav')) {
       return
     }
+    console.log('onPointerDown past condition.')
     onGestureDown(event, getLongPress)
   }
   
@@ -43,9 +45,11 @@ function FeedNode({ item, index, count }) {
   }
   
   const onPointerUp = event => {
+    console.log('onPointerUp')
     if (event.target.closest('.sideNav') || event.target.closest('.topNav')) {
       return
     }
+    console.log('onPointerUp past condition.')
     const { tapCount } = onGestureUp(event)
 
     console.log('tapCount: ', tapCount)
