@@ -1,6 +1,6 @@
 
 
-function Publisher() {
+function Publisher({ openEditor }) {
 
   return (
     <></>
