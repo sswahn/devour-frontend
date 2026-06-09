@@ -9,24 +9,6 @@ function Menu({ data, setData, closeMenu }) {
   const [errorMessage, setErrorMessage] = useState('')
   const listRef = useRef(null)
 
-
-  // need set functions
-  const handleLocation = event => {
-    openDialog(
-      <div style={{marginTop: '32px'}}>
-        <Input
-          id="location"
-          type="text"
-          label="Location"
-          inputMode="text"
-          defaultValue={data.location}
-          error={errorMessage}
-          required 
-        />
-      </div>
-    )
-  }
-
   // move buttons to there own components
   
   const handleCaption = event => {
@@ -44,30 +26,15 @@ function Menu({ data, setData, closeMenu }) {
     )
   }
   
-  const handleDescription = event => {
-    openDialog(
-      <div style={{marginTop: '32px'}}>
-        <label htmlFor="description">Description</label>
-        <textarea id="description" name="description" aria-label="add a description">{data.description}</textarea>
-      </div>
-    )
-  }
-  
   return (
     <div className={styles.menu} aria-label="menu">
       <CloseButton overlay="menu" close={closeMenu} />
       <ul ref={listRef}>
         <li>
-          <button onClick={handleLocation} type="button">Location</button>
-        </li>
-        <li>
           <button onClick={handleCaption} type="button">Caption</button>
         </li>
         <li>
-          <button onClick={handleDescription} type="button">Description</button>
-        </li>
-        <li>
-          <button type="button">Media Editor</button>
+          <button type="button">Media Editor list items...</button>
         </li>
       </ul>
     </div>
