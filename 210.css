@@ -1423,17 +1423,6 @@
   z-index: 300;
 }
 
-/* Camera SideNav */
-
-.xcS5b9aZN9n2q2WQQ389 {
-  bottom: 8px;
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  right: 8px;
-  z-index: 300;
-}
-
 /* Camera Record Button CSS Module */
 
 .zy3wUJ2yQGHccXBYBFsi { 
@@ -1483,31 +1472,6 @@
   position: absolute;
   width: 44px;
   z-index: 300;
-}
-
-/* Camera Location Button CSS Module*/
-
-.OXKOQvXq4Sx2sOm_xOOj {
-  background-color: rgba(0, 0, 0, 0.5);
-  border: 0;
-  border-radius: 50%;
-  bottom: 8px;
-  color: white;
-  cursor: pointer;
-  font-size: 22px; 
-  height: 45px;
-  left: 8px;
-  position: absolute;
-  width: 45px; 
-  z-index: 300;
-}
-
-.OXKOQvXq4Sx2sOm_xOOj svg {
-  fill: white;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 /* Camera View Port CSS Module */
