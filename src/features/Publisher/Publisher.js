@@ -8,8 +8,16 @@ function Publisher({ openEditor }) {
   const [description, setDescription] = useState(localStorage.getItem('description') || '')
   const [errorMessage, setErrorMessage] = useState('')
 
-  const onChange = event => {
-    
+  const handleLocation = event => {
+    const { value } = event.target
+    localStorage.setItem('location', value)
+    setLocation(value)
+  }
+
+  const handleDescription = event => {
+    const { value } = event.target
+    localStorage.setItem('description', value)
+    setDescription(value)
   }
   
   return (
@@ -20,6 +28,7 @@ function Publisher({ openEditor }) {
         type="text"
         label="Location"
         inputMode="text"
+        value={location}
         error={errorMessage}
         required 
       />
