@@ -51,7 +51,7 @@ function Editor({ openCamera, openPublisher }) {
       <ProgressBar videoRef={videoRef} />
       {menuIsOpen && <Menu data={data} setData={setData} closeMenu={closeMenu} />}
       <MenuButton openMenu={openMenu} />
-      <SubmitButton />
+      <SubmitButton openPublisher={openPublisher} />
       <video id="video-editor" ref={videoRef} src={source} loop playsinline />
     </section>
   )
