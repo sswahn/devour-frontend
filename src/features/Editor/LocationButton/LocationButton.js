@@ -3,8 +3,13 @@ import styles from './LocationButton.module.css'
 
 function LocationButton() {
 
-  return (
+  const onClick = event => {
+    navigator.vibrate?.(50)
     
+  }
+  
+  return (
+    <button onClick={onClick} type="button">Location</button>
   )
 }
 
