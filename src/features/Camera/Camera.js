@@ -101,7 +101,7 @@ function Camera({ openEditor }) {
   return (
     <section className={styles.camera}>
       <TopNav closeCamera={closeCamera} mode={mode} timer={timer} setTimer={setTimer} stopCamera={stopCamera} streamRef={streamRef} />
-      <EditButton openEditor={openEditor} />
+      <EditorButton openEditor={openEditor} />
       <RecordButton mode={mode} setMode={setMode} streamRef={streamRef} timer={timer} />
       <MuteButton streamRef={streamRef} />
       <ViewPort videoRef={videoRef} />
