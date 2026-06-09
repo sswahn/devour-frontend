@@ -8,7 +8,8 @@ export const overlay = {
   login: 'login',
   profile: 'profile',
   register: 'register',
-  search: 'search'
+  search: 'search',
+  wizard: 'wizard'
 }
 
 export const api = {
