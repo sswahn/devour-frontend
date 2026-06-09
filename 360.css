@@ -249,34 +249,6 @@
   gap: 16px;
 }
 
-/* Editor Edit Button */
-
-.OcocoOhbnnj_MS8JUy5r {
-  align-items: center; 
-  background: rgba(0, 0, 0, 0.5);
-  border: none;
-  border-radius: 50%;
-  bottom: 8px;
-  cursor: pointer;
-  display: flex;
-  height: 44px;
-  justify-content: center;
-  left: 8px;
-  padding: 10px;
-  position: absolute;
-  right: 8px;
-  width: 44px;
-  z-index: 300;
-}
-
-.OcocoOhbnnj_MS8JUy5r:focus {
-  background: rgba(0, 0, 0, 0.5);
-}
-
-.OcocoOhbnnj_MS8JUy5r:active {
-  background: rgba(0, 0, 0, 0.5);
-}
-
 /* Editor Video Custom Progress Bar */
 
 .wt5dHgSjceSJyM7Sz9yE {
@@ -407,6 +379,53 @@
 
 .pqVzoMNn04RuymDNZ8zc ul li button:active {
   background: rgba(0, 0, 0, 0.5);
+}
+
+/* Editor Edit Button */
+
+.OcocoOhbnnj_MS8JUy5r {
+  align-items: center; 
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 50%;
+  bottom: 8px;
+  cursor: pointer;
+  display: flex;
+  height: 44px;
+  justify-content: center;
+  left: 8px;
+  padding: 10px;
+  position: absolute;
+  right: 8px;
+  width: 44px;
+  z-index: 300;
+}
+
+.OcocoOhbnnj_MS8JUy5r:focus {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.OcocoOhbnnj_MS8JUy5r:active {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Editor Submit Button */
+
+.LpfU56yJXGiw0QN1Sn9d {
+  align-items: center; 
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 50%;
+  bottom: 8px;
+  cursor: pointer;
+  display: flex;
+  height: 44px;
+  justify-content: center;
+  padding: 10px;
+  position: absolute;
+  right: 8px;
+  width: 44px;
+  z-index: 300;
 }
 
 /* Video Editor */
