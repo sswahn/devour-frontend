@@ -3,7 +3,7 @@ import useFullscreen from '../../hooks/useFullscreen'
 import useScrollEffect from '../../hooks/useScrollEffect'
 import HomeButton from './HomeButton/HomeButton'
 import SearchButton from './SearchButton/SearchButton'
-import CameraButton from './CameraButton/CameraButton'
+import CreateButton from './CreateButton/CreateButton'
 import NotificationsButton from './NotificationsButton/NotificationsButton'
 import ProfileButton from './ProfileButton/ProfileButton'
 import styles from './MobileNav.module.css'
@@ -24,7 +24,7 @@ function MobileNav() {
       <div>
         <HomeButton />  
         <SearchButton />
-        <CameraButton />
+        <CreateButton />
         <NotificationsButton />
         <ProfileButton />
       </div>
