@@ -30,6 +30,8 @@ function FeedNode({ item, index, count }) {
       setIsLongPress(longPress)
     }
   }
+
+  // css needs touch-action: none; for the gestures to work...
   
   const onPointerDown = event => {
     console.log('onPointerDown')
