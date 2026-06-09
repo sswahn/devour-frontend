@@ -924,6 +924,7 @@
   flex-direction: column;
   position: absolute;
   right: 0;
+  touch-action: auto;
   width: 48px;
 }
 
