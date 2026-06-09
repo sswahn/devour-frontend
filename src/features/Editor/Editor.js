@@ -8,13 +8,14 @@ import SubmitButton from './SubmitButton/SubmitButton'
 import styles from './Editor.module.css'
 
 function Editor({ openCamera, openPublisher }) {
+  /*
   const { footage } = useFootage()
-  
   const [menuIsOpen, setMenuIsOpen] = useState(false)
-  const [source, setSource] = useState('')
   const [data, setData] = useState({
     caption: ''
   })
+   */
+  const [source, setSource] = useState('')
   const videoRef = useRef(null)
 
   /*
