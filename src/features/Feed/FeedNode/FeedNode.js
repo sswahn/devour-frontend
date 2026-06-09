@@ -35,6 +35,7 @@ function FeedNode({ item, index, count }) {
   
   const onPointerDown = event => {
     console.log('onPointerDown')
+    console.log('onPointerDown event.target: ', event.target)
     if (event.target.closest('.sideNav') || event.target.closest('.topNav')) {
       return
     }
