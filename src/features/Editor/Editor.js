@@ -1,9 +1,10 @@
 import { useState, useRef, useEffect } from 'react'
 import useFootage from '../../hooks/useFootage'
 import TopNav from './TopNav/TopNav'
-import MenuButton from './MenuButton/MenuButton'
 import ProgressBar from './ProgressBar/ProgressBar'
 import Menu from './Menu/Menu'
+import MenuButton from './MenuButton/MenuButton'
+import SubmitButton from './SubmitButton/SubmitButton'
 import styles from './Editor.module.css'
 
 function Editor({ closeEditor }) {
@@ -11,9 +12,7 @@ function Editor({ closeEditor }) {
   const [menuIsOpen, setMenuIsOpen] = useState(false)
   const [source, setSource] = useState('')
   const [data, setData] = useState({
-    location: '',
-    caption: '',
-    description: ''
+    caption: ''
   })
   const videoRef = useRef(null)
 
@@ -49,9 +48,10 @@ function Editor({ closeEditor }) {
   return (
     <section className={styles.editor}>
       <TopNav videoRef={videoRef} closeEditor={closeEditor} />
-      <MenuButton openMenu={openMenu} />
-      {menuIsOpen && <Menu data={data} setData={setData} closeMenu={closeMenu} />}
       <ProgressBar videoRef={videoRef} />
+      {menuIsOpen && <Menu data={data} setData={setData} closeMenu={closeMenu} />}
+      <MenuButton openMenu={openMenu} />
+      <SubmitButton />
       <video id="video-editor" ref={videoRef} src={source} loop playsinline />
     </section>
   )
