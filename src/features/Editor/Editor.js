@@ -7,7 +7,7 @@ import MenuButton from './MenuButton/MenuButton'
 import SubmitButton from './SubmitButton/SubmitButton'
 import styles from './Editor.module.css'
 
-function Editor({ closeEditor }) {
+function Editor({ openCamera, openPublisher }) {
   const { footage } = useFootage()
   const [menuIsOpen, setMenuIsOpen] = useState(false)
   const [source, setSource] = useState('')
@@ -47,7 +47,7 @@ function Editor({ closeEditor }) {
 
   return (
     <section className={styles.editor}>
-      <TopNav videoRef={videoRef} closeEditor={closeEditor} />
+      <TopNav videoRef={videoRef} openCamera={openCamera} />
       <ProgressBar videoRef={videoRef} />
       {menuIsOpen && <Menu data={data} setData={setData} closeMenu={closeMenu} />}
       <MenuButton openMenu={openMenu} />
