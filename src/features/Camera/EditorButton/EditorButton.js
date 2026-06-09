@@ -5,10 +5,7 @@ function EditorButton({ openEditor }) {
 
   const onClick = event => {    
     navigator.vibrate?.(50)
-
-    console.log('editor button pressed...')
     openEditor()
-    console.log('openEditor() function fired.')
   }
   
   return (
