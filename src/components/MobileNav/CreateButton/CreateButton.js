@@ -2,9 +2,9 @@ import { useRef } from 'react'
 import { overlay } from '../../../config'
 import useOverlay from '../../../hooks/useOverlay'
 import PlusIcon from '../../Icons/PlusIcon/PlusIcon'
-import styles from './CameraButton.module.css'
+import styles from './CreateButton.module.css'
 
-function CameraButton() {
+function CreateButton() {
   const buttonRef = useRef(null)
   const { openOverlay } = useOverlay()
 
@@ -20,12 +20,12 @@ function CameraButton() {
   const onClick = async event => {
     navigator.vibrate?.(50)
     await openFullscreen()
-    openOverlay(overlay.camera, buttonRef.current)
+    openOverlay(overlay.wizard, buttonRef.current)
   }
   
   return (
     <button 
-      className={styles.cameraButton} 
+      className={styles.createButton} 
       ref={buttonRef} 
       onClick={onClick} 
       type="button" 
@@ -36,4 +36,4 @@ function CameraButton() {
   )
 }
 
-export default CameraButton
+export default CreateButton
