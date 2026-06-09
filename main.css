@@ -252,9 +252,9 @@ dialog::backdrop {
   width: 44px;
 }
 
-/* Navigation Camera Button */
+/* Navigation Create Button */
 
-.QxIKV6eTzw1tBn0VK2ZN {
+.JgoNSW3AF8kBN6hv5Mg1 {
   align-items: center; 
   background: var(--surface);
   border: var(--border);
@@ -268,15 +268,15 @@ dialog::backdrop {
 }
 
 /* Override defaults: */
-.QxIKV6eTzw1tBn0VK2ZN:focus {
+.JgoNSW3AF8kBN6hv5Mg1:focus {
   background: var(--surface);
 }
 
-.QxIKV6eTzw1tBn0VK2ZN:hover {
+.rXsfI58pQsDh_Ss8D0Lw:hover {
   background: var(--gray);
 }
 
-.QxIKV6eTzw1tBn0VK2ZN:active {
+.rXsfI58pQsDh_Ss8D0Lw:active {
   background: var(--light-gray);
 }
 
