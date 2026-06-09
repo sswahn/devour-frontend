@@ -7,6 +7,10 @@ function Publisher({ openEditor }) {
   const [location, setLocation] = useState(localStorage.getItem('location') || '')
   const [description, setDescription] = useState(localStorage.getItem('description') || '')
   const [errorMessage, setErrorMessage] = useState('')
+
+  const onChange = event => {
+    
+  }
   
   return (
     <section className={styles.publisher}>
@@ -19,7 +23,7 @@ function Publisher({ openEditor }) {
         error={errorMessage}
         required 
       />
-      <textarea></textarea>
+      <textarea id="description" name="description" aria-label="add a description">{description}</textarea>
     </section>
   )
 }
