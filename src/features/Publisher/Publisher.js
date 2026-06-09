@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import BackButton from '../../../components/BackButton/BackButton'
-import Input from '../../../components/Input/Input'
+import BackButton from '../../components/BackButton/BackButton'
+import Input from '../../components/Input/Input'
 import styles from './Publisher.module.css'
 
 function Publisher({ openEditor }) {
