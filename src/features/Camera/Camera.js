@@ -13,10 +13,9 @@ import ViewPort from './ViewPort/ViewPort'
 import Editor from '../Editor/Editor'
 import styles from './Camera.module.css'
 
-function Camera() {
+function Camera({ openEditor }) {
   const { closeOverlay } = useOverlay
   const { footage, setFootage } = useFootage() // is duration needed in useFootage?
-  const [editorIsOpen, setEditorIsOpen] = useState(false)
   const [mode, setMode] = useState('off')
   const [timer, setTimer] = useState(60)
   const streamRef = useRef(null)
@@ -51,14 +50,6 @@ function Camera() {
     if (document.fullscreenElement) {
       document.exitFullscreen()
     }
-  }
-
-  const openEditor = () => {
-    setEditorIsOpen(true)
-  }
-
-  const closeEditor = () => {
-    setEditorIsOpen(false)
   }
   
   useEffect(() => {
@@ -111,14 +102,11 @@ function Camera() {
   
   return (
     <section className={styles.camera}>
-    {!editorIsOpen && <>
       <TopNav closeCamera={closeCamera} mode={mode} timer={timer} setTimer={setTimer} stopCamera={stopCamera} streamRef={streamRef} />
       <SideNav openEditor={openEditor} />
       <RecordButton mode={mode} setMode={setMode} streamRef={streamRef} timer={timer} />
       <MuteButton streamRef={streamRef} />
       <ViewPort videoRef={videoRef} />
-    </>}
-    {editorIsOpen && <Editor closeEditor={closeEditor} />}
     </section>
   )
 }
