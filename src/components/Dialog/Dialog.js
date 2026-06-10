@@ -1,4 +1,4 @@
-import { overlay } = '../../config'
+import { overlay } from '../../config'
 import CloseButton from '../CloseButton/CloseButton'
 import styles from './Dialog.module.css'
 
