@@ -19,7 +19,7 @@
   border: 1px dashed green;
 }
 
-.searchResults div:nth-child(2) :nth-child(1) {
+.searchResults > div:nth-child(2) :nth-child(1) {
   display: flex;
   gap: 10px;
 
