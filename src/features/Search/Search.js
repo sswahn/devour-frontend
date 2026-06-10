@@ -19,7 +19,7 @@ function Search() {
     id: 0,
     username: 'test_user',
     location: 'ny',
-    cuisine: 'middle eastern',
+    description: 'test description of post.',
     timestamp: Date.now(),
   }])
   const [recentSearches, setRecentSearches] = useState([])
