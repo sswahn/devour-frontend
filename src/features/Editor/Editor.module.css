@@ -1,8 +1,6 @@
 /* Video Editor */
 
 .editor {
-  background: gray;
-  
   contain: content;
   height: 100dvh;
   inset: 0;
@@ -10,8 +8,6 @@
   overflow: hidden;
   position: fixed;
   z-index: 200;
-
-  border: 2px dashed yellow;
 }
 
 .editor video {
