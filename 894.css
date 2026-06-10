@@ -1259,7 +1259,7 @@
   width: 100%;
 }
 
-.L5vDWmbThsw3ZFpe87dA div > div:nth-child(2) {
+.L5vDWmbThsw3ZFpe87dA :nth-child(2) {
   flex: 1;
   margin-left: 8px;
 
