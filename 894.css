@@ -1259,14 +1259,14 @@
   width: 100%;
 }
 
-.L5vDWmbThsw3ZFpe87dA > div:nth-child(2) {
+.L5vDWmbThsw3ZFpe87dA div > div:nth-child(2) {
   flex: 1;
   margin-left: 8px;
 
   border: 1px dashed green;
 }
 
-.L5vDWmbThsw3ZFpe87dA > div:nth-child(2) :nth-child(1) {
+.L5vDWmbThsw3ZFpe87dA div > div:nth-child(2) :nth-child(1) {
   display: flex;
   gap: 10px;
 
