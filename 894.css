@@ -1481,8 +1481,6 @@
   overflow: hidden;
   position: fixed;
   z-index: 200;
-
-  border: 2px dashed orange;
 }
 
 /* Publisher Overlay */
