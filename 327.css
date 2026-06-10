@@ -302,14 +302,14 @@
 .QNshFBXSoGNyBxo7mpBY {
   box-sizing: border-box;
   display: block;
+  max-width: 500px;
+  margin: 0 auto 4px auto;
   min-height: calc(100dvh - 64px);
   position: relative;
   scroll-snap-align: start;
   scroll-snap-stop: always;
+  touch-action: manipulation;
   width: 100%;
-
-  max-width: 500px;
-  margin: 0 auto 4px auto;
 
   background: #666; 
   border-bottom: 2px solid var(--dark-black);
