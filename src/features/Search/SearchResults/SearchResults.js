@@ -14,7 +14,7 @@ function SearchResults({ searchResults, loading }) {
       <Avatar username={result.username} />
       <div>
         <div>
-          <strong>{result.username}</strong>
+          <h2>{result.username}</h2>
           <time datetime={result.timestamp}>{result.timestamp}</time>
         </div>
         <div>
