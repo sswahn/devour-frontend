@@ -11,7 +11,7 @@ import ViewPort from './ViewPort/ViewPort'
 import styles from './Camera.module.css'
 
 function Camera({ openEditor }) {
-  const { closeOverlay } = useOverlay
+  const { closeOverlay } = useOverlay()
   const { footage, setFootage } = useFootage()
   const [mode, setMode] = useState('off')
   const [timer, setTimer] = useState(60)
