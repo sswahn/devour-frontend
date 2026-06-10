@@ -26,18 +26,20 @@ function Publisher({ openEditor }) {
   
   return (
     <section className={styles.publisher}>
-      <BackButton overlay="publisher" close={openEditor} />
-      <Input
-        id="location"
-        type="text"
-        label="Location"
-        inputMode="text"
-        value={location}
-        error={errorMessage}
-        required 
-      />
-      <textarea id="description" name="description" aria-label="add a description">{description}</textarea>
-      <button onClick={publish} type="button">Submit</button>
+      <div>
+        <BackButton overlay="publisher" close={openEditor} />
+        <Input
+          id="location"
+          type="text"
+          label="Location"
+          inputMode="text"
+          value={location}
+          error={errorMessage}
+          required 
+        />
+        <textarea id="description" name="description" aria-label="add a description">{description}</textarea>
+        <button onClick={publish} type="button">Submit</button>
+      </div>
     </section>
   )
 }
