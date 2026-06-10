@@ -18,8 +18,8 @@ function SearchResults({ searchResults, loading }) {
           <time datetime={result.timestamp}>{result.timestamp}</time>
         </div>
         <div>
-          <span>{result.location}</span>
-          <span>{result.description.slice(0, 15)}</span>
+          <div>{result.location}</div>
+          <div>{result.description.slice(0, 15)}</div>
         </div>
       </div>
       <Dropdown items={dropdown} />
