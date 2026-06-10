@@ -10,6 +10,8 @@
   position: fixed;
   transition: opacity 0.5s ease-out;
   z-index: 150;
+
+  border: 2px dashed magenta;
 }
 
 .publisher > div {
