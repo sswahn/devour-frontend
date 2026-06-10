@@ -4,8 +4,8 @@ import styles from './SubmitButton.module.css'
 function SubmitButton({ openPublisher }) {
 
   const onClick = event => {
-    navigator.vibrate?.(50)
-    openPublisher()
+    // navigator.vibrate?.(50)
+    // openPublisher()
   }
 
   return (
