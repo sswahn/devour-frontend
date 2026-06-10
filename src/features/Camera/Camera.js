@@ -28,9 +28,9 @@ function Camera({ openEditor }) {
       // alert(JSON.stringify(caps))
     
     } catch (error) {
-      console.error('Error accessing camera: ', error)
       // display error then close overlay or recover
-    //  closeCamera()
+      alert('Error accessing camera.')
+      // closeCamera()
     }
   }
   
