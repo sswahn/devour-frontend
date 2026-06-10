@@ -16,7 +16,7 @@ function Profile() {
   const { onPointerDown, onPointerMove, onPointerUp, onPointerCancel } = useSwipeFromEdge(closeOverlay)
   const overlayRef = useRef(null)
   const [profile, setProfile] = useState({
-    picture: '',
+    picture: '', // if set optimistically, needs URL.createObjectURL(blob/file)
     username: 'test_user',
     location: 'new york',
     biography: ''
