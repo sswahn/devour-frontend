@@ -266,7 +266,7 @@
 .CAdCu73p1zUC0PuOriuX {
   background: gray;
   
- /* contain: content; */
+  contain: content;
   height: 100dvh;
   inset: 0;
   margin: 0 auto;
