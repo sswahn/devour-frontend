@@ -5,7 +5,7 @@
   "author": "sswahn",
   "main": "./src/index.js",
   "scripts": {
-    "build": "GENERATE_SOURCEMAP=true webpack --config webpack.config.js",
+    "build": "webpack --config webpack.config.js",
     "start": "http-server build",
     "test": "jest"
   },
