@@ -31,8 +31,6 @@ function FeedNode({ item, index, count }) {
     }
   }
 
-  // css needs touch-action: none; for the gestures to work...
-  
   const onPointerDown = event => {
     console.log('onPointerDown')
     console.log('onPointerDown event.target: ', event.target)
@@ -92,6 +90,7 @@ function FeedNode({ item, index, count }) {
   
         {/* item.videoUrl && <video ref={ref} src={item.videoUrl} preload="metadata" muted playsInline loop /> */}
         {item.caption && <figcaption>{item.caption}</figcaption>}
+        {/* consider not using figcaption; use embeded text for frame by frame captions */}
          
         <SideNav 
           isDoubleTap={isDoubleTap} 
