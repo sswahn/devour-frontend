@@ -1488,7 +1488,21 @@
 
 /* Publisher Overlay */
 
-.qlaG5Gv1ORFLSpP42REH {}
+.qlaG5Gv1ORFLSpP42REH {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(1px);
+  contain: content;
+  height: 100dvh;
+  inset: 0;
+  opacity: 1;
+  position: fixed;
+  transition: opacity 0.5s ease-out;
+  z-index: 150;
+}
+
+.qlaG5Gv1ORFLSpP42REH div {
+  
+}
 
 .qlaG5Gv1ORFLSpP42REH textarea {
   width: 100%;
