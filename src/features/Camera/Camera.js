@@ -12,7 +12,7 @@ import styles from './Camera.module.css'
 
 function Camera({ openEditor }) {
   const { closeOverlay } = useOverlay
-  const { footage, setFootage } = useFootage() // is duration needed in useFootage?
+  const { footage, setFootage } = useFootage()
   const [mode, setMode] = useState('off')
   const [timer, setTimer] = useState(60)
   const streamRef = useRef(null)
