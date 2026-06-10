@@ -85,8 +85,9 @@ function FeedNode({ item, index, count }) {
   // swipeTo close on comments sidebar
   
   return (
-    <article className={styles.feedNode} aria-posinset={index} aria-setsize={count}>
-      <figure onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={onPointerCancel}>
+    <article className={styles.feedNode} aria-posinset={index} aria-setsize={count}
+      onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={onPointerCancel}>
+      <figure>
         <TopNav image={item.picture} username={item.username} />
   
         {/* item.videoUrl && <video ref={ref} src={item.videoUrl} preload="metadata" muted playsInline loop /> */}
