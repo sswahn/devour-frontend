@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import CloseButton from './CloseButton/CloseButton'
 import styles from './Sidebar.module.css'
 
+// consider removing, global sidebar not needed.
+
 function Sidebar({ sidebarRef, content, close }) {
   const [isOpen, setIsOpen] = useState(false)
   
