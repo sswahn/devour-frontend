@@ -19,7 +19,7 @@ function SearchResults({ searchResults, loading }) {
         </div>
         <div>
           <span>{result.location}</span>
-          <span>{result.cuisine}</span>
+          <span>{result.description.slice(0, 15)}</span>
         </div>
       </div>
       <Dropdown items={dropdown} />
