@@ -20,6 +20,11 @@
 }
 */
 
+.editForm > label {
+  margin-left: 8px;
+  margin-bottom: 8px;
+}
+
 .editForm textarea {
   background-color: var(--input-bg);
   border: 1px solid var(--input-border);
