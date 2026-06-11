@@ -1247,17 +1247,16 @@
 
 /* Search Results List */
 
-.L5vDWmbThsw3ZFpe87dA {
-  align-items: center;
+.L5vDWmbThsw3ZFpe87dA article {
   color: var(--text);
-  display: flex;
   font-size: var(--font-size);
-  justify-content: space-between;
   line-height: var(--line-height);
   margin-bottom: 8px;
   padding: 8px;
   position: relative;
   width: 100%;
+
+  border: 1px dashed red;
 }
 
 /* Avatar: */
@@ -1267,18 +1266,22 @@
   top: 50%;
 }
 
-.L5vDWmbThsw3ZFpe87dA :nth-child(2) {
-  flex: 1;
-  margin-left: 8px;
+.L5vDWmbThsw3ZFpe87dA article header {
+  margin: 0 44px;
 
   border: 1px dashed green;
 }
 
-.L5vDWmbThsw3ZFpe87dA :nth-child(2) :nth-child(1) {
-  display: flex;
-  gap: 10px;
+.L5vDWmbThsw3ZFpe87dA article div {
+  margin: 0 44px;
 
-  border: 1px dashed red;
+  border: 1px dashed green;
+}
+
+.L5vDWmbThsw3ZFpe87dA footer button {
+  position: absolute;
+  right: 0;
+  top: 50%;
 }
 
 
