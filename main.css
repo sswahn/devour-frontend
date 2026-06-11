@@ -81,6 +81,12 @@ dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+.ZWJzr7wpZVh1FbHdy6Q2 button:first-of-type {
+  left: 8px;
+  position: absolute;
+  top: 8px;
+}
+
 /* Open User Dashboard Button */
 
 .MI9YuuDMLrrY7RC1z4G1 {
