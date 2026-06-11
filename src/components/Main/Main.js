@@ -1,6 +1,6 @@
 import { useState, useEffect, Suspense, lazy } from 'react'
 import database from '../../utilities/database' // temp to test frontend
-import Suggestions from '../SlideShow/SlideShow'
+import SlideShow from '../SlideShow/SlideShow'
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 const Feed = lazy(() => import('../../features/Feed/Feed'))
 import styles from './Main.module.css'
