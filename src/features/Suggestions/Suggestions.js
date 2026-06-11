@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styles from './Suggestions.module.css'
 
 function Suggestions() {
@@ -6,13 +6,24 @@ function Suggestions() {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const onEnded = event => {
-    setCurrentIndex(prev => (prev + 1) % SAMPLE_VIDEOS.length)
+    setCurrentIndex(prev => (prev + 1) % suggestions.length)
   }
+
+  useEffect(() => {
+    videoRefs.current.forEach((video, index) => {
+      if (index === currentIndex) {
+        video.currentTime = 0
+        video.play().catch((err) => console.log("Playback blocked or interrupted:", err))
+      } else {
+        video.pause()
+      }
+    })
+  }, [currentIndex])
   
   return (
     <section className={styles.suggestions} aria-label="suggestions slideshow" aria-description="a slideshow of popular content">
       <div className="slideshow-track" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-        {SAMPLE_VIDEOS.map((slide, index) => (
+        {suggestions.map((slide, index) => (
           <div key={slide.id} className="slide">
             <video
               ref={(el) => { videoRefs.current[index] = el }}
