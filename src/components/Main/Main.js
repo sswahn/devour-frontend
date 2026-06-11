@@ -16,7 +16,7 @@ function Main() {
   // consider not using figcaption, but embeding into video.caption
   // HTMLMediaElement.addTextTrack() for timed display of captions.
 
-  const loadFromStorage = async () => {
+  const loadFromStorage = async () => { // this is temp for testing, feed will load from server not storage
     const db = database()
     const storage = await db.get('footage')
     if (storage) {
