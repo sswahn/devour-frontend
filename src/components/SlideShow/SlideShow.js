@@ -33,11 +33,13 @@ function SlideShow({ data }) {
       playCurrent()
     }
   }, [data, currentIndex])
+
+  // import chevron icons, for buttons
   
   return (
-    <section className={styles.suggestions} aria-label="slideshow" aria-description="a slideshow of popular content">
-      <button className="nav-button nav-prev" onClick={handlePrev} aria-label="Previous slide">&#10094;</button>
-      <button className="nav-button nav-next" onClick={handleNext} aria-label="Next slide">&#10095;</button>
+    <section className={styles.slideShow} aria-label="slideshow" aria-description="a slideshow of popular content">
+      <button onClick={handlePrev} aria-label="Previous slide">&#10094;</button>
+      <button onClick={handleNext} aria-label="Next slide">&#10095;</button>
       <div style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
   
         {!!data.length && data.map((slide, index) => (
