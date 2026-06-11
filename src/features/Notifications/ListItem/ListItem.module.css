@@ -22,9 +22,7 @@
   color: var(--text);
   display: inline-block;
   font-size: var(--font-size);
-  margin: 0 16px;
-
-  border: 1px dashed red;
+  margin: 0 16px 0 14px;
 }
 
 .listItem article header time {
@@ -45,7 +43,7 @@
 /* Dropdown */
 .listItem article footer div {
   position: absolute;
-  right: 0;
+  right: 8px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 200;
