@@ -23,15 +23,21 @@
 
 .searchResults article header h2 {
   display: inline-block;
+  font-size: var(--font-size);
   margin: 0 16px 0 8px;
 }
 
 .searchResults article header time {
   display: inline-block;
+  font-size: var(--font-size);
 }
 
 .searchResults article > div {
   margin: 0 56px;
+}
+
+.searchResults article > div p {
+  font-size: var(--font-size);
 }
 
 /* Dropdown */
