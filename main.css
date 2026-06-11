@@ -165,6 +165,10 @@ dialog::backdrop {
   top: 0;
 }
 
+.ldVBjdQig0478ng9aVGa nav button {
+  background: rgba(0, 0, 0, 0.5);
+}
+
 .ldVBjdQig0478ng9aVGa div {
   display: flex;
   width: 100%;
