@@ -16,7 +16,7 @@ function ListItem({ notification }) {
     <li className={styles.listItem} key={notification.id}>
       <article>
         <header>
-          <Avatar username={notification.username} image={null} />
+          <Avatar username={notification.username} image={notification.picture} />
           <h2>{notification.username}</h2>
           <time datetime={notification.timestamp.toISOString().slice(0, 19)}>{formatRelativeTime(notification.timestamp)}</time>
         </header>
