@@ -3,6 +3,11 @@ import styles from './Suggestions.module.css'
 
 function Suggestions() {
   const [suggestions, setSuggestions] = useState([])
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  const onEnded = event => {
+    setCurrentIndex(prev => (prev + 1) % SAMPLE_VIDEOS.length)
+  }
   
   return (
     <section className={styles.suggestions} aria-label="suggestions slideshow" aria-description="a slideshow of popular content">
@@ -10,15 +15,12 @@ function Suggestions() {
         {SAMPLE_VIDEOS.map((slide, index) => (
           <div key={slide.id} className="slide">
             <video
-              ref={(el) => { videoRefs.current[index] = el; }}
+              ref={(el) => { videoRefs.current[index] = el }}
               className="slide-video"
               src={slide.url}
+              onEnded={onEnded}
               playsInline
             />
-            {/* Title Overlay */}
-            <div className="title-overlay">
-              <h3>{slide.title}</h3>
-            </div>
           </div>
         ))}
       </div>
@@ -26,18 +28,6 @@ function Suggestions() {
       {/* Navigation Buttons */}
       <button className="nav-button nav-prev" onClick={handlePrev} aria-label="Previous slide">&#10094;</button>
       <button className="nav-button nav-next" onClick={handleNext} aria-label="Next slide">&#10095;</button>
-
-      {/* Dot Indicators (probably wont use dot indicators) */}
-      <div className="indicator-container">
-        {SAMPLE_VIDEOS.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            aria-label={`Go to slide ${index + 1}`}
-            className={`dot ${currentIndex === index ? 'dot-active' : 'dot-inactive'}`}
-          />
-        ))}
-      </div>
     </section>
   )
 }
