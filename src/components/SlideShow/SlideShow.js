@@ -32,9 +32,10 @@ function SlideShow({ data }) {
     if (!!data.length) {
       playCurrent()
     }
-  }, [data, currentIndex])
+  }, [currentIndex])
 
   // import chevron icons, for buttons
+  // make sure the initial video autoplays
   
   return (
     <section className={styles.slideShow} aria-label="slideshow" aria-description="a slideshow of popular content">
