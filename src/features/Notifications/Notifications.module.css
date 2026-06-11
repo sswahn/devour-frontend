@@ -13,6 +13,10 @@
   z-index: 200;
 }
 
+.bottomSheet * {
+  border: 1px dashed red;
+}
+
 /* the bottom sheet */
 .bottomSheet {
   --sheet-y: 100dvh;
