@@ -392,6 +392,7 @@
   color: var(--text);
   display: inline-block;
   font-size: var(--font-size);
+  line-height: var(--line-height);
   margin: 0 16px 0 14px;
 }
 
@@ -399,6 +400,7 @@
   color: var(--text);
   display: inline-block;
   font-size: var(--font-size);
+  line-height: var(--line-height);
 }
 
 .mb7PIQxOODOItOwOZ_JC article > div {
@@ -408,7 +410,6 @@
 .mb7PIQxOODOItOwOZ_JC article > div p {
   color: var(--text);
   font-size: var(--font-size);
-  line-height: var(--line-height);
 }
 
 /* Dropdown */
