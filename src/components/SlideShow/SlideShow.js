@@ -36,11 +36,10 @@ function SlideShow({ data }) {
   
   return (
     <section className={styles.suggestions} aria-label="slideshow" aria-description="a slideshow of popular content">
+      <button className="nav-button nav-prev" onClick={handlePrev} aria-label="Previous slide">&#10094;</button>
+      <button className="nav-button nav-next" onClick={handleNext} aria-label="Next slide">&#10095;</button>
       <div style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
   
-        <button className="nav-button nav-prev" onClick={handlePrev} aria-label="Previous slide">&#10094;</button>
-        <button className="nav-button nav-next" onClick={handleNext} aria-label="Next slide">&#10095;</button>
-
         {!!data.length && data.map((slide, index) => (
           <figure key={slide.id}>
             <video
