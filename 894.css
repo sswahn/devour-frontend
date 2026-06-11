@@ -1279,12 +1279,13 @@
   border: 1px dashed green;
 }
 
-.L5vDWmbThsw3ZFpe87dA footer button {
+/* Dropdown */
+.L5vDWmbThsw3ZFpe87dA article footer button {
   position: absolute;
   right: 0;
   top: 50%;
+  transform: translateY(-50%);
 }
-
 
 
 /* Search Form */
