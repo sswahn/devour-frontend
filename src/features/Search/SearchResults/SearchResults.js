@@ -13,7 +13,7 @@ function SearchResults({ searchResults, loading }) {
     <li className={styles.searchResults} key={result.id} role="option"> 
       <article>
         <header>
-          <Avatar username={result.username} />
+          <Avatar username={result.username} image={result.picture} />
           <h2>{result.username}</h2>
           <time datetime={result.timestamp}>{result.timestamp}</time>
         </header>
