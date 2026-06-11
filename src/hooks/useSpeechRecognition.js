@@ -16,8 +16,7 @@ function useSpeechRecognition({ continuous = true, interimResults = true, lang =
       window.SpeechRecognition || window.webkitSpeechRecognition
 
     if (!SpeechRecognition) {
-      setIsSupported(false)
-      return
+      return setIsSupported(false)
     }
 
     const recognition = new SpeechRecognition()
