@@ -145,15 +145,19 @@ function Notifications() {
         <ul aria-label="user notifications">
           {test_data.notifications?.map((notification, index) => 
             <li key={index}>
-              <Avatar username={notification.username} image={null} />
-              <div>
-                <div>
-                  <strong>{notification.username}</strong>
+              <article>
+                <header>
+                  <Avatar username={notification.username} image={null} />
+                  <h2>{notification.username}</h2>
                   <time datetime={notification.timestamp}>{notification.timestamp}</time>
+                </header>
+                <div>
+                  <p>{notification.text}</p>
                 </div>
-                <p>{notification.text}</p>
-              </div>
-              <Dropdown items={dropdown} />
+                <footer>
+                  <Dropdown items={dropdown} />
+                </footer>
+              </article>
             </li>                                                           
           )}
         </ul>
