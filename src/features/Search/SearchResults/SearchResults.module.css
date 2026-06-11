@@ -30,7 +30,7 @@
   display: inline-block;
 }
 
-.searchResults article div {
+.searchResults article > div {
   margin: 0 44px;
 
   border: 1px dashed green;
