@@ -5,8 +5,16 @@ function Suggestions() {
   const [suggestions, setSuggestions] = useState([])
   const [currentIndex, setCurrentIndex] = useState(0)
 
-  const onEnded = event => {
+  const handleNext = () => {
     setCurrentIndex(prev => (prev + 1) % suggestions.length)
+  }
+
+  const handlePrev = () => {
+    setCurrentIndex(prev => (prev - 1 + suggestions.length) % suggestions.length)
+  }
+
+  const onEnded = event => {
+    handleNext()
   }
 
   useEffect(() => {
@@ -36,7 +44,6 @@ function Suggestions() {
         ))}
       </div>
 
-      {/* Navigation Buttons */}
       <button className="nav-button nav-prev" onClick={handlePrev} aria-label="Previous slide">&#10094;</button>
       <button className="nav-button nav-next" onClick={handleNext} aria-label="Next slide">&#10095;</button>
     </section>
