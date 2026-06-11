@@ -1251,7 +1251,7 @@
   color: var(--text);
   font-size: var(--font-size);
   line-height: var(--line-height);
-  margin-bottom: 8px;
+  margin-bottom: 16px;
   position: relative;
   width: 100%;
 }
