@@ -152,6 +152,8 @@ dialog::backdrop {
   overflow: hidden;
   position: relative;
   width: 100%;
+
+  scroll-snap-align: start;
 }
 
 .ldVBjdQig0478ng9aVGa div {
