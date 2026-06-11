@@ -15,7 +15,8 @@ import styles from './Search.module.css'
 function Search() {
   const { closeOverlay } = useOverlay()
   const [searchValue, setSearchValue] = useState('')
-  const [searchResults, setSearchResults] = useState([{
+  const [searchResults, setSearchResults] = useState([
+  {
     id: 0,
     username: 'test_user',
     picture: '',
