@@ -2,5 +2,7 @@
 
 .dropdown {
   position: relative;
+
+  border: 1px dashed magenta;
 }
 
