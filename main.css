@@ -191,14 +191,14 @@ dialog::backdrop {
 /* SlideShow  */
 
 .ldVBjdQig0478ng9aVGa {
+  aspect-ratio: 16 / 9;
+  background: #000;
+  height: calc(100dvh - 120px);
+  max-width: 500px;
+  margin: 60px auto 0 auto;
+  overflow: hidden;
   position: relative;
   width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  margin-top: header height;
-  overflow: hidden;
-  background: #000;
-  aspect-ratio: 16 / 9;
 }
 
 .ldVBjdQig0478ng9aVGa div {
