@@ -16,7 +16,7 @@ function SearchResults({ searchResults, loading }) {
         </header>
         <div>
           <p>{result.location}</p>
-          <p>{result.description?.slice(0, 15)}</p>
+          <p>{result.description?.slice(0, 32)}</p>
         </div>
         <footer>
           <Dropdown items={dropdown} />
