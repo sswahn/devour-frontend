@@ -13,7 +13,7 @@ function SearchResults({ searchResults, loading }) {
         <header>
           <Avatar username={result.username} image={result.picture} />
           <h2>{result.username}</h2>
-          <time datetime={result.timestamp}>{formatRelativeTime(result.timestamp)}</time>
+          <time datetime={result.timestamp.toISOString().slice(0, 19)}>{formatRelativeTime(result.timestamp)}</time>
         </header>
         <div>
           <p>{result.location}</p>
