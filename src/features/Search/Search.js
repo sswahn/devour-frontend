@@ -21,7 +21,7 @@ function Search() {
     picture: '',
     location: 'ny',
     description: 'test description of post.',
-    timestamp: new Date(),
+    timestamp: new Date()
   },
   {
     id: 1,
@@ -29,7 +29,7 @@ function Search() {
     picture: '',
     location: 'costa rica',
     description: 'another test description of second post.',
-    timestamp: Date.now(),
+    timestamp: new Date()
   }
   ])
   const [recentSearches, setRecentSearches] = useState([])
