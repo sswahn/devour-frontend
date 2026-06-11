@@ -4,7 +4,7 @@
   background: #000;
   height: calc(100dvh - 128px);
   max-width: 500px;
-  margin: 60px auto 0 auto;
+  margin: 60px auto 4px auto;
   overflow: hidden;
   position: relative;
   width: 100%;
