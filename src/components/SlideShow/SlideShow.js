@@ -43,7 +43,7 @@ function SlideShow({ data }) {
       <button onClick={handleNext} aria-label="Next slide">&#10095;</button>
       <div style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
   
-        {!!data.length && data.map((slide, index) => (
+        {!!data.length && data.map((slide, index) =>
           <figure key={slide.id}>
             <video
               ref={video => { videoRefs.current[index] = video }}
@@ -53,7 +53,7 @@ function SlideShow({ data }) {
               muted
             />
           </figure>
-        ))}
+        )}
           
       </div>
     </section>
