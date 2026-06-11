@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import styles from './SearchInput.module.css'
 
-function SearchInput({ searchValue, error, setSearchValue, setError }) {
+function SearchInput({ searchValue, setSearchValue, error, setError }) {
   const inputRef = useRef(null)
   
   const onChange = ({ target }) => {
