@@ -71,7 +71,7 @@ function Profile() {
         <FollowButton />
         <FollowStats />
           
-          {/* <Feed data={feedData} setData={setFeedData} /> */}
+          <Feed data={feedData} setData={setFeedData} />
       </div>
     </section>
   )
