@@ -1,3 +1,4 @@
+import formatRelativeTime from '../../../utilities/formatRelativeTime'
 import Avatar from '../../../components/Avatar/Avatar'
 import Dropdown from '../../../components/Dropdown/Dropdown'
 import FlagIcon from '../../../components/Icons/FlagIcon/FlagIcon'
@@ -17,7 +18,7 @@ function ListItem({ notification }) {
         <header>
           <Avatar username={notification.username} image={null} />
           <h2>{notification.username}</h2>
-          <time datetime={notification.timestamp}>{notification.timestamp}</time>
+          <time datetime={notification.timestamp}>{formatRelativeTime(notification.timestamp)}</time>
         </header>
         <div>
           <p>{notification.text}</p>
