@@ -45,7 +45,7 @@
 /* Dropdown */
 .listItem article footer div {
   position: absolute;
-  right: 16px;
+  right: 0;
   top: 50%;
   transform: translateY(-50%);
   z-index: 200;
