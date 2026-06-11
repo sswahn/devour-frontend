@@ -156,6 +156,15 @@ dialog::backdrop {
   scroll-margin-top: 64px; 
 }
 
+.ldVBjdQig0478ng9aVGa nav {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
 .ldVBjdQig0478ng9aVGa div {
   display: flex;
   width: 100%;
