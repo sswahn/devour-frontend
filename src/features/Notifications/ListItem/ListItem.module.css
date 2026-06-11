@@ -48,8 +48,6 @@
   top: 50%;
   transform: translateY(-50%);
   z-index: 200;
-
-  border-radius: 50%;
 }
 
 .listItem article footer div > ul {
