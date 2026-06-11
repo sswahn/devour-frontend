@@ -12,16 +12,14 @@ function SearchResults({ searchResults, loading }) {
   return searchResults.map(result =>
     <li className={styles.searchResults} key={result.id} role="option"> 
       <Avatar username={result.username} />
-      <div>
-        <div>
+      <article>
+        <header>
           <h2>{result.username}</h2>
           <time datetime={result.timestamp}>{result.timestamp}</time>
-        </div>
-        <div>
-          <div>{result.location}</div>
-          <div>{result.description?.slice(0, 15)}</div>
-        </div>
-      </div>
+        </header>
+        <p>{result.location}</p>
+        <p>{result.description?.slice(0, 15)}</p>
+      </article>
       <Dropdown items={dropdown} />
     </li>
   )
