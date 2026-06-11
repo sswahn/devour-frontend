@@ -21,7 +21,7 @@ function Search() {
     picture: '',
     location: 'ny',
     description: 'test description of post.',
-    timestamp: Date.now(),
+    timestamp: new Date(),
   },
   {
     id: 1,
