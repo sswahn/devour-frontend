@@ -670,6 +670,9 @@
 }
 
 .vbsjK61eJpBq2ev3NCQg > label {
+  color: var(--text);
+  display: block;
+  font-size: var(--font-size);
   margin: 0 0 8px 8px;
 }
 
