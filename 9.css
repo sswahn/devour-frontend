@@ -431,10 +431,6 @@
   z-index: 200;
 }
 
-.MzJOiSKo0uK6jIHn7Lhb * {
-  border: 1px dashed red;
-}
-
 /* the bottom sheet */
 .MzJOiSKo0uK6jIHn7Lhb {
   --sheet-y: 100dvh;
