@@ -3,6 +3,7 @@ import { overlay } from '../../config'
 import { dropdown, test_data } from './config' // delete test_data
 import useOverlay from '../../hooks/useOverlay'
 import useGestures from '../../hooks/useGestures'
+import ListItem from './ListItem/ListItem'
 import Dropdown from '../../components/Dropdown/Dropdown'
 import styles from './Notifications.module.css'
 
@@ -142,25 +143,11 @@ function Notifications() {
         onPointerCancel={onPointerCancel}
         aria-label="notifications">
         <div id="grabber" onClick={handleGrabberClick} role="presentation"></div>
+          
         <ul aria-label="user notifications">
-          {test_data.notifications?.map((notification, index) => 
-            <li key={index}>
-              <article>
-                <header>
-                  <Avatar username={notification.username} image={null} />
-                  <h2>{notification.username}</h2>
-                  <time datetime={notification.timestamp}>{notification.timestamp}</time>
-                </header>
-                <div>
-                  <p>{notification.text}</p>
-                </div>
-                <footer>
-                  <Dropdown items={dropdown} />
-                </footer>
-              </article>
-            </li>                                                           
-          )}
+          {test_data.notifications?.map(notification => <ListItem notification={notification} />)}
         </ul>
+                                        
       </section>
     </div>
   )
