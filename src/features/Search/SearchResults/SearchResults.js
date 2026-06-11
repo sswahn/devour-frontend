@@ -1,3 +1,4 @@
+import formatRelativeTime from '../../../utilities/formatRelativeTime'
 import Avatar from '../../../components/Avatar/Avatar'
 import Dropdown from '../../../components/Dropdown/Dropdown'
 import styles from './SearchResults.module.css'
@@ -12,7 +13,7 @@ function SearchResults({ searchResults, loading }) {
         <header>
           <Avatar username={result.username} image={result.picture} />
           <h2>{result.username}</h2>
-          <time datetime={result.timestamp}>{result.timestamp}</time>
+          <time datetime={result.timestamp}>{formatRelativeTime(result.timestamp)}</time>
         </header>
         <div>
           <p>{result.location}</p>
