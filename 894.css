@@ -1270,15 +1270,21 @@
 
 .L5vDWmbThsw3ZFpe87dA article header h2 {
   display: inline-block;
+  font-size: var(--font-size);
   margin: 0 16px 0 8px;
 }
 
 .L5vDWmbThsw3ZFpe87dA article header time {
   display: inline-block;
+  font-size: var(--font-size);
 }
 
 .L5vDWmbThsw3ZFpe87dA article > div {
   margin: 0 56px;
+}
+
+.L5vDWmbThsw3ZFpe87dA article > div p {
+  font-size: var(--font-size);
 }
 
 /* Dropdown */
