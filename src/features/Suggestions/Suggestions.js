@@ -1,17 +1,16 @@
 import { useState, useRef, useEffect } from 'react'
 import styles from './Suggestions.module.css'
 
-function Suggestions() {
-  const [suggestions, setSuggestions] = useState([])
+function SlideShow({ data }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const videoRefs = useRef([])
 
   const handleNext = () => {
-    setCurrentIndex(prev => (prev + 1) % suggestions.length)
+    setCurrentIndex(prev => (prev + 1) % data.length)
   }
 
   const handlePrev = () => {
-    setCurrentIndex(prev => (prev - 1 + suggestions.length) % suggestions.length)
+    setCurrentIndex(prev => (prev - 1 + data.length) % data.length)
   }
 
   const onEnded = event => {
@@ -30,19 +29,19 @@ function Suggestions() {
   }
 
   useEffect(() => {
-    if (!!suggestions.length) {
+    if (!!data.length) {
       playCurrent()
     }
-  }, [suggestions, currentIndex])
+  }, [data, currentIndex])
   
   return (
-    <section className={styles.suggestions} aria-label="suggestions slideshow" aria-description="a slideshow of popular content">
+    <section className={styles.suggestions} aria-label="slideshow" aria-description="a slideshow of popular content">
       <div style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
   
         <button className="nav-button nav-prev" onClick={handlePrev} aria-label="Previous slide">&#10094;</button>
         <button className="nav-button nav-next" onClick={handleNext} aria-label="Next slide">&#10095;</button>
 
-        {suggestions.map((slide, index) => (
+        {!!data.length && data.map((slide, index) => (
           <figure key={slide.id}>
             <video
               ref={video => { videoRefs.current[index] = video }}
