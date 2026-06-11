@@ -1254,8 +1254,6 @@
   margin-bottom: 8px;
   position: relative;
   width: 100%;
-
-  border: 1px dashed red;
 }
 
 /* Avatar: */
@@ -1268,8 +1266,6 @@
 
 .L5vDWmbThsw3ZFpe87dA article header {
   margin: 0 44px;
-
-  border: 1px dashed green;
 }
 
 .L5vDWmbThsw3ZFpe87dA article header h2 {
@@ -1283,8 +1279,6 @@
 
 .L5vDWmbThsw3ZFpe87dA article > div {
   margin: 0 44px;
-
-  border: 1px dashed green;
 }
 
 /* Dropdown */
@@ -1293,8 +1287,6 @@
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-
-  border: 1px dashed orange;
 }
 
 
