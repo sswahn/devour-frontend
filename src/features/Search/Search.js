@@ -66,11 +66,6 @@ function Search() {
           <SpeechRecognitionButton setSearchValue={setSearchValue} />
         </form>
         
-        {/* 
-          Change to search results, make a component. 
-          Results will include, avatar, user, food, location
-          Filters, location, popularity, etc.
-        */}
         <ul id="search-results" role="listbox" aria-live="polite" aria-busy={loading}>
           {loading ? <LoadingSpinner /> : <SearchResults searchResults={searchResults} />}
         </ul>
