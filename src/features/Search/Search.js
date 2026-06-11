@@ -22,7 +22,16 @@ function Search() {
     location: 'ny',
     description: 'test description of post.',
     timestamp: Date.now(),
-  }])
+  },
+  {
+    id: 1,
+    username: 'test_user_2',
+    picture: '',
+    location: 'costa rica',
+    description: 'another test description of second post.',
+    timestamp: Date.now(),
+  }
+  ])
   const [recentSearches, setRecentSearches] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
