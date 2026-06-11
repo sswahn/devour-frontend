@@ -144,7 +144,6 @@ dialog::backdrop {
 /* SlideShow  */
 
 .ldVBjdQig0478ng9aVGa {
-  aspect-ratio: 16 / 9;
   background: #000;
   height: calc(100dvh - 128px);
   max-width: 500px;
