@@ -25,7 +25,11 @@
   border: 1px dashed green;
 }
 
-.searchResults article header h2,
+.searchResults article header h2 {
+  display: inline-block;
+  margin-right: 16px;
+}
+
 .searchResults article header time {
   display: inline-block;
 }
