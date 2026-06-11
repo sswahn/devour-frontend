@@ -22,7 +22,7 @@
   color: var(--text);
   display: inline-block;
   font-size: var(--font-size);
-  margin: 0 16px 0 8px;
+  margin: 0 16px;
 
   border: 1px dashed red;
 }
