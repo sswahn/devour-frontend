@@ -162,6 +162,7 @@ dialog::backdrop {
   left: 0;
   position: absolute;
   top: 0;
+  width: 100%;
 }
 
 .ldVBjdQig0478ng9aVGa nav button {
