@@ -39,8 +39,10 @@ function SlideShow({ data }) {
   
   return (
     <section className={styles.slideShow} aria-label="slideshow" aria-description="a slideshow of popular content">
-      <button onClick={handlePrev} aria-label="Previous slide">&#10094;</button>
-      <button onClick={handleNext} aria-label="Next slide">&#10095;</button>
+      <nav>
+        <button onClick={handlePrev} aria-label="Previous slide">&#10094;</button>
+        <button onClick={handleNext} aria-label="Next slide">&#10095;</button>
+      </nav>
       <div style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
   
         {!!data.length && data.map((slide, index) =>
