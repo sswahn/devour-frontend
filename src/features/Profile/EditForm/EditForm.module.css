@@ -28,6 +28,7 @@
   height: 88px;
   margin-bottom: 8px;
   padding: 8px;
+  resize: none;
   width: 100%;
 }
 
