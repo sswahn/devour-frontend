@@ -1,4 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
+import ChevronLeftIcon from '../Icons/ChevronLeftIcon/ChevronLeftIcon'
+import ChevronRightIcon from '../Icons/ChevronRightIcon/ChevronRightIcon'
 import styles from './SlideShow.module.css'
 
 function SlideShow({ data }) {
@@ -34,14 +36,18 @@ function SlideShow({ data }) {
     }
   }, [currentIndex])
 
-  // import chevron icons, for buttons
+  // move buttons into their own components
   // make sure the initial video autoplays
   
   return (
     <section className={styles.slideShow} aria-label="slideshow" aria-description="a slideshow of popular content">
       <nav>
-        <button onClick={handlePrev} aria-label="Previous slide">&#10094;</button>
-        <button onClick={handleNext} aria-label="Next slide">&#10095;</button>
+        <button onClick={handlePrev} aria-label="Previous slide">
+          <ChevronLeftIcon />
+        </button>
+        <button onClick={handleNext} aria-label="Next slide">
+          <ChevronRightIcon />
+        </button>
       </nav>
       <div style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
   
