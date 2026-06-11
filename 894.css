@@ -1272,7 +1272,11 @@
   border: 1px dashed green;
 }
 
-.L5vDWmbThsw3ZFpe87dA article header h2,
+.L5vDWmbThsw3ZFpe87dA article header h2 {
+  display: inline-block;
+  margin-right: 16px;
+}
+
 .L5vDWmbThsw3ZFpe87dA article header time {
   display: inline-block;
 }
