@@ -11,6 +11,8 @@
   width: 100%;
 
   scroll-snap-align: start;
+  /* Forces the browser to ignore the parent's bottom scroll-padding */
+  scroll-margin-bottom: 0px !important; 
 }
 
 .slideShow div {
