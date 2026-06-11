@@ -22,6 +22,10 @@
   top: 0;
 }
 
+.slideShow nav button {
+  background: rgba(0, 0, 0, 0.5);
+}
+
 .slideShow div {
   display: flex;
   width: 100%;
