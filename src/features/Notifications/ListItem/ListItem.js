@@ -1,4 +1,6 @@
-import Avatar from '../../Avatar/Avatar'
+import Avatar from '../../../components/Avatar/Avatar'
+import FlagIcon from '../../../components/Icons/FlagIcon/FlagIcon'
+import XmarkIcon from '../../../components/Icons/UserXmarkIcon/UserXmarkIcon'
 import styles from './ListItem.module.css'
 
 function ListItem({ notification }) {
