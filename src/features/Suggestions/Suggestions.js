@@ -33,7 +33,7 @@ function Suggestions() {
     if (!!suggestions.length) {
       playCurrent()
     }
-  }, [currentIndex])
+  }, [suggestions, currentIndex])
   
   return (
     <section className={styles.suggestions} aria-label="suggestions slideshow" aria-description="a slideshow of popular content">
