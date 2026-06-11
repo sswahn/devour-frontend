@@ -1,51 +1,47 @@
-/* Notifications List Items */
+/* Notifications List Item */
 
-.listItems {
-  
-}
-
-.listItems article {
+.listItem article {
   margin-bottom: 16px;
   position: relative;
   width: 100%;
 }
 
 /* Avatar: */
-.listItems article header button {
+.listItem article header button {
   left: 0;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
 }
 
-.listItems article header {
+.listItem article header {
   margin: 0 44px;
 }
 
-.listItems article header h2 {
+.listItem article header h2 {
   color: var(--text);
   display: inline-block;
   font-size: var(--font-size);
   margin: 0 16px 0 8px;
 }
 
-.listItems article header time {
+.listItem article header time {
   color: var(--text);
   display: inline-block;
   font-size: var(--font-size);
 }
 
-.listItems article > div {
+.listItem article > div {
   margin: 0 56px;
 }
 
-.listItems article > div p {
+.listItem article > div p {
   color: var(--text);
   font-size: var(--font-size);
 }
 
 /* Dropdown */
-.listItems article footer div {
+.listItem article footer div {
   position: absolute;
   right: 0;
   top: 50%;
