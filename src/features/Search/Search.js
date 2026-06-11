@@ -60,8 +60,8 @@ function Search() {
           <SearchIcon size={10} />
           <SearchInput 
             searchValue={searchValue} 
-            error={error}
             setSearchValue={setSearchValue}
+            error={error}
             setError={setError}
           />
           <SpeechRecognitionButton setSearchValue={setSearchValue} />
