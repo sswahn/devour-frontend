@@ -4,7 +4,6 @@ import { dropdown, test_data } from './config' // delete test_data
 import useOverlay from '../../hooks/useOverlay'
 import useGestures from '../../hooks/useGestures'
 import ListItem from './ListItem/ListItem'
-import Dropdown from '../../components/Dropdown/Dropdown'
 import styles from './Notifications.module.css'
 
 import Avatar from '../../components/Avatar/Avatar'
@@ -112,11 +111,9 @@ function Notifications() {
   }
 
   useEffect(() => {
-  //  requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        setMode('peek')
-      })
- //   })
+    requestAnimationFrame(() => {
+      setMode('peek')
+    })
   }, [])
   
   return (
