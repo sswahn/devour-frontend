@@ -37,23 +37,24 @@ function Suggestions() {
   
   return (
     <section className={styles.suggestions} aria-label="suggestions slideshow" aria-description="a slideshow of popular content">
-      <div className="slideshow-track" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+      <div style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+  
+        <button className="nav-button nav-prev" onClick={handlePrev} aria-label="Previous slide">&#10094;</button>
+        <button className="nav-button nav-next" onClick={handleNext} aria-label="Next slide">&#10095;</button>
+
         {suggestions.map((slide, index) => (
-          <div key={slide.id} className="slide">
+          <figure key={slide.id}>
             <video
-              ref={(el) => { videoRefs.current[index] = el }}
-              className="slide-video"
+              ref={video => { videoRefs.current[index] = video }}
               src={slide.url}
               onEnded={onEnded}
               playsInline
               muted
             />
-          </div>
+          </figure>
         ))}
+          
       </div>
-
-      <button className="nav-button nav-prev" onClick={handlePrev} aria-label="Previous slide">&#10094;</button>
-      <button className="nav-button nav-next" onClick={handleNext} aria-label="Next slide">&#10095;</button>
     </section>
   )
 }
