@@ -19,7 +19,7 @@ function Suggestions() {
   }
 
   const playCurrent = () => {
-    videoRefs.current.forEach((video, index) => {
+    videoRefs.current?.forEach((video, index) => {
       if (index === currentIndex) {
         video.currentTime = 0
         video.play().catch(console.error)
