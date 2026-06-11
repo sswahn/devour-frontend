@@ -1272,6 +1272,11 @@
   border: 1px dashed green;
 }
 
+.L5vDWmbThsw3ZFpe87dA article header h2,
+.L5vDWmbThsw3ZFpe87dA article header datetime {
+  display: inline-block;
+}
+
 .L5vDWmbThsw3ZFpe87dA article div {
   margin: 0 44px;
 
