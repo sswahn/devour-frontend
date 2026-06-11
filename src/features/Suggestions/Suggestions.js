@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import styles from './Suggestions.module.css'
 
 function Suggestions() {
   const [suggestions, setSuggestions] = useState([])
   const [currentIndex, setCurrentIndex] = useState(0)
+  const videoRefs = useRef(null)
 
   const handleNext = () => {
     setCurrentIndex(prev => (prev + 1) % suggestions.length)
