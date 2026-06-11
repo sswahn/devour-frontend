@@ -32,7 +32,7 @@
 }
 
 /* Dropdown */
-.searchResults article footer button {
+.searchResults article footer div {
   position: absolute;
   right: 0;
   top: 50%;
