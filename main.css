@@ -146,7 +146,7 @@ dialog::backdrop {
 .ldVBjdQig0478ng9aVGa {
   aspect-ratio: 16 / 9;
   background: #000;
-  height: calc(100dvh - 120px);
+  height: calc(100dvh - 64px);
   max-width: 500px;
   margin: 60px auto 0 auto;
   overflow: hidden;
@@ -154,8 +154,6 @@ dialog::backdrop {
   width: 100%;
 
   scroll-snap-align: start;
-  /* Forces the browser to ignore the parent's bottom scroll-padding */
-  scroll-margin-bottom: 64px; 
 }
 
 .ldVBjdQig0478ng9aVGa div {
