@@ -1,9 +1,6 @@
 /* Search Results List */
 
 .searchResults article {
-  color: var(--text);
-  font-size: var(--font-size);
-  line-height: var(--line-height);
   margin-bottom: 16px;
   position: relative;
   width: 100%;
@@ -22,12 +19,14 @@
 }
 
 .searchResults article header h2 {
+  color: var(--text);
   display: inline-block;
   font-size: var(--font-size);
   margin: 0 16px 0 8px;
 }
 
 .searchResults article header time {
+  color: var(--text);
   display: inline-block;
   font-size: var(--font-size);
 }
@@ -37,6 +36,7 @@
 }
 
 .searchResults article > div p {
+  color: var(--text);
   font-size: var(--font-size);
 }
 
