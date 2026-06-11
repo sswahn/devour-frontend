@@ -21,7 +21,7 @@ function Suggestions() {
     videoRefs.current.forEach((video, index) => {
       if (index === currentIndex) {
         video.currentTime = 0
-        video.play().catch((err) => console.log("Playback blocked or interrupted:", err))
+        video.play().catch(console.error)
       } else {
         video.pause()
       }
