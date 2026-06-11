@@ -1,7 +1,7 @@
 /* SlideShow  */
 
 .slideShow {
-  background: #000;
+  background: gray;
   height: calc(100dvh - 128px);
   max-width: 500px;
   margin: 60px auto 4px auto;
