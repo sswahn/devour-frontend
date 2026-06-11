@@ -9,6 +9,8 @@
   overflow: hidden;
   position: relative;
   width: 100%;
+
+  scroll-snap-align: start;
 }
 
 .slideShow div {
