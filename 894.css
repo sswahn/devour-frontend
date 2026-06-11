@@ -704,7 +704,7 @@
   border: 0;
 }
 
-.vbsjK61eJpBq2ev3NCQg button {
+.vbsjK61eJpBq2ev3NCQg > button {
   align-items: center;
   background: var(--button-bar-bg);
   border: none;
