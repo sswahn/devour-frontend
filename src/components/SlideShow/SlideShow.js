@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import styles from './Suggestions.module.css'
+import styles from './SlideShow.module.css'
 
 function SlideShow({ data }) {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -58,4 +58,4 @@ function SlideShow({ data }) {
   )
 }
 
-export default Suggestions
+export default SlideShow
