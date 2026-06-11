@@ -154,6 +154,7 @@ dialog::backdrop {
   width: 100%;
 
   scroll-snap-align: start;
+  scroll-margin-top: 64px; 
 }
 
 .ldVBjdQig0478ng9aVGa div {
