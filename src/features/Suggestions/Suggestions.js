@@ -46,6 +46,7 @@ function Suggestions() {
               src={slide.url}
               onEnded={onEnded}
               playsInline
+              muted
             />
           </div>
         ))}
