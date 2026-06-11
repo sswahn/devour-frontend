@@ -144,7 +144,7 @@ dialog::backdrop {
 /* SlideShow  */
 
 .ldVBjdQig0478ng9aVGa {
-  background: gray;
+  background: #666;
   height: calc(100dvh - 128px);
   max-width: 500px;
   margin: 60px auto 4px auto;
