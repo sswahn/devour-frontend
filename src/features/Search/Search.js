@@ -18,6 +18,7 @@ function Search() {
   const [searchResults, setSearchResults] = useState([{
     id: 0,
     username: 'test_user',
+    picture: '',
     location: 'ny',
     description: 'test description of post.',
     timestamp: Date.now(),
