@@ -2,7 +2,7 @@
 
 .slideShow {
   background: #666;
-  height: calc(100dvh - 128px);
+  height: calc(100dvh - 124px);
   max-width: 500px;
   margin: 60px auto 4px auto;
   overflow: hidden;
