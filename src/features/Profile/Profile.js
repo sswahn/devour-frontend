@@ -21,6 +21,11 @@ function Profile() {
     location: 'new york',
     biography: ''
    })
+  const [feedData, setFeedData] = useState([
+    { picture: '', username: 'test_user1', video: 1, caption: 'test caption 1' },
+    { picture: '', username: 'test_user2',  video: 2, caption: 'testing captions with multiple lines. It should expand upward instead of downward.' },
+    { picture: '', username: 'test_user3', video: 3, caption: 'test captions 3' }
+  ])
 
   const updateProfile = obj => {
     setProfile(prev => ({ ...prev, ...obj }))
