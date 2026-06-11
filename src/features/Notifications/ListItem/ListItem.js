@@ -3,6 +3,11 @@ import styles from './ListItem.module.css'
 
 function ListItem({ notification }) {
 
+  const dropdown = [
+    { icon: <FlagIcon />, text: 'Flag notification', method: () => confirm('Flag notification?') },
+    { icon: <XmarkIcon />, text: 'Delete notification', method: () => confirm('Delete notification?') }
+  ]
+  
   return (
     <li className={styles.listItem} key={notification.id}>
       <article>
