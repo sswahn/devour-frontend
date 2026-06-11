@@ -47,7 +47,7 @@
   border: 0;
 }
 
-.editForm button {
+.editForm > button {
   align-items: center;
   background: var(--button-bar-bg);
   border: none;
