@@ -669,17 +669,8 @@
   width: 170px;
 }
 
-/*
-.editForm label {
-  display: block;
-  width: 100%;
-  margin-bottom: 8px;
-}
-*/
-
 .vbsjK61eJpBq2ev3NCQg > label {
-  margin-left: 8px;
-  margin-bottom: 8px;
+  margin: 0 0 8px 8px;
 }
 
 .vbsjK61eJpBq2ev3NCQg textarea {
