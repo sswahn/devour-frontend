@@ -8,10 +8,12 @@ function SlideShow({ data }) {
   const videoRefs = useRef([])
 
   const handleNext = () => {
+    console.log('clicked next slide')
     setCurrentIndex(prev => (prev + 1) % data.length)
   }
 
   const handlePrev = () => {
+    console.log('clicked previous slide')
     setCurrentIndex(prev => (prev - 1 + data.length) % data.length)
   }
 
