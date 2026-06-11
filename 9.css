@@ -405,12 +405,13 @@
 .mb7PIQxOODOItOwOZ_JC article > div p {
   color: var(--text);
   font-size: var(--font-size);
+  line-height: var(--line-height);
 }
 
 /* Dropdown */
 .mb7PIQxOODOItOwOZ_JC article footer > div {
   position: absolute;
-  right: 8px;
+  right: 16px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 200;
