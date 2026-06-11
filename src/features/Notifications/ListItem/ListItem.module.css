@@ -42,7 +42,7 @@
 }
 
 /* Dropdown */
-.listItem article footer > div {
+.listItem article footer div {
   position: absolute;
   right: 16px;
   top: 50%;
@@ -50,4 +50,8 @@
   z-index: 200;
 
   border-radius: 50%;
+}
+
+.listItem article footer div > ul {
+  z-index: 250;
 }
