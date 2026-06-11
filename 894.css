@@ -1248,9 +1248,6 @@
 /* Search Results List */
 
 .L5vDWmbThsw3ZFpe87dA article {
-  color: var(--text);
-  font-size: var(--font-size);
-  line-height: var(--line-height);
   margin-bottom: 16px;
   position: relative;
   width: 100%;
@@ -1269,12 +1266,14 @@
 }
 
 .L5vDWmbThsw3ZFpe87dA article header h2 {
+  color: var(--text);
   display: inline-block;
   font-size: var(--font-size);
   margin: 0 16px 0 8px;
 }
 
 .L5vDWmbThsw3ZFpe87dA article header time {
+  color: var(--text);
   display: inline-block;
   font-size: var(--font-size);
 }
@@ -1284,6 +1283,7 @@
 }
 
 .L5vDWmbThsw3ZFpe87dA article > div p {
+  color: var(--text);
   font-size: var(--font-size);
 }
 
