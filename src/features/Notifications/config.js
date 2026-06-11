@@ -1,10 +1,3 @@
-import FlagIcon from '../../components/Icons/FlagIcon/FlagIcon'
-import XmarkIcon from '../../components/Icons/UserXmarkIcon/UserXmarkIcon'
-
-export const dropdown = [
-  { icon: <FlagIcon />, text: 'Flag notification', method: () => confirm('Flag notification?') },
-  { icon: <XmarkIcon />, text: 'Delete notification', method: () => confirm('Delete notification?') }
-]
 
 // delete this:
 export const test_data = { 
