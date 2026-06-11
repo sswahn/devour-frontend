@@ -7,10 +7,9 @@
   margin: 60px auto 4px auto;
   overflow: hidden;
   position: relative;
-  width: 100%;
-
-  scroll-snap-align: start;
   scroll-margin-top: 64px; 
+  scroll-snap-align: start;
+  width: 100%;
 }
 
 .slideShow nav {
