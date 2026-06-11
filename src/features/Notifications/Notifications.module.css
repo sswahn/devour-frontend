@@ -33,7 +33,7 @@
   touch-action: none;
   width: 100%;
   will-change: transform;
-  box-sizing: content-box;
+  /* box-sizing: content-box; */
 }
 
 .peek {
@@ -41,7 +41,7 @@
 }
 
 .expand {
-  --sheet-y: 8px;
+  --sheet-y: 0;
   overflow-y: auto;
   overscroll-behavior-y: contain;
   -webkit-overflow-scrolling: touch;
