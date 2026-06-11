@@ -18,7 +18,7 @@ function Suggestions() {
     handleNext()
   }
 
-  useEffect(() => {
+  const playCurrent = () => {
     videoRefs.current.forEach((video, index) => {
       if (index === currentIndex) {
         video.currentTime = 0
@@ -27,6 +27,12 @@ function Suggestions() {
         video.pause()
       }
     })
+  }
+
+  useEffect(() => {
+    if (!!suggestions.length) {
+      playCurrent()
+    }
   }, [currentIndex])
   
   return (
