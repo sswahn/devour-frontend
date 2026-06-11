@@ -25,6 +25,11 @@
   border: 1px dashed green;
 }
 
+.searchResults article header h2,
+.searchResults article header datetime {
+  display: inline-block;
+}
+
 .searchResults article div {
   margin: 0 44px;
 
