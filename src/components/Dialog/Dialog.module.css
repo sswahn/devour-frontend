@@ -19,7 +19,7 @@ dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.dialog button:first-of-type {
+.dialog > button:first-of-type {
   left: 8px;
   position: absolute;
   top: 8px;
