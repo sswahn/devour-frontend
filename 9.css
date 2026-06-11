@@ -408,14 +408,14 @@
 }
 
 /* Dropdown */
-.mb7PIQxOODOItOwOZ_JC article footer div {
+.mb7PIQxOODOItOwOZ_JC article footer > div {
   position: absolute;
   right: 8px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 200;
 
-  border: 1px dashed red;
+  border-radius: 50%;
 }
 
 /* User Notifications */
