@@ -32,10 +32,11 @@
   border: 1px dashed green;
 }
 
-.searchResults footer button {
+/* Dropdown */
+.searchResults article footer button {
   position: absolute;
   right: 0;
   top: 50%;
+  transform: translateY(-50%);
 }
-
 
