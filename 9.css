@@ -460,7 +460,7 @@
   touch-action: none;
   width: 100%;
   will-change: transform;
-  box-sizing: content-box;
+  /* box-sizing: content-box; */
 }
 
 .da6_YKWlCyjDtU5uqVeI {
@@ -468,7 +468,7 @@
 }
 
 .Xn87m1qQGnnpWjcvqJEn {
-  --sheet-y: 8px;
+  --sheet-y: 0;
   overflow-y: auto;
   overscroll-behavior-y: contain;
   -webkit-overflow-scrolling: touch;
