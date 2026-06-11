@@ -1,11 +1,10 @@
 import Avatar from '../../Avatar/Avatar'
-import styles from './ListItems.module.css'
+import styles from './ListItem.module.css'
 
-
-function ListItems() {
+function ListItem({ notification }) {
 
   return (
-    <li className={styles.listItems} key={notification.id}>
+    <li className={styles.listItem} key={notification.id}>
       <article>
         <header>
           <Avatar username={notification.username} image={null} />
@@ -23,4 +22,4 @@ function ListItems() {
   )
 }
 
-export default ListItems
+export default ListItem
