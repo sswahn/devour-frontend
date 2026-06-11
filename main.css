@@ -195,6 +195,7 @@ dialog::backdrop {
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
+  margin-top: header height;
   overflow: hidden;
   background: #000;
   aspect-ratio: 16 / 9;
