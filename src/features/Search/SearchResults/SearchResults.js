@@ -6,9 +6,6 @@ function SearchResults({ searchResults, loading }) {
   
   const dropdown =  []
 
-  // for better accessibility: screen readers use quick keys to navigate between headings, so:
-  // use article, header, h2, username
-
   return searchResults.map(result =>
     <li className={styles.searchResults} key={result.id} role="option"> 
       <article>
