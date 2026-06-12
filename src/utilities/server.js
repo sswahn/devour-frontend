@@ -1,10 +1,10 @@
 
 const typeCheck = (method, api, request = undefined, headers = {}) => {
   if (typeof api !== 'string') {
-    throw new TypeError(`${method} request expects first argument to be a string.`, { cause: 'server' })
+    throw new TypeError(`${method} request expects api to be a string.`, { cause: 'server' })
   }
   if (typeof request !== 'object' || request === null || Array.isArray(request)) {
-    throw new TypeError(`${method} request expects second argument to be an object literal.`, { cause: 'server' })
+    throw new TypeError(`${method} request expects request to be an object literal.`, { cause: 'server' })
   }
   if (typeof headers !== 'object' || headers === null || Array.isArray(headers)) {
     throw new TypeError(`${method} request expects headers to be an object literal.`, { cause: 'server' })
