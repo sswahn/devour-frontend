@@ -42,7 +42,7 @@ function Register() {
       const contact = formatContact(validate.contact(formData.get('contact')))
       const credentials = await navigator.credentials.create()
       const request = { username, contact, credentials }
-      const response = await server.post(api.register, request)
+      // const response = await server.post(api.register, request)
       setMessage('Account successfully created.')
     } catch (error) {
       setErrorMessage(error) // this should be a generic error.
