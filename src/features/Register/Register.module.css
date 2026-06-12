@@ -38,11 +38,6 @@
   padding: 8px;
 }
 
-.danger {
-  background-color: var(--danger);
-  padding: 8px;
-}
-
 /* Close button */
 .register > div > button {
   left: 8px;
