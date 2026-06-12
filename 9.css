@@ -1121,10 +1121,13 @@
   overflow-x: hidden;
   overflow-y: scroll;
   overscroll-behavior-y: contain;
-  padding: 8px;
   position: fixed;
   touch-action: none;
   z-index: 200;
+}
+
+.KIIoXhhSaQeQ2LSTtavI > div > div {
+  padding: 8px;
 }
 
 .KIIoXhhSaQeQ2LSTtavI header img {
