@@ -8,8 +8,7 @@ function useScrollLock(isActive) {
     const root = document.getElementById('root')
     root.classList.add('lockScroll')
     return () => {
-      // root.removeAttribute('class')
-      root.classList.remove('lockScroll') // test to see if leaves empty class attribute
+      root.removeAttribute('class')
       window.scrollTo(0, scrollY)
     }
   }
