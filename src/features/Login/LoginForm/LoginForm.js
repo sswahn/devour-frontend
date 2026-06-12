@@ -8,7 +8,7 @@ import styles from './LoginForm.module.css'
 function LoginForm() {
   const { setSession } = useSession() 
   const [loading, setLoading] = useState(false)
-  const [errorMessage, setErrorMessage] = useState(false)
+  const [errors, setErrors] = useState({})
   
   const onSubmit = async event => {
     try {
@@ -38,7 +38,7 @@ function LoginForm() {
       // setSession({ user: { isAuthenticated: true, data: response.data })
       
     } catch (error) {
-      setErrorMessage(error)
+      setErrors({ [error.cause]: error.message })
     } finally {
       setLoading(false)
     }
@@ -52,7 +52,7 @@ function LoginForm() {
         label="Email or username"
         inputMode="email"
         autoComplete="username webauthn"
-        error={errorMessage}
+        error={errors.username}
         required />
       <button type="submit" disabled={loading}>Sign In</button>
     </form>
