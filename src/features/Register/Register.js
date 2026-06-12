@@ -54,6 +54,7 @@ function Register() {
     } catch (error) {
       
       console.error('raw error obj: ', error)
+      console.error('error.message: ', error.message)
       setErrorMessage(error)
       
     } finally {
