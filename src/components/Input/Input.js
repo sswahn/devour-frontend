@@ -22,7 +22,6 @@ const Input = ({ id, type, label, inputMode, autoComplete, error, required, ...p
   const handleError = err => {
     if (err) {
       setErrorMessage(err)
-      focusInvalidInput()
     }
   }
 
@@ -38,7 +37,15 @@ const Input = ({ id, type, label, inputMode, autoComplete, error, required, ...p
   }
 
   useEffect(() => {
-    handleError(error)
+    if (errorMessage) {
+      focusInvalidInput()
+    }
+  }, [errorMessage])
+
+  useEffect(() => {
+    if (error) {
+      handleError(error)
+    }
   }, [error])
   
   return (
