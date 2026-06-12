@@ -13,7 +13,7 @@ const Overlays = lazy(() => import('../Overlays/Overlays'))
 function Interface() {
   const { isActive } = useOverlay()
   const { isFullscreen } = useFullscreen()
-  // useScrollLock(isActive)
+  useScrollLock(isActive)
   useSelectionToSpeech()
   useContextMenu()
   
