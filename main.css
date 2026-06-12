@@ -533,8 +533,6 @@ dialog::backdrop {
   transform: translateY(-50%);
   width: 100%;
   z-index: 50;
-
-  border: 1px dashed blue;
 }
 
 .ldVBjdQig0478ng9aVGa > nav button {
@@ -548,8 +546,6 @@ dialog::backdrop {
   cursor: pointer;
   padding: 10px;
   width: 44px;
-
-  border: 1px dashed red;
 }
 
 .ldVBjdQig0478ng9aVGa > div {
@@ -572,7 +568,8 @@ dialog::backdrop {
   object-fit: cover;
 }
 
-.ldVBjdQig0478ng9aVGa > div button {
+/*
+.slideShow > div button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -585,6 +582,7 @@ dialog::backdrop {
 
   border: 1px dashed green;
 }
+*/
 
 .Nzr3GHoWdnQBKN2y1W79 { left: 10px; }
 .okn7LqEArPHz5LwvwJnC { right: 10px; }
