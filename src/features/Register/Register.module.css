@@ -35,10 +35,12 @@
 
 .success {
   background-color: var(--success);
+  padding: 8px;
 }
 
 .danger {
   background-color: var(--danger);
+  padding: 8px;
 }
 
 /* Close button */
