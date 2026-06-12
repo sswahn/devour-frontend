@@ -9,9 +9,6 @@ import SubmitButton from './SubmitButton/SubmitButton'
 import styles from './Register.module.css'
 
 function Register() {
-  
-  console.log('Register Component.')
-  
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
@@ -55,7 +52,10 @@ function Register() {
       // const response = await server.post(api.register, request)
       setMessage('Account successfully created.')
     } catch (error) {
-      setErrorMessage(error.message) // this should be a generic error.
+      
+      console.error('raw error obj: ', error)
+      setErrorMessage(error)
+      
     } finally {
       setLoading(false)
     }
