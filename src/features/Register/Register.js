@@ -37,8 +37,8 @@ function Register() {
     // request cognito pubkey..
     // then create credentials:
     const credentials = await navigator.credentials.create({
-      publicKey: publicKeyCredentialCreationOptions
-    }
+      // publicKey: publicKeyCredentialCreationOptions
+    })
     // respond to server directly, or batch with rest of submission..
   }
 
