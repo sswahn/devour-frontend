@@ -1133,6 +1133,7 @@
 
 .KIIoXhhSaQeQ2LSTtavI > div > div {
   padding: 8px;
+  scroll-snap-align: start;
 }
 
 .KIIoXhhSaQeQ2LSTtavI header img {
