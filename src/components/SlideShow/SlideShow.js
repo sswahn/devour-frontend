@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import ChevronLeftIcon from '../Icons/ChevronLeftIcon/ChevronLeftIcon'
 import ChevronRightIcon from '../Icons/ChevronRightIcon/ChevronRightIcon'
+import Feed from '../../features/Feed/Feed'
 import styles from './SlideShow.module.css'
 
 function SlideShow({ data }) {
@@ -52,8 +53,10 @@ function SlideShow({ data }) {
         </button>
       </nav>
       <div style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-  
-        {!!data.length && data.map((slide, index) =>
+
+        <Feed data={data} />
+        
+        {/*!!data.length && data.map((slide, index) =>
           <figure key={slide.id}>
             <video
               ref={video => { videoRefs.current[index] = video }}
@@ -63,7 +66,7 @@ function SlideShow({ data }) {
               muted
             />
           </figure>
-        )}
+        ) */}
           
       </div>
     </section>
