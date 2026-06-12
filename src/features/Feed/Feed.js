@@ -27,6 +27,9 @@ function Feed({ data, setData }) {
   }
 
   const loadData = async () => {
+    if (!setData) {
+      return console.log('setData undefined')
+    }
     // since data is passed from parent
     // loadData/updateData should be passed from there as well.
     // need to set loading here though so it would execute 
