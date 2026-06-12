@@ -48,8 +48,6 @@ const validate = {
   },
 
   username(username) {
-    console.log('validate.username: username: ', username)
-    console.log('validate.username: username.length: ', username.length)
     if (username.length < 3 || username.length > 30) {
       throw new Error('Username must be between 3 and 30 characters.')
     }
@@ -61,8 +59,6 @@ const validate = {
   },
 
   contact(contact) {
-    console.log('validate.contact: contact: ', contact)
-    console.log('validate.contact: contact.length: ', contact.length)
     if (contact.length < 3 || contact.length > 254) {
       throw new Error('Contact must be a valid length.')
     }
