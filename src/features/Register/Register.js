@@ -33,6 +33,15 @@ function Register() {
     return hasPlus ? `+${digits}` : digits
   }
 
+  const registerPassKey = async () => {
+    // request cognito pubkey..
+    // then create credentials:
+    const credentials = await navigator.credentials.create({
+      publicKey: publicKeyCredentialCreationOptions
+    }
+    // respond to server directly, or batch with rest of submission..
+  }
+
   const onSubmit = async event => {    
     try {
       event.preventDefault()
@@ -41,8 +50,8 @@ function Register() {
       const formData = new FormData(event.target)
       const username = validate.username(formData.get('username'))
       const contact = formatContact(validate.contact(formData.get('contact')))
-      const credentials = await navigator.credentials.create()
-      const request = { username, contact, credentials }
+      // const credentials = await registerPassKey()
+      // const request = { username, contact, credentials }
       // const response = await server.post(api.register, request)
       setMessage('Account successfully created.')
     } catch (error) {
