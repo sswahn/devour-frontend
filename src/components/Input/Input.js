@@ -14,8 +14,10 @@ const Input = ({ id, type, label, inputMode, autoComplete, error, required, ...p
   }
 
   const handleError = err => {
+    console.log('setting error.message in Input component: ', err)
     if (err) {
       setErrorMessage(err)
+      console.log('errorMessage set, input should have red border.')
       focusInvalidInput()
     }
   }
