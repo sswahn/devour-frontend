@@ -19,10 +19,13 @@
   overflow-x: hidden;
   overflow-y: scroll;
   overscroll-behavior-y: contain;
-  padding: 8px;
   position: fixed;
   touch-action: none;
   z-index: 200;
+}
+
+.profile > div > div {
+  padding: 8px;
 }
 
 .profile header img {
