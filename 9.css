@@ -1164,6 +1164,14 @@
   width: 100%;
 }
 
+.QtyTYq44SDPCEzAnpVgb:focus {
+  background: var(--button-bar-bg);
+}
+
+.QtyTYq44SDPCEzAnpVgb:active {
+  background: var(--button-active);
+}
+
 /* User Authentication Flow, Register User */
 
 .oSMoVZYW2HrKOJTgWNU2 {
