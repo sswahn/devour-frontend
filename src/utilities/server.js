@@ -1,5 +1,5 @@
 
-const typeCheck = (method, api, request = undefined, headers = {}) => {
+const typeCheck = (method, api, request = {}, headers = {}) => {
   if (typeof api !== 'string') {
     throw new TypeError(`${method} request expects api to be a string.`, { cause: 'server' })
   }
@@ -30,12 +30,13 @@ const handleResponse = async response => {
 
 const server = {
   async get(api, headers = {}) {
-    typeCheck('get', api, undefined, headers)
-    const request = new Request(api, {
+    const request = {}
+    typeCheck('get', api, request, headers)
+    const options = {
       method: 'get',
       headers: { ...headers }
-    })
-    const response = await fetch(request)
+    }
+    const response = await fetch(api, request)
     return handleResponse(response)
   },
   async post(api, request, headers = {}) {
