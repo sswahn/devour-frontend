@@ -23,8 +23,6 @@
   transform: translateY(-50%);
   width: 100%;
   z-index: 50;
-
-  border: 1px dashed blue;
 }
 
 .slideShow > nav button {
@@ -38,8 +36,6 @@
   cursor: pointer;
   padding: 10px;
   width: 44px;
-
-  border: 1px dashed red;
 }
 
 .slideShow > div {
@@ -62,6 +58,7 @@
   object-fit: cover;
 }
 
+/*
 .slideShow > div button {
   position: absolute;
   top: 50%;
@@ -75,6 +72,7 @@
 
   border: 1px dashed green;
 }
+*/
 
 .nav-prev { left: 10px; }
 .nav-next { right: 10px; }
