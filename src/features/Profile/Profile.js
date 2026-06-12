@@ -51,20 +51,9 @@ function Profile() {
   }, [])
 
   return (
-    <section 
-      id={overlay.profile}
-      className={styles.profile} 
-      ref={overlayRef} 
-      onKeyDown={onKeyDown}
-      role="dialog" 
-      aria-modal="true" 
-      aria-labelledby="username" 
-      aria-describedby={profile.biography ? 'biography' : undefined}>
-      <div
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={onPointerUp}
-        onPointerCancel={onPointerCancel}>
+    <section id={overlay.profile} className={styles.profile} ref={overlayRef} onKeyDown={onKeyDown} role="dialog" aria-modal="true">
+      <div onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={onPointerCancel}>
+  
         <TopNav profile={profile} setProfile={setProfile} />
         <header>
           <img src={profile.picture} alt={`${profile.username}'s profile picture`} />
@@ -75,9 +64,8 @@ function Profile() {
   
         <FollowButton />
         <FollowStats />
-          
-          <Feed data={feedData} setData={setFeedData} />
       </div>
+      <Feed data={feedData} setData={setFeedData} />
     </section>
   )
 }
