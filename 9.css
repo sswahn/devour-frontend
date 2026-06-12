@@ -1217,10 +1217,12 @@
 
 .gwvl3FGlxxJKPHo8y6lN {
   background-color: var(--success);
+  padding: 8px;
 }
 
 .HFk_KYH7SEjWLqi0WWzL {
   background-color: var(--danger);
+  padding: 8px;
 }
 
 /* Close button */
