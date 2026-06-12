@@ -7,17 +7,21 @@ const Input = ({ id, type, label, inputMode, autoComplete, error, required, ...p
 
   const focusInvalidInput = () => {
     const form = inputRef.current?.closest('form')
+    
+    console.log('should be the form element: ', form)
+    
     const invalidInput = Array.from(form.elements).find(
       input => input.hasAttribute('aria-invalid')
     )
+    
+    console.log('should be the first invalid input: ', invalidInput)
+    
     invalidInput.focus()
   }
 
   const handleError = err => {
-    console.log('handleError function: ', err)
     if (err) {
       setErrorMessage(err)
-      console.log('errorMessage set, input should have red border.')
       focusInvalidInput()
     }
   }
