@@ -11,7 +11,7 @@ import styles from './Register.module.css'
 function Register() {
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
-  const [errorMessage, setErrorMessage] = useState({})
+  const [errors, setErrors] = useState({})
   const { openOverlay, closeOverlay } = useOverlay()
   const { onPointerDown, onPointerMove, onPointerUp, onPointerCancel } = useSwipeFromEdge(closeOverlay)
 
@@ -52,7 +52,7 @@ function Register() {
       // const response = await server.post(api.register, request)
       setMessage('Account successfully created.')
     } catch (error) {
-      setErrorMessage({ [error.cause]: error.message }) /* errors need to be specific to the inputs, use an object { username, contact } */
+      setErrors({ [error.cause]: error.message })
     } finally {
       setLoading(false)
     }
@@ -70,7 +70,7 @@ function Register() {
             inputMode="email"
             autoComplete="username webauthn"
             autoCapitalize="none"
-            error={errorMessage.cause === 'username' ? errorMessage['username'] : undefined}
+            error={errors.username}
             required />
           <Input 
             id="contact"
@@ -79,7 +79,7 @@ function Register() {
             inputMode="email"
             autoComplete="email tel"
             autoCapitalize="none"
-            error={errorMessage} {/* errors need to be specific to the inputs */}
+            error={errors.contact}
             required />
           <SubmitButton disabled={loading || !!message} />
           {message && <div className={styles.success} role="alert">{message}</div>}
