@@ -23,6 +23,8 @@
   transform: translateY(-50%);
   width: 100%;
   z-index: 50;
+
+  border: 1px dashed blue;
 }
 
 .slideShow > nav button {
