@@ -22,7 +22,7 @@ function Interface() {
       <div id="app-shell" inert={!!isActive}>
         {!isFullscreen && <Header />}
         <Main />
-        <MobileNav />
+        {window.innerWidth <= 500 && <MobileNav />}
       </div>
       <Suspense fallback={<LoadingSpinner />}>
         <Overlays />
