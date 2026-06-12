@@ -52,11 +52,7 @@ function Register() {
       // const response = await server.post(api.register, request)
       setMessage('Account successfully created.')
     } catch (error) {
-      
-      console.error('raw error obj: ', error)
-      console.error('error.message: ', error.message)
-      setErrorMessage(error)
-      
+      setErrorMessage(error.message) /* errors need to be specific to the inputs, use an object { username, contact } */
     } finally {
       setLoading(false)
     }
@@ -74,6 +70,7 @@ function Register() {
             inputMode="email"
             autoComplete="username webauthn"
             autoCapitalize="none"
+            error={errorMessage} {/* errors need to be specific to the inputs */}
             required />
           <Input 
             id="contact"
@@ -82,6 +79,7 @@ function Register() {
             inputMode="email"
             autoComplete="email tel"
             autoCapitalize="none"
+            error={errorMessage} {/* errors need to be specific to the inputs */}
             required />
           <SubmitButton disabled={loading || !!message} />
           {message && <div className={styles.success} role="alert">{message}</div>}
