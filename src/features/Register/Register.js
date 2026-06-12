@@ -9,7 +9,9 @@ import SubmitButton from './SubmitButton/SubmitButton'
 import styles from './Register.module.css'
 
 function Register() {
+  
   console.log('Register Component.')
+  
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
@@ -35,9 +37,7 @@ function Register() {
     try {
       event.preventDefault()
       navigator.vibrate?.(50)
-     // setLoading(true)
-      return setMessage('Account successfully created.');
-      
+      setLoading(true)
       const formData = new FormData(event.target)
       const username = validate.username(formData.get('username'))
       const contact = formatContact(validate.contact(formData.get('contact')))
