@@ -11,7 +11,11 @@ function Main() {
     { picture: '', username: 'test_user2',  video: 2, caption: 'testing captions with multiple lines. It should expand upward instead of downward.' },
     { picture: '', username: 'test_user3', video: 3, caption: 'test captions 3' }
   ])
-  const [suggestions, setSuggestions] = useState([])
+  const [suggestions, setSuggestions] = useState([
+    { picture: '', username: 'test_user1', video: 1, caption: 'test caption 1' },
+    { picture: '', username: 'test_user2',  video: 2, caption: 'testing captions with multiple lines. It should expand upward instead of downward.' },
+    { picture: '', username: 'test_user3', video: 3, caption: 'test captions 3' }
+  ])
 
   // consider not using figcaption, but embeding into video.caption
   // HTMLMediaElement.addTextTrack() for timed display of captions.
