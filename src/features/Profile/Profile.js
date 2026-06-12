@@ -45,27 +45,25 @@ function Profile() {
 
   useEffect(() => {
     // loadData()
-    return () => {
-      URL.revokeObjectURL(profile.picture)
-    }
   }, [])
 
   return (
     <section id={overlay.profile} className={styles.profile} ref={overlayRef} onKeyDown={onKeyDown} role="dialog" aria-modal="true">
       <div onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={onPointerCancel}>
-  
-        <TopNav profile={profile} setProfile={setProfile} />
-        <header>
-          <img src={profile.picture} alt={`${profile.username}'s profile picture`} />
-          <h1 id="username">{profile.username}</h1>
-          <address>{profile.location}</address>
-          {profile.biography && <p id="biography">{profile.biography}</p>}
-        </header>
-  
-        <FollowButton />
-        <FollowStats />
+        <div>
+          <TopNav profile={profile} setProfile={setProfile} />
+          <header>
+            <img src={profile.picture} alt={`${profile.username}'s profile picture`} />
+            <h1 id="username">{profile.username}</h1>
+            <address>{profile.location}</address>
+            {profile.biography && <p id="biography">{profile.biography}</p>}
+          </header>
+    
+          <FollowButton />
+          <FollowStats />
+        </div>
+        <Feed data={feedData} setData={setFeedData} />
       </div>
-      <Feed data={feedData} setData={setFeedData} />
     </section>
   )
 }
