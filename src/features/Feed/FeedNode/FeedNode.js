@@ -7,7 +7,7 @@ import SideNav from '../SideNav/SideNav'
 import Comments from '../../Comments/Comments'
 import styles from './FeedNode.module.css'
 
-function FeedNode({ item, index, count }) {
+function FeedNode({ item, index, count, refs = undefined }) {
   const { content, setContent } = useContent()
   const [isDoubleTap, setIsDoubleTap] = useState(null)
   const [isLongPress, setIsLongPress] = useState(null)
@@ -88,7 +88,7 @@ function FeedNode({ item, index, count }) {
       <figure>
         <TopNav image={item.picture} username={item.username} />
   
-        {/* item.videoUrl && <video ref={ref} src={item.videoUrl} preload="metadata" muted playsInline loop /> */}
+        {/* item.videoUrl && <video ref={video => { videoRefs.current[index] = video }} src={item.videoUrl} preload="metadata" muted playsInline /> */}
         {item.caption && <figcaption>{item.caption}</figcaption>}
         {/* consider not using figcaption; use embeded text for frame by frame captions */}
          
