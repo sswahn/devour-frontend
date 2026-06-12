@@ -569,6 +569,14 @@
   width: 100%;
 }
 
+.JGSQMGJEsXFrIiWPZmsd button[type="submit"]:focus {
+  background: var(--button-bar-bg);
+}
+
+.JGSQMGJEsXFrIiWPZmsd button[type="submit"]:active {
+  background: var(--button-active);
+}
+
 /* Auth Login Flow Forgot Password Button */
 
 .O4wFjYyL0P7NI8cYUcX3 {
