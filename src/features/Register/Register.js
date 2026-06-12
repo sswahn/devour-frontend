@@ -9,6 +9,7 @@ import SubmitButton from './SubmitButton/SubmitButton'
 import styles from './Register.module.css'
 
 function Register() {
+  console.log('Register Component.')
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
