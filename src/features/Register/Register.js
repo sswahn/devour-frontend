@@ -55,7 +55,7 @@ function Register() {
       // const response = await server.post(api.register, request)
       setMessage('Account successfully created.')
     } catch (error) {
-      setErrorMessage(error) // this should be a generic error.
+      setErrorMessage(error.message) // this should be a generic error.
     } finally {
       setLoading(false)
     }
