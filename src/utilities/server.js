@@ -64,7 +64,7 @@ const server = {
     const response = await fetch(api, options)
     return handleResponse(response)
   },
-  async delete(api, headers = {}) { // delete is a keyword, consider changing
+  async remove(api, headers = {}) {
     typeCheck('delete', api, undefined, headers)
     const options = {
       method: 'delete',
