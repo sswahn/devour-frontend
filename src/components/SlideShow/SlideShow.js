@@ -8,7 +8,7 @@ function SlideShow({ data }) {
   const videoRefs = useRef([])
 
   const onEnded = event => {
-    // handleNext() // needs button code might need to pass functions to buttons
+    setCurrentIndex(prev => (prev + 1) % data.length)
   }
 
   const playCurrent = () => {
