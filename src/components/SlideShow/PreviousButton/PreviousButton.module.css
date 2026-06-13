@@ -12,3 +12,11 @@
   padding: 10px;
   width: 44px;
 }
+
+.previousButton:focus {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.previousButton:active {
+  background: rgba(0, 0, 0, 0.3);
+}
