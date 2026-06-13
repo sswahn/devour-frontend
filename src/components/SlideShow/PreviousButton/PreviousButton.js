@@ -1,3 +1,4 @@
+import ChevronLeftIcon from '../../Icons/ChevronLeftIcon/ChevronLeftIcon'
 import styles from './PreviousButton.module.css'
 
 function PreviousButton({ length, setCurrentIndex }) {
