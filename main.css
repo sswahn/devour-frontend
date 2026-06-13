@@ -596,6 +596,10 @@ dialog::backdrop {
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.g2M9XH5x4RV4urxHaLOy article {
+  border: 1px dashed red;
+}
+
 /* Main */
 
 .ZYvmIXad4zI5lNYgAWld {
