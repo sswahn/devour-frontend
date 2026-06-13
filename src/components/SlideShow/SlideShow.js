@@ -7,9 +7,8 @@ function SlideShow({ data }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const videoRefs = useRef([])
 
-
   const onEnded = event => {
-    handleNext()
+    // handleNext() // needs button code might need to pass functions to buttons
   }
 
   const playCurrent = () => {
