@@ -27,7 +27,7 @@
 }
 
 .slideContainer article {
-  width: 100%;
+  width: 300px;
 
   border: 1px dashed red;
 }
