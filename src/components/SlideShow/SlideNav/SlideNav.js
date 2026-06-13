@@ -5,8 +5,8 @@ import styles from './SlideNav.module.css'
 function SlideNav({ length, setCurrentIndex }) {
   return (
     <nav className={styles.slideNav}>
-      <NextButton length={length} setCurrentIndex={setCurrentIndex} />
       <PreviousButton length={length} setCurrentIndex={setCurrentIndex} />
+      <NextButton length={length} setCurrentIndex={setCurrentIndex} />
     </nav>
   )
 }
