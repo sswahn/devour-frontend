@@ -28,7 +28,6 @@ function SlideShow({ data }) {
     }
   }, [currentIndex])
 
-  // move buttons into their own components
   // make sure the initial video autoplays
   
   return (
