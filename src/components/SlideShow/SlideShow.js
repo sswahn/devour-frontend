@@ -45,9 +45,7 @@ function SlideShow({ data }) {
   return (
     <section className={styles.slideShow} aria-label="slideshow" aria-description="a slideshow of popular content">
       <nav>
-        <button onClick={handlePrev} aria-label="Previous slide">
-          <ChevronLeftIcon />
-        </button>
+
         <button onClick={handleNext} aria-label="Next slide">
           <ChevronRightIcon />
         </button>
