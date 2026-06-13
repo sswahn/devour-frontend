@@ -179,6 +179,14 @@ dialog::backdrop {
   width: 44px;
 }
 
+.HVIGLU46j6z66gLpDHo3:focus {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.HVIGLU46j6z66gLpDHo3:active {
+  background: rgba(0, 0, 0, 0.3);
+}
+
 /* Slide Show Navigation */
 
 .yaHoZMN4DR1KQawnm6yb {
