@@ -12,19 +12,6 @@
   width: 100%;
 }
 
-.slideShow > nav {
-  align-items: center;
-  bottom: 50%;
-  display: flex;
-  justify-content: space-between;
-  left: 0;
-  padding: 0 8px;
-  position: absolute;
-  transform: translateY(-50%);
-  width: 100%;
-  z-index: 50;
-}
-
 .slideShow > div {
   display: flex;
   width: 100%;
