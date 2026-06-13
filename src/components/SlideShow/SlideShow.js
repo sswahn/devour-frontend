@@ -33,7 +33,7 @@ function SlideShow({ data }) {
   return (
     <section className={styles.slideShow} aria-label="slideshow" aria-description="a slideshow of popular content">
       <SlideNav length={data.length} setCurrentIndex={setCurrentIndex} />
-      <div style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+      <div className={styles.slideContainer} style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
         <Feed data={data} /> {/* need to pass videoRefs into feed */}
         
         {/*!!data.length && data.map((slide, index) => 
