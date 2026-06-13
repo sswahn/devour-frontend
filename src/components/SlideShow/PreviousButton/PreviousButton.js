@@ -9,7 +9,7 @@ function PreviousButton({ length, setCurrentIndex }) {
   }
   
   return (
-    <button className={styles.previousButton} onClick={handlePrev} aria-label="previous slide">
+    <button className={styles.previousButton} onClick={onClick} aria-label="previous slide">
       <ChevronLeftIcon />
     </button>
   )
