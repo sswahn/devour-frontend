@@ -137,8 +137,8 @@ dialog::backdrop {
   cursor: pointer;
   overflow: hidden;
   padding: 10px;
-  height: 44px; /* 32px; */
-  width: 44px; /* 32px; */
+  height: 32px;
+  width: 32px;
 }
 
 /* Slide Show Next Button */
