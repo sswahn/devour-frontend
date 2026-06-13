@@ -580,9 +580,6 @@ dialog::backdrop {
   height: calc(100dvh - 124px);
   max-width: 500px;
   margin: 60px auto 4px auto;
-  
-  margin-top: 61px;
-  
   overflow: hidden;
   position: relative;
   scroll-margin-top: 64px; 
