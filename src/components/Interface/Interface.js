@@ -34,7 +34,7 @@ function Interface() {
       <div id="app-shell" inert={!!isActive}>
         {!isFullscreen && <Header />}
         <Main />
-        {/*isMobile && <MobileNav /> */}
+        {/* isMobile && <MobileNav /> */}
         <MobileNav /> 
       </div>
       <Suspense fallback={<LoadingSpinner />}>
