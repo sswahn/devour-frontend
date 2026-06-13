@@ -25,19 +25,6 @@
   z-index: 50;
 }
 
-.slideShow > nav button {
-  align-items: center; 
-  background: rgba(0, 0, 0, 0.3);
-  border: none;
-  border-radius: 50%;
-  display: flex;
-  height: 44px;
-  justify-content: center;
-  cursor: pointer;
-  padding: 10px;
-  width: 44px;
-}
-
 .slideShow > div {
   display: flex;
   width: 100%;
@@ -57,22 +44,3 @@
   height: 100%;
   object-fit: cover;
 }
-
-/*
-.slideShow > div button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.3);
-  border: none;
-  color: white;
-  padding: 12px;
-  cursor: pointer;
-  z-index: 10;
-
-  border: 1px dashed green;
-}
-*/
-
-.nav-prev { left: 10px; }
-.nav-next { right: 10px; }
