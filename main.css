@@ -156,6 +156,14 @@ dialog::backdrop {
   width: 44px;
 }
 
+.j3Rsos0kJXZTSs_BFRte:focus {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.j3Rsos0kJXZTSs_BFRte:active {
+  background: rgba(0, 0, 0, 0.3);
+}
+
 /* Slide Show Previous Button */
 
 .HVIGLU46j6z66gLpDHo3 {
