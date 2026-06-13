@@ -1,4 +1,4 @@
-import ChevronRightIcon from '../../Icons/ChevronLeftIcon/ChevronLeftIcon'
+import ChevronRightIcon from '../../Icons/ChevronRightIcon/ChevronRightIcon'
 import styles from './NextButton.module.css'
 
 function NextButton({ length, setCurrentIndex }) {
@@ -9,7 +9,7 @@ function NextButton({ length, setCurrentIndex }) {
   }
   
   return (
-    <button className={styles.previousButton} onClick={onClick} aria-label="next slide">
+    <button className={styles.nextButton} onClick={onClick} aria-label="next slide">
       <ChevronRightIcon />
     </button>
   )
