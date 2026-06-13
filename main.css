@@ -585,7 +585,7 @@ dialog::backdrop {
   border: 1px dashed yellow;
 }
 
-.g2M9XH5x4RV4urxHaLOy {
+.g2M9XH5x4RV4urxHaLOy section {
   display: flex;
   flex-wrap: nowrap;
   gap: 2px;
@@ -597,8 +597,7 @@ dialog::backdrop {
   border: 1px dashed green;
 }
 
-.g2M9XH5x4RV4urxHaLOy article {
-  width: 300px;
+.g2M9XH5x4RV4urxHaLOy section article {
 
   border: 1px dashed red;
 }
