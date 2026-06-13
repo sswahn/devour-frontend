@@ -1,6 +1,4 @@
 import { useState, useRef, useEffect } from 'react'
-import ChevronLeftIcon from '../Icons/ChevronLeftIcon/ChevronLeftIcon'
-import ChevronRightIcon from '../Icons/ChevronRightIcon/ChevronRightIcon'
 import Feed from '../../features/Feed/Feed'
 import styles from './SlideShow.module.css'
 
@@ -8,15 +6,6 @@ function SlideShow({ data }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const videoRefs = useRef([])
 
-  const handleNext = () => {
-    console.log('clicked next slide')
-    setCurrentIndex(prev => (prev + 1) % data.length)
-  }
-
-  const handlePrev = () => {
-    console.log('clicked previous slide')
-    setCurrentIndex(prev => (prev - 1 + data.length) % data.length)
-  }
 
   const onEnded = event => {
     handleNext()
@@ -46,9 +35,6 @@ function SlideShow({ data }) {
     <section className={styles.slideShow} aria-label="slideshow" aria-description="a slideshow of popular content">
       <nav>
 
-        <button onClick={handleNext} aria-label="Next slide">
-          <ChevronRightIcon />
-        </button>
       </nav>
       <div style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
 
