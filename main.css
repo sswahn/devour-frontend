@@ -195,12 +195,12 @@ dialog::backdrop {
 
 .yaHoZMN4DR1KQawnm6yb {
   align-items: center;
-  bottom: 50%;
   display: flex;
   justify-content: space-between;
   left: 0;
   padding: 0 8px;
   position: absolute;
+  top: 50%;
   transform: translateY(-50%);
   width: 100%;
   z-index: 50;
