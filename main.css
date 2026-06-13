@@ -535,19 +535,6 @@ dialog::backdrop {
   z-index: 50;
 }
 
-.ldVBjdQig0478ng9aVGa > nav button {
-  align-items: center; 
-  background: rgba(0, 0, 0, 0.3);
-  border: none;
-  border-radius: 50%;
-  display: flex;
-  height: 44px;
-  justify-content: center;
-  cursor: pointer;
-  padding: 10px;
-  width: 44px;
-}
-
 .ldVBjdQig0478ng9aVGa > div {
   display: flex;
   width: 100%;
@@ -567,25 +554,6 @@ dialog::backdrop {
   height: 100%;
   object-fit: cover;
 }
-
-/*
-.slideShow > div button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.3);
-  border: none;
-  color: white;
-  padding: 12px;
-  cursor: pointer;
-  z-index: 10;
-
-  border: 1px dashed green;
-}
-*/
-
-.Nzr3GHoWdnQBKN2y1W79 { left: 10px; }
-.okn7LqEArPHz5LwvwJnC { right: 10px; }
 
 /* Main */
 
