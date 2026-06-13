@@ -1,13 +1,14 @@
 import styles from './PreviousButton.module.css'
 
-function PreviousButton() {
+function PreviousButton({ length, setCurrentIndex }) {
 
   const onClick = event => {
-    
+    console.log('clicked previous slide')
+    setCurrentIndex(prev => (prev - 1 + length) % length) // data.length
   }
   
   return (
-    <button onClick={handlePrev} aria-label="Previous slide">
+    <button className={styles.previousButton} onClick={handlePrev} aria-label="previous slide">
       <ChevronLeftIcon />
     </button>
   )
