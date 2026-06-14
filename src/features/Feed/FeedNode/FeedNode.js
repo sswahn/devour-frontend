@@ -7,7 +7,7 @@ import SideNav from '../SideNav/SideNav'
 import Comments from '../../Comments/Comments'
 import styles from './FeedNode.module.css'
 
-function FeedNode({ item, index, count, refs = undefined, onEnded = undefined }) {
+function FeedNode({ item, index, count, videoRefs = undefined, onEnded = undefined }) {
   const { content, setContent } = useContent()
   const [isDoubleTap, setIsDoubleTap] = useState(null)
   const [isLongPress, setIsLongPress] = useState(null)
