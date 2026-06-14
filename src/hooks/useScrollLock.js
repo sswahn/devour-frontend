@@ -13,7 +13,7 @@ function useScrollLock(isActive) {
   }
   
   useEffect(() => {
-    if (!isActive) {
+    if (!isActive) { // && isActive !== 'notifications'
       return
     }
     const unlockScroll = lockScroll()
