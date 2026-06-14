@@ -3,7 +3,7 @@
 .overlay {
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(1px);
-  contain: content;
+ /* contain: content; */
   height: 100dvh;
   inset: 0;
   opacity: 1;
