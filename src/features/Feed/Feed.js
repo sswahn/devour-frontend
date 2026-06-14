@@ -53,7 +53,7 @@ function Feed({ data, setData, videoRefs, style }) {
   
   return (
     <section className={styles.feed} style={style} role="feed">
-      {data.map((item, index) => <FeedNode key={index} ref={videoRefs} item={item} index={index + 1} count={data.length} />)}
+      {data.map((item, index) => <FeedNode key={index} videoRefs={videoRefs} item={item} index={index + 1} count={data.length} />)}
       {loading && <LoadingSpinner />}
       <Sentinel setLoadMore={setLoadMore} />
     </section>
