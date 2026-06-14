@@ -29,4 +29,6 @@
 
 .slideContainer section article .sideNav {
   bottom: 128px;
+
+  border: 1px dashed red;
 }
