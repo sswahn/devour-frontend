@@ -769,10 +769,6 @@
   height: 100dvh;
   inset: 0;
   overflow-x: hidden;
-  /*
-  overflow-y: scroll;
-  overscroll-behavior-y: contain;
-  */
   position: fixed;
   touch-action: none;
   z-index: 200;
