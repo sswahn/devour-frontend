@@ -185,6 +185,7 @@ dialog::backdrop {
   top: 50%;
   transform: translateY(-50%);
   width: 44px;
+  z-index: 50;
 }
 
 .HVIGLU46j6z66gLpDHo3:focus {
