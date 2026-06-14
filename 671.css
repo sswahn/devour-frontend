@@ -778,7 +778,8 @@
 }
 
 .KIIoXhhSaQeQ2LSTtavI > div > div {
-  
+  height: 100dvh;
+  scroll-snap-align: start;
 }
 
 .KIIoXhhSaQeQ2LSTtavI > div::-webkit-scrollbar {
