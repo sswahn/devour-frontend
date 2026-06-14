@@ -28,6 +28,7 @@
 .profile > div > div {
   height: 100dvh;
   scroll-snap-align: start;
+  width: 100%;
 }
 
 .profile > div::-webkit-scrollbar {
