@@ -605,6 +605,8 @@ dialog::backdrop {
 .g2M9XH5x4RV4urxHaLOy section article aside {
   height: 100dvh;
   position: fixed;
+
+  border: 1px dashed red;
 }
 
 
