@@ -37,14 +37,10 @@
   padding: 8px;
   scroll-snap-align: start;
   width: 100%;
-
-  border: 1px dashed red;
 }
 
 .profile article {
   min-height: 100dvh;
-
-  border: 1px dashed red;
 }
 
 .profile header img {
