@@ -27,8 +27,7 @@
   width: 100%;
 }
 
+.slideContainer section article figure figcaption,
 .slideContainer section article figure nav:nth-of-type(2) {
   bottom: 60px;
-
-  border: 1px dashed red;
 }
