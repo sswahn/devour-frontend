@@ -1,0 +1,36 @@
+/* SlideShow  */
+
+.slideShow {
+  background: #666666;
+  height: calc(100dvh - 124px);
+  max-width: 500px;
+  margin: 60px auto 4px auto;
+  overflow: hidden;
+  position: relative;
+  scroll-margin-top: 64px; 
+  scroll-snap-align: start;
+  width: 100%;
+}
+
+.slideContainer section {
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  min-width: 100%;
+  width: 100%;
+}
+
+.slideContainer section article {
+  height: 100%;
+  min-width: 100%;
+  width: 100%;
+}
+
+.slideContainer section article figure figcaption {
+  bottom: 68px;
+}
+
+.slideContainer section article figure nav:nth-of-type(2) {
+  bottom: 64px;
+}

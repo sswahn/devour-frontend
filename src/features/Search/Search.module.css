@@ -49,20 +49,10 @@
   width: 44px; 
 }
 
-.search > ul {
+.search div ul {
   list-style: none;
   margin-top: 16px;
   width: 100%;
   padding-bottom: 12px;
-  flex: 1; /* Takes up remaining space */
 }
 
-/*
-.search > ul li {
-  color: var(--text);
-  font-size: var(--font-size);
-  line-height: var(--line-height);
-  padding: 12px;
-  width: 100%;
-}
-*/

@@ -12,13 +12,12 @@
   width: 170px;
 }
 
-/*
-.editForm label {
+.editForm > label {
+  color: var(--text);
   display: block;
-  width: 100%;
-  margin-bottom: 8px;
+  font-size: var(--font-size);
+  margin: 0 0 8px 8px;
 }
-*/
 
 .editForm textarea {
   background-color: var(--input-bg);
@@ -29,6 +28,7 @@
   height: 88px;
   margin-bottom: 8px;
   padding: 8px;
+  resize: none;
   width: 100%;
 }
 
@@ -48,7 +48,7 @@
   border: 0;
 }
 
-.editForm button {
+.editForm > button {
   align-items: center;
   background: var(--button-bar-bg);
   border: none;

@@ -7,8 +7,10 @@
   left: 0;
   padding-left: 8px;
   padding-top: 4px;
+  padding-right: 8px;
   position: absolute;
   top: 0;
+  touch-action: auto;
   width: 100%;
 }
 

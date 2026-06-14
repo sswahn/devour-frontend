@@ -49,18 +49,18 @@ const validate = {
 
   username(username) {
     if (username.length < 3 || username.length > 30) {
-      throw new Error('Username must be between 3 and 30 characters.')
+      throw new Error('Username must be between 3 and 30 characters.', { cause: 'username' })
     }
     const regex = /^[\p{L}\p{N}](?:[\p{L}\p{N}_]*[\p{L}\p{N}])?$/u
     if (!regex.test(username)) {
-      throw new Error('Please use a valid username format.')
+      throw new Error('Please use a valid username format.', { cause: 'username' })
     }
     return username
   },
 
   contact(contact) {
     if (contact.length < 3 || contact.length > 254) {
-      throw new Error('Contact must be a valid length.')
+      throw new Error('Contact must be a valid length.', { cause: 'contact' })
     }
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/u
     if (emailRegex.test(contact)) {
@@ -73,7 +73,7 @@ const validate = {
         return contact
       }
     }
-    throw new Error('Please use a valid email or phone number.')
+    throw new Error('Please use a valid email or phone number.', { cause: 'contact' })
   },
 
   search(search) {
@@ -96,7 +96,7 @@ const validate = {
   
   biography(biography) {
     if (biography.length < 3 || biography.length > 250) {
-      throw new Error('Bio length must be between 3 and 250 characters.')
+      throw new Error('Bio length must be between 3 and 250 characters.', { cause: 'biography' })
     }
     return biography
   }

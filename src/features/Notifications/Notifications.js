@@ -3,7 +3,7 @@ import { overlay } from '../../config'
 import { dropdown, test_data } from './config' // delete test_data
 import useOverlay from '../../hooks/useOverlay'
 import useGestures from '../../hooks/useGestures'
-import Dropdown from '../../components/Dropdown/Dropdown'
+import ListItem from './ListItem/ListItem'
 import styles from './Notifications.module.css'
 
 import Avatar from '../../components/Avatar/Avatar'
@@ -111,11 +111,9 @@ function Notifications() {
   }
 
   useEffect(() => {
-  //  requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        setMode('peek')
-      })
- //   })
+    requestAnimationFrame(() => {
+      setMode('peek')
+    })
   }, [])
   
   return (
@@ -142,21 +140,11 @@ function Notifications() {
         onPointerCancel={onPointerCancel}
         aria-label="notifications">
         <div id="grabber" onClick={handleGrabberClick} role="presentation"></div>
+          
         <ul aria-label="user notifications">
-          {test_data.notifications?.map((notification, index) => 
-            <li key={index}>
-              <Avatar username={notification.username} image={null} />
-              <div>
-                <div>
-                  <strong>{notification.username}</strong>
-                  <time datetime={notification.timestamp}>{notification.timestamp}</time>
-                </div>
-                <p>{notification.text}</p>
-              </div>
-              <Dropdown items={dropdown} />
-            </li>                                                           
-          )}
+          {test_data.notifications?.map(notification => <ListItem notification={notification} />)}
         </ul>
+                                        
       </section>
     </div>
   )

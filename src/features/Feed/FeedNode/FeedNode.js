@@ -7,7 +7,7 @@ import SideNav from '../SideNav/SideNav'
 import Comments from '../../Comments/Comments'
 import styles from './FeedNode.module.css'
 
-function FeedNode({ item, index, count }) {
+function FeedNode({ item, index, count, videoRefs = undefined, onEnded = undefined }) {
   const { content, setContent } = useContent()
   const [isDoubleTap, setIsDoubleTap] = useState(null)
   const [isLongPress, setIsLongPress] = useState(null)
@@ -30,11 +30,14 @@ function FeedNode({ item, index, count }) {
       setIsLongPress(longPress)
     }
   }
-  
+
   const onPointerDown = event => {
+    console.log('onPointerDown')
+    console.log('onPointerDown event.target: ', event.target)
     if (event.target.closest('.sideNav') || event.target.closest('.topNav')) {
       return
     }
+    console.log('onPointerDown past condition.')
     onGestureDown(event, getLongPress)
   }
   
@@ -43,12 +46,17 @@ function FeedNode({ item, index, count }) {
   }
   
   const onPointerUp = event => {
+    console.log('onPointerUp')
     if (event.target.closest('.sideNav') || event.target.closest('.topNav')) {
       return
     }
+    console.log('onPointerUp past condition.')
     const { tapCount } = onGestureUp(event)
+
+    console.log('tapCount: ', tapCount)
+    
     if (tapCount === 2) {
-      setIsDoubleTap(tapCount)
+      setIsDoubleTap(performance.now())
     }
   }
   
@@ -75,12 +83,23 @@ function FeedNode({ item, index, count }) {
   // swipeTo close on comments sidebar
   
   return (
-    <article className={styles.feedNode} aria-posinset={index} aria-setsize={count}>
-      <figure onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={onPointerCancel}>
+    <article className={styles.feedNode} aria-posinset={index} aria-setsize={count}
+      onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={onPointerCancel}>
+      <figure>
         <TopNav image={item.picture} username={item.username} />
   
-        {/* item.videoUrl && <video ref={ref} src={item.videoUrl} preload="metadata" muted playsInline loop /> */}
+        {/* item.videoUrl && 
+          <video 
+            ref={video => { videoRefs.current[index] = video }} 
+            src={item.videoUrl} 
+            onEnded={onEnded}
+            preload="metadata"
+            playsInline
+            muted
+          /> 
+        */}
         {item.caption && <figcaption>{item.caption}</figcaption>}
+        {/* consider not using figcaption; use embeded text for frame by frame captions */}
          
         <SideNav 
           isDoubleTap={isDoubleTap} 

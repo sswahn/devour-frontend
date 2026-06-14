@@ -9,6 +9,8 @@ module.exports = (env, argv) => {
   return {
     mode: isDev ? 'development' : 'production',
 
+    devtool: 'source-map',
+
     entry: './src/index.js',
 
     output: {

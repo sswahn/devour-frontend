@@ -1,22 +1,18 @@
 import { useState, useRef, useEffect } from 'react'
-import { overlay } from '../../config'
 import useOverlay from '../../hooks/useOverlay'
 import useFootage from '../../hooks/useFootage'
 import camera from '../../utilities/camera'
 import database from '../../utilities/database'
 import TopNav from './TopNav/TopNav'
-import SideNav from './SideNav/SideNav'
+import EditorButton from './EditorButton/EditorButton'
 import RecordButton from './RecordButton/RecordButton'
 import MuteButton from './MuteButton/MuteButton'
-import LocationButton from './LocationButton/LocationButton'
 import ViewPort from './ViewPort/ViewPort'
-import Editor from '../Editor/Editor'
 import styles from './Camera.module.css'
 
-function Camera() {
-  const { closeOverlay } = useOverlay
-  const { footage, setFootage } = useFootage() // is duration needed in useFootage?
-  const [editorIsOpen, setEditorIsOpen] = useState(false)
+function Camera({ openEditor }) {
+  const { closeOverlay } = useOverlay()
+  const { footage, setFootage } = useFootage()
   const [mode, setMode] = useState('off')
   const [timer, setTimer] = useState(60)
   const streamRef = useRef(null)
@@ -32,9 +28,9 @@ function Camera() {
       // alert(JSON.stringify(caps))
     
     } catch (error) {
-      console.error('Error accessing camera: ', error)
       // display error then close overlay or recover
-      closeCamera()
+      alert('Error accessing camera.')
+      // closeCamera()
     }
   }
   
@@ -51,14 +47,6 @@ function Camera() {
     if (document.fullscreenElement) {
       document.exitFullscreen()
     }
-  }
-
-  const openEditor = () => {
-    setEditorIsOpen(true)
-  }
-
-  const closeEditor = () => {
-    setEditorIsOpen(false)
   }
   
   useEffect(() => {
@@ -111,14 +99,11 @@ function Camera() {
   
   return (
     <section className={styles.camera}>
-    {!editorIsOpen && <>
       <TopNav closeCamera={closeCamera} mode={mode} timer={timer} setTimer={setTimer} stopCamera={stopCamera} streamRef={streamRef} />
-      <SideNav openEditor={openEditor} />
-      <RecordButton mode={mode} setMode={setMode} streamRef={streamRef} timer={timer} />
       <MuteButton streamRef={streamRef} />
+      <EditorButton openEditor={openEditor} />
+      <RecordButton mode={mode} setMode={setMode} streamRef={streamRef} timer={timer} />
       <ViewPort videoRef={videoRef} />
-    </>}
-    {editorIsOpen && <Editor closeEditor={closeEditor} />}
     </section>
   )
 }

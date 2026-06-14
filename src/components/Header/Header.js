@@ -26,9 +26,9 @@ const Header = ({ openAuthentication, openDashboard }) => {
         
         <nav>
         {/* Needs desktop navigation in header (basically the mobile nav buttons, no camera, and a download option. */}
-        {session.isAuthenticated && ( // && .isProUser &&
+        {/*session.isAuthenticated && ( // && session.isProUser &&
           <DashboardButton openDashboard={openDashboard} />
-        )}
+        )*/}
         {/* login button should be replaced with another button, perhaps sidebar or dropdown */}
         {session.isAuthenticated && <LoginButton openAuthentication={openAuthentication} />}
         </nav>

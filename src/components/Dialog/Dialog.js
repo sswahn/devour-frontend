@@ -1,4 +1,5 @@
-import CloseButton from './CloseButton/CloseButton'
+import { overlay } from '../../config'
+import CloseButton from '../CloseButton/CloseButton'
 import styles from './Dialog.module.css'
 
 function Dialog({ dialogRef, content, close }) { 
@@ -11,7 +12,7 @@ function Dialog({ dialogRef, content, close }) {
 
   return (
     <dialog id="dialog" ref={dialogRef} className={styles.dialog} onClick={onClick}>
-      <CloseButton close={close} />
+      <CloseButton overlay={overlay.dialog} close={close} />
       {content}
     </dialog>
   )

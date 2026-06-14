@@ -16,3 +16,11 @@
   text-transform: uppercase;
   width: 100%;
 }
+
+.submitButton:focus {
+  background: var(--button-bar-bg);
+}
+
+.submitButton:active {
+  background: var(--button-active);
+}

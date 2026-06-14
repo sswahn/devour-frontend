@@ -1,6 +1,6 @@
-/* Navigation Camera Button */
+/* Navigation Create Button */
 
-.cameraButton {
+.createButton {
   align-items: center; 
   background: var(--surface);
   border: var(--border);
@@ -14,7 +14,7 @@
 }
 
 /* Override defaults: */
-.cameraButton:focus {
+.createButton:focus {
   background: var(--surface);
 }
 

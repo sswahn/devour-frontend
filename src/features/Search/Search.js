@@ -15,13 +15,24 @@ import styles from './Search.module.css'
 function Search() {
   const { closeOverlay } = useOverlay()
   const [searchValue, setSearchValue] = useState('')
-  const [searchResults, setSearchResults] = useState([{
+  const [searchResults, setSearchResults] = useState([
+  {
     id: 0,
     username: 'test_user',
+    picture: '',
     location: 'ny',
-    cuisine: 'middle eastern',
-    timestamp: Date.now(),
-  }])
+    description: 'test description of post.',
+    timestamp: new Date()
+  },
+  {
+    id: 1,
+    username: 'test_user_2',
+    picture: '',
+    location: 'costa rica',
+    description: 'another test description of second post.',
+    timestamp: new Date()
+  }
+  ])
   const [recentSearches, setRecentSearches] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
@@ -49,18 +60,13 @@ function Search() {
           <SearchIcon size={10} />
           <SearchInput 
             searchValue={searchValue} 
-            error={error}
             setSearchValue={setSearchValue}
+            error={error}
             setError={setError}
           />
           <SpeechRecognitionButton setSearchValue={setSearchValue} />
         </form>
         
-        {/* 
-          Change to search results, make a component. 
-          Results will include, avatar, user, food, location
-          Filters, location, popularity, etc.
-        */}
         <ul id="search-results" role="listbox" aria-live="polite" aria-busy={loading}>
           {loading ? <LoadingSpinner /> : <SearchResults searchResults={searchResults} />}
         </ul>

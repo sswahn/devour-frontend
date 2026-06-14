@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
-import CloseButton from './CloseButton/CloseButton'
+import CloseButton from '../CloseButton/CloseButton'
 import styles from './Sidebar.module.css'
+
+// consider removing, global sidebar not needed.
 
 function Sidebar({ sidebarRef, content, close }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -24,7 +26,7 @@ function Sidebar({ sidebarRef, content, close }) {
   return (
     <aside className={styles.overlay} ref={sidebarRef} onClick={onClick}>
       <div className={`${styles.sidebar} ${isOpen ? styles.open : ''}`}>
-        <CloseButton close={close} />
+        <CloseButton overlay="sidebar" close={close} />
         {content}
       </div>
     </aside>

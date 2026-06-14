@@ -5,12 +5,12 @@ import PauseButton from '../PauseButton/PauseButton'
 import MuteButton from '../MuteButton/MuteButton'
 import styles from './TopNav.module.css'
 
-function TopNav({ videoRef, closeEditor }) {
+function TopNav({ videoRef, openCamera }) {
   const { session } = useSession()
   
   return (
     <nav className={styles.topNav}>
-      <BackButton overlay={overlay.editor} close={closeEditor} />
+      <BackButton overlay={overlay.editor} close={openCamera} />
       <div>
         <PauseButton videoRef={videoRef} />
         <MuteButton videoRef={videoRef} />

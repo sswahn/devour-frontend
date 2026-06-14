@@ -111,11 +111,11 @@
 
   /* Alerts */
   
-  --success: oklch(65% 0.18 calc(260 - 120));
+  --success: #198754;
   
-  --warning: oklch(70% 0.18 calc(260 - 200));
+  --warning: #ffc107;
   
-  --danger: oklch(65% 0.18 calc(260 - 260));
+  --danger: #dc3545;
 }
 
 * {

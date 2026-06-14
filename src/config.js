@@ -3,12 +3,14 @@ export const overlay = {
   camera: 'camera',
   comments: 'comments',
   dashboard: 'dashboard',
+  dialog: 'dialog',
   editor: 'editor',
   notifications: 'notifications',
   login: 'login',
   profile: 'profile',
   register: 'register',
-  search: 'search'
+  search: 'search',
+  wizard: 'wizard'
 }
 
 export const api = {

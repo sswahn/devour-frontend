@@ -56,3 +56,11 @@
   text-transform: uppercase;
   width: 100%;
 }
+
+.loginForm button[type="submit"]:focus {
+  background: var(--button-bar-bg);
+}
+
+.loginForm button[type="submit"]:active {
+  background: var(--button-active);
+}

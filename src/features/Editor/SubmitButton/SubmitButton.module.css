@@ -1,17 +1,18 @@
-/* Close Button for Dialog */
+/* Editor Submit Button */
 
-.closeButton {
+.submitButton {
   align-items: center; 
-  background: none;
+  background: rgba(0, 0, 0, 0.5);
   border: none;
   border-radius: 50%;
+  bottom: 8px;
+  cursor: pointer;
   display: flex;
   height: 44px;
   justify-content: center;
-  cursor: pointer;
   padding: 10px;
   position: absolute;
-  left: 8px;
-  top: 8px;
+  right: 8px;
   width: 44px;
+  z-index: 300;
 }

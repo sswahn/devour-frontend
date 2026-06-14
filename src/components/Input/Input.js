@@ -7,7 +7,7 @@ const Input = ({ id, type, label, inputMode, autoComplete, error, required, ...p
 
   const focusInvalidInput = () => {
     const form = inputRef.current?.closest('form')
-    const invalidInput = Array.from(form.elements).find(
+    const invalidInput = [...form.elements].find(
       input => input.hasAttribute('aria-invalid')
     )
     invalidInput.focus()
@@ -16,7 +16,6 @@ const Input = ({ id, type, label, inputMode, autoComplete, error, required, ...p
   const handleError = err => {
     if (err) {
       setErrorMessage(err)
-      focusInvalidInput()
     }
   }
 
@@ -32,7 +31,15 @@ const Input = ({ id, type, label, inputMode, autoComplete, error, required, ...p
   }
 
   useEffect(() => {
-    handleError(error)
+    if (errorMessage) {
+      focusInvalidInput()
+    }
+  }, [errorMessage])
+
+  useEffect(() => {
+    if (error) {
+      handleError(error)
+    }
   }, [error])
   
   return (

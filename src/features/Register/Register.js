@@ -11,7 +11,7 @@ import styles from './Register.module.css'
 function Register() {
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
-  const [errorMessage, setErrorMessage] = useState('')
+  const [errors, setErrors] = useState({})
   const { openOverlay, closeOverlay } = useOverlay()
   const { onPointerDown, onPointerMove, onPointerUp, onPointerCancel } = useSwipeFromEdge(closeOverlay)
 
@@ -30,22 +30,29 @@ function Register() {
     return hasPlus ? `+${digits}` : digits
   }
 
+  const registerPassKey = async () => {
+    // request cognito pubkey..
+    // then create credentials:
+    const credentials = await navigator.credentials.create({
+      // publicKey: publicKeyCredentialCreationOptions
+    })
+    // respond to server directly, or batch with rest of submission..
+  }
+
   const onSubmit = async event => {    
     try {
       event.preventDefault()
       navigator.vibrate?.(50)
-     // setLoading(true)
-      return setMessage('Account successfully created.');
-      
+      setLoading(true)
       const formData = new FormData(event.target)
       const username = validate.username(formData.get('username'))
       const contact = formatContact(validate.contact(formData.get('contact')))
-      const credentials = await navigator.credentials.create()
-      const request = { username, contact, credentials }
-      const response = await server.post(api.register, request)
+      // const credentials = await registerPassKey()
+      // const request = { username, contact, credentials }
+      // const response = await server.post(api.register, request)
       setMessage('Account successfully created.')
     } catch (error) {
-      setErrorMessage(error) // this should be a generic error.
+      setErrors({ [error.cause]: error.message })
     } finally {
       setLoading(false)
     }
@@ -63,6 +70,7 @@ function Register() {
             inputMode="email"
             autoComplete="username webauthn"
             autoCapitalize="none"
+            error={errors.username}
             required />
           <Input 
             id="contact"
@@ -71,11 +79,10 @@ function Register() {
             inputMode="email"
             autoComplete="email tel"
             autoCapitalize="none"
+            error={errors.contact}
             required />
           <SubmitButton disabled={loading || !!message} />
           {message && <div className={styles.success} role="alert">{message}</div>}
-          {errorMessage && <div className={styles.danger} role="alert">{errorMessage}</div>}
-          {/* show Login Button with border and no bg */}
         </form>
       </div>
     </section>

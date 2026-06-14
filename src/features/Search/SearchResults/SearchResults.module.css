@@ -1,29 +1,50 @@
 /* Search Results List */
 
-.searchResults {
-  align-items: center;
-  color: var(--text);
-  display: flex;
-  font-size: var(--font-size);
-  justify-content: space-between;
-  line-height: var(--line-height);
-  margin-bottom: 8px;
-  padding: 8px;
+.searchResults article {
+  margin-bottom: 16px;
+  position: relative;
   width: 100%;
 }
 
-.searchResults div:nth-child(2) {
-  flex: 1;
-  margin-left: 8px;
-
-  border: 1px dashed green;
+/* Avatar: */
+.searchResults article header button {
+  left: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-.searchResults div:nth-child(2) :nth-child(1) {
-  display: flex;
-  gap: 10px;
-
-  border: 1px dashed red;
+.searchResults article header {
+  margin: 0 44px;
 }
 
+.searchResults article header h2 {
+  color: var(--text);
+  display: inline-block;
+  font-size: var(--font-size);
+  margin: 0 16px 0 8px;
+}
+
+.searchResults article header time {
+  color: var(--text);
+  display: inline-block;
+  font-size: var(--font-size);
+}
+
+.searchResults article > div {
+  margin: 0 56px;
+}
+
+.searchResults article > div p {
+  color: var(--text);
+  font-size: var(--font-size);
+}
+
+/* Dropdown */
+.searchResults article footer div {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
 

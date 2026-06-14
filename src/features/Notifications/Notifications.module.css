@@ -26,13 +26,14 @@
   flex-direction: column;
   height: 100dvh; 
   left: 0;
+  padding: 8px;
   position: fixed;
   transform: translate3d(0, calc(var(--sheet-y) + var(--drag-y)), 0);
   transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
   touch-action: none;
   width: 100%;
   will-change: transform;
-  box-sizing: content-box;
+  /* box-sizing: content-box; */
 }
 
 .peek {
@@ -40,7 +41,7 @@
 }
 
 .expand {
-  --sheet-y: 8px;
+  --sheet-y: 0;
   overflow-y: auto;
   overscroll-behavior-y: contain;
   -webkit-overflow-scrolling: touch;
@@ -77,38 +78,9 @@
   background-color: #888;
 }
 
-.notifications section > ul {
+.bottomSheet > ul {
   list-style-type: none;
-  margin-top: 16px;
+  margin-top: 24px;
   width: 100%;
   padding-bottom: 12px;
-  flex: 1; /* Takes up remaining space */
 }
-
-.notifications section > ul > li {
-  align-items: center;
-  color: var(--text);
-  display: flex;
-  font-size: var(--font-size);
-  justify-content: space-between;
-  line-height: var(--line-height);
-  margin-bottom: 8px;
-  padding: 8px;
-  width: 100%;
-}
-
-.notifications section > ul li div:nth-child(2) {
-  flex: 1;
-  margin-left: 8px;
-  pointer-events: none;
-
-  border: 1px dashed red;
-}
-
-.notifications section > ul li div:nth-child(2) div {
-  display: flex;
-  gap: 10px;
-  pointer-events: none;
-}
-
-
