@@ -153,6 +153,9 @@ dialog::backdrop {
   height: 44px;
   justify-content: center;
   padding: 10px;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
   width: 44px;
 }
 
@@ -174,8 +177,11 @@ dialog::backdrop {
   cursor: pointer;
   display: flex;
   height: 44px;
+  left: 8px;
   justify-content: center;
   padding: 10px;
+  top: 50%;
+  transform: translateY(-50%);
   width: 44px;
 }
 
@@ -185,21 +191,6 @@ dialog::backdrop {
 
 .HVIGLU46j6z66gLpDHo3:active {
   background: rgba(0, 0, 0, 0.3);
-}
-
-/* Slide Show Navigation */
-
-.yaHoZMN4DR1KQawnm6yb {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  left: 0;
-  padding: 0 8px;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 100%;
-  z-index: 50;
 }
 
 /* Dropdown Button */
@@ -296,6 +287,7 @@ dialog::backdrop {
   left: 0;
   padding-left: 8px;
   padding-top: 4px;
+  padding-right: 8px;
   position: absolute;
   top: 0;
   touch-action: auto;
@@ -399,6 +391,8 @@ dialog::backdrop {
   right: 0;
   touch-action: auto;
   width: 48px;
+
+  border: 1px dashed red;
 }
 
 /* Comments Top Nav Bar */
