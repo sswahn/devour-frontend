@@ -27,7 +27,7 @@
   width: 100%;
 }
 
-.slideContainer .sideNav {
+.slideContainer section article figure nav:nth-of-type(2) {
   bottom: 128px;
 
   border: 1px dashed red;
