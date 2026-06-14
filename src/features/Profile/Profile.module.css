@@ -20,6 +20,9 @@
   position: fixed;
   touch-action: none;
   z-index: 200;
+
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
 }
 
 .profile > div > div {
