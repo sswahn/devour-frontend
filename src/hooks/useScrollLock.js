@@ -4,9 +4,8 @@ function useScrollLock(isActive) {
   
   const lockScroll = () => {
     const { scrollY } = window
-    // const html = document.documentElement
-    const root = document.getElementById('root')
-    root.classList.add('lockScroll')
+    const html = document.documentElement
+    html.classList.add('lockScroll')
     return () => {
       root.removeAttribute('class')
       window.scrollTo(0, scrollY)
