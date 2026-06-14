@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
-import SlideNav from './SlideNav/SlideNav'
+import NextButton from '../NextButton/NextButton'
+import PreviousButton from '../PreviousButton/PreviousButton'
 import Feed from '../../features/Feed/Feed'
 import styles from './SlideShow.module.css'
 
@@ -32,7 +33,8 @@ function SlideShow({ data }) {
   
   return (
     <section className={styles.slideShow} aria-label="slideshow" aria-description="a slideshow of popular content">
-      <SlideNav length={data.length} setCurrentIndex={setCurrentIndex} />
+      <PreviousButton length={data.length} setCurrentIndex={setCurrentIndex} />
+      <NextButton length={data.length} setCurrentIndex={setCurrentIndex} />
       <div className={styles.slideContainer} style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
         <Feed data={data} /> {/* need to pass videoRefs into feed */}
         
