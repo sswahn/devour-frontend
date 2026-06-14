@@ -777,19 +777,17 @@
   z-index: 200;
 }
 
-.KIIoXhhSaQeQ2LSTtavI > div > div {
-  height: 100dvh;
-  scroll-snap-align: start;
-  width: 100%;
-}
-
 .KIIoXhhSaQeQ2LSTtavI > div::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge */
 }
 
 .KIIoXhhSaQeQ2LSTtavI > div > div {
+  height: 100dvh;
   padding: 8px;
   scroll-snap-align: start;
+  width: 100%;
+
+  border: 1px dashed red;
 }
 
 .KIIoXhhSaQeQ2LSTtavI header img {
