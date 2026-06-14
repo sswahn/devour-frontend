@@ -151,6 +151,7 @@ function Comments({ closeComments }) {
   }
 
   // refactor to use classes instead of inline css on pointer events (see Notifications)
+  // focus stack on button that opens this overlay
 
   return (
     <aside className={styles.overlay}>
