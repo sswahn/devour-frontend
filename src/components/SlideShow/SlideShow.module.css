@@ -26,3 +26,7 @@
   min-width: 100%;
   width: 100%;
 }
+
+.slideContainer section article .sideNav {
+  bottom: 60px;
+}
