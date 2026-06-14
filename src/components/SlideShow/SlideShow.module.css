@@ -27,7 +27,7 @@
   width: 100%;
 }
 
-.slideContainer section article .sideNav {
+.slideContainer section article figure .sideNav {
   bottom: 128px;
 
   border: 1px dashed red;
