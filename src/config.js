@@ -3,6 +3,7 @@ export const overlay = {
   camera: 'camera',
   comments: 'comments',
   dashboard: 'dashboard',
+  dialog: 'dialog',
   editor: 'editor',
   notifications: 'notifications',
   login: 'login',
