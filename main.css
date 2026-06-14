@@ -596,6 +596,8 @@ dialog::backdrop {
 
 .g2M9XH5x4RV4urxHaLOy section article .MptVHWDeQJ5IcQ47QnvK {
   bottom: 128px;
+
+  border: 1px dashed red;
 }
 
 /* Main */
