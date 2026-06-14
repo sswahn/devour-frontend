@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
-import NextButton from '../NextButton/NextButton'
-import PreviousButton from '../PreviousButton/PreviousButton'
+import NextButton from './NextButton/NextButton'
+import PreviousButton from './PreviousButton/PreviousButton'
 import Feed from '../../features/Feed/Feed'
 import styles from './SlideShow.module.css'
 
