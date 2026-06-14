@@ -35,8 +35,8 @@ function SlideShow({ data }) {
     <section className={styles.slideShow} aria-label="slideshow" aria-description="a slideshow of popular content">
       <PreviousButton length={data.length} setCurrentIndex={setCurrentIndex} />
       <NextButton length={data.length} setCurrentIndex={setCurrentIndex} />
-      <div className={styles.slideContainer} style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-        <Feed data={data} /> {/* need to pass videoRefs into feed */}
+      <div className={styles.slideContainer}>
+        <Feed data={data} videoRefs={videoRefs} style={{ transform: `translateX(-${currentIndex * 100}%)` }} />
         
         {/*!!data.length && data.map((slide, index) => 
           <figure key={slide.id}>
