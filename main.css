@@ -395,6 +395,8 @@ dialog::backdrop {
   right: 8px;
   touch-action: auto;
   width: 44px;
+
+  box-sizing: border-box;
 }
 
 /* Comments Top Nav Bar */
