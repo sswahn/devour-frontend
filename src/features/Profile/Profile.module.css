@@ -25,19 +25,17 @@
   z-index: 200;
 }
 
-.profile > div > div {
-  height: 100dvh;
-  scroll-snap-align: start;
-  width: 100%;
-}
-
 .profile > div::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge */
 }
 
 .profile > div > div {
+  height: 100dvh;
   padding: 8px;
   scroll-snap-align: start;
+  width: 100%;
+
+  border: 1px dashed red;
 }
 
 .profile header img {
