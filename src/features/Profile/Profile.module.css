@@ -41,6 +41,10 @@
   border: 1px dashed red;
 }
 
+.profile > div > div section article {
+  min-height: 100dvh;
+}
+
 .profile header img {
   background: gray;
   border-radius: 50%;
