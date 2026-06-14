@@ -769,16 +769,13 @@
   height: 100dvh;
   inset: 0;
   overflow-x: hidden;
+  /*
   overflow-y: scroll;
   overscroll-behavior-y: contain;
+  */
   position: fixed;
-  scrollbar-width: none;
   touch-action: none;
   z-index: 200;
-}
-
-.KIIoXhhSaQeQ2LSTtavI > div::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Edge */
 }
 
 .KIIoXhhSaQeQ2LSTtavI > div > div {
