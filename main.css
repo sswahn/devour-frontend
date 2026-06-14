@@ -180,6 +180,7 @@ dialog::backdrop {
   left: 8px;
   justify-content: center;
   padding: 10px;
+  position: absolute;
   top: 50%;
   transform: translateY(-50%);
   width: 44px;
