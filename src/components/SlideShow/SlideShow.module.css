@@ -28,7 +28,7 @@
 }
 
 .slideContainer section article figure nav:nth-of-type(2) {
-  bottom: 128px;
+  bottom: 60px;
 
   border: 1px dashed red;
 }
