@@ -153,6 +153,7 @@ dialog::backdrop {
   height: 44px;
   justify-content: center;
   padding: 10px;
+  position: absolute;
   right: 8px;
   top: 50%;
   transform: translateY(-50%);
