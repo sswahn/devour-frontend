@@ -388,7 +388,7 @@ dialog::backdrop {
   display: flex;
   flex-direction: column;
   position: absolute;
-  right: 0;
+  right: 8px;
   touch-action: auto;
   width: 48px;
 
