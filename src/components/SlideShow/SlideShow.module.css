@@ -27,7 +27,10 @@
   width: 100%;
 }
 
-.slideContainer section article figure figcaption,
+.slideContainer section article figure figcaption {
+  bottom: 68px;
+}
+
 .slideContainer section article figure nav:nth-of-type(2) {
   bottom: 60px;
 }
