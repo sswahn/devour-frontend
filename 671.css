@@ -769,12 +769,18 @@
   height: 100dvh;
   inset: 0;
   overflow-x: hidden;
+  overflow-y: auto;
   position: fixed;
+
+  scrollbar-width: none;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;  
+  overscroll-behavior-y: contain;
+  scroll-padding-bottom: 0;
+  -webkit-overflow-scrolling: touch;
+  
   touch-action: none;
   z-index: 200;
-
-  overflow-y: auto;
-  scroll-snap-type: y mandatory;
 }
 
 .KIIoXhhSaQeQ2LSTtavI > div > div {
