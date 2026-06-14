@@ -43,6 +43,8 @@
 
 .profile > div > div section article {
   min-height: 100dvh;
+
+  border: 1px dashed red;
 }
 
 .profile header img {
