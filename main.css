@@ -594,7 +594,10 @@ dialog::backdrop {
   width: 100%;
 }
 
-.g2M9XH5x4RV4urxHaLOy section article figure figcaption,
+.g2M9XH5x4RV4urxHaLOy section article figure figcaption {
+  bottom: 68px;
+}
+
 .g2M9XH5x4RV4urxHaLOy section article figure nav:nth-of-type(2) {
   bottom: 60px;
 }
