@@ -41,7 +41,7 @@
   border: 1px dashed red;
 }
 
-.profile > div > div article {
+.profile article {
   min-height: 100dvh;
 
   border: 1px dashed red;
