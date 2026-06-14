@@ -169,7 +169,7 @@ function Comments({ closeComments }) {
           <TopNav close={close} />
     
           <ul>
-            {data.length === 0 
+            {!data.length
               ? <li>No comments yet.</li> 
               : data.map(comment => <CommentsListItem comment={comment} />)
             }
