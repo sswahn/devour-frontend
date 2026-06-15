@@ -71,12 +71,47 @@ self.addEventListener('fetch', event => {
 
 
 self.addEventListener('push', event => {
-  const options = {
-    body: 'You have a new notification!',
-    icon: '/path/to/icon.png'
+// Check if the server sent data, then parse it
+ if (event.data) {
+    try {
+      notificationData = event.data.json()
+    } catch (error) {
+      // Handle plain text payload fallback
+      notificationData.body = event.data.text()
+    }
   }
+
+  // Pass the dynamic server variables into the notification
+  const options = {
+    body: notificationData.body,
+    icon: notificationData.icon || '/images/default-icon.png',
+    data: { url: notificationData.url }, // Save custom data (like a click URL)
+    vibrate:,
+    badge: '/images/badge.png' // Small icon for mobile status bars
+  };
   event.waitUntil(
-    self.registration.showNotification('Hello from background!', options)
+    self.registration.showNotification(notificationData.title, options)
+  )
+})
+
+// handles notification click
+self.addEventListener('notificationclick', event => {
+  event.notification.close()
+  const targetUrl = event.notification.data.url || '/'
+
+  event.waitUntil(
+    clients.matchAll({ type: 'window', includeUncontrolled: true }).then(function(windowClients) {
+      // If a tab is already open, focus it. Otherwise, open a new tab.
+      for (var i = 0; i < windowClients.length; i++) {
+        var client = windowClients[i]
+        if (client.url === targetUrl && 'focus' in client) {
+          return client.focus()
+        }
+      }
+      if (clients.openWindow) {
+        return clients.openWindow(targetUrl)
+      }
+    })
   )
 })
 
