@@ -5,8 +5,11 @@ import styles from './SearchResults.module.css'
 
 function SearchResults({ searchResults, loading }) {
   
-  const dropdown =  []
-
+  const dropdown = [
+    { icon: <FlagIcon />, text: 'Flag content', method: () => confirm('Flag notification?') },
+    { icon: <XmarkIcon />, text: 'Block content', method: () => confirm('Block notification?') }
+  ]
+  
   return searchResults.map(result =>
     <li className={styles.searchResults} key={result.id} role="option"> 
       <article>
