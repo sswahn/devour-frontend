@@ -70,6 +70,16 @@ self.addEventListener('fetch', event => {
 })
 
 
+self.addEventListener('push', event => {
+  const options = {
+    body: 'You have a new notification!',
+    icon: '/path/to/icon.png'
+  }
+  event.waitUntil(
+    self.registration.showNotification('Hello from background!', options)
+  )
+})
+
 async function staleWhileRevalidate(request, event) {
   const cache = await caches.open(RUNTIME_CACHE)
   const cached = await cache.match(request)
