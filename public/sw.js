@@ -71,7 +71,12 @@ self.addEventListener('fetch', event => {
 
 
 self.addEventListener('push', event => {
-// Check if the server sent data, then parse it
+  let notificationData = {
+    title: 'Notification',
+    body: '',
+    url: '/'
+  }
+ // Check if the server sent data, then parse it
  if (event.data) {
     try {
       notificationData = event.data.json()
@@ -86,7 +91,7 @@ self.addEventListener('push', event => {
     body: notificationData.body,
     icon: notificationData.icon || '/images/default-icon.png',
     data: { url: notificationData.url }, // Save custom data (like a click URL)
-    vibrate:,
+    vibrate: [200, 100, 200],
     badge: '/images/badge.png' // Small icon for mobile status bars
   };
   event.waitUntil(
