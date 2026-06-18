@@ -151,6 +151,7 @@ function Comments({ closeComments }) {
   }
 
   // refactor to use classes instead of inline css on pointer events (see Notifications)
+  // focus stack on button that opens this overlay
 
   return (
     <aside className={styles.overlay}>
@@ -168,7 +169,7 @@ function Comments({ closeComments }) {
           <TopNav close={close} />
     
           <ul>
-            {data.length === 0 
+            {!data.length
               ? <li>No comments yet.</li> 
               : data.map(comment => <CommentsListItem comment={comment} />)
             }

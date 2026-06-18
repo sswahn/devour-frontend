@@ -7,8 +7,8 @@ function TopNav({ close }) {
 
   // might need something other than search filters
   const dropdown = [
-    { icon: '', text: 'filter 1', method: () => console.log('filter 1') },
-    { icon: '', text: 'filter 2', method: () => console.log('filter 2') }
+    { icon: '', text: 'Filter 1', method: () => console.log('Filter 1') },
+    { icon: '', text: 'Filter 2', method: () => console.log('Filter 2') }
   ]
   
   return (

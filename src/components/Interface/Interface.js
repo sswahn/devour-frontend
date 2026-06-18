@@ -14,7 +14,7 @@ function Interface() {
   const [isMobile, setIsMobile] = useState(false)
   const { isActive } = useOverlay()
   const { isFullscreen } = useFullscreen()
-  // useScrollLock(isActive)
+  useScrollLock(isActive)
   useSelectionToSpeech()
   useContextMenu()
 
