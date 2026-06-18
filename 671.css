@@ -779,7 +779,7 @@
   scroll-padding-bottom: 0;
   -webkit-overflow-scrolling: touch;
   
-  touch-action: none;
+  touch-action: pan-y;
   z-index: 200;
 }
 
