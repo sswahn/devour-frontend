@@ -1101,7 +1101,7 @@
   display: flex;
   justify-content: space-between;
   left: 0;
-  padding: 0 8px;
+  padding: 4px 8px 0 8px;
   padding-top: env(safe-area-inset-top);
   position: absolute;
   top: 0;
