@@ -46,7 +46,7 @@ function Dropdown({ id = 0, label = 'dropdown', items }) {
   }, [])
 
   return (
-    <div　className={styles.dropdown}>
+    <div　className={`${styles.dropdown} ${isOpen ? styles.isOpen : ''}`}>
       <DropdownButton 
         id={id} 
         label={label} 
