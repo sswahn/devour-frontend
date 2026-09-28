@@ -279,8 +279,12 @@ dialog::backdrop {
 .fsRjQsePCOqWh1LwmMMg {
   border-radius: 50%;
   position: relative;
+  z-index: 1;
 }
 
+.RLBrXxilu6IURBAdbzpA {
+  z-index: 10; /* Raises the entire active component above the others */
+}
 
 /* Feed Node Top Nav */
 
