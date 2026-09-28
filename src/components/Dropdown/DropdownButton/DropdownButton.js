@@ -4,7 +4,6 @@ import styles from './DropdownButton.module.css'
 function DropdownButton({ id, label, isOpen, open, close, buttonRef }) {
   
   const onClick = event => {
-    event.stopPropagation()
     navigator.vibrate?.(50)
     isOpen ? close() : open()
   }
