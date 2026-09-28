@@ -16,7 +16,7 @@
   right: 0;
   top: 48px;
   transition: opacity 0.2s ease-in-out;
-  z-index: 400;
+  z-index: 9999;
 }
 
 /* not just opacity, but transition height and width to grow from right to left */
