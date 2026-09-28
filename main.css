@@ -212,7 +212,7 @@ dialog::backdrop {
   padding: 10px;
   touch-action: auto;
   width: 44px;
-  z-index: 9000;
+  z-index: 1;
 }
 
 /* Dropdown List Item Button */
