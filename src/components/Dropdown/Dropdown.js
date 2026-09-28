@@ -25,6 +25,19 @@ function Dropdown({ id = 0, label = 'dropdown', items }) {
   const mountList = () => {
     setIsMounted(true)
   }
+
+  const offClickClose = event => {
+    if (!listRef.current.contains(event.target)) && !buttonRef.current.contains(event.target)) {
+      close()
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('pointerdown', offClickClose)
+    return () => {
+      document.removeEventListener('pointerdown', offClickClose)
+    }
+  }, [])
   
   useEffect(() => {
     return () => {
