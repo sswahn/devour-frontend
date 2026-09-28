@@ -12,7 +12,7 @@ function DropdownList({ id, items, isOpen, open, close, isMounted, mountList, bu
     }
    
    const offClickClose = event => {
-    if (!listRef.current.contains(event.target) && !buttonRef.current.contains(event.target)) {
+    if (!listRef.current.contains(event.target)) { // && !buttonRef.current.contains(event.target)) {
       close(false)
     }
   }
