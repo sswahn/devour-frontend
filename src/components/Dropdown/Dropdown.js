@@ -27,7 +27,7 @@ function Dropdown({ id = 0, label = 'dropdown', items }) {
   }
 
   const offClickClose = event => {
-    if (!listRef.current.contains(event.target) && !buttonRef.current.contains(event.target)) {
+    if ((listRef.current && !listRef.current.contains(event.target)) && !buttonRef.current.contains(event.target)) {
       close()
     }
   }
