@@ -59,7 +59,6 @@ function Dropdown({ id = 0, label = 'dropdown', items }) {
         id={id} 
         items={items} 
         isOpen={isOpen}
-        open={open} 
         close={close} 
         isMounted={isMounted}
         mountList={mountList} 
