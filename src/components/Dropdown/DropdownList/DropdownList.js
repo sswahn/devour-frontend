@@ -4,25 +4,12 @@ import styles from './DropdownList.module.css'
 
 function DropdownList({ id, items, isOpen, open, close, isMounted, mountList, buttonRef, listRef }) {
    
-   const onMount = () => {
-      if (!isMounted) {
-        mountList()
-        listRef.current.firstElementChild.firstElementChild.focus()
-      }
-    }
-   
-   const offClickClose = event => {
-    if (!listRef.current.contains(event.target)) && !buttonRef.current.contains(event.target)) {
-      close()
+  const onMount = () => {
+    if (!isMounted) {
+      mountList()
+      listRef.current.firstElementChild.firstElementChild.focus()
     }
   }
-
-  useEffect(() => {
-    document.addEventListener('pointerdown', offClickClose)
-    return () => {
-      document.removeEventListener('pointerdown', offClickClose)
-    }
-  }, [])
 
   useEffect(() => {
     // Wait for the next repaint to transition:
