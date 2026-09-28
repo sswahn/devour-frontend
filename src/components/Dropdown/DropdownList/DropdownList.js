@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from  'react'
 import ListItemButton from '../ListItemButton/ListItemButton'
 import styles from './DropdownList.module.css'
 
-function DropdownList({ id, items, isOpen, open, close, isMounted, mountList, listRef }) {
+function DropdownList({ id, items, isOpen, close, isMounted, mountList, listRef }) {
    
   const onMount = () => {
     if (!isMounted) {
