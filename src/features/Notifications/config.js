@@ -12,7 +12,7 @@ export const test_data = {
     {id: 7, username: 'username8', picture: '', text: 'testing user notification section', timestamp: new Date() },
     {id: 8, username: 'username9', picture: '', text: 'testing user notification section', timestamp: new Date() },
     {id: 9, username: 'username10', picture: '', text: 'testing user notification section', timestamp: new Date() },
-    {id 10, username: 'username11', picture: '', text: '12345678901234567890123456', timestamp: new Date() },
+    {id: 10, username: 'username11', picture: '', text: '12345678901234567890123456', timestamp: new Date() },
     {id: 11, username: 'username12', picture: '', text: 'testing user notification section', timestamp: new Date() },
     {id: 12, username: 'username13', picture: '', text: 'testing user notification section', timestamp: new Date() },
     {id: 13, username: 'username14', picture: '', text: 'testing user notification section', timestamp: new Date() },
