@@ -63,6 +63,7 @@ function Dropdown({ id = 0, label = 'dropdown', items }) {
         isMounted={isMounted}
         mountList={mountList} 
         listRef={listRef}
+        buttonRef={buttonRef}
       />}
     </div>
   )
