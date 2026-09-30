@@ -334,9 +334,11 @@
   z-index: 200;
 }
 
-.mb7PIQxOODOItOwOZ_JC article footer div > ul {
+/*
+.listItem article footer div > ul {
   z-index: 250;
 }
+*/
 
 /* User Notifications */
 
