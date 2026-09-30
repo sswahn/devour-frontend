@@ -464,8 +464,13 @@ dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(1px);
  /* contain: content; */
-  height: 100dvh;
+ /*  height: 100dvh; */
   inset: 0;
+    
+  width: 100vw;   /* Force full screen width */
+  height: 100vh;  /* Force full screen height */
+
+  
   opacity: 1;
   position: fixed;
   transition: opacity 0.1s ease-in, opacity 0.5s ease-out;
