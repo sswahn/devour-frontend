@@ -1000,7 +1000,7 @@
   font-size: var(--font-size);
 }
 
-/* Dropdown */
+/* Dropdown: might be better to position footer rather than dropdown */
 .L5vDWmbThsw3ZFpe87dA article footer div {
   position: absolute;
   right: 0;
