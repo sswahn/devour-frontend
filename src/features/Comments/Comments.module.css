@@ -5,11 +5,12 @@
   backdrop-filter: blur(1px);
  /* contain: content; */
  /*  height: 100dvh; */
-  inset: 0;
+  /* inset: 0; */
     
   width: 100vw;   /* Force full screen width */
   height: 100vh;  /* Force full screen height */
-
+  top: 0;
+  left: 0;
   
   opacity: 1;
   position: fixed;
