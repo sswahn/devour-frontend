@@ -17,7 +17,7 @@ function Profile() {
   const overlayRef = useRef(null)
   const [profile, setProfile] = useState({
     picture: '', // if set optimistically, needs URL.createObjectURL(blob/file)
-    username: 'test_user',
+    username: userProfile || 'test_user',
     location: 'new york',
     biography: ''
    })
