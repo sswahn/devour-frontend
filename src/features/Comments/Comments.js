@@ -157,7 +157,7 @@ function Comments({ closeComments, slideshow }) {
   // also there remains the zIndex issue with header and nav
 
   return (
-    <aside className={slidshow ? styles.partial_overlay : styles.overlay}>
+    <aside className={slideshow ? styles.partial_overlay : styles.overlay}>
       <div ref={commentsRef} 
         className={[ 
           styles.comments, 
