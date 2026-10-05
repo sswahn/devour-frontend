@@ -473,6 +473,19 @@ dialog::backdrop {
   z-index: 150;
 }
 
+.kRAWKegpnjfEbVTuKvLG {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(1px);
+ /* contain: content; */
+  
+  height: 100dvh;
+  inset: 0;
+  opacity: 1;
+  position: absolute;
+  transition: opacity 0.1s ease-in, opacity 0.5s ease-out;
+  z-index: 150;
+}
+
 .uoscghNXGwijRME3XZY7 {
   background-color: var(--surface-raised);
   height: 100dvh;
