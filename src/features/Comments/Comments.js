@@ -156,10 +156,10 @@ function Comments({ closeComments, slideshow }) {
   console.log('slideshow: ', slideshow)
   
   return (
-    <aside className={slideshow ? styles.partial_overlay : styles.overlay}>
+    <aside className={slideshow ? styles.slideshow_overlay : styles.overlay}>
       <div ref={commentsRef} 
         className={[ 
-          styles.comments, 
+          slideshow ? styles.slideshow_comments : styles.comments, 
           isOpen === true && styles.open, 
           isOpen === false && styles.close 
         ].filter(Boolean).join(' ')}
