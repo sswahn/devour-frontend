@@ -153,9 +153,8 @@ function Comments({ closeComments, slideshow }) {
   // refactor to use classes instead of inline css on pointer events (see Notifications)
   // focus stack on button that opens this overlay
 
-  // to work with slideshow, it will need inline css class passed to it with marginTop: -62
-  // also there remains the zIndex issue with header and nav
-
+  console.log('slideshow: ', slideshow)
+  
   return (
     <aside className={slideshow ? styles.partial_overlay : styles.overlay}>
       <div ref={commentsRef} 
