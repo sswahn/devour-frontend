@@ -9,7 +9,7 @@ import CommentsListItem from './CommentsListItem/CommentsListItem'
 import CommentsForm from './CommentsForm/CommentsForm'
 import styles from './Comments.module.css'
 
-function Comments({ closeComments }) {
+function Comments({ closeComments, slideshow }) {
   const { content } = useContent()
   const [isOpen, setIsOpen] = useState(false)
   const [data, setData] = useState([])
@@ -157,7 +157,7 @@ function Comments({ closeComments }) {
   // also there remains the zIndex issue with header and nav
 
   return (
-    <aside className={styles.overlay}>
+    <aside className={slidshow ? styles.partial_overlay : styles.overlay}>
       <div ref={commentsRef} 
         className={[ 
           styles.comments, 
