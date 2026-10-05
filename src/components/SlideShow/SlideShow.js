@@ -36,7 +36,7 @@ function SlideShow({ data }) {
       <PreviousButton length={data.length} setCurrentIndex={setCurrentIndex} />
       <NextButton length={data.length} setCurrentIndex={setCurrentIndex} />
       <div className={styles.slideContainer}>
-        <Feed data={data} videoRefs={videoRefs} style={{ transform: `translateX(-${currentIndex * 100}%)` }} />
+        <Feed data={data} videoRefs={videoRefs} style={{ transform: `translateX(-${currentIndex * 100}%)` }} slideshow={true} />
         
         {/*!!data.length && data.map((slide, index) => 
           <figure key={slide.id}>
