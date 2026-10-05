@@ -13,6 +13,19 @@
   z-index: 150;
 }
 
+.partial_overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(1px);
+ /* contain: content; */
+  
+  height: 100dvh;
+  inset: 0;
+  opacity: 1;
+  position: absolute;
+  transition: opacity 0.1s ease-in, opacity 0.5s ease-out;
+  z-index: 150;
+}
+
 .comments {
   background-color: var(--surface-raised);
   height: 100dvh;
