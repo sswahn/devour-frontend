@@ -473,7 +473,7 @@ dialog::backdrop {
   z-index: 150;
 }
 
-.kRAWKegpnjfEbVTuKvLG {
+.Cmdt6TomC8wBQRo8eXPa {
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(1px);
  /* contain: content; */
@@ -491,6 +491,20 @@ dialog::backdrop {
   height: 100dvh;
   padding: 8px;
   position: fixed;
+  right: 0;
+  top: 0;
+  touch-action: pan-y;
+  transform: translate3d(100%, 0, 0);
+  transition: transform 0.3s ease-in-out;
+  width: 100%;
+  z-index: 200;
+}
+
+.Ys7HFq5q1ExfAdPdE66o {
+  background-color: var(--surface-raised);
+  height: calc(100dvh - 124px);
+  padding: 8px;
+  position: absolute;
   right: 0;
   top: 0;
   touch-action: pan-y;
