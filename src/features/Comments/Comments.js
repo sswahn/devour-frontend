@@ -9,7 +9,7 @@ import CommentsListItem from './CommentsListItem/CommentsListItem'
 import CommentsForm from './CommentsForm/CommentsForm'
 import styles from './Comments.module.css'
 
-function Comments({ closeComments, slideshow }) {
+function Comments({ closeComments, slideshow = false }) {
   const { content } = useContent()
   const [isOpen, setIsOpen] = useState(false)
   const [data, setData] = useState([])
