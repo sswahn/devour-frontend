@@ -478,7 +478,7 @@ dialog::backdrop {
   backdrop-filter: blur(1px);
  /* contain: content; */
   
-  height: 100dvh;
+  height: calc(100dvh - 124px);
   inset: 0;
   opacity: 1;
   position: absolute;
