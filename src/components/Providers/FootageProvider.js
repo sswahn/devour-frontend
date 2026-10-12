@@ -2,6 +2,8 @@ import { useState, createContext } from 'react'
 
 const FootageContext = createContext(null)
 
+// consider moving this to Wizard
+
 function FootageProvider({ children }) {
   const [footage, setFootage] = useState(null)
 
