@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Camera from '../Camera/Camera'
 import Editor from '../Editor/Editor'
 import Publisher from '../Publisher/Publisher'
@@ -18,6 +18,11 @@ function Wizard() {
   const openPublisher = () => {
     setOverlay('publisher')
   }
+
+  // useEffect is only needed for debugging here.
+  useEffect(() => {
+    console.log('overlay: ', overlay)
+  }, [overlay])
   
   return (
     <section className={styles.wizard}>
