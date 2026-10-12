@@ -55,6 +55,37 @@ function Editor({ openCamera, openPublisher }) {
     }
   }, [])
 
+
+  useEffect(() => {
+  if (!footage) return
+
+  const testUrl = URL.createObjectURL(footage)
+  const testVideo = document.createElement('video')
+
+  testVideo.onloadedmetadata = () => {
+    console.log('Test video metadata loaded:', {
+      duration: testVideo.duration,
+      width: testVideo.videoWidth,
+      height: testVideo.videoHeight
+    })
+
+    URL.revokeObjectURL(testUrl)
+  }
+
+  testVideo.onerror = () => {
+    console.error('Test video failed:', testVideo.error)
+    URL.revokeObjectURL(testUrl)
+  }
+
+  testVideo.src = testUrl
+
+  return () => {
+    testVideo.removeAttribute('src')
+    testVideo.load()
+    URL.revokeObjectURL(testUrl)
+  }
+}, [footage])
+
   return (
     <section className={styles.editor}>
       <TopNav videoRef={videoRef} openCamera={openCamera} /> 
