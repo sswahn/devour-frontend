@@ -135,11 +135,6 @@ const camera = {
     if (!Array.isArray(frames)) {
       throw new TypeError('camera.startRecording: second argument must be an array.')
     }
-
-    console.log(
-      'VP8 + Opus supported:',
-      MediaRecorder.isTypeSupported(mimeType)
-    )
     
     // dynamically get highest bps device is capable of
     const options = {
