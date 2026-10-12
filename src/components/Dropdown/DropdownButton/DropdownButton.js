@@ -6,8 +6,6 @@ function DropdownButton({ id, label, isOpen, open, close, buttonRef }) {
   const onClick = event => {
     navigator.vibrate?.(50)
     isOpen ? close() : open()
-
-    console.log('buttonRef.current: ', buttonRef.current)
   }
   
   return (
