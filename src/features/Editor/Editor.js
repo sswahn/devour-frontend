@@ -40,7 +40,7 @@ function Editor({ openCamera, openPublisher }) {
 
     console.log('footage: ', footage)
     
-    const blob = footage || new Blob()
+    const blob = footage || new Blob() // new Blob() should be removed, and put footage directly into the videoUrl
 
     console.log('blob: ', blob)
     
@@ -52,7 +52,7 @@ function Editor({ openCamera, openPublisher }) {
     return () => {
       URL.revokeObjectURL(videoUrl)
     }
-  }, [])
+  }, [footage])
 
   return (
     <section className={styles.editor}>
