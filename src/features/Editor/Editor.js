@@ -62,7 +62,11 @@ function Editor({ openCamera, openPublisher }) {
       {menuIsOpen && <Menu data={data} setData={setData} closeMenu={closeMenu} />}
       <MenuButton openMenu={openMenu} /> 
       <SubmitButton openPublisher={openPublisher} /> 
-      <video id="video-editor" ref={videoRef} src={source} loop playsinline />
+      <video id="video-editor" ref={videoRef} src={source} loop playsInline
+        onLoadedMetadata={() => console.log('Video metadata loaded')}
+        onCanPlay={() => console.log('Video can play')}
+        onError={e => console.log('Video error:', e.currentTarget.error)}
+      />
     </section>
   )
 }
