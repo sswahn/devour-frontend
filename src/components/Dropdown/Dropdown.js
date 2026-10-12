@@ -14,7 +14,7 @@ function Dropdown({ id = 0, label = 'dropdown', items }) {
   }
 
   const close = () => {
-    listRef.current.addEventListener(
+    listRef.current?.addEventListener(
       'transitionend', 
       () => setIsOpen(false), 
       { once: true }
