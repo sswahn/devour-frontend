@@ -41,6 +41,9 @@ function Editor({ openCamera, openPublisher }) {
     const blob = footage || new Blob()
     const videoUrl = URL.createObjectURL(blob) // pass footage directly, after testing complete
     setSource(videoUrl)
+
+    console.log('videoUrl: ', videoUrl)
+    
     return () => {
       URL.revokeObjectURL(videoUrl)
     }
