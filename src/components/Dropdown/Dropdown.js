@@ -33,9 +33,9 @@ function Dropdown({ id = 0, label = 'dropdown', items }) {
   }
 
   useEffect(() => {
-    window.addEventListener('pointerdown', offClickClose)
+    document.addEventListener('pointerdown', offClickClose)
     return () => {
-      window.removeEventListener('pointerdown', offClickClose)
+      document.removeEventListener('pointerdown', offClickClose)
     }
   }, [])
   
