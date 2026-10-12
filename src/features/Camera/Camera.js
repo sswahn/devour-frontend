@@ -43,7 +43,7 @@ function Camera({ openEditor }) {
 
   const closeCamera = event => {
     stopCamera()
-    closeOverlay()
+    // closeOverlay()
     if (document.fullscreenElement) {
       document.exitFullscreen()
     }
