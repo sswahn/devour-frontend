@@ -128,6 +128,43 @@ const camera = {
         track.enabled = true;
     })
   },
+  
+  startRecording(stream, frames) {
+    if (!(stream instanceof MediaStream)) {
+      throw new TypeError('camera.startRecording: first argument must be an instance of MediaStream.')
+    }
+    if (!Array.isArray(frames)) {
+      throw new TypeError('camera.startRecording: second argument must be an array.')
+    }
+    
+    // Explicitly check for VP9 container support, fallback safely to standard webm if needed
+    let mimeType = 'video/webm; codecs=vp9,opus';
+    if (!MediaRecorder.isTypeSupported(mimeType)) {
+      mimeType = 'video/webm; codecs=vp8,opus';
+    }
+
+    const options = {
+      mimeType: mimeType,
+      videoBitsPerSecond: 10_000_000, 
+      audioBitsPerSecond: 320_000   
+    }
+    
+    const mediaRecorder = new MediaRecorder(stream, options)
+  
+    mediaRecorder.addEventListener('dataavailable', event => {
+      // Only push chunks that actually contain data
+      if (event.data && event.data.size > 0) {
+        frames.push(event.data)
+      }
+    })
+    
+    // CRITICAL: Request data in 1-second chunks to ensure headers compile properly
+    mediaRecorder.start(1000) 
+    
+    return mediaRecorder
+  }
+    
+  /*
   startRecording(stream, frames) {
     if (!(stream instanceof MediaStream)) {
       throw new TypeError('camera.startRecording: first argument must be an instance of MediaStream.')
@@ -149,6 +186,7 @@ const camera = {
     mediaRecorder.start()
     return mediaRecorder
   },
+  */
   stopRecording(mediaRecorder, frames) {
     if (!(mediaRecorder instanceof MediaRecorder)) {
       throw new TypeError('camera.stopRecording: first argument must be an instance of MediaRecorder.')
