@@ -80,7 +80,7 @@ function Camera({ openEditor }) {
     const db = database()
     const storage = await db.get('footage')
     
-    console.log('storage: ', storage)
+    console.log('stored footage: ', storage)
     
     if (storage) {
       const duration = await getVideoDuration(storage.footage)
