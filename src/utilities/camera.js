@@ -162,7 +162,7 @@ const camera = {
     mediaRecorder.start(1000) 
     
     return mediaRecorder
-  }
+  },
     
   /*
   startRecording(stream, frames) {
