@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import styles from './TextArea.module.css'
 
-function TextArea({ id, type, label, value, inputMode = 'text', autoComplete, error, required, ...props }) {
+function TextArea({ id, label, value, inputMode = 'text', autoComplete, error, required, ...props }) {
   const [errorMessage, setErrorMessage] = useState('')
   const textAreaRef = useRef(null)
 
@@ -50,7 +50,6 @@ function TextArea({ id, type, label, value, inputMode = 'text', autoComplete, er
         id={id} 
         className={errorMessage ? styles.invalid : ''}
         name={id}
-        type={type}
         onChange={onChange}
         onInvalid={onInvalid}
         inputMode={inputMode} 
