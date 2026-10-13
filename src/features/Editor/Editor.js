@@ -36,7 +36,7 @@ function Editor({ openCamera, openPublisher }) {
     // loadFromStorage()
   }, [])
 
-  useEffect(() => {
+  useEffect(async () => {
 
     console.log('footage: ', footage)
     
