@@ -21,6 +21,7 @@ function Publisher({ openEditor }) {
   }
 
   const publish = event => {
+    // validate & format
     // get s3 auth
   }
 
