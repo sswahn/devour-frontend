@@ -76,8 +76,6 @@ function Publisher({ openEditor }) {
             error={errorMessage}
             required 
           />
-          <label htmlFor="description">Description:</label>
-          <textarea id="description" name="description" aria-label="add a description">{description}</textarea>
           <button type="submit">Submit</button>
         </form>
       </div>
