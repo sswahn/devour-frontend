@@ -7,28 +7,26 @@ import styles from './RecordButton.module.css'
 function RecordButton({ mode, setMode, streamRef, timer }) {
   const { footage, setFootage } = useFootage()
   const framesRef = useRef([])
-  const recorderRef = useRef(null)
+  const recordingRef = useRef(null)
   
   const startRecord = () => {
     if (timer < 1) {
       return alert('No recording time remaining.')
     }
     setMode('on')
-    const recorder = camera.startRecording(streamRef.current, framesRef.current)
-    recorderRef.current = recorder
+    recordingRef.current = camera.startRecording(streamRef.current, framesRef.current)
   }
 
   
 const stopRecord = async () => {
   try {
-    const recorder = recorderRef.current
 
-    if (!recorder) {
+    if (!recordingRef.current) {
       throw new Error('No active recording found.')
     }
 
     const blob = await camera.stopRecording(
-      recorder,
+      recordingRef.current,
       framesRef.current
     )
 
@@ -40,13 +38,10 @@ const stopRecord = async () => {
     setFootage(blob)
 
     const db = database()
-    await db.put({
-      id: 'footage',
-      footage: blob
-    })
+    await db.put({ id: 'footage', footage: blob })
 
     setMode('off')
-    recorderRef.current = null
+    recordingRef.current = null
   } catch (error) {
     setMode('off')
     console.error('Failed to stop recording:', error)
