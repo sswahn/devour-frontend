@@ -343,6 +343,18 @@ const camera = {
       )
     }
 
+
+    console.log('stopRecording called:', {
+      framesLength: frames.length,
+      totalBytes: frames.reduce(
+        (total, chunk) => total + chunk.size,
+        0
+      ),
+      framesReference: frames,
+      recorderState: recorder.state
+    })
+    
+
     return new Promise((resolve, reject) => {
       let settled = false
 
