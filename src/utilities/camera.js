@@ -292,17 +292,22 @@ const camera = {
     recorder.addEventListener('dataavailable', async event => {
       if (event.data && event.data.size > 0) {
 
-        const chunk = event.data
-        
-        console.log('Recording chunk:', {
-          size: chunk.size,
-          type: chunk.type,
-          firstBytes: [...new Uint8Array(
-            await chunk.slice(0, 4).arrayBuffer()
-          )].map(byte => byte.toString(16).padStart(2, '0')).join(' ')
+        console.log('Before push:', {
+          framesLength: frames.length,
+          chunkSize: event.data.size,
+          framesReference: frames
         })
         
-        frames.push(chunk) //event.data
+        frames.push(event.data)
+        
+        console.log('After push:', {
+          framesLength: frames.length,
+          totalBytes: frames.reduce(
+            (total, chunk) => total + chunk.size,
+            0
+          )
+        })
+
       }
     })
 
