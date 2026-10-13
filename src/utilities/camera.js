@@ -289,7 +289,7 @@ const camera = {
       }
     })
 
-    recorder.addEventListener('dataavailable', async event => {
+    recorder.addEventListener('dataavailable', async event => { // async for debugging
       if (event.data && event.data.size > 0) {
 
         console.log('Before push:', {
@@ -381,7 +381,7 @@ const camera = {
         settle(reject, error)
       }
 
-      const onStop = () => {
+      const onStop = async () => { // async for debugging
 
         console.log('Recorder stopped:', {
           framesLength: frames.length,
@@ -408,6 +408,21 @@ const camera = {
           recorder.mimeType || 'application/octet-stream'
 
         const blob = new Blob(frames, { type: mimeType })
+
+
+        const header = [...new Uint8Array(
+          await blob.slice(0, 4).arrayBuffer()
+        )]
+        
+        console.log('Final recording Blob:', {
+          size: blob.size,
+          type: blob.type,
+          framesLength: frames.length,
+          header: header
+            .map(byte => byte.toString(16).padStart(2, '0'))
+            .join(' ')
+        })
+        
 
         frames.length = 0
         recordingErrors.delete(recorder)
