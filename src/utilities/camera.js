@@ -251,23 +251,15 @@ const camera = {
     assertStream(stream, 'camera.startRecording')
 
     if (!Array.isArray(frames)) {
-      throw new TypeError(
-        'camera.startRecording: frames must be an array.'
-      )
+      throw new TypeError('camera.startRecording: frames must be an array.')
     }
 
     if (stream.getVideoTracks().length === 0) {
-      throw new Error(
-        'camera.startRecording: stream has no video track.'
-      )
+      throw new Error('camera.startRecording: stream has no video track.')
     }
 
-    if (
-      stream.getTracks().some(track => track.readyState !== 'live')
-    ) {
-      throw new Error(
-        'camera.startRecording: all tracks must be live.'
-      )
+    if (stream.getTracks().some(track => track.readyState !== 'live')) {
+      throw new Error('camera.startRecording: all tracks must be live.')
     }
 
     const mimeType = selectMimeType()
@@ -299,6 +291,13 @@ const camera = {
 
     recorder.addEventListener('dataavailable', event => {
       if (event.data && event.data.size > 0) {
+
+        console.log('Recording chunk:', {
+          size: event.data.size,
+          type: event.data.type,
+          firstBytes: null
+        })
+        
         frames.push(event.data)
       }
     })
