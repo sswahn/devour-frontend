@@ -1209,6 +1209,47 @@
   z-index: 200;
 }
 
+/* TextArea Form Element */
+
+.sM9Uv8_VyDApFMye0vwl {
+  margin-bottom: 8px;
+}
+
+.sM9Uv8_VyDApFMye0vwl label {
+  color: var(--text);
+  display: block;
+  font-size: var(--font-size);
+  margin: 0 0 8px 8px;
+}
+
+.sM9Uv8_VyDApFMye0vwl label span {
+  color: red;
+}
+
+.sM9Uv8_VyDApFMye0vwl textarea {
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 5px;
+  color: var(--input-text);
+  font-size: 18px;
+  height: 44px;
+  padding: 0 8px;
+  width: 100%;
+}
+
+.sM9Uv8_VyDApFMye0vwl textarea:focus {
+  outline: none;
+}
+
+.sM9Uv8_VyDApFMye0vwl textarea.HpG0MGgmPd2Z6vvpOdQQ {
+  border: 2px solid red;
+}
+
+.sM9Uv8_VyDApFMye0vwl p {
+  color: red;
+  margin: 4px 0 0 8px;
+}
+
 /* Publisher Overlay */
 
 .qlaG5Gv1ORFLSpP42REH {
@@ -1277,4 +1318,4 @@
 }
 
 
-/*# sourceMappingURL=671.css.map*/
+/*# sourceMappingURL=848.css.map*/
