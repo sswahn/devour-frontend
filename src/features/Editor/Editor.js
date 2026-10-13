@@ -44,6 +44,19 @@ function Editor({ openCamera, openPublisher }) {
     setSource(videoUrl)
 
     console.log('videoUrl: ', videoUrl)
+
+    console.warn({
+      footage,
+      isBlob: footage instanceof Blob,
+      size: footage?.size,
+      type: footage?.type,
+      recorderMimeType: mediaRecorder?.mimeType,
+      firstBytes: footage
+        ? [...new Uint8Array(
+            await footage.slice(0, 4).arrayBuffer()
+          )].map(byte => byte.toString(16).padStart(2, '0')).join(' ')
+        : null
+    })
     
     return () => {
       URL.revokeObjectURL(videoUrl)
