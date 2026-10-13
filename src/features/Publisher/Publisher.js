@@ -20,9 +20,29 @@ function Publisher({ openEditor }) {
     setDescription(value)
   }
 
-  const publish = event => {
-    // validate & format
+  const publish = async event => {
     // get s3 auth
+
+    try {
+      event.preventDefault()
+      setLoading(true)
+      const formData = new FormData(event.target)
+      const location = formData.get('location').trim()
+      const description = formData.get('description').trim()
+      
+      const request = {
+        location: validate.location(location), // add to validate util
+        description: validate.description(description) 
+      }
+  
+      const response = await server.post(api.publish, request)
+      //setMessage('Success.')
+      
+    } catch (error) {
+      setError(error)
+    } finally {
+      setLoading(false)
+    }
   }
 
   const loadFromStorage = () => {
@@ -33,6 +53,8 @@ function Publisher({ openEditor }) {
   useEffect(() => {
     // loadFromStorage()
   }, [])
+
+  // loading spinner or notifications of successful upload, probably notifications
   
   return (
     <section className={styles.publisher}>
