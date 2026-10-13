@@ -382,6 +382,17 @@ const camera = {
       }
 
       const onStop = () => {
+
+        console.log('Recorder stopped:', {
+          framesLength: frames.length,
+          totalBytes: frames.reduce(
+            (total, chunk) => total + chunk.size,
+            0
+          ),
+          recorderMimeType: recorder.mimeType
+        })
+
+        
         const error = recordingErrors.get(recorder)
 
         // Do not return a seemingly successful video after a
