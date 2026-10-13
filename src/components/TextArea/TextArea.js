@@ -57,7 +57,7 @@ function TextArea({ id, label, value, inputMode = 'text', autoComplete, error, r
         aria-invalid={errorMessage ? true : undefined} 
         aria-errormessage={errorMessage ? `error-${id}` : undefined}
         required={required}
-        {...props}>{value}<textarea/>
+        {...props}>{value}</textarea>
       {errorMessage && <p id={`error-${id}`} role="alert">{errorMessage}</p>}
     </div>
   )
