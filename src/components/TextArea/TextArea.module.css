@@ -12,3 +12,38 @@
   resize: none;
   width: 100%;
 }
+
+.textArea label {
+  color: var(--text);
+  display: block;
+  font-size: var(--font-size);
+  margin: 0 0 8px 8px;
+}
+
+.textArea label span {
+  color: red;
+}
+
+.textArea textarea {
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 5px;
+  color: var(--input-text);
+  font-size: 18px;
+  height: 44px;
+  padding: 0 8px;
+  width: 100%;
+}
+
+.textArea textarea:focus {
+  outline: none;
+}
+
+.textArea textarea.invalid {
+  border: 2px solid red;
+}
+
+.textArea p {
+  color: red;
+  margin: 4px 0 0 8px;
+}
