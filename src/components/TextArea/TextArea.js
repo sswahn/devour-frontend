@@ -8,7 +8,7 @@ function TextArea({ id, type, label, value, inputMode = 'text', autoComplete, er
   const focusInvalidInput = () => {
     const form = textAreaRef.current?.closest('form')
     const invalidInput = [...form.elements].find(
-      textarea => textarea.hasAttribute('aria-invalid')
+      textArea => textArea.hasAttribute('aria-invalid')
     )
     invalidInput.focus()
   }
