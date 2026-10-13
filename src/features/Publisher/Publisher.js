@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import BackButton from '../../components/BackButton/BackButton'
 import Input from '../../components/Input/Input'
 import styles from './Publisher.module.css'
 
 function Publisher({ openEditor }) {
-  const [location, setLocation] = useState(localStorage.getItem('location') || '')
-  const [description, setDescription] = useState(localStorage.getItem('description') || '')
+  const [location, setLocation] = useState('')
+  const [description, setDescription] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
 
   const handleLocation = event => {
@@ -23,6 +23,15 @@ function Publisher({ openEditor }) {
   const publish = event => {
     // get s3 auth
   }
+
+  const loadFromStorage = () => {
+    // location
+    // description
+  }
+
+  useEffect(() => {
+    // loadFromStorage()
+  }, [])
   
   return (
     <section className={styles.publisher}>
