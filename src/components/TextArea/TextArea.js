@@ -43,7 +43,7 @@ function TextArea({ id, type, label, inputMode, autoComplete, error, required, .
   }, [error])
   
   return (
-    <div className={styles.textarea}>
+    <div className={styles.textArea}>
       <label htmlFor={id}>{label}:{/* needs opt-in: required && <span>*</span> */}</label>
       <textarea 
         ref={textAreaRef}
