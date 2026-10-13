@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import BackButton from '../../components/BackButton/BackButton'
 import Input from '../../components/Input/Input'
+import TextArea from '../../components/TextArea/TextArea'
 import styles from './Publisher.module.css'
 
 function Publisher({ openEditor }) {
@@ -65,6 +66,13 @@ function Publisher({ openEditor }) {
             label="Location"
             inputMode="text"
             value={location}
+            error={errorMessage}
+            required 
+          />
+          <TextArea
+            id="description"
+            label="Description"
+            value={description}
             error={errorMessage}
             required 
           />
