@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import styles from './TextArea.module.css'
 
-function TextArea({ id, type, label, inputMode, autoComplete, error, required, ...props }) {
+function TextArea({ id, type, label, value, inputMode, autoComplete, error, required, ...props }) {
   const [errorMessage, setErrorMessage] = useState('')
   const textAreaRef = useRef(null)
 
@@ -58,7 +58,7 @@ function TextArea({ id, type, label, inputMode, autoComplete, error, required, .
         aria-invalid={errorMessage ? true : undefined} 
         aria-errormessage={errorMessage ? `error-${id}` : undefined}
         required={required}
-        {...props}><textarea/>
+        {...props}>{value}<textarea/>
       {errorMessage && <p id={`error-${id}`} role="alert">{errorMessage}</p>}
     </div>
   )
