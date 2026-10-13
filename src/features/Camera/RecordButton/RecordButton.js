@@ -18,6 +18,44 @@ function RecordButton({ mode, setMode, streamRef, timer }) {
     recorderRef.current = recorder
   }
 
+  
+const stopRecord = async () => {
+  try {
+    const recorder = recorderRef.current
+
+    if (!recorder) {
+      throw new Error('No active recording found.')
+    }
+
+    const blob = await camera.stopRecording(
+      recorder,
+      framesRef.current
+    )
+
+    console.log('New recording:', {
+      size: blob.size,
+      type: blob.type
+    })
+
+    setFootage(blob)
+
+    const db = database()
+    await db.put({
+      id: 'footage',
+      footage: blob
+    })
+
+    setMode('off')
+    recorderRef.current = null
+  } catch (error) {
+    setMode('off')
+    console.error('Failed to stop recording:', error)
+    alert(error.message)
+  }
+}
+
+
+  /*
   const stopRecord = async () => {
     try {
       setMode('off')
@@ -31,6 +69,7 @@ function RecordButton({ mode, setMode, streamRef, timer }) {
       console.log(error)
     }
   }
+  */
   
   const onClick = event => {
     navigator.vibrate?.(50)
