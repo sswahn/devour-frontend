@@ -9,6 +9,7 @@ import styles from './Publisher.module.css'
 function Publisher({ openEditor }) {
   const [location, setLocation] = useState('')
   const [description, setDescription] = useState('')
+  const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
 
   const handleLocation = event => {
@@ -42,7 +43,7 @@ function Publisher({ openEditor }) {
       //setMessage('Success.')
       
     } catch (error) {
-      setError(error)
+      setErrorMessage(error.message)
     } finally {
       setLoading(false)
     }
