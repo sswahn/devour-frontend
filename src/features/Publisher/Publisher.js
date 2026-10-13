@@ -20,7 +20,7 @@ function Publisher({ openEditor }) {
     setDescription(value)
   }
 
-  const publish = async event => {
+  const onSubmit = async event => {
     // get s3 auth
 
     try {
@@ -54,12 +54,10 @@ function Publisher({ openEditor }) {
     // loadFromStorage()
   }, [])
 
-  // loading spinner or notifications of successful upload, probably notifications
-  
   return (
     <section className={styles.publisher}>
-      <div>
-        <BackButton overlay="publisher" close={openEditor} />
+      <BackButton overlay="publisher" close={openEditor} />
+      <form onSubmit={onSubmit}>
         <Input
           id="location"
           type="text"
@@ -70,8 +68,8 @@ function Publisher({ openEditor }) {
           required 
         />
         <textarea id="description" name="description" aria-label="add a description">{description}</textarea>
-        <button onClick={publish} type="button">Submit</button>
-      </div>
+        <button type="submit">Submit</button>
+      </form>
     </section>
   )
 }
