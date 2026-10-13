@@ -1249,7 +1249,7 @@
   width: 100%;
 }
 
-.qlaG5Gv1ORFLSpP42REH button {
+.qlaG5Gv1ORFLSpP42REH > button {
   align-items: center;
   background: var(--button-bar-bg);
   border: none;
