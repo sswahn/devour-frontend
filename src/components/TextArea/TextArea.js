@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import styles from './TextArea.module.css'
 
-function TextArea({ id, type, label, value, inputMode, autoComplete, error, required, ...props }) {
+function TextArea({ id, type, label, value, inputMode = 'text', autoComplete, error, required, ...props }) {
   const [errorMessage, setErrorMessage] = useState('')
   const textAreaRef = useRef(null)
 
