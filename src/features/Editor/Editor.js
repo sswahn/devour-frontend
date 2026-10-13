@@ -50,7 +50,7 @@ function Editor({ openCamera, openPublisher }) {
       isBlob: footage instanceof Blob,
       size: footage?.size,
       type: footage?.type,
-      recorderMimeType: mediaRecorder?.mimeType,
+     // recorderMimeType: mediaRecorder?.mimeType,
       firstBytes: footage
         ? [...new Uint8Array(
             await footage.slice(0, 4).arrayBuffer()
