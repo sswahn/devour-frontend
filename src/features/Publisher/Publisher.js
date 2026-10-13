@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import server from '../../utilities/server'
+import validate from '../../utilities/validate'
 import BackButton from '../../components/BackButton/BackButton'
 import Input from '../../components/Input/Input'
 import TextArea from '../../components/TextArea/TextArea'
@@ -32,11 +34,11 @@ function Publisher({ openEditor }) {
       const description = formData.get('description').trim()
       
       const request = {
-        location: validate.location(location), // add to validate util
-        description: validate.description(description) 
+     //   location: validate.location(location), // add to validate util
+    //    description: validate.description(description) 
       }
   
-      const response = await server.post(api.publish, request)
+     // const response = await server.post(api.publish, request)
       //setMessage('Success.')
       
     } catch (error) {
