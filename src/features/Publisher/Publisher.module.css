@@ -12,7 +12,7 @@
   z-index: 150;
 }
 
-.publisher > div {
+.publisher > form {
   background-color: var(--surface-raised);
   height: 100dvh;
   inset: 0;
