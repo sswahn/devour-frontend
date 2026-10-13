@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import styles from './Input.module.css'
 
-const Input = ({ id, type, label, inputMode, autoComplete, error, required, ...props }) => {
+const Input = ({ id, type, label, inputMode, autoComplete, error, required }) => {
   const [errorMessage, setErrorMessage] = useState('')
   const inputRef = useRef(null)
 
