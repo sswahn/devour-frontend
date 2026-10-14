@@ -61,25 +61,6 @@ function Camera({ openEditor }) {
     }
   }, [])
 
-  // param should be an array, need to update function to handle array of blobs:
-  const getVideoDuration = blob => {
-    return new Promise((resolve, reject) => {
-      const video = document.createElement('video')
-      const cleanup = () => URL.revokeObjectURL(video.src)
-      video.preload = 'metadata'
-      video.onloadedmetadata = () => {
-        cleanup()
-        resolve(video.duration) // Time length in seconds
-      }
-      video.onerror = error => {
-        cleanup()
-        reject(error)
-      }
-      video.src = URL.createObjectURL(blob)
-    })
-  }
-
-  // just store (timer) duration and footage together in indexeddb
   const loadFromStorage = async () => {
     const db = database()
     const storage = await db.get('footage')
@@ -87,13 +68,13 @@ function Camera({ openEditor }) {
     console.log('typeof storage (footage): ', typeof storage)
     console.log('stored footage: ', storage)
     
-    if (storage) {
-      const duration = await getVideoDuration(storage.footage)
+    if (storage?.footage.length > 0) {
+      const totalDuration = storage.footage.reduce((acc, val) => acc + val.duration, 0)
 
-      console.log('duration: ', duration)
+      console.log('total duration subtracted from timer: ', totalDuration)
       
       setFootage(storage.footage)
-      setTimer(60 - duration)
+      setTimer(60 - totalDuration)
     }
   }
 
