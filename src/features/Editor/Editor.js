@@ -39,11 +39,10 @@ function Editor({ openCamera, openPublisher }) {
   useEffect(async () => {
 
     // footage is now an array of blobs
-    // perhaps make source an array of urls
     
     console.log('footage: ', footage)
     
-    const videoUrl = footage.map(blob => URL.createObjectURL(blob)) // ?
+    const videoUrl = footage.map(obj => URL.createObjectURL(obj.clip))
     setSource(videoUrl)
 
     console.log('videoUrl: ', videoUrl)
