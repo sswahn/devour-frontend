@@ -31,7 +31,7 @@ const stopRecord = async () => {
       framesRef.current
     )
     
-    const duration = clip.getDuration(blob)
+    const duration = await clip.getDuration(blob)
 
     const data = {
       id: crypto.randomUUID(),
