@@ -33,4 +33,4 @@ const clip = {
   },
 }
 
-export default clips
+export default clip
