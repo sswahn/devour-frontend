@@ -61,6 +61,7 @@ function Camera({ openEditor }) {
     }
   }, [])
 
+  // param should be an array, need to update function to handle array of blobs:
   const getVideoDuration = blob => {
     return new Promise((resolve, reject) => {
       const video = document.createElement('video')
@@ -81,7 +82,8 @@ function Camera({ openEditor }) {
   const loadFromStorage = async () => {
     const db = database()
     const storage = await db.get('footage')
-    
+
+    console.log('typeof storage (footage): ', typeof storage)
     console.log('stored footage: ', storage)
     
     if (storage) {
@@ -95,7 +97,7 @@ function Camera({ openEditor }) {
   }
 
   useEffect(() => {
-    if (!footage) {
+    if (!footage.length) {
       loadFromStorage()
     }
   }, [])
