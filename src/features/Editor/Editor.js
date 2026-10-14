@@ -34,8 +34,9 @@ function Editor({ openCamera, openPublisher }) {
   }
 
   const onEnded = event => {
+    console.log('clip ended setting new source index...')
     setCurrentClipIndex(index => {
-      if (index < source.length - 1) {
+      if (index < sources.length - 1) {
         return index + 1
       }
       return index
