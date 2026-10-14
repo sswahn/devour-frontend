@@ -32,6 +32,15 @@ function Editor({ openCamera, openPublisher }) {
     }
   }
 
+  const onEnded = event => {
+    setCurrentClipIndex(index => {
+      if (index < source.length - 1) {
+        return index + 1
+      }
+      return index
+    })
+  }
+
   useEffect(() => {
     // loadFromStorage()
   }, [])
@@ -53,6 +62,7 @@ function Editor({ openCamera, openPublisher }) {
       <MenuButton openMenu={openMenu} /> 
       <SubmitButton openPublisher={openPublisher} /> 
       <video id="video-editor" ref={videoRef} src={source} autoPlay loop playsInline
+        onEnded={onEnded}
         onLoadedMetadata={() => console.log('Video metadata loaded')}
         onCanPlay={() => console.log('Video can play')}
         onError={e => console.log('Video error:', e.currentTarget.error)}
