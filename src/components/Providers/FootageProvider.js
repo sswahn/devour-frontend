@@ -5,7 +5,7 @@ const FootageContext = createContext(null)
 // consider moving this to Wizard
 
 function FootageProvider({ children }) {
-  const [footage, setFootage] = useState(null)
+  const [footage, setFootage] = useState([])
 
   return (
     <FootageContext.Provider value={{ footage, setFootage }}>
