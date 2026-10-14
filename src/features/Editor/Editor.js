@@ -38,25 +38,15 @@ function Editor({ openCamera, openPublisher }) {
 
   useEffect(async () => {
 
+    // footage is now an array of blobs
+    // perhaps make source an array of urls
+    
     console.log('footage: ', footage)
     
-    const videoUrl = URL.createObjectURL(footage) // pass footage directly, after testing complete
+    const videoUrl = footage.map(blob => URL.createObjectURL(blob)) // ?
     setSource(videoUrl)
 
     console.log('videoUrl: ', videoUrl)
-
-    console.warn({
-      footage,
-      isBlob: footage instanceof Blob,
-      size: footage?.size,
-      type: footage?.type,
-     // recorderMimeType: mediaRecorder?.mimeType,
-      firstBytes: footage
-        ? [...new Uint8Array(
-            await footage.slice(0, 4).arrayBuffer()
-          )].map(byte => byte.toString(16).padStart(2, '0')).join(' ')
-        : null
-    })
     
     return () => {
       URL.revokeObjectURL(videoUrl)
