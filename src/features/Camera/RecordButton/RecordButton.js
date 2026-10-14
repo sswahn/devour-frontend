@@ -30,12 +30,11 @@ const stopRecord = async () => {
       framesRef.current
     )
 
-    // need to add up total duration of each existing duration
     let totalDuration = 0
     if (footage.length > 0) {
       totalDuration = footage.reduce((acc, val) => acc + val.duration, 0)
     }
-    // subtract total duration from 60 to get trimStart of current clip
+ 
     const clipStart = totalDuration > 0 ? 60 - totalDuration : 0
     const duration = clipStart - timer
 
@@ -45,7 +44,7 @@ const stopRecord = async () => {
       name: `Clip ${new Date().toLocaleTimeString()}`,
       duration,
       trimStart: clipStart,
-      trimEnd: duration, // need to check this.
+      trimEnd: clipStart - duration,
       mimeType: blob.type || 'video/webm',
     }
 
