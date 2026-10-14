@@ -34,17 +34,16 @@ const stopRecord = async () => {
     if (footage.length > 0) {
       totalDuration = footage.reduce((acc, val) => acc + val.duration, 0)
     }
- 
-    const clipStart = totalDuration > 0 ? 60 - totalDuration : 0
-    const duration = clipStart - timer
+    
+    const duration = totalDuration + timer
 
     const data = {
       id: crypto.randomUUID(),
       clip: blob,
       name: `Clip ${new Date().toLocaleTimeString()}`,
       duration,
-      trimStart: clipStart,
-      trimEnd: clipStart - duration,
+      trimStart: totalDuration,
+      trimEnd: totalDuration + duration,
       mimeType: blob.type || 'video/webm',
     }
 
