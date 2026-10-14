@@ -30,15 +30,12 @@ const stopRecord = async () => {
       framesRef.current
     )
 
-    console.log('New recording:', {
-      size: blob.size,
-      type: blob.type
-    })
+    const clips = [...(footage ?? []), blob]
 
-    setFootage(blob)
+    setFootage(clips)
 
     const db = database()
-    await db.put({ id: 'footage', footage: blob })
+    await db.put({ id: 'footage', footage: clips })
 
     setMode('off')
     recordingRef.current = null
