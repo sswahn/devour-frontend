@@ -79,6 +79,7 @@ function Camera({ openEditor }) {
     })
   }
 
+  // just store (timer) duration and footage together in indexeddb
   const loadFromStorage = async () => {
     const db = database()
     const storage = await db.get('footage')
