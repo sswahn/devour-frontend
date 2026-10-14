@@ -13,7 +13,7 @@ function Editor({ openCamera, openPublisher }) {
   const [data, setData] = useState({
     caption: ''
   })
-  const [source, setSource] = useState('')
+  const [source, setSource] = useState([])
   const [currentClipIndex, setCurrentClipIndex] = useState(0)
   const videoRef = useRef(null)
   
@@ -62,7 +62,7 @@ function Editor({ openCamera, openPublisher }) {
 
   useEffect(() => {
     const urls = footage.map(obj => URL.createObjectURL(obj.clip))
-    setSource(videoUrl)
+    setSource(urls)
     
     return () => {
       urls.forEach(url => URL.revokeObjectURL(url))
