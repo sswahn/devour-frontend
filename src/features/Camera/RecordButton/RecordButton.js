@@ -30,7 +30,7 @@ const stopRecord = async () => {
       framesRef.current
     )
 
-    const duration = 300 - timer
+    const duration = 60 - timer
 
     const data = {
       id: crypto.randomUUID(),
