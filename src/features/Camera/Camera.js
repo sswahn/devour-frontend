@@ -90,7 +90,7 @@ function Camera({ openEditor }) {
       <MuteButton streamRef={streamRef} />
       <ViewPort videoRef={videoRef} />
       <RecordButton mode={mode} setMode={setMode} streamRef={streamRef} timer={timer} />
-      {footage && <EditorButton openEditor={openEditor} />}
+      {footage.length > 0 && <EditorButton openEditor={openEditor} />}
     </section>
   )
 }
