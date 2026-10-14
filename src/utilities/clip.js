@@ -1,5 +1,5 @@
 
-const video = { 
+const clip = { 
   getDuration(blob) {
     return new Promise((resolve, reject) => {
       const video = document.createElement('video')
@@ -33,4 +33,4 @@ const video = {
   },
 }
 
-export default video
+export default clips
