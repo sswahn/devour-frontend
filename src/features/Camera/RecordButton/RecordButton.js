@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import useFootage from '../../../hooks/useFootage'
 import camera from '../../../utilities/camera'
+import clip from '../../../utilities/clip'
 import database from '../../../utilities/database'
 import styles from './RecordButton.module.css'
 
@@ -29,39 +30,33 @@ const stopRecord = async () => {
       recordingRef.current,
       framesRef.current
     )
-
-    let totalDuration = 0
-    if (footage.length > 0) {
-      totalDuration = footage.reduce((acc, val) => acc + val.duration, 0)
-    }
     
-    const duration = totalDuration - timer
-
-    console.log('clip duration: ', duration)
+    const duration = clip.getDuration(blob)
 
     const data = {
       id: crypto.randomUUID(),
       clip: blob,
       name: `Clip ${new Date().toLocaleTimeString()}`,
       duration,
-      trimStart: totalDuration,
-      trimEnd: totalDuration + duration,
-      mimeType: blob.type || 'video/webm',
+      trimStart: 0,
+      trimEnd: duration,
+      mimeType: blob.type || 'video/webm'
     }
 
     const clips = [...(footage ?? []), data]
+
+    console.log('updated footage (clips): ', clips)
 
     setFootage(clips)
 
     const db = database()
     await db.put({ id: 'footage', footage: clips })
 
-    setMode('off')
     recordingRef.current = null
   } catch (error) {
+    console.error('Failed to stop recording:', error) // polish error handling: use setErrorMessage
+  } finally {
     setMode('off')
-    console.error('Failed to stop recording:', error)
-    alert(error.message)
   }
 }
 
