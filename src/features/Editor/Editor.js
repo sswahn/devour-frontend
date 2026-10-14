@@ -34,13 +34,9 @@ function Editor({ openCamera, openPublisher }) {
   }
 
   const onEnded = event => {
-    console.log('clip ended setting new source index...')
-    setCurrentClipIndex(index => {
-      if (index < sources.length - 1) {
-        return index + 1
-      }
-      return index
-    })
+    setCurrentClipIndex(index => 
+      index < sources.length - 1 ? index + 1 : index
+    )
   }
 
   useEffect(() => {
@@ -50,6 +46,9 @@ function Editor({ openCamera, openPublisher }) {
   useEffect(() => {
     const video = videoRef.current
     if (!video || !sources.length) {
+      return
+    }
+    if (currentClipIndex >= sources.length) {
       return
     }
     
