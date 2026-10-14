@@ -35,7 +35,9 @@ const stopRecord = async () => {
       totalDuration = footage.reduce((acc, val) => acc + val.duration, 0)
     }
     
-    const duration = totalDuration + timer
+    const duration = totalDuration - timer
+
+    console.log('clip duration: ', duration)
 
     const data = {
       id: crypto.randomUUID(),
