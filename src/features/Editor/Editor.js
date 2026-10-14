@@ -36,19 +36,12 @@ function Editor({ openCamera, openPublisher }) {
     // loadFromStorage()
   }, [])
 
-  useEffect(async () => {
-
-    // footage is now an array of blobs
-    
-    console.log('footage: ', footage)
-    
-    const videoUrl = footage.map(obj => URL.createObjectURL(obj.clip))
+  useEffect(() => {
+    const urls = footage.map(obj => URL.createObjectURL(obj.clip))
     setSource(videoUrl)
-
-    console.log('videoUrl: ', videoUrl)
     
     return () => {
-      URL.revokeObjectURL(videoUrl)
+      urls.forEach(url => URL.revokeObjectURL(url))
     }
   }, [footage])
 
