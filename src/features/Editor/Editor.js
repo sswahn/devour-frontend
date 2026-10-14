@@ -14,6 +14,7 @@ function Editor({ openCamera, openPublisher }) {
     caption: ''
   })
   const [source, setSource] = useState('')
+  const [currentClipIndex, setCurrentClipIndex] = useState(0)
   const videoRef = useRef(null)
   
   const openMenu = () => {
@@ -44,6 +45,20 @@ function Editor({ openCamera, openPublisher }) {
   useEffect(() => {
     // loadFromStorage()
   }, [])
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video || !source.length) {
+      return
+    }
+    
+    video.src = source[currentClipIndex]
+    video.load()
+  
+    video.play().catch(error => {
+      console.error('Clip playback failed: ', error)
+    })
+  }, [source, currentClipIndex])
 
   useEffect(() => {
     const urls = footage.map(obj => URL.createObjectURL(obj.clip))
