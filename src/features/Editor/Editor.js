@@ -77,7 +77,7 @@ function Editor({ openCamera, openPublisher }) {
       {menuIsOpen && <Menu data={data} setData={setData} closeMenu={closeMenu} />}
       <MenuButton openMenu={openMenu} /> 
       <SubmitButton openPublisher={openPublisher} /> 
-      <video id="video-editor" ref={videoRef} src={sources[0]} autoPlay loop playsInline
+      <video id="video-editor" ref={videoRef} autoPlay loop playsInline
         onEnded={onEnded}
         onLoadedMetadata={() => console.log('Video metadata loaded')}
         onCanPlay={() => console.log('Video can play')}
