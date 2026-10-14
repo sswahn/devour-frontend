@@ -30,7 +30,19 @@ const stopRecord = async () => {
       framesRef.current
     )
 
-    const clips = [...(footage ?? []), blob]
+    const duration = 300 - timer
+
+    const data = {
+      id: crypto.randomUUID(),
+      clip: blob,
+      name: `Clip ${new Date().toLocaleTimeString()}`,
+      duration,
+      trimStart: 0, // needs to differentiate
+      trimEnd: duration,
+      mimeType: blob.type || 'video/webm',
+    }
+
+    const clips = [...(footage ?? []), data]
 
     setFootage(clips)
 
