@@ -50,10 +50,10 @@ const stopRecord = async () => {
     const db = database()
     await db.put({ id: 'footage', footage: clips })
     setFootage(clips)
-    recordingRef.current = null
   } catch (error) {
     console.error('Failed to stop recording:', error) // polish error handling: use setErrorMessage
   } finally {
+    recordingRef.current = null
     setMode('off')
   }
 }
