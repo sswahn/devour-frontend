@@ -13,7 +13,7 @@ function Editor({ openCamera, openPublisher }) {
   const [data, setData] = useState({
     caption: ''
   })
-  const [source, setSource] = useState([])
+  const [sources, setSources] = useState([])
   const [currentClipIndex, setCurrentClipIndex] = useState(0)
   const videoRef = useRef(null)
   
@@ -48,21 +48,21 @@ function Editor({ openCamera, openPublisher }) {
 
   useEffect(() => {
     const video = videoRef.current
-    if (!video || !source.length) {
+    if (!video || !sources.length) {
       return
     }
     
-    video.src = source[currentClipIndex]
+    video.src = sources[currentClipIndex]
     video.load()
   
     video.play().catch(error => {
       console.error('Clip playback failed: ', error)
     })
-  }, [source, currentClipIndex])
+  }, [sources, currentClipIndex])
 
   useEffect(() => {
     const urls = footage.map(obj => URL.createObjectURL(obj.clip))
-    setSource(urls)
+    setSources(urls)
     
     return () => {
       urls.forEach(url => URL.revokeObjectURL(url))
@@ -76,7 +76,7 @@ function Editor({ openCamera, openPublisher }) {
       {menuIsOpen && <Menu data={data} setData={setData} closeMenu={closeMenu} />}
       <MenuButton openMenu={openMenu} /> 
       <SubmitButton openPublisher={openPublisher} /> 
-      <video id="video-editor" ref={videoRef} src={source} autoPlay loop playsInline
+      <video id="video-editor" ref={videoRef} src={sources[0]} autoPlay loop playsInline
         onEnded={onEnded}
         onLoadedMetadata={() => console.log('Video metadata loaded')}
         onCanPlay={() => console.log('Video can play')}
