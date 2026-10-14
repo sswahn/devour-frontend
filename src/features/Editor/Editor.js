@@ -63,6 +63,7 @@ function Editor({ openCamera, openPublisher }) {
 
   useEffect(() => {
     const urls = footage.map(obj => URL.createObjectURL(obj.clip))
+    setCurrentClipIndex(0)
     setSources(urls)
     
     return () => {
