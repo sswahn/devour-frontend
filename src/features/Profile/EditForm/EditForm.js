@@ -28,7 +28,7 @@ function EditForm({ profile, setProfile }) {
         biography: biography ? validate.biography(biography) : ''
       }
       const db = database()
-      db.put('profile', request)
+      db.put({ id: 'profile', profile: request })
       setProfile(prev => ({ ...prev, ...request }))
       closeDialog()
     } catch (error) {
