@@ -57,7 +57,7 @@ function Profile() {
     }
   }, [profile.picture])
 
-  // consider top of profile background image.
+  // consider adding cover photo option for profile background.
 
   return (
     <section id={overlay.profile} className={styles.profile} ref={overlayRef} onKeyDown={onKeyDown} role="dialog" aria-modal="true">
