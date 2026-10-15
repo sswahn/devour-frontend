@@ -57,6 +57,8 @@ function Profile() {
     }
   }, [profile.picture])
 
+  // consider top of profile background image.
+
   return (
     <section id={overlay.profile} className={styles.profile} ref={overlayRef} onKeyDown={onKeyDown} role="dialog" aria-modal="true">
       <div onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={onPointerCancel}>
