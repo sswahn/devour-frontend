@@ -7,7 +7,12 @@ import styles from './EditForm.module.css'
 
 function EditForm({ profile, setProfile }) {
   const { closeDialog } = useDialog()
-  const [cachedProfile, setCachedProfile] = useState(profile)
+  const [cachedProfile, setCachedProfile] = useState({
+    picture: '',
+    username: '',
+    location: '',
+    biography: ''
+  })
   const [file, setFile] = useState(null)
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState(false)
@@ -45,7 +50,7 @@ function EditForm({ profile, setProfile }) {
   const handleImageFile = event => {
     const { files } = event.target
     if (!files?.length) {
-      return console.error('!files?.length was falsy')
+      return
     }
     setFile(files[0])
   }
@@ -87,6 +92,9 @@ function EditForm({ profile, setProfile }) {
     console.log('cached profile data: ', data)
     
     if (data) {
+
+      console.log('setting cached profile...')
+      
       setCachedProfile(prev => ({ ...prev, ...data }))
     }
   }
@@ -96,9 +104,11 @@ function EditForm({ profile, setProfile }) {
   }, [])
 
   useEffect(() => {
-    const picture = cachedProfile.picture || profile.picture
-    if (picture) {
-      createCanvas(picture)
+    if (cachedProfile.picture) {
+      return createImage(cachedProfile.picture)
+    }
+    if (profile.picture) {
+      return createCanvas(profile.picture)
     }
   }, [profile.picture, cachedProfile.picture])
 
