@@ -44,12 +44,18 @@ function EditForm({ profile, setProfile }) {
   }
 
   const handleImageFile = event => {
+    
+    console.log('event.target: ', event.target)
+    
     const { files } = event.target
+
+    console.log('files: ', files)
+    
     if (!files?.length) {
-      return
+      return console.error('!files?.length was falsy')
     }
 
-    console.log('handleImageFile setFile: ', file)
+    console.log('handleImageFile setFile: ', files)
     
     setFile(files[0])
   }
