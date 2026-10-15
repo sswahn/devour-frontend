@@ -45,10 +45,12 @@ function Profile() {
 
   useEffect(() => {
     // loadData()
+    const url = URL.createObjectURL(profile.picture)
+    setProfile(prev => {...prev, profile.picture: url })
     return () => {
-      URL.revokeObjectURL(profile.picture)
+      URL.revokeObjectURL(url)
     }
-  }, [])
+  }, [profile.picture])
 
   return (
     <section id={overlay.profile} className={styles.profile} ref={overlayRef} onKeyDown={onKeyDown} role="dialog" aria-modal="true">
@@ -56,7 +58,7 @@ function Profile() {
         <div>
           <TopNav profile={profile} setProfile={setProfile} />
           <header>
-            <img src={URL.createObjectURL(profile.picture)} alt={`${profile.username}'s profile picture`} />
+            <img src={profile.picture} alt={`${profile.username}'s profile picture`} />
             <h1 id="username">{profile.username}</h1>
             <address>{profile.location}</address>
             {profile.biography && <p id="biography">{profile.biography}</p>}
