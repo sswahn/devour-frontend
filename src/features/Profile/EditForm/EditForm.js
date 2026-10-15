@@ -27,11 +27,11 @@ function EditForm({ profile, setProfile }) {
         location: location, // validate.location(location), // add to validate util
         biography: biography ? validate.biography(biography) : ''
       }
-      // consider the order of operations below
-      const db = database()
-      await db.put({ id: 'profile', profile: request })
+      
       setProfile(prev => ({ ...prev, ...request }))
       closeDialog()
+      const db = database()
+      await db.put({ id: 'profile', profile: request })
     } catch (error) {
       setError(error)
     }
