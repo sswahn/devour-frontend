@@ -117,13 +117,10 @@ function EditForm({ profile, setProfile }) {
   }, [])
 
   useEffect(() => {
-    if (cachedProfile.picture) {
-      return createImage(cachedProfile.picture)
-    }
     if (profile.picture) {
-      return createCanvas(profile.picture)
+      createCanvas(profile.picture)
     }
-  }, [profile.picture, cachedProfile.picture])
+  }, [profile.picture])
 
   useEffect(() => {
     if (file) {
