@@ -102,7 +102,7 @@ function EditForm({ profile, setProfile }) {
 
     const item = localStorage.getItem('profile')
     const cache = JSON.parse(item)
-    if (storage) {
+    if (cache) {
       console.log('setting text from cache')
       setCachedProfile(prev => ({ ...prev, ...cache }))
     }
