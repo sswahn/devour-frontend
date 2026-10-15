@@ -26,7 +26,8 @@ function EditForm({ profile, setProfile }) {
         location: location, // validate.location(location), // add to validate util
         biography: biography ? validate.biography(biography) : ''
       }
-      localStorage.setItem('profile', JSON.stringify(request))
+      const db = database()
+      db.put('profile', request)
       setProfile(prev => ({ ...prev, ...request }))
       closeDialog()
     } catch (error) {
