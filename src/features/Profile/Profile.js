@@ -46,6 +46,7 @@ function Profile() {
 
   useEffect(() => {
     // handle optimistic setting of edit to profile image
+    //TODO: write fallback logic if server rejects. use alert() or add to notifications.
     if (typeof profile.picture === 'string') {
       return
     }
