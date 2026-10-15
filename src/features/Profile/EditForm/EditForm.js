@@ -162,9 +162,12 @@ function EditForm({ profile, setProfile }) {
         aria-label="update your location" />
       <TextArea
         id="biography"
+        label="Bio"
         value={profile.biography}
         onChange={onChange}
+        error={errorMessage}
         aria-label="update your bio"
+        required
       />
       <label htmlFor="biography">Bio:</label>
       <textarea id="biography" name="biography" onChange={onChange} aria-label="update your bio">{profile.biography}</textarea>
