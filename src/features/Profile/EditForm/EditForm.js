@@ -12,7 +12,7 @@ function EditForm({ profile, setProfile }) {
   const canvasRef = useRef(null)
   const fileInputRef = useRef(null)
 
-  const onSubmit = event => { // need to style image circular css
+  const onSubmit = async event => { // need to style image circular css
     try {
       event.preventDefault()
       const formData = new FormData(event.target)
@@ -21,10 +21,10 @@ function EditForm({ profile, setProfile }) {
       const biography = formData.get('biography').trim()
 
       console.log('file: ', file)
-      console.log('what returns from this validate.image(file): ', validate.image(file))
+      console.log('what returns from this validate.image(file): ', await validate.image(file))
       
       const request = {
-        picture: file ? validate.image(file) : null,
+        picture: file ? await validate.image(file) : null,
         username: validate.username(username),
         location: location, // validate.location(location), // add to validate util
         biography: biography ? validate.biography(biography) : ''
