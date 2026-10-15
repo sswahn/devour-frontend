@@ -19,13 +19,18 @@ function EditForm({ profile, setProfile }) {
       const username = formData.get('username').trim()
       const location = formData.get('location').trim()
       const biography = formData.get('biography').trim()
+
+      console.log('file: ', file)
+      console.log('what returns from this validate.image(file): ', validate.image(file))
       
       const request = {
-        picture: file ? validate.image(file) : null, // if using this, needs to revoke with the file in the profile component
+        picture: file ? validate.image(file) : null,
         username: validate.username(username),
         location: location, // validate.location(location), // add to validate util
         biography: biography ? validate.biography(biography) : ''
       }
+
+      console.log('request: ', request)
   
       setProfile(prev => ({ ...prev, ...request }))
       closeDialog()
@@ -43,6 +48,9 @@ function EditForm({ profile, setProfile }) {
     if (!files?.length) {
       return
     }
+
+    console.log('handleImageFile setFile: ', file)
+    
     setFile(files[0])
   }
 
