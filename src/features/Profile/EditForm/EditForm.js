@@ -146,8 +146,8 @@ function EditForm({ profile, setProfile }) {
         id="username"
         type="text"
         label="Username"
-        error={errorMessage}
         value={profile.username}
+        error={errorMessage}
         onChange={onChange}
         required
         aria-label="update your username" />
@@ -155,8 +155,8 @@ function EditForm({ profile, setProfile }) {
         id="location"
         type="text"
         label="Location"
-        error={errorMessage} // needs work
         value={profile.location}
+        error={errorMessage} // needs work
         onChange={onChange}
         required
         aria-label="update your location" />
