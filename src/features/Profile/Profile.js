@@ -45,7 +45,7 @@ function Profile() {
   }
 
   useEffect(() => {
-    // loadData()
+    // handle stale-while-revalidating profile image edit
     if (typeof profile.picture === 'string') {
       return
     }
