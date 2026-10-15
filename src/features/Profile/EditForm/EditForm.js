@@ -93,9 +93,9 @@ function EditForm({ profile, setProfile }) {
 
   const loadDataFromStorage = async () => {
     const db = database()
-    const { profile: { picture } } = await db.get('profile') ?? {}
-    if (picture) {
-      console.log('setting picture from cache')
+    const data = await db.get('profile')
+    if (data?.profile?.picture) {
+      console.log('setting picture from db')
       setFile(picture)
       createImage(picture)
     }
@@ -103,7 +103,7 @@ function EditForm({ profile, setProfile }) {
     const item = localStorage.getItem('profile')
     const cache = JSON.parse(item)
     if (cache) {
-      console.log('setting text from cache')
+      console.log('setting text from storage')
       setCachedProfile(prev => ({ ...prev, ...cache }))
     }
   }
