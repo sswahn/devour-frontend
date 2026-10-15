@@ -91,12 +91,14 @@ function EditForm({ profile, setProfile }) {
     
     console.log('cached profile data: ', data)
     
-    if (data) {
-
-      console.log('setting cached profile...')
-      
-      setCachedProfile(prev => ({ ...prev, ...data }))
+    if (!data) {
+      return
     }
+
+    console.log('setting cached profile...')
+      
+    setCachedProfile(prev => ({ ...prev, ...data }))
+    
   }
 
   useEffect(() => {
