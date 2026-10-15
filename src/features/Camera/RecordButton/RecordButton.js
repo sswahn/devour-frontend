@@ -17,61 +17,43 @@ function RecordButton({ mode, setMode, streamRef, timer }) {
     setMode('on')
     recordingRef.current = camera.startRecording(streamRef.current, framesRef.current)
   }
-
   
-const stopRecord = async () => {
-  try {
-    if (!recordingRef.current) {
-      throw new Error('No active recording found.')
-    }
-    const blob = await camera.stopRecording(
-      recordingRef.current,
-      framesRef.current
-    )
-    const duration = await clip.getDuration(blob)
-    recordingRef.current = null
-    
-    const data = {
-      id: crypto.randomUUID(),
-      clip: blob,
-      name: `Clip ${new Date().toLocaleTimeString()}`,
-      duration,
-      trimStart: 0,
-      trimEnd: duration,
-      mimeType: blob.type || 'video/webm'
-    }
-
-    const clips = [...(footage ?? []), data]
-
-    console.log('updated footage (clips): ', clips)
-    
-    setFootage(clips)
-    const db = database()
-    await db.put({ id: 'footage', footage: clips })
-    
-  } catch (error) {
-    console.error('Failed to stop recording:', error) // polish error handling: use setErrorMessage
-  } finally {
-    setMode('off')
-  }
-}
-
-
-  /*
   const stopRecord = async () => {
     try {
-      setMode('off')
-      const blob = await camera.stopRecording(recorderRef.current, framesRef.current)
-      const newFootage = new Blob([ footage, blob ], { type: 'video/webm' }) 
-      setFootage(newFootage)
+      if (!recordingRef.current) {
+        throw new Error('No active recording found.')
+      }
+      const blob = await camera.stopRecording(
+        recordingRef.current,
+        framesRef.current
+      )
+      const duration = await clip.getDuration(blob)
+      recordingRef.current = null
+      
+      const data = {
+        id: crypto.randomUUID(),
+        clip: blob,
+        name: `Clip ${new Date().toLocaleTimeString()}`,
+        duration,
+        trimStart: 0,
+        trimEnd: duration,
+        mimeType: blob.type || 'video/webm'
+      }
+  
+      const clips = [...(footage ?? []), data]
+  
+      console.log('updated footage (clips): ', clips)
+      
+      setFootage(clips)
       const db = database()
-      db.put({ id: 'footage', footage: newFootage })
+      await db.put({ id: 'footage', footage: clips })
+      
     } catch (error) {
-      alert(error.message)
-      console.log(error)
+      console.error('Failed to stop recording:', error) // polish error handling: use setErrorMessage
+    } finally {
+      setMode('off')
     }
   }
-  */
   
   const onClick = event => {
     navigator.vibrate?.(50)
