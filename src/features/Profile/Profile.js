@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { overlay } from '../../config'
 import server from '../../utilities/server'
+import database from '../../utilities/database'
 import useOverlay from '../../hooks/useOverlay'
 import useProfile from '../../hooks/useProfile'
 import useSwipeFromEdge from '../../hooks/useSwipeFromEdge'
@@ -42,6 +43,17 @@ function Profile() {
   const loadData = () => {
     // userProfile used to request profile data
     // setProfile(response.data)
+  }
+  
+  const loadDataFromStorage = async () => {
+    const db = database()
+    const data = await db.get('profile')
+    
+    console.log('cached data: ', data)
+    
+    if (data) {
+      setProfile(prev => { ...prev, ...data })
+    }
   }
 
   useEffect(() => {
