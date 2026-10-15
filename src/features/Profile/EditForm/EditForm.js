@@ -39,11 +39,9 @@ function EditForm({ profile, setProfile }) {
         location: location, // validate.location(location), // add to validate util
         biography: biography ? validate.biography(biography) : ''
       }
-      
       setProfile(prev => ({ ...prev, ...request }))
       closeDialog()
-      const db = database()
-      await db.put({ id: 'profile', profile: request })
+      // async server request/response
     } catch (error) {
       setError(error)
     }
