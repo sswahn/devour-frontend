@@ -20,9 +20,6 @@ function EditForm({ profile, setProfile }) {
       const location = formData.get('location').trim()
       const biography = formData.get('biography').trim()
 
-      console.log('file: ', file)
-      console.log('what returns from this validate.image(file): ', await validate.image(file))
-      
       const request = {
         picture: file ? await validate.image(file) : null,
         username: validate.username(username),
@@ -30,8 +27,6 @@ function EditForm({ profile, setProfile }) {
         biography: biography ? validate.biography(biography) : ''
       }
 
-      console.log('request: ', request)
-  
       setProfile(prev => ({ ...prev, ...request }))
       closeDialog()
     } catch (error) {
@@ -44,19 +39,10 @@ function EditForm({ profile, setProfile }) {
   }
 
   const handleImageFile = event => {
-    
-    console.log('event.target: ', event.target)
-    
     const { files } = event.target
-
-    console.log('files: ', files)
-    
     if (!files?.length) {
       return console.error('!files?.length was falsy')
     }
-
-    console.log('handleImageFile setFile: ', files)
-    
     setFile(files[0])
   }
 
