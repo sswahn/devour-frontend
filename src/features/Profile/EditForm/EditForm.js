@@ -95,7 +95,7 @@ function EditForm({ profile, setProfile }) {
 
   const loadDataFromStorage = async () => {
     const db = database()
-    const { profile: picture } = await db.get('profile')
+    const { profile: { picture } } = await db.get('profile') ?? {}
 
     const item = localStorage.getItem('profile')
     const cache = JSON.parse(item)
