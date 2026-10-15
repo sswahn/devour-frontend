@@ -1,9 +1,11 @@
 import { useState, useRef, useEffect } from 'react'
+import useDialog from '../../../hooks/useDialog'
 import validate from '../../../utilities/validate'
 import Input from '../../../components/Input/Input'
 import styles from './EditForm.module.css'
 
 function EditForm({ profile, setProfile }) {
+  const { closeDialog } = useDialog()
   const [file, setFile] = useState(null)
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState(false)
@@ -26,7 +28,7 @@ function EditForm({ profile, setProfile }) {
       }
   
       setProfile(prev => ({ ...prev, ...request }))
-      
+      closeDialog()
     } catch (error) {
       setError(error)
     }
