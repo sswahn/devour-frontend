@@ -169,8 +169,6 @@ function EditForm({ profile, setProfile }) {
         aria-label="update your bio"
         required
       />
-      <label htmlFor="biography">Bio:</label>
-      <textarea id="biography" name="biography" onChange={onChange} aria-label="update your bio">{profile.biography}</textarea>
       <button type="submit" disabled={loading}>Submit</button>
     </form>
   )
