@@ -21,6 +21,7 @@ function Profile() {
     location: 'new york',
     biography: ''
    })
+  const [imageUrl, setImageUrl] = useState('')
   const [feedData, setFeedData] = useState([
     { picture: '', username: 'test_user1', video: 1, caption: 'test caption 1' },
     { picture: '', username: 'test_user2',  video: 2, caption: 'testing captions with multiple lines. It should expand upward instead of downward.' },
@@ -46,7 +47,7 @@ function Profile() {
   useEffect(() => {
     // loadData()
     const url = URL.createObjectURL(profile.picture)
-    setProfile(prev => {...prev, profile.picture: url })
+    setImageUrl(url)
     return () => {
       URL.revokeObjectURL(url)
     }
@@ -58,7 +59,7 @@ function Profile() {
         <div>
           <TopNav profile={profile} setProfile={setProfile} />
           <header>
-            <img src={profile.picture} alt={`${profile.username}'s profile picture`} />
+            <img src={imageUrl} alt={`${profile.username}'s profile picture`} />
             <h1 id="username">{profile.username}</h1>
             <address>{profile.location}</address>
             {profile.biography && <p id="biography">{profile.biography}</p>}
