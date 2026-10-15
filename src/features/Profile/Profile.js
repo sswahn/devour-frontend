@@ -52,7 +52,7 @@ function Profile() {
     console.log('cached profile data: ', data)
     
     if (data) {
-      setProfile(prev => { ...prev, ...data })
+      setProfile(prev => ({ ...prev, ...data }))
     }
   }
 
