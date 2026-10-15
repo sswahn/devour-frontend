@@ -3,6 +3,7 @@ import useDialog from '../../../hooks/useDialog'
 import validate from '../../../utilities/validate'
 import database from '../../../utilities/database'
 import Input from '../../../components/Input/Input'
+import TextArea from '../../../components/TextArea/TextArea'
 import styles from './EditForm.module.css'
 
 function EditForm({ profile, setProfile }) {
@@ -159,6 +160,12 @@ function EditForm({ profile, setProfile }) {
         onChange={onChange}
         required
         aria-label="update your location" />
+      <TextArea
+        id="biography"
+        value={profile.biography}
+        onChange={onChange}
+        aria-label="update your bio"
+      />
       <label htmlFor="biography">Bio:</label>
       <textarea id="biography" name="biography" onChange={onChange} aria-label="update your bio">{profile.biography}</textarea>
       <button type="submit" disabled={loading}>Submit</button>
