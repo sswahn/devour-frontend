@@ -48,7 +48,7 @@ const stopRecord = async () => {
     console.log('updated footage (clips): ', clips)
 
     const db = database()
-    db.put({ id: 'footage', footage: clips })
+    await db.put({ id: 'footage', footage: clips })
     setFootage(clips)
     recordingRef.current = null
   } catch (error) {
