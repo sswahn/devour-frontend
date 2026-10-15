@@ -7,6 +7,7 @@ import styles from './EditForm.module.css'
 
 function EditForm({ profile, setProfile }) {
   const { closeDialog } = useDialog()
+  const [cachedProfile, setCachedProfile] = useState(profile)
   const [file, setFile] = useState(null)
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState(false)
@@ -79,11 +80,27 @@ function EditForm({ profile, setProfile }) {
     URL.revokeObjectURL(image.src)
   }
 
-  useEffect(() => {
-    if (profile.picture) {
-      createCanvas(profile.picture)
+  const loadDataFromStorage = async () => { // once this works move it to EditForm component
+    const db = database()
+    const data = await db.get('profile')
+    
+    console.log('cached profile data: ', data)
+    
+    if (data) {
+      setCachedProfile(prev => ({ ...prev, ...data }))
     }
-  }, [profile.picture])
+  }
+
+  useEffect(() => {
+    loadDataFromStorage()
+  }, [])
+
+  useEffect(() => {
+    const picture = cachedProfile.picture || profile.picture
+    if (picture) {
+      createCanvas(picture)
+    }
+  }, [profile.picture, cachedProfile.picture])
 
   useEffect(() => {
     if (file) {
@@ -109,7 +126,7 @@ function EditForm({ profile, setProfile }) {
         type="text"
         label="Username"
         error={errorMessage}
-        defaultValue={profile.username}
+        defaultValue={cachedProfile.username || profile.username}
         required
         aria-label="update your username" />
       <Input
@@ -117,11 +134,11 @@ function EditForm({ profile, setProfile }) {
         type="text"
         label="Location"
         error={errorMessage} // needs work
-        defaultValue={profile.location}
+        defaultValue={cachedProfile.location || profile.location}
         required
         aria-label="update your location" />
       <label htmlFor="biography">Bio:</label>
-      <textarea id="biography" name="biography" aria-label="update your bio">{profile.biography}</textarea>
+      <textarea id="biography" name="biography" aria-label="update your bio">{cachedProfile.biography || profile.biography}</textarea>
       <button type="submit" disabled={loading}>Submit</button>
     </form>
   )
