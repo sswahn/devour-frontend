@@ -111,7 +111,7 @@ function EditForm({ profile, setProfile }) {
     if (storage) {
 
       console.log('setting text from cache')
-      setCachedProfile(prev => ({ ...prev, ...cache })
+      setCachedProfile(prev => ({ ...prev, ...cache }))
     }
   }
 
