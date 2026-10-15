@@ -46,6 +46,9 @@ function Profile() {
 
   useEffect(() => {
     // loadData()
+    if (typeof profile.picture === 'string') {
+      return
+    }
     const url = URL.createObjectURL(profile.picture)
     setImageUrl(url)
     return () => {
