@@ -8,7 +8,6 @@ import styles from './EditForm.module.css'
 function EditForm({ profile, setProfile }) {
   const { closeDialog } = useDialog()
   const [cachedProfile, setCachedProfile] = useState({
-    picture: '',
     username: '',
     location: '',
     biography: ''
@@ -61,7 +60,7 @@ function EditForm({ profile, setProfile }) {
     }
     setFile(files[0])
     const db = database()
-    db.put({ id: 'profile', profile: files[0] }).catch(alert)
+    db.put({ id: 'profile', picture: files[0] }).catch(alert)
   }
 
   const createImage = async file => {
@@ -94,20 +93,26 @@ function EditForm({ profile, setProfile }) {
     URL.revokeObjectURL(image.src)
   }
 
-  const loadDataFromStorage = async () => { // once this works move it to EditForm component
+  const loadDataFromStorage = async () => {
     const db = database()
-    const data = await db.get('profile')
+    const { profile: picture } = await db.get('profile')
+
+    const item = localStorage.getItem('profile')
+    const cache = JSON.parse(item)
     
-    console.log('cached profile data: ', data)
-    
-    if (!data) {
-      return
+    if (picture) {
+
+      console.log('setting picture from cache')
+      
+      setFile(picture)
+      createImage(picture)
     }
 
-    console.log('setting cached profile...')
-      
-    setCachedProfile(prev => ({ ...prev, ...data }))
-    
+    if (storage) {
+
+      console.log('setting text from cache')
+      setCachedProfile(prev => ({ ...prev, ...cache })
+    }
   }
 
   useEffect(() => {
