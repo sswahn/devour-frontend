@@ -94,6 +94,9 @@ function EditForm({ profile, setProfile }) {
   const loadDataFromStorage = async () => {
     const db = database()
     const data = await db.get('profile')
+
+    console.log('data (picture): ', data)
+    
     if (data?.profile?.picture) {
       console.log('setting picture from db')
       setFile(picture)
@@ -102,6 +105,9 @@ function EditForm({ profile, setProfile }) {
 
     const item = localStorage.getItem('profile')
     const cache = JSON.parse(item)
+
+    console.log('cache (localStroage): ', cache)
+    
     if (cache) {
       console.log('setting text from storage')
       setCachedProfile(prev => ({ ...prev, ...cache }))
