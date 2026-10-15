@@ -13,7 +13,6 @@ function EditForm({ profile, setProfile }) {
   const onSubmit = event => { // need to style image circular css
     try {
       event.preventDefault()
-      setLoading(true)
       const formData = new FormData(event.target)
       const username = formData.get('username').trim()
       const location = formData.get('location').trim()
@@ -30,8 +29,6 @@ function EditForm({ profile, setProfile }) {
       
     } catch (error) {
       setError(error)
-    } finally {
-      setLoading(false)
     }
   }
 
