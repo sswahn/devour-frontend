@@ -19,6 +19,13 @@ function EditForm({ profile, setProfile }) {
   const canvasRef = useRef(null)
   const fileInputRef = useRef(null)
 
+  const onChange = ({ target }) => {
+    const item = localStorage.getItem('profile')
+    const data = JSON.parse(item)
+    const json = JSON.stringify({ ...data, [target.id]: target.value })
+    localStorage.setItem(json)
+  }
+
   const onSubmit = async event => { // need to style image circular css
     try {
       event.preventDefault()
@@ -53,6 +60,8 @@ function EditForm({ profile, setProfile }) {
       return
     }
     setFile(files[0])
+    const db = database()
+    db.put({ id: 'profile', profile: files[0] }).catch(alert)
   }
 
   const createImage = async file => {
@@ -139,6 +148,7 @@ function EditForm({ profile, setProfile }) {
         label="Username"
         error={errorMessage}
         defaultValue={cachedProfile.username || profile.username}
+        onChange={onChange}
         required
         aria-label="update your username" />
       <Input
@@ -147,10 +157,11 @@ function EditForm({ profile, setProfile }) {
         label="Location"
         error={errorMessage} // needs work
         defaultValue={cachedProfile.location || profile.location}
+        onChange={onChange}
         required
         aria-label="update your location" />
       <label htmlFor="biography">Bio:</label>
-      <textarea id="biography" name="biography" aria-label="update your bio">{cachedProfile.biography || profile.biography}</textarea>
+      <textarea id="biography" name="biography" onChange={onChange} aria-label="update your bio">{cachedProfile.biography || profile.biography}</textarea>
       <button type="submit" disabled={loading}>Submit</button>
     </form>
   )
