@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import useDialog from '../../../hooks/useDialog'
 import validate from '../../../utilities/validate'
-import database from '../../utilities/database'
+import database from '../../../utilities/database'
 import Input from '../../../components/Input/Input'
 import styles from './EditForm.module.css'
 
