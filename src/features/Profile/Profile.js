@@ -45,6 +45,9 @@ function Profile() {
 
   useEffect(() => {
     // loadData()
+    return () => {
+      URL.revokeObjectURL(profile.picture)
+    }
   }, [])
 
   return (
@@ -53,7 +56,7 @@ function Profile() {
         <div>
           <TopNav profile={profile} setProfile={setProfile} />
           <header>
-            <img src={profile.picture} alt={`${profile.username}'s profile picture`} />
+            <img src={URL.createObjectURL(profile.picture)} alt={`${profile.username}'s profile picture`} />
             <h1 id="username">{profile.username}</h1>
             <address>{profile.location}</address>
             {profile.biography && <p id="biography">{profile.biography}</p>}
