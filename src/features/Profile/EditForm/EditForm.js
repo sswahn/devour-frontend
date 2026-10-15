@@ -166,7 +166,6 @@ function EditForm({ profile, setProfile }) {
         value={profile.biography}
         onChange={onChange}
         error={errorMessage}
-        aria-label="update your bio"
         required
       />
       <button type="submit" disabled={loading}>Submit</button>
