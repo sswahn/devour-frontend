@@ -7,11 +7,6 @@ import styles from './EditForm.module.css'
 
 function EditForm({ profile, setProfile }) {
   const { closeDialog } = useDialog()
-  const [cachedProfile, setCachedProfile] = useState({
-    username: '',
-    location: '',
-    biography: ''
-  })
   const [file, setFile] = useState(null)
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState(false)
@@ -19,9 +14,11 @@ function EditForm({ profile, setProfile }) {
   const fileInputRef = useRef(null)
 
   const onChange = ({ target }) => {
+    const obj = { [target.id]: target.value }
+    setProfile(prev => ({ ...prev, ...obj })
     const item = localStorage.getItem('profile')
     const data = JSON.parse(item)
-    const json = JSON.stringify({ ...data, [target.id]: target.value })
+    const json = JSON.stringify({ ...data, ...obj })
     localStorage.setItem('profile', json)
   }
 
@@ -111,7 +108,7 @@ function EditForm({ profile, setProfile }) {
     
     if (cache) {
       console.log('setting text from storage')
-      setCachedProfile(prev => ({ ...prev, ...cache }))
+      setProfile(prev => ({ ...prev, ...cache }))
     }
   }
 
@@ -152,7 +149,7 @@ function EditForm({ profile, setProfile }) {
         type="text"
         label="Username"
         error={errorMessage}
-        value={cachedProfile.username || profile.username}
+        value={profile.username}
         onChange={onChange}
         required
         aria-label="update your username" />
@@ -161,12 +158,12 @@ function EditForm({ profile, setProfile }) {
         type="text"
         label="Location"
         error={errorMessage} // needs work
-        defaultValue={cachedProfile.location || profile.location}
+        value={profile.location}
         onChange={onChange}
         required
         aria-label="update your location" />
       <label htmlFor="biography">Bio:</label>
-      <textarea id="biography" name="biography" onChange={onChange} aria-label="update your bio">{cachedProfile.biography || profile.biography}</textarea>
+      <textarea id="biography" name="biography" onChange={onChange} aria-label="update your bio">{profile.biography}</textarea>
       <button type="submit" disabled={loading}>Submit</button>
     </form>
   )
