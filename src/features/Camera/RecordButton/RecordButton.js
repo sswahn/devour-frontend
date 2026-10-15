@@ -21,18 +21,16 @@ function RecordButton({ mode, setMode, streamRef, timer }) {
   
 const stopRecord = async () => {
   try {
-
     if (!recordingRef.current) {
       throw new Error('No active recording found.')
     }
-
     const blob = await camera.stopRecording(
       recordingRef.current,
       framesRef.current
     )
-    
     const duration = await clip.getDuration(blob)
-
+    recordingRef.current = null
+    
     const data = {
       id: crypto.randomUUID(),
       clip: blob,
@@ -46,11 +44,11 @@ const stopRecord = async () => {
     const clips = [...(footage ?? []), data]
 
     console.log('updated footage (clips): ', clips)
-
+    
+    setFootage(clips)
     const db = database()
     await db.put({ id: 'footage', footage: clips })
-    setFootage(clips)
-    recordingRef.current = null
+    
   } catch (error) {
     console.error('Failed to stop recording:', error) // polish error handling: use setErrorMessage
   } finally {
