@@ -99,6 +99,7 @@ function EditForm({ profile, setProfile }) {
     
     if (data?.profile?.picture) {
       console.log('setting picture from db')
+      const { picture } = data.profile
       setFile(picture)
       createImage(picture)
     }
@@ -151,7 +152,7 @@ function EditForm({ profile, setProfile }) {
         type="text"
         label="Username"
         error={errorMessage}
-        defaultValue={cachedProfile.username || profile.username}
+        value={cachedProfile.username || profile.username}
         onChange={onChange}
         required
         aria-label="update your username" />
