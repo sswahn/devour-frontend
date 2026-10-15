@@ -16,6 +16,11 @@ function EditForm({ profile, setProfile }) {
 
   const onChange = ({ target }) => {
     const obj = { [target.id]: target.value }
+
+    console.log('profile: ', profile)
+
+    console.log('onChange obj: ', obj)
+    
     setProfile(prev => ({ ...prev, ...obj }))
     const item = localStorage.getItem('profile')
     const data = JSON.parse(item)
