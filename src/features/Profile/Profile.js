@@ -44,23 +44,6 @@ function Profile() {
     // userProfile used to request profile data
     // setProfile(response.data)
   }
-  
-  const loadDataFromStorage = async () => { // once this works move it to EditForm component
-    const db = database()
-    const data = await db.get('profile')
-    
-    console.log('cached profile data: ', data)
-    
-    if (data) {
-      setProfile(prev => ({ ...prev, ...data }))
-    }
-  }
-
-  useEffect(() => {
-    // testing without condition might only need this in editForm to populate inputs
-    // otherwise it will come from server.
-    loadDataFromStorage()
-  }, [])
 
   useEffect(() => {
     // handle optimistic setting of edit to profile image
