@@ -26,7 +26,7 @@ function EditForm({ profile, setProfile }) {
     localStorage.setItem(json)
   }
 
-  const onSubmit = async event => { // need to style image circular css
+  const onSubmit = async event => { // need to style image circular css, or zoom/centering
     try {
       event.preventDefault()
       const formData = new FormData(event.target)
