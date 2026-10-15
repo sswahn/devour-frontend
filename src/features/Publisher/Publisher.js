@@ -79,7 +79,7 @@ function Publisher({ openEditor }) {
             error={errorMessage}
             required 
           />
-          <button type="submit">Submit</button>
+          <button type="submit" disabled={loading}>Submit</button>
         </form>
       </div>
     </section>
