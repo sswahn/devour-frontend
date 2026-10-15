@@ -156,7 +156,7 @@ function EditForm({ profile, setProfile }) {
         type="text"
         label="Location"
         value={profile.location}
-        error={errorMessage} // needs work
+        error={errorMessage}
         onChange={onChange}
         required
         aria-label="update your location" />
