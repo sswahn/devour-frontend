@@ -8,6 +8,11 @@ import styles from './EditForm.module.css'
 
 function EditForm({ profile, setProfile }) {
   const { closeDialog } = useDialog()
+  const [input, setInput] = useState({
+    username: '',
+    location: '',
+    biography: ''
+  })
   const [file, setFile] = useState(null)
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState(false)
@@ -109,12 +114,14 @@ function EditForm({ profile, setProfile }) {
 
     const item = localStorage.getItem('profile')
     const cache = JSON.parse(item)
-
-    console.log('cache (localStroage): ', cache)
     
-    if (cache) {
-      console.log('setting text from storage')
-      setProfile(prev => ({ ...prev, ...cache }))
+    if (cache !== null) {
+      console.log('setting input from cache')
+      setInput({
+        username: cache.username || profile.username,
+        location: cache.location || profile.location,
+        biography: cache.biography || profile.biography
+      })
     }
   }
 
@@ -151,7 +158,7 @@ function EditForm({ profile, setProfile }) {
         id="username"
         type="text"
         label="Username"
-        value={profile.username}
+        value={input.username}
         error={errorMessage}
         onChange={onChange}
         required
@@ -160,7 +167,7 @@ function EditForm({ profile, setProfile }) {
         id="location"
         type="text"
         label="Location"
-        value={profile.location}
+        value={input.location}
         error={errorMessage}
         onChange={onChange}
         required
@@ -168,7 +175,7 @@ function EditForm({ profile, setProfile }) {
       <TextArea
         id="biography"
         label="Bio"
-        value={profile.biography}
+        value={input.biography}
         onChange={onChange}
         error={errorMessage}
         required
