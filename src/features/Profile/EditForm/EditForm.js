@@ -125,6 +125,8 @@ function EditForm({ profile, setProfile }) {
     }
   }
 
+  // consider a bullet proof localStorage utility
+
   useEffect(() => {
     loadDataFromStorage()
   }, [])
