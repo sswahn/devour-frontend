@@ -115,9 +115,9 @@ function EditForm({ profile, setProfile }) {
     const item = localStorage.getItem('profile')
     const cache = JSON.parse(item)
     setInput({
-      username: cache.username || profile.username,
-      location: cache.location || profile.location,
-      biography: cache.biography || profile.biography
+      username: cache?.username || profile.username,
+      location: cache?.location || profile.location,
+      biography: cache?.biography || profile.biography
     })
     
   }
