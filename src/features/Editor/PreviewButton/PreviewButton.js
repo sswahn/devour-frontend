@@ -1,11 +1,9 @@
 import { useState } from 'react'
-import useFootage from '../../../hooks/useFootage'
 import { concatenateVideos } from '../../../utilities/videoEditor'
 import PaperPlaneIcon from '../../../components/Icons/PaperPlaneIcon/PaperPlaneIcon'
 import styles from './PreviewButton.module.css'
 
-function PreviewButton({ openPreview }) {
-  const { footage } = useFootage()
+function PreviewButton({ footage, setPreview, openPreview }) {
   const [progress, setProgress] = useState(0) // consider moving to prent (Editor) to display progress bar overlay
 
   const onClick = async event => {
@@ -18,9 +16,10 @@ function PreviewButton({ openPreview }) {
         fps: 30
       })
 
-      // set preview provider
-      // store in indexeddb
-      // openPreview()
+      setPreview(blob)
+      const db = database()
+      await db.set({ id: 'preview', preview: blob })
+      openPreview()
     } catch (error) {
       console.error('Video export failed:', error)
     }
