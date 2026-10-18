@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Camera from '../Camera/Camera'
 import Editor from '../Editor/Editor'
+// import Preview from '../Preview/Preview'
 import Publisher from '../Publisher/Publisher'
 import styles from './Wizard.module.css'
 
