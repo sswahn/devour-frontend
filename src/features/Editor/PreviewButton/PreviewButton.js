@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { concatenateVideos } from '../../utilities/videoEditor'
 import PaperPlaneIcon from '../../../components/Icons/PaperPlaneIcon/PaperPlaneIcon'
+import styles from './PreviewButton.module.css'
 
 function PreviewButton({ footage }) {
   const [progress, setProgress] = useState(0) // consider moving to prent (Editor) to display progress bar overlay
