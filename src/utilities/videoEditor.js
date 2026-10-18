@@ -62,9 +62,7 @@ export async function concatenateVideos(
   } = {}
 ) {
   if (!Array.isArray(clips) || clips.length === 0) {
-    throw new TypeError(
-      'concatenateVideos: clips must be a non-empty array.'
-    )
+    throw new TypeError('concatenateVideos: clips must be a non-empty array.')
   }
 
   if (
@@ -72,9 +70,7 @@ export async function concatenateVideos(
     !Number.isInteger(height) || height < 2 ||
     !Number.isInteger(fps) || fps < 1
   ) {
-    throw new TypeError(
-      'concatenateVideos: invalid output dimensions or frame rate.'
-    )
+    throw new TypeError('concatenateVideos: invalid output dimensions or frame rate.')
   }
 
   const usableClips = clips.filter(item => {
@@ -82,9 +78,7 @@ export async function concatenateVideos(
   })
 
   if (usableClips.length !== clips.length) {
-    throw new TypeError(
-      'concatenateVideos: every clip must contain a non-empty Blob.'
-    )
+    throw new TypeError('concatenateVideos: every clip must contain a non-empty Blob.')
   }
 
   const ffmpeg = await getFFmpeg()
@@ -210,5 +204,3 @@ export async function concatenateVideos(
     }
   }
 }
-
-export default concatenateVideos
