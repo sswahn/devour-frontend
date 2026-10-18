@@ -14,13 +14,37 @@ function Editor({ footage, openCamera, openPublisher }) {
     id: crypto.randomUUID(),
     text: 'Welcome!',
     start: 0,
-    end: 10
+    end: 10,
+    style: {
+      fontFamily: 'Arial',
+      fontSize: 36,
+      color: '#ffffff',
+      bold: true,
+      italic: false,
+      underline: false,
+      strokeColor: '#000000',
+      strokeWidth: 2,
+      backgroundColor: 'transparent',
+      textAlign: 'center'
+    }
   },
   {
     id: crypto.randomUUID(),
     text: 'Goodbye!',
     start: 10,
-    end: 15
+    end: 15,
+    style: {
+      fontFamily: 'Arial',
+      fontSize: 36,
+      color: '#ffffff',
+      bold: true,
+      italic: false,
+      underline: false,
+      strokeColor: '#000000',
+      strokeWidth: 2,
+      backgroundColor: 'transparent',
+      textAlign: 'center'
+    }
   }
 ])
   const [progress, setProgress] = useState(0)
