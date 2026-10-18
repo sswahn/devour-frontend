@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import concatenateVideos from '../../utilities/concatenateVideos'
+import ArrowRightIcon from '../../components/Icons/ArrowRightIcon'
 
 function PreviewButton({ footage }) {
   const [progress, setProgress] = useState(0)
@@ -36,7 +37,7 @@ function PreviewButton({ footage }) {
 
   return (
     <button onClick={exportVideo} disabled={exporting || !footage?.length}>
-      {/* Preview icon*/}
+      <ArrowRightIcon />
       {exporting ? `Exporting ${Math.round(progress * 100)}%` : 'Export video'}
     </button>
   )
