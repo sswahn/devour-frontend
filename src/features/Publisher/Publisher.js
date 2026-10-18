@@ -7,22 +7,14 @@ import TextArea from '../../components/TextArea/TextArea'
 import styles from './Publisher.module.css'
 
 function Publisher({ openEditor }) {
-  const [location, setLocation] = useState('')
-  const [description, setDescription] = useState('')
+  const [input, setInput] = useState({
+    location: '',
+    description: ''
+  })
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
 
-  const handleLocation = event => {
-    const { value } = event.target
-    localStorage.setItem('location', value)
-    setLocation(value)
-  }
 
-  const handleDescription = event => {
-    const { value } = event.target
-    localStorage.setItem('description', value)
-    setDescription(value)
-  }
 
   const onSubmit = async event => {
     // get s3 auth
@@ -49,13 +41,17 @@ function Publisher({ openEditor }) {
     }
   }
 
-  const loadFromStorage = () => {
-    // location
-    // description
+  const loadFromStorage = async () => {
+    const item = localStorage.getItem('submission')
+    const cache = JSON.parse(item)
+    setInput({
+      location: cache?.location,
+      description: cache?.description
+    })
   }
 
   useEffect(() => {
-    // loadFromStorage()
+    loadFromStorage()
   }, [])
 
   return (
@@ -68,14 +64,16 @@ function Publisher({ openEditor }) {
             type="text"
             label="Location"
             inputMode="text"
-            value={location}
+            value={input.location}
+            onChange={onChange}
             error={errorMessage}
             required 
           />
           <TextArea
             id="description"
             label="Description"
-            value={description}
+            value={input.description}
+            onChange={onChange}
             error={errorMessage}
             required 
           />
