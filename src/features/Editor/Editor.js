@@ -83,7 +83,7 @@ function Editor({ footage, openCamera, openPublisher }) {
         onError={e => console.log('Video error:', e.currentTarget.error)}
       />
       <PreviewButton footage={footage} setPreview={setPreview} openPreview={openPreview} />
-      <SubmitButton footage={footage} setPreview={setPreview} openPublisher={openPublisher} />
+      <SubmitButton openPublisher={openPublisher} />
     </section>
   )
 }
