@@ -87,7 +87,7 @@ function Camera({ footage, setFootage, openEditor }) {
       <TopNav closeCamera={closeCamera} mode={mode} timer={timer} setTimer={setTimer} stopCamera={stopCamera} streamRef={streamRef} />
       <MuteButton mute={mute} setMute={setMute} streamRef={streamRef} />
       <ViewPort videoRef={videoRef} />
-      <RecordButton footage={footage} setFootage={setFootage} mode={mode} setMode={setMode} streamRef={streamRef} timer={timer} mute={muste} />
+      <RecordButton footage={footage} setFootage={setFootage} mode={mode} setMode={setMode} streamRef={streamRef} timer={timer} mute={mute} />
       {/* footage.length > 0 && */ }
     <EditorButton openEditor={openEditor} />
    
