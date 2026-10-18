@@ -4,7 +4,7 @@ import { fetchFile } from '@ffmpeg/util'
 const ffmpeg = new FFmpeg()
 let loaded = false
 
-export const concatenateVideos = async footage {
+export const concatenateVideos = async footage => {
   if (!loaded) {
     await ffmpeg.load()
     loaded = true
@@ -43,7 +43,7 @@ export const concatenateVideos = async footage {
 }
 
 
-export function getDuration(blob) {
+export const getDuration = blob => {
   return new Promise((resolve, reject) => {
     const video = document.createElement('video')
     const url = URL.createObjectURL(blob)
