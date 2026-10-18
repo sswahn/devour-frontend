@@ -27,7 +27,6 @@ function RecordButton({ footage, setFootage, mode, setMode, streamRef, timer }) 
       )
       const duration = await getDuration(blob)
       recordingRef.current = null
-      
       const data = {
         id: crypto.randomUUID(),
         clip: blob,
@@ -37,15 +36,10 @@ function RecordButton({ footage, setFootage, mode, setMode, streamRef, timer }) 
         trimEnd: duration,
         mimeType: blob.type || 'video/webm'
       }
-  
       const clips = [...(footage ?? []), data]
-  
-      console.log('updated footage (clips): ', clips)
-      
       setFootage(clips)
       const db = database()
       await db.put({ id: 'footage', footage: clips })
-      
     } catch (error) {
       console.error('Failed to stop recording:', error) // polish error handling: use setErrorMessage
     } finally {
