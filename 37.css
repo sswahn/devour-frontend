@@ -22,6 +22,26 @@
   width: 100%;
 }
 
+/* Loading Progress Bar */
+
+.R3ngTidU9jwJgH_A4iSz {
+  align-items: center; 
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  width: 100%;
+}
+
+.R3ngTidU9jwJgH_A4iSz div {
+  width: 0;
+  height: 12px;
+  background-color: #3b82f6;
+  border-radius: 4px;
+  transition: width 0.3s ease-out;
+}
+
 /* Editor Pause Button */
 
 .IJOtT_cBtyaXMSGQddo3 {
@@ -1319,4 +1339,4 @@
 }
 
 
-/*# sourceMappingURL=315.css.map*/
+/*# sourceMappingURL=37.css.map*/
