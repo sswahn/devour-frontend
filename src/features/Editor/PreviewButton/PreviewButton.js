@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import concatenateVideos from '../../utilities/concatenateVideos'
 
-function ExportButton({ footage }) {
+function PreviewButton({ footage }) {
   const [progress, setProgress] = useState(0)
   const [exporting, setExporting] = useState(false)
 
@@ -35,15 +35,11 @@ function ExportButton({ footage }) {
   }
 
   return (
-    <button
-      onClick={exportVideo}
-      disabled={exporting || !footage?.length}
-    >
-      {exporting
-        ? `Exporting ${Math.round(progress * 100)}%`
-        : 'Export video'}
+    <button onClick={exportVideo} disabled={exporting || !footage?.length}>
+      {/* Preview icon*/}
+      {exporting ? `Exporting ${Math.round(progress * 100)}%` : 'Export video'}
     </button>
   )
 }
 
-export default ExportButton
+export default PreviewButton
