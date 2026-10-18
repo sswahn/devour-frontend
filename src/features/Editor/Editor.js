@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import useFootage from '../../hooks/useFootage'
 import TopNav from './TopNav/TopNav'
-import ProgressBar from './ProgressBar/ProgressBar'
+import ProgressBar from '../../components/ProgressBar/ProgressBar'
 import Menu from './Menu/Menu'
 import MenuButton from './MenuButton/MenuButton'
 import PreviewButton from './PreviewButton/PreviewButton'
