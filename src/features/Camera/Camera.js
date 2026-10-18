@@ -12,6 +12,7 @@ import styles from './Camera.module.css'
 function Camera({ footage, setFootage, openEditor }) {
   const { closeOverlay } = useOverlay()
   const [mode, setMode] = useState('off')
+  const [mute, setMute] = useState(false)
   const [timer, setTimer] = useState(60)
   const streamRef = useRef(null)
   const videoRef = useRef(null)
@@ -84,9 +85,9 @@ function Camera({ footage, setFootage, openEditor }) {
   return (
     <section className={styles.camera}>
       <TopNav closeCamera={closeCamera} mode={mode} timer={timer} setTimer={setTimer} stopCamera={stopCamera} streamRef={streamRef} />
-      <MuteButton streamRef={streamRef} />
+      <MuteButton mute={mute} setMute={setMute} streamRef={streamRef} />
       <ViewPort videoRef={videoRef} />
-      <RecordButton footage={footage} setFootage={setFootage} mode={mode} setMode={setMode} streamRef={streamRef} timer={timer} />
+      <RecordButton footage={footage} setFootage={setFootage} mode={mode} setMode={setMode} streamRef={streamRef} timer={timer} mute={muste} />
       {/* footage.length > 0 && */ }
     <EditorButton openEditor={openEditor} />
    
