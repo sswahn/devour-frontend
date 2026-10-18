@@ -3,7 +3,7 @@ import { concatenateVideos } from '../../../utilities/videoEditor'
 import TopNav from './TopNav/TopNav'
 import Menu from './Menu/Menu'
 import MenuButton from './MenuButton/MenuButton'
-import ProgressBar from '../../components/ProgressBar/ProgressBar'
+import ProgressBar from './ProgressBar/ProgressBar'
 import SubmitButton from './SubmitButton/SubmitButton'
 import styles from './Editor.module.css'
 
