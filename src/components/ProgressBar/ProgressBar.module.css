@@ -1,0 +1,26 @@
+/* Loading Progress Bar */
+
+.progressBar {
+  
+}
+
+/* The CSS Styling & Animation */
+.progress-container {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressBar {
+  width: 0;
+  height: 12px;
+  background-color: #3b82f6; /* Font Awesome-style Blue */
+  border-radius: 4px;
+  animation: fillProgress 3s ease-in-out infinite;
+}
+
+@keyframes fillProgress {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
