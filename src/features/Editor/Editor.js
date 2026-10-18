@@ -72,17 +72,16 @@ function Editor({ footage, setPreview, openCamera, openPreview }) {
   return (
     <section className={styles.editor}>
       <TopNav videoRef={videoRef} openCamera={openCamera} /> 
-      <ProgressBar videoRef={videoRef} />
       {menuIsOpen && <Menu data={data} setData={setData} closeMenu={closeMenu} />}
       <MenuButton openMenu={openMenu} /> 
-      <PreviewButton footage={footage} setPreview={setPreview} openPreview={openPreview} />
-      {/* create Previw component, and move submit Button to it <SubmitButton openPublisher={openPublisher} />  */}
-      <video id="video-editor" ref={videoRef} autoPlay playsInline
+      <ProgressBar videoRef={videoRef} />
+      <video id="video-editor" ref={videoRef} autoPlay playsInline 
         onEnded={onEnded}
         onLoadedMetadata={() => console.log('Video metadata loaded')}
         onCanPlay={() => console.log('Video can play')}
         onError={e => console.log('Video error:', e.currentTarget.error)}
       />
+      <PreviewButton footage={footage} setPreview={setPreview} openPreview={openPreview} />
     </section>
   )
 }
