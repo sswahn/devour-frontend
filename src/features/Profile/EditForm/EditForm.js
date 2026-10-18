@@ -101,11 +101,11 @@ function EditForm({ profile, setProfile }) {
 
   const loadDataFromStorage = async () => {
     const db = database()
-    const { picture } = await db.get('profile')
+    const data = await db.get('profile')
     const item = localStorage.getItem('profile')
     const cache = JSON.parse(item)
-    setFile(picture)
-    createImage(picture)
+    setFile(data.picture)
+    createImage(data.picture)
     setInput({
       username: cache?.username || profile.username,
       location: cache?.location || profile.location,
