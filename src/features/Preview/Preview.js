@@ -1,4 +1,6 @@
 import { useRef } from 'react'
+import TopNav from './TopNav/TopNav'
+import ProgressBar from '../../components/ProgressBar/ProgressBar'
 import SubmitButton from './SubmitButton/SubmitButton'
 import styles from './Preview.module.css'
 
