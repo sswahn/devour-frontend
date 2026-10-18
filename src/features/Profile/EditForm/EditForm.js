@@ -101,27 +101,16 @@ function EditForm({ profile, setProfile }) {
 
   const loadDataFromStorage = async () => {
     const db = database()
-    const data = await db.get('profile')
-
-    console.log('data (picture): ', data)
-    console.log('data.picture: ', data?.picture)
-    console.log('data.profile.picture: ', data?.profile?.picture)
-    
-    if (data?.picture) {
-      console.log('setting picture from db')
-      const { picture } = data.profile
-      setFile(picture)
-      createImage(picture)
-    }
-
+    const { picture } = await db.get('profile')
     const item = localStorage.getItem('profile')
     const cache = JSON.parse(item)
+    setFile(picture)
+    createImage(picture)
     setInput({
       username: cache?.username || profile.username,
       location: cache?.location || profile.location,
       biography: cache?.biography || profile.biography
     })
-    
   }
 
   // consider a bullet proof localStorage utility
