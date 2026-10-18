@@ -30,6 +30,9 @@ function Editor({ footage, openCamera, openPublisher }) {
         height: 1080,
         fps: 30
       })
+      
+      console.log('concatenated blob: ', blob)
+      
       const url = URL.createObjectURL(blob)
       setSource(url)
     } catch (error) {
