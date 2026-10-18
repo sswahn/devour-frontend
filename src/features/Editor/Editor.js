@@ -9,6 +9,20 @@ import SubmitButton from './SubmitButton/SubmitButton'
 import styles from './Editor.module.css'
 
 function Editor({ footage, openCamera, openPublisher }) {
+  const [captions, setCaptions] = useState([
+  {
+    id: crypto.randomUUID(),
+    text: 'Welcome!',
+    start: 0,
+    end: 10
+  },
+  {
+    id: crypto.randomUUID(),
+    text: 'Goodbye!',
+    start: 10,
+    end: 15
+  }
+])
   const [progress, setProgress] = useState(0)
   const [menuIsOpen, setMenuIsOpen] = useState(false)
   const [source, setSource] = useState([])
