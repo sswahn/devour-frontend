@@ -7,7 +7,9 @@ import styles from './Wizard.module.css'
 
 function Wizard() {
   const [overlay, setOverlay] = useState('camera')
-
+  const [footage, setFootage] = useState([])
+  const [preview, setPreview] = useState(null)
+  
   const openCamera = () => {
     setOverlay('camera')
   }
@@ -26,10 +28,10 @@ function Wizard() {
   
   return (
     <section className={styles.wizard}>
-      {overlay === 'camera' && <Camera openEditor={openEditor} />}
-      {overlay === 'editor' && <Editor openCamera={openCamera} openPreview={openPreview} />}
-      {/* overlay === 'preview' && <Preview openEditor={openEditor} openPublisher={openPublisher} /> */}
-      {overlay === 'publisher' && <Publisher openEditor={openEditor} />}
+      {overlay === 'camera' && <Camera footage={footage} setFootage={setFootage} openEditor={openEditor} />}
+      {overlay === 'editor' && <Editor footage={footage} setPreview={setPreview} openCamera={openCamera} openPreview={openPreview} />}
+      {/* overlay === 'preview' && <Preview preview={preview} openEditor={openEditor} openPublisher={openPublisher} /> */}
+      {overlay === 'publisher' && <Publisher preview={preview} openEditor={openEditor} />}
     </section>
   )
 }
