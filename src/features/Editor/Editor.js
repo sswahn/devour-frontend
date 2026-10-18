@@ -28,12 +28,7 @@ function Editor({ footage, openCamera, openPublisher }) {
 
       console.log('begining concatenation...')
       
-      const blob = await concatenateVideos(footage, {
-        onProgress: setProgress,
-        width: 1920,
-        height: 1080,
-        fps: 30
-      })
+      const blob = await concatenateVideos(footage, setProgress)
       
       console.log('concatenated blob: ', blob)
       
