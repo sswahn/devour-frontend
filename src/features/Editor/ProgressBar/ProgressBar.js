@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react'
-import styles from './ProgressBar.module.css'
+import styles from './VideoTimeline.module.css'
 
-function ProgressBar({ videoRef }) {
-  const progressBarRef = useRef(null)
+function VideoTimeline({ videoRef }) {
+  const videoTimelineRef = useRef(null)
 
   const onClick = event => {
     navigator.vibrate?.(50)
@@ -13,7 +13,7 @@ function ProgressBar({ videoRef }) {
 
   const onTimeUpdate = event => {
     const percentage = (videoRef.current.currentTime / videoRef.current.duration) * 100
-    progressBarRef.current.style.width = `${percentage}%`
+    videoTimelineRef.current.style.width = `${percentage}%`
   }
 
   useEffect(() => {
@@ -27,10 +27,10 @@ function ProgressBar({ videoRef }) {
   }, [])
   
   return (
-    <div className={styles.progressBar} onClick={onClick}>
-      <div ref={progressBarRef}></div>
+    <div className={styles.videoTimeline} onClick={onClick}>
+      <div ref={videoTimelineRef}></div>
     </div>
   )
 }
 
-export default ProgressBar
+export default VideoTimeline
