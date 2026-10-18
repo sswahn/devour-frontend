@@ -8,15 +8,10 @@
   overflow: hidden;
 }
 
-@keyframes fillProgress {
-  0% { width: 0%; }
-  100% { width: 100%; }
-}
-
 .progressBar div {
   width: 0;
   height: 12px;
-  background-color: #3b82f6; /* Font Awesome-style Blue */
+  background-color: #3b82f6;
   border-radius: 4px;
-  animation: fillProgress 3s ease-in-out infinite;
+  transition: width 0.3s ease-out;
 }
