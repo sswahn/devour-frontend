@@ -1,10 +1,13 @@
 /* Loading Progress Bar */
 
 .progressBar {
-  width: 100%;
+  align-items: center; 
   background-color: #e0e0e0;
   border-radius: 4px;
+  display: flex;
+  justify-content: center;
   overflow: hidden;
+  width: 100%;
 }
 
 .progressBar div {
