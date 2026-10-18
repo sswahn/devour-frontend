@@ -9,14 +9,20 @@ const OUTPUT_HEIGHT = 1080
 const OUTPUT_FPS = 30
 
 async function getFFmpeg() {
-  if (ffmpegInstance) return ffmpegInstance
+  if (ffmpegInstance) {
+    return ffmpegInstance
+  }
 
   // Prevent multiple simultaneous initialization attempts.
   if (!loadPromise) {
     loadPromise = (async () => {
       const ffmpeg = new FFmpeg()
-      const baseURL =
-        'https://unpkg.com/@ffmpeg/core@0.12.10/dist/umd'
+      
+      ffmpeg.on('log', ({ type, message }) => {
+        console.log(`[FFmpeg ${type}]`, message)
+      })
+      
+      const baseURL = 'https://unpkg.com/@ffmpeg/core@0.12.10/dist/umd'
 
       await ffmpeg.load({
         coreURL: await toBlobURL(
