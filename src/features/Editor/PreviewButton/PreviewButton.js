@@ -3,10 +3,10 @@ import { concatenateVideos } from '../../../utilities/videoEditor'
 import PaperPlaneIcon from '../../../components/Icons/PaperPlaneIcon/PaperPlaneIcon'
 import styles from './PreviewButton.module.css'
 
-function PreviewButton({ footage }) {
+function PreviewButton({ openPreview }) {
   const [progress, setProgress] = useState(0) // consider moving to prent (Editor) to display progress bar overlay
 
-  async function exportVideo() {
+  const onClick = async event => {
     try {
       setProgress(0)
       const blob = await concatenateVideos(footage, {
@@ -18,14 +18,14 @@ function PreviewButton({ footage }) {
 
       // set preview provider
       // store in indexeddb
-      
+      // openPreview()
     } catch (error) {
       console.error('Video export failed:', error)
     }
   }
 
   return (
-    <button className={styles.previewButton} onClick={exportVideo} type="button" aria-label="preview footage">
+    <button className={styles.previewButton} onClick={onClick} type="button" aria-label="preview footage">
       <PaperPlaneIcon />
     </button>
   )
