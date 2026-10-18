@@ -9,8 +9,8 @@ function ProgressBar({ progress = 0 }) {
   console.log('clampedProgress: ', clampedProgress)
   
   return (
-    <div className={styles.progressBar} role="progressbar" aria-valuenow={clampedProgress} aria-valuemin="0" aria-valuemax="100">
-      <div style={{ width: `${clampedProgress}` }} />
+    <div className={styles.progressBar} role="progressbar" aria-valuenow={progress} aria-valuemin="0" aria-valuemax="100">
+      <div style={{ width: `${progress}` }} />
     </div>
   )
 }
