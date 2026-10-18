@@ -196,9 +196,7 @@ export async function concatenateVideos(
     console.log('FFmpeg exit code:', exitCode)
 
     if (exitCode !== 0) {
-      throw new Error(
-        `FFmpeg export failed with exit code ${exitCode}`
-      )
+      throw new Error(`FFmpeg export failed with exit code ${exitCode}`)
     }
     
     const output = await ffmpeg.readFile(outputName)
@@ -216,6 +214,7 @@ export async function concatenateVideos(
 
     // Copy into a standalone Blob before cleaning up FFmpeg files.
     return new Blob([output], { type: 'video/mp4' })
+    
   } finally {
     if (progressHandler) {
       ffmpeg.off('progress', progressHandler)
