@@ -25,14 +25,6 @@ function Editor({ footage, openCamera, openPublisher }) {
     setMenuIsOpen(false)
   }
 
-  const loadFromStorage = () => {
-    const editor = localStorage.getItem('editor')
-    if (editor !== null) {
-      const obj = JSON.parse(editor)
-      setData(prev => ({ ...prev, ...obj }))
-    }
-  }
-
   const onEnded = event => {
     setCurrentClipIndex(index => 
       index < sources.length - 1 ? index + 1 : index
@@ -40,7 +32,7 @@ function Editor({ footage, openCamera, openPublisher }) {
   }
 
   useEffect(() => {
-    // loadFromStorage()
+    // on load, concatanate video clips into one and play.
   }, [])
 
   useEffect(() => {
@@ -82,7 +74,6 @@ function Editor({ footage, openCamera, openPublisher }) {
         onCanPlay={() => console.log('Video can play')}
         onError={e => console.log('Video error:', e.currentTarget.error)}
       />
-      <PreviewButton footage={footage} setPreview={setPreview} openPreview={openPreview} />
       <SubmitButton openPublisher={openPublisher} />
     </section>
   )
