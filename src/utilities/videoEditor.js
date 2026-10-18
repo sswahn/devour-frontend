@@ -54,6 +54,24 @@ export const concatenateVideos = async (footage, setProgress) => {
   }
 }
 
+export const writeCaptions = captions => {
+  return captions
+    .filter(caption => caption.text.trim() && caption.end > caption.start)
+    .map(caption => {
+      const text = caption.text
+        .replace(/\\/g, '\\\\')
+        .replace(/'/g, "'\\''")
+        .replace(/:/g, '\\:')
+        .replace(/%/g, '\\%')
+
+      return `drawtext=text='${text}':` +
+        `fontcolor=white:fontsize=36:` +
+        `borderw=3:bordercolor=black:` +
+        `x=(w-text_w)/2:y=h*0.85:` +
+        `enable='between(t,${caption.start},${caption.end})'`
+    })
+    .join(',')
+}
 
 export const getDuration = blob => {
   return new Promise((resolve, reject) => {
