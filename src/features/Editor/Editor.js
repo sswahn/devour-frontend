@@ -3,7 +3,7 @@ import { concatenateVideos } from '../../utilities/videoEditor'
 import TopNav from './TopNav/TopNav'
 import Menu from './Menu/Menu'
 import MenuButton from './MenuButton/MenuButton'
-import ProgressBar from './ProgressBar/ProgressBar'
+import VideoTimeline from './VideoTimeline/VideoTimeline'
 import SubmitButton from './SubmitButton/SubmitButton'
 import styles from './Editor.module.css'
 
@@ -46,7 +46,7 @@ function Editor({ footage, openCamera, openPublisher }) {
       <TopNav videoRef={videoRef} openCamera={openCamera} /> 
       {menuIsOpen && <Menu data={data} setData={setData} closeMenu={closeMenu} />}
       <MenuButton openMenu={openMenu} /> 
-      <ProgressBar videoRef={videoRef} />
+      <VideoTimeline videoRef={videoRef} />
       <video id="video-editor" ref={videoRef} src={source} autoPlay playsInline 
         onLoadedMetadata={() => console.log('Video metadata loaded')}
         onCanPlay={() => console.log('Video can play')}
