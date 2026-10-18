@@ -7,8 +7,7 @@ import MenuButton from './MenuButton/MenuButton'
 import PreviewButton from './PreviewButton/PreviewButton'
 import styles from './Editor.module.css'
 
-function Editor({ openCamera, openPreview }) {
-  const { footage } = useFootage()
+function Editor({ footage, setPreview, openCamera, openPreview }) {
   const [menuIsOpen, setMenuIsOpen] = useState(false)
   const [data, setData] = useState({
     caption: ''
