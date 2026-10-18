@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { concatenateVideos } from '../../../utilities/videoEditor'
+import { concatenateVideos } from '../../utilities/videoEditor'
 import TopNav from './TopNav/TopNav'
 import Menu from './Menu/Menu'
 import MenuButton from './MenuButton/MenuButton'
