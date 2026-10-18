@@ -275,39 +275,18 @@ const camera = {
 
     const recorder = new MediaRecorder(stream, options)
 
-    // Keep the first fatal recording error, even if it occurs
-    // before stopRecording() is called.
+    // Keep the first fatal recording error, even if it occurs before stopRecording() is called.
     recordingErrors.set(recorder, null)
 
     recorder.addEventListener('error', event => {
       if (!recordingErrors.get(recorder)) {
-        recordingErrors.set(
-          recorder,
-          event.error ||
-            new Error('camera.startRecording: recording failed.')
-        )
+        recordingErrors.set(recorder, event.error || new Error('camera.startRecording: recording failed.'))
       }
     })
 
-    recorder.addEventListener('dataavailable', async event => { // async for debugging
+    recorder.addEventListener('dataavailable', event => {
       if (event.data && event.data.size > 0) {
-
-        console.log('Before push:', {
-          framesLength: frames.length,
-          chunkSize: event.data.size,
-          framesReference: frames
-        })
-        
         frames.push(event.data)
-        
-        console.log('After push:', {
-          framesLength: frames.length,
-          totalBytes: frames.reduce(
-            (total, chunk) => total + chunk.size,
-            0
-          )
-        })
-
       }
     })
 
@@ -322,38 +301,17 @@ const camera = {
   },
 
   stopRecording(recorder, frames) {
-    if (
-      typeof MediaRecorder === 'undefined' ||
-      !(recorder instanceof MediaRecorder)
-    ) {
-      throw new TypeError(
-        'camera.stopRecording: first argument must be a MediaRecorder.'
-      )
+    if (typeof MediaRecorder === 'undefined' || !(recorder instanceof MediaRecorder)) {
+      throw new TypeError('camera.stopRecording: first argument must be a MediaRecorder.')
     }
 
     if (!Array.isArray(frames)) {
-      throw new TypeError(
-        'camera.stopRecording: second argument must be an array.'
-      )
+      throw new TypeError('camera.stopRecording: second argument must be an array.')
     }
 
     if (recorder.state === 'inactive') {
-      throw new Error(
-        'camera.stopRecording: recorder is already inactive.'
-      )
+      throw new Error('camera.stopRecording: recorder is already inactive.')
     }
-
-
-    console.log('stopRecording called:', {
-      framesLength: frames.length,
-      totalBytes: frames.reduce(
-        (total, chunk) => total + chunk.size,
-        0
-      ),
-      framesReference: frames,
-      recorderState: recorder.state
-    })
-    
 
     return new Promise((resolve, reject) => {
       let settled = false
@@ -364,77 +322,38 @@ const camera = {
       }
 
       const settle = (callback, value) => {
-        if (settled) return
-
+        if (settled) {
+          return
+        }
         settled = true
         cleanup()
         callback(value)
       }
 
       const onError = event => {
-        const error =
-          event.error ||
-          recordingErrors.get(recorder) ||
-          new Error('camera.stopRecording: recording failed.')
-
+        const error = event.error || recordingErrors.get(recorder) || new Error('camera.stopRecording: recording failed.')
         recordingErrors.set(recorder, error)
         settle(reject, error)
       }
 
-      const onStop = async () => { // async for debugging
-
-        console.log('Recorder stopped:', {
-          framesLength: frames.length,
-          totalBytes: frames.reduce(
-            (total, chunk) => total + chunk.size,
-            0
-          ),
-          recorderMimeType: recorder.mimeType
-        })
-
-        
+      const onStop = () => {
         const error = recordingErrors.get(recorder)
 
-        // Do not return a seemingly successful video after a
-        // fatal recording error.
+        // Do not return a seemingly successful video after a fatal recording error.
         if (error) {
           frames.length = 0
           recordingErrors.delete(recorder)
-          settle(reject, error)
-          return
+          return settle(reject, error)
         }
 
-        const mimeType =
-          recorder.mimeType || 'application/octet-stream'
-
-        const blob = new Blob(frames, { type: mimeType })
-
-
-        const header = [...new Uint8Array(
-          await blob.slice(0, 4).arrayBuffer()
-        )]
-        
-        console.log('Final recording Blob:', {
-          size: blob.size,
-          type: blob.type,
-          framesLength: frames.length,
-          header: header
-            .map(byte => byte.toString(16).padStart(2, '0'))
-            .join(' ')
-        })
-        
+        const mimeType = recorder.mimeType || 'application/octet-stream'
+        const blob = new Blob(frames, { type: mimeType })      
 
         frames.length = 0
         recordingErrors.delete(recorder)
 
         if (blob.size === 0) {
-          settle(
-            reject,
-            new Error(
-              'camera.stopRecording: recording produced no data.'
-            )
-          )
-          return
+          return settle(reject, new Error('camera.stopRecording: recording produced no data.'))
         }
 
         settle(resolve, blob)
