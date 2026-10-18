@@ -1,6 +1,6 @@
 /* Editor Video Custom Progress Bar */
 
-.progressBar {
+.videoTimeline {
   background: rgba(255, 255, 255, 0.3);
   bottom: 64px;
   cursor: pointer;
@@ -12,7 +12,7 @@
   z-index: 300;
 }
 
-.progressBar div {
+.videoTimeline div {
   background: #ff0000; /* Red progress bar */
   height: 100%;
   transition: width 0.1s linear;
