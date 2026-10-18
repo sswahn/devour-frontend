@@ -8,7 +8,7 @@ import PreviewButton from './PreviewButton/PreviewButton'
 import SubmitButton from './SubmitButton/SubmitButton'
 import styles from './Editor.module.css'
 
-function Editor({ footage, setPreview, openCamera, openPreview }) {
+function Editor({ footage, openCamera, openPublisher }) {
   const [menuIsOpen, setMenuIsOpen] = useState(false)
   const [data, setData] = useState({
     caption: ''
@@ -83,7 +83,7 @@ function Editor({ footage, setPreview, openCamera, openPreview }) {
         onError={e => console.log('Video error:', e.currentTarget.error)}
       />
       <PreviewButton footage={footage} setPreview={setPreview} openPreview={openPreview} />
-      <SubmitButton footage={footage} setPreview={setPreview} openPreview={openPreview} />
+      <SubmitButton footage={footage} setPreview={setPreview} openPublisher={openPublisher} />
     </section>
   )
 }
