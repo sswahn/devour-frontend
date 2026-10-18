@@ -187,9 +187,30 @@ export async function concatenateVideos(
       outputName
     )
 
-    await ffmpeg.exec(args)
+    console.log('Starting FFmpeg export')
+    console.log('Input clips:', usableClips.length)
+    console.log('FFmpeg arguments:', args)
+    
+    const exitCode = await ffmpeg.exec(args)
+    
+    console.log('FFmpeg exit code:', exitCode)
 
+    if (exitCode !== 0) {
+      throw new Error(
+        `FFmpeg export failed with exit code ${exitCode}`
+      )
+    }
+    
     const output = await ffmpeg.readFile(outputName)
+
+    if (!output || output.length === 0) {
+      throw new Error('FFmpeg produced an empty output file.')
+    }
+    
+    console.log('Export complete:', {
+      bytes: output.length,
+      sizeMB: (output.length / 1024 / 1024).toFixed(2)
+    })
 
     onProgress(1)
 
