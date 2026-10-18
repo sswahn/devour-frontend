@@ -45,8 +45,8 @@ function Publisher({ openEditor }) {
     const item = localStorage.getItem('submission')
     const cache = JSON.parse(item)
     setInput({
-      location: cache?.location,
-      description: cache?.description
+      location: cache?.location || '',
+      description: cache?.description || ''
     })
   }
 
