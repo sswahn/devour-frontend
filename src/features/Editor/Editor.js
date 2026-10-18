@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { concatenateVideos } from '../../utilities/videoEditor'
+import ProgressBar from '../../components/ProgressBar'
 import TopNav from './TopNav/TopNav'
 import Menu from './Menu/Menu'
 import MenuButton from './MenuButton/MenuButton'
@@ -47,7 +48,7 @@ function Editor({ footage, openCamera, openPublisher }) {
     onLoad()
   }, [])
 
-  return (
+  return progress < 100 ? <Progressbar progress={progress} /> : (
     <section className={styles.editor}>
       <TopNav videoRef={videoRef} openCamera={openCamera} /> 
       {menuIsOpen && <Menu data={data} setData={setData} closeMenu={closeMenu} />}
