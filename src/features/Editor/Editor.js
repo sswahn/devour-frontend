@@ -75,7 +75,7 @@ function Editor({ footage, setPreview, openCamera, openPreview }) {
       <ProgressBar videoRef={videoRef} />
       {menuIsOpen && <Menu data={data} setData={setData} closeMenu={closeMenu} />}
       <MenuButton openMenu={openMenu} /> 
-      <PreviewButton openPreview={openPreview} />
+      <PreviewButton footage={footage} setPreview={setPreview} openPreview={openPreview} />
       {/* create Previw component, and move submit Button to it <SubmitButton openPublisher={openPublisher} />  */}
       <video id="video-editor" ref={videoRef} autoPlay playsInline
         onEnded={onEnded}
