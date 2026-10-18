@@ -4,10 +4,10 @@ import TopNav from './TopNav/TopNav'
 import ProgressBar from './ProgressBar/ProgressBar'
 import Menu from './Menu/Menu'
 import MenuButton from './MenuButton/MenuButton'
-import SubmitButton from './SubmitButton/SubmitButton'
+import PreviewButton from './PreviewButton/PreviewButton'
 import styles from './Editor.module.css'
 
-function Editor({ openCamera, openPublisher }) {
+function Editor({ openCamera, openPreview }) {
   const { footage } = useFootage()
   const [menuIsOpen, setMenuIsOpen] = useState(false)
   const [data, setData] = useState({
@@ -76,7 +76,8 @@ function Editor({ openCamera, openPublisher }) {
       <ProgressBar videoRef={videoRef} />
       {menuIsOpen && <Menu data={data} setData={setData} closeMenu={closeMenu} />}
       <MenuButton openMenu={openMenu} /> 
-      <SubmitButton openPublisher={openPublisher} /> 
+      <PreviewButton openPreview={openPreview} />
+      {/* create Previw component, and move submit Button to it <SubmitButton openPublisher={openPublisher} />  */}
       <video id="video-editor" ref={videoRef} autoPlay playsInline
         onEnded={onEnded}
         onLoadedMetadata={() => console.log('Video metadata loaded')}
