@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import camera from '../../../utilities/camera'
-import clip from '../../../utilities/clip'
+import { getDuration } from '../../../utilities/videoEditor'
 import database from '../../../utilities/database'
 import styles from './RecordButton.module.css'
 
@@ -25,7 +25,7 @@ function RecordButton({ footage, setFootage, mode, setMode, streamRef, timer }) 
         recordingRef.current,
         framesRef.current
       )
-      const duration = await clip.getDuration(blob)
+      const duration = await getDuration(blob)
       recordingRef.current = null
       
       const data = {
