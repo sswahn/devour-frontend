@@ -1,16 +1,13 @@
 import { useState } from 'react'
-import concatenateVideos from '../../utilities/concatenateVideos'
+import { concatenateVideos } from '../../utilities/videoEditor'
 import PaperPlaneIcon from '../../../components/Icons/PaperPlaneIcon/PaperPlaneIcon'
 
 function PreviewButton({ footage }) {
-  const [progress, setProgress] = useState(0)
-  const [exporting, setExporting] = useState(false)
+  const [progress, setProgress] = useState(0) // consider moving to prent (Editor) to display progress bar overlay
 
   async function exportVideo() {
-    setExporting(true)
-    setProgress(0)
-
     try {
+      setProgress(0)
       const blob = await concatenateVideos(footage, {
         onProgress: setProgress,
         width: 1920,
@@ -23,16 +20,12 @@ function PreviewButton({ footage }) {
       
     } catch (error) {
       console.error('Video export failed:', error)
-      alert('Unable to export the video.')
-    } finally {
-      setExporting(false)
     }
   }
 
   return (
-    <button onClick={exportVideo} disabled={exporting || !footage?.length}>
+    <button className={styles.previewButton} onClick={exportVideo} type="button" aria-label="preview footage">
       <PaperPlaneIcon />
-      {exporting ? `Exporting ${Math.round(progress * 100)}%` : 'Export video'}
     </button>
   )
 }
