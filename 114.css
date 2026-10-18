@@ -242,23 +242,29 @@
   background: rgba(0, 0, 0, 0.5);
 }
 
-/* Editor Submit Button */
+/* Editor Preview Button */
 
-.LpfU56yJXGiw0QN1Sn9d {
+.AA_tZVdBXVHaiUGIXWZr {
   align-items: center; 
-  background: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   border: none;
   border-radius: 50%;
-  bottom: 8px;
-  cursor: pointer;
   display: flex;
   height: 44px;
   justify-content: center;
+  cursor: pointer;
+  margin-top: 8px;
   padding: 10px;
-  position: absolute;
-  right: 8px;
   width: 44px;
   z-index: 300;
+}
+
+.AA_tZVdBXVHaiUGIXWZr:focus {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.AA_tZVdBXVHaiUGIXWZr:active {
+  background: rgba(0, 0, 0, 0.5);
 }
 
 /* Video Editor */
@@ -1319,4 +1325,4 @@
 }
 
 
-/*# sourceMappingURL=462.css.map*/
+/*# sourceMappingURL=114.css.map*/
