@@ -1,9 +1,11 @@
 import { useState } from 'react'
+import useFootage from '../../hooks/useFootage'
 import { concatenateVideos } from '../../../utilities/videoEditor'
 import PaperPlaneIcon from '../../../components/Icons/PaperPlaneIcon/PaperPlaneIcon'
 import styles from './PreviewButton.module.css'
 
 function PreviewButton({ openPreview }) {
+  const { footage } = useFootage()
   const [progress, setProgress] = useState(0) // consider moving to prent (Editor) to display progress bar overlay
 
   const onClick = async event => {
