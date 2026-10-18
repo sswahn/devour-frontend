@@ -18,15 +18,9 @@ function PreviewButton({ footage }) {
         fps: 30
       })
 
-      const url = URL.createObjectURL(blob)
-      const link = document.createElement('a')
-
-      link.href = url
-      link.download = 'final-video.mp4'
-      link.click()
-
-      // Allow the browser to initiate the download first.
-      setTimeout(() => URL.revokeObjectURL(url), 1000)
+      // set preview provider
+      // store in indexeddb
+      
     } catch (error) {
       console.error('Video export failed:', error)
       alert('Unable to export the video.')
