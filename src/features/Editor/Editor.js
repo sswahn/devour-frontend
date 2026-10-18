@@ -1,20 +1,16 @@
 import { useState, useRef, useEffect } from 'react'
 import { concatenateVideos } from '../../../utilities/videoEditor'
 import TopNav from './TopNav/TopNav'
-import ProgressBar from '../../components/ProgressBar/ProgressBar'
 import Menu from './Menu/Menu'
 import MenuButton from './MenuButton/MenuButton'
-import PreviewButton from './PreviewButton/PreviewButton'
+import ProgressBar from '../../components/ProgressBar/ProgressBar'
 import SubmitButton from './SubmitButton/SubmitButton'
 import styles from './Editor.module.css'
 
 function Editor({ footage, openCamera, openPublisher }) {
+  const [progress, setProgress] = useState(0)
   const [menuIsOpen, setMenuIsOpen] = useState(false)
-  const [data, setData] = useState({
-    caption: ''
-  })
-  const [sources, setSources] = useState([])
-  const [currentClipIndex, setCurrentClipIndex] = useState(0)
+  const [source, setSource] = useState([])
   const videoRef = useRef(null)
   
   const openMenu = () => {
@@ -25,42 +21,25 @@ function Editor({ footage, openCamera, openPublisher }) {
     setMenuIsOpen(false)
   }
 
-  const onEnded = event => {
-    setCurrentClipIndex(index => 
-      index < sources.length - 1 ? index + 1 : index
-    )
+  const onLoad = async event => {
+    try {
+      setProgress(0)
+      const blob = await concatenateVideos(footage, {
+        onProgress: setProgress,
+        width: 1920,
+        height: 1080,
+        fps: 30
+      })
+      const url = URL.createObjectURL(blob)
+      setSource(url)
+    } catch (error) {
+      console.error('Video export failed:', error)
+    }
   }
 
   useEffect(() => {
-    // on load, concatanate video clips into one and play.
+    onLoad()
   }, [])
-
-  useEffect(() => {
-    const video = videoRef.current
-    if (!video || !sources.length) {
-      return
-    }
-    if (currentClipIndex >= sources.length) {
-      return
-    }
-    
-    video.src = sources[currentClipIndex]
-    video.load()
-  
-    video.play().catch(error => {
-      console.error('Clip playback failed: ', error)
-    })
-  }, [sources, currentClipIndex])
-
-  useEffect(() => {
-    const urls = footage.map(obj => URL.createObjectURL(obj.clip))
-    setCurrentClipIndex(0)
-    setSources(urls)
-    
-    return () => {
-      urls.forEach(url => URL.revokeObjectURL(url))
-    }
-  }, [footage])
 
   return (
     <section className={styles.editor}>
@@ -68,8 +47,7 @@ function Editor({ footage, openCamera, openPublisher }) {
       {menuIsOpen && <Menu data={data} setData={setData} closeMenu={closeMenu} />}
       <MenuButton openMenu={openMenu} /> 
       <ProgressBar videoRef={videoRef} />
-      <video id="video-editor" ref={videoRef} autoPlay playsInline 
-        onEnded={onEnded}
+      <video id="video-editor" ref={videoRef} src={source} autoPlay playsInline 
         onLoadedMetadata={() => console.log('Video metadata loaded')}
         onCanPlay={() => console.log('Video can play')}
         onError={e => console.log('Video error:', e.currentTarget.error)}
