@@ -91,7 +91,7 @@ function Camera({ openEditor }) {
       <RecordButton mode={mode} setMode={setMode} streamRef={streamRef} timer={timer} />
       {/* footage.length > 0 && */ }
     <EditorButton openEditor={openEditor} />
-   // }
+   
     </section>
   )
 }
