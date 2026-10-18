@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { concatenateVideos } from '../../utilities/videoEditor'
-import ProgressBar from '../../components/ProgressBar'
+import ProgressBar from '../../components/ProgressBar/ProgressBar'
 import TopNav from './TopNav/TopNav'
 import Menu from './Menu/Menu'
 import MenuButton from './MenuButton/MenuButton'
