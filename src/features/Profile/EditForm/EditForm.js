@@ -104,8 +104,10 @@ function EditForm({ profile, setProfile }) {
     const data = await db.get('profile')
 
     console.log('data (picture): ', data)
+    console.log('data.picture: ', data?.picture)
+    console.log('data.profile.picture: ', data?.profile?.picture)
     
-    if (data?.profile?.picture) {
+    if (data?.picture) {
       console.log('setting picture from db')
       const { picture } = data.profile
       setFile(picture)
