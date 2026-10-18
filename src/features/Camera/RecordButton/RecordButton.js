@@ -4,7 +4,7 @@ import { getDuration } from '../../../utilities/videoEditor'
 import database from '../../../utilities/database'
 import styles from './RecordButton.module.css'
 
-function RecordButton({ footage, setFootage, mode, setMode, streamRef, timer, mute }) {
+function RecordButton({ footage, setFootage, mode, setMode, streamRef, timer }) {
   const framesRef = useRef([])
   const recordingRef = useRef(null)
   
@@ -31,7 +31,6 @@ function RecordButton({ footage, setFootage, mode, setMode, streamRef, timer, mu
         id: crypto.randomUUID(),
         clip: blob,
         duration,
-        hasAudio: mute,
         mimeType: blob.type || 'video/webm',
         name: `Clip ${new Date().toLocaleTimeString()}`,
         trimStart: 0,
