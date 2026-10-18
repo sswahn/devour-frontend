@@ -15,6 +15,10 @@ function Wizard() {
     setOverlay('editor')
   }
 
+  const openPreview = () => {
+    setOverlay('preview')
+  }
+
   const openPublisher = () => {
     setOverlay('publisher')
   }
@@ -22,7 +26,8 @@ function Wizard() {
   return (
     <section className={styles.wizard}>
       {overlay === 'camera' && <Camera openEditor={openEditor} />}
-      {overlay === 'editor' && <Editor openCamera={openCamera} openPublisher={openPublisher} />}
+      {overlay === 'editor' && <Editor openCamera={openCamera} openPreview={openPreview} />}
+      {/* overlay === 'preview' && <Preview openEditor={openEditor} openPublisher={openPublisher} /> */}
       {overlay === 'publisher' && <Publisher openEditor={openEditor} />}
     </section>
   )
