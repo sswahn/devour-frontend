@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import useFootage from '../../hooks/useFootage'
+import useFootage from '../../../hooks/useFootage'
 import { concatenateVideos } from '../../../utilities/videoEditor'
 import PaperPlaneIcon from '../../../components/Icons/PaperPlaneIcon/PaperPlaneIcon'
 import styles from './PreviewButton.module.css'
