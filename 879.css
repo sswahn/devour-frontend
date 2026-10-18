@@ -25,13 +25,14 @@
 /* Loading Progress Bar */
 
 .R3ngTidU9jwJgH_A4iSz {
-  align-items: center; 
   background-color: #e0e0e0;
   border-radius: 4px;
-  display: flex;
-  justify-content: center;
   overflow: hidden;
-  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  tranform: translate(50%, 50%);
+  width: calc(100% - 40px);
 }
 
 .R3ngTidU9jwJgH_A4iSz div {
