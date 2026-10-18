@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { concatenateVideos } from '../../utilities/videoEditor'
+import { concatenateVideos } from '../../../utilities/videoEditor'
 import PaperPlaneIcon from '../../../components/Icons/PaperPlaneIcon/PaperPlaneIcon'
 import styles from './PreviewButton.module.css'
 
