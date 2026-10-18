@@ -5,6 +5,7 @@ import ProgressBar from '../../components/ProgressBar/ProgressBar'
 import Menu from './Menu/Menu'
 import MenuButton from './MenuButton/MenuButton'
 import PreviewButton from './PreviewButton/PreviewButton'
+import SubmitButton from './SubmitButton/SubmitButton'
 import styles from './Editor.module.css'
 
 function Editor({ footage, setPreview, openCamera, openPreview }) {
@@ -82,6 +83,7 @@ function Editor({ footage, setPreview, openCamera, openPreview }) {
         onError={e => console.log('Video error:', e.currentTarget.error)}
       />
       <PreviewButton footage={footage} setPreview={setPreview} openPreview={openPreview} />
+      <SubmitButton footage={footage} setPreview={setPreview} openPreview={openPreview} />
     </section>
   )
 }
