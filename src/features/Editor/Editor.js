@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import useFootage from '../../hooks/useFootage'
+import { concatenateVideos } from '../../../utilities/videoEditor'
 import TopNav from './TopNav/TopNav'
 import ProgressBar from '../../components/ProgressBar/ProgressBar'
 import Menu from './Menu/Menu'
