@@ -14,7 +14,14 @@ function Publisher({ openEditor }) {
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
 
-
+  const onChange = ({ target }) => {
+    const obj = { [target.id]: target.value }
+    setInput(prev => ({ ...prev, ...obj }))
+    const item = localStorage.getItem('submission')
+    const data = JSON.parse(item)
+    const json = JSON.stringify({ ...data, ...obj })
+    localStorage.setItem('submission', json)
+  }
 
   const onSubmit = async event => {
     // get s3 auth
