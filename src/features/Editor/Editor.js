@@ -51,6 +51,7 @@ function Editor({ footage, openCamera, openPublisher }) {
   const [progress, setProgress] = useState(0)
   const [menuIsOpen, setMenuIsOpen] = useState(false)
   const [source, setSource] = useState([])
+  const [loading, setLoading] = useState(false)
   const videoRef = useRef(null)
   
   const openMenu = () => {
