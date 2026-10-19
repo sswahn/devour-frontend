@@ -83,6 +83,8 @@ export const getDuration = blob => {
     const url = URL.createObjectURL(blob)
 
     const cleanup = () => {
+      video.onloadedmetadata = null
+      video.onerror = null
       URL.revokeObjectURL(url)
       video.remove()
     }
