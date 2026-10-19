@@ -1,6 +1,7 @@
 /* Video Editor */
 
 .editor {
+  background-color: var(--surface-raised);
   contain: content;
   height: 100dvh;
   inset: 0;
