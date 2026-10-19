@@ -293,6 +293,8 @@
   overflow: hidden;
   position: fixed;
   z-index: 200;
+
+  border: 1px dashed red;
 }
 
 .CAdCu73p1zUC0PuOriuX video {
