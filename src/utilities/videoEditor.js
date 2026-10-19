@@ -8,6 +8,12 @@ export const concatenateVideos = async (footage, setProgress) => {
   if (!Array.isArray(footage) || footage.length === 0) {
     throw new Error('At least one video clip is required.')
   }
+
+  if (exporting) {
+    throw new Error('An export is already in progress.')
+  }
+
+  exporting = true
   
   if (!loaded) {
     await ffmpeg.load()
@@ -55,6 +61,7 @@ export const concatenateVideos = async (footage, setProgress) => {
     return new Blob([data], { type: 'video/webm' })
   } finally {
     ffmpeg.off('progress', handleProgress)
+    exporting = false
   }
 }
 
