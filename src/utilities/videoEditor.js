@@ -55,9 +55,9 @@ export const concatenateVideos = async (footage, setProgress) => {
       await ffmpeg.deleteFile(file)
     }
 
+    const blob = new Blob([data], { type: 'video/webm' })
     setProgress(100)
-  
-    return new Blob([data], { type: 'video/webm' })
+    return blob
   } finally {
     ffmpeg.off('progress', handleProgress)
     active = false
