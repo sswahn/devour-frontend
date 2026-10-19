@@ -81,7 +81,7 @@ function Editor({ footage, openCamera, openPublisher }) {
   }, [])
 
   // return progress < 100 ? <ProgressBar progress={progress} /> : (
-  return loading ? <LoadingSPinner /> : (
+  return loading ? <LoadingSpinner /> : (
     <section className={styles.editor}>
       <TopNav videoRef={videoRef} openCamera={openCamera} /> 
       {menuIsOpen && <Menu data={data} setData={setData} closeMenu={closeMenu} />}
