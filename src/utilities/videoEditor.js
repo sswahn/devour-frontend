@@ -16,9 +16,6 @@ export const concatenateVideos = async (footage, setProgress) => {
 
   ffmpeg.on('progress', handleProgress)
 
-  // for now handle progress manually
-  setProgress(10)
-
   try {
     const files = []
   
@@ -28,17 +25,13 @@ export const concatenateVideos = async (footage, setProgress) => {
       files.push(name)
     }
 
-    setProgress(40)
-  
     const list = 'footage.txt'
   
     await ffmpeg.writeFile(list, new TextEncoder().encode(
         files.map(name => `file '${name}'`).join('\n')
       )
     )
-
-    setProgress(80)
-
+    
     await ffmpeg.exec([
       '-f', 'concat',
       '-safe', '0',
