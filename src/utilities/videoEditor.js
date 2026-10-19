@@ -5,6 +5,10 @@ const ffmpeg = new FFmpeg()
 let loaded = false
 
 export const concatenateVideos = async (footage, setProgress) => {
+  if (!Array.isArray(footage) || footage.length === 0) {
+    throw new Error('At least one video clip is required.')
+  }
+  
   if (!loaded) {
     await ffmpeg.load()
     loaded = true
