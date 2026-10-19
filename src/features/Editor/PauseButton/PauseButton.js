@@ -13,6 +13,7 @@ function PauseButton({ videoRef }) {
   }
 
   const handleVideoEnded = () => {
+    console.log('video ended. changing button state.')
     setPause(true)
   }
 
