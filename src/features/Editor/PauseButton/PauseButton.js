@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import PlayIcon from '../../../components/Icons/PlayIcon/PlayIcon'
 import PauseIcon from '../../../components/Icons/PauseIcon/PauseIcon'
 import styles from './PauseButton.module.css'
@@ -12,6 +12,17 @@ function PauseButton({ videoRef }) {
     setPause(prev => !prev) 
   }
 
+  const handleVideoEnded = () => {
+    setPause(true)
+  }
+
+  useEffect(() => {
+    videoRef.current?.addEventListener('ended', handleVideoEnded)
+    return () => {
+      videoRef.current?.removeEventListener('ended', handleVideoEnded)
+    }
+  }, [])
+  
   return (
     <button 
       className={styles.pauseButton} 
