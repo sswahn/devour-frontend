@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { concatenateVideos } from '../../utilities/videoEditor'
+import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner'
 import ProgressBar from '../../components/ProgressBar/ProgressBar'
 import TopNav from './TopNav/TopNav'
 import Menu from './Menu/Menu'
@@ -62,12 +63,15 @@ function Editor({ footage, openCamera, openPublisher }) {
 
   const onLoad = async event => {
     try {
-      setProgress(0)
+      //setProgress(0)
+      setLoading(true)
       const blob = await concatenateVideos(footage, setProgress)
       const url = URL.createObjectURL(blob)
       setSource(url)
     } catch (error) {
       console.error('Video export failed:', error)
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -75,7 +79,8 @@ function Editor({ footage, openCamera, openPublisher }) {
     onLoad()
   }, [])
 
-  return progress < 100 ? <ProgressBar progress={progress} /> : (
+  // return progress < 100 ? <ProgressBar progress={progress} /> : (
+  return loading ? <LoadingSPinner /> : (
     <section className={styles.editor}>
       <TopNav videoRef={videoRef} openCamera={openCamera} /> 
       {menuIsOpen && <Menu data={data} setData={setData} closeMenu={closeMenu} />}
