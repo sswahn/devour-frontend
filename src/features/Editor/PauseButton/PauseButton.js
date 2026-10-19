@@ -18,9 +18,10 @@ function PauseButton({ videoRef }) {
   }
 
   useEffect(() => {
-    videoRef.current?.addEventListener('ended', handleVideoEnded)
+    const video = videoRef.current
+    video?.addEventListener('ended', handleVideoEnded)
     return () => {
-      videoRef.current?.removeEventListener('ended', handleVideoEnded)
+      video?.removeEventListener('ended', handleVideoEnded)
     }
   }, [])
   
