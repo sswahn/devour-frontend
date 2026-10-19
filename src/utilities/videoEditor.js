@@ -3,17 +3,16 @@ import { fetchFile } from '@ffmpeg/util'
 
 const ffmpeg = new FFmpeg()
 let loaded = false
+let active = false
 
 export const concatenateVideos = async (footage, setProgress) => {
   if (!Array.isArray(footage) || footage.length === 0) {
     throw new Error('At least one video clip is required.')
   }
-
-  if (exporting) {
+  if (active) {
     throw new Error('An export is already in progress.')
   }
-
-  exporting = true
+  active = true
   
   if (!loaded) {
     await ffmpeg.load()
@@ -61,7 +60,7 @@ export const concatenateVideos = async (footage, setProgress) => {
     return new Blob([data], { type: 'video/webm' })
   } finally {
     ffmpeg.off('progress', handleProgress)
-    exporting = false
+    active = false
   }
 }
 
