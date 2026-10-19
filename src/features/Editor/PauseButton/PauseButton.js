@@ -12,7 +12,7 @@ function PauseButton({ videoRef }) {
     setPause(prev => !prev) 
   }
 
-  const handleVideoEnded = () => {
+  const onEnded = () => {
     console.log('video ended. changing button state.')
     setPause(true)
   }
@@ -22,9 +22,9 @@ function PauseButton({ videoRef }) {
     if (!video) {
       return 
     }
-    video.addEventListener('ended', handleVideoEnded)
+    video.addEventListener('ended', onEnded)
     return () => {
-      video.removeEventListener('ended', handleVideoEnded)
+      video.removeEventListener('ended', onEnded)
     }
   }, [])
   
