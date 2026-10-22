@@ -16,7 +16,7 @@ function Captions() {
   }
   
   return (
-    <section className={styles.caption}>
+    <section className={styles.captions}>
       <form>
         <Input 
           id="captions"
