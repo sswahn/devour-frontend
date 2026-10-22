@@ -25,6 +25,7 @@ function Cards() {
         backgroundColor: 'transparent',
         textAlign: 'left'
       }
+    }
     setCards(prev => ({ ...prev, ...obj }))
     const item = localStorage.getItem('cards')
     const data = JSON.parse(item)
