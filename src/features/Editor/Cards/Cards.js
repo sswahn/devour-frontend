@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import Input from '../../components/Input'
+import Input from '../../../components/Input'
 import styles from './Cards.module.css'
 
 function Cards() {
