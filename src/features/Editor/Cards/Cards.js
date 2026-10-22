@@ -40,7 +40,7 @@ function Cards() {
           id="cards"
           type="text"
           label="Add a card"
-          value={cards}
+          value={cards.text || ''}
           error={errorMessage}
           onChange={onChange}
           required />
