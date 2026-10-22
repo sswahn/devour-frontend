@@ -40,7 +40,7 @@ function Captions() {
           id="captions"
           type="text"
           label="Add a caption"
-          value={caption}
+          value={captions.text || ''}
           error={errorMessage}
           onChange={onChange}
           required />
