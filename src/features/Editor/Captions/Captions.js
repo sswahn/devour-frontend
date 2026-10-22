@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import useEditor from '../../../hooks/useEditor'
 import Input from '../../../components/Input/Input'
+import BoldIcon from '../../../components/Icons/BoldIcon/BoldIcon'
 import styles from './Captions.module.css'
 
 function Captions() {
@@ -60,6 +61,9 @@ function Captions() {
           error={errorMessage}
           onChange={onChange}
           required />
+        <button type="button">
+          <BoldIcon />
+        </button>
       </form>
     </section>
   )
