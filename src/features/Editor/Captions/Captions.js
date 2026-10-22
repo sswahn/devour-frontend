@@ -4,6 +4,8 @@ import Input from '../../../components/Input/Input'
 import BoldIcon from '../../../components/Icons/BoldIcon/BoldIcon'
 import styles from './Captions.module.css'
 
+import MediaEditor from '../../../components/MediaEditor/MediaEditor'
+
 function Captions() {
   const [data, setData] = useEditor()
   const [caption, setCaption] = useState('')
@@ -60,9 +62,7 @@ function Captions() {
           error={errorMessage}
           onChange={onChange}
           required />
-        <button type="button">
-          <BoldIcon />
-        </button>
+        <MediaEditor />
       </form>
     </section>
   )
