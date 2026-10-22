@@ -27,7 +27,7 @@ function Captions() {
           fontFamily: 'Arial',
           fontSize: 36,
           color: '#ffffff',
-          bold: true,
+          bold: true, // should be set with state const [bold, setBold] = useState(false)
           italic: false,
           underline: false,
           strokeColor: '#000000',
