@@ -18,13 +18,12 @@ function Captions() {
   const onSubmit = event => {
     // create the object for this caption with all its attributes:
     const obj = { 
-      captions : {
+      captions : [{
         id: crypto.randomUUID(),
         text: target.value,
         start: 0,
         end: 10,
-        // for style need to determine the default value.
-        style: {
+        style: { // for style need to determine the default values.
           fontFamily: 'Arial',
           fontSize: 36,
           color: '#ffffff',
@@ -36,7 +35,7 @@ function Captions() {
           backgroundColor: 'transparent',
           textAlign: 'left'
         }
-      }
+      }]
     }
     setData(prev => ({ ...prev, ...obj }))
   }
