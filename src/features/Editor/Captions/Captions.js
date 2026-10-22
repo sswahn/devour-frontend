@@ -25,6 +25,7 @@ function Captions() {
         backgroundColor: 'transparent',
         textAlign: 'left'
       }
+    }
     setCaptions(prev => ({ ...prev, ...obj }))
     const item = localStorage.getItem('captions')
     const data = JSON.parse(item)
