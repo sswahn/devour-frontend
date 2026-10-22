@@ -7,7 +7,24 @@ function Captions() {
   const [errorMessage, setErrorMessage] = useState('')
 
   const onChange = ({ target }) => {
-    // const obj = { [target.id]: target.value }
+    const obj = {
+      id: crypto.randomUUID(),
+      text: target.value,
+      start: 0,
+      end: 10,
+      // for style need to determine the default value.
+      style: {
+        fontFamily: 'Arial',
+        fontSize: 36,
+        color: '#ffffff',
+        bold: true,
+        italic: false,
+        underline: false,
+        strokeColor: '#000000',
+        strokeWidth: 2,
+        backgroundColor: 'transparent',
+        textAlign: 'left'
+      }
     setCaption(prev => ({ ...prev, ...obj }))
     const item = localStorage.getItem('profile')
     const data = JSON.parse(item)
