@@ -21,8 +21,7 @@ function Caption() {
           value={caption}
           error={errorMessage}
           onChange={onChange}
-          required
-          aria-label="Add a caption" />
+          required />
       </form>
     </section>
   )
