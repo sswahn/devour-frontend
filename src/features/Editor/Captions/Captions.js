@@ -1,21 +1,25 @@
 import { useState, useEffect } from 'react'
 import Input from '../../components/Input'
-import styles from './Caption.module.css'
+import styles from './Captions.module.css'
 
-function Caption() {
-  const [caption, setCaption] = useState('')
+function Captions() {
+  const [captions, setCaptions] = useState({})
   const [errorMessage, setErrorMessage] = useState('')
 
   const onChange = ({ target }) => {
-    // set caption
-    // setItem in localStorage
+    // const obj = { [target.id]: target.value }
+    setCaption(prev => ({ ...prev, ...obj }))
+    const item = localStorage.getItem('profile')
+    const data = JSON.parse(item)
+    const json = JSON.stringify({ ...data, ...obj })
+    localStorage.setItem('captions', json)
   }
   
   return (
     <section className={styles.caption}>
       <form>
         <Input 
-          id="caption"
+          id="captions"
           type="text"
           label="Add a caption"
           value={caption}
@@ -27,4 +31,4 @@ function Caption() {
   )
 }
 
-export default Caption
+export default Captions
