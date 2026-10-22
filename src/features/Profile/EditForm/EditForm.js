@@ -148,8 +148,7 @@ function EditForm({ profile, setProfile }) {
         value={input.username}
         error={errorMessage}
         onChange={onChange}
-        required
-        aria-label="update your username" />
+        required />
       <Input
         id="location"
         type="text"
@@ -157,17 +156,14 @@ function EditForm({ profile, setProfile }) {
         value={input.location}
         error={errorMessage}
         onChange={onChange}
-        required
-        aria-label="update your location" />
+        required />
       <TextArea
         id="biography"
         label="Bio"
         value={input.biography}
         onChange={onChange}
         error={errorMessage}
-        required
-        aria-label="update your biography"
-      />
+        required />
       <button type="submit" disabled={loading}>Submit</button>
     </form>
   )
