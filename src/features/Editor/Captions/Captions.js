@@ -1,46 +1,62 @@
 import { useState, useEffect } from 'react'
+import useEditor from '../../../hooks/useEditor'
 import Input from '../../../components/Input/Input'
 import styles from './Captions.module.css'
 
 function Captions() {
-  const [captions, setCaptions] = useState({})
+  const [data, setData] = useEditor()
+  const [caption, setCaption] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
 
-  const onChange = ({ target }) => {
-    const obj = {
-      id: crypto.randomUUID(),
-      text: target.value,
-      start: 0,
-      end: 10,
-      // for style need to determine the default value.
-      style: {
-        fontFamily: 'Arial',
-        fontSize: 36,
-        color: '#ffffff',
-        bold: true,
-        italic: false,
-        underline: false,
-        strokeColor: '#000000',
-        strokeWidth: 2,
-        backgroundColor: 'transparent',
-        textAlign: 'left'
+  const onChange = event => {
+    const { value } = event.target
+    setCaption(value)
+    localStorage.setItem('caption', value)
+  }
+
+  const onSubmit = event => {
+    // create the object for this caption with all its attributes:
+    const obj = { 
+      captions : {
+        id: crypto.randomUUID(),
+        text: target.value,
+        start: 0,
+        end: 10,
+        // for style need to determine the default value.
+        style: {
+          fontFamily: 'Arial',
+          fontSize: 36,
+          color: '#ffffff',
+          bold: true,
+          italic: false,
+          underline: false,
+          strokeColor: '#000000',
+          strokeWidth: 2,
+          backgroundColor: 'transparent',
+          textAlign: 'left'
+        }
       }
     }
-    setCaptions(prev => ({ ...prev, ...obj }))
-    const item = localStorage.getItem('captions')
-    const data = JSON.parse(item)
-    const json = JSON.stringify({ ...data, ...obj })
-    localStorage.setItem('captions', json)
+    setData(prev => ({ ...prev, ...obj }))
   }
+
+  const loadFromStorage = () => {
+    const item = localStorage.getItem('caption')
+    setCaption(item)
+  }
+
+  useEffect(() => {
+    loadFromStorage()
+  }, [])
   
   return (
     <section className={styles.captions}>
-      <form>
+      <form onSubmit={onSubmit}>
         <Input 
           id="captions"
           type="text"
           label="Add a caption"
-          value={captions.text || ''}
+          value={caption}
           error={errorMessage}
           onChange={onChange}
           required />
