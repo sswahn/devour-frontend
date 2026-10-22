@@ -84,7 +84,7 @@ function Editor({ footage, openCamera, openPublisher }) {
   return loading ? <LoadingSpinner /> : (
     <section className={styles.editor}>
       <TopNav videoRef={videoRef} openCamera={openCamera} /> 
-      {menuIsOpen && <Menu data={data} setData={setData} closeMenu={closeMenu} />}
+      {menuIsOpen && <Menu closeMenu={closeMenu} />}
       <MenuButton openMenu={openMenu} /> 
       <VideoTimeline videoRef={videoRef} />
       <video id="video-editor" ref={videoRef} src={source} autoPlay playsInline 
