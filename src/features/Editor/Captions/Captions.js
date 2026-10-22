@@ -25,8 +25,8 @@ function Captions() {
         backgroundColor: 'transparent',
         textAlign: 'left'
       }
-    setCaption(prev => ({ ...prev, ...obj }))
-    const item = localStorage.getItem('profile')
+    setCaptions(prev => ({ ...prev, ...obj }))
+    const item = localStorage.getItem('captions')
     const data = JSON.parse(item)
     const json = JSON.stringify({ ...data, ...obj })
     localStorage.setItem('captions', json)
