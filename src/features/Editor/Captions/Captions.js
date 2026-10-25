@@ -44,7 +44,7 @@ function Captions() {
 
   const loadFromStorage = () => {
     const item = localStorage.getItem('captions')
-    const array = JSON.parse(item)
+    const array = JSON.parse(item) || []
     setCaptions(array)
   }
 
