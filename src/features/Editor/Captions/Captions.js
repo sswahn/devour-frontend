@@ -40,6 +40,9 @@ function Captions() {
     setData(prev => ({ ...prev, ...obj })) // need to get the namespacing correctly
   }
 
+  // TODO: make a localStorage utility, or update the existing one.
+  // Also, fix magic strings, place keys strings in config file.
+  
   const loadFromStorage = () => {
     const item = localStorage.getItem('caption')
     setCaption(item)
