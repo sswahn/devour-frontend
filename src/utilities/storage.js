@@ -1,5 +1,5 @@
-// Helper factory to generate safe storage implementations
-const createStorageWrapper = (storageType) => {
+
+const createStorageWrapper = storageType => {
   const api = window[storageType]
 
   return {
