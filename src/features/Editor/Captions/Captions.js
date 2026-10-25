@@ -6,15 +6,13 @@ import styles from './Captions.module.css'
 
 function Captions() {
   const [data, setData] = useEditor()
-  const [captions, setCaptions] = useState([])
+  const [caption, setCaption] = useState([])
   const [errorMessage, setErrorMessage] = useState('')
 
   const onChange = event => {
     const { value } = event.target
-    const array = [ ...captions, value ]
-    setCaptions(array)
-    const json = JSON.stringify(array)
-    localStorage.setItem('captions', json)
+    setCaption(value)
+    localStorage.setItem('caption', value)
   }
 
   const onSubmit = event => {
@@ -39,13 +37,12 @@ function Captions() {
         }
       }]
     }
-    setData(prev => ({ ...prev, ...obj }))
+    setData(prev => ({ ...prev, ...obj })) // need to get the namespacing correctly
   }
 
   const loadFromStorage = () => {
-    const item = localStorage.getItem('captions')
-    const array = JSON.parse(item) || []
-    setCaptions(array)
+    const item = localStorage.getItem('caption')
+    setCaption(item)
   }
 
   useEffect(() => {
@@ -65,7 +62,7 @@ function Captions() {
           required />
       </form>
       <ul>
-        {captions.map(caption => <li>{caption}</li>)}
+        {data.captions.map(obj => <li key={obj.id} id={obj.id}>{obj.text}</li>)}
       </ul>
     </section>
   )
