@@ -6,13 +6,15 @@ import styles from './Captions.module.css'
 
 function Captions() {
   const [data, setData] = useEditor()
-  const [caption, setCaption] = useState('')
+  const [captions, setCaptions] = useState([])
   const [errorMessage, setErrorMessage] = useState('')
 
   const onChange = event => {
     const { value } = event.target
-    setCaption(value)
-    localStorage.setItem('caption', value)
+    const array = [ ...captions, value ]
+    setCaptions(array)
+    const json = JSON.stringify(array)
+    localStorage.setItem('captions', json)
   }
 
   const onSubmit = event => {
@@ -41,8 +43,9 @@ function Captions() {
   }
 
   const loadFromStorage = () => {
-    const item = localStorage.getItem('caption')
-    setCaption(item)
+    const item = localStorage.getItem('captions')
+    const array = JSON.parse(item)
+    setCaptions(array)
   }
 
   useEffect(() => {
@@ -61,6 +64,9 @@ function Captions() {
           onChange={onChange}
           required />
       </form>
+      <ul>
+        {captions.map(caption => <li>{caption}</li>)}
+      </ul>
     </section>
   )
 }
