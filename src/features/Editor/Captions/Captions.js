@@ -138,10 +138,10 @@ function Captions() {
               <p>Text: {item.text}</p>
               <div>
                 <button onClick={handleEdit} type="button" aria-label="edit caption">
-                  <PenToSquareIcon />
+                  <PenToSquareIcon size={16} />
                 </button>
                 <button onClick={handleDelete} type="button" aria-label="delete caption">
-                  <TrashCanIcon />
+                  <TrashCanIcon size={16} />
                 </button>
               </div>
             </div>
