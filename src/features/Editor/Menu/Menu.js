@@ -5,19 +5,13 @@ import Captions from '../Captions/Captions'
 import Cards from '../Cards/Cards'
 import styles from './Menu.module.css'
 
-function Menu({ captions, createCaption, closeMenu }) {
+function Menu({ closeMenu }) {
   const { openDialog } = useDialog()
   const [errorMessage, setErrorMessage] = useState('')
   const listRef = useRef(null)
 
-  
-  useEffect(() => {
-    console.log('Menu: ', captions)
-  }, [captions])
-
-  
   const handleCaptions = event => {
-    openDialog(<Captions captions={captions} createCaption={createCaption} />)
+    openDialog(<Captions />)
   }
 
   const handleCards = event => {
