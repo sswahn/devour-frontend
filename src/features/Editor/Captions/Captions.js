@@ -25,12 +25,17 @@ function Captions({ captions, createCaption }) {
   }
 
   const onSubmit = event => {
+    const id = crypto.randomUUID()
+    const formData = new FormData(event.target)
+    const text = formData.get('caption').trim()
+    const start = formData.get('start').trim()
+    const end = formData.get('end').trim()
     
     const data = {
-      id: crypto.randomUUID(),
-      text: target.value,
-      start: 0,
-      end: 10,
+      id,
+      text,
+      start,
+      end,
       style: { 
         fontSize,
         color,
@@ -43,6 +48,9 @@ function Captions({ captions, createCaption }) {
         textAlign
       }
     }
+
+    console.log('caption data: ', data)
+    
     createCaption(data) 
     storage.local.remove(config.storage.caption)
   }
@@ -84,6 +92,8 @@ function Captions({ captions, createCaption }) {
           label="End"
           error={errorMessage}
           required />
+            
+        <button type="submit" aria-label="submit caption">Submit</button>
       </form>
       <ul>
           {/* needs: edit & delete buttons (pencil and garbage can) */}
