@@ -53,11 +53,7 @@ function Captions({ captions, createCaption }) {
 
     console.log('caption data: ', data)
 
-    console.log('createCaption function defined? ', createCaption)
-    
-    createCaption(data) 
-
-    console.log('passed createCaption function.')
+    createCaption(data)
     
     storage.local.remove(config.storage.caption)
 
@@ -76,8 +72,11 @@ function Captions({ captions, createCaption }) {
 
   useEffect(() => { // remove after debugging
     console.log('captions: ', captions)
-  }, [captions[0]])
+  }, [captions.length])
   // consider adding caption at the editor level instead of menu?
+
+  console.log('checking captions: ', captions)
+  
   
   return (
     <section className={styles.captions}>
@@ -112,9 +111,9 @@ function Captions({ captions, createCaption }) {
       </form>
       <ul>
           {/* needs: edit & delete buttons (pencil and garbage can) */}
-        {captions?.map(caption => {
-          console.log('caption in jsx: ', caption)  
-          return <li key={caption.id} id={caption.id}>{caption.text}</li>
+        {captions?.map(obj => {
+          console.log('caption in jsx: ', obj)  
+          return <li key={obj.id} id={obj.id}>{obj.text}</li>
         })}
       </ul>
     </section>
