@@ -22,7 +22,7 @@ export const api = {
   comments: '/api/v1/comments'
 }
 
-export const store = {
+export const storage = {
   caption: 'caption'
 }
 
