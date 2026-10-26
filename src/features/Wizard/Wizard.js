@@ -7,6 +7,11 @@ import styles from './Wizard.module.css'
 function Wizard() {
   const [overlay, setOverlay] = useState('camera')
   const [footage, setFootage] = useState([])
+  const [captions, setCaptions] = useState([])
+
+  const createCaptions = data => {
+    setCaptions(prev => [ ...prev, data ])
+  }
   
   const openCamera = () => {
     setOverlay('camera')
