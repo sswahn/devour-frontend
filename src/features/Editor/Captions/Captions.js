@@ -1,13 +1,11 @@
 import { useState, useEffect } from 'react'
 import * as config from '../../../config'
 import storage from '../../../utilities/storage'
-import useEditor from '../../../hooks/useEditor'
 import Input from '../../../components/Input/Input'
 import BoldIcon from '../../../components/Icons/BoldIcon/BoldIcon'
 import styles from './Captions.module.css'
 
-function Captions() {
-  const { data, setData } = useEditor()
+function Captions({ captions, createCaption }) {
   const [caption, setCaption] = useState([])
   const [errorMessage, setErrorMessage] = useState('')
 
@@ -18,7 +16,7 @@ function Captions() {
   }
 
   const onSubmit = event => {
-    const item = {
+    const data = {
       id: crypto.randomUUID(),
       text: target.value,
       start: 0,
@@ -36,11 +34,7 @@ function Captions() {
         textAlign: 'left'
       }
     }
-  
-    // change from setData to something specific like createCaption(data)
-    // and reduce some of this code here...
-    // you should just pass the item and the function will handle adding it to the array.
-    setData(prev => ({ ...prev, captions: [ ...prev.captions, item ] })) 
+    createCaption(data) 
   }
 
   const loadFromStorage = () => {
@@ -66,7 +60,7 @@ function Captions() {
       </form>
       <ul>
           {/* needs: edit & delete buttons (pencil and garbage can) */}
-        {data?.captions.map(caption => <li key={caption.id} id={caption.id}>{caption.text}</li>)}
+        {captions.map(caption => <li key={caption.id} id={caption.id}>{caption.text}</li>)}
       </ul>
     </section>
   )
