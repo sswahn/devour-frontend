@@ -14,7 +14,7 @@ function Wizard() {
   }
 
   useEffect(() => {
-    console.log('Parent captions updated:', captions)
+    console.log('Wizard:', captions)
   }, [captions])
     
   const openCamera = () => {
