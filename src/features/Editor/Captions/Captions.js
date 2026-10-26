@@ -4,8 +4,8 @@ import * as config from '../../../config'
 import storage from '../../../utilities/storage'
 import Input from '../../../components/Input/Input'
 import BoldIcon from '../../../components/Icons/BoldIcon/BoldIcon'
-import PencilIcon from '../../../components/Icons/PencilIcon/PencilIcon'
-import GarbageIcon from '../../../components/Icons/GarbageIcon/GarbageIcon'
+import PenToSquareIcon from '../../../components/Icons/PenToSquareIcon/PenToSquareIcon'
+import TrashCanIcon from '../../../components/Icons/TrashCanIcon/TrashCanIcon'
 import styles from './Captions.module.css'
 
 function Captions() {
@@ -139,10 +139,10 @@ function Captions() {
               <p>Text: {item.text}<p>
               <div>
                 <button onClick={handleEdit} type="button" aria-label="edit caption">
-                  <PencilIcon />
+                  <PenToSquareIcon />
                 </button>
                 <button onClick={handleDelete} type="button" aria-label="delete caption">
-                  <GarbageIcon />
+                  <TrashCanIcon />
                 </button>
               </div>
             </div>
