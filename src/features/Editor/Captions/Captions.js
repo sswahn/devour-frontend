@@ -50,14 +50,8 @@ function Captions({ captions, createCaption }) {
         textAlign
       }
     }
-
-    console.log('caption data: ', data)
-
     createCaption(data)
-    
     storage.local.remove(config.storage.caption)
-
-    console.log('function finished.')
     // consider caching here
   }
 
@@ -72,7 +66,7 @@ function Captions({ captions, createCaption }) {
 
   
   useEffect(() => { // remove after debugging
-    console.log('captions: ', captions)
+    console.log('Captions: ', captions)
   }, [captions])
   
   // consider adding caption at the editor level instead of menu?
