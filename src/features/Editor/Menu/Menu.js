@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react' // remove useEffect
 import useDialog from '../../../hooks/useDialog'
 import CloseButton from '../../../components/CloseButton/CloseButton'
 import Captions from '../Captions/Captions'
@@ -10,6 +10,12 @@ function Menu({ captions, createCaption, closeMenu }) {
   const [errorMessage, setErrorMessage] = useState('')
   const listRef = useRef(null)
 
+  
+  useEffect(() => {
+    console.log('Editor: ', captions)
+  }, [captions])
+
+  
   const handleCaptions = event => {
     openDialog(<Captions captions={captions} createCaption={createCaption} />)
   }
