@@ -26,13 +26,13 @@ function Wizard() {
   }
   
   return (
-    <CaptionsProvider>
-      <section className={styles.wizard}>
+    <section className={styles.wizard}>
+      <CaptionsProvider>
         {overlay === 'camera' && <Camera footage={footage} setFootage={setFootage} openEditor={openEditor} />}
         {overlay === 'editor' && <Editor footage={footage} openCamera={openCamera} openPublisher={openPublisher} />}
         {overlay === 'publisher' && <Publisher footage={footage} openEditor={openEditor} />}
-      </section>
-    </CaptionsProvider>
+      </CaptionsProvider>
+    </section>
   )
 }
 
