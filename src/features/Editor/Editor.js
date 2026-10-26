@@ -9,45 +9,7 @@ import VideoTimeline from './VideoTimeline/VideoTimeline'
 import SubmitButton from './SubmitButton/SubmitButton'
 import styles from './Editor.module.css'
 
-function Editor({ footage, openCamera, openPublisher }) {
-  const [captions, setCaptions] = useState([
-    {
-      id: crypto.randomUUID(),
-      text: 'Welcome!',
-      start: 0,
-      end: 10,
-      style: {
-        fontFamily: 'Arial',
-        fontSize: 36,
-        color: '#ffffff',
-        bold: true,
-        italic: false,
-        underline: false,
-        strokeColor: '#000000',
-        strokeWidth: 2,
-        backgroundColor: 'transparent',
-        textAlign: 'center'
-      }
-    },
-    {
-      id: crypto.randomUUID(),
-      text: 'Goodbye!',
-      start: 10,
-      end: 15,
-      style: {
-        fontFamily: 'Arial',
-        fontSize: 36,
-        color: '#ffffff',
-        bold: true,
-        italic: false,
-        underline: false,
-        strokeColor: '#000000',
-        strokeWidth: 2,
-        backgroundColor: 'transparent',
-        textAlign: 'center'
-      }
-    }
-  ])
+function Editor({ footage, captions, createCaption, openCamera, openPublisher }) {
   const [progress, setProgress] = useState(0)
   const [menuIsOpen, setMenuIsOpen] = useState(false)
   const [source, setSource] = useState([])
@@ -84,7 +46,7 @@ function Editor({ footage, openCamera, openPublisher }) {
   return loading ? <LoadingSpinner /> : (
     <section className={styles.editor}>
       <TopNav videoRef={videoRef} openCamera={openCamera} /> 
-      {menuIsOpen && <Menu closeMenu={closeMenu} />}
+      {menuIsOpen && <Menu captions={captions} createCaption={createCaption} closeMenu={closeMenu} />}
       <MenuButton openMenu={openMenu} /> 
       <VideoTimeline videoRef={videoRef} />
       <video id="video-editor" ref={videoRef} src={source} autoPlay playsInline 
