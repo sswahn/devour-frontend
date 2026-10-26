@@ -10,9 +10,7 @@ function Wizard() {
   const [captions, setCaptions] = useState([])
 
   const createCaption = data => {
-    console.log('inside createCaption.')
     setCaptions(prev => [ ...prev, data ])
-    console.log('createCaption finished.')
   }
   
   const openCamera = () => {
