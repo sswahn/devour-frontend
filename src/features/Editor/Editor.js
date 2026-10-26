@@ -43,8 +43,7 @@ function Editor({ footage, openCamera, openPublisher }) {
   }, [])
 
   // return progress < 100 ? <ProgressBar progress={progress} /> : (
-  // need to wrap <LoadingSpinner /> to have dark background
-  
+
   return (
     <section className={styles.editor}>
       {loading ? <LoadingSpinner /> : <>
