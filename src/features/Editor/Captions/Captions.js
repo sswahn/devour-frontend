@@ -23,6 +23,20 @@ function Captions() {
   const [textAlign, setTextAlign] = useState('left')
   const [errorMessage, setErrorMessage] = useState('')
 
+  const onChange = ({ target: { id, value } }) => {
+    storage.local.set(config.storage[id], value)
+    switch(id) {
+      case 'caption':
+        return setCaption(value)
+      case 'start':
+        return setStart(value)
+      case 'end':
+        return setEnd(value)
+      default:
+        return
+    }
+  }
+
   const handleCaption = event => {
     const { value } = event.target
     setCaption(value)
