@@ -9,7 +9,7 @@ function Wizard() {
   const [footage, setFootage] = useState([])
   const [captions, setCaptions] = useState([])
 
-  const createCaptions = data => {
+  const createCaption = data => {
     setCaptions(prev => [ ...prev, data ])
   }
   
@@ -32,7 +32,7 @@ function Wizard() {
   return (
     <section className={styles.wizard}>
       {overlay === 'camera' && <Camera footage={footage} setFootage={setFootage} openEditor={openEditor} />}
-      {overlay === 'editor' && <Editor footage={footage} openCamera={openCamera} openPublisher={openPublisher} />}
+      {overlay === 'editor' && <Editor footage={footage} captions={captions} createCaption={createCaption} openCamera={openCamera} openPublisher={openPublisher} />}
       {overlay === 'publisher' && <Publisher footage={footage} openEditor={openEditor} />}
     </section>
   )
