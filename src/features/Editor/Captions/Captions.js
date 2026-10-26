@@ -4,6 +4,8 @@ import * as config from '../../../config'
 import storage from '../../../utilities/storage'
 import Input from '../../../components/Input/Input'
 import BoldIcon from '../../../components/Icons/BoldIcon/BoldIcon'
+import PencilIcon from '../../../components/Icons/PencilIcon/PencilIcon'
+import GarbageIcon from '../../../components/Icons/GarbageIcon/GarbageIcon'
 import styles from './Captions.module.css'
 
 function Captions() {
@@ -22,6 +24,14 @@ function Captions() {
   const [backgroundColor, setBackgroundColor] = useState('transparent')
   const [textAlign, setTextAlign] = useState('left')
   const [errorMessage, setErrorMessage] = useState('')
+
+  const handleEdit = event => {
+    console.log('edit')
+  }
+  
+  const handleDelete = event => {
+    console.log('delete')
+  }
 
   const onChange = ({ target: { id, value } }) => {
     switch (id) {
@@ -118,7 +128,25 @@ function Captions() {
       </form>
       <ul>
         {/* needs: edit & delete buttons (pencil and garbage can) */}
-        {captions.map(obj => <li key={obj.id} id={obj.id}>{obj.text}</li>)}
+        {captions.map(item => 
+          <li key={item.id} id={item.id}>
+            <div>
+              <div>
+                <span>Start: {item.start}</span>
+                <span> / </span>
+                <span>End: {item.end}</span>
+              </div>
+              <p>Text: {item.text}<p>
+              <div>
+                <button onClick={handleEdit} type="button" aria-label="edit caption">
+                  <PencilIcon />
+                </button>
+                <button onClick={handleDelete} type="button" aria-label="delete caption">
+                  <GarbageIcon />
+                </button>
+              </div>
+            </div>
+          </li>)}
       </ul>
     </section>
   )
