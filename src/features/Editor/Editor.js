@@ -9,19 +9,13 @@ import VideoTimeline from './VideoTimeline/VideoTimeline'
 import SubmitButton from './SubmitButton/SubmitButton'
 import styles from './Editor.module.css'
 
-function Editor({ footage, captions, createCaption, openCamera, openPublisher }) {
+function Editor({ footage, openCamera, openPublisher }) {
   const [progress, setProgress] = useState(0)
   const [menuIsOpen, setMenuIsOpen] = useState(false)
   const [source, setSource] = useState([])
   const [loading, setLoading] = useState(false)
   const videoRef = useRef(null)
 
-
-  useEffect(() => {
-    console.log('Editor: ', captions)
-  }, [captions])
-  
-  
   const openMenu = () => {
     setMenuIsOpen(true)
   }
@@ -52,7 +46,7 @@ function Editor({ footage, captions, createCaption, openCamera, openPublisher })
   return loading ? <LoadingSpinner /> : (
     <section className={styles.editor}>
       <TopNav videoRef={videoRef} openCamera={openCamera} /> 
-      {menuIsOpen && <Menu captions={captions} createCaption={createCaption} closeMenu={closeMenu} />}
+      {menuIsOpen && <Menu closeMenu={closeMenu} />}
       <MenuButton openMenu={openMenu} /> 
       <VideoTimeline videoRef={videoRef} />
       <video id="video-editor" ref={videoRef} src={source} autoPlay playsInline 
