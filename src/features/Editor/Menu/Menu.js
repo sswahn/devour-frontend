@@ -5,13 +5,13 @@ import Captions from '../Captions/Captions'
 import Cards from '../Cards/Cards'
 import styles from './Menu.module.css'
 
-function Menu({ closeMenu }) {
+function Menu({ captions, createCaption, closeMenu }) {
   const { openDialog } = useDialog()
   const [errorMessage, setErrorMessage] = useState('')
   const listRef = useRef(null)
 
   const handleCaptions = event => {
-    openDialog(<Captions />)
+    openDialog(<Captions captions={captions} createCaption={createCaption} />)
   }
 
   const handleCards = event => {
