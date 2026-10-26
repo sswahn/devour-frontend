@@ -35,6 +35,7 @@ function Captions({ captions, createCaption }) {
       }
     }
     createCaption(data) 
+    // store to indexeddb here?
   }
 
   const loadFromStorage = () => {
