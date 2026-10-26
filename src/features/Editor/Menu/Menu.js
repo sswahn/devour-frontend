@@ -12,7 +12,7 @@ function Menu({ captions, createCaption, closeMenu }) {
 
   
   useEffect(() => {
-    console.log('Editor: ', captions)
+    console.log('Menu: ', captions)
   }, [captions])
 
   
