@@ -127,7 +127,6 @@ function Captions() {
         <button type="submit" aria-label="submit caption">Submit</button>
       </form>
       <ul>
-        {/* needs: edit & delete buttons (pencil and garbage can) */}
         {captions.map(item => 
           <li key={item.id} id={item.id}>
             <div>
@@ -146,7 +145,8 @@ function Captions() {
                 </button>
               </div>
             </div>
-          </li>)}
+          </li>
+        )}
       </ul>
     </section>
   )
