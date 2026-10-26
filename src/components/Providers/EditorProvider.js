@@ -1,8 +1,8 @@
 import { useState, createContext } from 'react'
 
-const EditorContext = createContext(null)
+const CaptionsContext = createContext(null)
 
-function EditorProvider({ children }) {
+function CaptionsProvider({ children }) {
   const [captions, setCaptions] = useState([])
 
   const createCaption = data => {
@@ -10,10 +10,10 @@ function EditorProvider({ children }) {
   }
   
   return (
-    <EditorContext.Provider value={{ captions, createCaption }}>
+    <CaptionsContext.Provider value={{ captions, createCaption }}>
       {children}
-    </EditorContext.Provider>
+    </CaptionsContext.Provider>
   )
 }
 
-export { EditorContext, EditorProvider }
+export { CaptionsContext, CaptionsProvider }
