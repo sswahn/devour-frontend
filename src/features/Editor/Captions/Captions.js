@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react'
+import useCaptions from '../../../hooks/useCaptions'
 import * as config from '../../../config'
 import storage from '../../../utilities/storage'
 import Input from '../../../components/Input/Input'
 import BoldIcon from '../../../components/Icons/BoldIcon/BoldIcon'
 import styles from './Captions.module.css'
 
-function Captions({ captions, createCaption }) {
+function Captions() {
+  const { captions, createCaption } = useCaptions()
   const [caption, setCaption] = useState([])
   const [fontSize, setFontSize] = useState(12)
   const [color, setColor] = useState('#ffffff')
