@@ -76,7 +76,7 @@ function Captions({ captions, createCaption }) {
 
   useEffect(() => { // remove after debugging
     console.log('captions: ', captions)
-  }, [captions.length])
+  }, [captions[0]])
   // consider adding caption at the editor level instead of menu?
   
   return (
@@ -112,7 +112,10 @@ function Captions({ captions, createCaption }) {
       </form>
       <ul>
           {/* needs: edit & delete buttons (pencil and garbage can) */}
-        {captions.map(caption => <li key={caption.id} id={caption.id}>{caption.text}</li>)}
+        {captions?.map(caption => {
+          console.log('caption in jsx: ', caption)  
+          return <li key={caption.id} id={caption.id}>{caption.text}</li>
+        )}
       </ul>
     </section>
   )
