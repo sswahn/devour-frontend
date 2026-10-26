@@ -14,13 +14,13 @@ function Providers({ children }) {
         <OverlayProvider>
           <ProfileProvider>
             <ContentProvider>
-              <DialogProvider>
-                <FootageProvider>
-                  <CaptionsProvider>
+              <FootageProvider>
+                <CaptionsProvider>
+                  <DialogProvider>
                     {children}
-                  </CaptionsProvider>
-                </FootageProvider>
-              </DialogProvider>
+                  </DialogProvider>
+                </CaptionsProvider>
+              </FootageProvider>
             </ContentProvider>
           </ProfileProvider>
         </OverlayProvider>
