@@ -24,7 +24,9 @@ export const api = {
 
 export const storage = {
   caption: 'caption',
-  captions: 'captions'
+  captions: 'captions',
+  start: 'start',
+  end: 'end'
 }
 
 export const contextmenu = {
