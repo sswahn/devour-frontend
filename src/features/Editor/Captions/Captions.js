@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import { config } from '../../../config'
+import storage from '../../../utilities/storage'
 import useEditor from '../../../hooks/useEditor'
 import Input from '../../../components/Input/Input'
 import BoldIcon from '../../../components/Icons/BoldIcon/BoldIcon'
@@ -12,7 +14,7 @@ function Captions() {
   const onChange = event => {
     const { value } = event.target
     setCaption(value)
-    localStorage.setItem('caption', value)
+    storage.local.set(config.storage.caption, value)
   }
 
   const onSubmit = event => {
@@ -44,7 +46,7 @@ function Captions() {
   // Also, fix magic strings, place keys strings in config file.
   
   const loadFromStorage = () => {
-    const item = localStorage.getItem('caption')
+    const item = storage.local.get(config.storage.caption)
     setCaption(item)
   }
 
