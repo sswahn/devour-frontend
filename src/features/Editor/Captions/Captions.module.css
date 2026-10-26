@@ -3,3 +3,7 @@
 .captions {
   margin-top: 30px;
 }
+
+.captions ul {
+  list-style-type: none;
+}
