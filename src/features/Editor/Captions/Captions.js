@@ -35,7 +35,7 @@ function Captions({ captions, createCaption }) {
       }
     }
     createCaption(data) 
-    // store to indexeddb here?
+    storage.local.remove(config.storage.caption)
   }
 
   const loadFromStorage = () => {
