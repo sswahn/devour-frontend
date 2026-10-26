@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Camera from '../Camera/Camera'
 import Editor from '../Editor/Editor'
 import Publisher from '../Publisher/Publisher'
@@ -12,7 +12,11 @@ function Wizard() {
   const createCaption = data => {
     setCaptions(prev => [ ...prev, data ])
   }
-  
+
+  useEffect(() => {
+    console.log('Parent captions updated:', captions)
+  }, [captions])
+    
   const openCamera = () => {
     setOverlay('camera')
   }
