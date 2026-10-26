@@ -115,7 +115,7 @@ function Captions({ captions, createCaption }) {
         {captions?.map(caption => {
           console.log('caption in jsx: ', caption)  
           return <li key={caption.id} id={caption.id}>{caption.text}</li>
-        )}
+        })}
       </ul>
     </section>
   )
