@@ -54,7 +54,12 @@ function Captions({ captions, createCaption }) {
     console.log('caption data: ', data)
     
     createCaption(data) 
+
+    console.log('passed createCaption function.')
+    
     storage.local.remove(config.storage.caption)
+
+    console.log('function finished.')
     // consider caching here
   }
 
