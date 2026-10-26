@@ -81,6 +81,7 @@ function Captions({ captions, createCaption }) {
           required />
         <Input
           id="start"
+          inputmode="decimal"
           type="number" 
           step="any"
           label="Start"
@@ -89,6 +90,7 @@ function Captions({ captions, createCaption }) {
           required />
         <Input
           id="end"
+          inputmode="decimal"
           type="number" 
           step="any"
           label="End"
