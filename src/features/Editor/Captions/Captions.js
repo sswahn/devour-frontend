@@ -59,7 +59,7 @@ function Captions() {
   }
 
   const loadFromStorage = () => {
-    const item = storage.local.get(config.storage.caption) || '' // consider doing null check in utility
+    const item = storage.local.get(config.storage.caption) ?? ''
     setCaption(item)
   }
 
