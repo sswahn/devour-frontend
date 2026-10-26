@@ -11,7 +11,7 @@ function Captions({ captions, createCaption }) {
   const [color, setColor] = useState('#ffffff')
   const [bold, setBold] = useState(false)
   const [italic, setItalic] = useState(false)
-  const [underline, setUnderline] useState(false)
+  const [underline, setUnderline] = useState(false)
   const [strokeColor, setStrokeColor] = useState('#000000')
   const [strokeWidth, setStrokeWidth] = useState(2)
   const [backgroundColor, setBackgroundColor] = useState('transparent')
