@@ -70,13 +70,12 @@ function Captions({ captions, createCaption }) {
     loadFromStorage()
   }, [])
 
+  
   useEffect(() => { // remove after debugging
     console.log('captions: ', captions)
   }, [captions])
-  // consider adding caption at the editor level instead of menu?
-
-  console.log('checking captions: ', captions)
   
+  // consider adding caption at the editor level instead of menu?
   
   return (
     <section className={styles.captions}>
@@ -110,11 +109,8 @@ function Captions({ captions, createCaption }) {
         <button type="submit" aria-label="submit caption">Submit</button>
       </form>
       <ul>
-          {/* needs: edit & delete buttons (pencil and garbage can) */}
-        {captions?.map(obj => {
-          console.log('caption in jsx: ', obj)  
-          return <li key={obj.id} id={obj.id}>{obj.text}</li>
-        })}
+        {/* needs: edit & delete buttons (pencil and garbage can) */}
+        {captions.map(obj => <li key={obj.id} id={obj.id}>{obj.text}</li>)}
       </ul>
     </section>
   )
