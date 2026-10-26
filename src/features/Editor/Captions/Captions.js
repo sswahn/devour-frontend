@@ -27,6 +27,7 @@ function Captions() {
     storage.local.set(config.storage.caption, value)
   }
 
+  // TODO: clear inputs on submit
   const onSubmit = event => {
     event.preventDefault()
     const id = crypto.randomUUID()
