@@ -65,7 +65,8 @@ function Captions() {
           required />
       </form>
       <ul>
-        {data.captions.map(obj => <li key={obj.id} id={obj.id}>{obj.text}</li>)}
+        // needs: edit & delete buttons (pencil and garbage can)
+        {data.captions.map(caption => <li key={caption.id} id={caption.id}>{caption.text}</li>)}
       </ul>
     </section>
   )
