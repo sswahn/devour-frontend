@@ -135,7 +135,7 @@ function Captions() {
                 <span> / </span>
                 <span>End: {item.end}</span>
               </div>
-              <p>Text: {item.text}<p>
+              <p>Text: {item.text}</p>
               <div>
                 <button onClick={handleEdit} type="button" aria-label="edit caption">
                   <PenToSquareIcon />
