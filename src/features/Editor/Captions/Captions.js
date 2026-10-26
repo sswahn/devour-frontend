@@ -53,6 +53,7 @@ function Captions({ captions, createCaption }) {
     
     createCaption(data) 
     storage.local.remove(config.storage.caption)
+    // consider caching here
   }
 
   const loadFromStorage = () => {
