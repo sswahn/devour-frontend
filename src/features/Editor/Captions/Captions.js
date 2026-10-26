@@ -7,7 +7,7 @@ import BoldIcon from '../../../components/Icons/BoldIcon/BoldIcon'
 import styles from './Captions.module.css'
 
 function Captions() {
-  const [data, setData] = useEditor()
+  const { data, setData } = useEditor()
   const [caption, setCaption] = useState([])
   const [errorMessage, setErrorMessage] = useState('')
 
