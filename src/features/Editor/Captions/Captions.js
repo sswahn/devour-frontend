@@ -52,6 +52,8 @@ function Captions({ captions, createCaption }) {
     }
 
     console.log('caption data: ', data)
+
+    console.log('createCaption function defined? ', createCaption)
     
     createCaption(data) 
 
