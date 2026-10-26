@@ -18,33 +18,31 @@ function Captions() {
   }
 
   const onSubmit = event => {
-    // create the object for this caption with all its attributes:
-    const obj = { 
-      captions : [{
-        id: crypto.randomUUID(),
-        text: target.value,
-        start: 0,
-        end: 10,
-        style: { // for style need to determine the default values.
-          fontFamily: 'Arial',
-          fontSize: 36,
-          color: '#ffffff',
-          bold: true, // should be set with state const [bold, setBold] = useState(false)
-          italic: false,
-          underline: false,
-          strokeColor: '#000000',
-          strokeWidth: 2,
-          backgroundColor: 'transparent',
-          textAlign: 'left'
-        }
-      }]
+    const item = {
+      id: crypto.randomUUID(),
+      text: target.value,
+      start: 0,
+      end: 10,
+      style: { // for style need to determine the default values.
+        fontFamily: 'Arial',
+        fontSize: 36,
+        color: '#ffffff',
+        bold: true, // should be set with state const [bold, setBold] = useState(false)
+        italic: false,
+        underline: false,
+        strokeColor: '#000000',
+        strokeWidth: 2,
+        backgroundColor: 'transparent',
+        textAlign: 'left'
+      }
     }
-    setData(prev => ({ ...prev, ...obj })) // need to get the namespacing correctly
+  
+    // change from setData to something specific like createCaption(data)
+    // and reduce some of this code here...
+    // you should just pass the item and the function will handle adding it to the array.
+    setData(prev => ({ ...prev, captions: [ ...prev.captions, item ] })) 
   }
 
-  // TODO: make a localStorage utility, or update the existing one.
-  // Also, fix magic strings, place keys strings in config file.
-  
   const loadFromStorage = () => {
     const item = storage.local.get(config.storage.caption)
     setCaption(item)
