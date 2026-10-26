@@ -24,8 +24,7 @@ function Captions() {
   const [errorMessage, setErrorMessage] = useState('')
 
   const onChange = ({ target: { id, value } }) => {
-    storage.local.set(config.storage[id], value)
-    switch(id) {
+    switch (id) {
       case 'caption':
         return setCaption(value)
       case 'start':
@@ -35,24 +34,7 @@ function Captions() {
       default:
         return
     }
-  }
-
-  const handleCaption = event => {
-    const { value } = event.target
-    setCaption(value)
-    storage.local.set(config.storage.caption, value)
-  }
-
-  const handleStart = event => {
-    const { value } = event.target
-    setStart(value)
-    storage.local.set(config.storage.start, value)
-  }
-
-  const handleEnd = event => {
-    const { value } = event.target
-    setEnd(value)
-    storage.local.set(config.storage.end, value)
+    storage.local.set(config.storage[id], value)
   }
 
   // TODO: clear inputs on submit
@@ -109,7 +91,7 @@ function Captions() {
           label="Add a caption"
           value={caption}
           error={errorMessage}
-          onChange={handleCaption}
+          onChange={onChange}
           required />
         <Input
           id="start"
@@ -119,7 +101,7 @@ function Captions() {
           label="Start"
           value={start} // default value needs to be gotten from timeline
           error={errorMessage}
-          onChange={handleStart}
+          onChange={onChange}
           required />
         <Input
           id="end"
@@ -129,7 +111,7 @@ function Captions() {
           label="End"
           value={end}
           error={errorMessage}
-          onChange={handleEnd}
+          onChange={onChange}
           required />
             
         <button type="submit" aria-label="submit caption">Submit</button>
