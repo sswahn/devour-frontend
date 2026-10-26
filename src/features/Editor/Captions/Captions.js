@@ -55,7 +55,7 @@ function Captions() {
     }
     createCaption(data)
     storage.local.remove(config.storage.caption)
-    // consider caching here
+    storage.local.set(config.storage.captions, [...captions, data])
   }
 
   const loadFromStorage = () => {
@@ -67,12 +67,7 @@ function Captions() {
     loadFromStorage()
   }, [])
 
-  
-  useEffect(() => { // remove after debugging
-    console.log('Captions: ', captions)
-  }, [captions])
-  
-  // consider adding caption at the editor level instead of menu?
+  // TODO: finish captions list add time, text, edit/delete buttons, styling
   
   return (
     <section className={styles.captions}>
