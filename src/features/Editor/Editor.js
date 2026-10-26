@@ -15,6 +15,12 @@ function Editor({ footage, captions, createCaption, openCamera, openPublisher })
   const [source, setSource] = useState([])
   const [loading, setLoading] = useState(false)
   const videoRef = useRef(null)
+
+
+  useEffect(() => {
+    console.log('Editor: ', captions)
+  }, [captions])
+  
   
   const openMenu = () => {
     setMenuIsOpen(true)
