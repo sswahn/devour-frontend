@@ -72,7 +72,7 @@ function Captions({ captions, createCaption }) {
 
   useEffect(() => { // remove after debugging
     console.log('captions: ', captions)
-  }, [captions.length])
+  }, [captions])
   // consider adding caption at the editor level instead of menu?
 
   console.log('checking captions: ', captions)
