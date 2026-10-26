@@ -43,18 +43,22 @@ function Editor({ footage, openCamera, openPublisher }) {
   }, [])
 
   // return progress < 100 ? <ProgressBar progress={progress} /> : (
-  return loading ? <LoadingSpinner /> : (
+  // need to wrap <LoadingSpinner /> to have dark background
+  
+  return (
     <section className={styles.editor}>
-      <TopNav videoRef={videoRef} openCamera={openCamera} /> 
-      {menuIsOpen && <Menu closeMenu={closeMenu} />}
-      <MenuButton openMenu={openMenu} /> 
-      <VideoTimeline videoRef={videoRef} />
-      <video id="video-editor" ref={videoRef} src={source} autoPlay playsInline 
-        onLoadedMetadata={() => console.log('Video metadata loaded')}
-        onCanPlay={() => console.log('Video can play')}
-        onError={e => console.log('Video error:', e.currentTarget.error)}
-      />
-      <SubmitButton openPublisher={openPublisher} />
+      {loading ? <LoadingSpinner /> : <>
+        <TopNav videoRef={videoRef} openCamera={openCamera} /> 
+        {menuIsOpen && <Menu closeMenu={closeMenu} />}
+        <MenuButton openMenu={openMenu} /> 
+        <VideoTimeline videoRef={videoRef} />
+        <video id="video-editor" ref={videoRef} src={source} autoPlay playsInline 
+          onLoadedMetadata={() => console.log('Video metadata loaded')}
+          onCanPlay={() => console.log('Video can play')}
+          onError={e => console.log('Video error:', e.currentTarget.error)}
+        />
+        <SubmitButton openPublisher={openPublisher} />
+      </>}
     </section>
   )
 }
