@@ -26,6 +26,7 @@ function Captions({ captions, createCaption }) {
   }
 
   const onSubmit = event => {
+    event.preventDefault()
     const id = crypto.randomUUID()
     const formData = new FormData(event.target)
     const text = formData.get('caption').trim()
