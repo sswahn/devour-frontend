@@ -67,6 +67,9 @@ function Captions({ captions, createCaption }) {
     loadFromStorage()
   }, [])
 
+  useEffect(() => { // remove after debugging
+    console.log('captions: ', captions)
+  }, [captions])
   // consider adding caption at the editor level instead of menu?
   
   return (
