@@ -63,7 +63,7 @@ function Captions({ captions, createCaption }) {
 
   const loadFromStorage = () => {
     const item = storage.local.get(config.storage.caption)
-    setCaption(item)
+    setCaption(item || '')
   }
 
   useEffect(() => {
