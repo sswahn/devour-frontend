@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import useCaptions from '../../../hooks/useCaptions'
 import * as config from '../../../config'
 import storage from '../../../utilities/storage'
 import Input from '../../../components/Input/Input'
@@ -9,11 +8,9 @@ import TrashCanIcon from '../../../components/Icons/TrashCanIcon/TrashCanIcon'
 import styles from './Captions.module.css'
 
 function Captions() {
-  // TODO: actually, you only need captions/createCaptions locally.
-  // So just useState, and create the createCaption function here.
-  // use ffmpeg crud operations in the create, update, delete function
+  // TODO: once this is up and running,
   // go ahead and delete the provider, hook, and provider instance.
-  const { captions, createCaption } = useCaptions()
+  const [captions, setCaptions] = useState([])
   const [caption, setCaption] = useState('')
   const [start, setStart] = useState('')
   const [end, setEnd] = useState('')
@@ -28,14 +25,6 @@ function Captions() {
   const [backgroundColor, setBackgroundColor] = useState('transparent')
   const [textAlign, setTextAlign] = useState('left')
   const [errorMessage, setErrorMessage] = useState('')
-
-  const handleEdit = event => {
-    console.log('edit')
-  }
-  
-  const handleDelete = event => {
-    console.log('delete')
-  }
 
   const onChange = ({ target: { id, value } }) => {
     switch (id) {
@@ -77,12 +66,24 @@ function Captions() {
         textAlign
       }
     }
-    createCaption(data)
+    setCaptions(prev => [ ...prev, data ])
     storage.local.set(config.storage.captions, [...captions, data])
     setCaption('')
     setStart('')
     setEnd('')
     storage.local.remove(config.storage.caption)
+    // ffmpeg method something like videoCreateCaption(data)
+  }
+
+  // these click events will be moved when the button components are made.
+  const handleEdit = event => {
+    console.log('edit')
+    // videoEditCaption(id, data)
+  }
+  
+  const handleDelete = event => {
+    console.log('delete')
+    // videoDeleteCaption(id)
   }
 
   const loadFromStorage = () => {
