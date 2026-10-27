@@ -9,6 +9,10 @@ import TrashCanIcon from '../../../components/Icons/TrashCanIcon/TrashCanIcon'
 import styles from './Captions.module.css'
 
 function Captions() {
+  // TODO: actually, you only need captions/createCaptions locally.
+  // So just useState, and create the createCaption function here.
+  // use ffmpeg crud operations in the create, update, delete function
+  // go ahead and delete the provider, hook, and provider instance.
   const { captions, createCaption } = useCaptions()
   const [caption, setCaption] = useState('')
   const [start, setStart] = useState('')
