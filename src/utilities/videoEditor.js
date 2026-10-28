@@ -1,56 +1,167 @@
 import { FFmpeg } from '@ffmpeg/ffmpeg'
 import { fetchFile } from '@ffmpeg/util'
 
-export const concatenateVideos = async (footage, setProgress) => {
-  if (!Array.isArray(footage) || footage.length === 0) {
-    throw new Error('At least one video clip is required.')
-  }
-  if (active) {
-    throw new Error('An export is already in progress.')
-  }
+const createFFmpeg = async () => {
   const ffmpeg = new FFmpeg()
   await ffmpeg.load()
-  
+  return ffmpeg
+}
+
+const cleanup = async (ffmpeg, files) => {
+  await Promise.all(
+    files.map(async file => {
+      try {
+        await ffmpeg.deleteFile(file)
+      } catch {
+        // The file may not have been created.
+      }
+    })
+  )
+}
+
+const formatSrtTime = seconds => {
+  if (!Number.isFinite(seconds) || seconds < 0) {
+    throw new Error('Caption times must be non-negative finite numbers.')
+  }
+
+  const ms = Math.round(seconds * 1000)
+  const hours = Math.floor(ms / 3_600_000)
+  const minutes = Math.floor((ms % 3_600_000) / 60_000)
+  const secs = Math.floor((ms % 60_000) / 1000)
+  const millis = ms % 1000
+
+  return `${String(hours).padStart(2, '0')}:` +
+    `${String(minutes).padStart(2, '0')}:` +
+    `${String(secs).padStart(2, '0')},` +
+    String(millis).padStart(3, '0')
+}
+
+export const createSrtContent = captions =>
+  captions.map((caption, index) => {
+    if (
+      !Number.isFinite(caption.start) ||
+      !Number.isFinite(caption.end) ||
+      caption.start < 0 ||
+      caption.end <= caption.start
+    ) {
+      throw new Error(`Caption ${index + 1} has invalid timing.`)
+    }
+
+    return [
+      index + 1,
+      `${formatSrtTime(caption.start)} --> ${formatSrtTime(caption.end)}`,
+      String(caption.text ?? ''),
+      ''
+    ].join('\n')
+  }).join('\n')
+
+// Concatenate an array of footage objects: [{ clip: Blob }, ...].
+
+export const concatenateVideos = async (
+  footage,
+  setProgress = () => {}
+) => {
+  if (
+    !Array.isArray(footage) ||
+    footage.length === 0 ||
+    footage.some(item => !(item?.clip instanceof Blob))
+  ) {
+    throw new Error('Provide an array of video clips.')
+  }
+
+  const ffmpeg = await createFFmpeg()
+  const inputs = footage.map((_, index) => `clip${index}.webm`)
+  const manifest = 'footage.txt'
+  const output = 'output.webm'
+  const files = [...inputs, manifest, output]
+
   const handleProgress = ({ progress }) => {
     setProgress(Math.round(progress * 100))
   }
 
   ffmpeg.on('progress', handleProgress)
-  
-  const files = []
-  
-  for (let i = 0; i < footage.length; i++) {
-    const name = `clip${i}.webm`
-    await ffmpeg.writeFile(name, await fetchFile(footage[i].clip))
-    files.push(name)
-  }
 
-  const list = 'footage.txt'
-
-  await ffmpeg.writeFile(list, new TextEncoder().encode(
-      files.map(name => `file '${name}'`).join('\n')
+  try {
+    await Promise.all(
+      footage.map(async ({ clip }, index) => {
+        await ffmpeg.writeFile(inputs[index], await fetchFile(clip))
+      })
     )
-  )
-    
-  await ffmpeg.exec([
-    '-f', 'concat',
-    '-safe', '0',
-    '-i', list,
-    '-c', 'copy',
-    'output.webm'
-  ])
 
-  const data = await ffmpeg.readFile('output.webm')
+    const list = inputs
+      .map(file => `file '${file}'`)
+      .join('\n')
 
-  for (const file of [...files, list, 'output.webm']) {
-    await ffmpeg.deleteFile(file)
+    await ffmpeg.writeFile(manifest, list)
+
+    await ffmpeg.exec([
+      '-f', 'concat',
+      '-safe', '0',
+      '-i', manifest,
+      '-c', 'copy',
+      '-y', output
+    ])
+
+    const result = await ffmpeg.readFile(output)
+
+    setProgress(100)
+
+    return new Blob([result], { type: 'video/webm' })
+  } finally {
+    ffmpeg.off('progress', handleProgress)
+    await cleanup(ffmpeg, files)
+  }
+}
+
+// Burn all captions into a source video Blob.
+// data is an array of caption objects.
+
+export const createCaptions = async (footage, data) => {
+  const source = footage instanceof Blob ? footage : footage?.clip
+
+  if (!(source instanceof Blob)) {
+    throw new Error('A source video Blob is required.')
   }
 
-  const blob = new Blob([data], { type: 'video/webm' })
-  ffmpeg.off('progress', handleProgress)
-  setProgress(100)
-  return blob
+  if (!Array.isArray(data)) {
+    throw new Error('Captions must be an array.')
+  }
+
+  // Validate and generate subtitle data before starting FFmpeg.
+  const subtitles = createSrtContent(data)
+
+  if (data.length === 0) {
+    return source
+  }
+
+  const ffmpeg = await createFFmpeg()
+  const input = 'input.webm'
+  const subtitleFile = 'captions.srt'
+  const output = 'output.webm'
+  const files = [input, subtitleFile, output]
+
+  try {
+    await ffmpeg.writeFile(input, await fetchFile(source))
+    await ffmpeg.writeFile(subtitleFile, subtitles)
+
+    await ffmpeg.exec([
+      '-i', input,
+      '-vf', 'subtitles=captions.srt',
+      '-c:v', 'libvpx-vp9',
+      '-c:a', 'libopus',
+      '-y', output
+    ])
+
+    const result = await ffmpeg.readFile(output)
+
+    return new Blob([result], { type: 'video/webm' })
+  } finally {
+    await cleanup(ffmpeg, files)
+  }
 }
+
+
+
 
 // Converts standard "#RRGGBB" or "RRGGBB" into FFmpeg's required "&H00BBGGRR" format
 const formatFfmpegColor = (hexStr) => {
@@ -64,52 +175,6 @@ const formatFfmpegColor = (hexStr) => {
   
   // Return in BGR (Blue Green Red) order prefixed by &H00
   return `&H00${b}${g}${r}`;
-}
-
-export const createSrtContent = data => {
-  return data.map((caption, index) => {
-      // Helper to format seconds (e.g. 12.34) into SRT time (00:00:12,340)
-      const formatTime = seconds => {
-        const date = new Date(null)
-        date.setSeconds(Math.floor(seconds))
-        const ms = Math.floor((seconds % 1) * 1000).toString().padStart(3, '0')
-        const timeStr = date.toISOString().substr(11, 8)
-        return `${timeStr},${ms}`
-      }
-      // what about captions.style?
-      return `${index + 1}\n${formatTime(caption.start)} --> ${formatTime(caption.end)}\n${caption.text}\n`;
-    })
-    .join('\n')
-}
-
-export const createCaption = async data => {
-  const ffmpeg = new FFmpeg()
-  await ffmpeg.load()
-
-  const srtContent = createSrtContent(data)
-  await ffmpeg.writeFile('subtitles.srt', srtContent) // sanitize data
-  const formatedData = data.map(caption => ({ 
-    ...caption, 
-    backgroundColor: formatFfmpegColor(caption.style.backgroundColor)
-    // add all the values that have hex codes.
-  }))
-  
-  // is subtitles better than drawtext?
-  
-  // this also needs to be in a loop:
-  const styles = 'subtitles=subtitles.srt:force_style=' + 
-    `FontSize=${style.fontSize},` +
-    `PrimaryColour=${formatFfmpegColor()},` +
-    `BorderStyle=3,` +
-    `Outline=2,` +
-    `OutlineColour=&H00000000`
-
-  // can it handle webm content? 
-  await ffmpeg.exec([
-    '-i', 'input.mp4',
-    '-vf', styles,
-    'output.mp4' 
-  ])
 }
 
 export const getDuration = blob => {
