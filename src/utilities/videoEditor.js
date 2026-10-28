@@ -112,18 +112,6 @@ export const createCaption = async data => {
   ])
 }
 
-export const updateCaption = async (id, data) => {
-  const ffmpeg = new FFmpeg()
-  await ffmpeg.load()
-  
-}
-
-export const deleteCaption = async id => {
-  const ffmpeg = new FFmpeg()
-  await ffmpeg.load()
-  
-}
-
 export const getDuration = blob => {
   return new Promise((resolve, reject) => {
     const video = document.createElement('video')
