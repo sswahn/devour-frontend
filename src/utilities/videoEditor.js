@@ -64,8 +64,8 @@ export const concatenateVideos = async (footage, setProgress) => {
   }
 }
 
-export const writeCaptions = captions => {
-  return captions
+export const createCaptions = data => {
+  return data
     .filter(caption => caption.text.trim() && caption.end > caption.start)
     .map(caption => {
       const text = caption.text
@@ -75,13 +75,16 @@ export const writeCaptions = captions => {
         .replace(/%/g, '\\%')
 
       return `drawtext=text='${text}':` +
-        `fontcolor=white:fontsize=36:` +
-        `borderw=3:bordercolor=black:` +
+        `fontcolor=${style.fontColor}:fontsize=${style.fontSize}:` +
+        `borderw=${style.borderWidth}:bordercolor=${style.borderColor}:` +
         `x=(w-text_w)/2:y=h*0.85:` +
         `enable='between(t,${caption.start},${caption.end})'`
     })
     .join(',')
 }
+
+export const updateCaption = (id, data) => {}
+export const deleteCaption = id => {}
 
 export const getDuration = blob => {
   return new Promise((resolve, reject) => {
