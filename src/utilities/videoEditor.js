@@ -113,9 +113,7 @@ export const concatenateVideos = async (
   }
 }
 
-// Burn all captions into a source video Blob.
-// data is an array of caption objects.
-
+// TODO: implement custom styling:
 export const createCaptions = async (footage, data) => {
   const source = footage instanceof Blob ? footage : footage?.clip
 
