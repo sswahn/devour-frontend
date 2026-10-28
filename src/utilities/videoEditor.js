@@ -16,6 +16,7 @@ export const concatenateVideos = async (footage, setProgress) => {
   }
 
   ffmpeg.on('progress', handleProgress)
+  
   const files = []
   
   for (let i = 0; i < footage.length; i++) {
@@ -49,30 +50,79 @@ export const concatenateVideos = async (footage, setProgress) => {
   ffmpeg.off('progress', handleProgress)
   setProgress(100)
   return blob
-
 }
 
-export const createCaption = data => {
-  return data
-    .filter(caption => caption.text.trim() && caption.end > caption.start)
-    .map(caption => {
-      const text = caption.text
-        .replace(/\\/g, '\\\\')
-        .replace(/'/g, "'\\''")
-        .replace(/:/g, '\\:')
-        .replace(/%/g, '\\%')
+// Converts standard "#RRGGBB" or "RRGGBB" into FFmpeg's required "&H00BBGGRR" format
+const formatFfmpegColor = (hexStr) => {
+  if (!hexStr) return '&H00FFFFFF'; // Default White
+  const cleanHex = hexStr.replace('#', '');
+  
+  // Extract RGB components
+  const r = cleanHex.substring(0, 2);
+  const g = cleanHex.substring(2, 4);
+  const b = cleanHex.substring(4, 6);
+  
+  // Return in BGR (Blue Green Red) order prefixed by &H00
+  return `&H00${b}${g}${r}`;
+}
 
-      return `drawtext=text='${text}':` +
-        `fontcolor=${style.fontColor}:fontsize=${style.fontSize}:` +
-        `borderw=${style.borderWidth}:bordercolor=${style.borderColor}:` +
-        `x=(w-text_w)/2:y=h*0.85:` +
-        `enable='between(t,${caption.start},${caption.end})'`
+export const createSrtContent = data => {
+  return data.map((caption, index) => {
+      // Helper to format seconds (e.g. 12.34) into SRT time (00:00:12,340)
+      const formatTime = seconds => {
+        const date = new Date(null)
+        date.setSeconds(Math.floor(seconds))
+        const ms = Math.floor((seconds % 1) * 1000).toString().padStart(3, '0')
+        const timeStr = date.toISOString().substr(11, 8)
+        return `${timeStr},${ms}`
+      }
+      // what about captions.style?
+      return `${index + 1}\n${formatTime(caption.start)} --> ${formatTime(caption.end)}\n${caption.text}\n`;
     })
-    .join(',')
+    .join('\n')
 }
 
-export const updateCaption = (id, data) => {}
-export const deleteCaption = id => {}
+export const createCaption = async data => {
+  const ffmpeg = new FFmpeg()
+  await ffmpeg.load()
+
+  const srtContent = createSrtContent(data)
+  await ffmpeg.writeFile('subtitles.srt', srtContent) // sanitize data
+  const formatedData = data.map(caption => ({ 
+    ...caption, 
+    backgroundColor: formatFfmpegColor(caption.style.backgroundColor)
+    // add all the values that have hex codes.
+  }))
+  
+  // is subtitles better than drawtext?
+  
+  // this also needs to be in a loop:
+  const styles = 'subtitles=subtitles.srt:force_style=' + 
+    `FontSize=${style.fontSize},` +
+    `PrimaryColour=${formatFfmpegColor()},` +
+    `BorderStyle=3,` +
+    `Outline=2,` +
+    `OutlineColour=&H00000000`
+
+  // can it handle webm content? 
+  await ffmpeg.exec([
+    '-i', 'input.mp4',
+    '-vf', styles,
+    'output.mp4' 
+  ])
+}
+
+export const updateCaption = async (id, data) => {
+  const ffmpeg = new FFmpeg()
+  await ffmpeg.load()
+  
+}
+
+export const deleteCaption = async id => {
+  const ffmpeg = new FFmpeg()
+  await ffmpeg.load()
+  
+}
 
 export const getDuration = blob => {
   return new Promise((resolve, reject) => {
