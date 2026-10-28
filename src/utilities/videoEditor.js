@@ -1,10 +1,6 @@
 import { FFmpeg } from '@ffmpeg/ffmpeg'
 import { fetchFile } from '@ffmpeg/util'
 
-const ffmpeg = new FFmpeg()
-let loaded = false
-let active = false
-
 export const concatenateVideos = async (footage, setProgress) => {
   if (!Array.isArray(footage) || footage.length === 0) {
     throw new Error('At least one video clip is required.')
@@ -12,59 +8,51 @@ export const concatenateVideos = async (footage, setProgress) => {
   if (active) {
     throw new Error('An export is already in progress.')
   }
-  active = true
+  const ffmpeg = new FFmpeg()
+  await ffmpeg.load()
   
-  if (!loaded) {
-    await ffmpeg.load()
-    loaded = true
-  }
-
   const handleProgress = ({ progress }) => {
     setProgress(Math.round(progress * 100))
   }
 
   ffmpeg.on('progress', handleProgress)
-
-  try {
-    const files = []
+  const files = []
   
-    for (let i = 0; i < footage.length; i++) {
-      const name = `clip${i}.webm`
-      await ffmpeg.writeFile(name, await fetchFile(footage[i].clip))
-      files.push(name)
-    }
-
-    const list = 'footage.txt'
-  
-    await ffmpeg.writeFile(list, new TextEncoder().encode(
-        files.map(name => `file '${name}'`).join('\n')
-      )
-    )
-    
-    await ffmpeg.exec([
-      '-f', 'concat',
-      '-safe', '0',
-      '-i', list,
-      '-c', 'copy',
-      'output.webm'
-    ])
-  
-    const data = await ffmpeg.readFile('output.webm')
-  
-    for (const file of [...files, list, 'output.webm']) {
-      await ffmpeg.deleteFile(file)
-    }
-
-    const blob = new Blob([data], { type: 'video/webm' })
-    setProgress(100)
-    return blob
-  } finally {
-    ffmpeg.off('progress', handleProgress)
-    active = false
+  for (let i = 0; i < footage.length; i++) {
+    const name = `clip${i}.webm`
+    await ffmpeg.writeFile(name, await fetchFile(footage[i].clip))
+    files.push(name)
   }
+
+  const list = 'footage.txt'
+
+  await ffmpeg.writeFile(list, new TextEncoder().encode(
+      files.map(name => `file '${name}'`).join('\n')
+    )
+  )
+    
+  await ffmpeg.exec([
+    '-f', 'concat',
+    '-safe', '0',
+    '-i', list,
+    '-c', 'copy',
+    'output.webm'
+  ])
+
+  const data = await ffmpeg.readFile('output.webm')
+
+  for (const file of [...files, list, 'output.webm']) {
+    await ffmpeg.deleteFile(file)
+  }
+
+  const blob = new Blob([data], { type: 'video/webm' })
+  ffmpeg.off('progress', handleProgress)
+  setProgress(100)
+  return blob
+
 }
 
-export const createCaptions = data => {
+export const createCaption = data => {
   return data
     .filter(caption => caption.text.trim() && caption.end > caption.start)
     .map(caption => {
