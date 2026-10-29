@@ -164,6 +164,7 @@ export const createCaptions = async (blob, captions) => {
     throw new Error('Video blob and captions array are required.')
   }
 
+  const ffmpeg = await createFFmpeg()
   const timestamp = Date.now()
   const inputFileName = `input_${timestamp}.mp4`
   const subFileName = `subtitles_${timestamp}.ass`
@@ -171,7 +172,6 @@ export const createCaptions = async (blob, captions) => {
   const createdFiles = [inputFileName, subFileName, outputFileName]
 
   try {
-    const ffmpeg = await createFFmpeg()
     // 1. Write input video to virtual file system
     await ffmpeg.writeFile(inputFileName, await fetchFile(blob))
 
