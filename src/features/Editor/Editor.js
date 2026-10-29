@@ -30,6 +30,7 @@ function Editor({ footage, openCamera, openPublisher }) {
       setLoading(true)
       // save this blob
       // it will be the editable footage, and the final submission.
+      // store in context and in indexeddb
       const blob = await concatenateVideos(footage, setProgress) 
       const url = URL.createObjectURL(blob)
       setSource(url)
@@ -41,7 +42,9 @@ function Editor({ footage, openCamera, openPublisher }) {
   }
 
   useEffect(() => {
-    onLoad()
+    //if (footage.length > 1) {
+      onLoad()
+    //}
   }, [])
 
   // return progress < 100 ? <ProgressBar progress={progress} /> : (
