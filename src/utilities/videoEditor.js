@@ -154,6 +154,10 @@ const generateAssContent = (validCaptions) => {
 
     // Handle newlines safely in ASS
     const text = (caption.text || '').replace(/\r?\n/g, '\\N')
+                                     .replace(/\\/g, '\\\\')
+                                     .replace(/\{/g, '\\{')
+                                     .replace(/\}/g, '\\}')
+                                     .replace(/\r\n|\r|\n/g, '\\N')
 
     ass += `Dialogue: 0,${startTime},${endTime},Default,,0,0,0,,${tags}${text}\n`
   }
