@@ -103,17 +103,19 @@ export const concatenateVideos = async (footage, setProgress = () => {}) => {
 }
 
 // Converts standard "#RRGGBB" or "RRGGBB" into FFmpeg's required "&H00BBGGRR" format
-const formatFfmpegColor = (hexStr) => {
-  if (!hexStr) return '&H00FFFFFF'; // Default White
-  const cleanHex = hexStr.replace('#', '');
-  
-  // Extract RGB components
-  const r = cleanHex.substring(0, 2);
-  const g = cleanHex.substring(2, 4);
-  const b = cleanHex.substring(4, 6);
-  
-  // Return in BGR (Blue Green Red) order prefixed by &H00
-  return `&H00${b}${g}${r}`;
+const formatFfmpegColor = hex => {
+  if (typeof hex !== 'string' || !hex) {
+    return '&H00FFFFFF'
+  }
+  if (hex.toLowerCase() === 'transparent') {
+    return '&HFF000000'
+  }
+  const match = /^#?([0-9a-f]{6})$/i.exec(hex)
+  if (!match) {
+    return '&H00FFFFFF'
+  }
+  const [, rgb] = match
+  return `&H00${rgb.slice(4, 6)}${rgb.slice(2, 4)}${rgb.slice(0, 2)}`.toUpperCase()
 }
 
 const createSubtitleFilter = data => {
