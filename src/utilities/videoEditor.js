@@ -162,7 +162,7 @@ const generateAssContent = (validCaptions) => {
 }
 
 export const createCaptions = async (blob, captions, setProgress = () => {}) => {
-  if (!blob || !captions.length) {
+  if (!(blob instanceof Blob)) {
     throw new Error('Video blob and captions array are required.')
   }
 
