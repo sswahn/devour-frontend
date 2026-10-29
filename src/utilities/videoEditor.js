@@ -137,7 +137,8 @@ const generateAssContent = (validCaptions) => {
     const fontSize = Number(style.fontSize) || 36
     const color = toAssColor(style.color || '#ffffff')
     const strokeColor = toAssColor(style.strokeColor || '#000000')
-    const strokeWidth = Number(style.strokeWidth) !== undefined ? Number(style.strokeWidth) : 2
+    const strokeWidth = Number.isFinite(style.strokeWidth) ? style.strokeWidth : 2
+    //const strokeWidth = Number(style.strokeWidth) !== undefined ? Number(style.strokeWidth) : 2
     const bold = style.bold ? 1 : 0
     const italic = style.italic ? 1 : 0
     const underline = style.underline ? 1 : 0
