@@ -163,7 +163,7 @@ const generateAssContent = (validCaptions) => {
 
 export const createCaptions = async (blob, captions, setProgress = () => {}) => {
   if (!(blob instanceof Blob)) {
-    throw new Error('Video blob must be an instance of Blob.')
+    throw new TypeError('Video blob must be an instance of Blob.')
   }
 
   const validCaptions = validateCaptions(captions)
