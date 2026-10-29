@@ -171,9 +171,9 @@ export const createCaptions = async (blob, captions, setProgress = () => {}) => 
   const ffmpeg = await createFFmpeg()
   const timestamp = Date.now()
   const input = `input_${timestamp}.webm`
-  const subFileName = `subtitles_${timestamp}.ass`
+  const manifest = `subtitles_${timestamp}.ass`
   const output = `output_${timestamp}.webm`
-  const files = [input, subFileName, output]
+  const files = [input, manifest, output]
 
   const handleProgress = ({ progress }) => {
     setProgress(Math.round(progress * 100))
@@ -191,12 +191,12 @@ export const createCaptions = async (blob, captions, setProgress = () => {}) => 
 
     // 2. Generate and write the ASS subtitle file
     const assContent = generateAssContent(validCaptions)
-    await ffmpeg.writeFile(subFileName, new TextEncoder().encode(assContent))
+    await ffmpeg.writeFile(manifest, new TextEncoder().encode(assContent))
 
     // 3. Run FFmpeg command using a single robust subtitles filter
     await ffmpeg.exec([
       '-i', input,
-      '-vf', `subtitles=${subFileName}`,
+      '-vf', `subtitles=${manifest}`,
       '-c:a', 'copy',
       '-y', output
     ])
