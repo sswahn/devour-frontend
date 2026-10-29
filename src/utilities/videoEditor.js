@@ -165,9 +165,13 @@ export const createCaptions = async (blob, captions, setProgress = () => {}) => 
   if (!(blob instanceof Blob)) {
     throw new TypeError('Video blob must be an instance of Blob.')
   }
-
+  
   const validCaptions = validateCaptions(captions)
-
+  
+  if (validCaptions.length === 0) {
+    throw new Error('At least one caption is required.')
+  }
+  
   const ffmpeg = await createFFmpeg()
   const timestamp = Date.now()
   const input = `input_${timestamp}.webm`
@@ -184,10 +188,6 @@ export const createCaptions = async (blob, captions, setProgress = () => {}) => 
   try {
     // 1. Write input video to virtual file system
     await ffmpeg.writeFile(input, await fetchFile(blob))
-
-    if (validCaptions.length === 0) {
-      throw new Error('No valid captions found to process.')
-    }
 
     // 2. Generate and write the ASS subtitle file
     const assContent = generateAssContent(validCaptions)
