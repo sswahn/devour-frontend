@@ -73,6 +73,7 @@ export const createCaptions = async (blob, captions) => {
   const createdFiles = [inputFileName, outputFileName]
 
   try {
+    const ffmpeg = await createFFmpeg()
     // 1. Write input video blob to FFmpeg virtual file system
     await ffmpeg.writeFile(inputFileName, await fetchFile(blob))
 
