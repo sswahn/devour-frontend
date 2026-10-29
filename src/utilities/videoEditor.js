@@ -60,6 +60,7 @@ export const concatenateVideos = async (footage, setProgress = () => {}) => {
   } finally {
     ffmpeg.off('progress', handleProgress)
     await cleanup(ffmpeg, files)
+    ffmpeg.terminate()
   }
 }
 
@@ -209,6 +210,7 @@ export const createCaptions = async (blob, captions, setProgress = () => {}) => 
     // 5. Guaranteed cleanup of all virtual files to prevent WASM memory leaks
     ffmpeg.off('progress', handleProgress)
     await cleanup(ffmpeg, files)
+    ffmpeg.terminate()
   }
 }
 
