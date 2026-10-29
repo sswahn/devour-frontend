@@ -63,13 +63,8 @@ export const concatenateVideos = async (footage, setProgress = () => {}) => {
   }
 }
 
-export const createCaptions = async (blob, data) => {
-
-
-  import { fetchFile } from '@ffmpeg/ffmpeg'
-
-export const burnCaptionsToVideo = async (ffmpeg, videoBlob, captions = []) => {
-  if (!videoBlob || !captions.length) {
+export const createCaptions = async (blob, captions) => {
+  if (!blob || !captions.length) {
     throw new Error('Video blob and captions array are required.')
   }
 
@@ -79,12 +74,12 @@ export const burnCaptionsToVideo = async (ffmpeg, videoBlob, captions = []) => {
 
   try {
     // 1. Write input video blob to FFmpeg virtual file system
-    await ffmpeg.writeFile(inputFileName, await fetchFile(videoBlob))
+    await ffmpeg.writeFile(inputFileName, await fetchFile(blob))
 
     // 2. Filter and validate captions
     const validCaptions = captions.filter(caption =>
       typeof caption.text === 'string' &&
-      caption.text.trim() &&
+      caption.text &&
       Number.isFinite(caption.start) &&
       Number.isFinite(caption.end) &&
       caption.start >= 0 &&
