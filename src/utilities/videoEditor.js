@@ -102,13 +102,15 @@ export const createCaptions = async (blob, captions) => {
     throw new Error('Video blob and captions array are required.')
   }
 
-  const inputFileName = `input_${Date.now()}.mp4`
-  const outputFileName = `output_${Date.now()}.mp4`
-  const createdFiles = [inputFileName, outputFileName]
+  const timestamp = Date.now()
+  const inputFileName = `input_${timestamp}.mp4`
+  const subFileName = `subtitles_${timestamp}.ass`
+  const outputFileName = `output_${timestamp}.mp4`
+  const createdFiles = [inputFileName, subFileName, outputFileName]
 
   try {
     const ffmpeg = await createFFmpeg()
-    // 1. Write input video blob to FFmpeg virtual file system
+    // 1. Write input video to virtual file system
     await ffmpeg.writeFile(inputFileName, await fetchFile(blob))
 
     // 2. Validate captions
@@ -118,74 +120,29 @@ export const createCaptions = async (blob, captions) => {
       throw new Error('No valid captions found to process.')
     }
 
-    const filters = []
+    // 3. Generate and write the ASS subtitle file
+    const assContent = generateAssContent(validCaptions)
+    await ffmpeg.writeFile(subFileName, new TextEncoder().encode(assContent))
 
-    // 3. Process each caption into a text file and build drawtext filters
-    for (let i = 0 i < validCaptions.length i++) {
-      const caption = validCaptions[i]
-      const style = caption.style || {}
-      const textFileName = `caption_${i}_${Date.now()}.txt`
-      
-      createdFiles.push(textFileName)
-      await ffmpeg.writeFile(textFileName, new TextEncoder().encode(caption.text))
-
-      const fontSize = Math.max(8, Math.min(200, Number(style.fontSize) || 36))
-      const strokeWidth = Math.max(0, Math.min(20, Number(style.strokeWidth) || 0))
-      
-      // Handle text alignment (x-coordinate mapping)
-      let xCoord = '(w-text_w)/2' // default center
-      if (style.textAlign === 'left') {
-        xCoord = '50' // 50px padding from left
-      } else if (style.textAlign === 'right') {
-        xCoord = 'w-text_w-50' // 50px padding from right
-      }
-
-      const options = [
-        `textfile=${textFileName}`,
-        `fontcolor=${formatColor(style.color, '0xffffff')}`,
-        `fontsize=${fontSize}`,
-        `borderw=${strokeWidth}`,
-        `bordercolor=${formatColor(style.strokeColor, '0x000000')}`,
-        `x=${xCoord}`,
-        `y=h*0.85`,
-        `enable='between(t\\,${caption.start}\\,${caption.end})'`
-      ]
-
-      // Optional font file handling
-      if (style.fontFile) {
-        options.push(`fontfile=${style.fontFile}`)
-      }
-
-      // Background box styling
-      if (style.backgroundColor && style.backgroundColor !== 'transparent') {
-        options.push('box=1')
-        options.push(`boxcolor=${formatColor(style.backgroundColor, '0x000000aa')}`)
-        options.push('boxborderw=8')
-      }
-
-      filters.push(`drawtext=${options.join(':')}`)
-    }
-
-    const filterChain = filters.join(',')
-
-    // 4. Run FFmpeg command (copy audio stream to avoid re-encoding overhead)
+    // 4. Run FFmpeg command using a single robust subtitles filter
     await ffmpeg.exec([
       '-i', inputFileName,
-      '-vf', filterChain,
+      '-vf', `subtitles=${subFileName}`,
       '-c:a', 'copy',
       outputFileName
     ])
 
-    // 5. Read output file back into memory as a Blob
+    // 5. Read output file back as a Blob
     const data = await ffmpeg.readFile(outputFileName)
     return new Blob([data.buffer], { type: 'video/mp4' })
+
   } finally {
-    // 6. Cleanup virtual file system to prevent memory leaks in WASM
+    // 6. Guaranteed cleanup of all virtual files to prevent WASM memory leaks
     for (const file of createdFiles) {
       try {
         await ffmpeg.deleteFile(file)
       } catch (e) {
-        // Ignore files that weren't created or already deleted
+        // Ignore files that weren't created or were already cleaned up
       }
     }
   }
