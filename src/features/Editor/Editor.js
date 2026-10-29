@@ -28,7 +28,9 @@ function Editor({ footage, openCamera, openPublisher }) {
     try {
       //setProgress(0)
       setLoading(true)
-      const blob = await concatenateVideos(footage, setProgress)
+      // save this blob
+      // it will be the editable footage, and the final submission.
+      const blob = await concatenateVideos(footage, setProgress) 
       const url = URL.createObjectURL(blob)
       setSource(url)
     } catch (error) {
