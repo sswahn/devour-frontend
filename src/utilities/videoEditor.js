@@ -169,9 +169,9 @@ export const createCaptions = async (blob, captions, setProgress = () => {}) => 
 
   const ffmpeg = await createFFmpeg()
   const timestamp = Date.now()
-  const inputFileName = `input_${timestamp}.mp4`
+  const inputFileName = `input_${timestamp}.webm`
   const subFileName = `subtitles_${timestamp}.ass`
-  const outputFileName = `output_${timestamp}.mp4`
+  const outputFileName = `output_${timestamp}.webm`
   const files = [inputFileName, subFileName, outputFileName]
 
   const handleProgress = ({ progress }) => {
