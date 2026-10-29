@@ -102,7 +102,36 @@ export const concatenateVideos = async (footage, setProgress = () => {}) => {
   }
 }
 
-// TODO: implement custom styling:
+// Converts standard "#RRGGBB" or "RRGGBB" into FFmpeg's required "&H00BBGGRR" format
+const formatFfmpegColor = (hexStr) => {
+  if (!hexStr) return '&H00FFFFFF'; // Default White
+  const cleanHex = hexStr.replace('#', '');
+  
+  // Extract RGB components
+  const r = cleanHex.substring(0, 2);
+  const g = cleanHex.substring(2, 4);
+  const b = cleanHex.substring(4, 6);
+  
+  // Return in BGR (Blue Green Red) order prefixed by &H00
+  return `&H00${b}${g}${r}`;
+}
+
+const createSubtitleFilter = data => {
+  const style = [
+    'FontName=Arial',
+    'FontSize=36',
+    'PrimaryColour=&H00FFFFFF',
+    'OutlineColour=&H00000000',
+    'Bold=0',
+    'Italic=0',
+    'Underline=0',
+    'Outline=2',
+    'Alignment=2'
+  ].join(',')
+
+  return `subtitles=captions.srt:force_style='${style}'`
+}
+
 export const createCaptions = async (footage, data) => {
   const source = footage instanceof Blob ? footage : footage?.clip
 
@@ -133,7 +162,7 @@ export const createCaptions = async (footage, data) => {
 
     await ffmpeg.exec([
       '-i', input,
-      '-vf', 'subtitles=captions.srt',
+      '-vf', createSubtitleFilter(data),
       '-c:v', 'libvpx-vp9',
       '-c:a', 'libopus',
       '-y', output
@@ -145,23 +174,6 @@ export const createCaptions = async (footage, data) => {
   } finally {
     await cleanup(ffmpeg, files)
   }
-}
-
-
-
-
-// Converts standard "#RRGGBB" or "RRGGBB" into FFmpeg's required "&H00BBGGRR" format
-const formatFfmpegColor = (hexStr) => {
-  if (!hexStr) return '&H00FFFFFF'; // Default White
-  const cleanHex = hexStr.replace('#', '');
-  
-  // Extract RGB components
-  const r = cleanHex.substring(0, 2);
-  const g = cleanHex.substring(2, 4);
-  const b = cleanHex.substring(4, 6);
-  
-  // Return in BGR (Blue Green Red) order prefixed by &H00
-  return `&H00${b}${g}${r}`;
 }
 
 export const getDuration = blob => {
