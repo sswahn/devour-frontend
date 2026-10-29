@@ -8,17 +8,24 @@ const createFFmpeg = async () => {
 }
 
 const cleanup = async (ffmpeg, files) => {
-  await Promise.all(
-    files.map(async file => {
-      try {
-        await ffmpeg.deleteFile(file)
-      } catch {
-        // The file may not have been created.
-      }
-    })
-  )
+  await Promise.all(files.map(async file => {
+    try {
+      await ffmpeg.deleteFile(file)
+    } catch {
+      // The file may not have been created.
+    }
+  }))
 }
 
+// Forget this Srt business.
+// It all started from trying to sanitize the text and avoid string manipulation
+// revert code to previous string manipulation for ffmpeg sanitization.
+/*
+    .replace(/\\/g, '\\\\') 
+    .replace(/'/g, "'\\''") 
+    .replace(/:/g, '\\:') 
+    .replace(/%/g, '\\%')
+*/
 const formatSrtTime = seconds => {
   if (!Number.isFinite(seconds) || seconds < 0) {
     throw new Error('Caption times must be non-negative finite numbers.')
