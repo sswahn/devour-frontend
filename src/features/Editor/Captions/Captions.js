@@ -90,6 +90,7 @@ function Captions() {
   const handleEdit = async event => {
     console.log('edit')
     // edit the caption in the captions array
+    // const id = event.target.closest('li').id
     // then recreate the video with the new data:
     // const blob = await createCaption(footage, data)
     // setTempFootage(blob)
@@ -98,6 +99,8 @@ function Captions() {
   const handleDelete = event => {
     console.log('delete')
     // delete the caption in the captions array
+    // const id = event.target.closest('li').id
+    // const data = captions.filter(caption => caption.id !== id)
     // then recreate the video with new data:
     // const blob = await createCaption(footage, data)
     // setTempFootage(blob)
