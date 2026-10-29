@@ -135,7 +135,7 @@ const createSubtitleFilter = data => {
 }
 
 export const createCaptions = async (footage, data) => {
-  const source = footage instanceof Blob ? footage : footage?.clip
+  const source = footage instanceof Blob ? footage : footage?.clip // footage is always an array
 
   if (!(source instanceof Blob)) {
     throw new Error('A source video Blob is required.')
