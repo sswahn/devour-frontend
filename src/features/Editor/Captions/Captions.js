@@ -91,6 +91,10 @@ function Captions() {
     console.log('edit')
     // edit the caption in the captions array
     // const id = event.target.closest('li').id
+    // need a form inputs for collecting edited data
+    const updated = captions.map(caption =>
+     // caption.id === id ? { ...caption, ...data } : caption
+    )
     // then recreate the video with the new data:
     // const blob = await createCaption(footage, data)
     // setTempFootage(blob)
