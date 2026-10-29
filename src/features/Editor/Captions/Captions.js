@@ -41,7 +41,7 @@ function Captions() {
   }
 
   // TODO: clear inputs on submit
-  const onSubmit = event => {
+  const onSubmit = async event => {
     event.preventDefault()
     const id = crypto.randomUUID()
     const formData = new FormData(event.target)
@@ -66,31 +66,41 @@ function Captions() {
         textAlign
       }
     }
-    const conflicted = captions.filter(caption => {
-      // check each caption.start/caption.end
-      // calc duration, and make sure no overlap.
-    })
+    
+    const sorted = [...captions].sort((a, b) => a.start - b.start)
+    const conflicted = sorted.some((caption, index) =>
+      index > 0 && caption.start < sorted[index - 1].end
+    )
     if (conflicted) {
-      return alert('captions conflict.')
+      return alert('This caption conflicts with an existing caption.')
     }
-    setCaptions([ ...captions, data ])
+    setCaptions(prev => [ ...prev, data ])
     storage.local.set(config.storage.captions, [...captions, data])
     setCaption('')
     setStart('')
     setEnd('')
     storage.local.remove(config.storage.caption)
-    // ffmpeg method something like videoCreateCaption(data)
+    // const blob = await createCaption(footage, data) 
+    // result needs name such as tempFootage
+    // as original footage must remain intact.
+    // setTempFootage(blob)
   }
 
   // these click events will be moved when the button components are made.
-  const handleEdit = event => {
+  const handleEdit = async event => {
     console.log('edit')
-    // videoEditCaption(id, data)
+    // edit the caption in the captions array
+    // then recreate the video with the new data:
+    // const blob = await createCaption(footage, data)
+    // setTempFootage(blob)
   }
   
   const handleDelete = event => {
     console.log('delete')
-    // videoDeleteCaption(id)
+    // delete the caption in the captions array
+    // then recreate the video with new data:
+    // const blob = await createCaption(footage, data)
+    // setTempFootage(blob)
   }
 
   const loadFromStorage = () => {
