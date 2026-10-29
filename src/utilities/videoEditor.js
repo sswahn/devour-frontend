@@ -57,15 +57,8 @@ export const createSrtContent = captions =>
 
 // Concatenate an array of footage objects: [{ clip: Blob }, ...].
 
-export const concatenateVideos = async (
-  footage,
-  setProgress = () => {}
-) => {
-  if (
-    !Array.isArray(footage) ||
-    footage.length === 0 ||
-    footage.some(item => !(item?.clip instanceof Blob))
-  ) {
+export const concatenateVideos = async (footage, setProgress = () => {}) => {
+  if (!Array.isArray(footage) || footage.length === 0 || footage.some(item => !(item?.clip instanceof Blob))) {
     throw new Error('Provide an array of video clips.')
   }
 
@@ -82,15 +75,11 @@ export const concatenateVideos = async (
   ffmpeg.on('progress', handleProgress)
 
   try {
-    await Promise.all(
-      footage.map(async ({ clip }, index) => {
-        await ffmpeg.writeFile(inputs[index], await fetchFile(clip))
-      })
-    )
+    await Promise.all(footage.map(async ({ clip }, index) => {
+      await ffmpeg.writeFile(inputs[index], await fetchFile(clip))
+    }))
 
-    const list = inputs
-      .map(file => `file '${file}'`)
-      .join('\n')
+    const list = inputs.map(file => `file '${file}'`).join('\n')
 
     await ffmpeg.writeFile(manifest, list)
 
