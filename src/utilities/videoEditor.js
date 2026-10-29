@@ -120,15 +120,15 @@ const formatFfmpegColor = hex => {
 
 const createSubtitleFilter = data => {
   const style = [
-    'FontName=Arial',
-    'FontSize=36',
-    'PrimaryColour=&H00FFFFFF',
-    'OutlineColour=&H00000000',
-    'Bold=0',
-    'Italic=0',
-    'Underline=0',
-    'Outline=2',
-    'Alignment=2'
+    `FontName=${data.fontFamily}`,
+    `FontSize=${data.fontSize}`,
+    `PrimaryColour=${formatFfmpegColor(data.color)}`,
+    `OutlineColour=${formatFfmpegColor(data.strokeColor)}`,
+    `Bold=${data.bold ? 1 : 0}`,
+    `Italic=${data.italic ? 1 : 0}`,
+    `Underline=${data.underline ? 1 : 0}`,
+    `Outline=${data.stroke ? 1 : 0}`,
+    `Alignment=2`
   ].join(',')
 
   return `subtitles=captions.srt:force_style='${style}'`
