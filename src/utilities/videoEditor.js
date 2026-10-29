@@ -201,9 +201,9 @@ export const createCaptions = async (blob, captions, setProgress = () => {}) => 
     ])
 
     // 4. Read output file back as a Blob
-    const data = await ffmpeg.readFile(outputFileName)
+    const data = await ffmpeg.readFile(output)
     setProgress(100)
-    return new Blob([data.buffer], { type: 'video/mp4' })
+    return new Blob([data.buffer], { type: 'video/webm' })
 
   } finally {
     // 5. Guaranteed cleanup of all virtual files to prevent WASM memory leaks
