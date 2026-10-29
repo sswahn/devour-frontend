@@ -134,23 +134,19 @@ const createSubtitleFilter = data => {
   return `subtitles=captions.srt:force_style='${style}'`
 }
 
-export const createCaptions = async (footage, data) => {
-  const source = footage instanceof Blob ? footage : footage?.clip // footage is always an array
-
-  if (!(source instanceof Blob)) {
+export const createCaptions = async (blob, data) => {
+  if (!(blob instanceof Blob)) {
     throw new Error('A source video Blob is required.')
   }
-
   if (!Array.isArray(data)) {
     throw new Error('Captions must be an array.')
+  }
+  if (data.length === 0) {
+    return source
   }
 
   // Validate and generate subtitle data before starting FFmpeg.
   const subtitles = createSrtContent(data)
-
-  if (data.length === 0) {
-    return source
-  }
 
   const ffmpeg = await createFFmpeg()
   const input = 'input.webm'
