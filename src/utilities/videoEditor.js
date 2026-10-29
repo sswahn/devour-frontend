@@ -164,12 +164,14 @@ export const createCaptions = async (blob, captions, setProgress = () => {}) => 
     throw new Error('Video blob and captions array are required.')
   }
 
+  const validCaptions = validateCaptions(captions)
+
   const ffmpeg = await createFFmpeg()
   const timestamp = Date.now()
   const inputFileName = `input_${timestamp}.mp4`
   const subFileName = `subtitles_${timestamp}.ass`
   const outputFileName = `output_${timestamp}.mp4`
-  const createdFiles = [inputFileName, subFileName, outputFileName]
+  const files = [inputFileName, subFileName, outputFileName]
 
   const handleProgress = ({ progress }) => {
     setProgress(Math.round(progress * 100))
@@ -181,18 +183,15 @@ export const createCaptions = async (blob, captions, setProgress = () => {}) => 
     // 1. Write input video to virtual file system
     await ffmpeg.writeFile(inputFileName, await fetchFile(blob))
 
-    // 2. Validate captions
-    const validCaptions = validateCaptions(captions)
-
     if (validCaptions.length === 0) {
       throw new Error('No valid captions found to process.')
     }
 
-    // 3. Generate and write the ASS subtitle file
+    // 2. Generate and write the ASS subtitle file
     const assContent = generateAssContent(validCaptions)
     await ffmpeg.writeFile(subFileName, new TextEncoder().encode(assContent))
 
-    // 4. Run FFmpeg command using a single robust subtitles filter
+    // 3. Run FFmpeg command using a single robust subtitles filter
     await ffmpeg.exec([
       '-i', inputFileName,
       '-vf', `subtitles=${subFileName}`,
@@ -200,13 +199,13 @@ export const createCaptions = async (blob, captions, setProgress = () => {}) => 
       outputFileName
     ])
 
-    // 5. Read output file back as a Blob
+    // 4. Read output file back as a Blob
     const data = await ffmpeg.readFile(outputFileName)
     setProgress(100)
     return new Blob([data.buffer], { type: 'video/mp4' })
 
   } finally {
-    // 6. Guaranteed cleanup of all virtual files to prevent WASM memory leaks
+    // 5. Guaranteed cleanup of all virtual files to prevent WASM memory leaks
     ffmpeg.off('progress', handleProgress)
     await cleanup(ffmpeg, files)
   }
