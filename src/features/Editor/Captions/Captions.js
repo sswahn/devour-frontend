@@ -45,6 +45,8 @@ function Captions() {
     event.preventDefault()
     const id = crypto.randomUUID()
     const formData = new FormData(event.target)
+
+    // all of these should be validated with the validation utility.
     const text = formData.get('caption').trim()
     const start = formData.get('start').trim()
     const end = formData.get('end').trim()
