@@ -17,53 +17,7 @@ const cleanup = async (ffmpeg, files) => {
   }))
 }
 
-// Forget this Srt business.
-// It all started from trying to sanitize the text and avoid string manipulation
-// revert code to previous string manipulation for ffmpeg sanitization.
-/*
-    .replace(/\\/g, '\\\\') 
-    .replace(/'/g, "'\\''") 
-    .replace(/:/g, '\\:') 
-    .replace(/%/g, '\\%')
-*/
-const formatSrtTime = seconds => {
-  if (!Number.isFinite(seconds) || seconds < 0) {
-    throw new Error('Caption times must be non-negative finite numbers.')
-  }
-
-  const ms = Math.round(seconds * 1000)
-  const hours = Math.floor(ms / 3_600_000)
-  const minutes = Math.floor((ms % 3_600_000) / 60_000)
-  const secs = Math.floor((ms % 60_000) / 1000)
-  const millis = ms % 1000
-
-  return `${String(hours).padStart(2, '0')}:` +
-    `${String(minutes).padStart(2, '0')}:` +
-    `${String(secs).padStart(2, '0')},` +
-    String(millis).padStart(3, '0')
-}
-
-export const createSrtContent = captions =>
-  captions.map((caption, index) => {
-    if (
-      !Number.isFinite(caption.start) ||
-      !Number.isFinite(caption.end) ||
-      caption.start < 0 ||
-      caption.end <= caption.start
-    ) {
-      throw new Error(`Caption ${index + 1} has invalid timing.`)
-    }
-
-    return [
-      index + 1,
-      `${formatSrtTime(caption.start)} --> ${formatSrtTime(caption.end)}`,
-      String(caption.text ?? ''),
-      ''
-    ].join('\n')
-  }).join('\n')
-
 // Concatenate an array of footage objects: [{ clip: Blob }, ...].
-
 export const concatenateVideos = async (footage, setProgress = () => {}) => {
   if (!Array.isArray(footage) || footage.length === 0 || footage.some(item => !(item?.clip instanceof Blob))) {
     throw new Error('Provide an array of video clips.')
@@ -109,75 +63,119 @@ export const concatenateVideos = async (footage, setProgress = () => {}) => {
   }
 }
 
-// Converts standard "#RRGGBB" or "RRGGBB" into FFmpeg's required "&H00BBGGRR" format
-const formatFfmpegColor = hex => {
-  if (typeof hex !== 'string' || !hex) {
-    return '&H00FFFFFF'
-  }
-  if (hex.toLowerCase() === 'transparent') {
-    return '&HFF000000'
-  }
-  const match = /^#?([0-9a-f]{6})$/i.exec(hex)
-  if (!match) {
-    return '&H00FFFFFF'
-  }
-  const [, rgb] = match
-  return `&H00${rgb.slice(4, 6)}${rgb.slice(2, 4)}${rgb.slice(0, 2)}`.toUpperCase()
-}
-
-const createSubtitleFilter = data => {
-  const style = [
-    `FontName=${data.fontFamily}`,
-    `FontSize=${data.fontSize}`,
-    `PrimaryColour=${formatFfmpegColor(data.color)}`,
-    `OutlineColour=${formatFfmpegColor(data.strokeColor)}`,
-    `Bold=${data.bold ? 1 : 0}`,
-    `Italic=${data.italic ? 1 : 0}`,
-    `Underline=${data.underline ? 1 : 0}`,
-    `Outline=${data.stroke ? 1 : 0}`,
-    `Alignment=2`
-  ].join(',')
-
-  return `subtitles=captions.srt:force_style='${style}'`
-}
-
 export const createCaptions = async (blob, data) => {
-  if (!(blob instanceof Blob)) {
-    throw new Error('A source video Blob is required.')
-  }
-  if (!Array.isArray(data)) {
-    throw new Error('Captions must be an array.')
-  }
-  if (data.length === 0) {
-    return blob
+
+
+  import { fetchFile } from '@ffmpeg/ffmpeg'
+
+export const burnCaptionsToVideo = async (ffmpeg, videoBlob, captions = []) => {
+  if (!videoBlob || !captions.length) {
+    throw new Error('Video blob and captions array are required.')
   }
 
-  // Validate and generate subtitle data before starting FFmpeg.
-  const subtitles = createSrtContent(data)
-
-  const ffmpeg = await createFFmpeg()
-  const input = 'input.webm'
-  const subtitleFile = 'captions.srt'
-  const output = 'output.webm'
-  const files = [input, subtitleFile, output]
+  const inputFileName = `input_${Date.now()}.mp4`
+  const outputFileName = `output_${Date.now()}.mp4`
+  const createdFiles = [inputFileName, outputFileName]
 
   try {
-    await ffmpeg.writeFile(input, await fetchFile(blob))
-    await ffmpeg.writeFile(subtitleFile, subtitles)
+    // 1. Write input video blob to FFmpeg virtual file system
+    await ffmpeg.writeFile(inputFileName, await fetchFile(videoBlob))
 
+    // 2. Filter and validate captions
+    const validCaptions = captions.filter(caption =>
+      typeof caption.text === 'string' &&
+      caption.text.trim() &&
+      Number.isFinite(caption.start) &&
+      Number.isFinite(caption.end) &&
+      caption.start >= 0 &&
+      caption.end > caption.start
+    )
+
+    if (validCaptions.length === 0) {
+      throw new Error('No valid captions found to process.')
+    }
+
+    const filters = []
+
+    // Helper to format colors safely (handles hex, shorthand hex, and fallbacks)
+    const formatColor = (value, fallback = '0xffffff') => {
+      if (!value) return fallback
+      const clean = value.replace('#', '').trim()
+      if (clean.length === 3) {
+        return `0x${clean.split('').map(c => c + c).join('')}`
+      }
+      return clean.startsWith('0x') ? clean : `0x${clean}`
+    }
+
+    // 3. Process each caption into a text file and build drawtext filters
+    for (let i = 0 i < validCaptions.length i++) {
+      const caption = validCaptions[i]
+      const style = caption.style || {}
+      const textFileName = `caption_${i}_${Date.now()}.txt`
+      
+      createdFiles.push(textFileName)
+      await ffmpeg.writeFile(textFileName, new TextEncoder().encode(caption.text))
+
+      const fontSize = Math.max(8, Math.min(200, Number(style.fontSize) || 36))
+      const strokeWidth = Math.max(0, Math.min(20, Number(style.strokeWidth) || 0))
+      
+      // Handle text alignment (x-coordinate mapping)
+      let xCoord = '(w-text_w)/2' // default center
+      if (style.textAlign === 'left') {
+        xCoord = '50' // 50px padding from left
+      } else if (style.textAlign === 'right') {
+        xCoord = 'w-text_w-50' // 50px padding from right
+      }
+
+      const options = [
+        `textfile=${textFileName}`,
+        `fontcolor=${formatColor(style.color, '0xffffff')}`,
+        `fontsize=${fontSize}`,
+        `borderw=${strokeWidth}`,
+        `bordercolor=${formatColor(style.strokeColor, '0x000000')}`,
+        `x=${xCoord}`,
+        `y=h*0.85`,
+        `enable='between(t\\,${caption.start}\\,${caption.end})'`
+      ]
+
+      // Optional font file handling
+      if (style.fontFile) {
+        options.push(`fontfile=${style.fontFile}`)
+      }
+
+      // Background box styling
+      if (style.backgroundColor && style.backgroundColor !== 'transparent') {
+        options.push('box=1')
+        options.push(`boxcolor=${formatColor(style.backgroundColor, '0x000000aa')}`)
+        options.push('boxborderw=8')
+      }
+
+      filters.push(`drawtext=${options.join(':')}`)
+    }
+
+    const filterChain = filters.join(',')
+
+    // 4. Run FFmpeg command (copy audio stream to avoid re-encoding overhead)
     await ffmpeg.exec([
-      '-i', input,
-      '-vf', createSubtitleFilter(data),
-      '-c:v', 'libvpx-vp9',
-      '-c:a', 'libopus',
-      '-y', output
+      '-i', inputFileName,
+      '-vf', filterChain,
+      '-c:a', 'copy',
+      outputFileName
     ])
 
-    const result = await ffmpeg.readFile(output)
+    // 5. Read output file back into memory as a Blob
+    const data = await ffmpeg.readFile(outputFileName)
+    return new Blob([data.buffer], { type: 'video/mp4' })
 
-    return new Blob([result], { type: 'video/webm' })
   } finally {
-    await cleanup(ffmpeg, files)
+    // 6. Cleanup virtual file system to prevent memory leaks in WASM
+    for (const file of createdFiles) {
+      try {
+        await ffmpeg.deleteFile(file)
+      } catch (e) {
+        // Ignore files that weren't created or already deleted
+      }
+    }
   }
 }
 
