@@ -159,7 +159,7 @@ const generateAssContent = (validCaptions) => {
   return ass
 }
 
-export const createCaptions = async (blob, captions) => {
+export const createCaptions = async (blob, captions, setProgress = () => {}) => {
   if (!blob || !captions.length) {
     throw new Error('Video blob and captions array are required.')
   }
@@ -171,6 +171,12 @@ export const createCaptions = async (blob, captions) => {
   const outputFileName = `output_${timestamp}.mp4`
   const createdFiles = [inputFileName, subFileName, outputFileName]
 
+  const handleProgress = ({ progress }) => {
+    setProgress(Math.round(progress * 100))
+  }
+
+  ffmpeg.on('progress', handleProgress)
+  
   try {
     // 1. Write input video to virtual file system
     await ffmpeg.writeFile(inputFileName, await fetchFile(blob))
@@ -196,17 +202,13 @@ export const createCaptions = async (blob, captions) => {
 
     // 5. Read output file back as a Blob
     const data = await ffmpeg.readFile(outputFileName)
+    setProgress(100)
     return new Blob([data.buffer], { type: 'video/mp4' })
 
   } finally {
     // 6. Guaranteed cleanup of all virtual files to prevent WASM memory leaks
-    for (const file of createdFiles) {
-      try {
-        await ffmpeg.deleteFile(file)
-      } catch (e) {
-        // Ignore files that weren't created or were already cleaned up
-      }
-    }
+    ffmpeg.off('progress', handleProgress)
+    await cleanup(ffmpeg, files)
   }
 }
 
