@@ -142,7 +142,7 @@ export const createCaptions = async (blob, data) => {
     throw new Error('Captions must be an array.')
   }
   if (data.length === 0) {
-    return source
+    return blob
   }
 
   // Validate and generate subtitle data before starting FFmpeg.
@@ -155,7 +155,7 @@ export const createCaptions = async (blob, data) => {
   const files = [input, subtitleFile, output]
 
   try {
-    await ffmpeg.writeFile(input, await fetchFile(source))
+    await ffmpeg.writeFile(input, await fetchFile(blob))
     await ffmpeg.writeFile(subtitleFile, subtitles)
 
     await ffmpeg.exec([
