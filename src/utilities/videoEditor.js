@@ -169,10 +169,10 @@ export const createCaptions = async (blob, captions, setProgress = () => {}) => 
 
   const ffmpeg = await createFFmpeg()
   const timestamp = Date.now()
-  const inputFileName = `input_${timestamp}.webm`
+  const input = `input_${timestamp}.webm`
   const subFileName = `subtitles_${timestamp}.ass`
-  const outputFileName = `output_${timestamp}.webm`
-  const files = [inputFileName, subFileName, outputFileName]
+  const output = `output_${timestamp}.webm`
+  const files = [input, subFileName, output]
 
   const handleProgress = ({ progress }) => {
     setProgress(Math.round(progress * 100))
@@ -182,7 +182,7 @@ export const createCaptions = async (blob, captions, setProgress = () => {}) => 
   
   try {
     // 1. Write input video to virtual file system
-    await ffmpeg.writeFile(inputFileName, await fetchFile(blob))
+    await ffmpeg.writeFile(input, await fetchFile(blob))
 
     if (validCaptions.length === 0) {
       throw new Error('No valid captions found to process.')
@@ -194,10 +194,10 @@ export const createCaptions = async (blob, captions, setProgress = () => {}) => 
 
     // 3. Run FFmpeg command using a single robust subtitles filter
     await ffmpeg.exec([
-      '-i', inputFileName,
+      '-i', input,
       '-vf', `subtitles=${subFileName}`,
       '-c:a', 'copy',
-      outputFileName
+      '-y', output
     ])
 
     // 4. Read output file back as a Blob
