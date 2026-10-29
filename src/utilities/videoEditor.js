@@ -63,6 +63,40 @@ export const concatenateVideos = async (footage, setProgress = () => {}) => {
   }
 }
 
+const validateCaptions = captions => {
+  if (!Array.isArray(captions)) {
+    throw new TypeError('Captions must be an array.')
+  }
+
+  captions.forEach((caption, index) => {
+    if (!caption || typeof caption !== 'object') {
+      throw new TypeError(`Caption ${index} must be an object.`)
+    }
+    if (typeof caption.text !== 'string' || !caption.text.trim()) {
+      throw new TypeError(`Caption ${index} must have nonempty text.`)
+    }
+    if (
+      !Number.isFinite(caption.start) ||
+      !Number.isFinite(caption.end) ||
+      caption.start < 0 ||
+      caption.end <= caption.start
+    ) {
+      throw new RangeError(`Caption ${index} has invalid timing.`)
+    }
+  })
+  return captions
+}
+
+// Helper to format colors safely (handles hex, shorthand hex, and fallbacks)
+const formatColor = (value, fallback = '0xffffff') => {
+  if (!value) return fallback
+  const clean = value.replace('#', '').trim()
+  if (clean.length === 3) {
+    return `0x${clean.split('').map(c => c + c).join('')}`
+  }
+  return clean.startsWith('0x') ? clean : `0x${clean}`
+}
+
 export const createCaptions = async (blob, captions) => {
   if (!blob || !captions.length) {
     throw new Error('Video blob and captions array are required.')
@@ -77,31 +111,14 @@ export const createCaptions = async (blob, captions) => {
     // 1. Write input video blob to FFmpeg virtual file system
     await ffmpeg.writeFile(inputFileName, await fetchFile(blob))
 
-    // 2. Filter and validate captions
-    const validCaptions = captions.filter(caption =>
-      typeof caption.text === 'string' &&
-      caption.text &&
-      Number.isFinite(caption.start) &&
-      Number.isFinite(caption.end) &&
-      caption.start >= 0 &&
-      caption.end > caption.start
-    )
+    // 2. Validate captions
+    const validCaptions = validateCaptions(captions)
 
     if (validCaptions.length === 0) {
       throw new Error('No valid captions found to process.')
     }
 
     const filters = []
-
-    // Helper to format colors safely (handles hex, shorthand hex, and fallbacks)
-    const formatColor = (value, fallback = '0xffffff') => {
-      if (!value) return fallback
-      const clean = value.replace('#', '').trim()
-      if (clean.length === 3) {
-        return `0x${clean.split('').map(c => c + c).join('')}`
-      }
-      return clean.startsWith('0x') ? clean : `0x${clean}`
-    }
 
     // 3. Process each caption into a text file and build drawtext filters
     for (let i = 0 i < validCaptions.length i++) {
@@ -162,7 +179,6 @@ export const createCaptions = async (blob, captions) => {
     // 5. Read output file back into memory as a Blob
     const data = await ffmpeg.readFile(outputFileName)
     return new Blob([data.buffer], { type: 'video/mp4' })
-
   } finally {
     // 6. Cleanup virtual file system to prevent memory leaks in WASM
     for (const file of createdFiles) {
