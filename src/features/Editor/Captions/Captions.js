@@ -66,7 +66,14 @@ function Captions() {
         textAlign
       }
     }
-    setCaptions(prev => [ ...prev, data ])
+    const conflicted = captions.filter(caption => {
+      // check each caption.start/caption.end
+      // calc duration, and make sure no overlap.
+    })
+    if (conflicted) {
+      return alert('captions conflict.')
+    }
+    setCaptions([ ...captions, data ])
     storage.local.set(config.storage.captions, [...captions, data])
     setCaption('')
     setStart('')
