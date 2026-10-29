@@ -52,11 +52,11 @@ export const concatenateVideos = async (footage, setProgress = () => {}) => {
       '-y', output
     ])
 
-    const result = await ffmpeg.readFile(output)
+    const data = await ffmpeg.readFile(output)
 
     setProgress(100)
 
-    return new Blob([result], { type: 'video/webm' })
+    return new Blob([data], { type: 'video/webm' })
   } finally {
     ffmpeg.off('progress', handleProgress)
     await cleanup(ffmpeg, files)
@@ -203,7 +203,7 @@ export const createCaptions = async (blob, captions, setProgress = () => {}) => 
     // 4. Read output file back as a Blob
     const data = await ffmpeg.readFile(output)
     setProgress(100)
-    return new Blob([data.buffer], { type: 'video/webm' })
+    return new Blob([data], { type: 'video/webm' })
 
   } finally {
     // 5. Guaranteed cleanup of all virtual files to prevent WASM memory leaks
