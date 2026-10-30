@@ -168,7 +168,7 @@ export const createCaptions = async (blob, captions, setProgress = () => {}) => 
   if (!(blob instanceof Blob)) {
     throw new TypeError('Video blob must be an instance of Blob.')
   }
-  if (blob.type !== 'video/webm') {
+  if (!blob.type.includes("webm")) {
     throw new TypeError('blob must have mime type of video/webm.')
   }
   if (blob.size === 0) {
