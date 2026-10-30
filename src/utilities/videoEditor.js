@@ -136,24 +136,15 @@ const generateAssContent = (validCaptions) => {
 
     const fontSize = Number(style.fontSize) || 14
     const color = toAssColor(style.color || '#ffffff')
-
-    let strokeColor = ''
-    let strokeWidth = ''
-    if (style.stroke) {
-      strokeColor = toAssColor(style.strokeColor || '#000000')
-      strokeWidth = Number.isFinite(style.strokeWidth) ? style.strokeWidth : 2
-    }
+    const strokeColor = style.stroke ? style.strokeColor : ''
+    const strokeWidth = style.stoke ? style.strokeWidth : ''
     const bold = style.bold ? 1 : 0
     const italic = style.italic ? 1 : 0
     const underline = style.underline ? 1 : 0
 
     // ASS numpad alignment: 1 = bottom-left, 2 = bottom-center, 3 = bottom-right
-    let alignment = 2
-    if (style.textAlign === 'left') {
-      alignment = 1
-    } else if (style.textAlign === 'right') {
-      alignment = 3
-    }
+    const alignments = { 'left': 1, 'center': 2, 'right': 3 }
+    const alignment = alignments[style.textAlign]
 
     // Build inline style override tags
     let tags = `{\\fs${fontSize}\\c${color}\\3c${strokeColor}\\bord${strokeWidth}\\b${bold}\\i${italic}\\u${underline}\\an${alignment}}`
