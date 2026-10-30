@@ -136,7 +136,7 @@ const generateAssContent = (validCaptions) => {
 
     const fontSize = Number(style.fontSize) || 14
     const color = toAssColor(style.color || '#ffffff')
-    
+
     let strokeColor = ''
     let strokeWidth = ''
     if (style.stroke) {
@@ -154,7 +154,7 @@ const generateAssContent = (validCaptions) => {
     } else if (style.textAlign === 'right') {
       alignment = 3
     }
-    
+
     // Build inline style override tags
     let tags = `{\\fs${fontSize}\\c${color}\\3c${strokeColor}\\bord${strokeWidth}\\b${bold}\\i${italic}\\u${underline}\\an${alignment}}`
 
