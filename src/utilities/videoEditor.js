@@ -134,25 +134,32 @@ const generateAssContent = (validCaptions) => {
     const startTime = formatAssTime(caption.start)
     const endTime = formatAssTime(caption.end)
 
-    const fontSize = Number(style.fontSize) || 36
+    const fontSize = Number(style.fontSize) || 14
     const color = toAssColor(style.color || '#ffffff')
-    const strokeColor = toAssColor(style.strokeColor || '#000000')
-    const strokeWidth = Number.isFinite(style.strokeWidth) ? style.strokeWidth : 2
-    //const strokeWidth = Number(style.strokeWidth) !== undefined ? Number(style.strokeWidth) : 2
+    
+    let strokeColor = ''
+    let strokeWidth = ''
+    if (style.stroke) {
+      strokeColor = toAssColor(style.strokeColor || '#000000')
+      strokeWidth = Number.isFinite(style.strokeWidth) ? style.strokeWidth : 2
+    }
     const bold = style.bold ? 1 : 0
     const italic = style.italic ? 1 : 0
     const underline = style.underline ? 1 : 0
 
     // ASS numpad alignment: 1 = bottom-left, 2 = bottom-center, 3 = bottom-right
     let alignment = 2
-    if (style.textAlign === 'left') alignment = 1
-    else if (style.textAlign === 'right') alignment = 3
-
+    if (style.textAlign === 'left') {
+      alignment = 1
+    } else if (style.textAlign === 'right') {
+      alignment = 3
+    }
+    
     // Build inline style override tags
     let tags = `{\\fs${fontSize}\\c${color}\\3c${strokeColor}\\bord${strokeWidth}\\b${bold}\\i${italic}\\u${underline}\\an${alignment}}`
 
     // Handle newlines safely in ASS
-    const text = (caption.text || '').replace(/\r?\n/g, '\\N')
+    const text = (caption.text || '') //.replace(/\r?\n/g, '\\N')
                                      .replace(/\\/g, '\\\\')
                                      .replace(/\{/g, '\\{')
                                      .replace(/\}/g, '\\}')
