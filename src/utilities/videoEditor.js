@@ -69,7 +69,7 @@ const validateCaptions = captions => {
   }
 
   captions.forEach((caption, index) => {
-    if (!caption || typeof caption !== 'object') {
+    if (!caption || typeof caption !== 'object' && Array.isArray(caption)) {
       throw new TypeError(`Caption ${index} must be an object.`)
     }
     if (typeof caption.text !== 'string' || !caption.text.trim()) {
