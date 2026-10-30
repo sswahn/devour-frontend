@@ -14,7 +14,7 @@ const cleanup = async (ffmpeg, files) => {
     } catch {
       // The file may not have been created.
     }
-  }))
+  })).finally(() => ffmpeg.terminate())
 }
 
 // Concatenate an array of footage objects: [{ clip: Blob }, ...].
@@ -60,7 +60,6 @@ export const concatenateVideos = async (footage, setProgress = () => {}) => {
   } finally {
     ffmpeg.off('progress', handleProgress)
     await cleanup(ffmpeg, files)
-    ffmpeg.terminate()
   }
 }
 
@@ -214,7 +213,6 @@ export const createCaptions = async (blob, captions, setProgress = () => {}) => 
     // 5. Guaranteed cleanup of all virtual files to prevent WASM memory leaks
     ffmpeg.off('progress', handleProgress)
     await cleanup(ffmpeg, files)
-    ffmpeg.terminate()
   }
 }
 
