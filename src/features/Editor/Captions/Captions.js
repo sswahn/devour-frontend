@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import useFootage from '../../../hooks/useFootage'
 import * as config from '../../../config'
 import storage from '../../../utilities/storage'
 import Input from '../../../components/Input/Input'
@@ -10,6 +11,7 @@ import styles from './Captions.module.css'
 function Captions() {
   // TODO: once this is up and running,
   // go ahead and delete the provider, hook, and provider instance.
+  const { footage } = useFootage()
   const [captions, setCaptions] = useState([])
   const [caption, setCaption] = useState('')
   const [start, setStart] = useState('')
@@ -43,6 +45,18 @@ function Captions() {
   // TODO: clear inputs on submit
   const onSubmit = async event => {
     event.preventDefault()
+
+    // validate start/end dont overlap
+    const sorted = [...captions].sort((a, b) => a.start - b.start)
+    const conflicted = sorted.some((caption, index) =>
+      index > 0 && caption.start < sorted[index - 1].end
+    )
+    if (conflicted) {
+      return alert('This caption conflicts with an existing caption.')
+    }
+
+    // also need to check end isnt outside video duration
+    
     const id = crypto.randomUUID()
     const formData = new FormData(event.target)
 
@@ -69,13 +83,6 @@ function Captions() {
       }
     }
     
-    const sorted = [...captions].sort((a, b) => a.start - b.start)
-    const conflicted = sorted.some((caption, index) =>
-      index > 0 && caption.start < sorted[index - 1].end
-    )
-    if (conflicted) {
-      return alert('This caption conflicts with an existing caption.')
-    }
     setCaptions(prev => [ ...prev, data ])
     storage.local.set(config.storage.captions, [...captions, data])
     setCaption('')
