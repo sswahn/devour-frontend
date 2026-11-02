@@ -6,7 +6,7 @@ import FontSizeButton from './FontSizeButton/FontSizeButton'
 import FontSizeSlider from './FontSizeSlider/FontSizeSlider'
 import styles from 'TextToolbar.module.css'
 
-function TextToolbar({ setStyle }) {
+function TextToolbar({ textStyles, setTextStyles }) {
   const [fontSize, setFontSize] = useState(12)
   const [color, setColor] = useState('#ffffff')
   const [bold, setBold] = useState(false)
@@ -23,31 +23,6 @@ function TextToolbar({ setStyle }) {
     setFontSizeSlider(prev => !prev)
   }
 
-  useEffect(() => {
-    setStyle({ 
-      fontSize,
-      color,
-      bold,
-      italic,
-      underline,
-      stroke,
-      strokeColor,
-      strokeWidth,
-      backgroundColor,
-      textAlign
-    })
-  }, [
-    fontSize,
-    color,
-    bold,
-    italic,
-    underline,
-    stroke,
-    strokeColor,
-    strokeWidth,
-    backgroundColor,
-    textAlign
-  ])
   
   return (
     <div className={styles.textToolbar}>
