@@ -20,9 +20,6 @@ function FontSizeSlider({ fontSize, setFontSize }) {
         min="12" 
         max="48" 
         value={fontSize}
-        aria-valuenow={fontSize}
-        aria-valuemin="12"
-        aria-valuemax="48"
         aria-valuetext={`${fontSize} pixels`} />
     </div>
   )
