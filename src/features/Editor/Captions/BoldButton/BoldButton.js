@@ -1,8 +1,14 @@
+import BoldIcon from '../../../../components/Icons/BoldIcon/BoldIcon'
 
+function BoldButton({ setBold }) {
 
-function BoldButton() {
+  const onClick = event => {
+    
+    setBold(prev => !prev)
+  }
+  
   return (
-    <button type={button} aria-label="bold">
+    <button onClick={onClick} type={button} aria-label="bold">
       <BoldIcon />
     </button>
   )
