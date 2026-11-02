@@ -15,7 +15,7 @@ const createFFmpeg = async () => {
 const cleanup = async (ffmpeg, files) => {
   try {
     for (const file of files) {
-      await ffmpeg.deleteFile(file).catch(console.error)
+      await ffmpeg.deleteFile(file)
     }
   } finally {
     ffmpeg.terminate()
