@@ -1,11 +1,11 @@
 import ItalicIcon from '../../Icons/ItalicIcon/ItalicIcon'
 import styles from './ItalicButton.module.css'
 
-function ItalicButton({ setItalic }) {
+function ItalicButton({ setStyle }) {
 
   const onClick = event => {
     navigator.vibrate?.(50)
-    setItalic(prev => !prev)
+    setStyle('italic')
   }
   
   return (
