@@ -1,4 +1,4 @@
-import TextHeightIcon from '../../../../components/Icons/TextHeightIcon/TextHeightIcon'
+import TextHeightIcon from '../../Icons/TextHeightIcon/TextHeightIcon'
 import styles from './FontSizeButton.module.css'
 
 function FontSizeButton({ setFontSize }) { // this should be openFontSizeSlider
