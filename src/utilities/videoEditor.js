@@ -153,7 +153,7 @@ const generateAssContent = (validCaptions) => {
     const alignment = alignments[style.textAlign]
 
     // Build inline style override tags
-    let tags = `{\\fs${fontSize}\\c${color}\\3c${strokeColor}\\bord${strokeWidth}\\b${bold}\\i${italic}\\u${underline}\\an${alignment}}`
+    const tags = `{\\fs${fontSize}\\c${color}\\3c${strokeColor}\\4c${background}\\bord${strokeWidth}\\b${bold}\\i${italic}\\u${underline}\\an${alignment}}`
 
     // Handle newlines safely in ASS
     const text = (caption.text || '') //.replace(/\r?\n/g, '\\N')
