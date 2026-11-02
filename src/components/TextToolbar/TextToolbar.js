@@ -9,7 +9,8 @@ import styles from './TextToolbar.module.css'
 
 function TextToolbar({ textStyles, setTextStyles }) {
   const [fontSizeSlider, setFontSizeSlider] = useState(false)
-
+  const [fontColorPalette, setFontColorPalette] = useState(false)
+  
   const openFontSizeSlider = () => {
     setFontSizeSlider(prev => !prev)
   }
