@@ -176,7 +176,7 @@ function Captions() {
         <ItalicButton setItalic={setItalic} />
         <UnderlineButton setUnderline={setUnderline} />
         <FontSizeButton openFontSizeSlider={openFontSizeSlider} />
-        {fontSizeSlider && <FontSizeSlider setFontSize={setFontSize} />}
+        {fontSizeSlider && <FontSizeSlider fontSize={fontSize} setFontSize={setFontSize} />}
         <button type="submit" aria-label="submit caption">Submit</button>
       </form>
       <ul>
