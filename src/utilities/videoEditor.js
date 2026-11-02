@@ -146,32 +146,93 @@ const generateAssContent = captions => {
 
   const alignments = { left: 1, center: 2, right: 3 }
 
-  const styles = captions.map((caption, index) => {
-    const style = caption.style || {}
-    const name = `Caption${index}`
-
-    const fontSize = style.fontSize
-    const color = toAssColor(style.color)
-    const strokeColor = style.stroke ? toAssColor(style.strokeColor) : '&H00000000'
-    const strokeWidth = style.stroke ? style.strokeWidth : 0
-    const alignment = alignments[style.textAlign]
-    
-    const hasBackground = style.backgroundColor !== 'transparent'
-    const backgroundColor = hasBackground ? toAssColor(style.backgroundColor) : '&HFF000000'
+  const addStyle = ({
+    name,
+    style,
+    color,
+    stroke,
+    background
+  }) => {
+    const hasBackground = background !== 'transparent'
     const borderStyle = hasBackground ? 3 : 1
+    const outlineColor = stroke
+      ? toAssColor(style.strokeColor)
+      : '&H00000000'
+    const outlineWidth = stroke ? style.strokeWidth : 0
+    const backColor = hasBackground
+      ? toAssColor(background)
+      : '&HFF000000'
 
-    ass += `Style: ${name},Arial,${fontSize},${color},&H000000FF,${strokeColor},${backgroundColor},${style.bold ? -1 : 0},${style.italic ? -1 : 0},${style.underline ? -1 : 0},0,100,100,0,0,${borderStyle},${strokeWidth},0,${alignment},20,20,50,1\n`
+    ass += `Style: ${name},Arial,${style.fontSize},${color},&H000000FF,${outlineColor},${backColor},${style.bold ? -1 : 0},${style.italic ? -1 : 0},${style.underline ? -1 : 0},0,100,100,0,0,${borderStyle},${outlineWidth},0,${alignments[style.textAlign]},20,20,50,1\n`
+  }
 
-    return name
+  const events = []
+
+  captions.forEach((caption, index) => {
+    const style = caption.style
+    const name = `Caption${index}`
+    const hasBackground = style.backgroundColor !== 'transparent'
+    const hasStroke = style.stroke === true
+    const color = toAssColor(style.color)
+
+    if (hasBackground && hasStroke) {
+      // Background-only layer: transparent glyphs, opaque box.
+      const backgroundName = `${name}Background`
+
+      addStyle({
+        name: backgroundName,
+        style,
+        color: '&HFF000000',
+        stroke: false,
+        background: style.backgroundColor
+      })
+
+      // Foreground layer: visible text with its outline.
+      addStyle({
+        name,
+        style,
+        color,
+        stroke: true,
+        background: 'transparent'
+      })
+
+      events.push({
+        caption,
+        name: backgroundName,
+        layer: 0
+      })
+
+      events.push({
+        caption,
+        name,
+        layer: 1
+      })
+    } else {
+      // One layer is sufficient when only one or neither effect is enabled.
+      addStyle({
+        name,
+        style,
+        color,
+        stroke: hasStroke,
+        background: hasBackground
+          ? style.backgroundColor
+          : 'transparent'
+      })
+
+      events.push({
+        caption,
+        name,
+        layer: 0
+      })
+    }
   })
 
   ass += `\n[Events]\n`
   ass += `Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n`
 
-  captions.forEach((caption, index) => {
-    const name = styles[index]
-    const startTime = formatAssTime(caption.start)
-    const endTime = formatAssTime(caption.end)
+  for (const { caption, name, layer } of events) {
+    const start = formatAssTime(caption.start)
+    const end = formatAssTime(caption.end)
 
     const text = caption.text
       .replace(/\\/g, '\\\\')
@@ -179,8 +240,8 @@ const generateAssContent = captions => {
       .replace(/\}/g, '\\}')
       .replace(/\r\n|\r|\n/g, '\\N')
 
-    ass += `Dialogue: 0,${startTime},${endTime},${name},,0,0,0,,${text}\n`
-  })
+    ass += `Dialogue: ${layer},${start},${end},${name},,0,0,0,,${text}\n`
+  }
 
   return ass
 }
