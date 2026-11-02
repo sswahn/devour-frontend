@@ -95,12 +95,12 @@ const validateCaptions = captions => {
   return captions
 }
 
-// Helper: Convert seconds to ASS timestamp format (H:MM:SS.cc)
-const formatAssTime = (seconds) => {
-  const h = Math.floor(seconds / 3600)
-  const m = Math.floor((seconds % 3600) / 60)
-  const s = Math.floor(seconds % 60)
-  const cs = Math.floor((seconds % 1) * 100)
+const formatAssTime = seconds => {
+  const totalCentiseconds = Math.round(seconds * 100)
+  const h = Math.floor(totalCentiseconds / 360000)
+  const m = Math.floor((totalCentiseconds % 360000) / 6000)
+  const s = Math.floor((totalCentiseconds % 6000) / 100)
+  const cs = totalCentiseconds % 100
   return `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}.${String(cs).padStart(2, '0')}`
 }
 
