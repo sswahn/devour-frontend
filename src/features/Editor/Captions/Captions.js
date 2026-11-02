@@ -17,10 +17,6 @@ function Captions() {
   const [style, setStyle] = useState({})
   const [errorMessage, setErrorMessage] = useState('')
 
-  const openFontSizeSlider = () => {
-    setFontSizeSlider(prev => !prev)
-  }
-
   const onChange = ({ target: { id, value } }) => {
     switch (id) {
       case 'caption':
