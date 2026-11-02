@@ -1,4 +1,4 @@
-import UnderlineIcon from '../../../../components/Icons/UnderlineIcon/UnderlineIcon'
+import UnderlineIcon from '../../Icons/UnderlineIcon/UnderlineIcon'
 import styles from './UnderlineButton.module.css'
 
 function UnderlineButton({ setUnderline }) {
