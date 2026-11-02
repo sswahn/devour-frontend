@@ -1,8 +1,6 @@
 import { FFmpeg } from '@ffmpeg/ffmpeg'
 import { fetchFile } from '@ffmpeg/util'
 
-const errors = []
-
 const createFFmpeg = async () => {
   const ffmpeg = new FFmpeg()
   try {
@@ -14,7 +12,7 @@ const createFFmpeg = async () => {
   }
 }
 
-const deleteFile = async (ffmpeg, file) => {
+const deleteFile = async (ffmpeg, file, errors) => {
   try {
     await ffmpeg.deleteFile(file)
   } catch (error) {
@@ -22,7 +20,7 @@ const deleteFile = async (ffmpeg, file) => {
   }
 }
 
-const terminateProcess = ffmpeg => {
+const terminateProcess = (ffmpeg, errors) => {
   try {
     ffmpeg.terminate()
   } catch (error) {
@@ -31,13 +29,13 @@ const terminateProcess = ffmpeg => {
 }
 
 const cleanup = async (ffmpeg, files) => {
-  errors.length = 0
+  const errors = []
   try {
     for (const file of files) {
-      await deleteFile(ffmpeg, file)
+      await deleteFile(ffmpeg, file, errors)
     }
   } finally {
-    terminateProcess(ffmpeg)
+    terminateProcess(ffmpeg, errors)
   }
   if (errors.length > 0) {
     throw new AggregateError(errors, 'FFmpeg cleanup failed.')
