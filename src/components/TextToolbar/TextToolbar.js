@@ -19,6 +19,10 @@ function TextToolbar({ setStyle }) {
   const [textAlign, setTextAlign] = useState('left')
   const [fontSizeSlider, setFontSizeSlider] = useState(false)
 
+  const openFontSizeSlider = () => {
+    setFontSizeSlider(prev => !prev)
+  }
+
   useEffect(() => {
     setStyle({ 
       fontSize,
