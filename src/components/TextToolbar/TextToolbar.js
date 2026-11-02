@@ -27,6 +27,8 @@ function TextToolbar({ textStyles, setTextStyles }) {
   const updateStyle = (key, value) => {
     setTextStyles(prev => ({ ...prev, [key]: value }))
   }
+
+  // still need backgroundColor (PaletteIcon), stroke, textAlign, strikethrough, line spacing, bulleted list, numbered list, font family
   
   return (
     <div className={styles.textToolbar}>
