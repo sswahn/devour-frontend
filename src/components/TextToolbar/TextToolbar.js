@@ -18,6 +18,30 @@ function TextToolbar({ setStyle }) {
   const [backgroundColor, setBackgroundColor] = useState('transparent')
   const [textAlign, setTextAlign] = useState('left')
   const [fontSizeSlider, setFontSizeSlider] = useState(false)
+
+  useEffect(() => {
+    setStyle({ 
+      fontSize,
+      color,
+      bold,
+      italic,
+      underline,
+      strokeColor,
+      strokeWidth,
+      backgroundColor,
+      textAlign
+    })
+  }, [
+    fontSize,
+    color,
+    bold,
+    italic,
+    underline,
+    strokeColor,
+    strokeWidth,
+    backgroundColor,
+    textAlign
+  ])
   
   return (
     <div className={styles.textToolbar}>
