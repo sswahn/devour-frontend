@@ -18,6 +18,9 @@ function Captions() {
   const [caption, setCaption] = useState('')
   const [start, setStart] = useState('')
   const [end, setEnd] = useState('')
+  // consider const [style, setStyle] = useState({})
+  // and move the rest of this to TextToolbar component:
+  // <TextToolbar setStyle={setStyle} />
   const [fontSize, setFontSize] = useState(12)
   const [color, setColor] = useState('#ffffff')
   const [bold, setBold] = useState(false)
