@@ -2,11 +2,7 @@ import { useState, useEffect } from 'react'
 import * as config from '../../../config'
 import storage from '../../../utilities/storage'
 import Input from '../../../components/Input/Input'
-import BoldButton from './BoldButton/BoldButton'
-import ItalicButton from './ItalicButton/ItalicButton'
-import UnderlineButton from './UnderlineButton/UnderlineButton'
-import FontSizeButton from './FontSizeButton/FontSizeButton'
-import FontSizeSlider from './FontSizeSlider/FontSizeSlider'
+import TextToolbar from '../../../components/TextToolbar/TextToolbar'
 import PenToSquareIcon from '../../../components/Icons/PenToSquareIcon/PenToSquareIcon'
 import TrashCanIcon from '../../../components/Icons/TrashCanIcon/TrashCanIcon'
 import styles from './Captions.module.css'
@@ -18,20 +14,7 @@ function Captions() {
   const [caption, setCaption] = useState('')
   const [start, setStart] = useState('')
   const [end, setEnd] = useState('')
-  // consider const [style, setStyle] = useState({})
-  // and move the rest of this to TextToolbar component:
-  // <TextToolbar setStyle={setStyle} />
-  const [fontSize, setFontSize] = useState(12)
-  const [color, setColor] = useState('#ffffff')
-  const [bold, setBold] = useState(false)
-  const [italic, setItalic] = useState(false)
-  const [underline, setUnderline] = useState(false)
-  const [stroke, setStroke] = useState('none')
-  const [strokeColor, setStrokeColor] = useState('#000000')
-  const [strokeWidth, setStrokeWidth] = useState(2)
-  const [backgroundColor, setBackgroundColor] = useState('transparent')
-  const [textAlign, setTextAlign] = useState('left')
-  const [fontSizeSlider, setFontSizeSlider] = useState(false)
+  const [style, setStyle] = useState({})
   const [errorMessage, setErrorMessage] = useState('')
 
   const openFontSizeSlider = () => {
@@ -175,11 +158,7 @@ function Captions() {
           error={errorMessage}
           onChange={onChange}
           required />
-        <BoldButton setBold={setBold} />
-        <ItalicButton setItalic={setItalic} />
-        <UnderlineButton setUnderline={setUnderline} />
-        <FontSizeButton openFontSizeSlider={openFontSizeSlider} />
-        {fontSizeSlider && <FontSizeSlider fontSize={fontSize} setFontSize={setFontSize} />}
+        <TextToolbar setStyle={setStyle} />
         <button type="submit" aria-label="submit caption">Submit</button>
       </form>
       <ul>
