@@ -7,30 +7,27 @@ import FontSizeSlider from './FontSizeSlider/FontSizeSlider'
 import styles from 'TextToolbar.module.css'
 
 function TextToolbar({ textStyles, setTextStyles }) {
-  const [fontSize, setFontSize] = useState(12)
-  const [color, setColor] = useState('#ffffff')
-  const [bold, setBold] = useState(false)
-  const [italic, setItalic] = useState(false)
-  const [underline, setUnderline] = useState(false)
-  const [stroke, setStroke] = useState('none')
-  const [strokeColor, setStrokeColor] = useState('#000000')
-  const [strokeWidth, setStrokeWidth] = useState(2)
-  const [backgroundColor, setBackgroundColor] = useState('transparent')
-  const [textAlign, setTextAlign] = useState('left')
   const [fontSizeSlider, setFontSizeSlider] = useState(false)
 
   const openFontSizeSlider = () => {
     setFontSizeSlider(prev => !prev)
   }
 
+  const toggleStyle = key => {
+    setTextStyles(prev => ({ ...prev, [key]: !prev[key] }))
+  }
+
+  const updateStyle = (key, value) => {
+    setTextStyles(prev => ({ ...prev, [key]: value }))
+  }
   
   return (
     <div className={styles.textToolbar}>
-      <BoldButton setBold={setBold} />
-      <ItalicButton setItalic={setItalic} />
-      <UnderlineButton setUnderline={setUnderline} />
+      <BoldButton setBold={() => toggleStyle('bold')} />
+      <ItalicButton setItalic={() => toggleStyle('italic')} />
+      <UnderlineButton setUnderline={() => toggleStyle('underline')} />
       <FontSizeButton openFontSizeSlider={openFontSizeSlider} />
-      {fontSizeSlider && <FontSizeSlider fontSize={fontSize} setFontSize={setFontSize} />}
+      {fontSizeSlider && <FontSizeSlider fontSize={textStyles.fontSize} setFontSize={val => updateStyle('fontSize', val)} />}
     </div>
   )
 }
