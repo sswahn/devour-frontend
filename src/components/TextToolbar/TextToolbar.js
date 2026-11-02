@@ -23,9 +23,9 @@ function TextToolbar({ textStyles, setTextStyles }) {
   
   return (
     <div className={styles.textToolbar}>
-      <BoldButton setBold={() => toggleStyle('bold')} />
-      <ItalicButton setItalic={() => toggleStyle('italic')} />
-      <UnderlineButton setUnderline={() => toggleStyle('underline')} />
+      <BoldButton setStyle={toggleStyle} />
+      <ItalicButton setStyle={toggleStyle} />
+      <UnderlineButton setStyle={toggleStyle} />
       <FontSizeButton openFontSizeSlider={openFontSizeSlider} />
       {fontSizeSlider && <FontSizeSlider fontSize={textStyles.fontSize} setFontSize={val => updateStyle('fontSize', val)} />}
     </div>
