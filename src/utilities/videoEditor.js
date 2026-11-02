@@ -146,7 +146,10 @@ const generateAssContent = (validCaptions) => {
     const underline = style.underline ? 1 : 0
     const strokeColor = style.stroke ? `\\3c${style.strokeColor}` : ''
     const strokeWidth = style.stroke ? `\\bord${style.strokeWidth}` : ''
-    const background = style.backgroundColor === 'transparent' ? '' : `\\4c${toAssColor(style.backgroundColor)}`
+    
+    const hasBackground = style.backgroundColor !== 'transparent'
+    const border = hasBackground ? 3 : 1
+    const background = hasBackground ? `\\4c${toAssColor(style.backgroundColor)}` : ''
 
     // ASS numpad alignment: 1 = bottom-left, 2 = bottom-center, 3 = bottom-right
     const alignments = { 'left': 1, 'center': 2, 'right': 3 }
