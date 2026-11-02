@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import useFootage from '../../../hooks/useFootage'
 import * as config from '../../../config'
 import storage from '../../../utilities/storage'
 import Input from '../../../components/Input/Input'
@@ -11,7 +10,6 @@ import styles from './Captions.module.css'
 function Captions() {
   // TODO: once this is up and running,
   // go ahead and delete the provider, hook, and provider instance.
-  const { footage } = useFootage()
   const [captions, setCaptions] = useState([])
   const [caption, setCaption] = useState('')
   const [start, setStart] = useState('')
@@ -47,6 +45,7 @@ function Captions() {
     event.preventDefault()
 
     // validate start/end dont overlap
+    // break this out into its own function:
     const sorted = [...captions].sort((a, b) => a.start - b.start)
     const conflicted = sorted.some((caption, index) =>
       index > 0 && caption.start < sorted[index - 1].end
@@ -55,7 +54,8 @@ function Captions() {
       return alert('This caption conflicts with an existing caption.')
     }
 
-    // also need to check end isnt outside video duration
+    // in the valdiation util, for END, need to check end isnt outside video duration
+    // this component needs the duration of the concatenated blob created in Editor
     
     const id = crypto.randomUUID()
     const formData = new FormData(event.target)
@@ -89,7 +89,7 @@ function Captions() {
     setStart('')
     setEnd('')
     storage.local.remove(config.storage.caption)
-    // const blob = await createCaption(footage, data) 
+    // const blob = await createCaption(blob, data) // this should not be footage, but the concatenated blob
     // result needs name such as tempFootage
     // as original footage must remain intact.
     // setTempFootage(blob)
