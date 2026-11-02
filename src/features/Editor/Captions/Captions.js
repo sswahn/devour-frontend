@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import * as config from '../../../config'
 import storage from '../../../utilities/storage'
 import Input from '../../../components/Input/Input'
-import BoldIcon from '../../../components/Icons/BoldIcon/BoldIcon'
+import BoldButton from './BoldButton/BoldButton'
 import PenToSquareIcon from '../../../components/Icons/PenToSquareIcon/PenToSquareIcon'
 import TrashCanIcon from '../../../components/Icons/TrashCanIcon/TrashCanIcon'
 import styles from './Captions.module.css'
@@ -161,7 +161,7 @@ function Captions() {
           error={errorMessage}
           onChange={onChange}
           required />
-            
+        <BoldButton setBold={setBold} />
         <button type="submit" aria-label="submit caption">Submit</button>
       </form>
       <ul>
