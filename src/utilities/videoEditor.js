@@ -101,21 +101,18 @@ const formatAssTime = (seconds) => {
   return `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}.${String(cs).padStart(2, '0')}`
 }
 
-// Helper: Convert hex color to ASS format (&H[Alpha][Blue][Green][Red]&)
-const toAssColor = (hex, alphaHex = '00') => {
-  if (!hex) return `&H${alphaHex}FFFFFF&`
-  const clean = hex.replace('#', '').trim()
-  let r = 'ff', g = 'ff', b = 'ff'
-  if (clean.length === 3) {
-    r = clean[0] + clean[0]
-    g = clean[1] + clean[1]
-    b = clean[2] + clean[2]
-  } else if (clean.length >= 6) {
-    r = clean.substring(0, 2)
-    g = clean.substring(2, 4)
-    b = clean.substring(4, 6)
+const toAssColor = hex => {
+  if (typeof hex !== 'string' || !/^#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(hex)) {
+    throw new TypeError(`Invalid hex color: ${hex}`)
   }
-  return `&H${alphaHex}${b}${g}${r}&`
+  let clean = hex.slice(1)
+  if (clean.length === 3) {
+    clean = [...clean].map(char => char + char).join('')
+  }
+  const r = clean.slice(0, 2)
+  const g = clean.slice(2, 4)
+  const b = clean.slice(4, 6)
+  return `&H00${b}${g}${r}&`
 }
 
 // Generate the complete ASS subtitle content string
