@@ -1,4 +1,5 @@
 import BoldIcon from '../../../../components/Icons/BoldIcon/BoldIcon'
+import styles from './BoldButton.module.css'
 
 function BoldButton({ setBold }) {
 
@@ -8,7 +9,7 @@ function BoldButton({ setBold }) {
   }
   
   return (
-    <button onClick={onClick} type={button} aria-label="bold">
+    <button className={styles.boldButton} onClick={onClick} type={button} aria-label="bold">
       <BoldIcon />
     </button>
   )
