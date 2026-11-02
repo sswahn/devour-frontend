@@ -1,6 +1,6 @@
 import styles from './ColorPalette.module.css'
 
-function ColorPalette({ setColor }) {
+function ColorPalette({ color, setColor }) {
 
   const onClick = event => {
     setColor(event.target.value)
@@ -9,7 +9,7 @@ function ColorPalette({ setColor }) {
   return (
     <div className={styles.colorPalette}>
       <label htmlFor="color-palette">Font color:</label>
-      <input id="color-palette" type="color" onClick={onClick}  value="#FFFFFF" />
+      <input id="color-palette" type="color" onClick={onClick}  value={color} />
     </div>
   )
 }
