@@ -1,11 +1,11 @@
 import BoldIcon from '../../Icons/BoldIcon/BoldIcon'
 import styles from './BoldButton.module.css'
 
-function BoldButton({ setBold }) {
+function BoldButton({ setStyle }) {
 
   const onClick = event => {
     navigator.vibrate?.(50)
-    setBold(prev => !prev)
+    setStyle('bold')
   }
   
   return (
