@@ -1,7 +1,7 @@
 import { FFmpeg } from '@ffmpeg/ffmpeg'
 import { fetchFile } from '@ffmpeg/util'
 
-let errors = []
+const errors = []
 
 const createFFmpeg = async () => {
   const ffmpeg = new FFmpeg()
