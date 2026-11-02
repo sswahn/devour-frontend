@@ -125,8 +125,7 @@ const toAssColor = hex => {
   return `&H00${b}${g}${r}&`
 }
 
-// Generate the complete ASS subtitle content string
-const generateAssContent = (validCaptions) => {
+const generateAssContent = captions => {
   let ass = `[Script Info]\n`
   ass += `Title: Generated Captions\n`
   ass += `ScriptType: v4.00+\n`
@@ -136,44 +135,44 @@ const generateAssContent = (validCaptions) => {
 
   ass += `[V4+ Styles]\n`
   ass += `Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding\n`
-  ass += `Style: Default,Arial,36,&H00FFFFFF,&H000000FF,&H00000000,&H80000000,0,0,0,0,100,100,0,0,1,2,0,2,20,20,50,1\n\n`
 
-  ass += `[Events]\n`
-  ass += `Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n`
+  const alignments = { left: 1, center: 2, right: 3 }
 
-  for (const caption of validCaptions) {
+  const styles = captions.map((caption, index) => {
     const style = caption.style || {}
-    const startTime = formatAssTime(caption.start)
-    const endTime = formatAssTime(caption.end)
+    const name = `Caption${index}`
 
     const fontSize = style.fontSize
     const color = toAssColor(style.color)
-    const bold = style.bold ? 1 : 0
-    const italic = style.italic ? 1 : 0
-    const underline = style.underline ? 1 : 0
-    const strokeColor = style.stroke ? `\\3c${style.strokeColor}` : ''
+    const strokeColor = style.stroke ? `\\3c${toAssColor(style.strokeColor)}` : ''
     const strokeWidth = style.stroke ? `\\bord${style.strokeWidth}` : ''
+    const alignment = alignments[style.textAlign]
     
     const hasBackground = style.backgroundColor !== 'transparent'
-    const border = hasBackground ? 3 : 1
-    const background = hasBackground ? `\\4c${toAssColor(style.backgroundColor)}` : ''
+    const backgroundColor = hasBackground ? `\\4c${toAssColor(style.backgroundColor)}` : ''
+    const borderStyle = hasBackground ? 3 : 1
 
-    // ASS numpad alignment: 1 = bottom-left, 2 = bottom-center, 3 = bottom-right
-    const alignments = { 'left': 1, 'center': 2, 'right': 3 }
-    const alignment = alignments[style.textAlign]
+    ass += `Style: ${name},Arial,${fontSize},${color},&H000000FF,${strokeColor},${backgroundColor},${style.bold ? -1 : 0},${style.italic ? -1 : 0},${style.underline ? -1 : 0},0,100,100,0,0,${borderStyle},${strokeWidth},0,${alignment},20,20,50,1\n`
 
-    // Build inline style override tags
-    const tags = `{\\fs${fontSize}\\c${color}\\b${bold}\\i${italic}\\u${underline}\\an${alignment}${strokeColor}${strokeWidth}${background}}`
+    return name
+  })
 
-    // Handle newlines safely in ASS
-    const text = (caption.text || '') //.replace(/\r?\n/g, '\\N')
-                                     .replace(/\\/g, '\\\\')
-                                     .replace(/\{/g, '\\{')
-                                     .replace(/\}/g, '\\}')
-                                     .replace(/\r\n|\r|\n/g, '\\N')
+  ass += `\n[Events]\n`
+  ass += `Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n`
 
-    ass += `Dialogue: 0,${startTime},${endTime},Default,,0,0,0,,${tags}${text}\n`
-  }
+  captions.forEach((caption, index) => {
+    const name = styles[index]
+    const startTime = formatAssTime(caption.start)
+    const endTime = formatAssTime(caption.end)
+
+    const text = caption.text
+      .replace(/\\/g, '\\\\')
+      .replace(/\{/g, '\\{')
+      .replace(/\}/g, '\\}')
+      .replace(/\r\n|\r|\n/g, '\\N')
+
+    ass += `Dialogue: 0,${startTime},${endTime},${name},,0,0,0,,${text}\n`
+  })
 
   return ass
 }
