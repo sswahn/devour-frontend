@@ -3,8 +3,13 @@ import { fetchFile } from '@ffmpeg/util'
 
 const createFFmpeg = async () => {
   const ffmpeg = new FFmpeg()
-  await ffmpeg.load()
-  return ffmpeg
+  try {
+    await ffmpeg.load()
+    return ffmpeg
+  } catch (error) {
+    ffmpeg.terminate()
+    throw error
+  }
 }
 
 const cleanup = async (ffmpeg, files) => {
