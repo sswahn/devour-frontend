@@ -1,7 +1,7 @@
 import { FFmpeg } from '@ffmpeg/ffmpeg'
 import { fetchFile } from '@ffmpeg/util'
 
-const errors = []
+let errors = []
 
 const createFFmpeg = async () => {
   const ffmpeg = new FFmpeg()
@@ -31,6 +31,7 @@ const terminateProcess = ffmpeg => {
 }
 
 const cleanup = async (ffmpeg, files) => {
+  errors.length = 0
   try {
     for (const file of files) {
       await deleteFile(ffmpeg, file)
