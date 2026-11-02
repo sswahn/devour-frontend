@@ -3,6 +3,7 @@ import BoldButton from './BoldButton/BoldButton'
 import ItalicButton from './ItalicButton/ItalicButton'
 import UnderlineButton from './UnderlineButton/UnderlineButton'
 import FontColorButton from './FontColorButton/FontColorButton'
+import ColorPalette from './ColorPalette/ColorPalette'
 import FontSizeButton from './FontSizeButton/FontSizeButton'
 import FontSizeSlider from './FontSizeSlider/FontSizeSlider'
 import styles from './TextToolbar.module.css'
@@ -33,7 +34,7 @@ function TextToolbar({ textStyles, setTextStyles }) {
       <ItalicButton setStyle={toggleStyle} />
       <UnderlineButton setStyle={toggleStyle} />
       <FontColorButton openFontColorPalette={openFontColorPalette} />
-      {fontColorPalette && <FontColorPalette color={textStyles.color} setColor={val => updateStyle('color', val)} />}
+      {fontColorPalette && <ColorPalette color={textStyles.color} setColor={val => updateStyle('color', val)} />}
       <FontSizeButton openFontSizeSlider={openFontSizeSlider} />
       {fontSizeSlider && <FontSizeSlider fontSize={textStyles.fontSize} setFontSize={val => updateStyle('fontSize', val)} />}
     </div>
