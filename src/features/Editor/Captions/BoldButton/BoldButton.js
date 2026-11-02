@@ -3,7 +3,7 @@ import BoldIcon from '../../../../components/Icons/BoldIcon/BoldIcon'
 function BoldButton({ setBold }) {
 
   const onClick = event => {
-    
+    navigator.vibrate?.(50)
     setBold(prev => !prev)
   }
   
