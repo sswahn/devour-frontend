@@ -1,11 +1,11 @@
 import UnderlineIcon from '../../Icons/UnderlineIcon/UnderlineIcon'
 import styles from './UnderlineButton.module.css'
 
-function UnderlineButton({ setUnderline }) {
+function UnderlineButton({ setStyle }) {
 
   const onClick = event => {
     navigator.vibrate?.(50)
-    setUnderline(prev => !prev)
+    setStyle('underline')
   }
   
   return (
