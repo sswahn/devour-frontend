@@ -1,4 +1,4 @@
-import ItalicIcon from '../../../../components/Icons/ItalicIcon/ItalicIcon'
+import ItalicIcon from '../../Icons/ItalicIcon/ItalicIcon'
 import styles from './ItalicButton.module.css'
 
 function ItalicButton({ setItalic }) {
