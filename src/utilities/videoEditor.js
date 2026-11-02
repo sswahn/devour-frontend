@@ -134,8 +134,8 @@ const generateAssContent = (validCaptions) => {
     const startTime = formatAssTime(caption.start)
     const endTime = formatAssTime(caption.end)
 
-    const fontSize = Number(style.fontSize) || 14
-    const color = toAssColor(style.color || '#ffffff')
+    const fontSize = Number(style.fontSize)
+    const color = toAssColor(style.color)
     const strokeColor = style.stroke ? style.strokeColor : ''
     const strokeWidth = style.stroke ? style.strokeWidth : ''
     const bold = style.bold ? 1 : 0
