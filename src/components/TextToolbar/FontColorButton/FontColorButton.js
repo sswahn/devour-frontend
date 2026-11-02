@@ -4,7 +4,7 @@ import styles from './FontColorButton.module.css'
 function FontColorButton({ openFontColorPalette }) {
 
   const onClick = event => {
-    // this button will open the palette not select a color
+    navigator.vibrate?.(50)
     openFontColorPalette()
   }
 
