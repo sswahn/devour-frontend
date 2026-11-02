@@ -141,6 +141,7 @@ const generateAssContent = (validCaptions) => {
     const bold = style.bold ? 1 : 0
     const italic = style.italic ? 1 : 0
     const underline = style.underline ? 1 : 0
+    const background = style.backgroundColor === 'transparent' ? '' : style.backgroundColor
 
     // ASS numpad alignment: 1 = bottom-left, 2 = bottom-center, 3 = bottom-right
     const alignments = { 'left': 1, 'center': 2, 'right': 3 }
