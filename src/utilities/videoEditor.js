@@ -139,7 +139,7 @@ const generateAssContent = (validCaptions) => {
     const startTime = formatAssTime(caption.start)
     const endTime = formatAssTime(caption.end)
 
-    const fontSize = Number(style.fontSize)
+    const fontSize = style.fontSize
     const color = toAssColor(style.color)
     const bold = style.bold ? 1 : 0
     const italic = style.italic ? 1 : 0
