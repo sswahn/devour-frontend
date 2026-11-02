@@ -1,11 +1,11 @@
 import FontIcon from '../../Icons/FontIcon/FontIcon'
 import styles from './FontColorButton.module.css'
 
-function FontColorButton({ openPalette }) {
+function FontColorButton({ openFontColorPalette }) {
 
   const onClick = event => {
     // this button will open the palette not select a color
-    openPalette()
+    openFontColorPalette()
   }
 
   return (
