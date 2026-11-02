@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import useTextStyles from '../../../hooks/useTextStyles'
 import * as config from '../../../config'
 import storage from '../../../utilities/storage'
 import Input from '../../../components/Input/Input'
@@ -10,11 +11,11 @@ import styles from './Captions.module.css'
 function Captions() {
   // TODO: once this is up and running,
   // go ahead and delete the provider, hook, and provider instance.
+  const [textStyles, setTextStyles] = useTextStyles()
   const [captions, setCaptions] = useState([])
   const [caption, setCaption] = useState('')
   const [start, setStart] = useState('')
   const [end, setEnd] = useState('')
-  const [style, setStyle] = useState({})
   const [errorMessage, setErrorMessage] = useState('')
 
   const onChange = ({ target: { id, value } }) => {
@@ -63,17 +64,7 @@ function Captions() {
       text,
       start,
       end,
-      style: { 
-        fontSize,
-        color,
-        bold,
-        italic,
-        underline,
-        strokeColor,
-        strokeWidth,
-        backgroundColor,
-        textAlign
-      }
+      style: textStyles
     }
     
     setCaptions(prev => [ ...prev, data ])
@@ -154,7 +145,7 @@ function Captions() {
           error={errorMessage}
           onChange={onChange}
           required />
-        <TextToolbar setStyle={setStyle} />
+        <TextToolbar textStyles={textStyles} setTextStyles={setTextStyles} />
         <button type="submit" aria-label="submit caption">Submit</button>
       </form>
       <ul>
