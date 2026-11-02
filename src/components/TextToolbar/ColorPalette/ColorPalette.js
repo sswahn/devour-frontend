@@ -9,7 +9,7 @@ function ColorPalette({ color, setColor }) {
   return (
     <div className={styles.colorPalette}>
       <label htmlFor="color-palette">Font color:</label>
-      <input id="color-palette" type="color" onClick={onClick}  value={color} />
+      <input id="color-palette" type="color" onClick={onClick} value={color} />
     </div>
   )
 }
