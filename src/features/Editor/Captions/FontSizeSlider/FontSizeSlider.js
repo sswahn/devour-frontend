@@ -12,7 +12,18 @@ function FontSizeSlider({ fontSize, setFontSize }) {
       <label htmlFor="font-size-slider">
         Font Size: {fontSize}px
       </label>
-      <input id="font-size-slider" onChange={onChange} type="range" name="fontSize" min="12" max="48" value={fontSize} />
+      <input 
+        id="font-size-slider" 
+        onChange={onChange} 
+        type="range" 
+        name="fontSize" 
+        min="12" 
+        max="48" 
+        value={fontSize}
+        aria-valuenow={fontSize}
+        aria-valuemin="12"
+        aria-valuemax="48"
+        aria-valuetext={`${fontSize} pixels`} />
     </div>
   )
 }
