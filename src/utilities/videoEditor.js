@@ -13,13 +13,17 @@ const createFFmpeg = async () => {
 }
 
 const cleanup = async (ffmpeg, files) => {
-  await Promise.all(files.map(async file => {
-    try {
-      await ffmpeg.deleteFile(file)
-    } catch {
-      // The file may not have been created.
-    }
-  })).finally(() => ffmpeg.terminate())
+  try {
+    await Promise.all(files.map(async file => {
+      try {
+        await ffmpeg.deleteFile(file)
+      } catch {
+        // The file may not exist.
+      }
+    }))
+  } finally {
+    ffmpeg.terminate()
+  }
 }
 
 // Concatenate an array of footage objects: [{ clip: Blob }, ...].
