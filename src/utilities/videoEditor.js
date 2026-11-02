@@ -20,13 +20,21 @@ const deleteFile = async (ffmpeg, file) => {
   }
 }
 
+const terminateProcess = ffmpeg => {
+  try {
+    ffmpeg.terminate()
+  } catch (error) {
+    throw error
+  }
+}
+
 const cleanup = async (ffmpeg, files) => {
   try {
     for (const file of files) {
       await deleteFile(ffmpeg, file)
     }
   } finally {
-    ffmpeg.terminate()
+    terminateProcess(ffmpeg)
   }
 }
 
