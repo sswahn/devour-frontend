@@ -14,13 +14,9 @@ const createFFmpeg = async () => {
 
 const cleanup = async (ffmpeg, files) => {
   try {
-    await Promise.all(files.map(async file => {
-      try {
-        await ffmpeg.deleteFile(file)
-      } catch {
-        // The file may not exist.
-      }
-    }))
+    for (const file of files) {
+      await ffmpeg.deleteFile(file).catch(console.error)
+    }
   } finally {
     ffmpeg.terminate()
   }
