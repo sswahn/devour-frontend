@@ -32,6 +32,11 @@ function Editor({ footage, openCamera, openPublisher }) {
       // it will be the editable footage, and the final submission.
       // store in context and in indexeddb
       const blob = await concatenateVideos(footage, setProgress) 
+
+      console.log('editable video blob (as opposed to footage). this should probably get its own provider/context:')
+      console.log('blob: ', blob)
+      console.log('this needs to be available to captions editor, etc.')
+      
       const url = URL.createObjectURL(blob)
       setSource(url)
     } catch (error) {
