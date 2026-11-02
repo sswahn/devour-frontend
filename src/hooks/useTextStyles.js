@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 function useTextStyles() {
-  const [styles, setStyles] = useState({
+  const [textStyles, setTextStyles] = useState({
     fontSize: 12,
     color: '#ffffff',
     bold: false,
@@ -14,7 +14,7 @@ function useTextStyles() {
     textAlign: 'left'
   })
 
-  return [ styles, setStyles ]
+  return [ textStyles, setTextStyles ]
 }
 
 export default useTextStyles
