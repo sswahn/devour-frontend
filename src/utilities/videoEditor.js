@@ -23,7 +23,6 @@ export const concatenateVideos = async (footage, setProgress = () => {}) => {
     throw new Error('Provide an array of video clips.')
   }
 
-  const ffmpeg = await createFFmpeg()
   const inputs = footage.map((_, index) => `clip${index}.webm`)
   const manifest = 'footage.txt'
   const output = 'output.webm'
@@ -33,9 +32,10 @@ export const concatenateVideos = async (footage, setProgress = () => {}) => {
     setProgress(Math.round(progress * 100))
   }
 
-  ffmpeg.on('progress', handleProgress)
-
   try {
+    const ffmpeg = await createFFmpeg()
+    ffmpeg.on('progress', handleProgress)
+
     await Promise.all(footage.map(async ({ clip }, index) => {
       await ffmpeg.writeFile(inputs[index], await fetchFile(clip))
     }))
@@ -175,8 +175,7 @@ export const createCaptions = async (blob, captions, setProgress = () => {}) => 
   if (validCaptions.length === 0) {
     throw new Error('At least one caption is required.')
   }
-  
-  const ffmpeg = await createFFmpeg()
+
   const timestamp = Date.now()
   const input = `input_${timestamp}.webm`
   const manifest = `subtitles_${timestamp}.ass`
@@ -186,32 +185,23 @@ export const createCaptions = async (blob, captions, setProgress = () => {}) => 
   const handleProgress = ({ progress }) => {
     setProgress(Math.round(progress * 100))
   }
-
-  ffmpeg.on('progress', handleProgress)
   
   try {
-    // 1. Write input video to virtual file system
+    const ffmpeg = await createFFmpeg()
+    ffmpeg.on('progress', handleProgress)
     await ffmpeg.writeFile(input, await fetchFile(blob))
-
-    // 2. Generate and write the ASS subtitle file
     const assContent = generateAssContent(validCaptions)
     await ffmpeg.writeFile(manifest, new TextEncoder().encode(assContent))
-
-    // 3. Run FFmpeg command using a single robust subtitles filter
     await ffmpeg.exec([
       '-i', input,
       '-vf', `subtitles=${manifest}`,
       '-c:a', 'copy',
       '-y', output
     ])
-
-    // 4. Read output file back as a Blob
     const data = await ffmpeg.readFile(output)
     setProgress(100)
     return new Blob([data], { type: 'video/webm' })
-
   } finally {
-    // 5. Guaranteed cleanup of all virtual files to prevent WASM memory leaks
     ffmpeg.off('progress', handleProgress)
     await cleanup(ffmpeg, files)
   }
