@@ -12,10 +12,18 @@ const createFFmpeg = async () => {
   }
 }
 
+const deleteFile = async (ffmpeg, file) => {
+  try {
+    await ffmpeg.deleteFile(file)
+  } catch (error) {
+    // missing file
+  }
+}
+
 const cleanup = async (ffmpeg, files) => {
   try {
     for (const file of files) {
-      await ffmpeg.deleteFile(file)
+      await deleteFile(ffmpeg, file)
     }
   } finally {
     ffmpeg.terminate()
@@ -63,11 +71,10 @@ export const concatenateVideos = async (footage, setProgress = () => {}) => {
 
     return new Blob([data], { type: 'video/webm' })
   } finally {
-    if (ffmpeg === null) {
-      return console.error('ffmpeg was not initialized.')
+    if (ffmpeg !== null) {
+      ffmpeg.off('progress', handleProgress)
+      await cleanup(ffmpeg, files)
     }
-    ffmpeg.off('progress', handleProgress)
-    await cleanup(ffmpeg, files)
   }
 }
 
@@ -211,11 +218,10 @@ export const createCaptions = async (blob, captions, setProgress = () => {}) => 
     setProgress(100)
     return new Blob([data], { type: 'video/webm' })
   } finally {
-    if (ffmpeg === null) {
-      return console.error('ffmpeg was not initialized.')
+    if (ffmpeg !== null) {
+      ffmpeg.off('progress', handleProgress)
+      await cleanup(ffmpeg, files)
     }
-    ffmpeg.off('progress', handleProgress)
-    await cleanup(ffmpeg, files)
   }
 }
 
