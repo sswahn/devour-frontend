@@ -1,10 +1,10 @@
-import { useState, useEffect } from  'react'
+import { useState } from  'react'
 import BoldButton from './BoldButton/BoldButton'
 import ItalicButton from './ItalicButton/ItalicButton'
 import UnderlineButton from './UnderlineButton/UnderlineButton'
 import FontSizeButton from './FontSizeButton/FontSizeButton'
 import FontSizeSlider from './FontSizeSlider/FontSizeSlider'
-import styles from 'TextToolbar.module.css'
+import styles from './TextToolbar.module.css'
 
 function TextToolbar({ textStyles, setTextStyles }) {
   const [fontSizeSlider, setFontSizeSlider] = useState(false)
