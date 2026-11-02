@@ -5,6 +5,8 @@ import Input from '../../../components/Input/Input'
 import BoldButton from './BoldButton/BoldButton'
 import ItalicButton from './ItalicButton/ItalicButton'
 import UnderlineButton from './UnderlineButton/UnderlineButton'
+import FontSizeButton from './FontSizeButton/FontSizeButton'
+import FontSizeSlider from './FontSizeSlider/FontSizeSlider'
 import PenToSquareIcon from '../../../components/Icons/PenToSquareIcon/PenToSquareIcon'
 import TrashCanIcon from '../../../components/Icons/TrashCanIcon/TrashCanIcon'
 import styles from './Captions.module.css'
@@ -26,7 +28,12 @@ function Captions() {
   const [strokeWidth, setStrokeWidth] = useState(2)
   const [backgroundColor, setBackgroundColor] = useState('transparent')
   const [textAlign, setTextAlign] = useState('left')
+  const [fontSizeSlider, setFontSizeSlider] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
+
+  const openFontSizeSlider = () => {
+    setFontSizeSlider(prev => !prev)
+  }
 
   const onChange = ({ target: { id, value } }) => {
     switch (id) {
@@ -55,6 +62,8 @@ function Captions() {
     if (conflicted) {
       return alert('This caption conflicts with an existing caption.')
     }
+
+    
 
     // in the valdiation util, for END, need to check end isnt outside video duration
     // this component needs the duration of the concatenated blob created in Editor
@@ -166,6 +175,8 @@ function Captions() {
         <BoldButton setBold={setBold} />
         <ItalicButton setItalic={setItalic} />
         <UnderlineButton setUnderline={setUnderline} />
+        <FontSizeButton openFontSizeSlider={openFontSizeSlider} />
+        {fontSizeSlider && <FontSizeSlider setFontSize={setFontSize} />}
         <button type="submit" aria-label="submit caption">Submit</button>
       </form>
       <ul>
