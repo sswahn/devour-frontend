@@ -144,12 +144,12 @@ const generateAssContent = captions => {
 
     const fontSize = style.fontSize
     const color = toAssColor(style.color)
-    const strokeColor = style.stroke ? toAssColor(style.strokeColor) : ''
-    const strokeWidth = style.stroke ? style.strokeWidth : ''
+    const strokeColor = style.stroke ? toAssColor(style.strokeColor) : '&H00000000'
+    const strokeWidth = style.stroke ? style.strokeWidth : 0
     const alignment = alignments[style.textAlign]
     
     const hasBackground = style.backgroundColor !== 'transparent'
-    const backgroundColor = hasBackground ? toAssColor(style.backgroundColor) : ''
+    const backgroundColor = hasBackground ? toAssColor(style.backgroundColor) : '&HFF000000'
     const borderStyle = hasBackground ? 3 : 1
 
     ass += `Style: ${name},Arial,${fontSize},${color},&H000000FF,${strokeColor},${backgroundColor},${style.bold ? -1 : 0},${style.italic ? -1 : 0},${style.underline ? -1 : 0},0,100,100,0,0,${borderStyle},${strokeWidth},0,${alignment},20,20,50,1\n`
