@@ -130,7 +130,7 @@ const toAssColor = hex => {
   const r = clean.slice(0, 2)
   const g = clean.slice(2, 4)
   const b = clean.slice(4, 6)
-  return `&H00${b}${g}${r}&`
+  return `&H00${b}${g}${r}`
 }
 
 const generateAssContent = captions => {
