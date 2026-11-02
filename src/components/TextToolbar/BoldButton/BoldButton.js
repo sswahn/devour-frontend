@@ -1,4 +1,4 @@
-import BoldIcon from '../../../../components/Icons/BoldIcon/BoldIcon'
+import BoldIcon from '../../Icons/BoldIcon/BoldIcon'
 import styles from './BoldButton.module.css'
 
 function BoldButton({ setBold }) {
