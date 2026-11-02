@@ -27,7 +27,7 @@ export const concatenateVideos = async (footage, setProgress = () => {}) => {
   if (!Array.isArray(footage) || footage.length === 0 || footage.some(item => !(item?.clip instanceof Blob))) {
     throw new Error('Provide an array of video clips.')
   }
-
+  let ffmpeg = null
   const inputs = footage.map((_, index) => `clip${index}.webm`)
   const manifest = 'footage.txt'
   const output = 'output.webm'
@@ -38,7 +38,7 @@ export const concatenateVideos = async (footage, setProgress = () => {}) => {
   }
 
   try {
-    const ffmpeg = await createFFmpeg()
+    ffmpeg = await createFFmpeg()
     ffmpeg.on('progress', handleProgress)
 
     await Promise.all(footage.map(async ({ clip }, index) => {
@@ -63,6 +63,9 @@ export const concatenateVideos = async (footage, setProgress = () => {}) => {
 
     return new Blob([data], { type: 'video/webm' })
   } finally {
+    if (ffmpeg === null) {
+      return console.error('ffmpeg was not initialized.')
+    }
     ffmpeg.off('progress', handleProgress)
     await cleanup(ffmpeg, files)
   }
@@ -178,7 +181,7 @@ export const createCaptions = async (blob, captions, setProgress = () => {}) => 
   if (validCaptions.length === 0) {
     throw new Error('At least one caption is required.')
   }
-
+  let ffmpeg = null
   const timestamp = Date.now()
   const input = `input_${timestamp}.webm`
   const manifest = `subtitles_${timestamp}.ass`
@@ -190,7 +193,7 @@ export const createCaptions = async (blob, captions, setProgress = () => {}) => 
   }
   
   try {
-    const ffmpeg = await createFFmpeg()
+    ffmpeg = await createFFmpeg()
     ffmpeg.on('progress', handleProgress)
     await ffmpeg.writeFile(input, await fetchFile(blob))
     const assContent = generateAssContent(validCaptions)
@@ -205,6 +208,9 @@ export const createCaptions = async (blob, captions, setProgress = () => {}) => 
     setProgress(100)
     return new Blob([data], { type: 'video/webm' })
   } finally {
+    if (ffmpeg === null) {
+      return console.error('ffmpeg was not initialized.')
+    }
     ffmpeg.off('progress', handleProgress)
     await cleanup(ffmpeg, files)
   }
