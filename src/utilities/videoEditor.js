@@ -24,7 +24,7 @@ const terminateProcess = ffmpeg => {
   try {
     ffmpeg.terminate()
   } catch (error) {
-    throw error
+    // Best-effort termination.
   }
 }
 
