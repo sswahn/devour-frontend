@@ -6,6 +6,7 @@ import FontColorButton from './FontColorButton/FontColorButton'
 import ColorPalette from './ColorPalette/ColorPalette'
 import FontSizeButton from './FontSizeButton/FontSizeButton'
 import FontSizeSlider from './FontSizeSlider/FontSizeSlider'
+import BackgroundColorButton from './BackgroundColorButton/BackgroundCOlorButton'
 import styles from './TextToolbar.module.css'
 
 function TextToolbar({ textStyles, setTextStyles }) {
@@ -18,6 +19,10 @@ function TextToolbar({ textStyles, setTextStyles }) {
 
   const openFontColorPalette = () => {
     setFontColorPalette(prev => !prev)
+  }
+
+  const openBackgroundColorPalette = () => {
+    
   }
 
   const toggleStyle = key => {
@@ -39,6 +44,7 @@ function TextToolbar({ textStyles, setTextStyles }) {
       {fontColorPalette && <ColorPalette color={textStyles.color} setColor={val => updateStyle('color', val)} />}
       <FontSizeButton openFontSizeSlider={openFontSizeSlider} />
       {fontSizeSlider && <FontSizeSlider fontSize={textStyles.fontSize} setFontSize={val => updateStyle('fontSize', val)} />}
+      <BackgroundColorButton openBackgroundColorPalette={openBackgroundColorPalette} />
     </div>
   )
 }
