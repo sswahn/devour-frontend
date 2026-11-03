@@ -6,7 +6,7 @@ import FontColorButton from './FontColorButton/FontColorButton'
 import ColorPalette from './ColorPalette/ColorPalette'
 import FontSizeButton from './FontSizeButton/FontSizeButton'
 import FontSizeSlider from './FontSizeSlider/FontSizeSlider'
-import BackgroundColorButton from './BackgroundColorButton/BackgroundCOlorButton'
+import BackgroundColorButton from './BackgroundColorButton/BackgroundColorButton'
 import styles from './TextToolbar.module.css'
 
 function TextToolbar({ textStyles, setTextStyles }) {
