@@ -12,6 +12,8 @@ import styles from './TextToolbar.module.css'
 function TextToolbar({ textStyles, setTextStyles }) {
   const [fontSizeSlider, setFontSizeSlider] = useState(false)
   const [fontColorPalette, setFontColorPalette] = useState(false)
+  const [backgroundColorPalette, setBackgroundColorPalette] = useState(false)
+  
   
   const openFontSizeSlider = () => {
     setFontSizeSlider(prev => !prev)
@@ -22,7 +24,7 @@ function TextToolbar({ textStyles, setTextStyles }) {
   }
 
   const openBackgroundColorPalette = () => {
-    
+    setBackgroundColorPalette(prev => !prev)
   }
 
   const toggleStyle = key => {
@@ -45,6 +47,7 @@ function TextToolbar({ textStyles, setTextStyles }) {
       <FontSizeButton openFontSizeSlider={openFontSizeSlider} />
       {fontSizeSlider && <FontSizeSlider fontSize={textStyles.fontSize} setFontSize={val => updateStyle('fontSize', val)} />}
       <BackgroundColorButton openBackgroundColorPalette={openBackgroundColorPalette} />
+      {backgroundColorPalette && <ColorPalette color={textStyles.backgroundColor} setColor={val => updateStyle('backgroundColor', val)} />}
     </div>
   )
 }
