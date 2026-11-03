@@ -1,11 +1,11 @@
 import PaletteIcon from '../../Icons/PaletteIcon/PaletteIcon'
 import styles from './BackgroundColorButton.module.css'
 
-function BackgroundColorButton({ setBackgroundColor }) {
+function BackgroundColorButton({ openBackgroundColorPalette }) {
 
   const onClick = event => {
     navigator.vibrate?.(50)
-    setBackgroundColor('backgroundColor')
+    openBackgroundColorPalette()
   }
 
   return (
