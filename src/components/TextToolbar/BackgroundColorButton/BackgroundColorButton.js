@@ -4,6 +4,7 @@ import styles from './BackgroundColorButton.module.css'
 function BackgroundColorButton({ setBackgroundColor }) {
 
   const onClick = event => {
+    navigator.vibrate?.(50)
     setBackgroundColor('backgroundColor')
   }
 
