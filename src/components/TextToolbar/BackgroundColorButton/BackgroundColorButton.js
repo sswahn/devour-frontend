@@ -4,7 +4,7 @@ import styles from './BackgroundColorButton.module.css'
 function BackgroundColorButton({ setBackgroundColor }) {
 
   const onClick = event => {
-    setBackgroundColor()
+    setBackgroundColor('backgroundColor')
   }
 
   return (
