@@ -17,7 +17,8 @@ const DEFAULT_VIDEO_CONSTRAINTS = {
 const DEFAULT_AUDIO_CONSTRAINTS = {
   echoCancellation: false,
   noiseSuppression: false,
-  sampleRate: 48000
+  sampleRate: 48000,
+  channelCount: 1
 }
 
 const RECORDING_MIME_TYPES = [
