@@ -11,6 +11,7 @@ function BackgroundColorButton({ openDropdown }) {
   return (
     <button id="backgroundColor" className={styles.backgroundColorButton} onClick={onClick} type="button" aria-label="background color">
       <PaletteIcon />
+      <div></div>
     </button>
   )
 }
