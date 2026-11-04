@@ -18,7 +18,7 @@ const DEFAULT_AUDIO_CONSTRAINTS = {
   echoCancellation: false,
   noiseSuppression: false,
   sampleRate: 48000,
-  channelCount: 1
+  channelCount: 1 // 1 for mono, 2 for stereo (depends on hardware support)
 }
 
 const RECORDING_MIME_TYPES = [
