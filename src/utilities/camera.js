@@ -3,8 +3,8 @@ const recordingErrors = new WeakMap()
 
 const DEFAULT_VIDEO_CONSTRAINTS = {
   facingMode: { ideal: 'environment' },
-  width: { ideal: 3840 },
-  height: { ideal: 2160 },
+  width: { ideal: 720 },
+  height: { ideal: 1280 },
   frameRate: { ideal: 30, max: 30 },
   aspectRatio: {
     ideal:
