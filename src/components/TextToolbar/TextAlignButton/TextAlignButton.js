@@ -4,7 +4,7 @@ import styles from './TextAlignButton.module.css'
 function TextAlignButton({ openTextAlign }) {
 
   const onClick = event => {
-    
+    navigator.vibrate?.(50)
     openTextAlign(event.target.id)
   }
 
