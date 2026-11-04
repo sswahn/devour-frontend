@@ -1,15 +1,15 @@
 import TextHeightIcon from '../../Icons/TextHeightIcon/TextHeightIcon'
 import styles from './FontSizeButton.module.css'
 
-function FontSizeButton({ openFontSizeSlider }) {
+function FontSizeButton({ openDropdown }) {
 
   const onClick = event => {
     navigator.vibrate?.(50)
-    openFontSizeSlider()
+    openDropdown(event.target.id)
   }
 
   return (
-    <button className={styles.fontSizeButton} type="button" aria-label="edit font size">
+    <button id="fontSize" className={styles.fontSizeButton} type="button" aria-label="edit font size">
       <TextHeightIcon />
     </button>
   )
