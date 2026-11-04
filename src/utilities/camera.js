@@ -41,7 +41,9 @@ function assertStream(stream, method) {
 }
 
 function getTracks(stream, kind, method) {
-  assertStream(stream, method)
+  if (!(stream instanceof MediaStream)) {
+    throw new TypeError('getTracks: stream must be an instance of MediaStream.')
+  }
 
   const tracks = kind === 'video' ? stream.getVideoTracks() : stream.getAudioTracks()
 
@@ -58,7 +60,7 @@ function selectMimeType() {
   }
 
   if (typeof MediaRecorder.isTypeSupported !== 'function') {
-    return undefined
+    return
   }
 
   return RECORDING_MIME_TYPES.find(type => MediaRecorder.isTypeSupported(type))
@@ -91,32 +93,24 @@ const camera = {
     }
 
     const finalConstraints = {
-      audio:
-        audio === false || audio === true
-          ? audio
-          : { ...DEFAULT_AUDIO_CONSTRAINTS, ...audio },
-      video:
-        video === false || video === true
-          ? video
-          : { ...DEFAULT_VIDEO_CONSTRAINTS, ...video }
+      audio: audio === false || audio === true ? audio : { ...DEFAULT_AUDIO_CONSTRAINTS, ...audio },
+      video: video === false || video === true ? video : { ...DEFAULT_VIDEO_CONSTRAINTS, ...video }
     }
 
     return navigator.mediaDevices.getUserMedia(finalConstraints)
   },
 
   off(stream) {
-    assertStream(stream, 'camera.off')
+    if (!(stream instanceof MediaStream)) {
+      throw new TypeError('camera.off: stream must be an instance of MediaStream.')
+    }
 
     // Stop every track, including audio tracks.
     stream.getTracks().forEach(track => track.stop())
   },
 
   getCapabilities(stream) {
-    const [track] = getTracks(
-      stream,
-      'video',
-      'camera.getCapabilities'
-    )
+    const [track] = getTracks(stream, 'video', 'camera.getCapabilities')
 
     if (typeof track.getCapabilities !== 'function') {
       return null
@@ -126,24 +120,16 @@ const camera = {
   },
 
   async light(stream) {
-    const [track] = getTracks(
-      stream,
-      'video',
-      'camera.light'
-    )
+    const [track] = getTracks(stream, 'video', 'camera.light')
 
     if (typeof track.getCapabilities !== 'function') {
-      throw new Error(
-        'camera.light: camera capabilities are unavailable.'
-      )
+      throw new Error('camera.light: camera capabilities are unavailable.')
     }
 
     const capabilities = track.getCapabilities()
 
     if (!capabilities.torch) {
-      throw new Error(
-        'camera.light: this camera does not support torch control.'
-      )
+      throw new Error('camera.light: this camera does not support torch control.')
     }
 
     return track.applyConstraints({
@@ -152,24 +138,16 @@ const camera = {
   },
 
   async dark(stream) {
-    const [track] = getTracks(
-      stream,
-      'video',
-      'camera.dark'
-    )
+    const [track] = getTracks(stream, 'video', 'camera.dark')
 
     if (typeof track.getCapabilities !== 'function') {
-      throw new Error(
-        'camera.dark: camera capabilities are unavailable.'
-      )
+      throw new Error('camera.dark: camera capabilities are unavailable.')
     }
 
     const capabilities = track.getCapabilities()
 
     if (!capabilities.torch) {
-      throw new Error(
-        'camera.dark: this camera does not support torch control.'
-      )
+      throw new Error('camera.dark: this camera does not support torch control.')
     }
 
     return track.applyConstraints({
@@ -178,22 +156,14 @@ const camera = {
   },
 
   async takePhoto(stream) {
-    const [track] = getTracks(
-      stream,
-      'video',
-      'camera.takePhoto'
-    )
+    const [track] = getTracks(stream, 'video', 'camera.takePhoto')
 
     if (track.readyState !== 'live') {
-      throw new Error(
-        'camera.takePhoto: video track is not live.'
-      )
+      throw new Error('camera.takePhoto: video track is not live.')
     }
 
     if (typeof ImageCapture === 'undefined') {
-      throw new Error(
-        'camera.takePhoto: still photo capture is unsupported.'
-      )
+      throw new Error('camera.takePhoto: still photo capture is unsupported.')
     }
 
     const imageCapture = new ImageCapture(track)
@@ -203,11 +173,8 @@ const camera = {
     // describe the sensor's still-photo capabilities.
     let photoSettings
 
-    if (
-      typeof imageCapture.getPhotoCapabilities === 'function'
-    ) {
-      const capabilities =
-        await imageCapture.getPhotoCapabilities()
+    if (typeof imageCapture.getPhotoCapabilities === 'function') {
+      const capabilities = await imageCapture.getPhotoCapabilities()
 
       photoSettings = {}
 
@@ -224,11 +191,7 @@ const camera = {
   },
 
   mute(stream) {
-    const tracks = getTracks(
-      stream,
-      'audio',
-      'camera.mute'
-    )
+    const tracks = getTracks(stream, 'audio', 'camera.mute')
 
     tracks.forEach(track => {
       track.enabled = false
@@ -236,11 +199,7 @@ const camera = {
   },
 
   unmute(stream) {
-    const tracks = getTracks(
-      stream,
-      'audio',
-      'camera.unmute'
-    )
+    const tracks = getTracks(stream, 'audio', 'camera.unmute')
 
     tracks.forEach(track => {
       track.enabled = true
@@ -248,8 +207,9 @@ const camera = {
   },
 
   startRecording(stream, frames) {
-    assertStream(stream, 'camera.startRecording')
-
+    if (!(stream instanceof MediaStream)) {
+      throw new TypeError('camera.startRecording: stream must be an instance of MediaStream.')
+    }
     if (!Array.isArray(frames)) {
       throw new TypeError('camera.startRecording: frames must be an array.')
     }
