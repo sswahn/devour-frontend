@@ -1,0 +1,1 @@
+timer must "remember" remaining duration when toggling between camera and editor.
