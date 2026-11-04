@@ -1,11 +1,11 @@
 import AlignLeftIcon from '../../Icons/AlignLeftIcon/AlignLeftIcon'
 import styles from './TextAlignButton.module.css'
 
-function TextAlignButton({ openTextAlign }) {
+function TextAlignButton({ openDropdown }) {
 
   const onClick = event => {
     navigator.vibrate?.(50)
-    openTextAlign(event.target.id)
+    openDropdown(event.target.id)
   }
 
   // all the components that open dropdowns need controls aria etc.
