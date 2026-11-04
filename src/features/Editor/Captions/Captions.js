@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import useTextStyles from '../../../hooks/useTextStyles'
 import * as config from '../../../config'
 import storage from '../../../utilities/storage'
+import TextToolbar from '../../../components/TextToolbar/TextToolbar'
 import Input from '../../../components/Input/Input'
 import TextToolbar from '../../../components/TextToolbar/TextToolbar'
 import PenToSquareIcon from '../../../components/Icons/PenToSquareIcon/PenToSquareIcon'
@@ -117,6 +118,7 @@ function Captions() {
   return (
     <section className={styles.captions}>
       <form onSubmit={onSubmit}>
+        <TextToolbar />
         <Input 
           id="caption"
           type="text"
