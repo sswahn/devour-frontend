@@ -5,7 +5,7 @@ const DEFAULT_VIDEO_CONSTRAINTS = {
   facingMode: { ideal: 'environment' },
   width: { ideal: 3840 },
   height: { ideal: 2160 },
-  frameRate: { ideal: 30 },
+  frameRate: { ideal: 30, max: 30 },
   aspectRatio: {
     ideal:
       typeof window !== 'undefined' && window.innerHeight
