@@ -35,7 +35,7 @@ function TextToolbar({ textStyles, setTextStyles }) {
     setTextStyles(prev => ({ ...prev, [key]: value }))
   }
 
-  // still need backgroundColor (PaletteIcon), stroke, textAlign, strikethrough, line spacing, bulleted list, numbered list, font family
+  // still need textAlign, line spacing; consider: stroke, strikethrough, , bulleted list, numbered list, font family
   
   return (
     <div className={styles.textToolbar}>
