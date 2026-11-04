@@ -5,13 +5,13 @@ function TextAlignButton({ openTextAlign }) {
 
   const onClick = event => {
     
-    openTextAlign()
+    openTextAlign(event.target.id)
   }
 
   // all the components that open dropdowns need controls aria etc.
 
   return (
-    <button className={styles.textAlignButton} onClick={onClick} type="button" aria-label="text alignment">
+    <button id="textAlign" className={styles.textAlignButton} onClick={onClick} type="button" aria-label="text alignment">
       <AlignLeftIcon />
     </button>
   )
