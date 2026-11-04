@@ -225,8 +225,8 @@ const camera = {
     const mimeType = selectMimeType()
 
     const options = {
-      videoBitsPerSecond: 2_000_000, // 2 Mbps - Crisp for 720p mobile feeds
-      audioBitsPerSecond: 128_000   // 128 kbps - Standard for clear human speech
+      videoBitsPerSecond: 4_500_000, // 4.5 Mbps - Matches social media platform standard
+      audioBitsPerSecond: 128_000    // 128 kbps - Standard for clear human speech
     }
 
     if (mimeType) {
