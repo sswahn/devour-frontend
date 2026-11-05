@@ -51,7 +51,7 @@ function TextToolbar({ textStyles, setTextStyles }) {
       <BackgroundColorButton openDropdown={openDropdown} />
       {backgroundColorPalette && <ColorPalette color={textStyles.backgroundColor} setColor={val => updateStyle('backgroundColor', val)} />}
       <TextAlignButton openDropdown={openDropdown} />
-      {textAlignment && <AlignText />}
+      {textAlignment && <AlignText setTextAlign={setTextAlign} />}
     </div>
   )
 }
