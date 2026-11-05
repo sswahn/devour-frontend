@@ -7,7 +7,9 @@ function AlignText({ textAlign, setTextAlign }) {
 
   const onClick = event => {
     navigator.vibrate?.(50)
-    setTextAlign(event.target.id)
+    const value = event.target.id
+    console.log('textAlign: ', value)
+    setTextAlign(value)
   }
 
   return (
