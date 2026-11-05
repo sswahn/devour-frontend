@@ -15,3 +15,5 @@ function FontColorButton({ openDropdown }) {
     </button>
   )
 }
+
+export default FontColorButton
