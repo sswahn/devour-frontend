@@ -7,7 +7,7 @@ module.exports = (env, argv) => {
   const isDev = argv.mode === 'development'
 
   return {
-    mode: isDev ? 'development' : 'production',
+    mode: 'development' // isDev ? 'development' : 'production',
 
     devtool: 'source-map',
 
