@@ -4,14 +4,14 @@
   
 }
 
-.alignLeft {
-  
+.alignLeft #left {
+  border: 1px solid gray;
 }
 
-.alignCenter {
-  
+.alignCenter #center {
+  boder: 1px solid gray;
 }
 
-.alignRight {
-  
+.alignRight # {
+  boder: 1px solid gray;
 }
