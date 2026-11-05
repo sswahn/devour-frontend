@@ -25,10 +25,19 @@ function TextToolbar({ textStyles, setTextStyles }) {
     setTextStyles(prev => ({ ...prev, [key]: value }))
   }
 
-  //need an offClick to close dropdowns
-  // could use state: [activeDropdown, setActiveDropdown(id)]
+  const offClickClose = event => {
+    // if target is not included in drodown then close
+  }
 
-  // still need textAlign, line spacing; consider: stroke, strikethrough, , bulleted list, numbered list, font family
+  useEffect(() => {
+    document.addEventListener('click', offClickClose)
+    return () => {
+      document.removeEventListener('click', offClickClose)
+    }
+  }, [])
+
+
+  // still need line spacing; consider: stroke, strikethrough, , bulleted list, numbered list, font family
   
   return (
     <div className={styles.textToolbar}>
