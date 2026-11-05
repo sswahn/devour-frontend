@@ -1,4 +1,4 @@
-import { useState } from  'react'
+import { useState, useEffect } from  'react'
 import BoldButton from './BoldButton/BoldButton'
 import ItalicButton from './ItalicButton/ItalicButton'
 import UnderlineButton from './UnderlineButton/UnderlineButton'
@@ -11,22 +11,10 @@ import TextAlignButton from './TextAlignButton/TextAlignButton'
 import styles from './TextToolbar.module.css'
 
 function TextToolbar({ textStyles, setTextStyles }) {
-  const [fontSizeDropdown, setFontSizeDropdown] = useState(false)
-  const [fontColorDropdown, setFontColorDropdown] = useState(false)
-  const [backgroundColorDropdown, setBackgroundColorDropdown] = useState(false)
-  const [textAlignDropdown, setTextAlignDropdown] = useState(false)
+  const [activeDropdown, setActiveDropdown] = useState('')
 
   const openDropdown = id => {
-    switch (id) {
-      case 'fontSize':
-        return setFontSizeDropdown(prev => !prev)
-      case 'color':
-        return setFontColorDropdown(prev => !prev)
-      case 'backgroundColor':
-        return setBackgroundColorDropdown(prev => !prev)
-      case 'textAlign':
-        return setTextAlignDropdown(prev => !prev)
-    }
+    setActiveDropdown(id)
   }
 
   const toggleStyle = key => {
@@ -37,6 +25,9 @@ function TextToolbar({ textStyles, setTextStyles }) {
     setTextStyles(prev => ({ ...prev, [key]: value }))
   }
 
+  //need an offClick to close dropdowns
+  // could use state: [activeDropdown, setActiveDropdown(id)]
+
   // still need textAlign, line spacing; consider: stroke, strikethrough, , bulleted list, numbered list, font family
   
   return (
@@ -45,13 +36,13 @@ function TextToolbar({ textStyles, setTextStyles }) {
       <ItalicButton setStyle={toggleStyle} />
       <UnderlineButton setStyle={toggleStyle} />
       <FontColorButton openDropdown={openDropdown} />
-      {fontColorDropdown && <ColorPalette color={textStyles.color} setColor={val => updateStyle('color', val)} />}
+      {activeDropdown === 'color' && <ColorPalette color={textStyles.color} setColor={updateStyle} />}
       <FontSizeButton openDropdown={openDropdown} />
-      {fontSizeDropdown && <FontSizeSlider fontSize={textStyles.fontSize} setFontSize={val => updateStyle('fontSize', val)} />}
+      {activeDropdown === 'fontSize' && <FontSizeSlider fontSize={textStyles.fontSize} setFontSize={val => updateStyle('fontSize', val)} />}
       <BackgroundColorButton openDropdown={openDropdown} />
-      {backgroundColorDropdown && <ColorPalette color={textStyles.backgroundColor} setColor={val => updateStyle('backgroundColor', val)} />}
+      {activeDrodown === 'backgroundColor' && <ColorPalette color={textStyles.backgroundColor} setColor={val => updateStyle('backgroundColor', val)} />}
       <TextAlignButton openDropdown={openDropdown} />
-      {textAlignDropdown && <AlignText textAlign={textStyles.textAlign} setTextAlign={val => updateStyle('textAlign', val)} />}
+      {activeDropdown === 'textAlign' && <AlignText textAlign={textStyles.textAlign} setTextAlign={val => updateStyle('textAlign', val)} />}
     </div>
   )
 }
