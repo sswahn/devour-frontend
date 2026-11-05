@@ -11,23 +11,19 @@ function AlignText({ textAlign, setTextAlign }) {
   }
 
   return (
-    <menu className={`
-      ${textAlign === 'left' && styles.alignLeft}
-      ${textAlign === 'center' && styles.alignCenter}
-      ${textAlign === 'right' && styles.alignRight}
-    `.trim()}>
+    <menu className={styles.alignText}>
       <li>
-        <button id="left" onClick={onClick}>
+        <button className={textAlign === 'left' && styles.active} onClick={onClick}>
           <AlignLeftIcon />
         </button>
       </li>
       <li>
-        <button id="center" onClick={onClick}>
+        <button className={textAlign === 'center' && styles.active} onClick={onClick}>
           <AlignCenterIcon />
         </button>
       </li>
       <li>
-        <button id="right" onClick={onClick}>
+        <button className={textAlign === 'right' && styles.active} onClick={onClick}>
           <AlignRightIcon />
         </button>
       </li>
