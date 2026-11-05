@@ -1,1 +1,185 @@
-const STATIC_CACHE="static-v1",RUNTIME_CACHE="runtime-v1",PRECACHE_ASSETS=["/"],MAX_RUNTIME_ENTRIES=50;async function staleWhileRevalidate(t,a){const e=await caches.open(RUNTIME_CACHE),i=await e.match(t),n=fetch(t).then(async a=>(a&&a.ok&&"basic"===a.type&&(await e.put(t,a.clone()),await trimCache(e,50)),a)).catch(()=>null);return a.waitUntil(n),i||(await n||Response.error())}async function trimCache(t,a){const e=await t.keys();for(;e.length>a;)await t.delete(e.shift())}self.addEventListener("install",t=>{t.waitUntil((async()=>{const t=await caches.open(STATIC_CACHE);await Promise.allSettled(PRECACHE_ASSETS.map(a=>t.add(a))),await self.skipWaiting()})())}),self.addEventListener("activate",t=>{t.waitUntil((async()=>{const t=await caches.keys();await Promise.all(t.filter(t=>![STATIC_CACHE,RUNTIME_CACHE].includes(t)).map(t=>caches.delete(t))),await self.clients.claim()})())}),self.addEventListener("fetch",t=>{const{request:a}=t;if("GET"!==a.method)return;const e=new URL(a.url);e.origin===self.location.origin&&(e.pathname.startsWith("/api/")||("navigate"!==a.mode?PRECACHE_ASSETS.includes(e.pathname)?t.respondWith(caches.match(e.pathname)):t.respondWith(staleWhileRevalidate(a,t)):t.respondWith((async()=>{try{const e=await fetch(a);return t.waitUntil(caches.open(RUNTIME_CACHE).then(async t=>{await t.put(a,e.clone()),await trimCache(t,50)})),e}catch{return await caches.match("/")||await caches.match("/index.html")||Response.error()}})())))}),self.addEventListener("push",t=>{let a={title:"Notification",body:"",url:"/"};if(t.data)try{a=t.data.json()}catch{a.body=t.data.text()}const e={body:a.body,icon:a.icon||"/images/default-icon.png",badge:"/images/badge.png",data:{url:a.url||"/"},vibrate:[200,100,200]};t.waitUntil(self.registration.showNotification(a.title,e))}),self.addEventListener("notificationclick",t=>{t.notification.close();const a=t.notification.data?.url||"/",e=new URL(a,self.location.origin).href;t.waitUntil(clients.matchAll({type:"window",includeUncontrolled:!0}).then(t=>{for(const a of t)if(a.url===e&&"focus"in a)return a.focus();if(clients.openWindow)return clients.openWindow(e)}))});
+const STATIC_CACHE = 'static-v1'
+const RUNTIME_CACHE = 'runtime-v1'
+
+const PRECACHE_ASSETS = [
+  '/'
+]
+
+const MAX_RUNTIME_ENTRIES = 50
+
+self.addEventListener('install', event => {
+  event.waitUntil(
+    (async () => {
+      const cache = await caches.open(STATIC_CACHE)
+
+      await Promise.allSettled(
+        PRECACHE_ASSETS.map(url => cache.add(url))
+      )
+
+      await self.skipWaiting()
+    })()
+  )
+})
+
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    (async () => {
+      const keys = await caches.keys()
+
+      await Promise.all(
+        keys
+          .filter(key => ![STATIC_CACHE, RUNTIME_CACHE].includes(key))
+          .map(key => caches.delete(key))
+      )
+
+      await self.clients.claim()
+    })()
+  )
+})
+
+self.addEventListener('fetch', event => {
+  const { request } = event
+
+  if (request.method !== 'GET') return
+
+  const url = new URL(request.url)
+
+  if (url.origin !== self.location.origin) return
+
+  // Don't cache API responses
+  if (url.pathname.startsWith('/api/')) return
+
+  // SPA navigation requests
+  if (request.mode === 'navigate') {
+    event.respondWith(
+      (async () => {
+        try {
+          const response = await fetch(request)
+
+          event.waitUntil(
+            caches.open(RUNTIME_CACHE).then(async cache => {
+              await cache.put(request, response.clone())
+              await trimCache(cache, MAX_RUNTIME_ENTRIES)
+            })
+          )
+
+          return response
+        } catch {
+          return (
+            (await caches.match('/')) ||
+            (await caches.match('/index.html')) ||
+            Response.error()
+          )
+        }
+      })()
+    )
+
+    return
+  }
+
+  // Serve precached assets
+  if (PRECACHE_ASSETS.includes(url.pathname)) {
+    event.respondWith(caches.match(url.pathname))
+    return
+  }
+
+  event.respondWith(staleWhileRevalidate(request, event))
+})
+
+self.addEventListener('push', event => {
+  let notificationData = {
+    title: 'Notification',
+    body: '',
+    url: '/'
+  }
+
+  if (event.data) {
+    try {
+      notificationData = event.data.json()
+    } catch {
+      notificationData.body = event.data.text()
+    }
+  }
+
+  const options = {
+    body: notificationData.body,
+    icon: notificationData.icon || '/images/default-icon.png',
+    badge: '/images/badge.png',
+    data: {
+      url: notificationData.url || '/'
+    },
+    vibrate: [200, 100, 200]
+  }
+
+  event.waitUntil(
+    self.registration.showNotification(
+      notificationData.title,
+      options
+    )
+  )
+})
+
+self.addEventListener('notificationclick', event => {
+  event.notification.close()
+
+  const targetUrl = event.notification.data?.url || '/'
+  const absoluteUrl = new URL(
+    targetUrl,
+    self.location.origin
+  ).href
+
+  event.waitUntil(
+    clients.matchAll({
+      type: 'window',
+      includeUncontrolled: true
+    }).then(windowClients => {
+      for (const client of windowClients) {
+        if (client.url === absoluteUrl && 'focus' in client) {
+          return client.focus()
+        }
+      }
+
+      if (clients.openWindow) {
+        return clients.openWindow(absoluteUrl)
+      }
+    })
+  )
+})
+
+async function staleWhileRevalidate(request, event) {
+  const cache = await caches.open(RUNTIME_CACHE)
+  const cached = await cache.match(request)
+
+  const networkPromise = fetch(request)
+    .then(async response => {
+      if (
+        response &&
+        response.ok &&
+        response.type === 'basic'
+      ) {
+        await cache.put(request, response.clone())
+        await trimCache(cache, MAX_RUNTIME_ENTRIES)
+      }
+
+      return response
+    })
+    .catch(() => null)
+
+  event.waitUntil(networkPromise)
+
+  if (cached) {
+    return cached
+  }
+
+  const networkResponse = await networkPromise
+
+  return networkResponse || Response.error()
+}
+
+async function trimCache(cache, maxEntries) {
+  const keys = await cache.keys()
+
+  while (keys.length > maxEntries) {
+    await cache.delete(keys.shift())
+  }
+}
