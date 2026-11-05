@@ -2,15 +2,12 @@
 
 .alignText {
   bottom: 0;
-  left: 0;
-  position: absolute;
-  width: 100%;
-}
-
-.alignText ul {
   display: flex;
   gap: 8px;
+  left: 0;
   list-style: none;
+  position: absolute;
+  width: 100%;
 }
 
 .active {
