@@ -3,7 +3,7 @@ import AlignCenterIcon from '../../Icons/AlignCenterIcon/AlignCenterIcon'
 import AlignRightIcon from '../../Icons/AlignRightIcon/AlignRightIcon'
 import styles from './AlignText.module.css'
 
-function AlignText({ setTextAlign }) {
+function AlignText({ textAlign, setTextAlign }) {
 
   const onClick = event => {
     navigator.vibrate?.(50)
@@ -11,19 +11,23 @@ function AlignText({ setTextAlign }) {
   }
 
   return (
-    <menu>
+    <menu className={[
+      textAlign === 'left' ? styles.alignLeft : ''
+      textAlign === 'center' ? styles.alignCenter : ''
+      textAlign === 'right' ? styles.alignRight : ''
+    ].join('')}>
       <li>
-        <button id="alignLeft" onClick={onClick}>
+        <button id="left" onClick={onClick}>
           <AlignLeftIcon />
         </button>
       </li>
       <li>
-        <button id="alignCenter" onClick={onClick}>
+        <button id="center" onClick={onClick}>
           <AlignCenterIcon />
         </button>
       </li>
       <li>
-        <button id="alignRight" onClick={onClick}>
+        <button id="right" onClick={onClick}>
           <AlignRightIcon />
         </button>
       </li>
