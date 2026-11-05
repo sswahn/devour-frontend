@@ -11,21 +11,21 @@ import TextAlignButton from './TextAlignButton/TextAlignButton'
 import styles from './TextToolbar.module.css'
 
 function TextToolbar({ textStyles, setTextStyles }) {
-  const [fontSizeSlider, setFontSizeSlider] = useState(false)
-  const [fontColorPalette, setFontColorPalette] = useState(false)
-  const [backgroundColorPalette, setBackgroundColorPalette] = useState(false)
-  const [textAlign, setTextAlign] = useState(false)
+  const [fontSizeDropdown, setFontSizeDropdown] = useState(false)
+  const [fontColorDropdown, setFontColorDropdown] = useState(false)
+  const [backgroundColorDropdown, setBackgroundColorDropdown] = useState(false)
+  const [textAlignDropdown, setTextAlignDropdown] = useState(false)
 
   const openDropdown = id => {
     switch (id) {
       case 'fontSize':
-        return setFontSizeSlider(prev => !prev)
+        return setFontSizeDropdown(prev => !prev)
       case 'color':
-        return setFontColorPalette(prev => !prev)
+        return setFontColorDropdown(prev => !prev)
       case 'backgroundColor':
-        return setBackgroundColorPalette(prev => !prev)
+        return setBackgroundColorDropdown(prev => !prev)
       case 'textAlign':
-        return setTextAlign(prev => !prev)
+        return setTextAlignDropdown(prev => !prev)
     }
   }
 
@@ -45,13 +45,13 @@ function TextToolbar({ textStyles, setTextStyles }) {
       <ItalicButton setStyle={toggleStyle} />
       <UnderlineButton setStyle={toggleStyle} />
       <FontColorButton openDropdown={openDropdown} />
-      {fontColorPalette && <ColorPalette color={textStyles.color} setColor={val => updateStyle('color', val)} />}
+      {fontColorDropdown && <ColorPalette color={textStyles.color} setColor={val => updateStyle('color', val)} />}
       <FontSizeButton openDropdown={openDropdown} />
-      {fontSizeSlider && <FontSizeSlider fontSize={textStyles.fontSize} setFontSize={val => updateStyle('fontSize', val)} />}
+      {fontSizeDropdown && <FontSizeSlider fontSize={textStyles.fontSize} setFontSize={val => updateStyle('fontSize', val)} />}
       <BackgroundColorButton openDropdown={openDropdown} />
-      {backgroundColorPalette && <ColorPalette color={textStyles.backgroundColor} setColor={val => updateStyle('backgroundColor', val)} />}
+      {backgroundColorDropdown && <ColorPalette color={textStyles.backgroundColor} setColor={val => updateStyle('backgroundColor', val)} />}
       <TextAlignButton openDropdown={openDropdown} />
-      {textAlignment && <AlignText textAlign={textStyles.textAlign} setTextAlign={val => updateStyle('textAlign', val)} />}
+      {textAlignDropdown && <AlignText textAlign={textStyles.textAlign} setTextAlign={val => updateStyle('textAlign', val)} />}
     </div>
   )
 }
