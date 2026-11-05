@@ -7,6 +7,14 @@
   width: 100%;
 }
 
+.alignText ul {
+  display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+}
+
+
+
 .active {
   border: 1px solid gray;
 }
