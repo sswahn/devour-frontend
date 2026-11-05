@@ -5,8 +5,8 @@ import Publisher from '../Publisher/Publisher'
 import styles from './Wizard.module.css'
 
 function Wizard() {
-  const [overlay, setOverlay] = useState('camera')
-  const [footage, setFootage] = useState([]) // move this to a provider
+  const [overlay, setOverlay] = useState('editor') // change back to camera
+  const [footage, setFootage] = useState([]) // move this to a provider?
     
   const openCamera = () => {
     setOverlay('camera')
