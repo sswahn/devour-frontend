@@ -41,7 +41,6 @@ function TextToolbar({ textStyles, setTextStyles }) {
     }
   }, [])
 
-
   // still need line spacing; consider: stroke, strikethrough, , bulleted list, numbered list, font family
   
   return (
@@ -51,10 +50,10 @@ function TextToolbar({ textStyles, setTextStyles }) {
       <UnderlineButton setStyle={toggleStyle} />
       <FontColorButton openDropdown={openDropdown} />
       {activeDropdown === 'color' && <ColorPalette color={textStyles.color} setColor={val => updateStyle('color', val)} />}
-      <FontSizeButton openDropdown={openDropdown} />
-      {activeDropdown === 'fontSize' && <FontSizeSlider fontSize={textStyles.fontSize} setFontSize={val => updateStyle('fontSize', val)} />}
       <BackgroundColorButton openDropdown={openDropdown} />
       {activeDropdown === 'backgroundColor' && <ColorPalette color={textStyles.backgroundColor} setColor={val => updateStyle('backgroundColor', val)} />}
+      <FontSizeButton openDropdown={openDropdown} />
+      {activeDropdown === 'fontSize' && <FontSizeSlider fontSize={textStyles.fontSize} setFontSize={val => updateStyle('fontSize', val)} />}
       <TextAlignButton openDropdown={openDropdown} />
       {activeDropdown === 'textAlign' && <AlignText textAlign={textStyles.textAlign} setTextAlign={val => updateStyle('textAlign', val)} />}
     </div>
