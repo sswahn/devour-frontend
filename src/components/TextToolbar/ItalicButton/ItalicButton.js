@@ -9,7 +9,7 @@ function ItalicButton({ setStyle }) {
   }
   
   return (
-    <button className={styles.italicButton} onClick={onClick} type={button} aria-label="italic">
+    <button className={styles.italicButton} onClick={onClick} type="button" aria-label="italic">
       <ItalicIcon />
     </button>
   )
