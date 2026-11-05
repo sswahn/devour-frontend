@@ -9,7 +9,7 @@ function BoldButton({ setStyle }) {
   }
   
   return (
-    <button className={styles.boldButton} onClick={onClick} type={button} aria-label="bold">
+    <button className={styles.boldButton} onClick={onClick} type="button" aria-label="bold">
       <BoldIcon />
     </button>
   )
