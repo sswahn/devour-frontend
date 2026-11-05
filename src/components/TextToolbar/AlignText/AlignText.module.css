@@ -9,7 +9,7 @@
 
 .alignText ul {
   display: flex;
-  justify-content: space-evenly;
+  gap: 8px;
   list-style: none;
 }
 
