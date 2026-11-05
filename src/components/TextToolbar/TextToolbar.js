@@ -31,8 +31,8 @@ function TextToolbar({ textStyles, setTextStyles }) {
   }
 
   useEffect(() => {
-    console.log('textAlign: ', textStyles.textAlign)
-  }, [textStyles.textAlign])
+    console.log('fontSize: ', textStyles.fontSize)
+  }, [textStyles.fontSize])
 
   useEffect(() => {
     document.addEventListener('click', offClickClose)
