@@ -5,6 +5,9 @@ function FontSizeButton({ openDropdown }) {
 
   const onClick = event => {
     navigator.vibrate?.(50)
+
+    console.log('id: ', event.target.id)
+    
     openDropdown(event.target.id)
   }
 
