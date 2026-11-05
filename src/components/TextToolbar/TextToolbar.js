@@ -8,6 +8,7 @@ import FontSizeButton from './FontSizeButton/FontSizeButton'
 import FontSizeSlider from './FontSizeSlider/FontSizeSlider'
 import BackgroundColorButton from './BackgroundColorButton/BackgroundColorButton'
 import TextAlignButton from './TextAlignButton/TextAlignButton'
+import AlignText from './AlignText/AlignText'
 import styles from './TextToolbar.module.css'
 
 function TextToolbar({ textStyles, setTextStyles }) {
