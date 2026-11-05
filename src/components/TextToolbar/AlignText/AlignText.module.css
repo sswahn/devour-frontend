@@ -4,14 +4,6 @@
   
 }
 
-.alignLeft #left {
-  border: 1px solid gray;
-}
-
-.alignCenter #center {
-  border: 1px solid gray;
-}
-
-.alignRight #right {
+.active {
   border: 1px solid gray;
 }
