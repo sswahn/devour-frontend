@@ -9,7 +9,7 @@ function UnderlineButton({ setStyle }) {
   }
   
   return (
-    <button className={styles.underlineButton} onClick={onClick} type={button} aria-label="underline">
+    <button className={styles.underlineButton} onClick={onClick} type="button" aria-label="underline">
       <UnderlineIcon />
     </button>
   )
