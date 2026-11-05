@@ -6,7 +6,7 @@ import styles from './AlignText.module.css'
 function AlignText({ setTextAlign }) {
 
   const onClick = event => {
-
+    navigator.vibrate?.(50)
     setTextAlign(event.target.id)
   }
 
