@@ -1,11 +1,13 @@
 /* Text Toolbar Align Text Dropdown */
 
 .alignText {
-  bottom: 0;
+  background-color: gray; 
+  bottom: -42px;
   display: flex;
   gap: 8px;
   left: 0;
   list-style: none;
+  padding: 8px;
   position: absolute;
   width: 100%;
 }
