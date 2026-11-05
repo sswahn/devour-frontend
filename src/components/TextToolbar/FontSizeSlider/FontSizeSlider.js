@@ -10,9 +10,10 @@ function FontSizeSlider({ fontSize, setFontSize }) {
   return (
     <div className={styles.fontSizeSlider}>
       <label htmlFor="font-size-slider">
-        Font Size: {fontSize}px
+        {`Font Size: ${fontSize}px`}
       </label>
       <input 
+        id="font-size-slider"
         value={fontSize}
         onChange={onChange} 
         type="range" 
