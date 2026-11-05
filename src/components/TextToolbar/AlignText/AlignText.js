@@ -11,11 +11,11 @@ function AlignText({ textAlign, setTextAlign }) {
   }
 
   return (
-    <menu className={[
-      textAlign === 'left' ? styles.alignLeft : ''
-      textAlign === 'center' ? styles.alignCenter : ''
-      textAlign === 'right' ? styles.alignRight : ''
-    ].join('')}>
+    <menu className={`
+      ${textAlign === 'left' && styles.alignLeft}
+      ${textAlign === 'center' && styles.alignCenter}
+      ${textAlign === 'right' && styles.alignRight}
+    `.trim()}>
       <li>
         <button id="left" onClick={onClick}>
           <AlignLeftIcon />
