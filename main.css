@@ -1110,7 +1110,7 @@ img, video {
 input,
 progress,
 select {
-  accent-color: var(--accent)
+  accent-color: var(--accent);
 }
 
 input,
