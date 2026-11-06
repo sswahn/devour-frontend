@@ -77,7 +77,7 @@ function Video({ videoRef }) {
     return () => {
       video.removeEventListener('timeupdate', onTimeUpdate)
     }
-  }, [videoRef, captions])
+  }, [videoRef, onTimeUpdate])
   
   return loading ? <LoadingSpinner /> : (
     <figure className={styles.Video}>
