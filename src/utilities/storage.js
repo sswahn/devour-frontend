@@ -16,7 +16,7 @@ const createStorage = type => {
     
       try {
         const value = getApi()?.getItem(key)
-        return value === null || value === undefined ? null : JSON.parse(value)
+        return value ? JSON.parse(value) : null
       } catch {
         return null
       }
