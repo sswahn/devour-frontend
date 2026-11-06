@@ -66,7 +66,7 @@ function Video({ videoRef }) {
         URL.revokeObjectURL(activeUrl)
       }
     }
-  }, [])
+  }, [footage])
 
   useEffect(() => {
     const video = videoRef.current
