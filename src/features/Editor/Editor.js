@@ -68,7 +68,7 @@ function Editor({ footage, openCamera, openPublisher }) {
         URL.revokeObjectURL(activeUrl) // Safely destroys the exact blob string
       }
     }
-  }, [source])
+  }, [])
 
   return (
     <section className={styles.editor}>
