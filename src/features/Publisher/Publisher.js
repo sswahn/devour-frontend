@@ -19,7 +19,7 @@ function Publisher({ openEditor }) {
   const onChange = ({ target }) => {
     const { id, value } = target
     setInput(prev => ({ ...prev, [id]: value }))
-    const item = storage.local.get(config.storage.publish)
+    const item = storage.local.get(config.storage.publish) ?? {}
     storage.local.set(config.storage.publish, { ...item, [id]: value })
   }
 
