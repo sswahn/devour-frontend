@@ -24,6 +24,27 @@ function Video({ videoRef, source }) {
   }
 
   useEffect(() => {
+    // 1. For single render, avoiding memory leak, use local variable:
+    let activeUrl = ''
+  
+    const handleMediaLoad = async () => {
+      try {
+        activeUrl = await onLoad() 
+      } catch (error) {
+        console.error("Error loading video resource:", error)
+      }
+    }
+  
+    handleMediaLoad()
+  
+    return () => {
+      if (activeUrl) {
+        URL.revokeObjectURL(activeUrl)
+      }
+    }
+  }, [])
+
+  useEffect(() => {
     const video = videoRef.current
     if (!video) {
       return
