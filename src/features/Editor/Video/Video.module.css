@@ -1,0 +1,9 @@
+/* Editor Video Element with figure and figcaption */
+
+.Video video {
+  object-fit: cover;
+  height: 100dvh;
+  inset: 0;
+  position: absolute;
+  z-index: 250;
+}
