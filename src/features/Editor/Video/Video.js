@@ -33,7 +33,7 @@ function Video({ videoRef, source }) {
     }
   }, [videoRef, captions])
   
-  return (
+  return loading ? <LoadingSpinner /> : (
     <figure className={styles.Video}>
       <video id="video-editor" ref={videoRef} src={source} autoPlay playsInline 
         onLoadedMetadata={() => console.log('Video metadata loaded')}
