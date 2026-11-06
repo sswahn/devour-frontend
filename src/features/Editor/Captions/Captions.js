@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import useCaptions from '../../../hooks/useCaptions'
 import useTextStyles from '../../../hooks/useTextStyles'
 import * as config from '../../../config'
 import storage from '../../../utilities/storage'
@@ -9,10 +10,8 @@ import TrashCanIcon from '../../../components/Icons/TrashCanIcon/TrashCanIcon'
 import styles from './Captions.module.css'
 
 function Captions() {
-  // TODO: once this is up and running,
-  // go ahead and delete the provider, hook, and provider instance.
+  const { captions, createCaption } = useCaptions()
   const [textStyles, setTextStyles] = useTextStyles()
-  const [captions, setCaptions] = useState([]) // should be in the editor level maybe provider to reach editor/submition
   const [caption, setCaption] = useState('')
   const [start, setStart] = useState('')
   const [end, setEnd] = useState('')
@@ -68,16 +67,14 @@ function Captions() {
       style: textStyles
     }
     
-    setCaptions(prev => [ ...prev, data ])
+    createCaption(data)
     storage.local.set(config.storage.captions, [...captions, data])
+    
+    // cleanup:
     setCaption('')
     setStart('')
     setEnd('')
     storage.local.remove(config.storage.caption)
-    // const blob = await createCaption(blob, data) // this should not be footage, but the concatenated blob
-    // result needs name such as tempFootage
-    // as original footage must remain intact.
-    // setTempFootage(blob)
   }
 
   // these click events will be moved when the button components are made.
