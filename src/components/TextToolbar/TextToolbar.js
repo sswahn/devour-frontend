@@ -12,10 +12,11 @@ import AlignText from './AlignText/AlignText'
 import styles from './TextToolbar.module.css'
 
 function TextToolbar({ textStyles, setTextStyles }) {
-  const [activeDropdown, setActiveDropdown] = useState('')
+  const [activeDropdown, setActiveDropdown] = useState(null)
 
   const openDropdown = id => {
-    setActiveDropdown(id)
+    const value = activeDropdowm === id ? null : id
+    setActiveDropdown(value)
   }
 
   const toggleStyle = key => {
