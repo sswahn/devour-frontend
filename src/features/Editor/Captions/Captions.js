@@ -82,25 +82,18 @@ function Captions() {
   // these click events will be moved when the button components are made.
   const handleEdit = async event => {
     console.log('edit')
-    // edit the caption in the captions array
-    // const id = event.target.closest('li').id
-    // need a form inputs for collecting edited data
-    //const updated = captions.map(caption =>
-     // caption.id === id ? { ...caption, ...data } : caption
-   // )
-    // then recreate the video with the new data:
-    // const blob = await createCaption(footage, data)
-    // setTempFootage(blob)
+    const id = event.target.closest('li').id
+    // copy caption data to inuts
+    // then update captions with the submitted data
+    //mit doesnt need to be in order, only the times are imortant
   }
   
   const handleDelete = event => {
-    console.log('delete')
-    // delete the caption in the captions array
-    // const id = event.target.closest('li').id
-    // const data = captions.filter(caption => caption.id !== id)
-    // then recreate the video with new data:
-    // const blob = await createCaption(footage, data)
-    // setTempFootage(blob)
+    if (window.confirm('Delete caption?')) {
+      const id = event.target.closest('li').id
+      const data = captions.filter(caption => caption.id !== id)
+      setCaptions(data)
+    }
   }
 
   const loadFromStorage = () => {
@@ -152,12 +145,7 @@ function Captions() {
         {captions.map(item => 
           <li key={item.id} id={item.id}>
             <div>
-              <div>
-                <span>Start: {item.start}</span>
-                <span> / </span>
-                <span>End: {item.end}</span>
-              </div>
-              <p>Text: {item.text}</p>
+              <p>{item.text}</p>
               <div>
                 <button onClick={handleEdit} type="button" aria-label="edit caption">
                   <PenToSquareIcon size={16} />
