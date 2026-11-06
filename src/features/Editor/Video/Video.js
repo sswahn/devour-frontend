@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import styles from 'Video.module.css'
+import styles from './Video.module.css'
 
 function Video({ videoRef, source, captions }) {
   const [activeCaption, setActiveCaption] = useState('')
