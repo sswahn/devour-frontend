@@ -13,7 +13,14 @@ function Video({ videoRef }) {
     }
   }, [])
   return (
-    
+    <figure>
+      <video id="video-editor" ref={videoRef} src={source} autoPlay playsInline 
+        onLoadedMetadata={() => console.log('Video metadata loaded')}
+        onCanPlay={() => console.log('Video can play')}
+        onError={e => console.log('Video error:', e.currentTarget.error)}
+      />
+      {activeCaption && <figcaption>{activeCaption}</figcaption>}
+    </figure>
   )
 }
 
