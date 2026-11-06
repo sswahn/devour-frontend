@@ -1,17 +1,34 @@
 import { useState, useEffect } from 'react'
 
-function Video({ videoRef }) {
-  const [activeCaption, setActiveCaption] = useState(null)
+function Video({ videoRef, captions }) {
+  const [activeCaption, setActiveCaption] = useState('')
+
+  const onTimeUpdate = () => {
+      const { currentTime } = videoRef.current
+
+      const matchingCaption = captions.find(item => {
+        return currentTime >= Number(item.start) && currentTime <= Number(item.end)
+      })
+
+      if (matchingCaption) {
+        setActiveCaption(matchingCaption.caption)
+      } else {
+        setActiveCaption('')
+      }
+    }
+  }
 
   useEffect(() => {
-    const time = videoRef.current.currentTime
-    
-    if (time >= Number(captions.start) && time <= Number(captionObj.end)) {
-      setActiveCaption(captionObj.caption)
-    } else {
-      setActiveCaption('') // Clear the caption when outside the window
+    const video = videoRef.current
+    if (!video) {
+      return
+    }
+    video.addEventListener('timeupdate', onTimeUpdate)
+    return () => {
+      video.removeEventListener('timeupdate', onTimeUpdate)
     }
   }, [])
+  
   return (
     <figure>
       <video id="video-editor" ref={videoRef} src={source} autoPlay playsInline 
