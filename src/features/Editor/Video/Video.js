@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import useCaptions from '../../../hooks/useCaptions'
+import { concatenateVideos } from '../../../utilities/videoEditor'
 import LoadingSpinner from '../../../components/LoadingSpinner/LoadingSpinner'
 import styles from './Video.module.css'
 
