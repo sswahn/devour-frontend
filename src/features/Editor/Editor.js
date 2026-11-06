@@ -61,11 +61,15 @@ function Editor({ footage, openCamera, openPublisher }) {
         {menuIsOpen && <Menu closeMenu={closeMenu} />}
         <MenuButton openMenu={openMenu} /> 
         <VideoTimeline videoRef={videoRef} />
-        <video id="video-editor" ref={videoRef} src={source} autoPlay playsInline 
-          onLoadedMetadata={() => console.log('Video metadata loaded')}
-          onCanPlay={() => console.log('Video can play')}
-          onError={e => console.log('Video error:', e.currentTarget.error)}
-        />
+        {/* break this out into component <Video />*/}
+        <figure>
+          <video id="video-editor" ref={videoRef} src={source} autoPlay playsInline 
+            onLoadedMetadata={() => console.log('Video metadata loaded')}
+            onCanPlay={() => console.log('Video can play')}
+            onError={e => console.log('Video error:', e.currentTarget.error)}
+          />
+          <figcaption></figcaption>
+        </figure>
         <SubmitButton openPublisher={openPublisher} />
       </>}
     </section>
