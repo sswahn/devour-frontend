@@ -61,8 +61,8 @@ function Editor({ footage, openCamera, openPublisher }) {
         {menuIsOpen && <Menu closeMenu={closeMenu} />}
         <MenuButton openMenu={openMenu} /> 
         <VideoTimeline videoRef={videoRef} />
-        {/* break this out into component <Video videoRef={videoRef} />
-          will have state: const [activeCaption, setActiveCaption] = useState(null)
+        {/* break this out into component 
+        <Video videoRef={videoRef} source={source} captions={captions} />
         */}
         <figure>
           <video id="video-editor" ref={videoRef} src={source} autoPlay playsInline 
