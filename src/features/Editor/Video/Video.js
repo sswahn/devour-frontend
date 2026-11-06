@@ -23,6 +23,26 @@ function Video({ videoRef, source }) {
     }
   }
 
+  const onLoad = async event => {
+    try {
+      //setProgress(0)
+      setLoading(true)
+      // save this blob
+      // it will be the editable footage, and the final submission.
+      // store in context and in indexeddb
+      const blob = await concatenateVideos(footage, setProgress) 
+      
+      const url = URL.createObjectURL(blob)
+      setSource(url)
+      return url
+    } catch (error) {
+      alert('Video export failed.')
+      throw error
+    } finally {
+      setLoading(false)
+    }
+  }
+
   useEffect(() => {
     // 1. For single render, avoiding memory leak, use local variable:
     let activeUrl = ''
@@ -31,7 +51,8 @@ function Video({ videoRef, source }) {
       try {
         activeUrl = await onLoad() 
       } catch (error) {
-        console.error("Error loading video resource:", error)
+        console.error('Error concatenating video clips.')
+        throw error
       }
     }
   
