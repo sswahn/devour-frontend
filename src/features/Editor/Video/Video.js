@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
+import useCaptions from '../../hooks/useCaptions'
 import styles from './Video.module.css'
 
-function Video({ videoRef, source, captions }) {
+function Video({ videoRef, source }) {
+  const { captions } = useCaptions()
   const [activeCaption, setActiveCaption] = useState('')
 
   const onTimeUpdate = () => {
