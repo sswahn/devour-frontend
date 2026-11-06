@@ -10,17 +10,23 @@ function Video({ videoRef }) {
   const [activeCaption, setActiveCaption] = useState({})
   const [progress, setProgress] = useState(0)
   const [loading, setLoading] = useState(false)
-  const activeCaption = useRef(null)
+  
+  const activeCaptionRef = useRef(activeCaption)
+  
+  useEffect(() => {
+    activeCaptionRef.current = activeCaption
+  }, [activeCaption])
 
   const onTimeUpdate = () => {
     const { currentTime } = videoRef.current
+    const currentActive = activeCaptionRef.current
     const matchingCaption = captions.find(caption => {
       return currentTime >= Number(caption.start) && currentTime <= Number(caption.end)
     })
-    if (matchingCaption && matchingCaption.id !== activeCaption?.id) {
+    if (matchingCaption && matchingCaption.id !== currentActive?.id) {
       return setActiveCaption(matchingCaption)
     } 
-    if (!matchingCaption && activeCaption?.id !== undefined) {
+    if (!matchingCaption && currentActive?.id !== undefined) {
       return setActiveCaption({})
     }
   }
