@@ -79,7 +79,7 @@ function Video({ videoRef }) {
         onCanPlay={() => console.log('Video can play')}
         onError={e => console.log('Video error:', e.currentTarget.error)}
       />
-      {activeCaption && <figcaption style={activeCaption.style}>{activeCaption.text}</figcaption>}
+      {Object.keys(activeCaption).length !== 0 && <figcaption style={activeCaption.style}>{activeCaption.text}</figcaption>}
     </figure>
   )
 }
