@@ -18,7 +18,7 @@ function Video({ videoRef }) {
     if (matchingCaption && matchingCaption?.id !== activeCaption?.id) {
       return setActiveCaption(matchingCaption)
     } 
-    if (Object.keys(activeCaption).length !== 0) {
+    if (!matchingCaption && activeCaption?.id !== undefined) {
       return setActiveCaption({})
     }
   }
