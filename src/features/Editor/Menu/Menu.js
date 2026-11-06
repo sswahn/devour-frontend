@@ -11,10 +11,12 @@ function Menu({ closeMenu }) {
   const listRef = useRef(null)
 
   const handleCaptions = event => {
+    closeMenu()
     openDialog(<Captions />)
   }
 
   const handleCards = event => {
+    closeMenu()
     openDialog(<Cards />)  
   }
   
