@@ -3,19 +3,18 @@ import useCaptions from '../../../hooks/useCaptions'
 import LoadingSpinner from '../../../components/LoadingSpinner/LoadingSpinner'
 import styles from './Video.module.css'
 
-function Video({ videoRef, source }) {
+function Video({ videoRef }) {
   const { captions } = useCaptions()
+  const [source, setSource] = useState('')
   const [activeCaption, setActiveCaption] = useState('')
   const [progress, setProgress] = useState(0)
   const [loading, setLoading] = useState(false)
 
   const onTimeUpdate = () => {
     const { currentTime } = videoRef.current
-
     const matchingCaption = captions.find(caption => {
       return currentTime >= Number(caption.start) && currentTime <= Number(caption.end)
     })
-
     if (matchingCaption) {
       setActiveCaption(matchingCaption.caption)
     } else {
@@ -27,11 +26,8 @@ function Video({ videoRef, source }) {
     try {
       //setProgress(0)
       setLoading(true)
-      // save this blob
-      // it will be the editable footage, and the final submission.
-      // store in context and in indexeddb
+      // consider saving this blob in a provider / indexeddb, as it will be the final edited video
       const blob = await concatenateVideos(footage, setProgress) 
-      
       const url = URL.createObjectURL(blob)
       setSource(url)
       return url
