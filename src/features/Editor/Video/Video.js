@@ -7,8 +7,8 @@ function Video({ videoRef, source, captions }) {
   const onTimeUpdate = () => {
     const { currentTime } = videoRef.current
 
-    const matchingCaption = captions.find(item => {
-      return currentTime >= Number(item.start) && currentTime <= Number(item.end)
+    const matchingCaption = captions.find(caption => {
+      return currentTime >= Number(caption.start) && currentTime <= Number(caption.end)
     })
 
     if (matchingCaption) {
