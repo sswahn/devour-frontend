@@ -4259,8 +4259,7 @@ const api = {
 const storage = {
   caption: 'caption',
   captions: 'captions',
-  start: 'start',
-  end: 'end'
+  publisher: 'publisher'
 };
 const contextmenu = {
   default: {
@@ -8050,4 +8049,4 @@ __webpack_require__.r(__webpack_exports__);
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=main.dac2803f0516e4ee775d.js.map
+//# sourceMappingURL=main.b718e9cb4ca44383b436.js.map
