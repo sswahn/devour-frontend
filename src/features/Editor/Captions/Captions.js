@@ -90,14 +90,14 @@ function Captions() {
     if (window.confirm('Delete caption?')) {
       const id = event.target.closest('li').id
       const data = captions.filter(caption => caption.id !== id)
-      setCaptions(data)
+      // need in hook: updateCaptions(data)
     }
   }
 
   const loadFromStorage = () => {
     const items = storage.local.get(config.storage.captions) ?? []
     const item = storage.local.get(config.storage.caption) ?? ''
-    setCaptions(items)
+    // updateCaptions(items)
     setCaption(item)
   }
 
