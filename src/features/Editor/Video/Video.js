@@ -84,7 +84,7 @@ function Video({ videoRef }) {
       <video id="video-editor" ref={videoRef} src={source} autoPlay playsInline 
         onLoadedMetadata={() => console.log('Video metadata loaded')}
         onCanPlay={() => console.log('Video can play')}
-        onError={e => console.log('Video error:', e.currentTarget.error)}
+        onError={e => console.error('Video error:', e.currentTarget.error)}
       />
       {activeCaption?.text && <figcaption style={activeCaption.style}>{activeCaption.text}</figcaption>}
     </figure>
