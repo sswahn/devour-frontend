@@ -19,7 +19,7 @@ function Video({ videoRef }) {
     activeCaptionRef.current = activeCaption
   }, [activeCaption])
 
-  const onTimeUpdate = () => {
+  const onTimeUpdate = useCallback(() => {
     const { currentTime } = videoRef.current
     const currentActive = activeCaptionRef.current
     const matchingCaption = captions.find(caption => {
@@ -31,7 +31,7 @@ function Video({ videoRef }) {
     if (!matchingCaption && currentActive?.id !== undefined) {
       return setActiveCaption({})
     }
-  }
+  }, [videoRef, captions])
 
   useEffect(() => {
     let unmounted = false
