@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+imort * as config from '../../config'
+import storage from '../../utilities/storage'
 import server from '../../utilities/server'
 import validate from '../../utilities/validate'
 import BackButton from '../../components/BackButton/BackButton'
@@ -15,12 +17,10 @@ function Publisher({ openEditor }) {
   const [errorMessage, setErrorMessage] = useState('')
 
   const onChange = ({ target }) => {
-    const obj = { [target.id]: target.value }
-    setInput(prev => ({ ...prev, ...obj }))
-    const item = localStorage.getItem('submission')
-    const data = JSON.parse(item)
-    const json = JSON.stringify({ ...data, ...obj })
-    localStorage.setItem('submission', json)
+    const { id, value } = target
+    setInput(prev => ({ ...prev, [id]: value }))
+    const item = storage.local.get(config.storage.publish)
+    storage.local.set(config.storage.publish, { ...item, [id]: value })
   }
 
   const onSubmit = async event => {
