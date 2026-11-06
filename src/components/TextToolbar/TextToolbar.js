@@ -15,7 +15,7 @@ function TextToolbar({ textStyles, setTextStyles }) {
   const [activeDropdown, setActiveDropdown] = useState(null)
 
   const openDropdown = id => {
-    const value = activeDropdowm === id ? null : id
+    const value = activeDropdown === id ? null : id
     setActiveDropdown(value)
   }
 
