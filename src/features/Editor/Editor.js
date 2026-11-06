@@ -6,6 +6,7 @@ import TopNav from './TopNav/TopNav'
 import Menu from './Menu/Menu'
 import MenuButton from './MenuButton/MenuButton'
 import VideoTimeline from './VideoTimeline/VideoTimeline'
+import Video from './Video/Video'
 import SubmitButton from './SubmitButton/SubmitButton'
 import styles from './Editor.module.css'
 
@@ -37,7 +38,7 @@ function Editor({ footage, openCamera, openPublisher }) {
       console.log('blob: ', blob)
       console.log('this needs to be available to captions editor, etc.')
       
-      const url = URL.createObjectURL(blob)
+      const url = URL.createObjectURL(blob) // need to return this from onload and cancel it on unmount
       setSource(url)
     } catch (error) {
       console.error('Video export failed:', error)
@@ -47,12 +48,27 @@ function Editor({ footage, openCamera, openPublisher }) {
   }
 
   useEffect(() => {
-    //if (footage.length > 1) {
-      onLoad()
-    //}
-  }, [])
-
-  // return progress < 100 ? <ProgressBar progress={progress} /> : (
+    // 1. Create a local placeholder variable inside the effect scope
+    let activeUrl = ''
+  
+    const handleMediaLoad = async () => {
+      try {
+        // 2. Await the string URL returned by your function
+        activeUrl = await onLoad() 
+      } catch (error) {
+        console.error("Error loading video resource:", error)
+      }
+    }
+  
+    handleMediaLoad()
+  
+    // 3. This cleanup sits quietly until the component unmounts
+    return () => {
+      if (activeUrl) {
+        URL.revokeObjectURL(activeUrl) // Safely destroys the exact blob string
+      }
+    }
+  }, [source])
 
   return (
     <section className={styles.editor}>
@@ -61,17 +77,7 @@ function Editor({ footage, openCamera, openPublisher }) {
         {menuIsOpen && <Menu closeMenu={closeMenu} />}
         <MenuButton openMenu={openMenu} /> 
         <VideoTimeline videoRef={videoRef} />
-        {/* break this out into component 
         <Video videoRef={videoRef} source={source} captions={captions} />
-        */}
-        <figure>
-          <video id="video-editor" ref={videoRef} src={source} autoPlay playsInline 
-            onLoadedMetadata={() => console.log('Video metadata loaded')}
-            onCanPlay={() => console.log('Video can play')}
-            onError={e => console.log('Video error:', e.currentTarget.error)}
-          />
-          {activeCaption && <figcaption>{activeCaption}</figcaption>}
-        </figure>
         <SubmitButton openPublisher={openPublisher} />
       </>}
     </section>
