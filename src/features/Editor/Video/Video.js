@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
 
-function Video({ videoRef, captions }) {
+function Video({ videoRef, source, captions }) {
   const [activeCaption, setActiveCaption] = useState('')
-  const [source, setSource] = useState([])
 
   const onTimeUpdate = () => {
     const { currentTime } = videoRef.current
