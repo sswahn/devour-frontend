@@ -64,7 +64,7 @@ function Captions() {
       text,
       start,
       end,
-      style: textStyles
+      styles: textStyles
     }
     
     createCaption(data)
