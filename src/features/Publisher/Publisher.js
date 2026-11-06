@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-imort * as config from '../../config'
+import * as config from '../../config'
 import storage from '../../utilities/storage'
 import server from '../../utilities/server'
 import validate from '../../utilities/validate'
