@@ -27,11 +27,7 @@ const createStorage = type => {
         throw new TypeError('Storage key must be a string.')
       }
 
-      try {
-        if (value === undefined) {
-          return false
-        }
-        
+      try {        
         const serialized = JSON.stringify(value)
         if (serialized === undefined) {
           return false
