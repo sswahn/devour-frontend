@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import styles from 'Video.module.css'
 
 function Video({ videoRef, source, captions }) {
   const [activeCaption, setActiveCaption] = useState('')
@@ -29,7 +30,7 @@ function Video({ videoRef, source, captions }) {
   }, [videoRef, captions])
   
   return (
-    <figure>
+    <figure className={styles.Video}>
       <video id="video-editor" ref={videoRef} src={source} autoPlay playsInline 
         onLoadedMetadata={() => console.log('Video metadata loaded')}
         onCanPlay={() => console.log('Video can play')}
