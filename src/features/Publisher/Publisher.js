@@ -19,8 +19,8 @@ function Publisher({ openEditor }) {
   const onChange = ({ target }) => {
     const { id, value } = target
     setInput(prev => ({ ...prev, [id]: value }))
-    const item = storage.local.get(config.storage.publish) ?? {}
-    storage.local.set(config.storage.publish, { ...item, [id]: value })
+    const item = storage.local.get(config.storage.publisher) ?? {}
+    storage.local.set(config.storage.publisher, { ...item, [id]: value })
   }
 
   const onSubmit = async event => {
@@ -49,7 +49,7 @@ function Publisher({ openEditor }) {
   }
 
   const loadFromStorage = async () => {
-    const item = storage.local.get(config.storage.publish)
+    const item = storage.local.get(config.storage.publisher)
     setInput({
       location: item?.location || '',
       description: item?.description || ''
