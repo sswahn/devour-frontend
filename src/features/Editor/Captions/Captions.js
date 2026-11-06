@@ -12,7 +12,7 @@ function Captions() {
   // TODO: once this is up and running,
   // go ahead and delete the provider, hook, and provider instance.
   const [textStyles, setTextStyles] = useTextStyles()
-  const [captions, setCaptions] = useState([])
+  const [captions, setCaptions] = useState([]) // should be in the editor level maybe provider to reach editor/submition
   const [caption, setCaption] = useState('')
   const [start, setStart] = useState('')
   const [end, setEnd] = useState('')
