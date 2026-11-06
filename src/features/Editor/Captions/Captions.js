@@ -29,7 +29,6 @@ function Captions() {
       default:
         return
     }
-    storage.local.set(config.storage[id], value)
   }
 
   // TODO: clear inputs on submit
@@ -97,7 +96,9 @@ function Captions() {
   }
 
   const loadFromStorage = () => {
+    const items = storage.local.get(config.storage.captions) ?? []
     const item = storage.local.get(config.storage.caption) ?? ''
+    setCaptions(items)
     setCaption(item)
   }
 
