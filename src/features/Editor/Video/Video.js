@@ -26,7 +26,7 @@ function Video({ videoRef, source, captions }) {
     return () => {
       video.removeEventListener('timeupdate', onTimeUpdate)
     }
-  }, [])
+  }, [videoRef, captions])
   
   return (
     <figure>
