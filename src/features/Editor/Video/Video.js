@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import useCaptions from '../../../hooks/useCaptions'
 import LoadingSpinner from '../../../components/LoadingSpinner/LoadingSpinner'
 import styles from './Video.module.css'
@@ -6,9 +6,9 @@ import styles from './Video.module.css'
 function Video({ videoRef }) {
   const { captions } = useCaptions()
   const [source, setSource] = useState('')
-  const [activeCaption, setActiveCaption] = useState({})
   const [progress, setProgress] = useState(0)
   const [loading, setLoading] = useState(false)
+  const activeCaption = useRef(null)
 
   const onTimeUpdate = () => {
     const { currentTime } = videoRef.current
@@ -16,10 +16,10 @@ function Video({ videoRef }) {
       return currentTime >= Number(caption.start) && currentTime <= Number(caption.end)
     })
     if (matchingCaption && matchingCaption.id !== activeCaption?.id) {
-      return setActiveCaption(matchingCaption)
+      activeCaption.current = matchingCaption
     } 
     if (!matchingCaption && activeCaption?.id !== undefined) {
-      return setActiveCaption({})
+      activeCaption.current = null
     }
   }
 
@@ -80,7 +80,7 @@ function Video({ videoRef }) {
         onCanPlay={() => console.log('Video can play')}
         onError={e => console.log('Video error:', e.currentTarget.error)}
       />
-      {activeCaption?.text && <figcaption style={activeCaption.style}>{activeCaption.text}</figcaption>}
+      {activeCaption.current && <figcaption style={activeCaption.current.style}>{activeCaption.current.text}</figcaption>}
     </figure>
   )
 }
