@@ -16,6 +16,9 @@ function TextToolbar({ textStyles, setTextStyles }) {
 
   const openDropdown = id => {
     const value = activeDropdown === id ? null : id
+
+    console.log('dropdown value: ', value)
+    
     setActiveDropdown(value)
   }
 
