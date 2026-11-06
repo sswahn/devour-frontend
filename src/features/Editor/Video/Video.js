@@ -6,7 +6,7 @@ import styles from './Video.module.css'
 function Video({ videoRef }) {
   const { captions } = useCaptions()
   const [source, setSource] = useState('')
-  const [activeCaption, setActiveCaption] = useState('')
+  const [activeCaption, setActiveCaption] = useState({})
   const [progress, setProgress] = useState(0)
   const [loading, setLoading] = useState(false)
 
@@ -16,9 +16,9 @@ function Video({ videoRef }) {
       return currentTime >= Number(caption.start) && currentTime <= Number(caption.end)
     })
     if (matchingCaption) {
-      setActiveCaption(matchingCaption.caption)
+      setActiveCaption(matchingCaption)
     } else {
-      setActiveCaption('')
+      setActiveCaption({})
     }
   }
 
@@ -79,7 +79,7 @@ function Video({ videoRef }) {
         onCanPlay={() => console.log('Video can play')}
         onError={e => console.log('Video error:', e.currentTarget.error)}
       />
-      {activeCaption && <figcaption>{activeCaption}</figcaption>}
+      {activeCaption && <figcaption style={activeCaption.style}>{activeCaption.text}</figcaption>}
     </figure>
   )
 }
