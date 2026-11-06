@@ -29,6 +29,8 @@ function Captions() {
       default:
         return
     }
+    const existing = storage.local.get(config.storage.caption) ?? {}
+    storage.local.set(config.storage.caption, { ...existing, [id]: value })
   }
 
   // TODO: clear inputs on submit
