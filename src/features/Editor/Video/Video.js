@@ -4,17 +4,16 @@ function Video({ videoRef, captions }) {
   const [activeCaption, setActiveCaption] = useState('')
 
   const onTimeUpdate = () => {
-      const { currentTime } = videoRef.current
+    const { currentTime } = videoRef.current
 
-      const matchingCaption = captions.find(item => {
-        return currentTime >= Number(item.start) && currentTime <= Number(item.end)
-      })
+    const matchingCaption = captions.find(item => {
+      return currentTime >= Number(item.start) && currentTime <= Number(item.end)
+    })
 
-      if (matchingCaption) {
-        setActiveCaption(matchingCaption.caption)
-      } else {
-        setActiveCaption('')
-      }
+    if (matchingCaption) {
+      setActiveCaption(matchingCaption.caption)
+    } else {
+      setActiveCaption('')
     }
   }
 
