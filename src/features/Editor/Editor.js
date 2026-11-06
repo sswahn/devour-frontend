@@ -48,7 +48,7 @@ function Editor({ footage, openCamera, openPublisher }) {
   }
 
   useEffect(() => {
-    // 1. Create a local placeholder variable inside the effect scope
+    // 1. For single render, avoiding memory leak, use local variable:
     let activeUrl = ''
   
     const handleMediaLoad = async () => {
