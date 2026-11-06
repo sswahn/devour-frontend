@@ -49,11 +49,10 @@ function Publisher({ openEditor }) {
   }
 
   const loadFromStorage = async () => {
-    const item = localStorage.getItem('submission')
-    const cache = JSON.parse(item)
+    const item = storage.local.get(config.storage.publish)
     setInput({
-      location: cache?.location || '',
-      description: cache?.description || ''
+      location: item?.location || '',
+      description: item?.description || ''
     })
   }
 
