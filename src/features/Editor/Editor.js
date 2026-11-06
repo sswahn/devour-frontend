@@ -11,9 +11,9 @@ import SubmitButton from './SubmitButton/SubmitButton'
 import styles from './Editor.module.css'
 
 function Editor({ footage, openCamera, openPublisher }) {
-  const [progress, setProgress] = useState(0)
   const [menuIsOpen, setMenuIsOpen] = useState(false)
   const [source, setSource] = useState([])
+  const [progress, setProgress] = useState(0)
   const [loading, setLoading] = useState(false)
   const videoRef = useRef(null)
 
@@ -25,6 +25,7 @@ function Editor({ footage, openCamera, openPublisher }) {
     setMenuIsOpen(false)
   }
 
+  // consider moving this (and loading state and progress state) to the Video component
   const onLoad = async event => {
     try {
       //setProgress(0)
@@ -75,7 +76,7 @@ function Editor({ footage, openCamera, openPublisher }) {
         {menuIsOpen && <Menu closeMenu={closeMenu} />}
         <MenuButton openMenu={openMenu} /> 
         <VideoTimeline videoRef={videoRef} />
-        <Video videoRef={videoRef} source={source} captions={captions} />
+        <Video videoRef={videoRef} source={source} />
         <SubmitButton openPublisher={openPublisher} />
       </>}
     </section>
