@@ -5,14 +5,11 @@ function FontSizeButton({ openDropdown }) {
 
   const onClick = event => {
     navigator.vibrate?.(50)
-
-    console.log('id: ', event.target.id)
-    
     openDropdown(event.target.id)
   }
 
   return (
-    <button id="fontSize" className={styles.fontSizeButton} type="button" aria-label="edit font size">
+    <button id="fontSize" className={styles.fontSizeButton} onClick={onClick} type="button" aria-label="font size">
       <TextHeightIcon />
     </button>
   )
