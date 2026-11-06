@@ -21,9 +21,9 @@ function VideoTimeline({ videoRef }) {
     if (!video) {
       return
     }
-    video.current.addEventListener('timeupdate', onTimeUpdate)
+    video.addEventListener('timeupdate', onTimeUpdate)
     return () => {
-      video.current?.removeEventListener('timeupdate', onTimeUpdate)
+      video.removeEventListener('timeupdate', onTimeUpdate)
     }
   }, [])
   
