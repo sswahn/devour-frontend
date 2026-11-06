@@ -15,7 +15,7 @@ function Video({ videoRef }) {
     const matchingCaption = captions.find(caption => {
       return currentTime >= Number(caption.start) && currentTime <= Number(caption.end)
     })
-    if (matchingCaption) {
+    if (matchingCaption && activeCaption.id !== matchingCaption.id) {
       setActiveCaption(matchingCaption)
     } else {
       setActiveCaption({})
