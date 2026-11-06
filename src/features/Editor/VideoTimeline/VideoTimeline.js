@@ -17,12 +17,13 @@ function VideoTimeline({ videoRef }) {
   }
 
   useEffect(() => {
-    if (!videoRef.current) {
+    const video = videoRef.current
+    if (!video) {
       return
     }
-    videoRef.current.addEventListener('timeupdate', onTimeUpdate)
+    video.current.addEventListener('timeupdate', onTimeUpdate)
     return () => {
-      videoRef.current?.removeEventListener('timeupdate', onTimeUpdate)
+      video.current?.removeEventListener('timeupdate', onTimeUpdate)
     }
   }, [])
   
