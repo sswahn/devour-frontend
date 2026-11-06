@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef } from 'react'
+import useFootage from '../../../hooks/useFootage'
 import useCaptions from '../../../hooks/useCaptions'
 import { concatenateVideos } from '../../../utilities/videoEditor'
 import LoadingSpinner from '../../../components/LoadingSpinner/LoadingSpinner'
 import styles from './Video.module.css'
 
 function Video({ videoRef }) {
+  const { footage } = useFootage()
   const { captions } = useCaptions()
   const [source, setSource] = useState('')
   const [activeCaption, setActiveCaption] = useState({})
