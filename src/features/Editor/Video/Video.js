@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import useCaptions from '../../hooks/useCaptions'
+import useCaptions from '../../../hooks/useCaptions'
 import styles from './Video.module.css'
 
 function Video({ videoRef, source }) {
