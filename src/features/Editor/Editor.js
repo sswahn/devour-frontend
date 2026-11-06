@@ -53,7 +53,6 @@ function Editor({ footage, openCamera, openPublisher }) {
   
     const handleMediaLoad = async () => {
       try {
-        // 2. Await the string URL returned by your function
         activeUrl = await onLoad() 
       } catch (error) {
         console.error("Error loading video resource:", error)
@@ -62,10 +61,9 @@ function Editor({ footage, openCamera, openPublisher }) {
   
     handleMediaLoad()
   
-    // 3. This cleanup sits quietly until the component unmounts
     return () => {
       if (activeUrl) {
-        URL.revokeObjectURL(activeUrl) // Safely destroys the exact blob string
+        URL.revokeObjectURL(activeUrl)
       }
     }
   }, [])
