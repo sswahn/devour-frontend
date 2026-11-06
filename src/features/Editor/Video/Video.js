@@ -33,39 +33,35 @@ function Video({ videoRef }) {
     }
   }
 
-  const onLoad = async event => {
-    try {
-      //setProgress(0)
-      setLoading(true)
-      // consider saving this blob in a provider / indexeddb, as it will be the final edited video
-      const blob = await concatenateVideos(footage, setProgress) 
-      const url = URL.createObjectURL(blob)
-      setSource(url)
-      return url
-    } catch (error) {
-      alert('Video export failed.')
-      throw error
-    } finally {
-      setLoading(false)
-    }
-  }
-
   useEffect(() => {
-    // 1. For single render, avoiding memory leak, use local variable:
+    let unmounted = false
     let activeUrl = ''
   
-    const handleMediaLoad = async () => {
+    const init = async () => {
       try {
-        activeUrl = await onLoad() 
+        setLoading(true)
+        const blob = await concatenateVideos(footage, setProgress)
+        // Short-circuit instantly if the user navigated away while compiling
+        if (unmounted) {
+          return 
+        }
+        const url = URL.createObjectURL(blob)
+        activeUrl = url
+        setSource(url)
       } catch (error) {
-        console.error('Error concatenating video clips.')
-        throw error
+        alert('Video export failed.')
+        console.error('Error concatenating video clips.', error)
+      } finally {
+        if (!unmounted) {
+          setLoading(false)
+        }
       }
     }
   
-    handleMediaLoad()
+    init()
   
     return () => {
+      unmounted = true
       if (activeUrl) {
         URL.revokeObjectURL(activeUrl)
       }
