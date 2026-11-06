@@ -5,6 +5,8 @@ import styles from './Video.module.css'
 function Video({ videoRef, source }) {
   const { captions } = useCaptions()
   const [activeCaption, setActiveCaption] = useState('')
+  const [progress, setProgress] = useState(0)
+  const [loading, setLoading] = useState(false)
 
   const onTimeUpdate = () => {
     const { currentTime } = videoRef.current
