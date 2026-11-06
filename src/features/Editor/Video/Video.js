@@ -12,12 +12,7 @@ function Video({ videoRef }) {
   const [activeCaption, setActiveCaption] = useState({})
   const [progress, setProgress] = useState(0)
   const [loading, setLoading] = useState(false)
-  
   const activeCaptionRef = useRef(activeCaption)
-  
-  useEffect(() => {
-    activeCaptionRef.current = activeCaption
-  }, [activeCaption])
 
   const onTimeUpdate = useCallback(() => {
     const { currentTime } = videoRef.current
@@ -33,6 +28,10 @@ function Video({ videoRef }) {
     }
   }, [videoRef, captions])
 
+  useEffect(() => {
+    activeCaptionRef.current = activeCaption
+  }, [activeCaption])
+  
   useEffect(() => {
     let unmounted = false
     let activeUrl = ''
