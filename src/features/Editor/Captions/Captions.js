@@ -95,8 +95,6 @@ function Captions() {
     loadFromStorage()
   }, [])
 
-  // TODO: finish captions list add time, text, edit/delete buttons, styling
-  
   return (
     <section className={styles.captions}>
       <form onSubmit={onSubmit}>
@@ -115,7 +113,7 @@ function Captions() {
           type="number" 
           step="any"
           label="Start"
-          value={start} // default value needs to be gotten from timeline
+          value={draft.start} // consider getting default value from timeline
           error={errorMessage}
           onChange={updateDraft}
           required />
@@ -125,7 +123,7 @@ function Captions() {
           type="number" 
           step="any"
           label="End"
-          value={end}
+          value={draft.end}
           error={errorMessage}
           onChange={updateDraft}
           required />
