@@ -12,9 +12,12 @@ import styles from './Captions.module.css'
 function Captions() {
   const { captions, createCaption } = useCaptions()
   const [textStyles, setTextStyles] = useTextStyles()
-  const [draft, setDraft] = useState({})
-  const [start, setStart] = useState('')
-  const [end, setEnd] = useState('')
+  const [draft, setDraft] = useState({
+    text: '',
+    start: '',
+    end: '',
+    style: {}
+  })
   const [errorMessage, setErrorMessage] = useState('')
 
   const updateDraft = ({ target: { id, value } }) => {
