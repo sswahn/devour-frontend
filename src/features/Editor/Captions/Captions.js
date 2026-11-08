@@ -61,9 +61,7 @@ function Captions() {
       end: '',
       style: {}
     })
-    storage.local.remove(
-      config.storage.caption
-    )
+    storage.local.remove(config.storage.draft)
   }
 
   // these click events will be moved when the button components are made.
@@ -84,10 +82,10 @@ function Captions() {
   }
 
   const loadFromStorage = () => {
-    const items = storage.local.get(config.storage.captions) ?? []
-    const item = storage.local.get(config.storage.caption) ?? ''
-    // updateCaptions(items)
-    setCaption(item)
+    const captions = storage.local.get(config.storage.captions) ?? []
+    const draft = storage.local.get(config.storage.draft) ?? ''
+    // updateCaptions(captions)
+    setDraft(draft)
   }
 
   useEffect(() => {
