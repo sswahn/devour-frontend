@@ -24,17 +24,20 @@ function Captions() {
     setDraft(prev => ({ ...prev, [id]: value.trim() }))
   }
 
-  // if draft is the source of styles
   const updateDraftStyle = style => {
-    setDraft(prev => ({ ...prev, style }))
+    setDraft(prev => ({ ...prev, style: { ...prev.style, ...style } }))
   }
 
-  // TODO: clear inputs on submit:
   const cleanup = () => {
-    setCaption('')
-    setStart('')
-    setEnd('')
-    storage.local.remove(config.storage.caption)
+    setDraft(    
+      text: '',
+      start: '',
+      end: '',
+      style: {}
+    })
+    storage.local.remove(
+      config.storage.caption
+    )
   }
   
   const onSubmit = async event => {
@@ -98,7 +101,7 @@ function Captions() {
   return (
     <section className={styles.captions}>
       <form onSubmit={onSubmit}>
-        <TextToolbar textStyles={textStyles} setTextStyles={setTextStyles} />
+        <TextToolbar textStyles={textStyles} setTextStyles={updateDraftStyle} />
         <Input 
           id="text"
           type="text"
