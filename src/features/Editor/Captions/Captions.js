@@ -59,7 +59,6 @@ function Captions() {
       end: '',
       style: {}
     })
-    storage.local.remove(config.storage.draft)
   }
 
   // these click events will be moved when the button components are made.
