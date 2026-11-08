@@ -13,6 +13,7 @@ function Captions() {
   const { captions, createCaption } = useCaptions()
   // const [textStyles, setTextStyles] = useTextStyles() // no longer needed, the draft is the source of styles
   const [draft, setDraft] = useState({
+    id: crypto.randomUUID(),
     text: '',
     start: '',
     end: '',
@@ -49,16 +50,8 @@ function Captions() {
     // in the valdiation util, for END, need to check end isnt outside video duration
     // this component needs the duration of the concatenated blob created in Editor
     
-    const data = {
-      id: crypto.randomUUID(),
-      text: draft.text,
-      start: draft.start,
-      end: draft.end,
-      style: draft.style
-    }
-    
-    createCaption(data)
-    storage.local.set(config.storage.captions, [...captions, data])
+    createCaption(draft)
+    storage.local.set(config.storage.captions, [...captions, draft])
     setDraft(    
       text: '',
       start: '',
