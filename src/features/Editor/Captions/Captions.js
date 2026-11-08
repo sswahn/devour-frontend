@@ -53,7 +53,7 @@ function Captions() {
     createCaption(draft)
     storage.local.set(config.storage.captions, [...captions, draft])
     setDraft({
-      id: '',
+      id: crypto.randomUUID(),
       text: '',
       start: '',
       end: '',
