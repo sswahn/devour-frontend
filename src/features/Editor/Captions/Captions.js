@@ -21,11 +21,15 @@ function Captions() {
   const [errorMessage, setErrorMessage] = useState('')
 
   const updateDraft = ({ target: { id, value } }) => {
-    setDraft(prev => ({ ...prev, [id]: value.trim() }))
+    const data = { [id]: value.trim() }
+    setDraft(prev => ({ ...prev, ...data }))
+    storage.local.set(config.storage.draft, { ...draft, ...data })
   }
 
   const updateDraftStyle = style => {
     setDraft(prev => ({ ...prev, style: { ...prev.style, ...style } }))
+    const item = storage.local.get(config.storage.draft) ?? {}
+    storage.local.set(config.storage.draft, { ...item, style: { ...item.style, ...style })
   }
   
   const onSubmit = async event => {
