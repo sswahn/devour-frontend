@@ -11,7 +11,7 @@ import styles from './Captions.module.css'
 
 function Captions() {
   const { captions, createCaption } = useCaptions()
-  // const [textStyles, setTextStyles] = useTextStyles()
+  // const [textStyles, setTextStyles] = useTextStyles() // no longer needed, the draft is the source of styles
   const [draft, setDraft] = useState({
     text: '',
     start: '',
