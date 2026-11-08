@@ -23,11 +23,12 @@ export const api = {
 }
 
 export const storage = {
-  caption: 'caption',
+  draft: 'draft',
   captions: 'captions',
   publisher: 'publisher'
 }
 
+// consider moving to its own config file:
 export const contextmenu = {
   default: {
     actions: [],
