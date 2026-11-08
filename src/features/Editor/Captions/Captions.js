@@ -12,7 +12,13 @@ import styles from './Captions.module.css'
 function Captions() {
   const { captions, createCaption } = useCaptions()
   // const [textStyles, setTextStyles] = useTextStyles() // no longer needed, the draft is the source of styles
-  const [draft, setDraft] = useState(null)
+  const [draft, setDraft] = useState({
+    id: crypto.randomUUID(),
+    text: storage.local.get(config.storage.draft) ?? '',
+    start: storage.local.get(config.storage.draft) ?? '',
+    end: storage.local.get(config.storage.draft) ?? '',
+    style: storage.local.get(config.storage.draft)?.style ?? {}
+  })
   const [errorMessage, setErrorMessage] = useState('')
 
   const updateDraft = ({ target: { id, value } }) => {
@@ -69,26 +75,9 @@ function Captions() {
     }
   }
 
-  const loadFromStorage = () => {
-    const captions = storage.local.get(config.storage.captions) ?? []
-    const draft = storage.local.get(config.storage.draft) ?? {
-      id: crypto.randomUUID(),
-      text: '',
-      start: '',
-      end: '',
-      style: {}
-    }
-    // updateCaptions(captions)
-    setDraft(draft)
-  }
-
   useEffect(() => {
     storage.local.set(config.storage.draft, draft)
   }, [draft])
-
-  useEffect(() => {
-    loadFromStorage()
-  }, [])
 
   return (
     <section className={styles.captions}>
