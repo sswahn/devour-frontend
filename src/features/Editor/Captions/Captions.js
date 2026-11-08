@@ -11,7 +11,7 @@ import styles from './Captions.module.css'
 
 function Captions() {
   const { captions, createCaption } = useCaptions()
-  const [textStyles, setTextStyles] = useTextStyles()
+  // const [textStyles, setTextStyles] = useTextStyles()
   const [draft, setDraft] = useState({
     text: '',
     start: '',
@@ -24,13 +24,10 @@ function Captions() {
     setDraft(prev => ({ ...prev, [id]: value.trim() }))
   }
 
+  // if draft is the source of styles
   const updateDraftStyle = style => {
     setDraft(prev => ({ ...prev, style }))
   }
-
-  useEffect(() => {
-    updateDraftStyle(textStyles)
-  }, [textStyles])
 
   // TODO: clear inputs on submit:
   const cleanup = () => {
