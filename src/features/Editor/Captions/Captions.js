@@ -100,7 +100,7 @@ function Captions() {
       <form onSubmit={onSubmit}>
         <TextToolbar textStyles={textStyles} setTextStyles={setTextStyles} />
         <Input 
-          id="draft"
+          id="text"
           type="text"
           label="Add a caption"
           value={draft.text}
