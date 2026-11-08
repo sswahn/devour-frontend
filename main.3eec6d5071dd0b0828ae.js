@@ -4257,10 +4257,12 @@ const api = {
   comments: '/api/v1/comments'
 };
 const storage = {
-  caption: 'caption',
+  draft: 'draft',
   captions: 'captions',
   publisher: 'publisher'
 };
+
+// consider moving to its own config file:
 const contextmenu = {
   default: {
     actions: [],
@@ -8049,4 +8051,4 @@ __webpack_require__.r(__webpack_exports__);
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=main.b718e9cb4ca44383b436.js.map
+//# sourceMappingURL=main.3eec6d5071dd0b0828ae.js.map
