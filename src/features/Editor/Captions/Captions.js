@@ -27,18 +27,6 @@ function Captions() {
   const updateDraftStyle = style => {
     setDraft(prev => ({ ...prev, style: { ...prev.style, ...style } }))
   }
-
-  const cleanup = () => {
-    setDraft(    
-      text: '',
-      start: '',
-      end: '',
-      style: {}
-    })
-    storage.local.remove(
-      config.storage.caption
-    )
-  }
   
   const onSubmit = async event => {
     event.preventDefault()
@@ -67,7 +55,15 @@ function Captions() {
     
     createCaption(data)
     storage.local.set(config.storage.captions, [...captions, data])
-    cleanup()
+    setDraft(    
+      text: '',
+      start: '',
+      end: '',
+      style: {}
+    })
+    storage.local.remove(
+      config.storage.caption
+    )
   }
 
   // these click events will be moved when the button components are made.
