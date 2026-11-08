@@ -85,7 +85,7 @@ function Captions() {
   return (
     <section className={styles.captions}>
       <form onSubmit={onSubmit}>
-        <TextToolbar textStyles={textStyles} setTextStyles={updateDraftStyle} />
+        <TextToolbar textStyles={draft.style} setTextStyles={updateDraftStyle} />
         <Input 
           id="text"
           type="text"
