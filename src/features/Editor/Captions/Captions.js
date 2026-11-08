@@ -18,35 +18,8 @@ function Captions() {
   const [errorMessage, setErrorMessage] = useState('')
 
   const handleCaption = ({ target: { value } }) => {
-    setCaption(value)
-
-    // need to check if caption (id) exists
-    // this needs the id to update per key stroke
-    // if it doesnt exist, need to set captionId via input ref
-    const id = target.dataset?.captionId ?? crypto.randomUUID()
-
-    // remove it from the existing
-    // then create and put in with the existing
-    const existing = captions.filter(caption => caption.id !== id)
-    
-    const formData = new FormData(event.target.form)
-    const text = formData.get('caption').trim()
-    const start = formData.get('start').trim()
-    const end = formData.get('end').trim()
-    
-    const data = {
-      id,
-      text,
-      start,
-      end,
-      style: textStyles
-    }
-
-    
-    
-    updateCaption([ ...existing, data ])
-    
-    storage.local.set(config.storage.caption, [ ...existing, data ])
+    // The active display below should use local state
+    // the existing captions should use the context captions array
   }
 
   const handleStart = event => {}
