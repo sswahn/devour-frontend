@@ -17,6 +17,41 @@ function Captions() {
   const [end, setEnd] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
 
+  const handleCaption = ({ target: { value } }) => {
+    setCaption(value)
+
+    // need to check if caption (id) exists
+    // this needs the id to update per key stroke
+    // if it doesnt exist, need to set captionId via input ref
+    const id = target.dataset?.captionId ?? crypto.randomUUID()
+
+    // remove it from the existing
+    // then create and put in with the existing
+    const existing = captions.filter(caption => caption.id !== id)
+    
+    const formData = new FormData(event.target.form)
+    const text = formData.get('caption').trim()
+    const start = formData.get('start').trim()
+    const end = formData.get('end').trim()
+    
+    const data = {
+      id,
+      text,
+      start,
+      end,
+      style: textStyles
+    }
+
+    
+    
+    updateCaption([ ...existing, data ])
+    
+    storage.local.set(config.storage.caption, [ ...existing, data ])
+  }
+
+  const handleStart = event => {}
+  const handleEnd = event => {}
+
   const onChange = ({ target: { id, value } }) => {
     switch (id) {
       case 'caption':
@@ -37,7 +72,7 @@ function Captions() {
     event.preventDefault()
 
     // validate start/end dont overlap
-    // break this out into its own function:
+    // break this out into its own function probably part of validation utility:
     const sorted = [...captions].sort((a, b) => a.start - b.start)
     const conflicted = sorted.some((caption, index) =>
       index > 0 && caption.start < sorted[index - 1].end
@@ -113,6 +148,7 @@ function Captions() {
         <TextToolbar textStyles={textStyles} setTextStyles={setTextStyles} />
         <Input 
           id="caption"
+          data-caption-id
           type="text"
           label="Add a caption"
           value={caption}
@@ -145,7 +181,7 @@ function Captions() {
         {captions.map(item => 
           <li key={item.id} id={item.id}>
             <div>
-              <p>{item.text}</p>
+              <p style={item.style}>{item.text}</p>
               <div>
                 <button onClick={handleEdit} type="button" aria-label="edit caption">
                   <PenToSquareIcon size={16} />
