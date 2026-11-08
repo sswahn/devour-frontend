@@ -12,36 +12,31 @@ import styles from './Captions.module.css'
 function Captions() {
   const { captions, createCaption } = useCaptions()
   const [textStyles, setTextStyles] = useTextStyles()
-  const [caption, setCaption] = useState('')
+  const [draft, setDraft] = useState({})
   const [start, setStart] = useState('')
   const [end, setEnd] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
 
-  const handleCaption = ({ target: { value } }) => {
-    // The active display below should use local state
-    // the existing captions should use the context captions array
-    // need a local state of activeStyles as well in order to display styles of activeCaption
+  const updateDraft = ({ target: { id, value } }) => {
+    setDraft(prev => ({ ...prev, [id]: value.trim() }))
   }
 
-  const handleStart = event => {}
-  const handleEnd = event => {}
-
-  const onChange = ({ target: { id, value } }) => {
-    switch (id) {
-      case 'caption':
-        return setCaption(value)
-      case 'start':
-        return setStart(value)
-      case 'end':
-        return setEnd(value)
-      default:
-        return
-    }
-    const existing = storage.local.get(config.storage.caption) ?? {}
-    storage.local.set(config.storage.caption, { ...existing, [id]: value })
+  const updateDraftStyle = style => {
+    setDraft(prev => ({ ...prev, style }))
   }
 
-  // TODO: clear inputs on submit
+  useEffect(() => {
+    updateDraftStyle(textStyles)
+  }, [textStyles])
+
+  // TODO: clear inputs on submit:
+  const cleanup = () => {
+    setCaption('')
+    setStart('')
+    setEnd('')
+    storage.local.remove(config.storage.caption)
+  }
+  
   const onSubmit = async event => {
     event.preventDefault()
 
@@ -55,35 +50,21 @@ function Captions() {
       return alert('This caption conflicts with an existing caption.')
     }
 
-    
 
     // in the valdiation util, for END, need to check end isnt outside video duration
     // this component needs the duration of the concatenated blob created in Editor
     
-    const id = crypto.randomUUID()
-    const formData = new FormData(event.target)
-
-    // all of these should be validated with the validation utility.
-    const text = formData.get('caption').trim()
-    const start = formData.get('start').trim()
-    const end = formData.get('end').trim()
-    
     const data = {
-      id,
-      text,
-      start,
-      end,
-      style: textStyles
+      id: crypto.randomUUID(),
+      text: draft.text,
+      start: draft.start,
+      end: draft.end,
+      style: draft.style
     }
     
     createCaption(data)
     storage.local.set(config.storage.captions, [...captions, data])
-    
-    // cleanup:
-    setCaption('')
-    setStart('')
-    setEnd('')
-    storage.local.remove(config.storage.caption)
+    cleanup()
   }
 
   // these click events will be moved when the button components are made.
@@ -121,13 +102,12 @@ function Captions() {
       <form onSubmit={onSubmit}>
         <TextToolbar textStyles={textStyles} setTextStyles={setTextStyles} />
         <Input 
-          id="caption"
-          data-caption-id
+          id="draft"
           type="text"
           label="Add a caption"
-          value={caption}
+          value={draft.text}
           error={errorMessage}
-          onChange={onChange}
+          onChange={updateDraftText}
           required />
         <Input
           id="start"
@@ -137,7 +117,7 @@ function Captions() {
           label="Start"
           value={start} // default value needs to be gotten from timeline
           error={errorMessage}
-          onChange={onChange}
+          onChange={updateDraftStart}
           required />
         <Input
           id="end"
@@ -147,11 +127,11 @@ function Captions() {
           label="End"
           value={end}
           error={errorMessage}
-          onChange={onChange}
+          onChange={updateDraftEnd}
           required />
         <button type="submit" aria-label="submit caption">Submit</button>
       </form>
-      {/* live update of current active caption <div style={activeStyle}>{activeCaption}</div> */}
+      {draft.text && <div style={draft.style}>{draft.text}</div>}
       <ul>
         {captions.map(item => 
           <li key={item.id} id={item.id}>
