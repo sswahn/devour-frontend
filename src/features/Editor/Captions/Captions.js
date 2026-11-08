@@ -20,6 +20,7 @@ function Captions() {
   const handleCaption = ({ target: { value } }) => {
     // The active display below should use local state
     // the existing captions should use the context captions array
+    // need a local state of activeStyles as well in order to display styles of activeCaption
   }
 
   const handleStart = event => {}
@@ -150,6 +151,7 @@ function Captions() {
           required />
         <button type="submit" aria-label="submit caption">Submit</button>
       </form>
+      {/* live update of current active caption <div style={activeStyle}>{activeCaption}</div> */}
       <ul>
         {captions.map(item => 
           <li key={item.id} id={item.id}>
