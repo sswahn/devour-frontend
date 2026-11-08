@@ -6,7 +6,7 @@ const Input = ({ id, type, label, inputMode, autoComplete, error, required, ...p
   const inputRef = useRef(null)
 
   const focusInvalidInput = () => {
-    const form = inputRef.current?.closest('form')
+    const form = inputRef.current?.closest('form') // this should have a .form property: inputRef.current.form
     const invalidInput = [...form.elements].find(
       input => input.hasAttribute('aria-invalid')
     )
