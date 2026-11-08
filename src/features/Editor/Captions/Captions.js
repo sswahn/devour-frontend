@@ -107,7 +107,7 @@ function Captions() {
           label="Add a caption"
           value={draft.text}
           error={errorMessage}
-          onChange={updateDraftText}
+          onChange={updateDraft}
           required />
         <Input
           id="start"
@@ -117,7 +117,7 @@ function Captions() {
           label="Start"
           value={start} // default value needs to be gotten from timeline
           error={errorMessage}
-          onChange={updateDraftStart}
+          onChange={updateDraft}
           required />
         <Input
           id="end"
@@ -127,7 +127,7 @@ function Captions() {
           label="End"
           value={end}
           error={errorMessage}
-          onChange={updateDraftEnd}
+          onChange={updateDraft}
           required />
         <button type="submit" aria-label="submit caption">Submit</button>
       </form>
