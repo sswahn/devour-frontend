@@ -24,13 +24,10 @@ function Captions() {
   const updateDraft = ({ target: { id, value } }) => {
     const data = { [id]: value.trim() }
     setDraft(prev => ({ ...prev, ...data }))
-    storage.local.set(config.storage.draft, { ...draft, ...data })
   }
 
   const updateDraftStyle = style => {
     setDraft(prev => ({ ...prev, style: { ...prev.style, ...style } }))
-    const item = storage.local.get(config.storage.draft) ?? {}
-    storage.local.set(config.storage.draft, { ...item, style: { ...item.style, ...style })
   }
   
   const onSubmit = async event => {
@@ -84,6 +81,10 @@ function Captions() {
     // updateCaptions(captions)
     setDraft(draft)
   }
+
+  useEffect(() => {
+    storage.local.set(config.storage.draft, draft)
+  }, [draft])
 
   useEffect(() => {
     loadFromStorage()
