@@ -59,11 +59,16 @@ function Camera({ openEditor }) {
   }
   
   useEffect(() => {
-    if (!streamRef.current) {
-      startCamera()
+    let active = true
+    const start = async () => {
+      await startCamera()
+      if (!active) {
+        return stopCamera()
+      }
     }
+    start()
     return () => {
-     // closeCamera()
+      active = false
       stopCamera()
     }
   }, [])
