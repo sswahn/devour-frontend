@@ -4256,6 +4256,7 @@ const api = {
 const storage = {
   draft: 'draft',
   captions: 'captions',
+  footage: 'footage',
   publisher: 'publisher'
 };
 
@@ -8048,4 +8049,4 @@ __webpack_require__.r(__webpack_exports__);
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=main.948043332e69cfa034b9.js.map
+//# sourceMappingURL=main.2b246b94d5bf36d59294.js.map
