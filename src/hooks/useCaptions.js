@@ -2,9 +2,9 @@ import { useContext } from 'react'
 import { CaptionsContext } from '../components/Providers/CaptionsProvider'
 
 function useCaptions() {
-  const { captions, createCaptions } = useContext(CaptionsContext)
+  const { captions, createCaption, updateCaption, deleteCaption } = useContext(CaptionsContext)
   
-  return { captions, createCaptions }
+  return { captions, createCaption, updateCaption, deleteCaption }
 }
 
 export default useCaptions
