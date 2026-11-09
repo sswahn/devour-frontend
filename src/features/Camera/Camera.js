@@ -61,27 +61,29 @@ function Camera({ openEditor }) {
     }
   }, [])
 
-  const loadFromStorage = async () => {
-    const db = database()
-    const indexedDb = await db.get('footage')
+  const loadFootage = async () => {
+    const result = await database().get('footage')
+    return result?.footage ?? []
+  }
 
-    if (indexedDb?.footage.length > 0) {
-      const totalDuration = indexedDb.footage.reduce((acc, val) => acc + val.duration, 0)
-      const timeRemaining = Math.ceil(60 - totalDuration)
-
-      console.log('totalDuration: ', totalDuration)
-      console.log('timeRemaining: ', timeRemaining)
-      
-      setFootage(indexedDb.footage)
-      setTimer(timeRemaining)
-    }
+  const calculateTimeRemaining = footage => {
+    const totalDuration = footage.reduce(
+      (acc, val) => acc + val.duration, 0
+    )
+    return Math.ceil(60 - totalDuration)
   }
 
   useEffect(() => {
-    if (!footage.length) {
-      loadFromStorage()
+    const load = async () => {
+      const footage = await loadFootage()
+      if (!footage.length) {
+        return
+      }
+      setFootage(footage)
+      setTimer(calculateTimeRemaining(footage))
     }
-  }, [])
+    load()
+  }, [setFootage])
   
   return (
     <section className={styles.camera}>
