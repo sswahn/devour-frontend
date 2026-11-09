@@ -15,7 +15,7 @@ function Video({ videoRef }) {
   const activeCaptionRef = useRef(activeCaption)
 
   const onTimeUpdate = event => {
-    const { currentTime } = videoRef.current
+    const { currentTime } = event.currentTarget
     const currentActive = activeCaptionRef.current
     const matchingCaption = captions.find(caption => {
       return currentTime >= Number(caption.start) && currentTime <= Number(caption.end)
