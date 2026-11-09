@@ -3325,12 +3325,12 @@ function CaptionsProvider(t0) {
   } else {
     t2 = $[1];
   }
-  const createCaption = t2;
+  const createCaptions = t2;
   let t3;
   if ($[2] !== captions) {
     t3 = {
       captions,
-      createCaption
+      createCaptions
     };
     $[2] = captions;
     $[3] = t3;
@@ -8049,4 +8049,4 @@ __webpack_require__.r(__webpack_exports__);
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=main.2b246b94d5bf36d59294.js.map
+//# sourceMappingURL=main.7d9d2aa785f68c478108.js.map
