@@ -25,22 +25,28 @@ function RecordTimer({ mode, setIsExpired }) {
   }, [footage, mode])
 
   useEffect(() => {
-    if (mode === 'off') {
+    if (mode !== 'on') {
       return
     }
+    if (timer === 0) {
+      return setIsExpired(true)
+    }
     const interval = setInterval(() => {
-      setTimer(previous => Math.max(0, previous - 1))
+      setTimer((prev) => {
+        if (prev <= 1) {
+          clearInterval(interval)
+          setIsExpired(true)
+          return 0
+        }
+        return prev - 1
+      })
     }, 1000)
+
     return () => {
       clearInterval(interval)
     }
-  }, [mode])
+  }, [mode, setIsExpired]) // Intentionally omit 'timer' to avoid resetting interval on every second
 
-  useEffect(() => {
-    if (mode === 'on' && timer === 0) {
-      setIsExpired(true)
-    }
-  }, [mode, timer, setIsExpired])
 
   /*
   const createInterval = () => {
