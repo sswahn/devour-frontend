@@ -22,7 +22,7 @@ function Camera({ openEditor }) {
     try {
       const stream = await camera.on()
       if (!mounted) { // avoid race condition with stopCamra on unmount
-   //     return camera.off(stream)
+   //     return camera.off(stream) // turned this off for debug testing
       }
       console.log('stream: ', stream)
       streamRef.current = stream
