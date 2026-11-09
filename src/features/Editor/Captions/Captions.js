@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import useCaptions from '../../../hooks/useCaptions'
-// import useTextStyles from '../../../hooks/useTextStyles'
 import * as config from '../../../config'
 import storage from '../../../utilities/storage'
 import TextToolbar from '../../../components/TextToolbar/TextToolbar'
@@ -11,7 +10,6 @@ import styles from './Captions.module.css'
 
 function Captions() {
   const { captions, createCaption } = useCaptions()
-  // const [textStyles, setTextStyles] = useTextStyles() // no longer needed, the draft is the source of styles
   const [draft, setDraft] = useState(() => {
     const stored = storage.local.get(config.storage.draft)
     return stored ?? {
