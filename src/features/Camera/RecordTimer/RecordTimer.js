@@ -1,8 +1,11 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
+import useFootage from '../../../hooks/useFootage'
 import styles from './RecordTimer.module.css'
 
-function RecordTimer({ mode, timer, setTimer, stopCamera }) {
-
+function RecordTimer({ mode, setIsExpired, stopCamera }) {
+  const { footage } = useFootage()
+  const [timer, setTimer] = useState()
+  
   const createInterval = () => {
     if (mode === 'on') {
       return setInterval(() => {
@@ -21,6 +24,16 @@ function RecordTimer({ mode, timer, setTimer, stopCamera }) {
       clearInterval(interval)
     }
   }, [timer, mode])
+
+  useEffect(() => {
+    if (!footage.length) {
+      return
+    }
+    const totalDuration = footage.reduce(
+      (acc, val) => acc + val.duration, 0
+    )
+    setTimer(Math.ceil(60 - totalDuration))
+  }, [footage])
 
   return (
     <div className={styles.recordTimer}>
