@@ -30,7 +30,7 @@ const createDraft = () => {
 }
 
 function Captions() {
-  const { captions, createCaptions } = useCaptions()
+  const { captions, createCaption, updateCaption, deleteCaption } = useCaptions()
   const [draft, setDraft] = useState(() => 
     storage.local.get(config.storage.draft) ?? createDraft()
   )
@@ -68,27 +68,23 @@ function Captions() {
       end: draft.end.trim(), // validate
       style: draft.style
     }
-    
-    createCaptions(data)
-    // move persistance to the useCaptions hook:
-    // storage.local.set(config.storage.captions, [...captions, data])
+    createCaption(data)
     setDraft(createDraft())
   }
 
   // these click events will be moved when the button components are made.
   const handleEdit = async event => {
-    console.log('edit')
     const id = event.target.closest('li').id
-    // copy caption data to inuts
-    // then update captions with the submitted data
-    //mit doesnt need to be in order, only the times are imortant
+    const data = {
+      // need an edit form
+    }
+    updateCaption(id, data)
   }
   
   const handleDelete = event => {
     if (window.confirm('Delete caption?')) {
       const id = event.target.closest('li').id
-      const data = captions.filter(caption => caption.id !== id)
-      createCaptions(data)
+      deleteCaption(id)
     }
   }
 
