@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import useCaptions from '../../../hooks/useCaptions'
-import useTextStyles from '../../../hooks/useTextStyles'
+// import useTextStyles from '../../../hooks/useTextStyles'
 import * as config from '../../../config'
 import storage from '../../../utilities/storage'
 import TextToolbar from '../../../components/TextToolbar/TextToolbar'
