@@ -6,7 +6,6 @@ import styles from './Wizard.module.css'
 
 function Wizard() {
   const [overlay, setOverlay] = useState('camera')
-  const [footage, setFootage] = useState([]) // move this back to a provider?
     
   const openCamera = () => {
     setOverlay('camera')
@@ -26,9 +25,9 @@ function Wizard() {
   
   return (
     <section className={styles.wizard}>
-      {overlay === 'camera' && <Camera footage={footage} setFootage={setFootage} openEditor={openEditor} />}
-      {overlay === 'editor' && <Editor footage={footage} openCamera={openCamera} openPublisher={openPublisher} />}
-      {overlay === 'publisher' && <Publisher footage={footage} openEditor={openEditor} />}
+      {overlay === 'camera' && <Camera openEditor={openEditor} />}
+      {overlay === 'editor' && <Editor openCamera={openCamera} openPublisher={openPublisher} />}
+      {overlay === 'publisher' && <Publisher openEditor={openEditor} />}
     </section>
   )
 }
