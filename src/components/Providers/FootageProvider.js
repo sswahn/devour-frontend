@@ -8,18 +8,20 @@ function FootageProvider({ children }) {
   const [footage, setFootage] = useState([])
   const [isHydrated, setIsHydrated] = useState(false)
 
-
   useEffect(() => {
-    const stored = storage.local.get(config.storage.captions) ?? []
-    setCaptions(stored)
-    setIsHydrated(true)
+    const load = () => {
+      const data = await database().get(config.storage.footage)
+      setFootage(data?.footage ?? [])
+      setIsHydrated(true)
+    }
+    load()
   }, [])
   
   useEffect(() => {
     if (!isHydrated) {
       return
     }
-    storage.local.set(config.storage.captions, captions)
+    
   }, [captions, isHydrated])
   
   return (
