@@ -5,8 +5,8 @@ import styles from './RecordTimer.module.css'
 const MAX_DURATION = 60
 
 const formatTime = seconds => {
-  const minutes = Math.floor(seconds / MAX_DURATION)
-  const remainingSeconds = seconds % MAX_DURATION
+  const minutes = Math.floor(seconds / 60)
+  const remainingSeconds = seconds % 60
   return `${minutes}:${String(remainingSeconds).padStart(2, '0')}`
 }
 
