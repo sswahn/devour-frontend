@@ -10,7 +10,8 @@ function CaptionsProvider({ children }) {
   const hasLoaded = useRef(false)
 
   const createCaptions = data => {
-    setCaptions(prev => [ ...prev, data])
+    
+    setCaptions(prev => [ ...prev, Array.isArray(data) ? ...data : data ])
   }
 
   useEffect(() => {
