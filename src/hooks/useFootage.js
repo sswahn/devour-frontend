@@ -30,7 +30,7 @@ function useFootage() {
     if (!isHydrated) {
       return
     }
-    database.set('id', 'footage: ')
+    database().put({ id: config.storage.footage, footage })
   }, [footage])
 
   return { footage, setFootage }
