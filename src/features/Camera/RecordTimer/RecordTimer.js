@@ -59,15 +59,7 @@ function RecordTimer({ mode, setIsExpired }) {
     }
   }, [timer, mode])
 
-  useEffect(() => {
-    if (!footage.length) {
-      return
-    }
-    const totalDuration = footage.reduce(
-      (acc, val) => acc + val.duration, 0
-    )
-    setTimer(Math.ceil(60 - totalDuration))
-  }, [footage]) */
+ */
 
   return (
     <div className={styles.recordTimer}>
