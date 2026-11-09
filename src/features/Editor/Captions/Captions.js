@@ -30,7 +30,7 @@ const createDraft = () => {
 }
 
 function Captions() {
-  const { captions, createCaption } = useCaptions()
+  const { captions, createCaptions } = useCaptions()
   const [draft, setDraft] = useState(() => 
     storage.local.get(config.storage.draft) ?? createDraft()
   )
@@ -69,9 +69,9 @@ function Captions() {
       style: draft.style
     }
     
-    createCaption(data)
+    createCaptions(data)
     // move persistance to the useCaptions hook:
-    storage.local.set(config.storage.captions, [...captions, data])
+    // storage.local.set(config.storage.captions, [...captions, data])
     setDraft(createDraft())
   }
 
@@ -88,7 +88,7 @@ function Captions() {
     if (window.confirm('Delete caption?')) {
       const id = event.target.closest('li').id
       const data = captions.filter(caption => caption.id !== id)
-      // need in hook: updateCaptions(data)
+      createCaptions(data)
     }
   }
 
