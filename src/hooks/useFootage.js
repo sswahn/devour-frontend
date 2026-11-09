@@ -22,7 +22,6 @@ function useFootage() {
         setIsHydrated(true)
       }
     }
-    
     load()
   }, [footage, setFootage])
 
@@ -30,7 +29,10 @@ function useFootage() {
     if (!isHydrated) {
       return
     }
-    database().put({ id: config.storage.footage, footage })
+    const save = () => {
+      database().put({ id: config.storage.footage, footage })
+    }
+    save()
   }, [footage])
 
   return { footage, setFootage }
