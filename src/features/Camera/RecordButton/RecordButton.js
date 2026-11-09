@@ -1,10 +1,12 @@
 import { useRef } from 'react'
+import useFootage from '../../../hooks/useFootage'
 import camera from '../../../utilities/camera'
 import { getDuration } from '../../../utilities/videoEditor'
 import database from '../../../utilities/database'
 import styles from './RecordButton.module.css'
 
-function RecordButton({ footage, setFootage, mode, setMode, streamRef, timer }) {
+function RecordButton({ mode, setMode, streamRef, timer }) {
+  const { footage, setFootage } = useFootage()
   const framesRef = useRef([])
   const recordingRef = useRef(null)
   
