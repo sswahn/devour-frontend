@@ -14,13 +14,15 @@ function RecordTimer({ mode, setIsExpired }) {
   const { footage } = useFootage()
   const [timer, setTimer] = useState(MAX_DURATION)
 
-  const totalDuration = footage.reduce(
-    (total, clip) => total + clip.duration, 0
-  )
-
   useEffect(() => {
+    if (mode === 'on') {
+      return
+    }
+    const totalDuration = footage.reduce(
+      (total, clip) => total + clip.duration, 0
+    )
     setTimer(Math.max(0, Math.ceil(MAX_DURATION - totalDuration)))
-  }, [totalDuration])
+  }, [footage, mode])
 
   useEffect(() => {
     if (mode === 'off') {
