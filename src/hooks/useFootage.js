@@ -29,10 +29,18 @@ function useFootage() {
     if (!isHydrated) {
       return
     }
-    const save = () => {
-      database().put({ id: config.storage.footage, footage })
+    const timer = setTimeout(async () => {
+      try {
+        await database().put({ id: config.storage.footage, footage })
+      } catch (error) {
+        throw error
+      }
+    }, 500) // 500ms delay window
+
+    // CRITICAL: The cleanup function clears the previous timer if 'footage' changes again before the 500ms window expires.
+    return () => {
+      clearTimeout(timer)
     }
-    save()
   }, [footage, isHydrated])
 
   return { footage, setFootage }
