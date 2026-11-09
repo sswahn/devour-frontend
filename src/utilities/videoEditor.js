@@ -42,8 +42,7 @@ const cleanup = async (ffmpeg, files) => {
   }
 }
 
-// Concatenate an array of footage objects: [{ clip: Blob }, ...].
-export const concatenateVideos = async (footage, setProgress = () => {}) => {
+export const concatenateVideos = async footage => {
   if (!Array.isArray(footage) || footage.length === 0 || footage.some(item => !(item?.clip instanceof Blob))) {
     throw new Error('Provide an array of video clips.')
   }
@@ -52,23 +51,13 @@ export const concatenateVideos = async (footage, setProgress = () => {}) => {
   const manifest = 'footage.txt'
   const output = 'output.webm'
   const files = [...inputs, manifest, output]
-
-  const handleProgress = ({ progress }) => {
-    setProgress(Math.round(progress * 100))
-  }
-
   try {
     ffmpeg = await createFFmpeg()
-    ffmpeg.on('progress', handleProgress)
-
     await Promise.all(footage.map(async ({ clip }, index) => {
       await ffmpeg.writeFile(inputs[index], await fetchFile(clip))
     }))
-
     const list = inputs.map(file => `file '${file}'`).join('\n')
-
     await ffmpeg.writeFile(manifest, list)
-
     await ffmpeg.exec([
       '-f', 'concat',
       '-safe', '0',
@@ -76,15 +65,10 @@ export const concatenateVideos = async (footage, setProgress = () => {}) => {
       '-c', 'copy',
       '-y', output
     ])
-
     const data = await ffmpeg.readFile(output)
-
-    setProgress(100)
-
     return new Blob([data], { type: 'video/webm' })
   } finally {
     if (ffmpeg !== null) {
-      ffmpeg.off('progress', handleProgress)
       await cleanup(ffmpeg, files)
     }
   }
