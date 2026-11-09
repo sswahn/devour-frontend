@@ -9,12 +9,12 @@ function FootageProvider({ children }) {
   const [isHydrated, setIsHydrated] = useState(false)
 
   useEffect(() => {
-    const load = async () => {
+    const hydrate = async () => {
       const data = await database().get(config.storage.footage)
       setFootage(data?.footage ?? [])
       setIsHydrated(true)
     }
-    load()
+    hydrate()
   }, [])
   
   useEffect(() => {
