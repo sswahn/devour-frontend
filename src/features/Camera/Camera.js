@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import useOverlay from '../../hooks/useOverlay'
-import useFootage from '../../../hooks/useFootage'
+import useFootage from '../../hooks/useFootage'
 import camera from '../../utilities/camera'
 import database from '../../utilities/database'
 import TopNav from './TopNav/TopNav'
