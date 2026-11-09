@@ -23,6 +23,7 @@ function RecordButton({ mode, setMode, streamRef, isExpired }) {
       if (!recordingRef.current) {
         throw new Error('No active recording found.')
       }
+      setMode('off')
       const blob = await camera.stopRecording(
         recordingRef.current,
         framesRef.current
@@ -44,9 +45,6 @@ function RecordButton({ mode, setMode, streamRef, isExpired }) {
       await db.put({ id: 'footage', footage: clips })
     } catch (error) {
       console.error('Failed to stop recording:', error) // polish error handling: use setErrorMessage
-    } finally {
-      setMode('off')
-    }
   }
   
   const onClick = event => {
