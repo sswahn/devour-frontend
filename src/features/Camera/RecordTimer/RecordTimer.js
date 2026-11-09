@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import useFootage from '../../../hooks/useFootage'
 import styles from './RecordTimer.module.css'
 
-function RecordTimer({ mode, setIsExpired, stopCamera }) {
+function RecordTimer({ mode, setIsExpired }) {
   const { footage } = useFootage()
   const [timer, setTimer] = useState()
   
@@ -11,7 +11,7 @@ function RecordTimer({ mode, setIsExpired, stopCamera }) {
       return setInterval(() => {
         if (timer < 1) {
           clearInterval(interval)
-          return stopCamera()
+          return setIsExpired(true)
         }
         setTimer(timer - 1)
       }, 1000)
