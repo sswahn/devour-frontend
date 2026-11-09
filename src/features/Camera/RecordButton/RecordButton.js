@@ -14,8 +14,16 @@ function RecordButton({ mode, setMode, streamRef, isExpired }) {
     if (isExpired) {
       return alert('No recording time remaining.')
     }
-    setMode('on')
-    recordingRef.current = camera.startRecording(streamRef.current, framesRef.current)
+    try {
+      recordingRef.current = camera.startRecording(
+        streamRef.current, 
+        framesRef.current
+      )
+      setMode('on')
+    } catch (error) {
+      alert('Error starting recording.')
+      throw error
+    }
   }
   
   const stopRecord = async () => {
