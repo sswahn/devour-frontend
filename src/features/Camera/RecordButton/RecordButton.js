@@ -14,6 +14,9 @@ function RecordButton({ mode, setMode, streamRef, isExpired }) {
     if (isExpired) {
       return alert('No recording time remaining.')
     }
+    if (!(streamRef.current instanceof MediaStream)) {
+      throw new TypeError(`stream must be an instance of MediaStream: ${streamRef.current}`)
+    }
     try {
       recordingRef.current = camera.startRecording(
         streamRef.current, 
