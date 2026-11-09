@@ -33,6 +33,9 @@ const onTimeUpdate = event => {
       try {
         setLoading(true)
         const blob = await concatenateVideos(footage)
+        // save this to composition provider:
+        // const [composition, setComposition]
+        // and persist it with a useEffect that sets it to dynamodb
         if (!mounted) {
           return 
         }
