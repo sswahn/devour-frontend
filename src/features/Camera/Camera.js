@@ -61,7 +61,7 @@ function Camera({ openEditor }) {
 
   useEffect(() => {
     if (!footage.length) {
-      return 60
+      return
     }
     const totalDuration = footage.reduce(
       (acc, val) => acc + val.duration, 0
