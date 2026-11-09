@@ -8,7 +8,7 @@ import PenToSquareIcon from '../../../components/Icons/PenToSquareIcon/PenToSqua
 import TrashCanIcon from '../../../components/Icons/TrashCanIcon/TrashCanIcon'
 import styles from './Captions.module.css'
 
-const createCaptionDefault = () => {
+const createDraft = () => {
   return {
     id: crypto.randomUUID(),
     text: '',
@@ -31,10 +31,9 @@ const createCaptionDefault = () => {
 
 function Captions() {
   const { captions, createCaption } = useCaptions()
-  const [draft, setDraft] = useState(() => {
-    const stored = storage.local.get(config.storage.draft)
-    return stored ?? createCationDefaults()
-  })
+  const [draft, setDraft] = useState(() => 
+    storage.local.get(config.storage.draft) ?? createDraft()
+  )
   const [errorMessage, setErrorMessage] = useState('')
 
   const updateDraft = ({ target: { id, value } }) => {
@@ -67,18 +66,13 @@ function Captions() {
       text: draft.text.trim(), // validate
       start: draft.start.trim(), // validate
       end: draft.end.trim(), // validate
-      style: {}
+      style: draft.style
     }
     
     createCaption(data)
+    // move persistance to the useCaptions hook:
     storage.local.set(config.storage.captions, [...captions, data])
-    setDraft({
-      id: crypto.randomUUID(),
-      text: '',
-      start: '',
-      end: '',
-      style: {}
-    })
+    setDraft(createDraft())
   }
 
   // these click events will be moved when the button components are made.
