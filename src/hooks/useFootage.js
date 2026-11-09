@@ -15,7 +15,7 @@ function useFootage() {
       setFootage(data?.footage ?? [])
     }
     load()
-  }, [setFootage])
+  }, [footage, setFootage])
 
   return { footage, setFootage }
 }
