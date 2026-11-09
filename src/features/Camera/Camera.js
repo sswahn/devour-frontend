@@ -25,48 +25,42 @@ function Camera({ openEditor }) {
   })
   const streamRef = useRef(null)
   const videoRef = useRef(null)
- 
-  const startCamera = async () => {
-    try {
-      const stream = await camera.on()
-      streamRef.current = stream
-      videoRef.current.srcObject = stream
+  let active = true
 
-      // const caps = camera.getCapabilities(stream)
-      // alert(JSON.stringify(caps))
-    
-    } catch (error) {
-      // display error then close overlay or recover
-      alert('Error accessing camera.')
-      throw error
-      // closeCamera()
-    }
-  }
-  
   const stopCamera = event => {
     if (streamRef.current) {
       camera.off(streamRef.current) 
       streamRef.current = null
     }
   }
+ 
+  const startCamera = async () => {
+    try {
+      const stream = await camera.on()
+      if (!active) {
+        return stopCamera()
+      }
+      streamRef.current = stream
+      videoRef.current.srcObject = stream
+    } catch (error) {
+      alert('Error accessing camera.') // display error then close overlay or recover
+      throw error
+      // closeCamera()
+    }
+  }
 
   const closeCamera = event => {
     stopCamera()
-    closeOverlay()
+    closeOverlay() // this conflicted with opening editor for some reason
     if (document.fullscreenElement) {
       document.exitFullscreen()
     }
   }
   
   useEffect(() => {
-    let active = true
-    const start = async () => {
-      await startCamera()
-      if (!active) {
-        return stopCamera()
-      }
+    if (!streamRef.current) {
+      startCamera()
     }
-    start()
     return () => {
       active = false
       stopCamera()
