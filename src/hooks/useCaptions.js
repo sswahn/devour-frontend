@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { CaptionsContext } from '../components/Providers/CaptionsProvider'
 import * as config from '../config'
 import storage from '../utilities/storage'
@@ -7,6 +7,23 @@ function useCaptions() {
   const { captions, createCaption } = useContext(CaptionsContext)
   const [isHydrated, setIsHydrated] = useState(false)
 
+  useEffect(() => {
+    if (footage.length > 0) {
+      return
+    }
+    
+    const load = async () => {
+      try {
+        //const data = await database().get(config.storage.footage)
+        setFootage(data?.footage ?? [])
+      } catch (error) {
+        throw error
+      } finally {
+        setIsHydrated(true)
+      }
+    }
+    load()
+  }, [setFootage])
   
   useEffect(() => {
     if (!isHydrated) {
