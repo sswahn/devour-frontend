@@ -44,21 +44,16 @@ function Video({ videoRef }) {
         if (!mounted) {
           return 
         }
-        const url = URL.createObjectURL(blob)
-        activeUrl = url
-        setSource(url)
+        activeUrl = URL.createObjectURL(blob)
+        setSource(activeUrl)
       } catch (error) {
         alert('Video export failed.')
-        console.error('Error concatenating video clips.', error)
+        throw error
       } finally {
-        if (!unmounted) {
-          setLoading(false)
-        }
+        setLoading(false)
       }
     }
-  
     init()
-  
     return () => {
       mounted = false
       if (activeUrl) {
