@@ -51,6 +51,7 @@ function Camera({ openEditor }) {
 
   useEffect(() => {
     if (isExpired) {
+      console.log('stopping camera because isExpired is true in Camera component.')
       stopCamera()
     }
   }, [isExpired])
