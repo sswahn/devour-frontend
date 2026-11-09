@@ -7,7 +7,7 @@ import Video from './Video/Video'
 import SubmitButton from './SubmitButton/SubmitButton'
 import styles from './Editor.module.css'
 
-function Editor({ footage, openCamera, openPublisher }) { // move footage to provider
+function Editor({ openCamera, openPublisher }) {
   const [menuIsOpen, setMenuIsOpen] = useState(false)
   const videoRef = useRef(null)
 
