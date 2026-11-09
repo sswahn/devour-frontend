@@ -138,9 +138,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Providers_ProfileProvider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Providers/ProfileProvider */ 8934);
 /* harmony import */ var _components_Providers_DialogProvider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Providers/DialogProvider */ 3677);
 /* harmony import */ var _components_Providers_ContentProvider__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/Providers/ContentProvider */ 4462);
-/* harmony import */ var _components_Providers_FootageProvider__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/Providers/FootageProvider */ 8664);
-/* harmony import */ var _components_Providers_CaptionsProvider__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/Providers/CaptionsProvider */ 386);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ 4848);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ 4848);
 
 
 
@@ -148,8 +146,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
+//import { FootageProvider } from './components/Providers/FootageProvider'
+//import { CaptionsProvider } from './components/Providers/CaptionsProvider'
 
 function Providers(t0) {
   const $ = (0,react_compiler_runtime__WEBPACK_IMPORTED_MODULE_0__.c)(2);
@@ -158,17 +156,13 @@ function Providers(t0) {
   } = t0;
   let t1;
   if ($[0] !== children) {
-    t1 = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Providers_SessionProvider__WEBPACK_IMPORTED_MODULE_1__.SessionProvider, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Providers_FullscreenProvider__WEBPACK_IMPORTED_MODULE_2__.FullscreenProvider, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Providers_OverlayProvider__WEBPACK_IMPORTED_MODULE_3__.OverlayProvider, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Providers_ProfileProvider__WEBPACK_IMPORTED_MODULE_4__.ProfileProvider, {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Providers_ContentProvider__WEBPACK_IMPORTED_MODULE_6__.ContentProvider, {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Providers_FootageProvider__WEBPACK_IMPORTED_MODULE_7__.FootageProvider, {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Providers_CaptionsProvider__WEBPACK_IMPORTED_MODULE_8__.CaptionsProvider, {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Providers_DialogProvider__WEBPACK_IMPORTED_MODULE_5__.DialogProvider, {
-                    children: children
-                  })
-                })
+    t1 = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_Providers_SessionProvider__WEBPACK_IMPORTED_MODULE_1__.SessionProvider, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_Providers_FullscreenProvider__WEBPACK_IMPORTED_MODULE_2__.FullscreenProvider, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_Providers_OverlayProvider__WEBPACK_IMPORTED_MODULE_3__.OverlayProvider, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_Providers_ProfileProvider__WEBPACK_IMPORTED_MODULE_4__.ProfileProvider, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_Providers_ContentProvider__WEBPACK_IMPORTED_MODULE_6__.ContentProvider, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_Providers_DialogProvider__WEBPACK_IMPORTED_MODULE_5__.DialogProvider, {
+                children: children
               })
             })
           })
@@ -3284,118 +3278,6 @@ function SearchButton() {
 
 /***/ },
 
-/***/ 386
-/*!******************************************************!*\
-  !*** ./src/components/Providers/CaptionsProvider.js ***!
-  \******************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   CaptionsContext: () => (/* binding */ CaptionsContext),
-/* harmony export */   CaptionsProvider: () => (/* binding */ CaptionsProvider)
-/* harmony export */ });
-/* harmony import */ var react_compiler_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/compiler-runtime */ 6522);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ 6540);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ 4848);
-
-
-
-const CaptionsContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.createContext)(null);
-function CaptionsProvider(t0) {
-  const $ = (0,react_compiler_runtime__WEBPACK_IMPORTED_MODULE_0__.c)(13);
-  const {
-    children
-  } = t0;
-  let t1;
-  if ($[0] === Symbol.for("react.memo_cache_sentinel")) {
-    t1 = [];
-    $[0] = t1;
-  } else {
-    t1 = $[0];
-  }
-  const [captions, setCaptions] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(t1);
-  const [isHydrated, setIsHydrated] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
-  const hasLoaded = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(false);
-  let t2;
-  if ($[1] === Symbol.for("react.memo_cache_sentinel")) {
-    t2 = data => {
-      setCaptions(prev => [...prev, data]);
-    };
-    $[1] = t2;
-  } else {
-    t2 = $[1];
-  }
-  const createCaptions = t2;
-  let t3;
-  let t4;
-  if ($[2] === Symbol.for("react.memo_cache_sentinel")) {
-    t3 = () => {
-      if (hasLoaded.current) {
-        return;
-      }
-      hasLoaded.current = true;
-      const stored = storage.local.get(config.storage.captions) ?? [];
-      createCaptions(stored);
-      setIsHydrated(true);
-    };
-    t4 = [createCaptions];
-    $[2] = t3;
-    $[3] = t4;
-  } else {
-    t3 = $[2];
-    t4 = $[3];
-  }
-  ;(0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(t3, t4);
-  let t5;
-  let t6;
-  if ($[4] !== captions || $[5] !== isHydrated) {
-    t5 = () => {
-      if (!isHydrated) {
-        return;
-      }
-      storage.local.set(config.storage.captions, captions);
-    };
-    t6 = [captions, isHydrated];
-    $[4] = captions;
-    $[5] = isHydrated;
-    $[6] = t5;
-    $[7] = t6;
-  } else {
-    t5 = $[6];
-    t6 = $[7];
-  }
-  ;(0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(t5, t6);
-  let t7;
-  if ($[8] !== captions) {
-    t7 = {
-      captions,
-      createCaptions
-    };
-    $[8] = captions;
-    $[9] = t7;
-  } else {
-    t7 = $[9];
-  }
-  let t8;
-  if ($[10] !== children || $[11] !== t7) {
-    t8 = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(CaptionsContext.Provider, {
-      value: t7,
-      children: children
-    });
-    $[10] = children;
-    $[11] = t7;
-    $[12] = t8;
-  } else {
-    t8 = $[12];
-  }
-  return t8;
-}
-
-
-/***/ },
-
 /***/ 4462
 /*!*****************************************************!*\
   !*** ./src/components/Providers/ContentProvider.js ***!
@@ -3575,67 +3457,6 @@ function DialogProvider(t0) {
     t8 = $[13];
   }
   return t8;
-}
-
-
-/***/ },
-
-/***/ 8664
-/*!*****************************************************!*\
-  !*** ./src/components/Providers/FootageProvider.js ***!
-  \*****************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   FootageContext: () => (/* binding */ FootageContext),
-/* harmony export */   FootageProvider: () => (/* binding */ FootageProvider)
-/* harmony export */ });
-/* harmony import */ var react_compiler_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/compiler-runtime */ 6522);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ 6540);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ 4848);
-
-
-
-const FootageContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.createContext)(null);
-function FootageProvider(t0) {
-  const $ = (0,react_compiler_runtime__WEBPACK_IMPORTED_MODULE_0__.c)(6);
-  const {
-    children
-  } = t0;
-  let t1;
-  if ($[0] === Symbol.for("react.memo_cache_sentinel")) {
-    t1 = [];
-    $[0] = t1;
-  } else {
-    t1 = $[0];
-  }
-  const [footage, setFootage] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(t1);
-  let t2;
-  if ($[1] !== footage) {
-    t2 = {
-      footage,
-      setFootage
-    };
-    $[1] = footage;
-    $[2] = t2;
-  } else {
-    t2 = $[2];
-  }
-  let t3;
-  if ($[3] !== children || $[4] !== t2) {
-    t3 = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(FootageContext.Provider, {
-      value: t2,
-      children: children
-    });
-    $[3] = children;
-    $[4] = t2;
-    $[5] = t3;
-  } else {
-    t3 = $[5];
-  }
-  return t3;
 }
 
 
@@ -8090,4 +7911,4 @@ __webpack_require__.r(__webpack_exports__);
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=main.cc26ced71bd364f0a6e0.js.map
+//# sourceMappingURL=main.7dc298888c08ca56ffb9.js.map
