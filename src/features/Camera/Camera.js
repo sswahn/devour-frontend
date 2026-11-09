@@ -14,15 +14,7 @@ function Camera({ openEditor }) {
   const { closeOverlay } = useOverlay()
   const { footage, setFootage } = useFootage()
   const [mode, setMode] = useState('off')
-  const [timer, setTimer] = useState(() => {
-    if (!footage.length) {
-      return 60
-    }
-    const totalDuration = footage.reduce(
-      (acc, val) => acc + val.duration, 0
-    )
-    return Math.ceil(60 - totalDuration)
-  })
+  const [timer, setTimer] = useState(60)
   const streamRef = useRef(null)
   const videoRef = useRef(null)
   let active = true
@@ -65,6 +57,17 @@ function Camera({ openEditor }) {
       active = false
       stopCamera()
     }
+  }, [])
+
+  useEffect(() => {
+    if (!footage.length) {
+      return 60
+    }
+    const totalDuration = footage.reduce(
+      (acc, val) => acc + val.duration, 0
+    )
+    const result = Math.ceil(60 - totalDuration)
+    setTimer(result)
   }, [])
   
   return (
