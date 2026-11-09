@@ -4,7 +4,7 @@ import styles from './RecordTimer.module.css'
 
 function RecordTimer({ mode, setIsExpired }) {
   const { footage } = useFootage()
-  const [timer, setTimer] = useState()
+  const [timer, setTimer] = useState(60)
   
   const createInterval = () => {
     if (mode === 'on') {
