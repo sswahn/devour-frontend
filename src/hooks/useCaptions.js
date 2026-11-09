@@ -22,16 +22,7 @@ function useCaptions() {
     if (!isHydrated) {
       return
     }
-    const timer = setTimeout(() => {
-      try {
-        storage.local.set(config.storage.captions, captions)
-      } catch (error) {
-        throw error
-      }
-    }, 500)
-    return () => {
-      clearTimeout(timer)
-    }
+    storage.local.set(config.storage.captions, captions)
   }, [captions, isHydrated])
   
   return { captions, createCaptions }
