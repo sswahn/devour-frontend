@@ -1,10 +1,9 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import styles from './VideoTimeline.module.css'
 
 // consider moving to components
 function VideoTimeline({ videoRef }) {
   const [progress, setProgress] = useState(0)
-  const videoTimelineRef = useRef(null)
 
   const onClick = event => {
     navigator.vibrate?.(50)
