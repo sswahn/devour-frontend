@@ -1,6 +1,7 @@
-import { useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import styles from './VideoTimeline.module.css'
 
+// consider moving to components
 function VideoTimeline({ videoRef }) {
   const [progress, setProgress] = useState(0)
   const videoTimelineRef = useRef(null)
@@ -13,16 +14,12 @@ function VideoTimeline({ videoRef }) {
   }
 
   const onTimeUpdate = event => {
-    const video = videoRef.current
-    if (!video || !Number.isFinite(video.duration) || video.duration <= 0) {
-      return
-    }
     setProgress((video.currentTime / video.duration) * 100)
   }
 
   useEffect(() => {
     const video = videoRef.current
-    if (!video) {
+    if (!video || !Number.isFinite(video.duration) || video.duration <= 0) {
       return
     }
     video.addEventListener('timeupdate', onTimeUpdate)
