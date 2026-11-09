@@ -47,6 +47,12 @@ function Camera({ openEditor }) {
       document.exitFullscreen()
     }
   }
+
+  useEffect(() => {
+    if (isExpired) {
+      stopCamera()
+    }
+  }, [isExpired])
   
   useEffect(() => {
     if (!streamRef.current) {
@@ -60,7 +66,7 @@ function Camera({ openEditor }) {
   
   return (
     <section className={styles.camera}>
-      <TopNav closeCamera={closeCamera} mode={mode} setIsExpired={setIsExpired} stopCamera={stopCamera} streamRef={streamRef} />
+      <TopNav closeCamera={closeCamera} mode={mode} setIsExpired={setIsExpired} streamRef={streamRef} />
       <MuteButton streamRef={streamRef} />
       <ViewPort videoRef={videoRef} />
       <RecordButton mode={mode} setMode={setMode} streamRef={streamRef} isExpired={isExpired} />
