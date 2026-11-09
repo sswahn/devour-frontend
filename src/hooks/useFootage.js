@@ -1,11 +1,8 @@
-import { useState, useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { FootageContext } from '../components/Providers/FootageProvider'
-import database from '../utilities/database'
-import * as config from '../config'
 
 function useFootage() {
   const { footage, setFootage } = useContext(FootageContext)
-  const [isHydrated, setIsHydrated] = useState(false)
 
   useEffect(() => {
     if (footage.length > 0) {
@@ -14,8 +11,7 @@ function useFootage() {
     
     const load = async () => {
       try {
-        const data = await database().get(config.storage.footage)
-        setFootage(data?.footage ?? [])
+        
       } catch (error) {
         throw error
       } finally {
