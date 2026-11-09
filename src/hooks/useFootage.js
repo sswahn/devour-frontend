@@ -7,13 +7,15 @@ function useFootage() {
   const { footage, setFootage } = useContext(FootageContext)
 
   useEffect(() => {
+    if (footage.length > 0) {
+      return
+    }
+    
     const load = async () => {
-      if (footage.length > 0) {
-        return footage
-      }
       const data = await database().get(config.storage.footage)
       setFootage(data?.footage ?? [])
     }
+    
     load()
   }, [footage, setFootage])
 
