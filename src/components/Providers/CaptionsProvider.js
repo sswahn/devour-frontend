@@ -9,7 +9,7 @@ function CaptionsProvider({ children }) {
   const [isHydrated, setIsHydrated] = useState(false)
 
   const createCaption = data => {
-    setCaptions(prev => [ ...prev, data) ])
+    setCaptions(prev => [ ...prev, data ])
   }
   
   const updateCaption = (id, data) => {
