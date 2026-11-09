@@ -23,7 +23,7 @@ function useFootage() {
       }
     }
     load()
-  }, [footage, setFootage])
+  }, [setFootage])
 
   useEffect(() => {
     if (!isHydrated) {
@@ -33,7 +33,7 @@ function useFootage() {
       database().put({ id: config.storage.footage, footage })
     }
     save()
-  }, [footage])
+  }, [footage, isHydrated])
 
   return { footage, setFootage }
 }
