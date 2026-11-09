@@ -63,16 +63,16 @@ function Camera({ openEditor }) {
 
   const loadFromStorage = async () => {
     const db = database()
-    const storage = await db.get('footage')
+    const indexedDb = await db.get('footage')
 
-    if (storage?.footage.length > 0) {
-      const totalDuration = storage.footage.reduce((acc, val) => acc + val.duration, 0)
+    if (indexedDb?.footage.length > 0) {
+      const totalDuration = indexedDb.footage.reduce((acc, val) => acc + val.duration, 0)
       const timeRemaining = Math.ceil(60 - totalDuration)
 
       console.log('totalDuration: ', totalDuration)
       console.log('timeRemaining: ', timeRemaining)
       
-      setFootage(storage.footage)
+      setFootage(indexedDb.footage)
       setTimer(timeRemaining)
     }
   }
