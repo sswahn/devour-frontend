@@ -18,10 +18,10 @@ function RecordTimer({ mode, setIsExpired }) {
     if (mode === 'on') {
       return
     }
-    const totalDuration = footage.reduce(
-      (total, clip) => total + clip.duration, 0
-    )
-    setTimer(Math.max(0, Math.ceil(MAX_DURATION - totalDuration)))
+    const totalDuration = footage.reduce((total, clip) => total + clip.duration, 0)
+    const timeRemaining = Math.max(0, Math.ceil(MAX_DURATION - totalDuration))
+    setTimer(timeRemaining)
+    setIsExpired(timeRemaining === 0)
   }, [footage, mode])
 
   useEffect(() => {
