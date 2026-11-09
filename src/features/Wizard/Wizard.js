@@ -32,8 +32,8 @@ function Wizard() {
           {overlay === 'camera' && <Camera openEditor={openEditor} />}
           {overlay === 'editor' && <Editor openCamera={openCamera} openPublisher={openPublisher} />}
           {overlay === 'publisher' && <Publisher openEditor={openEditor} />} 
-        <CaptionsProvider>
-       <FootageProvider>
+        </CaptionsProvider>
+      </FootageProvider>
     </section>
   )
 }
