@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import useOverlay from '../../hooks/useOverlay'
+import useFootage from '../../../hooks/useFootage'
 import camera from '../../utilities/camera'
 import database from '../../utilities/database'
 import TopNav from './TopNav/TopNav'
@@ -9,8 +10,9 @@ import MuteButton from './MuteButton/MuteButton'
 import ViewPort from './ViewPort/ViewPort'
 import styles from './Camera.module.css'
 
-function Camera({ footage, setFootage, openEditor }) {
+function Camera({ openEditor }) {
   const { closeOverlay } = useOverlay()
+  const { footage, setFootage } = useFootage()
   const [mode, setMode] = useState('off')
   const [timer, setTimer] = useState(60)
   const streamRef = useRef(null)
@@ -86,7 +88,7 @@ function Camera({ footage, setFootage, openEditor }) {
       <TopNav closeCamera={closeCamera} mode={mode} timer={timer} setTimer={setTimer} stopCamera={stopCamera} streamRef={streamRef} />
       <MuteButton streamRef={streamRef} />
       <ViewPort videoRef={videoRef} />
-      <RecordButton footage={footage} setFootage={setFootage} mode={mode} setMode={setMode} streamRef={streamRef} timer={timer} />
+      <RecordButton mode={mode} setMode={setMode} streamRef={streamRef} timer={timer} />
       {/* footage.length > 0 && */ }
     <EditorButton openEditor={openEditor} />
    
