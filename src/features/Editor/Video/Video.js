@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import useFootage from '../../../hooks/useFootage'
 import useCaptions from '../../../hooks/useCaptions'
 import { concatenateVideos } from '../../../utilities/videoEditor'
@@ -14,7 +14,7 @@ function Video({ videoRef }) {
   const [loading, setLoading] = useState(false)
   const activeCaptionRef = useRef(activeCaption)
 
-  const onTimeUpdate = useCallback(() => {
+  const onTimeUpdate = event => {
     const { currentTime } = videoRef.current
     const currentActive = activeCaptionRef.current
     const matchingCaption = captions.find(caption => {
