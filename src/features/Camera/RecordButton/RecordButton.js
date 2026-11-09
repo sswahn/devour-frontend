@@ -5,13 +5,13 @@ import { getDuration } from '../../../utilities/videoEditor'
 import database from '../../../utilities/database'
 import styles from './RecordButton.module.css'
 
-function RecordButton({ mode, setMode, streamRef, timer }) {
+function RecordButton({ mode, setMode, streamRef, isExpired }) {
   const { footage, setFootage } = useFootage()
   const framesRef = useRef([])
   const recordingRef = useRef(null)
   
   const startRecord = () => {
-    if (timer < 1) {
+    if (isExpired) {
       return alert('No recording time remaining.')
     }
     setMode('on')
