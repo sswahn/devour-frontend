@@ -26,7 +26,7 @@ function Video({ videoRef }) {
     if (!matchingCaption && currentActive?.id !== undefined) {
       return setActiveCaption({})
     }
-  }, [videoRef, captions])
+  }
 
   useEffect(() => {
     activeCaptionRef.current = activeCaption
