@@ -4,18 +4,17 @@ import * as config from '../config'
 import storage from '../utilities/storage'
 
 function useCaptions() {
-  const { captions, createCaption } = useContext(CaptionsContext)
+  const { captions, createCaptions } = useContext(CaptionsContext)
   const [isHydrated, setIsHydrated] = useState(false)
 
   useEffect(() => {
-    if (footage.length > 0) {
+    if (captions.length > 0) {
       return
     }
-    
     const load = async () => {
       try {
-        //const data = await database().get(config.storage.footage)
-        setFootage(data?.footage ?? [])
+        const stored = storage.local.get(config.storage.captions) ?? []
+        createCaptions(stored)
       } catch (error) {
         throw error
       } finally {
@@ -23,7 +22,7 @@ function useCaptions() {
       }
     }
     load()
-  }, [setFootage])
+  }, [createCaptions])
   
   useEffect(() => {
     if (!isHydrated) {
@@ -41,7 +40,7 @@ function useCaptions() {
     }
   }, [captions, isHydrated])
   
-  return { captions, createCaption }
+  return { captions, createCaptions }
 }
 
 export default useCaptions
