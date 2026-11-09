@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { FootageProvider } from './components/Providers/FootageProvider'
-import { CaptionsProvider } from './components/Providers/CaptionsProvider'
+import { FootageProvider } from '../../components/Providers/FootageProvider'
+import { CaptionsProvider } from '../../components/Providers/CaptionsProvider'
 import Camera from '../Camera/Camera'
 import Editor from '../Editor/Editor'
 import Publisher from '../Publisher/Publisher'
