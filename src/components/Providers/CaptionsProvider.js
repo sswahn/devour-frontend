@@ -1,4 +1,6 @@
 import { useState, createContext, useRef, useEffect } from 'react'
+import * as config from '../config'
+import storage from '../utilities/storage'
 
 const CaptionsContext = createContext(null)
 
