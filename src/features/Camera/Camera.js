@@ -66,9 +66,8 @@ function Camera({ openEditor }) {
     const totalDuration = footage.reduce(
       (acc, val) => acc + val.duration, 0
     )
-    const result = Math.ceil(60 - totalDuration)
-    setTimer(result)
-  }, [])
+    setTimer(Math.ceil(60 - totalDuration))
+  }, [footage])
   
   return (
     <section className={styles.camera}>
