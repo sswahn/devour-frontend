@@ -16,12 +16,12 @@ function Camera({ openEditor }) {
   const [isExpired, setIsExpired] = useState(false)
   const streamRef = useRef(null)
   const videoRef = useRef(null)
-  let active = true
+  let mounted = true
  
   const startCamera = async () => {
     try {
       const stream = await camera.on()
-      if (!active) { // avoid race condition with stopCamra on unmount
+      if (!mounted) { // avoid race condition with stopCamra on unmount
         return camera.off(stream)
       }
       streamRef.current = stream
@@ -59,7 +59,7 @@ function Camera({ openEditor }) {
       startCamera()
     }
     return () => {
-      active = false
+      mounted = false
       stopCamera()
     }
   }, [])
