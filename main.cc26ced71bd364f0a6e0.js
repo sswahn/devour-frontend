@@ -3304,7 +3304,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const CaptionsContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.createContext)(null);
 function CaptionsProvider(t0) {
-  const $ = (0,react_compiler_runtime__WEBPACK_IMPORTED_MODULE_0__.c)(7);
+  const $ = (0,react_compiler_runtime__WEBPACK_IMPORTED_MODULE_0__.c)(13);
   const {
     children
   } = t0;
@@ -3316,6 +3316,8 @@ function CaptionsProvider(t0) {
     t1 = $[0];
   }
   const [captions, setCaptions] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(t1);
+  const [isHydrated, setIsHydrated] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+  const hasLoaded = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(false);
   let t2;
   if ($[1] === Symbol.for("react.memo_cache_sentinel")) {
     t2 = data => {
@@ -3327,29 +3329,68 @@ function CaptionsProvider(t0) {
   }
   const createCaptions = t2;
   let t3;
-  if ($[2] !== captions) {
-    t3 = {
+  let t4;
+  if ($[2] === Symbol.for("react.memo_cache_sentinel")) {
+    t3 = () => {
+      if (hasLoaded.current) {
+        return;
+      }
+      hasLoaded.current = true;
+      const stored = storage.local.get(config.storage.captions) ?? [];
+      createCaptions(stored);
+      setIsHydrated(true);
+    };
+    t4 = [createCaptions];
+    $[2] = t3;
+    $[3] = t4;
+  } else {
+    t3 = $[2];
+    t4 = $[3];
+  }
+  ;(0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(t3, t4);
+  let t5;
+  let t6;
+  if ($[4] !== captions || $[5] !== isHydrated) {
+    t5 = () => {
+      if (!isHydrated) {
+        return;
+      }
+      storage.local.set(config.storage.captions, captions);
+    };
+    t6 = [captions, isHydrated];
+    $[4] = captions;
+    $[5] = isHydrated;
+    $[6] = t5;
+    $[7] = t6;
+  } else {
+    t5 = $[6];
+    t6 = $[7];
+  }
+  ;(0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(t5, t6);
+  let t7;
+  if ($[8] !== captions) {
+    t7 = {
       captions,
       createCaptions
     };
-    $[2] = captions;
-    $[3] = t3;
+    $[8] = captions;
+    $[9] = t7;
   } else {
-    t3 = $[3];
+    t7 = $[9];
   }
-  let t4;
-  if ($[4] !== children || $[5] !== t3) {
-    t4 = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(CaptionsContext.Provider, {
-      value: t3,
+  let t8;
+  if ($[10] !== children || $[11] !== t7) {
+    t8 = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(CaptionsContext.Provider, {
+      value: t7,
       children: children
     });
-    $[4] = children;
-    $[5] = t3;
-    $[6] = t4;
+    $[10] = children;
+    $[11] = t7;
+    $[12] = t8;
   } else {
-    t4 = $[6];
+    t8 = $[12];
   }
-  return t4;
+  return t8;
 }
 
 
@@ -8049,4 +8090,4 @@ __webpack_require__.r(__webpack_exports__);
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=main.7d9d2aa785f68c478108.js.map
+//# sourceMappingURL=main.cc26ced71bd364f0a6e0.js.map
