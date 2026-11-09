@@ -43,29 +43,6 @@ function RecordTimer({ mode, setIsExpired }) {
     }
   }, [mode, timer, setIsExpired])
 
-
-  /*
-  const createInterval = () => {
-    if (mode === 'on') {
-      return setInterval(() => {
-        if (timer < 1) {
-          clearInterval(interval)
-          return setIsExpired(true)
-        }
-        setTimer(timer - 1)
-      }, 1000)
-    }
-  }
-
-  useEffect(() => {
-    let interval = createInterval()
-    return () => {
-      clearInterval(interval)
-    }
-  }, [timer, mode])
-
- */
-
   return (
     <div className={styles.recordTimer}>
       {formatTime(timer)}
