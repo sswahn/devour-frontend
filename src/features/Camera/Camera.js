@@ -14,7 +14,15 @@ function Camera({ openEditor }) {
   const { closeOverlay } = useOverlay()
   const { footage, setFootage } = useFootage()
   const [mode, setMode] = useState('off')
-  const [timer, setTimer] = useState(60)
+  const [timer, setTimer] = useState(() => {
+    if (!footage.length) {
+      return 60
+    }
+    const totalDuration = footage.reduce(
+      (acc, val) => acc + val.duration, 0
+    )
+    return Math.ceil(60 - totalDuration)
+  })
   const streamRef = useRef(null)
   const videoRef = useRef(null)
  
@@ -59,30 +67,6 @@ function Camera({ openEditor }) {
       stopCamera()
     }
   }, [])
-
-  const loadFootage = async () => {
-    const result = await database().get('footage')
-    return result?.footage ?? []
-  }
-
-  const calculateTimeRemaining = footage => {
-    const totalDuration = footage.reduce(
-      (acc, val) => acc + val.duration, 0
-    )
-    return Math.ceil(60 - totalDuration)
-  }
-
-  useEffect(() => {
-    const load = async () => {
-      const footage = await loadFootage()
-      if (!footage.length) {
-        return
-      }
-      setFootage(footage)
-      setTimer(calculateTimeRemaining(footage))
-    }
-    load()
-  }, [setFootage])
   
   return (
     <section className={styles.camera}>
