@@ -33,7 +33,7 @@ const onTimeUpdate = event => {
     const init = async () => {
       try {
         setLoading(true)
-        const blob = await concatenateVideos(footage, setProgress)
+        const blob = await concatenateVideos(footage)
         // Short-circuit instantly if the user navigated away while compiling
         if (!mounted) {
           return 
