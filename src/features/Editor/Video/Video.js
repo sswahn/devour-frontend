@@ -10,7 +10,6 @@ function Video({ videoRef }) {
   const { captions } = useCaptions()
   const [source, setSource] = useState('')
   const [activeCaption, setActiveCaption] = useState({})
-  const [progress, setProgress] = useState(0)
   const [loading, setLoading] = useState(false)
 
 const onTimeUpdate = event => {
@@ -34,7 +33,6 @@ const onTimeUpdate = event => {
       try {
         setLoading(true)
         const blob = await concatenateVideos(footage)
-        // Short-circuit instantly if the user navigated away while compiling
         if (!mounted) {
           return 
         }
