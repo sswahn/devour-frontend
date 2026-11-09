@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import styles from './VideoTimeline.module.css'
 
 function VideoTimeline({ videoRef }) {
+  const [progress, setProgress] = useState(0)
   const videoTimelineRef = useRef(null)
 
   const onClick = event => {
@@ -12,8 +13,11 @@ function VideoTimeline({ videoRef }) {
   }
 
   const onTimeUpdate = event => {
-    const percentage = (videoRef.current.currentTime / videoRef.current.duration) * 100
-    videoTimelineRef.current.style.width = `${percentage}%`
+    const video = videoRef.current
+    if (!video || !Number.isFinite(video.duration) || video.duration <= 0) {
+      return
+    }
+    setProgress((video.currentTime / video.duration) * 100)
   }
 
   useEffect(() => {
@@ -25,11 +29,11 @@ function VideoTimeline({ videoRef }) {
     return () => {
       video.removeEventListener('timeupdate', onTimeUpdate)
     }
-  }, [videoRef])
+  }, [videoRef, onTimeUpdate])
   
   return (
     <div className={styles.videoTimeline} onClick={onClick}>
-      <div ref={videoTimelineRef}></div>
+      <div style={{ width: `${progress}%` }}></div>
     </div>
   )
 }
