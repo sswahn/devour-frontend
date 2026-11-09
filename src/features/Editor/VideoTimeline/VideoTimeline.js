@@ -14,7 +14,8 @@ function VideoTimeline({ videoRef }) {
   }
 
   const onTimeUpdate = event => {
-    setProgress((video.currentTime / video.duration) * 100)
+    const { currentTime, duration} = videoRef.current
+    setProgress((currentTime / duration) * 100)
   }
 
   useEffect(() => {
