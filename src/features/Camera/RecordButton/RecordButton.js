@@ -37,7 +37,6 @@ function RecordButton({ mode, setMode, streamRef, isExpired }) {
         framesRef.current
       )
       const duration = await getDuration(blob)
-      recordingRef.current = null
       const data = {
         id: crypto.randomUUID(),
         clip: blob,
@@ -53,6 +52,8 @@ function RecordButton({ mode, setMode, streamRef, isExpired }) {
       await db.put({ id: 'footage', footage: clips })
     } catch (error) {
       console.error('Failed to stop recording:', error) // polish error handling: use setErrorMessage
+    } finally {
+      recordingRef.current = null
     }
   }
   
