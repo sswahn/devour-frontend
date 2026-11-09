@@ -30,7 +30,7 @@ function Camera({ openEditor }) {
     try {
       const stream = await camera.on()
       if (!active) {
-        return stopCamera()
+        return camera.off(stream)
       }
       streamRef.current = stream
       videoRef.current.srcObject = stream
