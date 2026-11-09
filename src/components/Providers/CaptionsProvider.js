@@ -8,8 +8,16 @@ function CaptionsProvider({ children }) {
   const [captions, setCaptions] = useState([])
   const [isHydrated, setIsHydrated] = useState(false)
 
-  const createCaptions = data => {
-    setCaptions(prev => [ ...prev, Array.isArray(data) ? ...data : data ])
+  const createCaption = data => {
+    setCaptions(prev => [ ...prev, data) ])
+  }
+  
+  const updateCaption = (id, data) => {
+    
+  }
+  
+  const deleteCaption = id => {
+    
   }
 
   useEffect(() => {
@@ -26,7 +34,7 @@ function CaptionsProvider({ children }) {
   }, [captions, isHydrated])
   
   return (
-    <CaptionsContext.Provider value={{ captions, createCaptions }}>
+    <CaptionsContext.Provider value={{ captions, createCaption, updateCaption, deleteCaption }}>
       {children}
     </CaptionsContext.Provider>
   )
