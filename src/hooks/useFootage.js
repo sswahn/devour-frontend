@@ -5,23 +5,6 @@ function useFootage() {
   const { footage, setFootage } = useContext(FootageContext)
 
   useEffect(() => {
-    if (footage.length > 0) {
-      return
-    }
-    
-    const load = async () => {
-      try {
-        
-      } catch (error) {
-        throw error
-      } finally {
-        setIsHydrated(true)
-      }
-    }
-    load()
-  }, [setFootage])
-
-  useEffect(() => {
     if (!isHydrated) {
       return
     }
