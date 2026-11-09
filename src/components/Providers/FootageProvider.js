@@ -8,7 +8,7 @@ function FootageProvider({ children }) {
   const [footage, setFootage] = useState([])
   const [isHydrated, setIsHydrated] = useState(false)
 
-  // consider crud functions instead of exposing setFootage, then you can typecheck/error handle
+  // create crud functions instead of exposing setFootage, then you can typecheck/error handle
 
   useEffect(() => {
     const hydrate = async () => {
