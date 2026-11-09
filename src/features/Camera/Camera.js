@@ -24,6 +24,7 @@ function Camera({ openEditor }) {
       if (!mounted) { // avoid race condition with stopCamra on unmount
         return camera.off(stream)
       }
+      console.log('stream: ', stream)
       streamRef.current = stream
       videoRef.current.srcObject = stream
     } catch (error) {
