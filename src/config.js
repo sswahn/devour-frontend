@@ -25,6 +25,7 @@ export const api = {
 export const storage = {
   draft: 'draft',
   captions: 'captions',
+  footage: 'footage',
   publisher: 'publisher'
 }
 
