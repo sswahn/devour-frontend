@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { FootageContext } from '../components/Providers/FootageProvider'
 import database from '../utilities/database'
 import * as config from '../config'
