@@ -26,6 +26,10 @@ function CaptionsProvider({ children }) {
 
   useEffect(() => {
     const stored = storage.local.get(config.storage.captions)
+    
+    console.log('STORED: ', stored)
+    console.log('stored !== null: ', stored !== null)
+    
     if (stored !== null) {
       setCaptions(stored)
       setIsHydrated(true)
