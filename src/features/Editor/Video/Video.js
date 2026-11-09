@@ -12,7 +12,6 @@ function Video({ videoRef }) {
   const [activeCaption, setActiveCaption] = useState({})
   const [progress, setProgress] = useState(0)
   const [loading, setLoading] = useState(false)
-  const activeCaptionRef = useRef(activeCaption)
 
   const onTimeUpdate = event => {
     const { currentTime } = event.currentTarget
@@ -27,10 +26,6 @@ function Video({ videoRef }) {
       return setActiveCaption({})
     }
   }
-
-  useEffect(() => {
-    activeCaptionRef.current = activeCaption
-  }, [activeCaption])
   
   useEffect(() => {
     let mounted = true
