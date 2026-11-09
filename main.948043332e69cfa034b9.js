@@ -3553,15 +3553,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_compiler_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/compiler-runtime */ 6522);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ 6540);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _utilities_database__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utilities/database */ 2584);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ 4848);
-
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ 4848);
 
 
 
 const FootageContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.createContext)(null);
 function FootageProvider(t0) {
-  const $ = (0,react_compiler_runtime__WEBPACK_IMPORTED_MODULE_0__.c)(11);
+  const $ = (0,react_compiler_runtime__WEBPACK_IMPORTED_MODULE_0__.c)(6);
   const {
     children
   } = t0;
@@ -3574,62 +3572,29 @@ function FootageProvider(t0) {
   }
   const [footage, setFootage] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(t1);
   let t2;
-  if ($[1] !== footage.length) {
-    t2 = async () => {
-      if (footage.length) {
-        return;
-      }
-      const data = await (0,_utilities_database__WEBPACK_IMPORTED_MODULE_2__["default"])().get("footage");
-      setFootage(data?.footage ?? []);
+  if ($[1] !== footage) {
+    t2 = {
+      footage,
+      setFootage
     };
-    $[1] = footage.length;
+    $[1] = footage;
     $[2] = t2;
   } else {
     t2 = $[2];
   }
-  const loadFromStorage = t2;
   let t3;
-  if ($[3] !== loadFromStorage) {
-    t3 = () => {
-      loadFromStorage();
-    };
-    $[3] = loadFromStorage;
-    $[4] = t3;
-  } else {
-    t3 = $[4];
-  }
-  let t4;
-  if ($[5] === Symbol.for("react.memo_cache_sentinel")) {
-    t4 = [];
-    $[5] = t4;
-  } else {
-    t4 = $[5];
-  }
-  ;(0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(t3, t4);
-  let t5;
-  if ($[6] !== footage) {
-    t5 = {
-      footage,
-      setFootage
-    };
-    $[6] = footage;
-    $[7] = t5;
-  } else {
-    t5 = $[7];
-  }
-  let t6;
-  if ($[8] !== children || $[9] !== t5) {
-    t6 = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(FootageContext.Provider, {
-      value: t5,
+  if ($[3] !== children || $[4] !== t2) {
+    t3 = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(FootageContext.Provider, {
+      value: t2,
       children: children
     });
-    $[8] = children;
-    $[9] = t5;
-    $[10] = t6;
+    $[3] = children;
+    $[4] = t2;
+    $[5] = t3;
   } else {
-    t6 = $[10];
+    t3 = $[5];
   }
-  return t6;
+  return t3;
 }
 
 
@@ -8083,4 +8048,4 @@ __webpack_require__.r(__webpack_exports__);
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=main.bc1ac37cc0c9dd9bf014.js.map
+//# sourceMappingURL=main.948043332e69cfa034b9.js.map
