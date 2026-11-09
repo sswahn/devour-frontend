@@ -71,7 +71,7 @@ function RecordTimer({ mode, setIsExpired }) {
 
   return (
     <div className={styles.recordTimer}>
-      {formatTimer(timer)}
+      {formatTime(timer)}
     </div>
   )
 }
