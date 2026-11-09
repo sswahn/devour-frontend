@@ -33,7 +33,7 @@ function Video({ videoRef }) {
   }, [activeCaption])
   
   useEffect(() => {
-    let unmounted = false
+    let mounted = true
     let activeUrl = ''
   
     const init = async () => {
@@ -41,7 +41,7 @@ function Video({ videoRef }) {
         setLoading(true)
         const blob = await concatenateVideos(footage, setProgress)
         // Short-circuit instantly if the user navigated away while compiling
-        if (unmounted) {
+        if (!mounted) {
           return 
         }
         const url = URL.createObjectURL(blob)
@@ -60,7 +60,7 @@ function Video({ videoRef }) {
     init()
   
     return () => {
-      unmounted = true
+      mounted = false
       if (activeUrl) {
         URL.revokeObjectURL(activeUrl)
       }
