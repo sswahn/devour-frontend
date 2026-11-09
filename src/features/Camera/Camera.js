@@ -36,6 +36,7 @@ function Camera({ openEditor }) {
 
   const stopCamera = event => {
     if (streamRef.current) {
+      console.log('turning camera off.')
       camera.off(streamRef.current) 
       streamRef.current = null
     }
@@ -61,6 +62,7 @@ function Camera({ openEditor }) {
       startCamera()
     }
     return () => {
+      console.log('unmounting Camera.')
       mounted = false
       stopCamera()
     }
