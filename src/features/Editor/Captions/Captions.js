@@ -8,17 +8,32 @@ import PenToSquareIcon from '../../../components/Icons/PenToSquareIcon/PenToSqua
 import TrashCanIcon from '../../../components/Icons/TrashCanIcon/TrashCanIcon'
 import styles from './Captions.module.css'
 
+const createCaptionDefault = () => {
+  return {
+    id: crypto.randomUUID(),
+    text: '',
+    start: '',
+    end: '',
+    style: {
+      fontSize: 12,
+      color: '#ffffff',
+      bold: false,
+      italic: false,
+      underline: false,
+      stroke: 'none',
+      strokeColor: '#000000',
+      strokeWidth: 2,
+      backgroundColor: 'transparent',
+      textAlign: 'left'
+    }
+  }
+}
+
 function Captions() {
   const { captions, createCaption } = useCaptions()
   const [draft, setDraft] = useState(() => {
     const stored = storage.local.get(config.storage.draft)
-    return stored ?? {
-      id: crypto.randomUUID(),
-      text: '',
-      start: '',
-      end: '',
-      style: {}
-    }
+    return stored ?? createCationDefaults()
   })
   const [errorMessage, setErrorMessage] = useState('')
 
