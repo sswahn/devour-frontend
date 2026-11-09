@@ -9,15 +9,31 @@ function CaptionsProvider({ children }) {
   const [isHydrated, setIsHydrated] = useState(false)
 
   const createCaption = data => {
+    if (typeof data !== 'object' || data === null || Array.isArray(data)) {
+      throw new TypeError('createCaption: data argument must be an object.')
+    }
     setCaptions(prev => [ ...prev, data ])
   }
   
   const updateCaption = (id, data) => {
-    
+    if (typeof id !== 'string') {
+      throw new TypeError('updateCaption: first argument must be a string')
+    }
+    if (typeof data !== 'object' || data === null || Array.isArray(data)) {
+      throw new TypeError('createCaption: second argument must be an object.')
+    }
+    setCaptions(prev => prev.map(caption =>
+      caption.id === id ? data : caption
+    ))
   }
   
   const deleteCaption = id => {
-    
+    if (typeof id !== 'string') {
+      throw new TypeError('updateCaption: first argument must be a string')
+    }
+    setCaptions(prev => prev.filter(caption =>
+      caption.id !== id 
+    ))
   }
 
   useEffect(() => {
