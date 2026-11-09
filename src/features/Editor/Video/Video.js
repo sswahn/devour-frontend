@@ -13,19 +13,18 @@ function Video({ videoRef }) {
   const [progress, setProgress] = useState(0)
   const [loading, setLoading] = useState(false)
 
-  const onTimeUpdate = event => {
-    const { currentTime } = event.currentTarget
-    const currentActive = activeCaptionRef.current
-    const matchingCaption = captions.find(caption => {
-      return currentTime >= Number(caption.start) && currentTime <= Number(caption.end)
-    })
-    if (matchingCaption && matchingCaption.id !== currentActive?.id) {
-      return setActiveCaption(matchingCaption)
-    } 
-    if (!matchingCaption && currentActive?.id !== undefined) {
-      return setActiveCaption({})
+const onTimeUpdate = event => {
+  const { currentTime } = event.currentTarget
+  const matchingCaption = captions.find(caption => {
+    return (currentTime >= Number(caption.start) && currentTime <= Number(caption.end))
+  })
+  setActiveCaption(prev => {
+    if (matchingCaption?.id === prev?.id) {
+      return prev
     }
-  }
+    return matchingCaption ?? {}
+  })
+}
   
   useEffect(() => {
     let mounted = true
