@@ -44,11 +44,6 @@ const cleanup = async (ffmpeg, files) => {
 
 // Concatenate an array of footage objects: [{ clip: Blob }, ...].
 export const concatenateVideos = async (footage, setProgress = () => {}) => {
-  console.log('footage: ', footage)
-  console.log('!Array.isArray(footage): ', !Array.isArray(footage))
-  console.log('footage.length === 0: ', footage.length === 0)
-  console.log('footage.some(item => !(item?.clip instanceof Blob)): ', footage.some(item => !(item?.clip instanceof Blob)))
-  
   if (!Array.isArray(footage) || footage.length === 0 || footage.some(item => !(item?.clip instanceof Blob))) {
     throw new Error('Provide an array of video clips.')
   }
