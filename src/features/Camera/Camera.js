@@ -40,7 +40,7 @@ function Camera({ openEditor }) {
     }
   }
 
-  const closeCamera = event => { // this conflicted with opening editor for some reason
+  const closeCamera = event => { // this conflicted with opening editor for some reason, consider removing it
     stopCamera()
     closeOverlay() 
     if (document.fullscreenElement) {
@@ -57,22 +57,6 @@ function Camera({ openEditor }) {
       stopCamera()
     }
   }, [])
-
-
-  // consider moving timer state entirely to RecordTimer
-  // Record button uses timer, however it only needs to know if the time has expired.
-  // consider creating a new state that tracks this specific condition; something like:
-  // const [isExpired, setIsExpired] = useState(false) and share that between components from here.
-  
-  useEffect(() => { // consider moving this to the timer component which should own timer data (in TopNav
-    if (!footage.length) {
-      return
-    }
-    const totalDuration = footage.reduce(
-      (acc, val) => acc + val.duration, 0
-    )
-    setTimer(Math.ceil(60 - totalDuration))
-  }, [footage])
   
   return (
     <section className={styles.camera}>
