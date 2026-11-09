@@ -25,7 +25,7 @@ function VideoTimeline({ videoRef }) {
     return () => {
       video.removeEventListener('timeupdate', onTimeUpdate)
     }
-  }, [])
+  }, [videoRef])
   
   return (
     <div className={styles.videoTimeline} onClick={onClick}>
