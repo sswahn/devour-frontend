@@ -25,7 +25,7 @@ function Captions() {
   const [errorMessage, setErrorMessage] = useState('')
 
   const updateDraft = ({ target: { id, value } }) => {
-    setDraft(prev => ({ ...prev, [id]: value.trim() }))
+    setDraft(prev => ({ ...prev, [id]: value }))
   }
 
   const updateDraftStyle = style => {
@@ -48,9 +48,17 @@ function Captions() {
 
     // in the valdiation util, for END, need to check end isnt outside video duration
     // this component needs the duration of the concatenated blob created in Editor
+
+    const data = {
+      id: draft.id,
+      text: draft.text.trim(), // validate
+      start: draft.start.trim(), // validate
+      end: draft.end.trim(), // validate
+      style: {}
+    }
     
-    createCaption(draft)
-    storage.local.set(config.storage.captions, [...captions, draft])
+    createCaption(data)
+    storage.local.set(config.storage.captions, [...captions, data])
     setDraft({
       id: crypto.randomUUID(),
       text: '',
