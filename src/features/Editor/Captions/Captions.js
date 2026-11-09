@@ -25,8 +25,7 @@ function Captions() {
   const [errorMessage, setErrorMessage] = useState('')
 
   const updateDraft = ({ target: { id, value } }) => {
-    const data = { [id]: value.trim() }
-    setDraft(prev => ({ ...prev, ...data }))
+    setDraft(prev => ({ ...prev, [id]: value.trim() }))
   }
 
   const updateDraftStyle = style => {
