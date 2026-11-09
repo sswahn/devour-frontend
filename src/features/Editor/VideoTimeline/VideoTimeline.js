@@ -12,20 +12,32 @@ function VideoTimeline({ videoRef }) {
     videoRef.current.currentTime = (clickX / rect.width) * videoRef.current.duration // Calculate new video time and apply it
   }
 
+  const onLoadedMetadata = event => {
+    if (event.duration <= 0) {
+      return
+    }
+    setProgress((event.currentTime / event.duration) * 100)
+  }
+
   const onTimeUpdate = event => {
+    if (!Number.isFinite(event.duration) || event.duration <= 0) {
+      return
+    }
     setProgress((event.currentTime / event.duration) * 100)
   }
 
   useEffect(() => {
     const video = videoRef.current
-    if (!video || !Number.isFinite(video.duration) || video.duration <= 0) {
+    if (!video) {
       return
     }
+    video.addEventListener('loadedmetadata', onLoadedMetadata)
     video.addEventListener('timeupdate', onTimeUpdate)
     return () => {
+      video.removeEventListener('loadedmetadata', onLoadedMetadata)
       video.removeEventListener('timeupdate', onTimeUpdate)
     }
-  }, [videoRef, onTimeUpdate])
+  }, [videoRef, onLoadedMetadata, onTimeUpdate])
   
   return (
     <div className={styles.videoTimeline} onClick={onClick}>
