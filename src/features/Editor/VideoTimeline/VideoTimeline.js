@@ -13,7 +13,7 @@ function VideoTimeline({ videoRef }) {
   }
 
   const onTimeUpdate = event => {
-    const { currentTime, duration, } = event.currentTarget
+    const { currentTime, duration } = event.currentTarget
     if (!Number.isFinite(duration) || duration <= 0) {
       return
     }
