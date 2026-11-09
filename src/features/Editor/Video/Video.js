@@ -78,7 +78,7 @@ function Video({ videoRef }) {
     }
   }, [videoRef, onTimeUpdate])
   
-  return loading ? <LoadingSpinner /> : (
+  return (
     <figure className={styles.Video}>
       <video id="video-editor" ref={videoRef} src={source} autoPlay playsInline 
         onLoadedMetadata={() => console.log('Video metadata loaded')}
@@ -86,6 +86,7 @@ function Video({ videoRef }) {
         onError={e => console.error('Video error:', e.currentTarget.error)}
       />
       {activeCaption?.text && <figcaption style={activeCaption.style}>{activeCaption.text}</figcaption>}
+      {loading && <LoadingSpinner />}
     </figure>
   )
 }
