@@ -58,6 +58,12 @@ function Camera({ openEditor }) {
     }
   }, [])
 
+
+  // consider moving timer state entirely to RecordTimer
+  // Record button uses timer, however it only needs to know if the time has expired.
+  // consider creating a new state that tracks this specific condition; something like:
+  // const [isExpired, setIsExpired] = useState(false) and share that between components from here.
+  
   useEffect(() => { // consider moving this to the timer component which should own timer data (in TopNav
     if (!footage.length) {
       return
