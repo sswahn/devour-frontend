@@ -20,7 +20,7 @@ function CaptionsProvider({ children }) {
       throw new TypeError('updateCaption: first argument must be a string')
     }
     if (typeof data !== 'object' || data === null || Array.isArray(data)) {
-      throw new TypeError('createCaption: second argument must be an object.')
+      throw new TypeError('updateCaption: second argument must be an object.')
     }
     setCaptions(prev => prev.map(caption =>
       caption.id === id ? data : caption
@@ -29,7 +29,7 @@ function CaptionsProvider({ children }) {
   
   const deleteCaption = id => {
     if (typeof id !== 'string') {
-      throw new TypeError('updateCaption: first argument must be a string')
+      throw new TypeError('deleteCaption: first argument must be a string')
     }
     setCaptions(prev => prev.filter(caption =>
       caption.id !== id 
