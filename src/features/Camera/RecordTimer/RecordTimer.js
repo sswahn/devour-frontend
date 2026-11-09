@@ -4,15 +4,15 @@ import styles from './RecordTimer.module.css'
 
 const MAX_DURATION = 60
 
+const formatTime = seconds => {
+  const minutes = Math.floor(seconds / MAX_DURATION)
+  const remainingSeconds = seconds % MAX_DURATION
+  return `${minutes}:${String(remainingSeconds).padStart(2, '0')}`
+}
+
 function RecordTimer({ mode, setIsExpired }) {
   const { footage } = useFootage()
   const [timer, setTimer] = useState(MAX_DURATION)
-
-  const formatTime = seconds => {
-    const minutes = Math.floor(seconds / MAX_DURATION)
-    const remainingSeconds = seconds % MAX_DURATION
-    return `${minutes}:${String(remainingSeconds).padStart(2, '0')}`
-  }
 
   useEffect(() => {
     const totalDuration = footage.reduce(
