@@ -1,4 +1,4 @@
-import { useState, createContext, useRef, useEffect } from 'react'
+import { useState, createContext, useEffect } from 'react'
 import * as config from '../config'
 import storage from '../utilities/storage'
 
@@ -7,22 +7,16 @@ const CaptionsContext = createContext(null)
 function CaptionsProvider({ children }) {
   const [captions, setCaptions] = useState([])
   const [isHydrated, setIsHydrated] = useState(false)
-  const hasLoaded = useRef(false)
 
   const createCaptions = data => {
-    
     setCaptions(prev => [ ...prev, Array.isArray(data) ? ...data : data ])
   }
 
   useEffect(() => {
-    if (hasLoaded.current) {
-      return
-    }
-    hasLoaded.current = true
     const stored = storage.local.get(config.storage.captions) ?? []
-    createCaptions(stored)
+    setCaptions(stored)
     setIsHydrated(true)
-  }, [createCaptions])
+  }, [])
   
   useEffect(() => {
     if (!isHydrated) {
