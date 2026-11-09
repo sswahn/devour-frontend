@@ -26,7 +26,7 @@ function RecordTimer({ mode, setIsExpired }) {
       return
     }
     const interval = setInterval(() => {
-      setTimer(previous => previous - 1)
+      setTimer(previous => Math.max(0, previous - 1))
     }, 1000)
     return () => {
       clearInterval(interval)
