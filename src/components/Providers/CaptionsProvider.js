@@ -23,7 +23,7 @@ function CaptionsProvider({ children }) {
       throw new TypeError('updateCaption: second argument must be an object.')
     }
     setCaptions(prev => prev.map(caption =>
-      caption.id === id ? data : caption
+      caption.id === id ? { ...caption, ...data } : caption
     ))
   }
   
