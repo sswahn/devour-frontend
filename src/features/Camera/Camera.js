@@ -30,7 +30,6 @@ function Camera({ openEditor }) {
     } catch (error) {
       // display error then close overlay or recover
       alert('Error accessing camera.')
-      console.error('Error: ', error)
       throw error
       // closeCamera()
     }
