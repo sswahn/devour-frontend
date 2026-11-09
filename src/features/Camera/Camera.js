@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from 'react'
 import useOverlay from '../../hooks/useOverlay'
 import useFootage from '../../hooks/useFootage'
 import camera from '../../utilities/camera'
-import database from '../../utilities/database'
 import TopNav from './TopNav/TopNav'
 import EditorButton from './EditorButton/EditorButton'
 import RecordButton from './RecordButton/RecordButton'
@@ -12,24 +11,17 @@ import styles from './Camera.module.css'
 
 function Camera({ openEditor }) {
   const { closeOverlay } = useOverlay()
-  const { footage, setFootage } = useFootage()
+  const { footage } = useFootage()
   const [mode, setMode] = useState('off')
   const [timer, setTimer] = useState(60)
   const streamRef = useRef(null)
   const videoRef = useRef(null)
   let active = true
-
-  const stopCamera = event => {
-    if (streamRef.current) {
-      camera.off(streamRef.current) 
-      streamRef.current = null
-    }
-  }
  
   const startCamera = async () => {
     try {
       const stream = await camera.on()
-      if (!active) {
+      if (!active) { // avoid race condition with stopCamra on unmount
         return camera.off(stream)
       }
       streamRef.current = stream
@@ -41,9 +33,16 @@ function Camera({ openEditor }) {
     }
   }
 
-  const closeCamera = event => {
+  const stopCamera = event => {
+    if (streamRef.current) {
+      camera.off(streamRef.current) 
+      streamRef.current = null
+    }
+  }
+
+  const closeCamera = event => { // this conflicted with opening editor for some reason
     stopCamera()
-    closeOverlay() // this conflicted with opening editor for some reason
+    closeOverlay() 
     if (document.fullscreenElement) {
       document.exitFullscreen()
     }
@@ -59,7 +58,7 @@ function Camera({ openEditor }) {
     }
   }, [])
 
-  useEffect(() => {
+  useEffect(() => { // consider moving this to the timer component which should own timer data (in TopNav
     if (!footage.length) {
       return
     }
