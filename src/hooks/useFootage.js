@@ -5,6 +5,7 @@ import * as config from '../config'
 
 function useFootage() {
   const { footage, setFootage } = useContext(FootageContext)
+  const [isHydrated, setIsHydrated] = useState(false)
 
   useEffect(() => {
     if (footage.length > 0) {
@@ -12,12 +13,25 @@ function useFootage() {
     }
     
     const load = async () => {
-      const data = await database().get(config.storage.footage)
-      setFootage(data?.footage ?? [])
+      try {
+        const data = await database().get(config.storage.footage)
+        setFootage(data?.footage ?? [])
+      } catch (error) {
+        throw error
+      } finally {
+        setIsHydrated(true)
+      }
     }
     
     load()
   }, [footage, setFootage])
+
+  useEffect(() => {
+    if (!isHydrated) {
+      return
+    }
+    database.set('id', 'footage: ')
+  }, [footage])
 
   return { footage, setFootage }
 }
