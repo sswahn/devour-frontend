@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react'
+import useComposition from '../../../hooks/useComposition'
+import useFootage from '../../../hooks/useFootage'
+import useCaptions from '../../../hooks/useCaptions'
 import * as config from '../../config'
 import storage from '../../utilities/storage'
 import server from '../../utilities/server'
