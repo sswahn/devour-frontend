@@ -40,7 +40,7 @@ function Video({ videoRef }) {
   }
   
   useEffect(() => {
-    let mounted = true
+    let isMounted = true
     let activeUrl = ''
   
     const init = async () => {
@@ -50,7 +50,7 @@ function Video({ videoRef }) {
         if (!cached) {
           setComposition({ blob, contents: footage.map(item => item.id) })
         }
-        if (!mounted) {
+        if (!isMounted) {
           return 
         }
         activeUrl = URL.createObjectURL(blob)
@@ -63,7 +63,7 @@ function Video({ videoRef }) {
     }
     init()
     return () => {
-      mounted = false
+      isMounted = false
       if (activeUrl) {
         URL.revokeObjectURL(activeUrl)
       }
