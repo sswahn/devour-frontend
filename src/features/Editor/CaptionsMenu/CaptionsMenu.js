@@ -128,10 +128,10 @@ function CaptionsMenu() {
       </form>
       {/* 
       move draft state to parent so live updates can appear in the editor figcaption
-      or... absolutely position this following div where figcaption would be, 
+      or... absolutely position this following <p> where figcaption would be, 
       to give the impression of what it would look like.
       */}
-      {draft.text && <div style={draft.style}>{draft.text}</div>}
+      {draft.text && <p style={draft.style}>{draft.text}</p>}
     </section>
   )
 }
