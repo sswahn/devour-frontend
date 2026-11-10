@@ -1,10 +1,9 @@
 import { useState, useRef, useEffect } from 'react'
 import TopNav from './TopNav/TopNav'
-import Menu from './Menu/Menu'
-import CaptionsMenu from './CaptionsMenu/CaptionsMenu'
 import VideoTimeline from './VideoTimeline/VideoTimeline'
 import Video from './Video/Video'
-import CaptionsButton from './CaptionsButton/CaptionsButton'
+import CaptionsMenu from './CaptionsMenu/CaptionsMenu'
+import CaptionsMenuButton from './CaptionsMenuButton/CaptionsMenuButton'
 import SubmitButton from './SubmitButton/SubmitButton'
 import styles from './Editor.module.css'
 
@@ -26,10 +25,9 @@ function Editor({ openCamera, openPublisher }) {
     <section className={styles.editor}>
       <TopNav videoRef={videoRef} openCamera={openCamera} /> 
       {captionsMenu && <CaptionsMenu closeCaptionsMenu={closeCaptionsMenu} />}
-      <MenuButton openMenu={openMenu} /> 
       <VideoTimeline videoRef={videoRef} />
       <Video videoRef={videoRef} />
-      <CaptionsButton openCaptionsMenu={openCaptionsMenu} />
+      <CaptionsMenuButton openCaptionsMenu={openCaptionsMenu} />
       <SubmitButton openPublisher={openPublisher} />
     </section>
   )
