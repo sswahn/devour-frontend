@@ -21,10 +21,9 @@ function Camera({ openEditor }) {
   const startCamera = async () => {
     try {
       const stream = await camera.on()
-      if (!mounted) { // avoid race condition with stopCamra on unmount
-   //     return camera.off(stream) // turned this off for debugging fullscreen in desktop
+      if (!mounted) { // avoids race condition with stopCamra on unmount
+        // return camera.off(stream) // turned this off for debugging fullscreen in desktop
       }
-      console.log('stream: ', stream)
       streamRef.current = stream
       videoRef.current.srcObject = stream
     } catch (error) {
@@ -36,13 +35,15 @@ function Camera({ openEditor }) {
 
   const stopCamera = event => {
     if (streamRef.current) {
-      console.log('turning camera off.')
+      
+      console.log('turning camera off. next should be unmounting.')
+      
       camera.off(streamRef.current) 
       streamRef.current = null
     }
   }
 
-  const closeCamera = event => { // this conflicted with opening editor for some reason, consider removing it
+  const closeCamera = event => {
     stopCamera()
     closeOverlay() 
     if (document.fullscreenElement) {
