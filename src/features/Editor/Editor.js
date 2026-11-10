@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import storage from '../../utilities/storage'
 import TopNav from './TopNav/TopNav'
 import VideoTimeline from './VideoTimeline/VideoTimeline'
 import Video from './Video/Video'
