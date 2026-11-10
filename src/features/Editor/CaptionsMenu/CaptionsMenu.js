@@ -9,6 +9,7 @@ import TrashCanIcon from '../../../components/Icons/TrashCanIcon/TrashCanIcon'
 import styles from './CaptionsMenu.module.css'
 
 const createDraft = () => {
+  // move this to captions provider:
   return {
     id: crypto.randomUUID(),
     text: '',
@@ -29,8 +30,9 @@ const createDraft = () => {
   }
 }
 
-function CaptionsMenu() {
+function CaptionsMenu({ caption, setCaption }) {
   const { captions, createCaption, updateCaption, deleteCaption } = useCaptions()
+  
   const [draft, setDraft] = useState(() => 
     storage.local.get(config.storage.draft) ?? createDraft()
   )
