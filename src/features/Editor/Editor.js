@@ -9,7 +9,24 @@ import styles from './Editor.module.css'
 
 function Editor({ openCamera, openPublisher }) {
   const [activeCaption, setActiveCaption] = useState(() => 
-    storage.local.get(config.storage.activeCaption) ?? {}
+    storage.local.get(config.storage.activeCaption) ?? {
+      id: crypto.randomUUID(),
+      text: '',
+      start: '',
+      end: '',
+      style: {
+        fontSize: 12,
+        color: '#ffffff',
+        bold: false,
+        italic: false,
+        underline: false,
+        stroke: 'none',
+        strokeColor: '#000000',
+        strokeWidth: 2,
+        backgroundColor: 'transparent',
+        textAlign: 'left'
+      }
+    }
   )
   const [captionsMenu, setCaptionsMenu] = useState(false)
   const videoRef = useRef(null)
@@ -27,7 +44,7 @@ function Editor({ openCamera, openPublisher }) {
   return (
     <section className={styles.editor}>
       <TopNav videoRef={videoRef} openCamera={openCamera} /> 
-      {captionsMenu && <CaptionsMenu closeCaptionsMenu={closeCaptionsMenu} />}
+      {captionsMenu && <CaptionsMenu actveCaption={activeCaption} setActiveCaption={setActiveCaption} closeCaptionsMenu={closeCaptionsMenu} />}
       <VideoTimeline videoRef={videoRef} />
       <Video videoRef={videoRef} />
       <CaptionsMenuButton openCaptionsMenu={openCaptionsMenu} />
