@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import useCaptions from '../../../hooks/useCaptions'
 import * as config from '../../../config'
 import storage from '../../../utilities/storage'
@@ -8,31 +8,10 @@ import PenToSquareIcon from '../../../components/Icons/PenToSquareIcon/PenToSqua
 import TrashCanIcon from '../../../components/Icons/TrashCanIcon/TrashCanIcon'
 import styles from './CaptionsMenu.module.css'
 
-const createDraft = () => {
-  // move this to captions provider:
-  return {
-    id: crypto.randomUUID(),
-    text: '',
-    start: '',
-    end: '',
-    style: {
-      fontSize: 12,
-      color: '#ffffff',
-      bold: false,
-      italic: false,
-      underline: false,
-      stroke: 'none',
-      strokeColor: '#000000',
-      strokeWidth: 2,
-      backgroundColor: 'transparent',
-      textAlign: 'left'
-    }
-  }
-}
-
-function CaptionsMenu({ activeCaption, setActiveCaption }) {
+function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   const { captions, createCaption, updateCaption, deleteCaption } = useCaptions()
   const [errorMessage, setErrorMessage] = useState('')
+  const captionsRef = useRef(null)
 
   const updateActiveCaption = ({ target: { id, value } }) => {
     setDraft(prev => ({ ...prev, [id]: value }))
@@ -103,12 +82,28 @@ function CaptionsMenu({ activeCaption, setActiveCaption }) {
     }
   }
 
+  const offClickToClose = event => {
+    if (captionsRef.current && !captionsRef.current.contains(event.target)) {
+      closeCaptionsMenu()
+    }
+  }
+
+  useEffect(() => {
+    if (!captionsRef.current) {
+      return
+    }
+    document.addEventListener('click', offClickToClose)
+    return () => {
+      document.removeEventListener('click', offClickToClose)
+    }
+  }, [offClickToClose])
+  
   useEffect(() => {
     storage.local.set(config.storage.activeCaption, activeCaption)
   }, [activeCaption])
 
   return (
-    <section className={styles.captionsMenu}>
+    <section ref={captionsRef} className={styles.captionsMenu}>
       <form onSubmit={onSubmit}>
         <TextToolbar textStyles={activeCaption.style} setTextStyles={updateActiveCaptionStyle} />
         <Input 
