@@ -42,7 +42,12 @@ function Video({ videoRef }) {
         // save this to composition provider:
         // const [composition, setComposition]
         // and persist it with a useEffect that sets it to dynamodb
-        const blob = await getBlob()
+        let blob = undefined
+        if (footage.length === 1) {
+          blob = footage[0].clip
+        } else {
+          blob = await concatenateVideos(footage)
+        }
         if (!mounted) {
           return 
         }
