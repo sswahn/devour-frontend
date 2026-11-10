@@ -88,16 +88,10 @@ export const concatenateVideos = async footage => {
       '-f', 'concat',
       '-safe', '0',
       '-i', manifest,
-     // '-c', 'copy',
+      '-c', 'copy',
      
       // '-c:v', 'libvpx-vp9',
       // '-c:a', 'libopus',
-
-      '-c:v', 'libvpx-vp9',
-      '-deadline', 'realtime',
-      '-cpu-used', '8',
-      '-threads', '1',
-      '-c:a', 'libopus',
       
       '-y', output
     ])
