@@ -63,7 +63,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
         backgroundColor: 'transparent',
         textAlign: 'left'
       }
-    )
+    })
   }
 
   // these click events will be moved when the button components are made.
