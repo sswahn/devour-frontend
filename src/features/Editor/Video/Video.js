@@ -8,6 +8,7 @@ import styles from './Video.module.css'
 function Video({ videoRef }) {
   const { footage } = useFootage()
   const { captions } = useCaptions()
+  const
   const [source, setSource] = useState(null)
   const [activeCaption, setActiveCaption] = useState({})
   const [loading, setLoading] = useState(false)
@@ -26,6 +27,11 @@ function Video({ videoRef }) {
   }
 
   const getBlob = async () => {
+    const ids = footage.map(clip => clip.id)
+    const match = composition.contents.every((id, index) => id === ids[index])
+    if (match) {
+      return composition.blob
+    }
     return footage.length === 1
       ? footage[0].clip
       : await concatenateVideos(footage)
@@ -42,12 +48,7 @@ function Video({ videoRef }) {
         // save this to composition provider:
         // const [composition, setComposition]
         // and persist it with a useEffect that sets it to dynamodb
-        let blob = undefined
-        if (footage.length === 1) {
-          blob = footage[0].clip
-        } else {
-          blob = await concatenateVideos(footage)
-        }
+        let blob = await getBlob()
         if (!mounted) {
           return 
         }
