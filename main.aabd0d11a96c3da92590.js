@@ -26,11 +26,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// Toggle this true/false to turn Strict Mode on or off globally
+
+const USE_STRICT_MODE = false;
+const ModeWrapper = USE_STRICT_MODE ? react__WEBPACK_IMPORTED_MODULE_1__.StrictMode : react__WEBPACK_IMPORTED_MODULE_1__.Fragment;
 function App() {
   const $ = (0,react_compiler_runtime__WEBPACK_IMPORTED_MODULE_0__.c)(1);
   let t0;
   if ($[0] === Symbol.for("react.memo_cache_sentinel")) {
-    t0 = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react__WEBPACK_IMPORTED_MODULE_1__.StrictMode, {
+    t0 = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(ModeWrapper, {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_ErrorBoundary__WEBPACK_IMPORTED_MODULE_2__["default"], {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Providers__WEBPACK_IMPORTED_MODULE_3__["default"], {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_Interface_Interface__WEBPACK_IMPORTED_MODULE_4__["default"], {})
@@ -7911,4 +7915,4 @@ __webpack_require__.r(__webpack_exports__);
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=main.7dc298888c08ca56ffb9.js.map
+//# sourceMappingURL=main.aabd0d11a96c3da92590.js.map
