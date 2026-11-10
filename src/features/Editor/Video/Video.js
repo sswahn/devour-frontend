@@ -54,7 +54,6 @@ function Video({ videoRef }) {
         activeUrl = URL.createObjectURL(blob)
         setSource(activeUrl)
       } catch (error) {
-        alert('Video export failed.')
         throw error
       } finally {
         setLoading(false)
