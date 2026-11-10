@@ -25,11 +25,11 @@ function Video({ videoRef }) {
     })
   }
 
-  const getBlob = async () => {
-    if (footage.length !== 1) {
-      return await concatenateVideos(footage)
+  const getBlob = () => {
+    if (footage.length === 1) {
+      return new Promise(resolve => resolve(footage.clip))
     } else {
-      return footage.clip
+      return concatenateVideos(footage)
     }
   }
   
