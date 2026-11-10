@@ -40,6 +40,10 @@ function Editor({ openCamera, openPublisher }) {
     setCaptionsMenu(false)
   }
 
+  useEffect(() => {
+    storage.local.set(config.storage.activeCaption, activeCaption)
+  }, [activeCaption])
+  
   // ultimately might want a <SideNav /> component above <SubmitButton />
   
   return (
