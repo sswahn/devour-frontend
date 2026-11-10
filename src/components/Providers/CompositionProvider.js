@@ -5,13 +5,13 @@ import database from '../../utilities/database'
 const CompositionContext = createContext(null)
 
 function CompositionProvider({ children }) {
-  const [composition, setComposition] = useState([])
+  const [composition, setComposition] = useState({})
   const [isHydrated, setIsHydrated] = useState(false)
 
   useEffect(() => {
     const hydrate = async () => {
       const data = await database().get(config.storage.composition)
-      if (data?.composition.length > 0) {
+      if (data?.composition?.blob?.size > 0) {
         setComposition(data.composition)
         setIsHydrated(true)
       }
