@@ -21,12 +21,11 @@ function Publisher({ openEditor }) {
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
 
-  const onChange = ({ target }) => {
-    const { id, value } = target
+  const onChange = ({ target: { id, value } }) => {
     setInput(prev => ({ ...prev, [id]: value }))
-    const item = storage.local.get(config.storage.publisher) ?? {}
-    storage.local.set(config.storage.publisher, { ...item, [id]: value })
   }
+
+
 
   const onSubmit = async event => {
     // get s3 auth
@@ -60,6 +59,10 @@ function Publisher({ openEditor }) {
       description: item?.description || ''
     })
   }
+
+  useEffect(() => {
+    storage.local.set(config.storage.publisher, input)
+  }, [input])
 
   useEffect(() => {
     loadFromStorage()
