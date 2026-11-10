@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import * as config from '../../../config'
 import storage from '../../utilities/storage'
 import TopNav from './TopNav/TopNav'
 import VideoTimeline from './VideoTimeline/VideoTimeline'
