@@ -229,7 +229,7 @@ const camera = {
     })
 
     try {
-      recorder.start(1000)
+      recorder.start()
     } catch (error) {
       recordingErrors.delete(recorder)
       throw error
