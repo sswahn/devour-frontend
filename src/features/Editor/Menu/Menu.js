@@ -10,6 +10,10 @@ function Menu({ closeMenu }) {
   const [errorMessage, setErrorMessage] = useState('')
   const listRef = useRef(null)
 
+  // TODO: get rid of menu, and create a sidenav (ultimately scrollable)
+  // move Captions to Editor to be toggled conditionally
+  // it will exist in a custom overlay, no longer in a dialog
+  // however a caption edit form will use dialog
   const handleCaptions = event => {
     closeMenu()
     openDialog(<Captions />)
