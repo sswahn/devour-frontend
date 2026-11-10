@@ -13,7 +13,7 @@ function FootageProvider({ children }) {
   useEffect(() => {
     const hydrate = async () => {
       const data = await database().get(config.storage.footage)
-      if (data.footage.length > 0) {
+      if (data?.footage.length > 0) {
         setFootage(data.footage)
         setIsHydrated(true)
       }
