@@ -21,13 +21,7 @@ const DEFAULT_AUDIO_CONSTRAINTS = {
   channelCount: 1 // 1 for mono, 2 for stereo (depends on hardware support)
 }
 
-const RECORDING_MIME_TYPES = [
-  'video/webm;codecs=vp9,opus',
-  'video/webm;codecs=vp8,opus',
-  'video/webm;codecs=h264,opus',
-  'video/webm',
-  'video/mp4'
-]
+const RECORDING_MIME_TYPE = 'video/webm;codecs=vp9,opus'
 
 function isObject(value) {
   return value !== null &&
@@ -53,18 +47,6 @@ function getTracks(stream, kind, method) {
   }
 
   return tracks
-}
-
-function selectMimeType() {
-  if (typeof MediaRecorder === 'undefined') {
-    throw new Error('MediaRecorder is not supported in this browser.')
-  }
-
-  if (typeof MediaRecorder.isTypeSupported !== 'function') {
-    return
-  }
-
-  return RECORDING_MIME_TYPES.find(type => MediaRecorder.isTypeSupported(type))
 }
 
 const camera = {
@@ -223,15 +205,10 @@ const camera = {
       throw new Error('camera.startRecording: all tracks must be live.')
     }
 
-    const mimeType = selectMimeType()
-
     const options = {
+      mimeType: RECORDING_MIME_TYPE,
       videoBitsPerSecond: 4_500_000, // 4.5 Mbps - Matches social media platform standard
       audioBitsPerSecond: 128_000    // 128 kbps - Standard for clear human speech
-    }
-
-    if (mimeType) {
-      options.mimeType = mimeType
     }
 
     const recorder = new MediaRecorder(stream, options)
