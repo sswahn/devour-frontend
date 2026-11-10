@@ -252,7 +252,7 @@ const camera = {
     })
 
     try {
-      recorder.start()
+      recorder.start(1000)
     } catch (error) {
       recordingErrors.delete(recorder)
       throw error
