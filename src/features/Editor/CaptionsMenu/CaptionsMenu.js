@@ -30,19 +30,15 @@ const createDraft = () => {
   }
 }
 
-function CaptionsMenu({ caption, setCaption }) {
+function CaptionsMenu({ activeCaption, setActiveCaption }) {
   const { captions, createCaption, updateCaption, deleteCaption } = useCaptions()
-  
-  const [draft, setDraft] = useState(() => 
-    storage.local.get(config.storage.draft) ?? createDraft()
-  )
   const [errorMessage, setErrorMessage] = useState('')
 
-  const updateDraft = ({ target: { id, value } }) => {
+  const updateActiveCaption = ({ target: { id, value } }) => {
     setDraft(prev => ({ ...prev, [id]: value }))
   }
 
-  const updateDraftStyle = style => {
+  const updateActiveCaptionStyle = style => {
     setDraft(prev => ({ ...prev, style: { ...prev.style, ...style } }))
   }
   
@@ -64,14 +60,31 @@ function CaptionsMenu({ caption, setCaption }) {
     // this component needs the duration of the concatenated blob created in Editor
 
     const data = {
-      id: draft.id,
-      text: draft.text.trim(), // validate
-      start: draft.start.trim(), // validate
-      end: draft.end.trim(), // validate
-      style: draft.style
+      id: activeCaption.id,
+      text: activeCaption.text.trim(), // validate
+      start: activeCaption.start.trim(), // validate
+      end: activeCaption.end.trim(), // validate
+      style: activeCaption.style
     }
     createCaption(data)
-    setDraft(createDraft())
+    setActiveCaption({
+      id: crypto.randomUUID(),
+      text: '',
+      start: '',
+      end: '',
+      style: {
+        fontSize: 12,
+        color: '#ffffff',
+        bold: false,
+        italic: false,
+        underline: false,
+        stroke: 'none',
+        strokeColor: '#000000',
+        strokeWidth: 2,
+        backgroundColor: 'transparent',
+        textAlign: 'left'
+      }
+    )
   }
 
   // these click events will be moved when the button components are made.
@@ -91,18 +104,18 @@ function CaptionsMenu({ caption, setCaption }) {
   }
 
   useEffect(() => {
-    storage.local.set(config.storage.draft, draft)
-  }, [draft])
+    storage.local.set(config.storage.activeCaption, activeCaption)
+  }, [activeCaption])
 
   return (
     <section className={styles.captionsMenu}>
       <form onSubmit={onSubmit}>
-        <TextToolbar textStyles={draft.style} setTextStyles={updateDraftStyle} />
+        <TextToolbar textStyles={activeCaption.style} setTextStyles={updateActiveCaptionStyle} />
         <Input 
           id="text"
           type="text"
           label="Add a caption"
-          value={draft.text}
+          value={activeCaption.text}
           error={errorMessage}
           onChange={updateDraft}
           required />
@@ -112,7 +125,7 @@ function CaptionsMenu({ caption, setCaption }) {
           type="number" 
           step="any"
           label="Start"
-          value={draft.start} // consider getting default value from timeline
+          value={activeCaption.start} // consider getting default value from timeline
           error={errorMessage}
           onChange={updateDraft}
           required />
@@ -122,7 +135,7 @@ function CaptionsMenu({ caption, setCaption }) {
           type="number" 
           step="any"
           label="End"
-          value={draft.end}
+          value={activeCaption.end}
           error={errorMessage}
           onChange={updateDraft}
           required />
