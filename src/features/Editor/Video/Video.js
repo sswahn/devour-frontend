@@ -10,7 +10,6 @@ function Video({ videoRef }) {
   const { composition, setComposition } = useComposition()
   const { footage } = useFootage()
   const { captions } = useCaptions()
-  const
   const [source, setSource] = useState(null)
   const [activeCaption, setActiveCaption] = useState({})
   const [loading, setLoading] = useState(false)
