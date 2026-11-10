@@ -32,11 +32,12 @@ function Video({ videoRef }) {
     const ids = footage.map(item => item.id)
     const match = composition.contents?.join() === ids.join()
     if (match) {
-      return composition.blob
+      return { blob: composition.blob, cached: true }
     }
-    return footage.length === 1
+    const blob = footage.length === 1
       ? footage[0].clip
       : await concatenateVideos(footage)
+    return { blob, cached: false }
   }
   
   useEffect(() => {
@@ -46,9 +47,10 @@ function Video({ videoRef }) {
     const init = async () => {
       try {
         setLoading(true)
-        let blob = await getBlob()
-        // dont set composition if blob is composition.blob:
-        setComposition({ blob, contents: footage.map(item => item.id) })
+        const { blob, cached } = await getBlob()
+        if (!cached) {
+          setComposition({ blob, contents: footage.map(item => item.id) })
+        }
         if (!mounted) {
           return 
         }
