@@ -28,11 +28,14 @@ function Publisher({ openEditor }) {
     setInput(prev => ({ ...prev, [id]: value }))
   }
 
-
-
   const onSubmit = async event => {
-    // get s3 auth
+    // final submit should resemble:
+    // set to queue in indexeddb
+    // then delete all other local persistance.
+    // then hand off to the service worker to handle
+    // upload requests 
 
+    // for now test the request inline here
     try {
       event.preventDefault()
       setLoading(true)
@@ -40,12 +43,17 @@ function Publisher({ openEditor }) {
       const location = formData.get('location').trim()
       const description = formData.get('description').trim()
       
-      const request = {
+      const initialRequest = {
      //   location: validate.location(location), // add to validate util
     //    description: validate.description(description) 
+     //   captions 
+      //  etc.
       }
-  
-     // const response = await server.post(api.publish, request)
+
+      // store text data to dynamodb, and retrieve presigned key
+     // const response = await server.post(config.api.publish, initialRequest)
+      // then send { blob: composition.blob, etc. } to S3
+      
       //setMessage('Success.')
       
     } catch (error) {
