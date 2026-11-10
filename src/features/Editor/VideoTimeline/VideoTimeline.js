@@ -13,12 +13,10 @@ function VideoTimeline({ videoRef }) {
   }
 
   const onTimeUpdate = event => {
-    console.log('executing onTimeUpdate.')
     const { currentTime, duration } = event.currentTarget
     if (!Number.isFinite(duration) || duration <= 0) {
       return
     }
-    console.log('setting progress state for timeline bar width.')
     setProgress((currentTime / duration) * 100)
   }
 
