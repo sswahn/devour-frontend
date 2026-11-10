@@ -47,6 +47,7 @@ function Video({ videoRef }) {
       try {
         setLoading(true)
         let blob = await getBlob()
+        // dont set composition if blob is composition.blob:
         setComposition({ blob, contents: footage.map(item => item.id) })
         if (!mounted) {
           return 
