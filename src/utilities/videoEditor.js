@@ -42,14 +42,18 @@ const cleanup = async (ffmpeg, files) => {
   }
 }
 
-const inspectVideo = async (blob, index) => {
-  const duration = await getDuration(blob)
+const inspectVideo = async (label, blob) => {
+  try {
+    const duration = await getDuration(blob)
 
-  console.log(`Clip ${index}`, {
-    size: blob.size,
-    type: blob.type,
-    duration
-  })
+    console.log(label, {
+      size: blob.size,
+      type: blob.type,
+      duration
+    })
+  } catch (error) {
+    console.error(`${label} failed`, error)
+  }
 }
 
 export const concatenateVideos = async footage => {
@@ -67,9 +71,8 @@ export const concatenateVideos = async footage => {
     ffmpeg = await createFFmpeg()
     await Promise.all(footage.map(async ({ clip }, index) => {
  
-      console.log(`Before concat: clip ${index}`)
       console.log(`Actual clip: ${clip}`)
-      await inspectVideo(clip, index)
+      await inspectVideo(`Input clip ${index}`, clip)
       
       await ffmpeg.writeFile(inputs[index], await fetchFile(clip))
     }))
@@ -83,7 +86,11 @@ export const concatenateVideos = async footage => {
       '-y', output
     ])
     const data = await ffmpeg.readFile(output)
-    return new Blob([data], { type: 'video/webm' })
+    const result = new Blob([data], { type: 'video/webm' })
+    
+    await inspectVideo('Concatenated output', result)
+    
+    return result
   } finally {
     if (ffmpeg !== null) {
       await cleanup(ffmpeg, files)
