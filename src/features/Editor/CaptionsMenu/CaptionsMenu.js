@@ -126,24 +126,8 @@ function CaptionsMenu() {
           required />
         <button type="submit" aria-label="submit caption">Submit</button>
       </form>
+      {/* move draft state to parent so live updates can appear in the editor figcaption */}
       {draft.text && <div style={draft.style}>{draft.text}</div>}
-      <ul>
-        {captions.map(item => 
-          <li key={item.id} id={item.id}>
-            <div>
-              <p style={item.style}>{item.text}</p>
-              <div>
-                <button onClick={handleEdit} type="button" aria-label="edit caption">
-                  <PenToSquareIcon size={16} />
-                </button>
-                <button onClick={handleDelete} type="button" aria-label="delete caption">
-                  <TrashCanIcon size={16} />
-                </button>
-              </div>
-            </div>
-          </li>
-        )}
-      </ul>
     </section>
   )
 }
