@@ -24,10 +24,6 @@ function Video({ videoRef }) {
       return matchingCaption ?? {}
     })
   }
-
-  const createSource = blob => {
-    
-  }
   
   useEffect(() => {
     let mounted = true
