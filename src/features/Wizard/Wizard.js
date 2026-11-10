@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { FootageProvider } from '../../components/Providers/FootageProvider'
+import { CompositionProvider } from '../../components/Providers/CompositionProvider'
 import { CaptionsProvider } from '../../components/Providers/CaptionsProvider'
 import Camera from '../Camera/Camera'
 import Editor from '../Editor/Editor'
@@ -28,11 +29,13 @@ function Wizard() {
   return (
     <section className={styles.wizard}>
       <FootageProvider>
-        <CaptionsProvider>
-          {overlay === 'camera' && <Camera openEditor={openEditor} />}
-          {overlay === 'editor' && <Editor openCamera={openCamera} openPublisher={openPublisher} />}
-          {overlay === 'publisher' && <Publisher openEditor={openEditor} />} 
-        </CaptionsProvider>
+        <CompositionProvider>
+          <CaptionsProvider>
+            {overlay === 'camera' && <Camera openEditor={openEditor} />}
+            {overlay === 'editor' && <Editor openCamera={openCamera} openPublisher={openPublisher} />}
+            {overlay === 'publisher' && <Publisher openEditor={openEditor} />} 
+          </CaptionsProvider>
+        </CompositionProvider>
       </FootageProvider>
     </section>
   )
