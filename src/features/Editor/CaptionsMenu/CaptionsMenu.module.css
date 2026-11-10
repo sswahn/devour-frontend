@@ -1,10 +1,11 @@
 /* Editor Caption Input */
 
 .captionsMenu {
-  margin-top: 32px;
-}
+  height: auto;
+  left: 8px;
+  position: absolute;
+  right: 8px;
+  top: 8px;
 
-.captionsMenu ul {
-  list-style-type: none;
-  margin-top: 8px;
+  border: 1px dashed red;
 }
