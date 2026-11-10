@@ -6,7 +6,7 @@ import TextToolbar from '../../../components/TextToolbar/TextToolbar'
 import Input from '../../../components/Input/Input'
 import PenToSquareIcon from '../../../components/Icons/PenToSquareIcon/PenToSquareIcon'
 import TrashCanIcon from '../../../components/Icons/TrashCanIcon/TrashCanIcon'
-import styles from './Captions.module.css'
+import styles from './CaptionsMenu.module.css'
 
 const createDraft = () => {
   return {
@@ -29,7 +29,7 @@ const createDraft = () => {
   }
 }
 
-function Captions() {
+function CaptionsMenu() {
   const { captions, createCaption, updateCaption, deleteCaption } = useCaptions()
   const [draft, setDraft] = useState(() => 
     storage.local.get(config.storage.draft) ?? createDraft()
@@ -93,7 +93,7 @@ function Captions() {
   }, [draft])
 
   return (
-    <section className={styles.captions}>
+    <section className={styles.captionsMenu}>
       <form onSubmit={onSubmit}>
         <TextToolbar textStyles={draft.style} setTextStyles={updateDraftStyle} />
         <Input 
@@ -148,4 +148,4 @@ function Captions() {
   )
 }
 
-export default Captions
+export default CaptionsMenu
