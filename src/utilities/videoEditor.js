@@ -93,8 +93,10 @@ export const concatenateVideos = async footage => {
       // '-c:v', 'libvpx-vp9',
       // '-c:a', 'libopus',
 
-      '-c:v', 'libvpx',
-      '-b:v', '2M',
+      '-c:v', 'libvpx-vp9',
+      '-deadline', 'realtime',
+      '-cpu-used', '8',
+      '-threads', '1',
       '-c:a', 'libopus',
       
       '-y', output
