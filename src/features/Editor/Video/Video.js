@@ -1,11 +1,13 @@
 import { useState, useEffect, useRef } from 'react'
 import useFootage from '../../../hooks/useFootage'
+import useComposition from '../../../hooks/useComposition'
 import useCaptions from '../../../hooks/useCaptions'
 import { concatenateVideos } from '../../../utilities/videoEditor'
 import LoadingSpinner from '../../../components/LoadingSpinner/LoadingSpinner'
 import styles from './Video.module.css'
 
 function Video({ videoRef }) {
+  const { composition, setComposition } = useComposition()
   const { footage } = useFootage()
   const { captions } = useCaptions()
   const
@@ -27,7 +29,7 @@ function Video({ videoRef }) {
   }
 
   const getBlob = async () => {
-    const ids = footage.map(clip => clip.id)
+    const ids = footage.map(item => item.id)
     const match = composition.contents.every((id, index) => id === ids[index])
     if (match) {
       return composition.blob
@@ -44,11 +46,8 @@ function Video({ videoRef }) {
     const init = async () => {
       try {
         setLoading(true)
-        
-        // save this to composition provider:
-        // const [composition, setComposition]
-        // and persist it with a useEffect that sets it to dynamodb
         let blob = await getBlob()
+        setComposition({ blob, contents: footage.map(item => item.id) })
         if (!mounted) {
           return 
         }
