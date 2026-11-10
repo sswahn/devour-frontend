@@ -1,4 +1,4 @@
-import ClosedCaptioningIcon from '../../components/Icons/ClosedCaptioningIcon/ClosedCaptioningIcon'
+import ClosedCaptioningIcon from '../../../components/Icons/ClosedCaptioningIcon/ClosedCaptioningIcon'
 import styles from './CaptionsMenuButton.module.css'
 
 function CaptionsMenuButton({ openCaptionsMenu }) {
