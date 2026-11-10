@@ -1,0 +1,18 @@
+/* Editor Captions Menu Button */
+
+.captionsMenuButton {
+  align-items: center; 
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 50%;
+  bottom: 48px;
+  cursor: pointer;
+  display: flex;
+  height: 44px;
+  justify-content: center;
+  padding: 10px;
+  position: absolute;
+  right: 8px;
+  width: 44px;
+  z-index: 300;
+}
