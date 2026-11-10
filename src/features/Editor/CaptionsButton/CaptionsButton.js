@@ -4,7 +4,7 @@ import styles from './CaptionsButton.module.css'
 function CaptionsButton({ openCaptions }) {
 
   const onClick = event => {
-    navigator.vibrate?(50)
+    navigator.vibrate?.(50)
     openCaptions()
   }
   
