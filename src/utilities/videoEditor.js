@@ -56,14 +56,21 @@ export const concatenateVideos = async footage => {
   if (!Array.isArray(footage) || footage.length === 0 || footage.some(item => !(item?.clip instanceof Blob))) {
     throw new Error('Provide an array of video clips.')
   }
+  
   let ffmpeg = null
   const inputs = footage.map((_, index) => `clip${index}.webm`)
   const manifest = 'footage.txt'
   const output = 'output.webm'
   const files = [...inputs, manifest, output]
+  
   try {
     ffmpeg = await createFFmpeg()
     await Promise.all(footage.map(async ({ clip }, index) => {
+ 
+      console.log(`Before concat: clip ${index}`)
+      console.log(`Actual clip: ${clip}`)
+      await inspectVideo(clip, index)
+      
       await ffmpeg.writeFile(inputs[index], await fetchFile(clip))
     }))
     const list = inputs.map(file => `file '${file}'`).join('\n')
