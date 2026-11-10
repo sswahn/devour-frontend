@@ -12,18 +12,22 @@ function Video({ videoRef }) {
   const [activeCaption, setActiveCaption] = useState({})
   const [loading, setLoading] = useState(false)
 
-const onTimeUpdate = event => {
-  const { currentTime } = event.currentTarget
-  const matchingCaption = captions.find(caption => {
-    return (currentTime >= Number(caption.start) && currentTime <= Number(caption.end))
-  })
-  setActiveCaption(prev => {
-    if (matchingCaption?.id === prev?.id) {
-      return prev
-    }
-    return matchingCaption ?? {}
-  })
-}
+  const onTimeUpdate = event => {
+    const { currentTime } = event.currentTarget
+    const matchingCaption = captions.find(caption => {
+      return (currentTime >= Number(caption.start) && currentTime <= Number(caption.end))
+    })
+    setActiveCaption(prev => {
+      if (matchingCaption?.id === prev?.id) {
+        return prev
+      }
+      return matchingCaption ?? {}
+    })
+  }
+
+  const createSource = blob => {
+    
+  }
   
   useEffect(() => {
     let mounted = true
@@ -32,10 +36,10 @@ const onTimeUpdate = event => {
     const init = async () => {
       try {
         setLoading(true)
-        const blob = await concatenateVideos(footage)
         // save this to composition provider:
         // const [composition, setComposition]
         // and persist it with a useEffect that sets it to dynamodb
+        const blob = footage.length === 1 ? footage.clip : await concatenateVideos(footage)
         if (!mounted) {
           return 
         }
