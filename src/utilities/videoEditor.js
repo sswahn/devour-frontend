@@ -83,8 +83,14 @@ export const concatenateVideos = async footage => {
       '-safe', '0',
       '-i', manifest,
      // '-c', 'copy',
-      '-c:v', 'libvpx-vp9',
+     
+      // '-c:v', 'libvpx-vp9',
+      // '-c:a', 'libopus',
+
+      '-c:v', 'libvpx',
+      '-b:v', '2M',
       '-c:a', 'libopus',
+      
       '-y', output
     ])
     const data = await ffmpeg.readFile(output)
