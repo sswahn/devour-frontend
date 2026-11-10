@@ -8,7 +8,7 @@ import styles from './Video.module.css'
 function Video({ videoRef }) {
   const { footage } = useFootage()
   const { captions } = useCaptions()
-  const [source, setSource] = useState('')
+  const [source, setSource] = useState(null)
   const [activeCaption, setActiveCaption] = useState({})
   const [loading, setLoading] = useState(false)
 
