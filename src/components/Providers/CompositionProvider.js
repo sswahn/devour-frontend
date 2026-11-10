@@ -8,8 +8,6 @@ function CompositionProvider({ children }) {
   const [composition, setComposition] = useState([])
   const [isHydrated, setIsHydrated] = useState(false)
 
-  // create crud functions instead of exposing setFootage, then you can typecheck/error handle
-
   useEffect(() => {
     const hydrate = async () => {
       const data = await database().get(config.storage.composition)
