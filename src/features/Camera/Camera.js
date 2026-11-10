@@ -76,7 +76,10 @@ function Camera({ openEditor }) {
       <ViewPort videoRef={videoRef} />
       <RecordButton mode={mode} setMode={setMode} streamRef={streamRef} isExpired={isExpired} />
       {/* footage.length > 0 && */ }
-    <EditorButton openEditor={openEditor} />
+    <EditorButton openEditor={() => { // break this out into a function
+      stopCamera()
+      openEditor()
+    }} />
    
     </section>
   )
