@@ -30,7 +30,7 @@ function Video({ videoRef }) {
 
   const getBlob = async () => {
     const ids = footage.map(item => item.id)
-    const match = composition.contents.every((id, index) => id === ids[index])
+    const match = composition.contents?.every((id, index) => id === ids[index])
     if (match) {
       return composition.blob
     }
