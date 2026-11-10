@@ -9,7 +9,7 @@ import TextArea from '../../components/TextArea/TextArea'
 import styles from './Publisher.module.css'
 
 function Publisher({ openEditor }) {
-  const { composition, setComposition } = useComposition()
+  const { composition } = useComposition()
   const { captions } = useCaptions()
   const [input, setInput] = useState({
     location: '',
