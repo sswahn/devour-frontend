@@ -14,9 +14,12 @@ import styles from './Publisher.module.css'
 function Publisher({ openEditor }) {
   const { composition } = useComposition()
   const { captions } = useCaptions()
-  const [input, setInput] = useState({
-    location: '',
-    description: ''
+  const [input, setInput] = useState(() => {
+    const item = storage.local.get(config.storage.publisher)
+    return {
+      location: item?.location || '',
+      description: item?.description || ''
+    }
   })
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
@@ -52,21 +55,9 @@ function Publisher({ openEditor }) {
     }
   }
 
-  const loadFromStorage = async () => {
-    const item = storage.local.get(config.storage.publisher)
-    setInput({
-      location: item?.location || '',
-      description: item?.description || ''
-    })
-  }
-
   useEffect(() => {
     storage.local.set(config.storage.publisher, input)
   }, [input])
-
-  useEffect(() => {
-    loadFromStorage()
-  }, [])
 
   return (
     <section className={styles.publisher}>
