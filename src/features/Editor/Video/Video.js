@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
-import useFootage from '../../../hooks/useFootage'
 import useComposition from '../../../hooks/useComposition'
+import useFootage from '../../../hooks/useFootage'
 import useCaptions from '../../../hooks/useCaptions'
 import { concatenateVideos } from '../../../utilities/videoEditor'
 import LoadingSpinner from '../../../components/LoadingSpinner/LoadingSpinner'
