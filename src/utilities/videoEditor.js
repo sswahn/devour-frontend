@@ -42,6 +42,16 @@ const cleanup = async (ffmpeg, files) => {
   }
 }
 
+const inspectVideo = async (blob, index) => {
+  const duration = await getDuration(blob)
+
+  console.log(`Clip ${index}`, {
+    size: blob.size,
+    type: blob.type,
+    duration
+  })
+}
+
 export const concatenateVideos = async footage => {
   if (!Array.isArray(footage) || footage.length === 0 || footage.some(item => !(item?.clip instanceof Blob))) {
     throw new Error('Provide an array of video clips.')
