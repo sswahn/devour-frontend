@@ -4120,7 +4120,7 @@ const api = {
   comments: '/api/v1/comments'
 };
 const storage = {
-  draft: 'draft',
+  activeCaption: 'activeCaption',
   captions: 'captions',
   footage: 'footage',
   publisher: 'publisher'
@@ -7915,4 +7915,4 @@ __webpack_require__.r(__webpack_exports__);
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=main.aabd0d11a96c3da92590.js.map
+//# sourceMappingURL=main.3a5372e2e9e0fdbf8a67.js.map
