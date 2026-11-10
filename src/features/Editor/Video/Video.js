@@ -32,6 +32,7 @@ function Video({ videoRef }) {
     const init = async () => {
       try {
         setLoading(true)
+        
         // save this to composition provider:
         // const [composition, setComposition]
         // and persist it with a useEffect that sets it to dynamodb
