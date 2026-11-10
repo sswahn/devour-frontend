@@ -76,8 +76,14 @@ export const concatenateVideos = async footage => {
       
       await ffmpeg.writeFile(inputs[index], await fetchFile(clip))
     }))
+
+    console.log('FFmpeg: writing manifest')
+    
     const list = inputs.map(file => `file '${file}'`).join('\n')
     await ffmpeg.writeFile(manifest, list)
+
+    console.log('FFmpeg: executing')
+    
     await ffmpeg.exec([
       '-f', 'concat',
       '-safe', '0',
@@ -94,6 +100,9 @@ export const concatenateVideos = async footage => {
       '-y', output
     ])
     const data = await ffmpeg.readFile(output)
+
+    console.log('FFmpeg: output read')
+    
     const result = new Blob([data], { type: 'video/webm' })
     
     await inspectVideo('Concatenated output', result)
