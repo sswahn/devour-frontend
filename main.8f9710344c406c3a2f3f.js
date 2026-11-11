@@ -4792,6 +4792,9 @@ function CommentsButton(t0) {
   let t1;
   if ($[0] !== openComments) {
     t1 = event => {
+      if (!event.isTrusted) {
+        return;
+      }
       navigator.vibrate?.(50);
       openComments();
     };
@@ -7925,4 +7928,4 @@ __webpack_require__.r(__webpack_exports__);
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=main.07945f186cde5e97d3f2.js.map
+//# sourceMappingURL=main.8f9710344c406c3a2f3f.js.map
