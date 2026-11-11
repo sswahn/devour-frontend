@@ -40,9 +40,6 @@ function Register() {
   }
 
   const onSubmit = async event => {    
-    if (!event.isTrusted) {
-      return
-    }
     try {
       event.preventDefault()
       navigator.vibrate?.(50)
