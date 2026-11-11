@@ -5,6 +5,9 @@ import styles from './ShareButton.module.css'
 function ShareButton({ isLongPress }) {
 
   const onClick = event => {
+    if (!event.isTrusted) {
+      return
+    }
     navigator.vibrate?.(50)
     // check navigator.canShare(file) to verify file sharing support 
     navigator.share({
