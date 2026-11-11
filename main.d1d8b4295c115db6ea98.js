@@ -5371,6 +5371,9 @@ function LikeButton(t0) {
       setLiked(_temp);
     };
     t3 = event => {
+      if (!event.isTrusted) {
+        return;
+      }
       navigator.vibrate?.(50);
       action();
     };
@@ -7915,4 +7918,4 @@ __webpack_require__.r(__webpack_exports__);
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=main.3a5372e2e9e0fdbf8a67.js.map
+//# sourceMappingURL=main.d1d8b4295c115db6ea98.js.map
