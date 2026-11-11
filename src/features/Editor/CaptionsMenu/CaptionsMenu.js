@@ -24,8 +24,9 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   const onSubmit = async event => {
     event.preventDefault()
 
-    // validate start/end dont overlap
+    // This validates start/end dont overlap
     // break this out into its own function probably part of validation utility:
+    /*
     const sorted = [...captions].sort((a, b) => a.start - b.start)
     const conflicted = sorted.some((caption, index) =>
       index > 0 && caption.start < sorted[index - 1].end
@@ -33,7 +34,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
     if (conflicted) {
       return alert('This caption conflicts with an existing caption.')
     }
-
+    */
 
     // in the valdiation util, for END, need to check end isnt outside video duration
     // this component needs the duration of the concatenated blob created in Editor
@@ -101,6 +102,8 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   useEffect(() => {
     storage.local.set(config.storage.activeCaption, activeCaption)
   }, [activeCaption])
+
+  console.log('activeCaption: ', activeCaption)
 
   return (
     <section ref={captionsRef} className={styles.captionsMenu}>
