@@ -67,7 +67,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
     })
   }
 
-  // these click events will be moved when the button components are made.
+  /* these click events will be moved to the edit caption form
   const handleEdit = async event => {
     const id = event.target.closest('li').id
     const data = {
@@ -82,6 +82,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
       deleteCaption(id)
     }
   }
+  */
 
   const offClickToClose = event => {
     if (captionsRef.current && !captionsRef.current.contains(event.target)) {
@@ -99,8 +100,6 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
     }
   }, [offClickToClose])
 
-  console.log('activeCaption: ', activeCaption)
-
   return (
     <section ref={captionsRef} className={styles.captionsMenu}>
       <form onSubmit={onSubmit}>
@@ -111,7 +110,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
           label="Add a caption"
           value={activeCaption.text}
           error={errorMessage}
-          onChange={updateDraft}
+          onChange={updateActiveCaption}
           required />
         <Input
           id="start"
@@ -121,7 +120,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
           label="Start"
           value={activeCaption.start} // consider getting default value from timeline
           error={errorMessage}
-          onChange={updateDraft}
+          onChange={updateActiveCaption}
           required />
         <Input
           id="end"
@@ -131,16 +130,10 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
           label="End"
           value={activeCaption.end}
           error={errorMessage}
-          onChange={updateDraft}
+          onChange={updateActiveCaption}
           required />
         <button type="submit" aria-label="submit caption">Submit</button>
       </form>
-      {/* 
-      move draft state to parent so live updates can appear in the editor figcaption
-      or... absolutely position this following <p> where figcaption would be, 
-      to give the impression of what it would look like.
-      */}
-      {draft.text && <p style={draft.style}>{draft.text}</p>}
     </section>
   )
 }
