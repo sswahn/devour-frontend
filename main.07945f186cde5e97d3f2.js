@@ -5496,7 +5496,11 @@ function LocationButton() {
   }
   return t0;
 }
-function _temp(event) {}
+function _temp(event) {
+  if (!event.isTrusted) {
+    return;
+  }
+}
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LocationButton);
 
 /***/ },
@@ -7921,4 +7925,4 @@ __webpack_require__.r(__webpack_exports__);
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=main.55c99291d0276cb14a3e.js.map
+//# sourceMappingURL=main.07945f186cde5e97d3f2.js.map
