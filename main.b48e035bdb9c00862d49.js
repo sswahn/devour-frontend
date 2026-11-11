@@ -5349,7 +5349,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function LikeButton(t0) {
-  const $ = (0,react_compiler_runtime__WEBPACK_IMPORTED_MODULE_0__.c)(17);
+  const $ = (0,react_compiler_runtime__WEBPACK_IMPORTED_MODULE_0__.c)(18);
   const {
     isDoubleTap,
     likedByUser: t1
@@ -5370,88 +5370,96 @@ function LikeButton(t0) {
   const init = t2;
   let t3;
   if ($[2] === Symbol.for("react.memo_cache_sentinel")) {
-    const action = async () => {
+    t3 = async () => {
       setLiked(_temp);
     };
-    t3 = event => {
+    $[2] = t3;
+  } else {
+    t3 = $[2];
+  }
+  const action = t3;
+  let t4;
+  if ($[3] === Symbol.for("react.memo_cache_sentinel")) {
+    t4 = event => {
       if (!event.isTrusted) {
         return;
       }
       navigator.vibrate?.(50);
       action();
     };
-    $[2] = t3;
+    $[3] = t4;
   } else {
-    t3 = $[2];
+    t4 = $[3];
   }
-  const onClick = t3;
-  let t4;
-  if ($[3] !== liked) {
-    t4 = () => {
+  const onClick = t4;
+  let t5;
+  if ($[4] !== liked) {
+    t5 = () => {
       if (!liked) {
-        onClick();
+        navigator.vibrate?.(50);
+        action();
       }
     };
-    $[3] = liked;
-    $[4] = t4;
+    $[4] = liked;
+    $[5] = t5;
   } else {
-    t4 = $[4];
+    t5 = $[5];
   }
-  let t5;
-  if ($[5] !== isDoubleTap) {
-    t5 = [isDoubleTap];
-    $[5] = isDoubleTap;
-    $[6] = t5;
-  } else {
-    t5 = $[6];
-  }
-  ;(0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(t4, t5);
   let t6;
-  if ($[7] !== init) {
-    t6 = () => {
+  if ($[6] !== isDoubleTap) {
+    t6 = [isDoubleTap];
+    $[6] = isDoubleTap;
+    $[7] = t6;
+  } else {
+    t6 = $[7];
+  }
+  ;(0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(t5, t6);
+  let t7;
+  if ($[8] !== init) {
+    t7 = () => {
       init();
     };
-    $[7] = init;
-    $[8] = t6;
+    $[8] = init;
+    $[9] = t7;
   } else {
-    t6 = $[8];
+    t7 = $[9];
   }
-  let t7;
-  if ($[9] !== likedByUser) {
-    t7 = [likedByUser];
-    $[9] = likedByUser;
-    $[10] = t7;
-  } else {
-    t7 = $[10];
-  }
-  ;(0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(t6, t7);
   let t8;
-  if ($[11] !== liked) {
-    t8 = liked ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_Icons_HeartIcon_HeartIconFill__WEBPACK_IMPORTED_MODULE_3__["default"], {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_Icons_HeartIcon_HeartIconStroke__WEBPACK_IMPORTED_MODULE_4__["default"], {});
-    $[11] = liked;
-    $[12] = t8;
+  if ($[10] !== likedByUser) {
+    t8 = [likedByUser];
+    $[10] = likedByUser;
+    $[11] = t8;
   } else {
-    t8 = $[12];
+    t8 = $[11];
   }
+  ;(0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(t7, t8);
   let t9;
-  if ($[13] !== liked || $[14] !== loading || $[15] !== t8) {
-    t9 = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+  if ($[12] !== liked) {
+    t9 = liked ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_Icons_HeartIcon_HeartIconFill__WEBPACK_IMPORTED_MODULE_3__["default"], {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_Icons_HeartIcon_HeartIconStroke__WEBPACK_IMPORTED_MODULE_4__["default"], {});
+    $[12] = liked;
+    $[13] = t9;
+  } else {
+    t9 = $[13];
+  }
+  let t10;
+  if ($[14] !== liked || $[15] !== loading || $[16] !== t9) {
+    t10 = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
       className: _LikeButton_module_css__WEBPACK_IMPORTED_MODULE_5__["default"].likeButton,
       onClick: onClick,
       disabled: loading,
       type: "button",
       "aria-label": "like this",
       "aria-pressed": liked,
-      children: t8
+      children: t9
     });
-    $[13] = liked;
-    $[14] = loading;
-    $[15] = t8;
+    $[14] = liked;
+    $[15] = loading;
     $[16] = t9;
+    $[17] = t10;
   } else {
-    t9 = $[16];
+    t10 = $[17];
   }
-  return t9;
+  return t10;
 }
 function _temp(prev) {
   return !prev;
@@ -7925,4 +7933,4 @@ __webpack_require__.r(__webpack_exports__);
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=main.07945f186cde5e97d3f2.js.map
+//# sourceMappingURL=main.b48e035bdb9c00862d49.js.map
