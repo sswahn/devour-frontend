@@ -28,7 +28,8 @@ function LikeButton({ isDoubleTap, likedByUser = false }) {
 
   useEffect(() => {
     if (!liked) {
-      onClick()
+      navigator.vibrate?.(50)
+      action()
     }
   }, [isDoubleTap])
 
