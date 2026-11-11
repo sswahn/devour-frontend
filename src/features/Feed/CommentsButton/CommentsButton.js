@@ -8,6 +8,9 @@ function CommentsButton({ openComments }) {
   const buttonRef = useRef(null)
   
   const onClick = event => {
+    if (!event.isTrusted) {
+      return
+    }
     navigator.vibrate?.(50)
     openComments()
   }
