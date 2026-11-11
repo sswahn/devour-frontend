@@ -11,9 +11,6 @@ function LoginForm() {
   const [errors, setErrors] = useState({})
   
   const onSubmit = async event => {
-    if (!event.isTrusted) {
-      return
-    }
     try {
       event.preventDefault()
       navigator.vibrate?.(50)
