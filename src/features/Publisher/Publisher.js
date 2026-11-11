@@ -28,6 +28,9 @@ function Publisher({ openEditor }) {
   }
 
   const onSubmit = async event => {
+    if (!event.isTrusted) {
+      return
+    }
     // final submit should resemble:
     // set to queue in indexeddb
     // then delete all other local persistance.
