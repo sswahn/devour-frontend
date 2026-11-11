@@ -14,16 +14,17 @@ export const overlay = {
 }
 
 export const api = {
+  comments: '/api/v1/comments',
   login: '/api/v1/login',
   logout: '/api/v1/logout',
-  register: '/api/v1/register',
-  session: '/api/v1/session',
   posts: '/api/v1/posts',
-  comments: '/api/v1/comments'
+  register: '/api/v1/register',
+  session: '/api/v1/session'
 }
 
 export const storage = {
   activeCaption: 'activeCaption',
+  composition: 'composition',
   captions: 'captions',
   footage: 'footage',
   publisher: 'publisher'
