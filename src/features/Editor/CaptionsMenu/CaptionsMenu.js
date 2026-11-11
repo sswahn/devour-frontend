@@ -98,10 +98,6 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
       document.removeEventListener('click', offClickToClose)
     }
   }, [offClickToClose])
-  
-  useEffect(() => {
-    storage.local.set(config.storage.activeCaption, activeCaption)
-  }, [activeCaption])
 
   console.log('activeCaption: ', activeCaption)
 
