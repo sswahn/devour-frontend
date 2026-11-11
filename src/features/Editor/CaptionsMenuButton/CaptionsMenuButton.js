@@ -5,7 +5,7 @@ function CaptionsMenuButton({ openCaptionsMenu }) {
 
   const onClick = event => {
     navigator.vibrate?.(50)
-    openCaptions()
+    openCaptionsMenu()
   }
   
   return (
