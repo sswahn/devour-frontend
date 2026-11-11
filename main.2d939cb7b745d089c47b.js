@@ -4112,15 +4112,16 @@ const overlay = {
   wizard: 'wizard'
 };
 const api = {
+  comments: '/api/v1/comments',
   login: '/api/v1/login',
   logout: '/api/v1/logout',
-  register: '/api/v1/register',
-  session: '/api/v1/session',
   posts: '/api/v1/posts',
-  comments: '/api/v1/comments'
+  register: '/api/v1/register',
+  session: '/api/v1/session'
 };
 const storage = {
   activeCaption: 'activeCaption',
+  composition: 'composition',
   captions: 'captions',
   footage: 'footage',
   publisher: 'publisher'
@@ -7933,4 +7934,4 @@ __webpack_require__.r(__webpack_exports__);
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=main.b48e035bdb9c00862d49.js.map
+//# sourceMappingURL=main.2d939cb7b745d089c47b.js.map
