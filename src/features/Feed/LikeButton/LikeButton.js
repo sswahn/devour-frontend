@@ -19,6 +19,9 @@ function LikeButton({ isDoubleTap, likedByUser = false }) {
   }
   
   const onClick = event => {
+    if (!event.isTrusted) {
+      return
+    }
     navigator.vibrate?.(50)
     action()
   }
