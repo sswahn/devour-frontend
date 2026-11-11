@@ -5662,6 +5662,9 @@ function ShareButton(t0) {
   return t3;
 }
 function _temp(event) {
+  if (!event.isTrusted) {
+    return;
+  }
   navigator.vibrate?.(50);
   navigator.share({
     title: "post.title",
@@ -7925,4 +7928,4 @@ __webpack_require__.r(__webpack_exports__);
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=main.07945f186cde5e97d3f2.js.map
+//# sourceMappingURL=main.d83ea60ba2bab9399126.js.map
