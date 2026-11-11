@@ -4,6 +4,9 @@ import styles from './LocationButton.module.css'
 function LocationButton() {
 
   const onClick = event => {
+    if (!event.isTrusted) {
+      return
+    }
     // open map
   }
   
