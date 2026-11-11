@@ -4555,6 +4555,9 @@ function CommentsForm() {
   const [loading, setLoading] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [errorMessage, setErrorMessage] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
   const onSubmit = async event => {
+    if (!event.isTrusted) {
+      return;
+    }
     try {
       event.preventDefault();
       navigator.vibrate?.(50);
@@ -7925,4 +7928,4 @@ __webpack_require__.r(__webpack_exports__);
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=main.a03625999f99ba44dbc9.js.map
+//# sourceMappingURL=main.8f9710344c406c3a2f3f.js.map
