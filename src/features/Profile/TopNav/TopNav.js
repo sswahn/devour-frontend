@@ -23,7 +23,8 @@ function TopNav({ profile, setProfile }) {
 
   // need conditional rendering on Edit button:
   // ...(session.isAuthenticated ? [{ icon: <EditIcon />, text: 'Edit profile', method: () => openEditor() }] : [])
-  
+
+  // needs delete account option
   const dropdown = [
     { icon: <EditIcon />, text: 'Edit profile', method: () => openEditor() },
     { icon: <SearchIcon />, text: 'Search profile', method: () => alert('Search profile.') },
