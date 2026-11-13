@@ -20,6 +20,13 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   const updateActiveCaptionStyle = style => {
     setActiveCaption(prev => ({ ...prev, style: { ...prev.style, ...style } }))
   }
+
+  const formatTime = time => {
+    if (time === '' || time == null) {
+      throw new TypeError('Time is required.')
+    }
+    
+  }
   
   const saveCaption = () => {
     if (!activeCaption.text.trim()) {
@@ -40,11 +47,17 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
     // in the valdiation util, for END, need to check end isnt outside video duration
     // this component needs the duration of the concatenated blob created in Editor
 
+    // be sure to get start time from videoRef.current.currentTime
+    // on a related note, video playback should pause, when the open comments button is clicked (if it isnt already)
+    
+    const start = formatTime(activeCaption.start.trim())
+    const end = formatTime(activeCaption.end.trim())
+    
     const data = {
       id: activeCaption.id,
       text: activeCaption.text.trim(), // validate
-      start: activeCaption.start.trim(), // validate
-      end: activeCaption.end.trim(), // validate
+      start: start, // validate
+      end: end, // validate
       style: activeCaption.style
     }
     createCaption(data)
