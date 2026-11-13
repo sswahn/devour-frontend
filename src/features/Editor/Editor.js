@@ -55,7 +55,7 @@ function Editor({ openCamera, openPublisher }) {
       <TopNav videoRef={videoRef} openCamera={openCamera} /> 
       {captionsMenu && <CaptionsMenu activeCaption={activeCaption} setActiveCaption={setActiveCaption} closeCaptionsMenu={closeCaptionsMenu} />}
       <VideoTimeline videoRef={videoRef} />
-      <Video videoRef={videoRef} />
+      <Video videoRef={videoRef} activeCaption={activeCaption} setActiveCaption={setActiveCaption} />
       <CaptionsMenuButton openCaptionsMenu={openCaptionsMenu} />
       <SubmitButton openPublisher={openPublisher} />
     </section>
