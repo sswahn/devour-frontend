@@ -6,12 +6,16 @@ import { concatenateVideos } from '../../../utilities/videoEditor'
 import LoadingSpinner from '../../../components/LoadingSpinner/LoadingSpinner'
 import styles from './Video.module.css'
 
-function Video({ videoRef, activeCaption, setActiveCaption }) {
+function Video({ videoRef, activeCaption }) {
   const { composition, setComposition } = useComposition()
   const { footage } = useFootage()
   const { captions } = useCaptions()
   const [source, setSource] = useState(null)
+  const [currentCaption, setCurrentCaption] = useState({})
   const [loading, setLoading] = useState(false)
+
+  // activeCaption is a temp placeholder for editing a single string
+  // currentCaption is whats displayed from the actual captions array
 
   const onTimeUpdate = event => {
     const { currentTime } = event.currentTarget
@@ -80,7 +84,7 @@ function Video({ videoRef, activeCaption, setActiveCaption }) {
     }
   }, [videoRef, onTimeUpdate])
 
-  // figcation should be clicable to edit/delete
+  // currentCaption figcation should be clicable to open edit/delete form
   
   return (
     <figure className={styles.Video}>
@@ -90,6 +94,7 @@ function Video({ videoRef, activeCaption, setActiveCaption }) {
         onError={e => console.error('Video error:', e.currentTarget.error)}
       />
       {activeCaption?.text && <figcaption style={activeCaption.style}>{activeCaption.text}</figcaption>}
+      {currentCaption?.text && <figcaption style={currentCaption.style}>{currentCaption.text}</figcaption>}
       {loading && <LoadingSpinner />}
     </figure>
   )
