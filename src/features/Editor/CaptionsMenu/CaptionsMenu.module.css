@@ -2,6 +2,7 @@
 
 .captionsMenu {
   background-color: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(1px);
   position: fixed;
   top: 50%;
   left: 50%;
