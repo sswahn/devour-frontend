@@ -37,7 +37,7 @@ function Editor({ openCamera, openPublisher }) {
 
     console.log('in openCaptionsMenu.')
     
-    setCaptionsMenu(prev => !prev)
+    setCaptionsMenu(true)
   }
   
   const closeCaptionsMenu = () => {
