@@ -91,12 +91,6 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   }
 
   useEffect(() => {
-
-    console.log('in CaptionsMenu.')
-    
-    if (!captionsRef.current) {
-      return
-    }
     document.addEventListener('click', offClickToClose)
     return () => {
       document.removeEventListener('click', offClickToClose)
