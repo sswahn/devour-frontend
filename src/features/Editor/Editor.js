@@ -34,6 +34,9 @@ function Editor({ openCamera, openPublisher }) {
   const videoRef = useRef(null)
 
   const openCaptionsMenu = () => {
+
+    console.log('in openCaptionsMenu.')
+    
     setCaptionsMenu(true)
   }
   
