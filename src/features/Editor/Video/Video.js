@@ -80,6 +80,8 @@ function Video({ videoRef }) {
       video.removeEventListener('timeupdate', onTimeUpdate)
     }
   }, [videoRef, onTimeUpdate])
+
+  // figcation should be clicable to edit/delete
   
   return (
     <figure className={styles.Video}>
