@@ -1,6 +1,7 @@
 /* Editor Caption Input */
 
 .captionsMenu {
+  background-color: rgba(0, 0, 0, 0.9);
   position: fixed;
   top: 50%;
   left: 50%;
