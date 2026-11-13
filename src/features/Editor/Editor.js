@@ -58,7 +58,6 @@ function Editor({ openCamera, openPublisher }) {
       {captionsMenu && <CaptionsMenu 
         activeCaption={activeCaption} 
         setActiveCaption={setActiveCaption} 
-        captionsMenu={captionsMenu} 
         closeCaptionsMenu={closeCaptionsMenu}
       />}
       <VideoTimeline videoRef={videoRef} />
