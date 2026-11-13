@@ -4,6 +4,9 @@ import styles from './CaptionsMenuButton.module.css'
 function CaptionsMenuButton({ openCaptionsMenu }) {
 
   const onClick = event => {
+
+    console.log('in CaptionsMenuButton onClick.')
+    
     navigator.vibrate?.(50)
     openCaptionsMenu()
   }
