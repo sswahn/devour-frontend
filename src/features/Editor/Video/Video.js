@@ -6,12 +6,11 @@ import { concatenateVideos } from '../../../utilities/videoEditor'
 import LoadingSpinner from '../../../components/LoadingSpinner/LoadingSpinner'
 import styles from './Video.module.css'
 
-function Video({ videoRef }) {
+function Video({ videoRef, activeCaption, setActiveCaption }) {
   const { composition, setComposition } = useComposition()
   const { footage } = useFootage()
   const { captions } = useCaptions()
   const [source, setSource] = useState(null)
-  const [activeCaption, setActiveCaption] = useState({})
   const [loading, setLoading] = useState(false)
 
   const onTimeUpdate = event => {
