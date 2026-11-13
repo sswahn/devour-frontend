@@ -22,7 +22,9 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   }
   
   const saveCaption = () => {
-
+    if (!activeCaption.text.trim()) {
+      return
+    }
     // This validates start/end dont overlap
     // break this out into its own function probably part of validation utility:
     /*
