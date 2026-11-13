@@ -14,11 +14,11 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   const captionsRef = useRef(null)
 
   const updateActiveCaption = ({ target: { id, value } }) => {
-    setDraft(prev => ({ ...prev, [id]: value }))
+    setActiveCaption(prev => ({ ...prev, [id]: value }))
   }
 
   const updateActiveCaptionStyle = style => {
-    setDraft(prev => ({ ...prev, style: { ...prev.style, ...style } }))
+    setActiveCaption(prev => ({ ...prev, style: { ...prev.style, ...style } }))
   }
   
   const onSubmit = async event => {
