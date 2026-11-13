@@ -21,8 +21,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
     setActiveCaption(prev => ({ ...prev, style: { ...prev.style, ...style } }))
   }
   
-  const onSubmit = async event => {
-    event.preventDefault()
+  const saveCaption = () => {
 
     // This validates start/end dont overlap
     // break this out into its own function probably part of validation utility:
@@ -86,6 +85,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
 
   const offClickToClose = event => {
     if (captionsRef.current && !captionsRef.current.contains(event.target)) {
+      saveCaption()
       closeCaptionsMenu()
     }
   }
@@ -99,7 +99,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
 
   return (
     <section ref={captionsRef} className={styles.captionsMenu}>
-      <form onSubmit={onSubmit}>
+      <form>
         <TextToolbar textStyles={activeCaption.style} setTextStyles={updateActiveCaptionStyle} />
         <Input 
           id="text"
@@ -129,7 +129,6 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
           error={errorMessage}
           onChange={updateActiveCaption}
           required />
-        <button type="submit" aria-label="submit caption">Submit</button>
       </form>
     </section>
   )
