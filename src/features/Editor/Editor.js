@@ -49,6 +49,8 @@ function Editor({ openCamera, openPublisher }) {
   }, [activeCaption])
   
   // ultimately might want a <SideNav /> component above <SubmitButton />
+
+  console.log('captionsMenu:', captionsMenu)
   
   return (
     <section className={styles.editor}>
