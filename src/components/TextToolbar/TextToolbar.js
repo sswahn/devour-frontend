@@ -32,7 +32,7 @@ function TextToolbar({ textStyles, setTextStyles }) {
   }
 
   useEffect(() => {
-    console.log('fontSize: ', textStyles.fontSize)
+    console.log('text editor toolbar - fontSize: ', textStyles.fontSize)
   }, [textStyles.fontSize])
 
   useEffect(() => {
