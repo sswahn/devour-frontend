@@ -55,11 +55,12 @@ function Editor({ openCamera, openPublisher }) {
   return (
     <section className={styles.editor}>
       <TopNav videoRef={videoRef} openCamera={openCamera} /> 
-      {captionsMenu && <CaptionsMenu 
+      {/*captionsMenu &&  */
+    <CaptionsMenu 
         activeCaption={activeCaption} 
         setActiveCaption={setActiveCaption} 
         closeCaptionsMenu={closeCaptionsMenu}
-      />}
+      />
       <VideoTimeline videoRef={videoRef} />
       <Video videoRef={videoRef} activeCaption={activeCaption} />
       <CaptionsMenuButton openCaptionsMenu={openCaptionsMenu} />
