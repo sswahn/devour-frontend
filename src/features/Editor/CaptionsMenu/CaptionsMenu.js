@@ -8,7 +8,7 @@ import PenToSquareIcon from '../../../components/Icons/PenToSquareIcon/PenToSqua
 import TrashCanIcon from '../../../components/Icons/TrashCanIcon/TrashCanIcon'
 import styles from './CaptionsMenu.module.css'
 
-function CaptionsMenu({ activeCaption, setActiveCaption, captionsMenu, closeCaptionsMenu }) {
+function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   const { captions, createCaption, updateCaption, deleteCaption } = useCaptions()
   const [errorMessage, setErrorMessage] = useState('')
   const captionsRef = useRef(null)
@@ -85,7 +85,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, captionsMenu, closeCapt
   */
 
   const offClickToClose = event => {
-    if (captionsMenu && captionsRef.current && !captionsRef.current.contains(event.target)) {
+    if (captionsRef.current && !captionsRef.current.contains(event.target)) {
       closeCaptionsMenu()
     }
   }
