@@ -14,8 +14,8 @@ function Editor({ openCamera, openPublisher }) {
     storage.local.get(config.storage.activeCaption) ?? {
       id: crypto.randomUUID(),
       text: '',
-      start: '',
-      end: '',
+      start: '', // need default time: currentTime
+      end: '', // currentTime + 4
       style: {
         fontSize: 12,
         color: '#ffffff',
