@@ -8,6 +8,6 @@
   left: 0;
   list-style: none;
   padding: 8px;
-  position: absolute;
+  position: fixed;
   width: 100%;
 }
