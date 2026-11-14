@@ -4,6 +4,7 @@ import styles from './CaptionTimeButton.module.css'
 function CaptionTimeButton({ setCaptionTime }) {
 
   const onClick = event => {
+    navigator.vibrate?.(50)
     setCaptionTime(prev => !prev)
   }
   
