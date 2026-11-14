@@ -1,12 +1,10 @@
 /* Editor Caption Menu Form */
 
 .captionsMenu {
+  align-items: center; /* Vertically centers the div text with the button */
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start; /* Aligns button & div to the left */
-  align-items: center; /* Vertically centers the div text with the button */
-  gap: 12px;
-  
   left: 50%;
   position: fixed;
   top: 48px;
@@ -20,5 +18,4 @@
 .captionsMenu > :first-child {
   flex: 0 0 100%;
   width: 100%;
-  box-sizing: border-box;
 }
