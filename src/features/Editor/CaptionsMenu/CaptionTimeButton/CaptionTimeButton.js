@@ -1,10 +1,10 @@
 import ClockIcon from '../../../../components/Icons/ClockIcon/ClockIcon'
 import styles from './CaptionTimeButton.module.css'
 
-function CaptionTimeButton() {
+function CaptionTimeButton({ setCaptionTime }) {
 
   const onClick = event => {
-    // toggle display of start, end inputs
+    setCaptionTime(prev => !prev)
   }
   
   return (
