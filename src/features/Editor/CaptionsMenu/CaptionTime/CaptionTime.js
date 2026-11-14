@@ -5,7 +5,7 @@ function CaptionTime({ activeCaption, updateActiveCaption }) {
   const [errorMessage, setErrorMessage] = useState('')
   
   return (
-    <>
+    <div>
       <Input
         id="start"
         inputMode="decimal"
@@ -26,7 +26,7 @@ function CaptionTime({ activeCaption, updateActiveCaption }) {
         error={errorMessage}
         onChange={updateActiveCaption}
         required />
-    </>
+    </div>
   )
 } 
 
