@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import useCaptions from '../../../hooks/useCaptions'
 import * as config from '../../../config'
 import storage from '../../../utilities/storage'
+import CaptionTimeButton from './CaptionTimeButton/CaptionTimeButton'
 import CaptionTime from './CaptionTime/CaptionTime'
 import TextToolbar from '../../../components/TextToolbar/TextToolbar'
 import Input from '../../../components/Input/Input'
@@ -11,6 +12,7 @@ import styles from './CaptionsMenu.module.css'
 
 function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   const { captions, createCaption, updateCaption, deleteCaption } = useCaptions()
+  const [captionTime, setCaptionTime] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
   const captionsRef = useRef(null)
 
@@ -123,7 +125,8 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
         error={errorMessage}
         onChange={updateActiveCaption}
         required />
-      <CaptionTime activeCaption={activeCaption} updateActiveCaption={updateActiveCaption} />
+      <CaptionTimeButton setCaptionTime={setCaptionTime} />
+      {captionTime && <CaptionTime activeCaption={activeCaption} updateActiveCaption={updateActiveCaption} />}
       <TextToolbar textStyles={activeCaption.style} setTextStyles={updateActiveCaptionStyle} />
     </section>
   )
