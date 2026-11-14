@@ -35,13 +35,8 @@ function Editor({ openCamera, openPublisher }) {
   const videoRef = useRef(null)
 
   const openCaptionsMenu = () => {
-
-    console.log('in openCaptionsMenu.')
-
-    const { currentTime } = videoRef.current
-
-    console.log('currentTime: ', currentTime)
-    
+    const { currentTime, pause } = videoRef.current
+    pause()
     setActiveCaption(prev => ({ ...prev, start: currentTime, end: currentTime + 4 }))
     setCaptionsMenu(true)
   }
