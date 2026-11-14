@@ -285,25 +285,112 @@ function playSongStep(ctx, time, stepIndex, song) {
   }
 }
 
-// 8. Convert AudioBuffer to Downloadable WAV Blob
-function audioBufferToWavBlob(buffer) {
-  const numChannels = buffer.numberOfChannels
-  const sampleRate = buffer.sampleRate
-  const length = buffer.length * numChannels * 2
-  const arrayBuffer = new ArrayBuffer(44 + length)
-  const view = new DataView(arrayBuffer)
+  // 8. Convert AudioBuffer to Downloadable WAV Blob
+  function audioBufferToWavBlob(buffer) {
+    const numChannels = buffer.numberOfChannels
+    const sampleRate = buffer.sampleRate
+    const length = buffer.length * numChannels * 2
+    const arrayBuffer = new ArrayBuffer(44 + length)
+    const view = new DataView(arrayBuffer)
+  
+    const writeString = (offset, str) => {
+      for (let i = 0 i < str.length i++) {
+        view.setUint8(offset + i, str.charCodeAt(i))
+      }
+    }
+  
+    writeString(0, 'RIFF')
+    view.setUint32(4, 36 + length, true)
+    writeString(8, 'WAVE')
+    writeString(12, 'fmt ')
+    view.setUint32(16, 16, true)
+    view.setUint16(20, 1, true)
+    view.setUint16(22, numChannels, true)
+    view.setUint32(24, sampleRate, true)
+    view.setUint32(28, sampleRate * numChannels * 2, true)
+    view.setUint16(32, numChannels * 2, true)
+    view.setUint16(34, 16, true)
+    writeString(36, 'data')
+    view.setUint32(40, length, true)
+    const channels = []
+    for (let i = 0 i < numChannels i++) {
+      channels.push(buffer.getChannelData(i))
+    }
 
-  const writeString = (offset, str) => {
-    for (let i = 0 i < str.length i++) {
-      view.setUint8(offset + i, str.charCodeAt(i))
+    let offset = 44
+    for (let i = 0 i < buffer.length i++) {
+    for (let ch = 0 ch < numChannels ch++) {
+      const sample = Math.max(-1, Math.min(1, channels[ch][i]))
+      view.setInt16(offset, sample < 0 ? sample * 0x8000 : sample * 0x7fff, true)
+      offset += 2
     }
   }
+    return new Blob([view], { type: 'audio/wav' })
+  }
 
-  writeString(0, 'RIFF')
-  view.setUint32(4, 36 + length, true)
-  writeString(8, 'WAVE')
-  writeString(12, 'fmt ')
-  view.setUint32(16, 16, true)
-  view.setUint16(20, 1, true)
-  view.setUint16(22, numChannels, true)
-  view.setUint32(24, sampleRate, true)
+  // 9. Render Seamless 4-Bar WAV Loop Offline
+  export async function renderSongToWav(song) {
+    const sampleRate = 44100
+    const eighthNoteSec = 60 / song.bpm / 2
+    const totalSteps = 32
+    const loopDurationSec = totalSteps * eighthNoteSec
+    const OfflineCtx = window.OfflineAudioContext || window.webkitOfflineAudioContext
+    const offlineCtx = new OfflineCtx(2, Math.ceil(sampleRate * loopDurationSec), sampleRate)
+    for (let step = 0 step < totalSteps step++) {
+    playSongStep(offlineCtx, step * eighthNoteSec, step, song)
+    }
+    const renderedBuffer = await offlineCtx.startRendering()
+    return audioBufferToWavBlob(renderedBuffer)
+  }
+  // 10. Live Playback Controller for React
+  export function createElevatorController() {
+    let audioCtx = null
+    let timerId = null
+    let isPlaying = false
+    let step = 0
+    let currentSong = generateSongFromSeed(101)
+    function tick() {
+    if (!audioCtx) return
+      playSongStep(audioCtx, audioCtx.currentTime, step, currentSong)
+      step++
+    }
+    function start() {
+    if (isPlaying) return
+    if (!audioCtx) {
+    const AudioCtx = window.AudioContext || window.webkitAudioContext
+    audioCtx = new AudioCtx()
+    }
+    if (audioCtx.state === 'suspended') {
+    audioCtx.resume()
+    }
+    isPlaying = true
+    step = 0
+    tick()
+    const intervalMs = (60 / currentSong.bpm / 2) * 1000
+    timerId = setInterval(tick, intervalMs)
+  }
+    
+  function stop() {
+    if (!isPlaying) return
+    clearInterval(timerId)
+    timerId = null
+    isPlaying = false
+  }
+  
+  function setSong(newSong) {
+    currentSong = newSong
+    if (isPlaying) {
+    stop()
+    start()
+    }
+  }
+  
+  function destroy() {
+    stop()
+    if (audioCtx) {
+    audioCtx.close()
+    audioCtx = null
+    }
+  }
+  return { start, stop, setSong, destroy }
+}
