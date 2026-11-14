@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import Input from '../../../../components/Input/Input'
+import styles from './CaptionTime.module.css'
 
 function CaptionTime({ activeCaption, updateActiveCaption }) {
   const [errorMessage, setErrorMessage] = useState('')
   
   return (
-    <div>
+    <div className={styles.captionTime}>
       <Input
         id="start"
         inputMode="decimal"
