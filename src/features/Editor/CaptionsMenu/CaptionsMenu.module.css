@@ -3,7 +3,8 @@
 .captionsMenu {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start; /* Aligns items to the left */
+  justify-content: flex-start; /* Aligns button & div to the left */
+  align-items: center; /* Vertically centers the div text with the button */
   gap: 12px;
   
   left: 50%;
@@ -16,13 +17,8 @@
   border: 1px dashed red;
 }
 
-/* Forces the first div to take the entire top row */
-.captionsMenu > div:first-child {
+.captionsMenu > :first-child {
   flex: 0 0 100%;
   width: 100%;
-}
-
-/* Keeps the last two divs sized to their content and side-by-side on the left */
-.captionsMenu > div:nth-last-child(-n+2) {
-  flex: 0 1 auto;
+  box-sizing: border-box;
 }
