@@ -19,3 +19,10 @@
   flex: 0 0 100%;
   width: 100%;
 }
+
+.captionsMenu > button,
+.captionsMenu > div {
+  flex: 0 1 auto;
+  width: auto;
+  margin: 0; /* Removes any default browser margins (especially on buttons) */
+}
