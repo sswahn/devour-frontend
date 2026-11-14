@@ -100,7 +100,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
 
   const offClickToClose = event => {
     if (captionsRef.current && !captionsRef.current.contains(event.target)) {
-      saveCaption()
+      saveCaption() // await this before closing
       closeCaptionsMenu()
     }
   }
@@ -114,37 +114,16 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
 
   return (
     <section ref={captionsRef} className={styles.captionsMenu}>
-      <form>
-        <TextToolbar textStyles={activeCaption.style} setTextStyles={updateActiveCaptionStyle} />
-        <Input 
-          id="text"
-          type="text"
-          label="Add a caption"
-          value={activeCaption.text}
-          error={errorMessage}
-          onChange={updateActiveCaption}
-          required />
-        <Input
-          id="start"
-          inputMode="decimal"
-          type="number" 
-          step="any"
-          label="Start"
-          value={activeCaption.start} // consider getting default value from timeline
-          error={errorMessage}
-          onChange={updateActiveCaption}
-          required />
-        <Input
-          id="end"
-          inputMode="decimal"
-          type="number" 
-          step="any"
-          label="End"
-          value={activeCaption.end}
-          error={errorMessage}
-          onChange={updateActiveCaption}
-          required />
-      </form>
+      <Input 
+        id="text"
+        type="text"
+        label="Add a caption"
+        value={activeCaption.text}
+        error={errorMessage}
+        onChange={updateActiveCaption}
+        required />
+      <CaptionTime />
+      <TextToolbar textStyles={activeCaption.style} setTextStyles={updateActiveCaptionStyle} />
     </section>
   )
 }
