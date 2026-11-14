@@ -17,6 +17,7 @@ function Editor({ openCamera, openPublisher }) {
       start: '', // need default time: currentTime
       end: '', // currentTime + 4
       style: {
+        // fontFamily: 
         fontSize: 12,
         color: '#ffffff',
         bold: false,
