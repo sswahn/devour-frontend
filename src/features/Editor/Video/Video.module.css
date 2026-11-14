@@ -1,9 +1,17 @@
 /* Editor Video Element with figure and figcaption */
 
-.Video video {
+.video video {
   object-fit: cover;
   height: 100dvh;
   inset: 0;
   position: absolute;
   z-index: 250;
+}
+
+.video figcaption {
+  bottom: 64px;
+  left: 8px;
+  position: fixed;
+  width: calc(100% - 16px);
+  word-break: break-word;
 }
