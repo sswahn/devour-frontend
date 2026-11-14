@@ -54,6 +54,26 @@ function AddMusic() {
 
   return (
     <div style={{ padding: '24px', border: '1px solid #ddd', borderRadius: '12px', maxWidth: '420px', fontFamily: 'sans-serif' }}>
+
+     {/* Live Frequency Spectrum Visualizer */}
+      <div
+        style={{
+          backgroundColor: theme.bg,
+          borderRadius: '10px',
+          padding: '12px',
+          marginBottom: '16px',
+          border: theme.dark ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(0,0,0,0.06)',
+        }}
+      >
+        <canvas
+          ref={canvasRef}
+          width={368}
+          height={76}
+          style={{ width: '100%', height: '76px', display: 'block' }}
+        />
+      </div>
+          
+  
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '6px' }}>
         <h3 style={{ margin: 0 }}>{song.title}</h3>
         <span style={{ fontSize: '13px', fontWeight: 'bold', color: '#2c5e4f' }}>{song.keyName}</span>
