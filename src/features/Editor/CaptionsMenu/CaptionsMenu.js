@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import useCaptions from '../../../hooks/useCaptions'
 import * as config from '../../../config'
 import storage from '../../../utilities/storage'
+import CaptionTime from './CaptionTime/CaptionTime'
 import TextToolbar from '../../../components/TextToolbar/TextToolbar'
 import Input from '../../../components/Input/Input'
 import PenToSquareIcon from '../../../components/Icons/PenToSquareIcon/PenToSquareIcon'
@@ -122,7 +123,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
         error={errorMessage}
         onChange={updateActiveCaption}
         required />
-      <CaptionTime />
+      <CaptionTime activeCaption={activeCaption} updateActiveCaption={updateActiveCaption} />
       <TextToolbar textStyles={activeCaption.style} setTextStyles={updateActiveCaptionStyle} />
     </section>
   )
