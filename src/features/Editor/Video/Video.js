@@ -87,7 +87,7 @@ function Video({ videoRef, activeCaption }) {
   // currentCaption figcation should be clicable to open edit/delete form
   
   return (
-    <figure className={styles.Video}>
+    <figure className={styles.video}>
       <video id="video-editor" ref={videoRef} src={source} autoPlay playsInline 
         onLoadedMetadata={() => console.log('Video metadata loaded')}
         onCanPlay={() => console.log('Video can play')}
