@@ -1,4 +1,3 @@
-// elevatorSynth.js
 
 // 1. Deterministic Pseudorandom Number Generator (Mulberry32)
 function createRng(seed) {
