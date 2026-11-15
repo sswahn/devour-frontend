@@ -2,7 +2,7 @@
 
 .videoTimeline {
   background: rgba(255, 255, 255, 0.3);
-  bottom: 64px;
+  bottom: 0;
   cursor: pointer;
   height: 8px;
   left: 50%;
