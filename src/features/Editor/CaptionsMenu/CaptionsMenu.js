@@ -10,6 +10,9 @@ import PenToSquareIcon from '../../../components/Icons/PenToSquareIcon/PenToSqua
 import TrashCanIcon from '../../../components/Icons/TrashCanIcon/TrashCanIcon'
 import styles from './CaptionsMenu.module.css'
 
+  // consider keypress (enter/esxapq) and focus controls.
+  // if designed for mobile it may not need
+
 function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   const { captions, createCaption, updateCaption, deleteCaption } = useCaptions()
   const [captionTime, setCaptionTime] = useState(false)
@@ -32,9 +35,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   }
   
   const saveCaption = () => {
-    if (!activeCaption.text.trim()) {
-      return
-    }
+    
     // This validates start/end dont overlap
     // break this out into its own function probably part of validation utility:
     /*
@@ -52,15 +53,18 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
 
     // be sure to get start time from videoRef.current.currentTime
     // on a related note, video playback should pause, when the open comments button is clicked (if it isnt already)
-    
-    const start = formatTime(activeCaption.start.trim())
-    const end = formatTime(activeCaption.end.trim())
+    const text = activeCaption.text.trim()
+    const start = activeCaption.start.trim()
+    const end = activeCaption.end.trim()
+    if (!text || !start || !end) {
+      return
+    }
     
     const data = {
       id: activeCaption.id,
-      text: activeCaption.text.trim(), // validate
-      start: start, // validate
-      end: end, // validate
+      text: text, // validate
+      start: start, // format user defined input and validate
+      end: end, // format user defined input and validate
       style: activeCaption.style
     }
     createCaption(data)
