@@ -14,21 +14,11 @@ function Video({ videoRef, activeCaption }) {
   const [currentCaption, setCurrentCaption] = useState({})
   const [loading, setLoading] = useState(false)
 
-  // activeCaption is a temp placeholder for editing a single string
-  // currentCaption is whats displayed from the actual captions array
-
   const onTimeUpdate = event => {
     const { currentTime } = event.currentTarget
-    
-    console.log('time: ', currentTime)
-    console.log('captions: ', captions)
-    
     const matchingCaption = captions.find(caption => {
       return (currentTime >= Number(caption.start) && currentTime <= Number(caption.end))
     })
-
-    console.log('matching: ', matchingCaption)
-    
     setCurrentCaption(prev => {
       if (matchingCaption?.id === prev?.id) {
         return prev
