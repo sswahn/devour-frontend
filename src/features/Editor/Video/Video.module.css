@@ -9,7 +9,7 @@
 }
 
 .video figcaption {
-  bottom: 64px;
+  bottom: 16px;
   left: 8px;
   position: fixed;
   width: calc(100% - 16px);
