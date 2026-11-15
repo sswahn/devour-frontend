@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import useCaptions from '../../../hooks/useCaptions'
 import * as config from '../../../config'
 import storage from '../../../utilities/storage'
+import validate from '../../../utilities/validate'
 import CaptionTimeButton from './CaptionTimeButton/CaptionTimeButton'
 import CaptionTime from './CaptionTime/CaptionTime'
 import TextToolbar from '../../../components/TextToolbar/TextToolbar'
@@ -35,7 +36,9 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   }
   
   const saveCaption = () => {
-    
+    if (!activeCaption.text.trim()) {
+      return
+    }
     // This validates start/end dont overlap
     // break this out into its own function probably part of validation utility:
     /*
@@ -56,15 +59,13 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
     const text = activeCaption.text.trim()
     const start = activeCaption.start.trim()
     const end = activeCaption.end.trim()
-    if (!text || !start || !end) {
-      return
-    }
+
     
     const data = {
       id: activeCaption.id,
-      text: text, // validate
-      start: start, // format user defined input and validate
-      end: end, // format user defined input and validate
+      text: validate.caption.text(text), // validate
+      start: validate.caption.start(start), // format user defined input and validate
+      end: validate.caption.end(end), // format user defined input and validate
       style: activeCaption.style
     }
     createCaption(data)
