@@ -43,7 +43,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
 
     // need to check end isnt outside video duration
     // need duration prop from the concatenated blob created in Editor
-
+    return true
   }
   
   const saveCaption = () => {
