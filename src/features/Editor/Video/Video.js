@@ -76,22 +76,11 @@ function Video({ videoRef, activeCaption }) {
     }
   }, [footage])
 
-  useEffect(() => {
-    const video = videoRef.current
-    if (!video) {
-      return
-    }
-    video.addEventListener('timeupdate', onTimeUpdate)
-    return () => {
-      video.removeEventListener('timeupdate', onTimeUpdate)
-    }
-  }, [videoRef, onTimeUpdate])
-
   // currentCaption figcation should be clicable to open edit/delete form
   
   return (
     <figure className={styles.video}>
-      <video id="video-editor" ref={videoRef} src={source} autoPlay playsInline 
+      <video id="video-editor" ref={videoRef} src={source} onTimeUpdate={onTimeUpdate} autoPlay playsInline 
         onLoadedMetadata={() => console.log('Video metadata loaded')}
         onCanPlay={() => console.log('Video can play')}
         onError={e => console.error('Video error:', e.currentTarget.error)}
