@@ -99,7 +99,7 @@ const validate = {
       throw new Error('Bio length must be between 3 and 250 characters.', { cause: 'biography' })
     }
     return biography
-  }
+  },
 
   caption: {
     text(value) {
