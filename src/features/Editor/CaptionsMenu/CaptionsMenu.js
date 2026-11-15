@@ -27,38 +27,39 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   const updateActiveCaptionStyle = style => {
     setActiveCaption(prev => ({ ...prev, style: { ...prev.style, ...style } }))
   }
-  
-  const saveCaption = () => {
-    if (!activeCaption.text.trim()) {
-      return
-    }
+
+  const validateCaption = caption => {
     // This validates start/end dont overlap
-    // break this out into its own function probably part of validation utility:
+    // break this out into its own function:
     /*
     const sorted = [...captions].sort((a, b) => a.start - b.start)
     const conflicted = sorted.some((caption, index) =>
       index > 0 && caption.start < sorted[index - 1].end
     )
     if (conflicted) {
-      return alert('This caption conflicts with an existing caption.')
+      return false //'This caption conflicts with an existing caption.' 
     }
     */
 
-    // in the valdiation util, for END, need to check end isnt outside video duration
-    // this component needs the duration of the concatenated blob created in Editor
+    // need to check end isnt outside video duration
+    // need duration prop from the concatenated blob created in Editor
 
-    // be sure to get start time from videoRef.current.currentTime
-    // on a related note, video playback should pause, when the open comments button is clicked (if it isnt already)
-    const text = activeCaption.text.trim()
-    const start = activeCaption.start.trim()
-    const end = activeCaption.end.trim()
+  }
+  
+  const saveCaption = () => {
+    if (!activeCaption.text.trim()) {
+      return
+    }
 
+    if (!isValidateCaption(activeCaption)) {
+      return alert('This caption conflicts with an existing caption, or exists outside the length of the video duration.' )
+    }
     
     const data = {
       id: activeCaption.id,
-      text: validate.caption.text(text),
-      start: validate.caption.start(start),
-      end: validate.caption.end(end),
+      text: validate.caption.text(activeCaption.text.trim()),
+      start: validate.caption.start(activeCaption.start.trim()),
+      end: validate.caption.end(activeCaption.end.trim()),
       style: activeCaption.style
     }
     createCaption(data)
