@@ -5382,9 +5382,6 @@ function LikeButton(t0) {
   let t4;
   if ($[3] === Symbol.for("react.memo_cache_sentinel")) {
     t4 = event => {
-      if (!event.isTrusted) {
-        return;
-      }
       navigator.vibrate?.(50);
       action();
     };
@@ -5397,7 +5394,6 @@ function LikeButton(t0) {
   if ($[4] !== liked) {
     t5 = () => {
       if (!liked) {
-        navigator.vibrate?.(50);
         action();
       }
     };
@@ -7934,4 +7930,4 @@ __webpack_require__.r(__webpack_exports__);
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=main.2d939cb7b745d089c47b.js.map
+//# sourceMappingURL=main.0bb23a68938b16cb692d.js.map
