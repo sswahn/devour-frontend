@@ -26,6 +26,9 @@ function Video({ videoRef, activeCaption }) {
     const matchingCaption = captions.find(caption => {
       return (currentTime >= Number(caption.start) && currentTime <= Number(caption.end))
     })
+
+    console.log('matching: ', matchingCaption)
+    
     setCurrentCaption(prev => {
       if (matchingCaption?.id === prev?.id) {
         return prev
