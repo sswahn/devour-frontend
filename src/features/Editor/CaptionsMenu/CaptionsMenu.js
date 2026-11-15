@@ -27,13 +27,6 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   const updateActiveCaptionStyle = style => {
     setActiveCaption(prev => ({ ...prev, style: { ...prev.style, ...style } }))
   }
-
-  const formatTime = time => {
-    if (time === '' || time == null) {
-      throw new TypeError('Time is required.')
-    }
-    
-  }
   
   const saveCaption = () => {
     if (!activeCaption.text.trim()) {
@@ -63,9 +56,9 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
     
     const data = {
       id: activeCaption.id,
-      text: validate.caption.text(text), // validate
-      start: validate.caption.start(start), // format user defined input and validate
-      end: validate.caption.end(end), // format user defined input and validate
+      text: validate.caption.text(text),
+      start: validate.caption.start(start),
+      end: validate.caption.end(end),
       style: activeCaption.style
     }
     createCaption(data)
