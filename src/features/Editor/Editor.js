@@ -18,7 +18,7 @@ function Editor({ openCamera, openPublisher }) {
       end: '', // currentTime + 4
       style: {
         // fontFamily: 
-        fontSize: 12,
+        fontSize: 16,
         color: '#ffffff',
         bold: false,
         italic: false,
