@@ -67,9 +67,6 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
       end: end, // format user defined input and validate
       style: activeCaption.style
     }
-
-    console.log('saved caption data: ', data)
-    
     createCaption(data)
     setActiveCaption({
       id: crypto.randomUUID(),
@@ -78,7 +75,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
       end: '',
       style: {
         // fontFamily: '',
-        fontSize: 12,
+        fontSize: 16,
         color: '#ffffff',
         bold: false,
         italic: false,
