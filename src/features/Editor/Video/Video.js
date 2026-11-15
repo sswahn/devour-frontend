@@ -20,6 +20,7 @@ function Video({ videoRef, activeCaption }) {
   const onTimeUpdate = event => {
     const { currentTime } = event.currentTarget
     
+    console.log('time: ', currentTime)
     console.log('captions: ', captions)
     
     const matchingCaption = captions.find(caption => {
