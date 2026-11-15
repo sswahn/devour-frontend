@@ -74,6 +74,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
       start: '',
       end: '',
       style: {
+        // fontFamily: '',
         fontSize: 12,
         color: '#ffffff',
         bold: false,
