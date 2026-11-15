@@ -100,6 +100,27 @@ const validate = {
     }
     return biography
   }
+
+  caption: {
+    text(value) {
+      if (value.length < 2 || value.length > 140) {
+        throw new Error('Caption text length must be between 2 and 140 characters.', { cause: 'caption.text' })
+      }
+      return value
+    },
+    start(value) {
+      if (value.length < 1 || value.length > 5) {
+        throw new Error('Caption start value must be between 1 and 5 characters.', { cause: 'caption.start' })
+      }
+      return value
+    },
+    end(value) {
+      if (value.length < 1 || value.length > 5) {
+        throw new Error('Caption end value must be between 1 and 5 characters.', { cause: 'caption.end' })
+      }
+      return value
+    }
+  }
   
 }
 
