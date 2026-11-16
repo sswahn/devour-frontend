@@ -84,7 +84,7 @@ const renderSegments = () => {
     <span key={`segment-${index}`} style={index === 0 ? undefined : segment.style}>
       {text.slice(index === 0 ? 0 : segment.start, segment.end)}
     </span>
-  )
+  ))
   const last = (
     <span key="remaining">
       {text.slice(segments.at(-1).end)}
