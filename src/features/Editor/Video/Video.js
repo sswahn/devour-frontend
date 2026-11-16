@@ -79,15 +79,23 @@ function Video({ videoRef, activeCaption }) {
 
 const renderSegments = () => {
   const { text, segments, style } = activeCaption
+  let position = 0
 
-  const html = segments.map((segment, index) => (
-    <span key={`segment-${index}`} style={index === 0 ? undefined : segment.style}>
-      {text.slice(index === 0 ? 0 : segment.start, segment.end)}
-    </span>
-  ))
+  const html = segments.map((segment, index) => {
+    const start = position
+    if (position < segment.start) {
+      return <span>text.slice(position, segment.start)</span>
+    }
+    position = segment.end                     
+    return (
+      <span key={`segment-${index}`} style={index === 0 ? undefined : segment.style}>
+        {text.slice(start, segment.end)}
+      </span>
+    )
+  )
   const last = (
     <span key="remaining">
-      {text.slice(segments.at(-1).end)}
+      {text.slice(position)}
     </span>
   )
   const result = [...html, last]
