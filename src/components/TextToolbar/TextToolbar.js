@@ -42,13 +42,13 @@ function TextToolbar({ style, setStyle }) {
       <FontSizeButton openDropdown={openDropdown} />
       <TextAlignButton openDropdown={openDropdown} />
       {activeDropdown.toLowerCase().includes('color') && 
-        <ColorPalette color={textStyles[activeDropdown]} setColor={val => setStyle(prev => ({ ...prev, [activeDropdown]: val }))} />
+        <ColorPalette color={style[activeDropdown]} setColor={val => setStyle(prev => ({ ...prev, [activeDropdown]: val }))} />
       }
       {activeDropdown === 'fontSize' && 
-        <FontSizeSlider fontSize={textStyles.fontSize} setFontSize={val => setStyle(prev => ({ ...prev, fontSize: val }))} />
+        <FontSizeSlider fontSize={style.fontSize} setStyle={setStyle} />
       }
       {activeDropdown === 'textAlign' && 
-        <AlignText textAlign={textStyles.textAlign} setTextAlign={val => setStyle(prev => ({ ...prev, textAlign: val }))} />
+        <AlignText textAlign={style.textAlign} setStyle={setStyle} />
       }
     </div>
   )
