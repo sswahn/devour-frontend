@@ -22,7 +22,7 @@ function Editor({ openCamera, openPublisher }) {
         color: '#ffffff',
         fontWeight: 'normal',
         fontStyle: 'normal',
-        textDecoration: 'normal',
+        textDecoration: 'none',
         stroke: 'none',
         strokeColor: '#000000',
         strokeWidth: 2,
