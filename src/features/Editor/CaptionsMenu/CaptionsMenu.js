@@ -86,6 +86,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
         },
         segments: []
       })
+      setSelections([])
     } catch (error) {
       console.log(error)
     }
