@@ -67,7 +67,7 @@ function Search() {
           <SpeechRecognitionButton setSearchValue={setSearchValue} />
         </form>
         
-        <ul id="search-results" role="listbox" aria-live="polite" aria-busy={loading}>
+        <ul id="search-results" className={styles.results} role="listbox" aria-live="polite" aria-busy={loading}>
           {loading ? <LoadingSpinner /> : <SearchResults searchResults={searchResults} />}
         </ul>
       </div>

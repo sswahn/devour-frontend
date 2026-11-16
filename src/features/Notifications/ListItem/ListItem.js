@@ -24,7 +24,7 @@ function ListItem({ notification }) {
           <p>{notification.text}</p>
         </div>
         <footer>
-          <Dropdown items={dropdown} />
+          <Dropdown id={notification.id} items={dropdown} />
         </footer>
       </article>
     </li>   

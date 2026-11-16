@@ -7,7 +7,7 @@ import SideNav from '../SideNav/SideNav'
 import Comments from '../../Comments/Comments'
 import styles from './FeedNode.module.css'
 
-function FeedNode({ item, index, count, videoRefs = undefined, onEnded = undefined }) {
+function FeedNode({ item, index, count, videoRefs = undefined, onEnded = undefined, slideshow }) {
   const { content, setContent } = useContent()
   const [isDoubleTap, setIsDoubleTap] = useState(null)
   const [isLongPress, setIsLongPress] = useState(null)
@@ -109,7 +109,7 @@ function FeedNode({ item, index, count, videoRefs = undefined, onEnded = undefin
           openComments={openComments}
         />
       </figure>
-      {commentsIsOpen && <Comments closeComments={closeComments} />}
+      {commentsIsOpen && <Comments closeComments={closeComments} slideshow />}
     </article>
   )
 }

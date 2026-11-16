@@ -66,5 +66,6 @@
 
 .profile header p {
   font-size: var(--font-size);
+  text-align: center;
 }
 

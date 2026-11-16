@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { overlay } from '../../config'
 import server from '../../utilities/server'
+import database from '../../utilities/database'
 import useOverlay from '../../hooks/useOverlay'
 import useProfile from '../../hooks/useProfile'
 import useSwipeFromEdge from '../../hooks/useSwipeFromEdge'
@@ -17,10 +18,11 @@ function Profile() {
   const overlayRef = useRef(null)
   const [profile, setProfile] = useState({
     picture: '', // if set optimistically, needs URL.createObjectURL(blob/file)
-    username: 'test_user',
+    username: userProfile || 'test_user',
     location: 'new york',
     biography: ''
    })
+  const [imageUrl, setImageUrl] = useState('')
   const [feedData, setFeedData] = useState([
     { picture: '', username: 'test_user1', video: 1, caption: 'test caption 1' },
     { picture: '', username: 'test_user2',  video: 2, caption: 'testing captions with multiple lines. It should expand upward instead of downward.' },
@@ -44,8 +46,19 @@ function Profile() {
   }
 
   useEffect(() => {
-    // loadData()
-  }, [])
+    // handle optimistic setting of edit to profile image
+    //TODO: write fallback logic if server rejects. use alert() or add to notifications.
+    if (typeof profile.picture === 'string') {
+      return
+    }
+    const url = URL.createObjectURL(profile.picture)
+    setImageUrl(url)
+    return () => {
+      URL.revokeObjectURL(url)
+    }
+  }, [profile.picture])
+
+  // consider adding cover photo option for profile background.
 
   return (
     <section id={overlay.profile} className={styles.profile} ref={overlayRef} onKeyDown={onKeyDown} role="dialog" aria-modal="true">
@@ -53,7 +66,7 @@ function Profile() {
         <div>
           <TopNav profile={profile} setProfile={setProfile} />
           <header>
-            <img src={profile.picture} alt={`${profile.username}'s profile picture`} />
+            <img src={imageUrl} alt={`${profile.username}'s profile picture`} />
             <h1 id="username">{profile.username}</h1>
             <address>{profile.location}</address>
             {profile.biography && <p id="biography">{profile.biography}</p>}

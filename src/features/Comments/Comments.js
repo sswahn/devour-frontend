@@ -9,7 +9,7 @@ import CommentsListItem from './CommentsListItem/CommentsListItem'
 import CommentsForm from './CommentsForm/CommentsForm'
 import styles from './Comments.module.css'
 
-function Comments({ closeComments }) {
+function Comments({ closeComments, slideshow = false }) {
   const { content } = useContent()
   const [isOpen, setIsOpen] = useState(false)
   const [data, setData] = useState([])
@@ -153,11 +153,14 @@ function Comments({ closeComments }) {
   // refactor to use classes instead of inline css on pointer events (see Notifications)
   // focus stack on button that opens this overlay
 
+  console.log('slideshow: ', slideshow)
+  
   return (
-    <aside className={styles.overlay}>
+    <aside className={slideshow ? styles.slideshow_overlay : styles.overlay}>
       <div ref={commentsRef} 
         className={[ 
-          styles.comments, 
+          slideshow && styles.slideshow_comments,
+          !slideshow && styles.comments,
           isOpen === true && styles.open, 
           isOpen === false && styles.close 
         ].filter(Boolean).join(' ')}

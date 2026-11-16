@@ -7,6 +7,9 @@ function FollowButton() {
   const [following, setFollowing] = useState(false)
   
   const onClick = event => {
+    if (!event.isTrusted) {
+      return
+    }
     navigator.vibrate?.(50)
     setFollowing(prevState => !prevState)
   }

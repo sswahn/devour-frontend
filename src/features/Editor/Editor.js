@@ -1,59 +1,73 @@
 import { useState, useRef, useEffect } from 'react'
-import useFootage from '../../hooks/useFootage'
+import * as config from '../../config'
+import storage from '../../utilities/storage'
 import TopNav from './TopNav/TopNav'
-import ProgressBar from './ProgressBar/ProgressBar'
-import Menu from './Menu/Menu'
-import MenuButton from './MenuButton/MenuButton'
+import VideoTimeline from './VideoTimeline/VideoTimeline'
+import Video from './Video/Video'
+import CaptionsMenu from './CaptionsMenu/CaptionsMenu'
+import CaptionsMenuButton from './CaptionsMenuButton/CaptionsMenuButton'
 import SubmitButton from './SubmitButton/SubmitButton'
 import styles from './Editor.module.css'
 
 function Editor({ openCamera, openPublisher }) {
-  const { footage } = useFootage()
-  const [menuIsOpen, setMenuIsOpen] = useState(false)
-  const [data, setData] = useState({
-    caption: ''
-  })
-  const [source, setSource] = useState('')
+  const [activeCaption, setActiveCaption] = useState(() => 
+    storage.local.get(config.storage.activeCaption) ?? {
+      id: crypto.randomUUID(),
+      text: '',
+      start: '',
+      end: '',
+      style: {
+        backgroundColor: 'transparent',
+        color: '#ffffff',
+        // fontFamily: '',
+        fontSize: 16,
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        textAlign: 'left',
+        textDecoration: 'none',
+        WebkitTextStrokeWidth: '0px',
+        WebkitTextStrokeColor: 'transparent'
+      }
+    }
+  )
+  const [captionsMenu, setCaptionsMenu] = useState(false)
+  const [programmaticPause, setProgrammaticPause] = useState(null)
   const videoRef = useRef(null)
-  
-  const openMenu = () => {
-    setMenuIsOpen(true)
-  }
-  
-  const closeMenu = () => {
-    setMenuIsOpen(false)
-  }
 
-  const loadFromStorage = () => {
-    const editor = localStorage.getItem('editor')
-    if (editor !== null) {
-      const obj = JSON.parse(editor)
-      setData(prev => ({ ...prev, ...obj }))
-    }
+  const openCaptionsMenu = () => {
+    const { currentTime } = videoRef.current
+    videoRef.current.pause()
+    setProgrammaticPause(performance.now())
+    setCaptionsMenu(true)
+    setActiveCaption(prev => ({ ...prev, 
+      start: currentTime.toFixed(2), 
+      end: (currentTime + 3).toFixed(2) 
+    }))
+  }
+  
+  const closeCaptionsMenu = () => {
+    setCaptionsMenu(false)
   }
 
   useEffect(() => {
-    console.log('Editor opened!')
-    //loadFromStorage()
-  }, [])
-
-  useEffect(() => {
-    const blob = footage || new Blob()
-    const videoUrl = URL.createObjectURL(blob) // pass footage directly, after testing complete
-    setSource(videoUrl)
-    return () => {
-      URL.revokeObjectURL(videoUrl)
-    }
-  }, [])
-
+    storage.local.set(config.storage.activeCaption, activeCaption)
+  }, [activeCaption])
+  
+  // ultimately might want a <SideNav /> component above <SubmitButton />
+  
   return (
     <section className={styles.editor}>
-      <TopNav videoRef={videoRef} openCamera={openCamera} /> 
-      <ProgressBar videoRef={videoRef} />
-      {menuIsOpen && <Menu data={data} setData={setData} closeMenu={closeMenu} />}
-      <MenuButton openMenu={openMenu} /> 
-      <SubmitButton openPublisher={openPublisher} /> 
-      <video id="video-editor" ref={videoRef} src={source} loop playsinline />
+      <TopNav videoRef={videoRef} openCamera={openCamera} programmaticPause={programmaticPause} /> 
+      {/*captionsMenu &&  */}
+    <CaptionsMenu 
+        activeCaption={activeCaption} 
+        setActiveCaption={setActiveCaption} 
+        closeCaptionsMenu={closeCaptionsMenu}
+      />
+      <VideoTimeline videoRef={videoRef} />
+      <Video videoRef={videoRef} activeCaption={activeCaption} />
+      <CaptionsMenuButton openCaptionsMenu={openCaptionsMenu} />
+      <SubmitButton openPublisher={openPublisher} />
     </section>
   )
 }

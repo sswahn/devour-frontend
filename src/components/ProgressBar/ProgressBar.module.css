@@ -1,0 +1,20 @@
+/* Loading Progress Bar */
+
+.progressBar {
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 40px);
+}
+
+.progressBar div {
+  width: 0;
+  height: 12px;
+  background-color: #3b82f6;
+  border-radius: 4px;
+  transition: width 0.3s ease-out;
+}

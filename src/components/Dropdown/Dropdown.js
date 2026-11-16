@@ -14,7 +14,7 @@ function Dropdown({ id = 0, label = 'dropdown', items }) {
   }
 
   const close = () => {
-    listRef.current.addEventListener(
+    listRef.current?.addEventListener(
       'transitionend', 
       () => setIsOpen(false), 
       { once: true }
@@ -25,6 +25,19 @@ function Dropdown({ id = 0, label = 'dropdown', items }) {
   const mountList = () => {
     setIsMounted(true)
   }
+
+  const offClickClose = event => {
+    if (!listRef.current?.contains(event.target) && !buttonRef.current?.contains(event.target)) {
+      close()
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('pointerdown', offClickClose)
+    return () => {
+      document.removeEventListener('pointerdown', offClickClose)
+    }
+  }, [])
   
   useEffect(() => {
     return () => {
@@ -33,7 +46,7 @@ function Dropdown({ id = 0, label = 'dropdown', items }) {
   }, [])
 
   return (
-    <div　className={styles.dropdown}>
+    <div　className={`${styles.dropdown} ${isOpen ? styles.isOpen : ''}`}>
       <DropdownButton 
         id={id} 
         label={label} 
@@ -46,12 +59,11 @@ function Dropdown({ id = 0, label = 'dropdown', items }) {
         id={id} 
         items={items} 
         isOpen={isOpen}
-        open={open} 
         close={close} 
         isMounted={isMounted}
         mountList={mountList} 
-        buttonRef={buttonRef} 
         listRef={listRef}
+        buttonRef={buttonRef}
       />}
     </div>
   )

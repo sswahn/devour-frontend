@@ -8,7 +8,7 @@ import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner'
 import Sentinel from './Sentinel/Sentinel' 
 import styles from './Feed.module.css'
 
-function Feed({ data, setData, videoRefs, style }) {
+function Feed({ data, setData, videoRefs, style, slideshow }) {
   const { observe, unobserve, disconnect } = createObserver()
   const [loadMore, setLoadMore] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -53,7 +53,7 @@ function Feed({ data, setData, videoRefs, style }) {
   
   return (
     <section className={styles.feed} style={style} role="feed">
-      {data.map((item, index) => <FeedNode key={index} videoRefs={videoRefs} item={item} index={index + 1} count={data.length} />)}
+      {data.map((item, index) => <FeedNode key={index} videoRefs={videoRefs} item={item} index={index + 1} count={data.length} slideshow />)}
       {loading && <LoadingSpinner />}
       <Sentinel setLoadMore={setLoadMore} />
     </section>

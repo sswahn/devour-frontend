@@ -1,34 +1,62 @@
 import { useRef } from 'react'
 import useFootage from '../../../hooks/useFootage'
 import camera from '../../../utilities/camera'
+import { getDuration } from '../../../utilities/videoEditor'
 import database from '../../../utilities/database'
 import styles from './RecordButton.module.css'
 
-function RecordButton({ mode, setMode, streamRef, timer }) {
+function RecordButton({ mode, setMode, streamRef, isExpired }) {
   const { footage, setFootage } = useFootage()
   const framesRef = useRef([])
-  const recorderRef = useRef(null)
+  const recordingRef = useRef(null)
   
   const startRecord = () => {
-    if (timer < 1) {
+    if (isExpired) {
       return alert('No recording time remaining.')
     }
-    setMode('on')
-    const recorder = camera.startRecording(streamRef.current, framesRef.current)
-    recorderRef.current = recorder
+    if (!(streamRef.current instanceof MediaStream)) {
+      throw new TypeError(`stream must be an instance of MediaStream: ${streamRef.current}`)
+    }
+    try {
+      recordingRef.current = camera.startRecording(
+        streamRef.current, 
+        framesRef.current
+      )
+      setMode('on')
+    } catch (error) {
+      alert('Error starting recording.')
+      throw error
+    }
   }
-
+  
   const stopRecord = async () => {
     try {
+      if (!recordingRef.current) {
+        throw new Error('No active recording found.')
+      }
       setMode('off')
-      const blob = await camera.stopRecording(recorderRef.current, framesRef.current)
-      const newFootage = new Blob([ footage, blob ], { type: 'video/webm' }) 
-      setFootage(newFootage)
+      const blob = await camera.stopRecording(
+        recordingRef.current,
+        framesRef.current
+      )
+      const duration = await getDuration(blob)
+      const data = {
+        id: crypto.randomUUID(),
+        clip: blob,
+        duration,
+        mimeType: blob.type || 'video/webm',
+        name: `Clip ${new Date().toLocaleTimeString()}`,
+        trimStart: 0,
+        trimEnd: duration
+      }
+      const clips = [...(footage ?? []), data]
+      setFootage(clips)
       const db = database()
-      db.put({ id: 'footage', footage: newFootage })
+      await db.put({ id: 'footage', footage: clips })
     } catch (error) {
-      alert(error.message)
-      console.log(error)
+      console.error('Failed to stop recording:', error) // polish error handling: use setErrorMessage
+    } finally {
+      recordingRef.current = null
     }
   }
   

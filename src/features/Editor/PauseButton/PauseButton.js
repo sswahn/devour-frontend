@@ -1,25 +1,44 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import PlayIcon from '../../../components/Icons/PlayIcon/PlayIcon'
 import PauseIcon from '../../../components/Icons/PauseIcon/PauseIcon'
 import styles from './PauseButton.module.css'
 
-function PauseButton({ videoRef }) {
-  const [pause, setPause] = useState(false)
+function PauseButton({ videoRef, programmaticPause }) {
+  const [isPaused, setIsPaused] = useState(false)
     
   const togglePause = event => {
     navigator.vibrate?.(50)
-    pause ? videoRef.current.play() : videoRef.current.pause()
-    setPause(prev => !prev) 
+    isPaused ? videoRef.current.play() : videoRef.current.pause()
+    setIsPaused(prev => !prev) 
   }
 
+  const onEnded = () => {
+    setIsPaused(true)
+  }
+
+  useEffect(() => {
+    setIsPaused(true)
+  }, [programmaticPause])
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) {
+      return 
+    }
+    video.addEventListener('ended', onEnded)
+    return () => {
+      video.removeEventListener('ended', onEnded)
+    }
+  }, [])
+  
   return (
     <button 
       className={styles.pauseButton} 
       onClick={togglePause} 
       type="button" 
-      aria-label={`${pause ? 'play' : 'pause'} video`} 
+      aria-label={`${isPaused ? 'play' : 'pause'} video`} 
       aria-controls="video-editor">
-      {pause ? <PlayIcon /> : <PauseIcon />}
+      {isPaused ? <PlayIcon /> : <PauseIcon />}
     </button>
   )
 }

@@ -42,15 +42,17 @@
   font-size: var(--font-size);
 }
 
-/* Dropdown */
+/* Dropdown: might be better to position the footer rather than the dropdown. */
 .listItem article footer div {
   position: absolute;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 200;
+ /* z-index: 200; */
 }
 
+/*
 .listItem article footer div > ul {
   z-index: 250;
 }
+*/

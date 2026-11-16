@@ -12,7 +12,9 @@
   "dependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "@babel/runtime": "^7.23.2"
+    "@babel/runtime": "^7.23.2",
+    "@ffmpeg/ffmpeg": "^0.12.12",
+    "@ffmpeg/util": "^0.12.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.23.0",

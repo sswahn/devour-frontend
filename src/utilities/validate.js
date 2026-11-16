@@ -99,6 +99,36 @@ const validate = {
       throw new Error('Bio length must be between 3 and 250 characters.', { cause: 'biography' })
     }
     return biography
+  },
+
+  caption: {
+    text(value) {
+      if (!value || value === '') {
+        throw new TypeError('Caption text is required to create a caption.', { cause: 'caption.text' })
+      }
+      if (value.length < 2 || value.length > 140) {
+        throw new Error('Caption text length must be between 2 and 140 characters.', { cause: 'caption.text' })
+      }
+      return value
+    },
+    start(value) {
+      if (!value || value === '') {
+        throw new TypeError('A caption start time is required to create a caption.', { cause: 'caption.start' })
+      }
+      if (value.length < 1 || value.length > 5) {
+        throw new Error('Caption start value must be between 1 and 5 characters.', { cause: 'caption.start' })
+      }
+      return value
+    },
+    end(value) {
+      if (!value || value === '') {
+        throw new TypeError('A caption end time is required to create a caption.', { cause: 'caption.end' })
+      }
+      if (value.length < 1 || value.length > 5) {
+        throw new Error('Caption end value must be between 1 and 5 characters.', { cause: 'caption.end' })
+      }
+      return value
+    }
   }
   
 }

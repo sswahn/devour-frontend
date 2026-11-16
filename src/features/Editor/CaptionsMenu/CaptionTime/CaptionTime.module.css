@@ -1,0 +1,13 @@
+/* Caption Time Inputs */
+
+.captionTime {
+  background-color: gray; 
+  bottom: -156px;
+  display: flex;
+  gap: 8px;
+  left: 0;
+  list-style: none;
+  padding: 8px;
+  position: fixed;
+  width: 100%;
+}

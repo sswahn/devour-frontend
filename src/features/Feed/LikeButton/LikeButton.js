@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { config } from '../../../config'
 import server from '../../../utilities/server'
 import HeartIconFill from '../../../components/Icons/HeartIcon/HeartIconFill' 
 import HeartIconStroke from '../../../components/Icons/HeartIcon/HeartIconStroke' 
@@ -26,7 +25,7 @@ function LikeButton({ isDoubleTap, likedByUser = false }) {
 
   useEffect(() => {
     if (!liked) {
-      onClick()
+      action()
     }
   }, [isDoubleTap])
 

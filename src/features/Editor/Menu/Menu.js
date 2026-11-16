@@ -1,40 +1,40 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react' // remove useEffect
 import useDialog from '../../../hooks/useDialog'
 import CloseButton from '../../../components/CloseButton/CloseButton'
-import Input from '../../../components/Input/Input'
+import Captions from '../Captions/Captions'
+import Cards from '../Cards/Cards'
 import styles from './Menu.module.css'
 
-function Menu({ data, setData, closeMenu }) {
+function Menu({ closeMenu }) {
   const { openDialog } = useDialog()
   const [errorMessage, setErrorMessage] = useState('')
   const listRef = useRef(null)
 
-  // move buttons to there own components
-  
-  const handleCaption = event => {
-    openDialog(
-      <div style={{marginTop: '32px'}}>
-        <Input
-          id="caption"
-          type="text"
-          label="Caption"
-          inputMode="text"
-          defaultValue={data.caption}
-          error={errorMessage} 
-        />
-      </div>
-    )
+  // TODO: get rid of menu, and create a sidenav (ultimately scrollable)
+  // move Captions to Editor to be toggled conditionally
+  // it will exist in a custom overlay, no longer in a dialog
+  // however a caption edit form will use dialog
+  const handleCaptions = event => {
+    closeMenu()
+    openDialog(<Captions />)
   }
+
+  const handleCards = event => {
+    closeMenu()
+    openDialog(<Cards />)  
+  }
+  
+  // move buttons to there own components
   
   return (
     <div className={styles.menu} aria-label="menu">
       <CloseButton overlay="menu" close={closeMenu} />
       <ul ref={listRef}>
         <li>
-          <button onClick={handleCaption} type="button">Caption</button>
+          <button onClick={handleCaptions} type="button">Captions</button>
         </li>
         <li>
-          <button type="button">Media Editor list items...</button>
+          <button onClick={handleCards} type="button">Cards</button>
         </li>
       </ul>
     </div>
