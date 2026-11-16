@@ -5,7 +5,7 @@ function UnderlineButton({ setStyle }) {
 
   const onClick = event => {
     navigator.vibrate?.(50)
-    setStyle('underline')
+    setStyle(prev => ({ ...prev, underline: !prev.underline }))
   }
   
   return (
