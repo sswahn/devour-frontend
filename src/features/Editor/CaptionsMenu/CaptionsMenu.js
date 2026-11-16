@@ -24,8 +24,8 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
     setActiveCaption(prev => ({ ...prev, [id]: value }))
   }
 
-  const updateActiveCaptionStyle = style => {
-    setActiveCaption(prev => ({ ...prev, style: { ...prev.style, ...style } }))
+  const updateActiveCaptionStyle = (key, value) => {
+    setActiveCaption(prev => ({ ...prev, style: { ...prev.style, [key]: value } }))
   }
 
   const validateCaption = caption => {
