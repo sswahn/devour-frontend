@@ -84,7 +84,12 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   }
 
   const onSelect = event => {
-    
+    setSelection({
+      text: event.target.value,
+      start: event.target.selectionStart,
+      end: event.target.selectionEnd,
+      style: {}
+    })
   }
 
   /* these click events will be moved to the edit caption form
