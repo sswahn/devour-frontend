@@ -27,7 +27,8 @@ function Editor({ openCamera, openPublisher }) {
         textDecoration: 'none',
         WebkitTextStrokeWidth: '0px',
         WebkitTextStrokeColor: 'transparent'
-      }
+      },
+      segments: []
     }
   )
   const [captionsMenu, setCaptionsMenu] = useState(false)
