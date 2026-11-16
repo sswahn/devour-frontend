@@ -3,7 +3,7 @@ import PlayIcon from '../../../components/Icons/PlayIcon/PlayIcon'
 import PauseIcon from '../../../components/Icons/PauseIcon/PauseIcon'
 import styles from './PauseButton.module.css'
 
-function PauseButton({ videoRef }) {
+function PauseButton({ videoRef, programmaticPause }) {
   const [isPaused, setIsPaused] = useState(false)
     
   const togglePause = event => {
@@ -15,6 +15,10 @@ function PauseButton({ videoRef }) {
   const onEnded = () => {
     setIsPaused(true)
   }
+
+  useEffect(() => {
+    setIsPaused(true)
+  }, [programmaticPause])
 
   useEffect(() => {
     const video = videoRef.current
