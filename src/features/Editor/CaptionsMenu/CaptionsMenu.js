@@ -17,6 +17,7 @@ import styles from './CaptionsMenu.module.css'
 function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   const { captions, createCaption, updateCaption, deleteCaption } = useCaptions()
   const [captionTime, setCaptionTime] = useState(false)
+  const [selection, setSelection] = useState({})
   const [errorMessage, setErrorMessage] = useState('')
   const captionsRef = useRef(null)
 
@@ -57,7 +58,8 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
         text: validate.caption.text(activeCaption.text.trim()),
         start: validate.caption.start(activeCaption.start.trim()),
         end: validate.caption.end(activeCaption.end.trim()),
-        style: activeCaption.style
+        style: activeCaption.style,
+        segments: []
       })
       setActiveCaption({
         id: crypto.randomUUID(),
