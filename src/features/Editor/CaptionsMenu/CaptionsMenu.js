@@ -73,8 +73,8 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
           fontWeight: 'normal',
           textAlign: 'left',
           textDecoration: 'none',
-          WebkitTextStrokeWidth: '1px',
-          WebkitTextStrokeColor: 'black'
+          WebkitTextStrokeWidth: '0px',
+          WebkitTextStrokeColor: 'transparent'
         }
       })
     } catch (error) {
