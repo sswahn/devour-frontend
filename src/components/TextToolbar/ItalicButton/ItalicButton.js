@@ -5,7 +5,7 @@ function ItalicButton({ setStyle }) {
 
   const onClick = event => {
     navigator.vibrate?.(50)
-    setStyle('italic')
+    setStyle(prev => ({ ...prev, italic: !prev.italic }))
   }
   
   return (
