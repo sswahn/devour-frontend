@@ -28,7 +28,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
     setActiveCaption(prev => ({ ...prev, style: { ...prev.style, ...style } }))
   }
 
-  const isValidCaption = caption => {
+  const validateCaption = caption => {
     // This validates start/end dont overlap
     // break this out into its own function:
     /*
@@ -37,51 +37,50 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
       index > 0 && caption.start < sorted[index - 1].end
     )
     if (conflicted) {
-      return false //'This caption conflicts with an existing caption.' 
+      throw new Error('This caption conflicts with an existing caption.')
     }
     */
 
     // need to check end isnt outside video duration
     // need duration prop from the concatenated blob created in Editor
-    return true
+    return caption
   }
   
   const saveCaption = () => {
     if (!activeCaption.text.trim()) {
       return
     }
-
-    if (!isValidCaption(activeCaption)) {
-      return alert('This caption conflicts with an existing caption, or exists outside the length of the video duration.' )
+    try {
+      validateCaption(activeCaption)
+      createCaption({
+        id: activeCaption.id,
+        text: validate.caption.text(activeCaption.text.trim()),
+        start: validate.caption.start(activeCaption.start.trim()),
+        end: validate.caption.end(activeCaption.end.trim()),
+        style: activeCaption.style
+      })
+      setActiveCaption({
+        id: crypto.randomUUID(),
+        text: '',
+        start: '',
+        end: '',
+        style: {
+          // fontFamily: '',
+          fontSize: 16,
+          color: '#ffffff',
+          bold: false,
+          italic: false,
+          underline: false,
+          stroke: 'none',
+          strokeColor: '#000000',
+          strokeWidth: 2,
+          backgroundColor: 'transparent',
+          textAlign: 'left'
+        }
+      })
+    } catch (error) {
+      console.log(error)
     }
-    
-    const data = {
-      id: activeCaption.id,
-      text: validate.caption.text(activeCaption.text.trim()),
-      start: validate.caption.start(activeCaption.start.trim()),
-      end: validate.caption.end(activeCaption.end.trim()),
-      style: activeCaption.style
-    }
-    createCaption(data)
-    setActiveCaption({
-      id: crypto.randomUUID(),
-      text: '',
-      start: '',
-      end: '',
-      style: {
-        // fontFamily: '',
-        fontSize: 16,
-        color: '#ffffff',
-        bold: false,
-        italic: false,
-        underline: false,
-        stroke: 'none',
-        strokeColor: '#000000',
-        strokeWidth: 2,
-        backgroundColor: 'transparent',
-        textAlign: 'left'
-      }
-    })
   }
 
   /* these click events will be moved to the edit caption form
