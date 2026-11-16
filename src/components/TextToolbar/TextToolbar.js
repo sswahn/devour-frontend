@@ -32,10 +32,6 @@ function TextToolbar({ textStyles, setTextStyles }) {
   }
 
   useEffect(() => {
-    console.log('text editor toolbar - fontSize: ', textStyles.fontSize)
-  }, [textStyles.fontSize])
-
-  useEffect(() => {
     document.addEventListener('click', offClickClose)
     return () => {
       document.removeEventListener('click', offClickClose)
