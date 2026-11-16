@@ -17,17 +17,16 @@ function Editor({ openCamera, openPublisher }) {
       start: '', // need default time: currentTime
       end: '', // currentTime + 4
       style: {
-        // fontFamily: 
-        fontSize: 16,
-        color: '#ffffff',
-        fontWeight: 'normal',
-        fontStyle: 'normal',
-        textDecoration: 'none',
-        stroke: 'none',
-        strokeColor: '#000000',
-        strokeWidth: 2,
         backgroundColor: 'transparent',
-        textAlign: 'left'
+        color: '#ffffff',
+        // fontFamily: '',
+        fontSize: 16,
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        textAlign: 'left',
+        textDecoration: 'none',
+        WebkitTextStrokeWidth: '0px',
+        WebkitTextStrokeColor: 'transparent'
       }
     }
   )
