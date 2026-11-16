@@ -104,6 +104,8 @@ function Video({ videoRef, activeCaption }) {
   }, [activeCaption])
 
   // currentCaption figcation should be clicable to open edit/delete form
+
+  // break figcaption out into its own component, along with logic & state
   
   return (
     <figure className={styles.video}>
