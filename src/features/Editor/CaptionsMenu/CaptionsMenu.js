@@ -114,6 +114,11 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
     }
   }, [offClickToClose])
 
+  // debug:
+  useEffect(() => {
+    console.log('activeCaption.style: ', activeCaption.style)
+  }, [activeCaption.style])
+
   return (
     <section ref={captionsRef} className={styles.captionsMenu}>
       <Input 
