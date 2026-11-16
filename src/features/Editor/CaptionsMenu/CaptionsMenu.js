@@ -83,6 +83,10 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
     }
   }
 
+  const onSelect = event => {
+    
+  }
+
   /* these click events will be moved to the edit caption form
   const handleEdit = async event => {
     const id = event.target.closest('li').id
@@ -123,6 +127,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
         value={activeCaption.text}
         error={errorMessage}
         onChange={updateActiveCaption}
+        onSelect={onSelect}
         required />
       <CaptionTimeButton setCaptionTime={setCaptionTime} />
       {captionTime && <CaptionTime activeCaption={activeCaption} updateActiveCaption={updateActiveCaption} />}
