@@ -95,10 +95,14 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   const onSelect = event => {
 
     console.log('onSelect fired. Setting selection data.')
-    
+
+    const { selectionStart, selectionStart } = event.target
+    if (selectionStart === selectionEnd) {
+      return
+    }
     setSelections(prev => [ ...prev, {
-      start: event.target.selectionStart,
-      end: event.target.selectionEnd,
+      start: selectionStart,
+      end: selectionEnd,
       style: {}
     }])
   }
