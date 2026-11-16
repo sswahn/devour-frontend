@@ -65,17 +65,16 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
         start: '',
         end: '',
         style: {
+          backgroundColor: 'transparent',
+          color: '#ffffff',
           // fontFamily: '',
           fontSize: 16,
-          color: '#ffffff',
-          fontWeight: 'normal',
           fontStyle: 'normal',
+          fontWeight: 'normal',
+          textAlign: 'left',
           textDecoration: 'none',
-          stroke: 'none',
-          strokeColor: '#000000',
-          strokeWidth: 2,
-          backgroundColor: 'transparent',
-          textAlign: 'left'
+          WebkitTextStrokeWidth: '1px',
+          WebkitTextStrokeColor: 'black'
         }
       })
     } catch (error) {
