@@ -28,7 +28,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
     setActiveCaption(prev => ({ ...prev, style: { ...prev.style, ...style } }))
   }
 
-  const validateCaption = caption => {
+  const isValidCaption = caption => {
     // This validates start/end dont overlap
     // break this out into its own function:
     /*
@@ -51,7 +51,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
       return
     }
 
-    if (!isValidateCaption(activeCaption)) {
+    if (!isValidCaption(activeCaption)) {
       return alert('This caption conflicts with an existing caption, or exists outside the length of the video duration.' )
     }
     
