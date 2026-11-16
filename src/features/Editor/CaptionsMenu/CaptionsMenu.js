@@ -17,7 +17,7 @@ import styles from './CaptionsMenu.module.css'
 function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   const { captions, createCaption, updateCaption, deleteCaption } = useCaptions()
   const [captionTime, setCaptionTime] = useState(false)
-  const [selection, setSelection] = useState([])
+  const [selections, setSelections] = useState([])
   const [errorMessage, setErrorMessage] = useState('')
   const captionsRef = useRef(null)
 
@@ -92,7 +92,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   }
 
   const onSelect = event => {
-    setSelection(prev = > [ ...prev, {
+    setSelections(prev = > [ ...prev, {
       start: event.target.selectionStart,
       end: event.target.selectionEnd,
       style: {}
