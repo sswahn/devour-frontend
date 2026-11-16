@@ -3,12 +3,11 @@ import AlignCenterIcon from '../../Icons/AlignCenterIcon/AlignCenterIcon'
 import AlignRightIcon from '../../Icons/AlignRightIcon/AlignRightIcon'
 import styles from './AlignText.module.css'
 
-function AlignText({ textAlign, setTextAlign }) {
+function AlignText({ textAlign, setStyle }) {
 
   const onClick = event => {
     navigator.vibrate?.(50)
-    const value = event.target.id
-    setTextAlign(value)
+    setStyle(prev => ({ ...prev, textAlign: event.target.id }))
   }
 
   return (
