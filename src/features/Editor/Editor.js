@@ -32,11 +32,13 @@ function Editor({ openCamera, openPublisher }) {
     }
   )
   const [captionsMenu, setCaptionsMenu] = useState(false)
+  const [programmaticPause, setProgrammaticPause] = useState(null)
   const videoRef = useRef(null)
 
   const openCaptionsMenu = () => {
     const { currentTime } = videoRef.current
-    videoRef.current.pause() // doesnt toggle pause button display
+    videoRef.current.pause()
+    setProgrammaticPause(performance.now())
     setCaptionsMenu(true)
     setActiveCaption(prev => ({ ...prev, 
       start: currentTime.toFixed(2), 
@@ -58,7 +60,7 @@ function Editor({ openCamera, openPublisher }) {
   
   return (
     <section className={styles.editor}>
-      <TopNav videoRef={videoRef} openCamera={openCamera} /> 
+      <TopNav videoRef={videoRef} openCamera={openCamera} programmaticPause={programmaticPause} /> 
       {/*captionsMenu &&  */}
     <CaptionsMenu 
         activeCaption={activeCaption} 
