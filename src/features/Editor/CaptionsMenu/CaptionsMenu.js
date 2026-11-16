@@ -26,9 +26,6 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   }
 
   const updateActiveCaptionStyle = update => {
-
-    console.log('selections: ', selections)
-    
     if (selections.length) {
       return setSelections(prev => prev.map(selection => ({
         ...selection,
@@ -65,14 +62,18 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
     
     try {
       validateCaption(activeCaption)
-      createCaption({
+      const data = {
         id: activeCaption.id,
         text: validate.caption.text(activeCaption.text.trim()),
         start: validate.caption.start(activeCaption.start.trim()),
         end: validate.caption.end(activeCaption.end.trim()),
         style: activeCaption.style,
         segments: selections.toSorted((a, b) => a.start - b.start)
-      })
+      }
+      
+      console.log('new captions data: ', data)
+      
+      createCaption(data)
       setActiveCaption({
         id: crypto.randomUUID(),
         text: '',
@@ -98,11 +99,8 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
     }
   }
 
-  const onSelect = event => {
-
-    console.log('onSelect fired. Setting selection data.')
-
-    const { selectionStart, selectionEnd } = event.target
+  const onSelect = ({ target }) => {
+    const { selectionStart, selectionEnd } = target
     if (selectionStart === selectionEnd) {
       return
     }
