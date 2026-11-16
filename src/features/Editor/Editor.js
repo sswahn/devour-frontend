@@ -14,8 +14,8 @@ function Editor({ openCamera, openPublisher }) {
     storage.local.get(config.storage.activeCaption) ?? {
       id: crypto.randomUUID(),
       text: '',
-      start: '', // need default time: currentTime
-      end: '', // currentTime + 4
+      start: '',
+      end: '',
       style: {
         backgroundColor: 'transparent',
         color: '#ffffff',
@@ -41,7 +41,7 @@ function Editor({ openCamera, openPublisher }) {
     setCaptionsMenu(true)
     setActiveCaption(prev => ({ ...prev, 
       start: currentTime.toFixed(2), 
-      end: (currentTime + 4).toFixed(2) 
+      end: (currentTime + 3).toFixed(2) 
     }))
   }
   
