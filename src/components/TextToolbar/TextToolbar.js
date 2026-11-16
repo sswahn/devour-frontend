@@ -19,12 +19,8 @@ function TextToolbar({ textStyles, setTextStyles }) {
     setActiveDropdown(value)
   }
 
-  const toggleStyle = key => {
-    setTextStyles(prev => ({ ...prev, [key]: !prev[key] }))
-  }
-
-  const updateStyle = (key, value) => {
-    setTextStyles(prev => ({ ...prev, [key]: value }))
+  const updateStyle = (key, value = null) => {
+    setTextStyles(prev => ({ ...prev, [key]: value ?? !prev[key] }))
   }
 
   const offClickClose = event => {
@@ -42,9 +38,9 @@ function TextToolbar({ textStyles, setTextStyles }) {
   
   return (
     <div className={styles.textToolbar}>
-      <BoldButton setStyle={toggleStyle} />
-      <ItalicButton setStyle={toggleStyle} />
-      <UnderlineButton setStyle={toggleStyle} />
+      <BoldButton setStyle={updateStyle} />
+      <ItalicButton setStyle={updateStyle} />
+      <UnderlineButton setStyle={updateStyle} />
       <FontColorButton openDropdown={openDropdown} />
       {activeDropdown === 'color' && <ColorPalette color={textStyles.color} setColor={val => updateStyle('color', val)} />}
       <BackgroundColorButton openDropdown={openDropdown} />
