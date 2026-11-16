@@ -70,6 +70,11 @@ function Video({ videoRef, activeCaption }) {
     }
   }, [footage])
 
+    // debug:
+  useEffect(() => {
+    console.log('activeCaption.style: ', activeCaption.style)
+  }, [activeCaption.style])
+
   // currentCaption figcation should be clicable to open edit/delete form
   
   return (
