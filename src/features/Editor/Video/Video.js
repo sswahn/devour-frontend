@@ -42,7 +42,7 @@ function Video({ videoRef, activeCaption }) {
           {text.slice(start, segment.end)}
         </span>
       )
-    )
+    })
     const last = (
       <span key="remaining">
         {text.slice(position)}
