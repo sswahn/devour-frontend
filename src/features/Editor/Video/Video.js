@@ -90,7 +90,7 @@ const renderSegments = () => {
       {text.slice(segments.at(-1).end)}
     </span>
   )
-  cosnt result = [...html, last]
+  const result = [...html, last]
 
   console.log('concatted segments: ', result)
 
