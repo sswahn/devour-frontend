@@ -26,6 +26,9 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   }
 
   const updateActiveCaptionStyle = update => {
+
+    console.log('selections: ', selections)
+    
     if (selections.length) {
       return setSelections(prev => prev.map(selection => ({
         ...selection,
