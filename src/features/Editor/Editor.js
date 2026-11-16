@@ -20,9 +20,9 @@ function Editor({ openCamera, openPublisher }) {
         // fontFamily: 
         fontSize: 16,
         color: '#ffffff',
-        bold: false,
-        italic: false,
-        underline: false,
+        fontWeight: 'normal',
+        fontStyle: 'normal',
+        textDecoration: 'normal',
         stroke: 'none',
         strokeColor: '#000000',
         strokeWidth: 2,
