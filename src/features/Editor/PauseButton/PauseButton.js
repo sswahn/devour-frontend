@@ -4,16 +4,16 @@ import PauseIcon from '../../../components/Icons/PauseIcon/PauseIcon'
 import styles from './PauseButton.module.css'
 
 function PauseButton({ videoRef }) {
-  const [pause, setPause] = useState(false)
+  const [isPaused, setIsPaused] = useState(false)
     
   const togglePause = event => {
     navigator.vibrate?.(50)
-    pause ? videoRef.current.play() : videoRef.current.pause()
-    setPause(prev => !prev) 
+    isPaused ? videoRef.current.play() : videoRef.current.pause()
+    setIsPaused(prev => !prev) 
   }
 
   const onEnded = () => {
-    setPause(true)
+    setIsPaused(true)
   }
 
   useEffect(() => {
@@ -32,9 +32,9 @@ function PauseButton({ videoRef }) {
       className={styles.pauseButton} 
       onClick={togglePause} 
       type="button" 
-      aria-label={`${pause ? 'play' : 'pause'} video`} 
+      aria-label={`${isPaused ? 'play' : 'pause'} video`} 
       aria-controls="video-editor">
-      {pause ? <PlayIcon /> : <PauseIcon />}
+      {isPaused ? <PlayIcon /> : <PauseIcon />}
     </button>
   )
 }
