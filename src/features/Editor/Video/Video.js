@@ -76,13 +76,48 @@ function Video({ videoRef, activeCaption }) {
   }, [activeCaption.style])
 
   // currentCaption figcation should be clicable to open edit/delete form
+
+const renderSegments = () => {
+  const { text, segments, style } = activeCaption
+  let position = 0
+
+  return segments.map((segment, index) => {
+    const elements = []
+
+    if (position < segment.start) {
+      elements.push(
+        <span key={`text-${index}`}>
+          {text.slice(position, segment.start)}
+        </span>
+      )
+    }
+
+    elements.push(
+      <span key={`segment-${index}`} style={segment.style}>
+        {text.slice(segment.start, segment.end)}
+      </span>
+    )
+
+    position = segment.end
+
+    return elements
+  }).concat(
+    position < text.length
+      ? <span key="remaining">{text.slice(position)}</span>
+      : []
+  )
+}
   
   return (
     <figure className={styles.video}>
       <video id="video-editor" ref={videoRef} src={source} onTimeUpdate={onTimeUpdate} autoPlay playsInline 
         onError={e => console.error('Video error:', e.currentTarget.error)}
       />
-      {activeCaption?.text && <figcaption style={activeCaption.style}>{activeCaption.text}</figcaption>}
+      {activeCaption?.text && 
+        <figcaption style={activeCaption.style}>
+          {activeCaption.segments?.length ? renderSegments() : activeCaption.text}
+        </figcaption>
+      }
       {currentCaption?.text && <figcaption style={currentCaption.style}>{currentCaption.text}</figcaption>}
       {loading && <LoadingSpinner />}
     </figure>
