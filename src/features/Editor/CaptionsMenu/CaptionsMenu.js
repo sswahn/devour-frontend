@@ -131,7 +131,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
         required />
       <CaptionTimeButton setCaptionTime={setCaptionTime} />
       {captionTime && <CaptionTime activeCaption={activeCaption} updateActiveCaption={updateActiveCaption} />}
-      <TextToolbar textStyles={activeCaption.style} setTextStyles={updateActiveCaptionStyle} />
+      <TextToolbar style={activeCaption.style} setStyle={updateActiveCaptionStyle} />
     </section>
   )
 }
