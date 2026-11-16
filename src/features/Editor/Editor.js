@@ -59,12 +59,12 @@ function Editor({ openCamera, openPublisher }) {
   return (
     <section className={styles.editor}>
       <TopNav videoRef={videoRef} openCamera={openCamera} programmaticPause={programmaticPause} /> 
-      {/*captionsMenu &&  */}
-      <CaptionsMenu activeCaption={activeCaption} setActiveCaption={setActiveCaption} closeCaptionsMenu={closeCaptionsMenu} />
       <VideoTimeline videoRef={videoRef} />
       <Video videoRef={videoRef} activeCaption={activeCaption} />
       <CaptionsMenuButton openCaptionsMenu={openCaptionsMenu} />
       <SubmitButton openPublisher={openPublisher} />
+      {/*captionsMenu &&  */}
+      <CaptionsMenu activeCaption={activeCaption} setActiveCaption={setActiveCaption} closeCaptionsMenu={closeCaptionsMenu} />
     </section>
   )
 }
