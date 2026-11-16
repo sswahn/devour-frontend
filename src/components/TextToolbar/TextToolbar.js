@@ -15,8 +15,7 @@ function TextToolbar({ style, setStyle }) {
   const [activeDropdown, setActiveDropdown] = useState(null)
 
   const openDropdown = id => {
-    const value = activeDropdown === id ? null : id
-    setActiveDropdown(value)
+    setActiveDropdown(activeDropdown === id ? null : id)
   }
 
   const offClickClose = event => {
@@ -41,14 +40,10 @@ function TextToolbar({ style, setStyle }) {
       <BackgroundColorButton openDropdown={openDropdown} />
       <FontSizeButton openDropdown={openDropdown} />
       <TextAlignButton openDropdown={openDropdown} />
+      {activeDropdown === 'fontSize' && <FontSizeSlider fontSize={style.fontSize} setStyle={setStyle} />}
+      {activeDropdown === 'textAlign' && <AlignText textAlign={style.textAlign} setStyle={setStyle} />}
       {activeDropdown.toLowerCase().includes('color') && 
         <ColorPalette color={style[activeDropdown]} setColor={val => setStyle(prev => ({ ...prev, [activeDropdown]: val }))} />
-      }
-      {activeDropdown === 'fontSize' && 
-        <FontSizeSlider fontSize={style.fontSize} setStyle={setStyle} />
-      }
-      {activeDropdown === 'textAlign' && 
-        <AlignText textAlign={style.textAlign} setStyle={setStyle} />
       }
     </div>
   )
