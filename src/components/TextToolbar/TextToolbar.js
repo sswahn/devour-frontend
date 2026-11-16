@@ -42,7 +42,7 @@ function TextToolbar({ style, setStyle }) {
       <TextAlignButton openDropdown={openDropdown} />
       {activeDropdown === 'fontSize' && <FontSizeSlider fontSize={style.fontSize} setStyle={setStyle} />}
       {activeDropdown === 'textAlign' && <AlignText textAlign={style.textAlign} setStyle={setStyle} />}
-      {activeDropdown.toLowerCase().includes('color') && 
+      {activeDropdown?.toLowerCase().includes('color') && 
         <ColorPalette color={style[activeDropdown]} setColor={val => setStyle(prev => ({ ...prev, [activeDropdown]: val }))} />
       }
     </div>
