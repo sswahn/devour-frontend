@@ -36,7 +36,7 @@ function Editor({ openCamera, openPublisher }) {
 
   const openCaptionsMenu = () => {
     const { currentTime } = videoRef.current
-    videoRef.current.pause()
+    videoRef.current.pause() // doesnt toggle pause button display
     setCaptionsMenu(true)
     setActiveCaption(prev => ({ ...prev, 
       start: currentTime.toFixed(2), 
