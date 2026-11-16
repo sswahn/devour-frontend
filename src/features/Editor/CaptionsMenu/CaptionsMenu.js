@@ -93,7 +93,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   }
 
   const onSelect = event => {
-    setSelections(prev = > [ ...prev, {
+    setSelections(prev => [ ...prev, {
       start: event.target.selectionStart,
       end: event.target.selectionEnd,
       style: {}
