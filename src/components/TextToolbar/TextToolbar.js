@@ -11,16 +11,12 @@ import TextAlignButton from './TextAlignButton/TextAlignButton'
 import AlignText from './AlignText/AlignText'
 import styles from './TextToolbar.module.css'
 
-function TextToolbar({ textStyles, setTextStyles }) {
+function TextToolbar({ style, setStyle }) {
   const [activeDropdown, setActiveDropdown] = useState(null)
 
   const openDropdown = id => {
     const value = activeDropdown === id ? null : id
     setActiveDropdown(value)
-  }
-
-  const updateStyle = (key, value = null) => {
-    setTextStyles(prev => ({ ...prev, [key]: value ?? !prev[key] }))
   }
 
   const offClickClose = event => {
@@ -38,17 +34,17 @@ function TextToolbar({ textStyles, setTextStyles }) {
   
   return (
     <div className={styles.textToolbar}>
-      <BoldButton setStyle={updateStyle} />
-      <ItalicButton setStyle={updateStyle} />
-      <UnderlineButton setStyle={updateStyle} />
+      <BoldButton setStyle={setStyle} />
+      <ItalicButton setStyle={setStyle} />
+      <UnderlineButton setStyle={setStyle} />
       <FontColorButton openDropdown={openDropdown} />
-      {activeDropdown === 'color' && <ColorPalette color={textStyles.color} setColor={val => updateStyle('color', val)} />}
+      {activeDropdown === 'color' && <ColorPalette color={textStyles.color} setColor={val => setStyle('color', val)} />}
       <BackgroundColorButton openDropdown={openDropdown} />
-      {activeDropdown === 'backgroundColor' && <ColorPalette color={textStyles.backgroundColor} setColor={val => updateStyle('backgroundColor', val)} />}
+      {activeDropdown === 'backgroundColor' && <ColorPalette color={textStyles.backgroundColor} setColor={val => setStyle('backgroundColor', val)} />}
       <FontSizeButton openDropdown={openDropdown} />
-      {activeDropdown === 'fontSize' && <FontSizeSlider fontSize={textStyles.fontSize} setFontSize={val => updateStyle('fontSize', val)} />}
+      {activeDropdown === 'fontSize' && <FontSizeSlider fontSize={textStyles.fontSize} setFontSize={val => setStyle('fontSize', val)} />}
       <TextAlignButton openDropdown={openDropdown} />
-      {activeDropdown === 'textAlign' && <AlignText textAlign={textStyles.textAlign} setTextAlign={val => updateStyle('textAlign', val)} />}
+      {activeDropdown === 'textAlign' && <AlignText textAlign={textStyles.textAlign} setTextAlign={val => setStyle('textAlign', val)} />}
     </div>
   )
 }
