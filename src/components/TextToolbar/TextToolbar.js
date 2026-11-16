@@ -38,13 +38,18 @@ function TextToolbar({ style, setStyle }) {
       <ItalicButton setStyle={setStyle} />
       <UnderlineButton setStyle={setStyle} />
       <FontColorButton openDropdown={openDropdown} />
-      {activeDropdown === 'color' && <ColorPalette color={textStyles.color} setColor={val => setStyle('color', val)} />}
       <BackgroundColorButton openDropdown={openDropdown} />
-      {activeDropdown === 'backgroundColor' && <ColorPalette color={textStyles.backgroundColor} setColor={val => setStyle('backgroundColor', val)} />}
       <FontSizeButton openDropdown={openDropdown} />
-      {activeDropdown === 'fontSize' && <FontSizeSlider fontSize={textStyles.fontSize} setFontSize={val => setStyle('fontSize', val)} />}
       <TextAlignButton openDropdown={openDropdown} />
-      {activeDropdown === 'textAlign' && <AlignText textAlign={textStyles.textAlign} setTextAlign={val => setStyle('textAlign', val)} />}
+      {activeDropdown.toLowerCase().includes('color') && 
+        <ColorPalette color={textStyles[activeDropdown]} setColor={val => setStyle(prev => ({ ...prev, [activeDropdown]: val }))} />
+      }
+      {activeDropdown === 'fontSize' && 
+        <FontSizeSlider fontSize={textStyles.fontSize} setFontSize={val => setStyle('fontSize', val)} />
+      }
+      {activeDropdown === 'textAlign' && 
+        <AlignText textAlign={textStyles.textAlign} setTextAlign={val => setStyle('textAlign', val)} />
+      }
     </div>
   )
 }
