@@ -75,8 +75,6 @@ function Video({ videoRef, activeCaption }) {
   return (
     <figure className={styles.video}>
       <video id="video-editor" ref={videoRef} src={source} onTimeUpdate={onTimeUpdate} autoPlay playsInline 
-        onLoadedMetadata={() => console.log('Video metadata loaded')}
-        onCanPlay={() => console.log('Video can play')}
         onError={e => console.error('Video error:', e.currentTarget.error)}
       />
       {activeCaption?.text && <figcaption style={activeCaption.style}>{activeCaption.text}</figcaption>}
