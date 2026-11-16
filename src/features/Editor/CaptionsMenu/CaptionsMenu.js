@@ -75,7 +75,8 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
           textDecoration: 'none',
           WebkitTextStrokeWidth: '0px',
           WebkitTextStrokeColor: 'transparent'
-        }
+        },
+        segments: []
       })
     } catch (error) {
       console.log(error)
