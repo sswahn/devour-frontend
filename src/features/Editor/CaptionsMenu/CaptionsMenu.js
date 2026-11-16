@@ -60,6 +60,9 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
     if (!activeCaption.text.trim()) {
       return
     }
+
+    console.log('commiting selections: ', selections)
+    
     try {
       validateCaption(activeCaption)
       createCaption({
