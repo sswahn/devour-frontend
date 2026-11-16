@@ -119,7 +119,7 @@ const renderSegments = () => {
       />
       {activeCaption?.text && 
         <figcaption style={activeCaption.style}>
-          {activeCaption.segments?.length ? renderSegments() : activeCaption.text}
+          {activeCaption.segments.length ? renderSegments() : activeCaption.text}
         </figcaption>
       }
       {currentCaption?.text && <figcaption style={currentCaption.style}>{currentCaption.text}</figcaption>}
