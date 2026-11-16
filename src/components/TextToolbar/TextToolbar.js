@@ -45,10 +45,10 @@ function TextToolbar({ style, setStyle }) {
         <ColorPalette color={textStyles[activeDropdown]} setColor={val => setStyle(prev => ({ ...prev, [activeDropdown]: val }))} />
       }
       {activeDropdown === 'fontSize' && 
-        <FontSizeSlider fontSize={textStyles.fontSize} setFontSize={val => setStyle('fontSize', val)} />
+        <FontSizeSlider fontSize={textStyles.fontSize} setFontSize={val => setStyle(prev => ({ ...prev, fontSize: val }))} />
       }
       {activeDropdown === 'textAlign' && 
-        <AlignText textAlign={textStyles.textAlign} setTextAlign={val => setStyle('textAlign', val)} />
+        <AlignText textAlign={textStyles.textAlign} setTextAlign={val => setStyle(prev => ({ ...prev, textAlign: val }))} />
       }
     </div>
   )
