@@ -81,7 +81,7 @@ const renderSegments = () => {
   const { text, segments, style } = activeCaption
   let position = 0
 
-  return segments.map((segment, index) => {
+  const result = segments.map((segment, index) => {
     const elements = []
 
     if (position < segment.start) {
@@ -106,6 +106,10 @@ const renderSegments = () => {
       ? <span key="remaining">{text.slice(position)}</span>
       : []
   )
+
+  console.log('concatted segments: ', result)
+
+  return result
 }
   
   return (
