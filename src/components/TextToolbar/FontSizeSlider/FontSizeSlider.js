@@ -1,10 +1,10 @@
 import styles from './FontSizeSlider.module.css'
 
-function FontSizeSlider({ fontSize, setFontSize }) {
+function FontSizeSlider({ fontSize, setStyle }) {
 
   const onChange = event => {
     const value = Number(event.target.value)
-    setFontSize(value)
+    setStyle(prev => ({ ...prev, fontSize: value }))
   }
 
   return (
