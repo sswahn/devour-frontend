@@ -5,7 +5,7 @@ function BoldButton({ setStyle }) {
 
   const onClick = event => {
     navigator.vibrate?.(50)
-    setStyle(prev => ({ ...prev, bold: !prev.bold }))
+    setStyle(prev => ({ ...prev, fontWeight: prev.fontWeight === 'bold' ? 'normal' : 'bold' }))
   }
   
   return (
