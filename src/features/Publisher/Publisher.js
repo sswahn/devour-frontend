@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import useComposition from '../../hooks/useComposition'
 import useCaptions from '../../hooks/useCaptions'
 import * as config from '../../config'
+import { errorHandler } from '../../utilities/errorHandler'
 import storage from '../../utilities/storage'
 import server from '../../utilities/server'
 import validate from '../../utilities/validate'
@@ -27,16 +28,7 @@ function Publisher({ openEditor }) {
   const onChange = ({ target: { id, value } }) => {
     setInput(prev => ({ ...prev, [id]: value }))
   }
-
-  const errorHandler = error => {
-    switch(error?.name) {
-      case 'ValidationError':
-       return setErrors({ [error.field]: error.message })
-      default:
-        throw error
-    }
-  }
-
+  
   // final submit should resemble:
   // set to queue in indexeddb
   // then delete all other local persistance.
