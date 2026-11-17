@@ -129,8 +129,25 @@ const validate = {
       }
       return value
     }
+  },
+  location(value) {
+    if (!value || value === '') {
+      throw new TypeError('A location is required.', { cause: 'location' })
+    }
+    if (value.length < 1 || value.length > 500) {
+      throw new Error('Location must be between 1 and 500 characters.', { cause: 'location' })
+    }
+    return value
+  },
+  description(value) {
+    if (!value || value === '') {
+      throw new TypeError('A description is required.', { cause: 'description' })
+    }
+    if (value.length < 1 || value.length > 1000) {
+      throw new Error('Description must be between 1 and 1000 characters.', { cause: 'description' })
+    }
+    return value
   }
-  
 }
 
 export default validate
