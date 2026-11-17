@@ -18,7 +18,7 @@ import styles from './CaptionsMenu.module.css'
 function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   const { captions, createCaption } = useCaptions()
   const [captionTime, setCaptionTime] = useState(false)
-  const [selection, setSelection] = useState([])
+  const [selection, setSelection] = useState({})
   const [errors, setErrors] = useState({})
   const captionsRef = useRef(null)
 
@@ -27,13 +27,33 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   }
 
   const updateActiveCaptionStyle = update => {
-    if (activeCaption.segments.length) {
-      return setActiveCaption(prev => ({ ...prev, segments: [ ...prev.segments, { 
-        ...selection
-        style: update(segment.style)
+    setActiveCaption(prev => {
+      if (!selection) {
+        return { ...prev, style: update(prev.style) }
       }
-    }
-    setActiveCaption(prev => ({ ...prev, style: update(prev.style) }))
+      const index = prev.segments.findIndex(segment =>
+        segment.start === selection.start && segment.end === selection.end
+      )
+      if (index === -1) {
+        return { 
+          ...prev, 
+          segments: [ 
+            ...prev.segments, 
+            { 
+              ...selection, 
+              style: update({}) 
+            }
+          ]
+        }
+      }
+
+      return {
+        ...prev,
+        segments: prev.segments.map((segment, i) =>
+          i === index ? { ...segment, style: update(segment.style) } : segment
+        )
+      }
+    })
   }
 
   const validateCaption = caption => {
