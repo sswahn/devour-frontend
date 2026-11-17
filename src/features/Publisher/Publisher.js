@@ -42,10 +42,10 @@ function Publisher({ openEditor }) {
       const location = formData.get('location').trim()
       const description = formData.get('description').trim()
       
-      const initialRequest = {
-     //   location: validate.location(location), // add to validate util
-    //    description: validate.description(description) 
-     //   captions 
+      const request = {
+        location: validate.location(location), // add to validate util
+        description: validate.description(description) 
+        captions: captions.length ? captions : []
       //  etc.
       }
 
