@@ -7448,6 +7448,32 @@ const validate = {
       }
       return value;
     }
+  },
+  location(value) {
+    if (!value || value === '') {
+      throw new TypeError('A location is required.', {
+        cause: 'location'
+      });
+    }
+    if (value.length < 1 || value.length > 500) {
+      throw new Error('Location must be between 1 and 500 characters.', {
+        cause: 'location'
+      });
+    }
+    return value;
+  },
+  description(value) {
+    if (!value || value === '') {
+      throw new TypeError('A description is required.', {
+        cause: 'description'
+      });
+    }
+    if (value.length < 1 || value.length > 1000) {
+      throw new Error('Description must be between 1 and 1000 characters.', {
+        cause: 'description'
+      });
+    }
+    return value;
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (validate);
@@ -7968,4 +7994,4 @@ __webpack_require__.r(__webpack_exports__);
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=main.56c82e2ca1ea855078b5.js.map
+//# sourceMappingURL=main.b3c01930ce7e845214f7.js.map
