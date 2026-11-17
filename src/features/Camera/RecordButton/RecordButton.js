@@ -51,8 +51,7 @@ function RecordButton({ mode, setMode, streamRef, isExpired }) {
       }
       const clips = [...(footage ?? []), data]
       setFootage(clips)
-      const db = database()
-      await db.put({ id: 'footage', footage: clips })
+      await database().put({ id: 'footage', footage: clips })
     } catch (error) {
       console.error('Failed to stop recording:', error) // polish error handling: use setErrorMessage
     } finally {
