@@ -45,11 +45,12 @@ function Publisher({ openEditor }) {
       
       const request = {
         location: validate.location(location), // add to validate util
-        description: validate.description(description) 
+        description: validate.description(description),
         captions: captions.length ? captions : []
-      //  etc.
       }
-      await database().put({ id: 'footage', footage: clips })
+      await database().put({ id: 'queue', queue: request })
+
+      
       // store text data to dynamodb, and retrieve presigned key
      // const response = await server.post(config.api.publish, initialRequest)
       // then send { blob: composition.blob, etc. } to S3
