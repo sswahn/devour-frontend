@@ -98,7 +98,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
       setSelections([])
     } catch (error) {
       if (error?.field === 'start' || error?.field === 'end') {
-        setCaptionTime(true)
+        setCaptionTime(true) // open dropdown to display inputs
       }
       errorHandler(error)
     }
@@ -118,7 +118,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
 
   const offClickToClose = event => {
     if (captionsRef.current && !captionsRef.current.contains(event.target)) {
-      saveCaption() // await this before closing
+      saveCaption()
       closeCaptionsMenu()
     }
   }
