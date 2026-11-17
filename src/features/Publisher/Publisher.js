@@ -21,6 +21,7 @@ function Publisher({ openEditor }) {
     }
   )
   const [loading, setLoading] = useState(false)
+  const [message, setMessage] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
 
   const onChange = ({ target: { id, value } }) => {
@@ -45,23 +46,27 @@ function Publisher({ openEditor }) {
         location: validate.location(location),
         description: validate.description(description)
       }
-      await database().put({ id: 'queue', queue: data })
 
+      console.log('queue data: ', data)
+      
+      await database().put({ id: 'queue', queue: data })
+      setMessage('Your content was submitted successfully!')
+
+      // The Following is temporary. It will eventually be offloaded,
+      // to the service worker.
+      
       // retrieve presigned key and initiate text storage
       const request = {
         captions: data.captions,
         location: data.location,
         description: data.description
       }
-      
-      
       // const response = await server.post(config.api.publish, request)
-      // then send { blob: composition.blob, etc. } to S3
       
-      //setMessage('Success.')
+      // then send to S3 { blob: composition.blob, key: response.key, etc. } 
       
     } catch (error) {
-      setErrorMessage(error.message)
+      setErrorMessage(error.message) // how is this handled with Inputs? there are validation errors as well.
     } finally {
       setLoading(false)
     }
@@ -94,7 +99,8 @@ function Publisher({ openEditor }) {
             error={errorMessage}
             required 
           />
-          <button type="submit" disabled={loading}>Submit</button>
+          {!message && <button type="submit" disabled={loading}>Submit</button>}
+          {message && <p>{message}</p>}
         </form>
       </div>
     </section>
