@@ -28,10 +28,10 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
 
   const updateActiveCaptionStyle = update => {
     if (selections.length) {
-      return setSelections(prev => prev.map(selection => ({
-        ...selection,
-        style: update(selection.style)
-      })))
+      return setActiveCaption(prev => ({ ...prev, segments: prev.segments.map(segment => ({
+        ...segment,
+        style: update(segment.style)
+      }))))
     }
     setActiveCaption(prev => ({ ...prev, style: update(prev.style) }))
   }
