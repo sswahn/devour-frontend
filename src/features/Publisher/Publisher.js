@@ -29,10 +29,11 @@ function Publisher({ openEditor }) {
   }
 
   const errorHandler = error => {
-    if (error.name === 'ValidationError') {
-      setErrors({ [error.field]: error.message })
-    } else {
-      throw error
+    switch(error?.name) {
+      case 'ValidationError':
+       return setErrors({ [error.field]: error.message })
+      default:
+        throw error
     }
   }
 
