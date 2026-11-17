@@ -92,7 +92,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
       if (error?.field === 'start' || error?.field === 'end') {
         setCaptionTime(true) // open dropdown to display inputs
       }
-      errorHandler(error)
+      errorHandler(error, setErrors)
     }
   }
 
