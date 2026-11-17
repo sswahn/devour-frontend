@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import useCaptions from '../../../hooks/useCaptions'
 import * as config from '../../../config'
+import { errorHandler } from '../../utilities/errorHandler'
 import storage from '../../../utilities/storage'
 import validate from '../../../utilities/validate'
 import CaptionTimeButton from './CaptionTimeButton/CaptionTimeButton'
@@ -33,15 +34,6 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
       })))
     }
     setActiveCaption(prev => ({ ...prev, style: update(prev.style) }))
-  }
-
-  const errorHandler = error => {
-    switch(error?.name) {
-      case 'ValidationError':
-       return setErrors({ [error.field]: error.message })
-      default:
-        throw error
-    }
   }
 
   const validateCaption = caption => {
