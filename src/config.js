@@ -31,6 +31,11 @@ export const storage = {
   queue: 'queue'
 }
 
+export const field = {
+  location: 'location',
+  description: 'description',
+}
+
 // consider moving to its own config file:
 export const contextmenu = {
   default: {
