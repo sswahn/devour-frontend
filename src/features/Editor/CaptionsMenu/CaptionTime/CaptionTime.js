@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Input from '../../../../components/Input/Input'
 import styles from './CaptionTime.module.css'
 
-function CaptionTime({ activeCaption, updateActiveCaption }) {
+function CaptionTime({ activeCaption, updateActiveCaption, errors }) {
   const [errorMessage, setErrorMessage] = useState('')
   
   return (
@@ -14,7 +14,7 @@ function CaptionTime({ activeCaption, updateActiveCaption }) {
         step="any"
         label="Start"
         value={activeCaption.start} // get default value from timeline
-        error={errorMessage}
+        error={errors.start}
         onChange={updateActiveCaption}
         required />
       <Input
@@ -24,7 +24,7 @@ function CaptionTime({ activeCaption, updateActiveCaption }) {
         step="any"
         label="End"
         value={activeCaption.end} // get default value from timeline and add 3 or 4 seconds by default
-        error={errorMessage}
+        error={errors.end}
         onChange={updateActiveCaption}
         required />
     </div>
