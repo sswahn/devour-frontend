@@ -28,6 +28,9 @@ function Video({ videoRef, activeCaption }) {
   }
 
   const renderSegments = () => {
+    
+    console.log('rendering segments...')
+    
     const { text, segments, style } = activeCaption
     let position = 0
   
