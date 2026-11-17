@@ -28,6 +28,14 @@ function Publisher({ openEditor }) {
     setInput(prev => ({ ...prev, [id]: value }))
   }
 
+  const errorHandler = error => {
+    if (error.cause) {
+      setErrors({ [error.cause]: error.message })
+    } else {
+      throw error
+    }
+  }
+
   // final submit should resemble:
   // set to queue in indexeddb
   // then delete all other local persistance.
@@ -66,11 +74,7 @@ function Publisher({ openEditor }) {
       // then send to S3 { blob: composition.blob, key: response.key, etc. } 
       
     } catch (error) {
-      if (error.cause) {
-        setErrors({ [error.cause]: error.message })
-      } else {
-        throw error
-      }
+      errorHandler(error)
     } finally {
       setLoading(false)
     }
