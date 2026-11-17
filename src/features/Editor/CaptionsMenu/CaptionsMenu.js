@@ -15,7 +15,7 @@ import styles from './CaptionsMenu.module.css'
   // if designed for mobile it may not need
 
 function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
-  const { captions, createCaption, updateCaption, deleteCaption } = useCaptions()
+  const { captions, createCaption } = useCaptions()
   const [captionTime, setCaptionTime] = useState(false)
   const [selections, setSelections] = useState([])
   const [errors, setErrors] = useState({})
@@ -115,23 +115,6 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
       style: {}
     }])
   }
-
-  /* these click events will be moved to the edit caption form
-  const handleEdit = async event => {
-    const id = event.target.closest('li').id
-    const data = {
-      // need an edit form
-    }
-    updateCaption(id, data)
-  }
-  
-  const handleDelete = event => {
-    if (window.confirm('Delete caption?')) {
-      const id = event.target.closest('li').id
-      deleteCaption(id)
-    }
-  }
-  */
 
   const offClickToClose = event => {
     if (captionsRef.current && !captionsRef.current.contains(event.target)) {
