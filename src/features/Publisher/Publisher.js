@@ -28,31 +28,35 @@ function Publisher({ openEditor }) {
     setInput(prev => ({ ...prev, [id]: value }))
   }
 
+  // final submit should resemble:
+  // set to queue in indexeddb
+  // then delete all other local persistance.
+  // then hand off to the service worker to handle
+  // upload requests 
   const onSubmit = async event => {
-    // final submit should resemble:
-    // set to queue in indexeddb
-    // then delete all other local persistance.
-    // then hand off to the service worker to handle
-    // upload requests 
-
-    // for now test the request inline here
+    event.preventDefault()
     try {
-      event.preventDefault()
       setLoading(true)
       const formData = new FormData(event.target)
       const location = formData.get('location').trim()
       const description = formData.get('description').trim()
-      
-      const request = {
-        location: validate.location(location), // add to validate util
-        description: validate.description(description),
-        captions: captions.length ? captions : []
+      const data = {
+        composition: composition,
+        captions: captions.length ? captions : [],
+        location: validate.location(location),
+        description: validate.description(description)
       }
-      await database().put({ id: 'queue', queue: request })
+      await database().put({ id: 'queue', queue: data })
 
+      // retrieve presigned key and initiate dynamo
+      const request = {
+        captions: data.captions,
+        location: data.location,
+        description: data.description
+      }
       
-      // store text data to dynamodb, and retrieve presigned key
-     // const response = await server.post(config.api.publish, initialRequest)
+      
+      // const response = await server.post(config.api.publish, request)
       // then send { blob: composition.blob, etc. } to S3
       
       //setMessage('Success.')
