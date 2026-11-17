@@ -22,7 +22,7 @@ function Publisher({ openEditor }) {
   )
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
-  const [errorMessage, setErrorMessage] = useState('')
+  const [errors, setErrors] = useState('')
 
   const onChange = ({ target: { id, value } }) => {
     setInput(prev => ({ ...prev, [id]: value }))
@@ -66,7 +66,7 @@ function Publisher({ openEditor }) {
       // then send to S3 { blob: composition.blob, key: response.key, etc. } 
       
     } catch (error) {
-      setErrorMessage(error.message) // how is this handled with Inputs? there are validation errors as well.
+      setErrors({ [error.cause]: error.message })
     } finally {
       setLoading(false)
     }
@@ -88,7 +88,7 @@ function Publisher({ openEditor }) {
             inputMode="text"
             value={input.location}
             onChange={onChange}
-            error={errorMessage}
+            error={error.location}
             required 
           />
           <TextArea
@@ -96,7 +96,7 @@ function Publisher({ openEditor }) {
             label="Description"
             value={input.description}
             onChange={onChange}
-            error={errorMessage}
+            error={error.description}
             required 
           />
           {!message && <button type="submit" disabled={loading}>Submit</button>}
