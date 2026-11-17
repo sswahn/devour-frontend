@@ -15,10 +15,9 @@ function Publisher({ openEditor }) {
   const { composition } = useComposition()
   const { captions } = useCaptions()
   const [input, setInput] = useState(() => {
-    const item = storage.local.get(config.storage.publisher)
-    return {
-      location: item?.location || '',
-      description: item?.description || ''
+    return storage.local.get(config.storage.publisher) ?? {
+      location: '',
+      description: ''
     }
   })
   const [loading, setLoading] = useState(false)
