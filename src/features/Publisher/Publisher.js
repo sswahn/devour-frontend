@@ -29,8 +29,8 @@ function Publisher({ openEditor }) {
   }
 
   const errorHandler = error => {
-    if (error.cause) {
-      setErrors({ [error.cause]: error.message })
+    if (error.name === 'ValidationError') {
+      setErrors({ [error.field]: error.message })
     } else {
       throw error
     }
