@@ -18,7 +18,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   const { captions, createCaption, updateCaption, deleteCaption } = useCaptions()
   const [captionTime, setCaptionTime] = useState(false)
   const [selections, setSelections] = useState([])
-  const [errorMessage, setErrorMessage] = useState('')
+  const [errors, setErrors] = useState({})
   const captionsRef = useRef(null)
 
   const updateActiveCaption = ({ target: { id, value } }) => {
@@ -33,6 +33,14 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
       })))
     }
     setActiveCaption(prev => ({ ...prev, style: update(prev.style) }))
+  }
+
+  const errorHandler = error => {
+    if (error.name === 'ValidationError') {
+      setErrors({ [error.field]: error.message })
+    } else {
+      throw error
+    }
   }
 
   const validateCaption = caption => {
@@ -59,18 +67,14 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
     }
     try {
       validateCaption(activeCaption)
-      const data = {
+      createCaption({
         id: activeCaption.id,
         text: validate.caption.text(activeCaption.text.trim()),
         start: validate.caption.start(activeCaption.start.trim()),
         end: validate.caption.end(activeCaption.end.trim()),
         style: activeCaption.style,
         segments: selections.toSorted((a, b) => a.start - b.start)
-      }
-      
-      console.log('new captions data: ', data)
-      
-      createCaption(data)
+      })
       setActiveCaption({
         id: crypto.randomUUID(),
         text: '',
@@ -92,7 +96,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
       })
       setSelections([])
     } catch (error) {
-      console.log(error)
+      errorHandler(error)
     }
   }
 
@@ -146,12 +150,12 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
         type="text"
         label="Add a caption"
         value={activeCaption.text}
-        error={errorMessage}
+        error={errors.text}
         onChange={updateActiveCaption}
         onSelect={onSelect}
         required />
       <CaptionTimeButton setCaptionTime={setCaptionTime} />
-      {captionTime && <CaptionTime activeCaption={activeCaption} updateActiveCaption={updateActiveCaption} />}
+      {captionTime && <CaptionTime activeCaption={activeCaption} updateActiveCaption={updateActiveCaption} errors={errors} />}
       <TextToolbar style={activeCaption.style} setStyle={updateActiveCaptionStyle} />
     </section>
   )
