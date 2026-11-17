@@ -1,5 +1,4 @@
 
-
 export const errorHandler = (error, setErrors) => {
   switch(error?.name) {
     case 'ValidationError':
