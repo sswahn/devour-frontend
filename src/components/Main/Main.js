@@ -22,7 +22,6 @@ function Main() {
   // HTMLMediaElement.addTextTrack() for timed display of captions.
 
   const loadFromStorage = async () => { // this is temp for testing, feed will load from server not storage
-    const db = database()
     const storage = await database().get(config.storage.queue)
     if (storage) {
       setData([ ...data, storage.queue ])
