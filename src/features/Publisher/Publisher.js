@@ -47,8 +47,8 @@ function Publisher({ openEditor }) {
     try {
       setLoading(true)
       const formData = new FormData(event.target)
-      const location = formData.get('location').trim()
-      const description = formData.get('description').trim()
+      const location = formData.get(config.field.location).trim()
+      const description = formData.get(config.field.description).trim()
       const data = {
         composition: composition,
         captions: captions.length ? captions : [],
@@ -91,7 +91,7 @@ function Publisher({ openEditor }) {
         <BackButton overlay="publisher" close={openEditor} />
         <form onSubmit={onSubmit}>
           <Input
-            id="location"
+            id={config.field.location}
             type="text"
             label="Location"
             inputMode="text"
@@ -101,7 +101,7 @@ function Publisher({ openEditor }) {
             required 
           />
           <TextArea
-            id="description"
+            id={config.field.description}
             label="Description"
             value={input.description}
             onChange={onChange}
