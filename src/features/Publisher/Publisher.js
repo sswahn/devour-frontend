@@ -47,7 +47,7 @@ function Publisher({ openEditor }) {
       }
       await database().put({ id: 'queue', queue: data })
 
-      // retrieve presigned key and initiate dynamo
+      // retrieve presigned key and initiate text storage
       const request = {
         captions: data.captions,
         location: data.location,
