@@ -36,13 +36,11 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   }
 
   const errorHandler = error => {
-    if (error.name === 'ValidationError') {
-      if (error.field === 'start' || error.field === 'end') {
-        setCaptionTime(true)
-      }
-      setErrors({ [error.field]: error.message })
-    } else {
-      throw error
+    switch(error?.name) {
+      case 'ValidationError':
+       return setErrors({ [error.field]: error.message })
+      default:
+        throw error
     }
   }
 
@@ -99,6 +97,9 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
       })
       setSelections([])
     } catch (error) {
+      if (error?.field === 'start' || error?.field === 'end') {
+        setCaptionTime(true)
+      }
       errorHandler(error)
     }
   }
