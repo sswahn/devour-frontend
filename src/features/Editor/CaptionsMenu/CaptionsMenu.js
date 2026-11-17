@@ -18,7 +18,7 @@ import styles from './CaptionsMenu.module.css'
 function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   const { captions, createCaption } = useCaptions()
   const [captionTime, setCaptionTime] = useState(false)
-  const [selections, setSelections] = useState([])
+  const [selection, setSelection] = useState([])
   const [errors, setErrors] = useState({})
   const captionsRef = useRef(null)
 
@@ -27,11 +27,11 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   }
 
   const updateActiveCaptionStyle = update => {
-    if (selections.length) {
-      return setActiveCaption(prev => ({ ...prev, segments: prev.segments.map(segment => ({
-        ...segment,
+    if (activeCaption.segments.length) {
+      return setActiveCaption(prev => ({ ...prev, segments: [ ...prev.segments,{ 
+        ...selection
         style: update(segment.style)
-      }))))
+      }
     }
     setActiveCaption(prev => ({ ...prev, style: update(prev.style) }))
   }
@@ -87,7 +87,6 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
         },
         segments: []
       })
-      setSelections([])
     } catch (error) {
       if (error?.field === 'start' || error?.field === 'end') {
         setCaptionTime(true) // open dropdown to display inputs
@@ -101,11 +100,10 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
     if (selectionStart === selectionEnd) {
       return
     }
-    setSelections(prev => [ ...prev, {
+    setSelection({
       start: selectionStart,
-      end: selectionEnd,
-      style: {}
-    }])
+      end: selectionEnd
+    })
   }
 
   const offClickToClose = event => {
