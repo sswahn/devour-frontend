@@ -27,7 +27,8 @@ export const storage = {
   composition: 'composition',
   captions: 'captions',
   footage: 'footage',
-  publisher: 'publisher'
+  publisher: 'publisher',
+  queue: 'queue'
 }
 
 // consider moving to its own config file:
