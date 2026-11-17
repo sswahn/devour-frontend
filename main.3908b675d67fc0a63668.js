@@ -2734,11 +2734,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_compiler_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/compiler-runtime */ 6522);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ 6540);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _utilities_database__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utilities/database */ 2584);
-/* harmony import */ var _SlideShow_SlideShow__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../SlideShow/SlideShow */ 3780);
-/* harmony import */ var _LoadingSpinner_LoadingSpinner__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../LoadingSpinner/LoadingSpinner */ 8620);
-/* harmony import */ var _Main_module_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Main.module.css */ 8745);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ 4848);
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../config */ 5474);
+/* harmony import */ var _utilities_database__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utilities/database */ 2584);
+/* harmony import */ var _SlideShow_SlideShow__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../SlideShow/SlideShow */ 3780);
+/* harmony import */ var _LoadingSpinner_LoadingSpinner__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../LoadingSpinner/LoadingSpinner */ 8620);
+/* harmony import */ var _Main_module_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Main.module.css */ 8745);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ 4848);
+
 
 
  // temp to test frontend
@@ -2748,7 +2750,7 @@ const Feed = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.lazy)(() => Prom
 
 
 function Main() {
-  const $ = (0,react_compiler_runtime__WEBPACK_IMPORTED_MODULE_0__.c)(13);
+  const $ = (0,react_compiler_runtime__WEBPACK_IMPORTED_MODULE_0__.c)(7);
   let t0;
   if ($[0] === Symbol.for("react.memo_cache_sentinel")) {
     t0 = [{
@@ -2773,91 +2775,49 @@ function Main() {
   }
   const [data, setData] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(t0);
   let t1;
-  if ($[1] === Symbol.for("react.memo_cache_sentinel")) {
-    t1 = [{
-      picture: "",
-      username: "test_user1",
-      video: 1,
-      caption: "test caption 1"
-    }, {
-      picture: "",
-      username: "test_user2",
-      video: 2,
-      caption: "testing captions with multiple lines. It should expand upward instead of downward."
-    }, {
-      picture: "",
-      username: "test_user3",
-      video: 3,
-      caption: "test captions 3"
-    }];
-    $[1] = t1;
-  } else {
-    t1 = $[1];
-  }
-  const [suggestions] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(t1);
-  let t2;
-  if ($[2] !== data.length) {
-    t2 = () => {
+  if ($[1] !== data.length) {
+    t1 = () => {
       if (!data.length) {}
     };
-    $[2] = data.length;
+    $[1] = data.length;
+    $[2] = t1;
+  } else {
+    t1 = $[2];
+  }
+  let t2;
+  if ($[3] === Symbol.for("react.memo_cache_sentinel")) {
+    t2 = [];
     $[3] = t2;
   } else {
     t2 = $[3];
   }
+  ;(0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(t1, t2);
   let t3;
   if ($[4] === Symbol.for("react.memo_cache_sentinel")) {
-    t3 = [];
+    t3 = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_LoadingSpinner_LoadingSpinner__WEBPACK_IMPORTED_MODULE_5__["default"], {});
     $[4] = t3;
   } else {
     t3 = $[4];
   }
-  ;(0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(t2, t3);
   let t4;
-  if ($[5] !== suggestions) {
-    t4 = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_SlideShow_SlideShow__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      data: suggestions
+  if ($[5] !== data) {
+    t4 = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("main", {
+      className: _Main_module_css__WEBPACK_IMPORTED_MODULE_6__["default"].main,
+      "aria-description": "When text is highlighted, it will automatically be read aloud.",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react__WEBPACK_IMPORTED_MODULE_1__.Suspense, {
+        fallback: t3,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(Feed, {
+          data: data,
+          setData: setData
+        })
+      })
     });
-    $[5] = suggestions;
+    $[5] = data;
     $[6] = t4;
   } else {
     t4 = $[6];
   }
-  let t5;
-  if ($[7] === Symbol.for("react.memo_cache_sentinel")) {
-    t5 = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_LoadingSpinner_LoadingSpinner__WEBPACK_IMPORTED_MODULE_4__["default"], {});
-    $[7] = t5;
-  } else {
-    t5 = $[7];
-  }
-  let t6;
-  if ($[8] !== data) {
-    t6 = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react__WEBPACK_IMPORTED_MODULE_1__.Suspense, {
-      fallback: t5,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(Feed, {
-        data: data,
-        setData: setData
-      })
-    });
-    $[8] = data;
-    $[9] = t6;
-  } else {
-    t6 = $[9];
-  }
-  let t7;
-  if ($[10] !== t4 || $[11] !== t6) {
-    t7 = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("main", {
-      className: _Main_module_css__WEBPACK_IMPORTED_MODULE_5__["default"].main,
-      "aria-description": "When text is highlighted, it will automatically be read aloud.",
-      children: [t4, t6]
-    });
-    $[10] = t4;
-    $[11] = t6;
-    $[12] = t7;
-  } else {
-    t7 = $[12];
-  }
-  return t7;
+  return t4;
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Main);
 
@@ -4095,6 +4055,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   api: () => (/* binding */ api),
 /* harmony export */   contextmenu: () => (/* binding */ contextmenu),
+/* harmony export */   field: () => (/* binding */ field),
 /* harmony export */   overlay: () => (/* binding */ overlay),
 /* harmony export */   storage: () => (/* binding */ storage)
 /* harmony export */ });
@@ -4124,7 +4085,12 @@ const storage = {
   composition: 'composition',
   captions: 'captions',
   footage: 'footage',
-  publisher: 'publisher'
+  publisher: 'publisher',
+  queue: 'queue'
+};
+const field = {
+  location: 'location',
+  description: 'description'
 };
 
 // consider moving to its own config file:
@@ -7978,4 +7944,4 @@ __webpack_require__.r(__webpack_exports__);
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=main.e52a4f093dda2259a806.js.map
+//# sourceMappingURL=main.3908b675d67fc0a63668.js.map
