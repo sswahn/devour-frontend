@@ -66,7 +66,11 @@ function Publisher({ openEditor }) {
       // then send to S3 { blob: composition.blob, key: response.key, etc. } 
       
     } catch (error) {
-      setErrors({ [error.cause]: error.message })
+      if (error.cause) {
+        setErrors({ [error.cause]: error.message })
+      } else {
+        throw error
+      }
     } finally {
       setLoading(false)
     }
