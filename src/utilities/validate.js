@@ -1,3 +1,4 @@
+const createValidationError = (field, message) => Object.assign(new Error(message), { name: "ValidationError", field })
 
 const validate = {
   async image (file, options = { maxSizeMB: 5, minDimension: 320, maxDimension: 4096 }) {
@@ -104,47 +105,47 @@ const validate = {
   caption: {
     text(value) {
       if (!value || value === '') {
-        throw new TypeError('Caption text is required to create a caption.', { cause: 'caption.text' })
+        throw createValidationError('text', 'Caption text is required to create a caption.')
       }
       if (value.length < 2 || value.length > 140) {
-        throw new Error('Caption text length must be between 2 and 140 characters.', { cause: 'caption.text' })
+        throw createValidationError('text', 'Caption text length must be between 2 and 140 characters.')
       }
       return value
     },
     start(value) {
       if (!value || value === '') {
-        throw new TypeError('A caption start time is required to create a caption.', { cause: 'caption.start' })
+        throw createValidationError('start', 'A caption start time is required to create a caption.')
       }
       if (value.length < 1 || value.length > 5) {
-        throw new Error('Caption start value must be between 1 and 5 characters.', { cause: 'caption.start' })
+        throw createValidationError('start', 'Caption start value must be between 1 and 5 characters.')
       }
       return value
     },
     end(value) {
       if (!value || value === '') {
-        throw new TypeError('A caption end time is required to create a caption.', { cause: 'caption.end' })
+        throw createValidationError('end', 'A caption end time is required to create a caption.')
       }
       if (value.length < 1 || value.length > 5) {
-        throw new Error('Caption end value must be between 1 and 5 characters.', { cause: 'caption.end' })
+        throw createValidationError('end', 'Caption end value must be between 1 and 5 characters.')
       }
       return value
     }
   },
   location(value) {
     if (!value || value === '') {
-      throw new TypeError('A location is required.', { cause: 'location' })
+      throw createValidationError('location', 'A location is required.')
     }
     if (value.length < 1 || value.length > 500) {
-      throw new Error('Location must be between 1 and 500 characters.', { cause: 'location' })
+      throw createValidationError('location', 'Location must be between 1 and 500 characters.')
     }
     return value
   },
   description(value) {
     if (!value || value === '') {
-      throw new TypeError('A description is required.', { cause: 'description' })
+      throw createValidationError('description', 'A description is required.')
     }
     if (value.length < 1 || value.length > 1000) {
-      throw new Error('Description must be between 1 and 1000 characters.', { cause: 'description' })
+      throw createValidationError('description', 'Description must be between 1 and 1000 characters.')
     }
     return value
   }
