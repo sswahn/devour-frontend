@@ -58,7 +58,7 @@ function Publisher({ openEditor }) {
 
       console.log('queue data: ', data)
       
-      await database().put({ id: 'queue', queue: data })
+      await database().put({ id: config.storage.queue, queue: data })
       setMessage('Your content was submitted successfully!')
 
       // The Following is temporary. It will eventually be offloaded,
