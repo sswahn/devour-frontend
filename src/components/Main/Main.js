@@ -23,7 +23,7 @@ function Main() {
 
   const loadFromStorage = async () => { // this is temp for testing, feed will load from server not storage
     const db = database()
-    const storage = const data = await database().get(config.storage.queue)
+    const storage = await database().get(config.storage.queue)
     if (storage) {
       setData([ ...data, storage.queue ])
     }
