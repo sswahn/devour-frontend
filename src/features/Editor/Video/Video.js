@@ -103,7 +103,7 @@ function Video({ videoRef, activeCaption }) {
 
   // debug:
   useEffect(() => {
-    console.log('activeCaption: ', activeCaption)
+    console.log('activeCaption inside Video component: ', activeCaption)
   }, [activeCaption])
 
   // currentCaption figcation should be clicable to open edit/delete form
