@@ -5,6 +5,7 @@ import * as config from '../../config'
 import storage from '../../utilities/storage'
 import server from '../../utilities/server'
 import validate from '../../utilities/validate'
+import database from '../../utilities/database'
 import BackButton from '../../components/BackButton/BackButton'
 import Input from '../../components/Input/Input'
 import TextArea from '../../components/TextArea/TextArea'
@@ -48,7 +49,7 @@ function Publisher({ openEditor }) {
         captions: captions.length ? captions : []
       //  etc.
       }
-
+      await database().put({ id: 'footage', footage: clips })
       // store text data to dynamodb, and retrieve presigned key
      // const response = await server.post(config.api.publish, initialRequest)
       // then send { blob: composition.blob, etc. } to S3
