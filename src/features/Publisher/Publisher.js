@@ -14,12 +14,12 @@ import styles from './Publisher.module.css'
 function Publisher({ openEditor }) {
   const { composition } = useComposition()
   const { captions } = useCaptions()
-  const [input, setInput] = useState(() => {
-    return storage.local.get(config.storage.publisher) ?? {
+  const [input, setInput] = useState(() => 
+    storage.local.get(config.storage.publisher) ?? {
       location: '',
       description: ''
     }
-  })
+  )
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
 
