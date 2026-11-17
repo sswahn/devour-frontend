@@ -22,7 +22,7 @@ function Publisher({ openEditor }) {
   )
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
-  const [errors, setErrors] = useState('')
+  const [errors, setErrors] = useState({})
 
   const onChange = ({ target: { id, value } }) => {
     setInput(prev => ({ ...prev, [id]: value }))
