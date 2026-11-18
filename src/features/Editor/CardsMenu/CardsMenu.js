@@ -3,14 +3,19 @@ import * as config from '../../../config'
 import useCards from '../../../hooks/useCards'
 // import usePhoto from '../../../hooks/usePhoto'
 import storage from '../../../utilities/storage'
+import CardTime from './CardTime/CardTime'
 import styles from './CardsMenu.module.css'
 
 function CardsMenu({ activeCard, setActiveCard, closeCardMenu }) {
   const { cards, createCard } = useCards()
   const photo = { url: ''} // usePhoto()
   // create cards provider and store cards in array there.
-
+  const [cardTime, setCardTime] = useState(false)
   const cardRef = useRef(null)
+
+  const updateActiveCardTime = ({ target: { id, value} }) => {
+    setActiveCard(prev => ({ ...prev, [id]: value }))
+  }
 
   const changeBackgroundColor = event => {
     setActiveCard(prev => ({
@@ -152,8 +157,8 @@ function CardsMenu({ activeCard, setActiveCard, closeCardMenu }) {
         value={activeCard.text}
         error={errors.text}
         onChange={updateActiveCard} />
-      <CaptionTimeButton setCaptionTime={setCaptionTime} />
-      {captionTime && <CaptionTime activeCaption={activeCaption} updateActiveCaption={updateActiveCaption} errors={errors} />}
+      <CardTimeButton setCardTime={setCardTime} />
+      {cardTime && <CardTime activeCard={activeCard} updateActiveCardTime={updateActiveCardTime} errors={errors} />}
       <TextToolbar style={activeCaption.style} setStyle={updateActiveCaptionStyle} />
     </section>
   )
