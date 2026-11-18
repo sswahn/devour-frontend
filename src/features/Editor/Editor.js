@@ -93,7 +93,7 @@ function Editor({ openCamera, openPublisher }) {
   // ultimately might want a <SideNav /> component above <SubmitButton />
   
   return (
-    <section className={styles.editor}>
+    <figure className={styles.editor}>
       <TopNav videoRef={videoRef} openCamera={openCamera} programmaticPause={programmaticPause} /> 
       <VideoTimeline videoRef={videoRef} />
       <Video videoRef={videoRef} activeCaption={activeCaption} activeCard={activeCard} />
@@ -106,7 +106,7 @@ function Editor({ openCamera, openPublisher }) {
       {cardMenu &&
         <CardMenu activeCard={activeCard} setActiveCard={setActiveCard} closeCardMenu={closeCardMenu} />
       }
-    </section>
+    </figure>
   )
 }
 
