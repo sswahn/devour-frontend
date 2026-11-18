@@ -17,8 +17,7 @@ function CardMenu({ startTime, closeCardMenu }) {
     background: {
       style: {
         backgroundImage: url ? `url('${url}')` : 'none',
-        backgroundColor: 'black',
-        zIndex: 400
+        backgroundColor: 'black'
       }
     },
     text: {
@@ -31,8 +30,7 @@ function CardMenu({ startTime, closeCardMenu }) {
         left: 'auto',
         right: 'auto',
         top: 'auto',
-        textAlign: 'center',
-        zIndex: 450
+        textAlign: 'center'
       }
     }
   })
