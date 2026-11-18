@@ -1,28 +1,13 @@
-/* Editor Card Menu Form */
+/* Caption Time Inputs */
 
-.carsMenu {
-  align-items: center; /* Vertically centers the div text with the button */
+.cardTime {
+  background-color: gray; 
+  bottom: -156px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start; /* Aligns button & div to the left */
-  left: 50%;
+  gap: 8px;
+  left: 0;
+  list-style: none;
+  padding: 8px;
   position: fixed;
-  top: 48px;
-  transform: translateX(-50%);
-  width: calc(100% - 16px);
-  z-index: 350;
-  
-  border: 1px dashed red;
-}
-
-.captionsMenu > :first-child {
-  flex: 0 0 100%;
   width: 100%;
-}
-
-.captionsMenu > button,
-.captionsMenu > div {
-  flex: 0 1 auto;
-  width: auto;
-  margin: 0; /* Removes any default browser margins (especially on buttons) */
 }
