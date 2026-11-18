@@ -89,7 +89,7 @@ function Publisher({ openEditor }) {
             inputMode="text"
             value={input.location}
             onChange={onChange}
-            error={error.location}
+            error={errors.location}
             required 
           />
           <TextArea
@@ -97,7 +97,7 @@ function Publisher({ openEditor }) {
             label="Description"
             value={input.description}
             onChange={onChange}
-            error={error.description}
+            error={errors.description}
             required 
           />
           {!message && <button type="submit" disabled={loading}>Submit</button>}
