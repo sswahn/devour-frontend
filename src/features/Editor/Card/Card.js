@@ -1,6 +1,22 @@
+import { useEffect } from 'react'
 import styles from './Card.module.css'
 
-function Card({ activeCard }) {
+function Card({ videoRef, activeCard }) {
+
+  const onTimeUpdate = event => {
+    
+  }
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) {
+      return
+    }
+    video.addEventListener('timeupdate', onTimeUpdate)
+    return () => {
+      video.removeEventListener('timeupdate', onTimeUpdate)
+    }
+  }, [])
 
   return (
     <div className={styles.card} style={activeCard.background.style}>
