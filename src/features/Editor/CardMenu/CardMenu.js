@@ -5,6 +5,7 @@ function CardMenu({ startTime, closeCardMenu }) {
   // create a photo provider const { photo } = usePhoto()
   const [url, setUrl] = useState(null)
   const [cardText, setCardText] = useState({
+    id: crypto.randomUUID(),
     start: startTime,
     end: startTime + 5,
     upload: { // you dont want defaults if these optional components arent used.
