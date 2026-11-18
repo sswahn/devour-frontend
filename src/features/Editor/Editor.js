@@ -12,6 +12,18 @@ import SubmitButton from './SubmitButton/SubmitButton'
 import styles from './Editor.module.css'
 
 function Editor({ openCamera, openPublisher }) {
+  const [activeCard, setActiveCard] = useState(() => 
+    storage.local.get(config.storage.activeCard) ?? {
+      id: crypto.randomUUID(),
+      start: startTime,
+      end: startTime + 5,
+      background: {
+        style: {
+          backgroundColor: 'black'
+        }
+      }
+    }
+  )
   const [activeCaption, setActiveCaption] = useState(() => 
     storage.local.get(config.storage.activeCaption) ?? {
       id: crypto.randomUUID(),
@@ -66,6 +78,10 @@ function Editor({ openCamera, openPublisher }) {
 
   useEffect(() => {
     storage.local.set(config.storage.activeCaption, activeCaption)
+  }, [activeCaption])
+
+  useEffect(() => {
+    storage.local.set(config.storage.activeCard, activeCard)
   }, [activeCaption])
   
   // ultimately might want a <SideNav /> component above <SubmitButton />
