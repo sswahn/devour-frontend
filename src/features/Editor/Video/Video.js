@@ -64,10 +64,6 @@ function Video({ videoRef }) {
       <video id="video-editor" ref={videoRef} src={source} autoPlay playsInline 
         onError={e => console.error('Video error:', e.currentTarget.error)}
       />
-      {activeCard && {/* breack out into card component */}
-        <div className="card" style={activeCard.background.style}>
-          {activeCard.text?.value && <p style={activeCard.text.style}>{activeCard.text.value}</p>}
-        </div}
       {loading && <LoadingSpinner />}
     </figure>
   )
