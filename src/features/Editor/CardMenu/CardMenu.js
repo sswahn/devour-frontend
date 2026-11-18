@@ -47,6 +47,7 @@ function CardMenu({ startTime, closeCardMenu }) {
       ...prev,
       background: {
         style: {
+          ...prev.background.style,
           backgroundImage: `url('${url}')`
         }
       }
@@ -58,7 +59,7 @@ function CardMenu({ startTime, closeCardMenu }) {
       ...prev,
       background: {
         style: {
-          backgroundColor: 'black'
+          backgroundColor: prev.background.style.backgroundColor
         }
       }
     }))
