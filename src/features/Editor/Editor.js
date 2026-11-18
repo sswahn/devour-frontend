@@ -45,6 +45,7 @@ function Editor({ openCamera, openPublisher }) {
   const [captionsMenu, setCaptionsMenu] = useState(false)
   const [cardMenu, setCardMenu] = useState(false)
   const [programmaticPause, setProgrammaticPause] = useState(null)
+  const [loading, setLoading] = useState(false)
   const videoRef = useRef(null)
 
   const openCaptionsMenu = () => {
@@ -95,7 +96,7 @@ function Editor({ openCamera, openPublisher }) {
       <CardMenuButton openCardMenu={openCardMenu} />
       <CaptionsMenuButton openCaptionsMenu={openCaptionsMenu} />
       <SubmitButton openPublisher={openPublisher} />
-      <Video videoRef={videoRef} />
+      <Video videoRef={videoRef} setLoading={setLoading} />
       <Figcaption videoRef={videoRef} activeCaption={activeCaption} />
       <VideoTimeline videoRef={videoRef} />
       {activeCard && 
@@ -107,6 +108,7 @@ function Editor({ openCamera, openPublisher }) {
       {cardMenu &&
         <CardMenu activeCard={activeCard} setActiveCard={setActiveCard} closeCardMenu={closeCardMenu} />
       }
+      {loading && <LoadingSpinner />}
     </figure>
   )
 }
