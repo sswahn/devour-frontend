@@ -9,17 +9,17 @@ function CardsProvider({ children }) {
   const [isHydrated, setIsHydrated] = useState(false)
 
   const createCard = data => {
-    setCaptions(prev => [ ...prev, data ])
+    setCards(prev => [ ...prev, data ])
   }
   
   const updateCard = (id, data) => {
-    setCaptions(prev => prev.map(caption =>
+    setCards(prev => prev.map(caption =>
       caption.id === id ? { ...caption, ...data } : caption
     ))
   }
   
   const deleteCard = id => {
-    setCaptions(prev => prev.filter(caption =>
+    setCards(prev => prev.filter(caption =>
       caption.id !== id 
     ))
   }
@@ -27,7 +27,7 @@ function CardsProvider({ children }) {
   useEffect(() => {
     const stored = storage.local.get(config.storage.cards)
     if (stored !== null) {
-      setCaptions(stored)
+      setCards(stored)
       setIsHydrated(true)
     }
   }, [])
