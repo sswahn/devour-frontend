@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef } from 'react'
 import * as config from '../../../config'
+import useCards from '../../../hooks/useCards'
 import usePhoto from '../../../hooks/usePhoto'
 import storage from '../../../utilities/storage'
 import styles from './CardMenu.module.css'
 
 function CardMenu({ activeCard, setActiveCard, closeCardMenu }) {
+  const { cards, createCard } = useCards()
   const { photo } = usePhoto()
   // create cards provider and store cards in array there.
 
