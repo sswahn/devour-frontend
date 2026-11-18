@@ -4,28 +4,14 @@ import usePhoto from '../../../hooks/usePhoto'
 import storage from '../../../utilities/storage'
 import styles from './CardMenu.module.css'
 
-function CardMenu({ startTime, closeCardMenu }) {
+function CardMenu({ activeCard, setActiveCard, closeCardMenu }) {
   const { photo } = usePhoto()
-
-  // move state up to editor and change to "activeCard" for editing display
   // create cards provider and store cards in array there.
-  
-  const [card, setCard] = useState(() => 
-    storage.local.get(config.storage.card) ?? {
-      id: crypto.randomUUID(),
-      start: startTime,
-      end: startTime + 5,
-      background: {
-        style: {
-          backgroundColor: 'black'
-        }
-      }
-    }
-  )
+
   const cardRef = useRef(null)
 
   const changeBackgroundColor = event => {
-    setCard(prev => ({
+    setActiveCard(prev => ({
       ...prev,
       background: {
         style: {
@@ -37,7 +23,7 @@ function CardMenu({ startTime, closeCardMenu }) {
   }
 
   const addText = event => {
-    setCard(prev => ({
+    setActiveCard(prev => ({
       ...prev,
       text: {
         value: event.target.value,
@@ -56,14 +42,14 @@ function CardMenu({ startTime, closeCardMenu }) {
   }
 
   const removeText = event => {
-    setCard(prev => {
+    setActiveCard(prev => {
       const { text, ...card } = prev
       return card
     })
   }
 
   const addPhoto = event => {
-    setCard(prev => ({
+    setActiveCard(prev => ({
       ...prev,
       background: {
         style: {
@@ -75,7 +61,7 @@ function CardMenu({ startTime, closeCardMenu }) {
   }
 
   const removePhoto = event => {
-    setCard(prev => {
+    setActiveCard(prev => {
       const { backgroundImage, ...style } = prev.background.style
       return {
         ...prev,
@@ -87,7 +73,7 @@ function CardMenu({ startTime, closeCardMenu }) {
   }
 
   const addUpload = event => {
-    setCard(prev => ({
+    setActiveCard(prev => ({
       ...prev,
       upload: {
         url: '',
@@ -103,10 +89,31 @@ function CardMenu({ startTime, closeCardMenu }) {
   }
 
   const removeUpload = event => {
-    setCard(prev => {
+    setActiveCard(prev => {
       const { upload, ...card } = prev
       return card
     })
+  }
+
+  const saveCard = () => {
+    // if text, validate text
+    // if upload, validate upload
+    
+    // save active card to context array
+    /* createCard(activeCard)
+    // then reset defaults:
+    /*
+    setActiveCard({
+      id: crypto.randomUUID(),
+      start: '',
+      end: '',
+      background: {
+        style: {
+          backgroundColor: 'black'
+        }
+      }
+    })
+    */
   }
 
   const offClickToClose = event => {
@@ -121,10 +128,6 @@ function CardMenu({ startTime, closeCardMenu }) {
       document.removeEventListener('click', offClickToClose)
     }
   }, [offClickToClose])
-
-  useEffect(() => {
-    storage.local.set(config.storage.card, card)
-  }, [card])
   
   return (
     <div ref={cardRef} className={styles.cardMenu}>
