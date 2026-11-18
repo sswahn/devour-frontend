@@ -7,19 +7,32 @@ function CardMenu({ startTime, closeCardMenu }) {
   const [cardText, setCardText] = useState({
     start: startTime,
     end: startTime + 5,
-    text: '',
-    upload: null,
-    style: {
-      backgroundImage: url ? `url('${url}')` : 'none',
-      backgroundColor: 'black',
-      color: 'white',
-      position: 'absolute',
-      bottom: 'auto',
-      left: 'auto',
-      right: 'auto',
-      top: 'auto',
-      textAlign: 'center',
-      zIndex: 450
+    upload: { // you dont want defaults if these optional components arent used.
+      url: '',
+      style: {
+        
+      }
+    },
+    background: {
+      style: {
+        backgroundImage: url ? `url('${url}')` : 'none',
+        backgroundColor: 'black',
+        zIndex: 400
+      }
+    },
+    text: {
+      value: '',
+      style: {
+        // fontFamily: '',
+        color: 'white',
+        position: 'absolute', // the text must be in a separate div from background in order to position anywhere
+        bottom: 'auto',
+        left: 'auto',
+        right: 'auto',
+        top: 'auto',
+        textAlign: 'center',
+        zIndex: 450
+      }
     }
   })
   const cardRef = useRef(null)
