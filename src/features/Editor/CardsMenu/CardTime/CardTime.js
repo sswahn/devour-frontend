@@ -31,4 +31,4 @@ function CardTime({ activeCard, updateActiveCardTime, errors }) {
   )
 } 
 
-export default CaptionTime
+export default CardTime
