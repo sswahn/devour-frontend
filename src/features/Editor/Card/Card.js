@@ -3,8 +3,18 @@ import styles from './Card.module.css'
 
 function Card({ videoRef, activeCard }) {
 
+
   const onTimeUpdate = event => {
-    
+    const { currentTime } = event.currentTarget
+    const matchingCaption = captions.find(caption => {
+      return (currentTime >= Number(caption.start) && currentTime <= Number(caption.end))
+    })
+    setCurrentCaption(prev => {
+      if (matchingCaption?.id === prev?.id) {
+        return prev
+      }
+      return matchingCaption ?? {}
+    })
   }
 
   useEffect(() => {
