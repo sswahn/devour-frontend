@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import styles from './Card.module.css'
 
 function Card({ videoRef, activeCard }) {
-
+  const { cards } = useCards()
 
   const onTimeUpdate = event => {
     const { currentTime } = event.currentTarget
