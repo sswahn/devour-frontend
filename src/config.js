@@ -26,6 +26,7 @@ export const storage = {
   activeCaption: 'activeCaption',
   composition: 'composition',
   captions: 'captions',
+  card: 'card',
   footage: 'footage',
   publisher: 'publisher',
   queue: 'queue'
