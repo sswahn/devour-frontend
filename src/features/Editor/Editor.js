@@ -7,6 +7,7 @@ import Video from './Video/Video'
 import Figcaption from './Figcaption/Figcaption'
 import CaptionsMenu from './CaptionsMenu/CaptionsMenu'
 import CaptionsMenuButton from './CaptionsMenuButton/CaptionsMenuButton'
+import Card from './Card/Card'
 import CardsMenu from './CardsMenu/CardsMenu'
 import CardsMenuButton from './CardsMenuButton/CardsMenuButton'
 import SubmitButton from './SubmitButton/SubmitButton'
@@ -96,12 +97,13 @@ function Editor({ openCamera, openPublisher }) {
   return (
     <figure className={styles.editor}>
       <TopNav videoRef={videoRef} openCamera={openCamera} programmaticPause={programmaticPause} /> 
-      <VideoTimeline videoRef={videoRef} />
-      <Video videoRef={videoRef} />
-      <Figcaption videoRef={videoRef} activeCaption={activeCaption} />
       <CardMenuButton openCardMenu={openCardMenu} />
       <CaptionsMenuButton openCaptionsMenu={openCaptionsMenu} />
       <SubmitButton openPublisher={openPublisher} />
+      <Video videoRef={videoRef} />
+      <VideoTimeline videoRef={videoRef} />
+      {activeCaption && <Figcaption videoRef={videoRef} activeCaption={activeCaption} />}
+      {activeCard && <Card activeCard={activeCard} />}
       {captionsMenu &&
         <CaptionsMenu activeCaption={activeCaption} setActiveCaption={setActiveCaption} closeCaptionsMenu={closeCaptionsMenu} />
       }
