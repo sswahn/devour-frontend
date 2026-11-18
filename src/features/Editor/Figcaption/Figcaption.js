@@ -51,7 +51,7 @@ function Figcaption({ videoRef, activeCaption }) {
   }
 
   useEffect(() => {
-    const video = videoRef.current
+    const video = videoRef?.current
     if (!video) {
       return
     }
