@@ -1,7 +1,8 @@
-import { Fragment } from 'react'
+import { useState, Fragment } from 'react'
 
 function Figcaption({ activeCaption }) {
-
+  const [currentCaption, setCurrentCaption] = useState({})
+  
   return (
     <Fragment>
       {activeCaption?.text && 
