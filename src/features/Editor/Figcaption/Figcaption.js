@@ -59,7 +59,9 @@ function Figcaption({ videoRef, activeCaption }) {
       video.removeEventListener('timeupdate', onTimeUpdate)
     }
   }, [])
-  
+
+  // currentCaption figcation should be clicable to open edit/delete form
+
   return (
     <Fragment>
       {activeCaption?.text && 
