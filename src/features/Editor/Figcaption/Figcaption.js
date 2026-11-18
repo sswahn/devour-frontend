@@ -1,4 +1,5 @@
 import { useState, useEffect, Fragment } from 'react'
+import useCaptions from '../../../hooks/useCaptions'
 import styles from './Figcaption.module.css'
 
 function Figcaption({ videoRef, activeCaption }) {
