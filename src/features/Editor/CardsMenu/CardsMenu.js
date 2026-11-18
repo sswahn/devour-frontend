@@ -122,12 +122,7 @@ function CardsMenu({ activeCard, setActiveCard, closeCardMenu }) {
     setActiveCard({
       id: crypto.randomUUID(),
       start: '',
-      end: '',
-      background: {
-        style: {
-          backgroundColor: 'black'
-        }
-      }
+      end: ''
     })
     */
   }
