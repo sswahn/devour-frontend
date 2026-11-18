@@ -4,6 +4,7 @@ import storage from '../../utilities/storage'
 import TopNav from './TopNav/TopNav'
 import VideoTimeline from './VideoTimeline/VideoTimeline'
 import Video from './Video/Video'
+import Figcaption from './Figcaption/Figcaption'
 import CaptionsMenu from './CaptionsMenu/CaptionsMenu'
 import CaptionsMenuButton from './CaptionsMenuButton/CaptionsMenuButton'
 import CardsMenu from './CardsMenu/CardsMenu'
@@ -96,7 +97,8 @@ function Editor({ openCamera, openPublisher }) {
     <figure className={styles.editor}>
       <TopNav videoRef={videoRef} openCamera={openCamera} programmaticPause={programmaticPause} /> 
       <VideoTimeline videoRef={videoRef} />
-      <Video videoRef={videoRef} activeCaption={activeCaption} activeCard={activeCard} />
+      <Video videoRef={videoRef} />
+      <Figcaption videoRef={videoRef} activeCaption={activeCaption} />
       <CardMenuButton openCardMenu={openCardMenu} />
       <CaptionsMenuButton openCaptionsMenu={openCaptionsMenu} />
       <SubmitButton openPublisher={openPublisher} />
