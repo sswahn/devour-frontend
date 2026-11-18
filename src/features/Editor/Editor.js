@@ -106,7 +106,7 @@ function Editor({ openCamera, openPublisher }) {
         <CaptionsMenu activeCaption={activeCaption} setActiveCaption={setActiveCaption} closeCaptionsMenu={closeCaptionsMenu} />
       }
       {cardMenu &&
-        <CardMenu activeCard={activeCard} setActiveCard={setActiveCard} closeCardMenu={closeCardMenu} />
+        <CardsMenu activeCard={activeCard} setActiveCard={setActiveCard} closeCardMenu={closeCardMenu} />
       }
       {loading && <LoadingSpinner />}
     </figure>
