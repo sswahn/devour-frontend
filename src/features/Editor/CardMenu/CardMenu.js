@@ -6,16 +6,18 @@ import styles from './CardMenu.module.css'
 function CardMenu({ startTime, closeCardMenu }) {
   const { photo } = usePhoto()
 
-  const [card, setCard] = useState({
-    id: crypto.randomUUID(),
-    start: startTime,
-    end: startTime + 5,
-    background: {
-      style: {
-        backgroundColor: 'black'
+  const [card, setCard] = useState(() => 
+    storage.local.get(config.storage.card) ?? {
+      id: crypto.randomUUID(),
+      start: startTime,
+      end: startTime + 5,
+      background: {
+        style: {
+          backgroundColor: 'black'
+        }
       }
     }
-  })
+  )
   const cardRef = useRef(null)
 
   const changeBackgroundColor = event => {
