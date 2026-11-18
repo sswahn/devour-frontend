@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import usePhoto from '../../../hooks/usePhoto'
+import storage from '../../../utilities/storage'
 import styles from './CardMenu.module.css'
 
 function CardMenu({ startTime, closeCardMenu }) {
@@ -114,6 +115,10 @@ function CardMenu({ startTime, closeCardMenu }) {
       document.removeEventListener('click', offClickToClose)
     }
   }, [offClickToClose])
+
+  useEffect(() => {
+    storage.local.set(config.storage.card, card)
+  }, [card])
   
   return (
     <div ref={cardRef} className={styles.cardMenu}>
