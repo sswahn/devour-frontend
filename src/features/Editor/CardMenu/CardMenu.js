@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from 'react'
+import usePhoto from '../../../hooks/usePhoto'
 import styles from './CardMenu.module.css'
 
 function CardMenu({ startTime, closeCardMenu }) {
-  // create a photo provider const { photo } = usePhoto()
-  const [url, setUrl] = useState(null)
+  const { photo } = usePhoto()
+
   const [card, setCard] = useState({
     id: crypto.randomUUID(),
     start: startTime,
@@ -48,7 +49,7 @@ function CardMenu({ startTime, closeCardMenu }) {
       background: {
         style: {
           ...prev.background.style,
-          backgroundImage: `url('${url}')`
+          backgroundImage: `url('${photo.url}')`
         }
       }
     }))
