@@ -17,6 +17,18 @@ function CardMenu({ startTime, closeCardMenu }) {
   })
   const cardRef = useRef(null)
 
+  const changeBackgroundColor = event => {
+    setCard(prev => ({
+      ...prev,
+      background: {
+        style: {
+          ...prev.background.style,
+          backgroundColor: event.target.value
+        }
+      }
+    }))
+  }
+
   const addText = event => {
     setCard(prev => ({
       ...prev,
@@ -32,8 +44,8 @@ function CardMenu({ startTime, closeCardMenu }) {
           top: 'auto',
           textAlign: 'center'
         }
-      })
-    )
+      }
+    }))
   }
 
   const removeText = event => {
@@ -79,8 +91,8 @@ function CardMenu({ startTime, closeCardMenu }) {
           right: 'auto',
           top: 'auto',
         }
-      })
-    )
+      }
+    }))
   }
 
   const removeUpload = event => {
