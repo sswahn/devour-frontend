@@ -101,9 +101,11 @@ function Editor({ openCamera, openPublisher }) {
       <CaptionsMenuButton openCaptionsMenu={openCaptionsMenu} />
       <SubmitButton openPublisher={openPublisher} />
       <Video videoRef={videoRef} />
+      <Figcaption videoRef={videoRef} activeCaption={activeCaption} />
       <VideoTimeline videoRef={videoRef} />
-      {activeCaption && <Figcaption videoRef={videoRef} activeCaption={activeCaption} />}
-      {activeCard && <Card activeCard={activeCard} />}
+      {activeCard && 
+        <Card activeCard={activeCard} />
+      }
       {captionsMenu &&
         <CaptionsMenu activeCaption={activeCaption} setActiveCaption={setActiveCaption} closeCaptionsMenu={closeCaptionsMenu} />
       }
