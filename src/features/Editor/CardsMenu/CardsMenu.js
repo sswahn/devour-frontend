@@ -33,10 +33,7 @@ function CardsMenu({ activeCard, setActiveCard, closeCardMenu }) {
       ...prev,
       text: {
         ...prev.text,
-        style: {
-          ...prev.text.style,
-          ...update
-        }
+        style: update(prev.text.style)
       }
     }))
   }
