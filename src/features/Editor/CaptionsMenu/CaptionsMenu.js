@@ -29,14 +29,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   const updateActiveCaptionStyle = update => {
     setActiveCaption(prev => {
       if (!selection) {
-       // return { ...prev, style: update(prev.style) }
-        return {
-          ...prev,
-          style: {
-            prev.style,
-            ...update
-          }
-        }
+        return { ...prev, style: update(prev.style) }
       }
       const index = prev.segments.findIndex(segment =>
         segment.start === selection.start && segment.end === selection.end
@@ -48,7 +41,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
             ...prev.segments, 
             { 
               ...selection, 
-              style: update
+              style: update({})
             }
           ]
         }
@@ -57,7 +50,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
       return {
         ...prev,
         segments: prev.segments.map((segment, i) =>
-          i === index ? { ...segment, style: { ...segment.style, ...update } : segment
+          i === index ? { ...segment, style: update(segment.style) } : segment
         )
       }
     })
