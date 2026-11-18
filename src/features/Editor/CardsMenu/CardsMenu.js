@@ -8,8 +8,7 @@ import styles from './CardsMenu.module.css'
 
 function CardsMenu({ activeCard, setActiveCard, closeCardMenu }) {
   const { cards, createCard } = useCards()
-  const photo = { url: ''} // usePhoto()
-  // create cards provider and store cards in array there.
+  const photo = { url: ''} // create a usePhoto() hook/provider
   const [cardTime, setCardTime] = useState(false)
   const cardRef = useRef(null)
 
