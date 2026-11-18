@@ -14,19 +14,6 @@ function Video({ videoRef, activeCaption, activeCard }) {
   const [currentCaption, setCurrentCaption] = useState({})
   const [loading, setLoading] = useState(false)
 
-  const onTimeUpdate = event => {
-    const { currentTime } = event.currentTarget
-    const matchingCaption = captions.find(caption => {
-      return (currentTime >= Number(caption.start) && currentTime <= Number(caption.end))
-    })
-    setCurrentCaption(prev => {
-      if (matchingCaption?.id === prev?.id) {
-        return prev
-      }
-      return matchingCaption ?? {}
-    })
-  }
-
   const renderSegments = () => {
     
     console.log('rendering segments...')
@@ -101,27 +88,15 @@ function Video({ videoRef, activeCaption, activeCard }) {
     }
   }, [footage])
 
-  // debug:
-  useEffect(() => {
-    console.log('activeCaption inside Video component: ', activeCaption)
-  }, [activeCaption])
-
   // currentCaption figcation should be clicable to open edit/delete form
 
   // break figcaption out into its own component, along with logic & state
   // move the figure element up and just return video from this component
   return (
     <figure className={styles.video}>
-      <video id="video-editor" ref={videoRef} src={source} onTimeUpdate={onTimeUpdate} autoPlay playsInline 
+      <video id="video-editor" ref={videoRef} src={source} autoPlay playsInline 
         onError={e => console.error('Video error:', e.currentTarget.error)}
       />
-      {activeCaption?.text && 
-        <figcaption style={activeCaption.style}>
-          {activeCaption.segments.length ? renderSegments() : activeCaption.text}
-        </figcaption>
-      }
-      {/* break out into figcaptions component */}
-      {currentCaption?.text && <figcaption style={currentCaption.style}>{currentCaption.text}</figcaption>}
       {activeCard && {/* breack out into card component */}
         <div className="card" style={activeCard.background.style}>
           {activeCard.text?.value && <p style={activeCard.text.style}>{activeCard.text.value}</p>}
