@@ -1,7 +1,6 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, Fragment } from 'react'
 import useComposition from '../../../hooks/useComposition'
 import useFootage from '../../../hooks/useFootage'
-import useCaptions from '../../../hooks/useCaptions'
 import { concatenateVideos } from '../../../utilities/videoEditor'
 import LoadingSpinner from '../../../components/LoadingSpinner/LoadingSpinner'
 import styles from './Video.module.css'
@@ -56,16 +55,14 @@ function Video({ videoRef }) {
   }, [footage])
 
   // currentCaption figcation should be clicable to open edit/delete form
-
-  // break figcaption out into its own component, along with logic & state
-  // move the figure element up and just return video from this component
+  // consider moving loadind spinner up to parent
   return (
-    <figure className={styles.video}>
-      <video id="video-editor" ref={videoRef} src={source} autoPlay playsInline 
+    <Fragment>
+      <video className={styles.video} ref={videoRef} src={source} autoPlay playsInline 
         onError={e => console.error('Video error:', e.currentTarget.error)}
       />
       {loading && <LoadingSpinner />}
-    </figure>
+    </Fragment>
   )
 }
 
