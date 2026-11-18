@@ -1,6 +1,6 @@
 /* Editor Video Element with figure and figcaption */
 
-.video video {
+.video {
   object-fit: cover;
   height: 100dvh;
   inset: 0;
