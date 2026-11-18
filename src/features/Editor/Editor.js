@@ -38,8 +38,8 @@ function Editor({ openCamera, openPublisher }) {
   const [activeCard, setActiveCard] = useState(() => 
     storage.local.get(config.storage.activeCard) ?? {
       id: crypto.randomUUID(),
-      start: startTime,
-      end: startTime + 5,
+      start: '',
+      end: '',
     }
   )
   const [captionsMenu, setCaptionsMenu] = useState(false)
