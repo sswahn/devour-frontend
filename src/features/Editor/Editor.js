@@ -77,13 +77,13 @@ function Editor({ openCamera, openPublisher }) {
   }
 
   useEffect(() => {
+    storage.local.set(config.storage.activeCard, activeCard)
+  }, [activeCard])
+
+  useEffect(() => {
     storage.local.set(config.storage.activeCaption, activeCaption)
   }, [activeCaption])
 
-  useEffect(() => {
-    storage.local.set(config.storage.activeCard, activeCard)
-  }, [activeCard])
-  
   // ultimately might want a <SideNav /> component above <SubmitButton />
   
   return (
@@ -95,7 +95,7 @@ function Editor({ openCamera, openPublisher }) {
       <CaptionsMenuButton openCaptionsMenu={openCaptionsMenu} />
       <SubmitButton openPublisher={openPublisher} />
       {cardMenu &&
-        <CardMenu closeCardMenu={closeCardMenu} />
+        <CardMenu activeCard={activeCard} setActiveCard={setActiveCard} closeCardMenu={closeCardMenu} />
       }
       {captionsMenu &&
         <CaptionsMenu activeCaption={activeCaption} setActiveCaption={setActiveCaption} closeCaptionsMenu={closeCaptionsMenu} />
