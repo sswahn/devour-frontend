@@ -27,7 +27,7 @@ export const storage = {
   activeCard: 'activeCard',
   composition: 'composition',
   captions: 'captions',
-  card: 'card',
+  cards: 'cards',
   footage: 'footage',
   publisher: 'publisher',
   queue: 'queue'
