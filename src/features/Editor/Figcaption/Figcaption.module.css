@@ -1,5 +1,10 @@
 /* Editor Figcaption */
 
 .figcaption {
-  
+  bottom: 16px;
+  left: 8px;
+  position: fixed;
+  width: calc(100% - 16px);
+  word-break: break-word;
+  z-index: 300;
 }
