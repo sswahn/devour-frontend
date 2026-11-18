@@ -28,6 +28,10 @@ function CardsMenu({ activeCard, setActiveCard, closeCardMenu }) {
     }))
   }
 
+  const updateActiveCardTextStyle = () => {
+    
+  }
+
   const addText = event => {
     setActiveCard(prev => ({
       ...prev,
@@ -155,10 +159,10 @@ function CardsMenu({ activeCard, setActiveCard, closeCardMenu }) {
         label="Add a card"
         value={activeCard.text}
         error={errors.text}
-        onChange={updateActiveCard} />
+        onChange={addText} />
       <CardTimeButton setCardTime={setCardTime} />
       {cardTime && <CardTime activeCard={activeCard} updateActiveCardTime={updateActiveCardTime} errors={errors} />}
-      <TextToolbar style={activeCaption.style} setStyle={updateActiveCaptionStyle} />
+      <TextToolbar style={activeCard.style} setStyle={updateActiveCardTextStyle} />
     </section>
   )
 }
