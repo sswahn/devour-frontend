@@ -56,14 +56,15 @@ function CardMenu({ startTime, closeCardMenu }) {
   }
 
   const removePhoto = event => {
-    setCard(prev => ({
-      ...prev,
-      background: {
-        style: {
-          backgroundColor: prev.background.style.backgroundColor
+    setCard(prev => {
+      const { backgroundImage, ...style } = prev.background.style
+      return {
+        ...prev,
+        background: {
+          style
         }
       }
-    }))
+    })
   }
 
   const addUpload = event => {
