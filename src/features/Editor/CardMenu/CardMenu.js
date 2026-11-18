@@ -7,6 +7,9 @@ import styles from './CardMenu.module.css'
 function CardMenu({ startTime, closeCardMenu }) {
   const { photo } = usePhoto()
 
+  // move state up to editor and change to "activeCard" for editing display
+  // create cards provider and store cards in array there.
+  
   const [card, setCard] = useState(() => 
     storage.local.get(config.storage.card) ?? {
       id: crypto.randomUUID(),
