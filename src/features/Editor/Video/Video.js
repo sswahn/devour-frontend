@@ -9,9 +9,7 @@ import styles from './Video.module.css'
 function Video({ videoRef }) {
   const { composition, setComposition } = useComposition()
   const { footage } = useFootage()
-  const { captions } = useCaptions()
   const [source, setSource] = useState(null)
-  const [currentCaption, setCurrentCaption] = useState({})
   const [loading, setLoading] = useState(false)
 
   const getBlob = async () => {
