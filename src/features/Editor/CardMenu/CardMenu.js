@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import * as config from '../../../config'
 import usePhoto from '../../../hooks/usePhoto'
 import storage from '../../../utilities/storage'
 import styles from './CardMenu.module.css'
