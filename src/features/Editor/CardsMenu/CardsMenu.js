@@ -28,8 +28,17 @@ function CardsMenu({ activeCard, setActiveCard, closeCardMenu }) {
     }))
   }
 
-  const updateActiveCardTextStyle = () => {
-    
+  const updateActiveCardTextStyle = update => {
+    setActiveCard(prev => ({
+      ...prev,
+      text: {
+        ...prev.text,
+        style: {
+          ...prev.text.style,
+          ...update
+        }
+      }
+    }))
   }
 
   const addText = event => {
