@@ -4082,8 +4082,10 @@ const api = {
 };
 const storage = {
   activeCaption: 'activeCaption',
-  composition: 'composition',
+  activeCard: 'activeCard',
   captions: 'captions',
+  cards: 'cards',
+  composition: 'composition',
   footage: 'footage',
   publisher: 'publisher',
   queue: 'queue'
@@ -7944,4 +7946,4 @@ __webpack_require__.r(__webpack_exports__);
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=main.7b2a43e009a5e6a873d9.js.map
+//# sourceMappingURL=main.24510d88038cb5ec0a9a.js.map
