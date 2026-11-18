@@ -6,7 +6,7 @@ import { concatenateVideos } from '../../../utilities/videoEditor'
 import LoadingSpinner from '../../../components/LoadingSpinner/LoadingSpinner'
 import styles from './Video.module.css'
 
-function Video({ videoRef, activeCaption }) {
+function Video({ videoRef, activeCaption, activeCard }) {
   const { composition, setComposition } = useComposition()
   const { footage } = useFootage()
   const { captions } = useCaptions()
@@ -109,7 +109,7 @@ function Video({ videoRef, activeCaption }) {
   // currentCaption figcation should be clicable to open edit/delete form
 
   // break figcaption out into its own component, along with logic & state
-  
+  // move the figure element up and just return video from this component
   return (
     <figure className={styles.video}>
       <video id="video-editor" ref={videoRef} src={source} onTimeUpdate={onTimeUpdate} autoPlay playsInline 
@@ -120,7 +120,12 @@ function Video({ videoRef, activeCaption }) {
           {activeCaption.segments.length ? renderSegments() : activeCaption.text}
         </figcaption>
       }
+      {/* break out into figcaptions component */}
       {currentCaption?.text && <figcaption style={currentCaption.style}>{currentCaption.text}</figcaption>}
+      {activeCard && {/* breack out into card component */}
+        <div className="card" style={activeCard.background.style}>
+          {activeCard.text?.value && <p style={activeCard.text.style}>{activeCard.text.value}</p>}
+        </div}
       {loading && <LoadingSpinner />}
     </figure>
   )
