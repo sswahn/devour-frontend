@@ -72,8 +72,15 @@ function Editor({ openCamera, openPublisher }) {
   }
 
   const closeCardMenu = () => {
-    console.log('closing card menu.')
+    const { currentTime } = videoRef.current
+    videoRef.current.pause()
+    setProgrammaticPause(performance.now())
     setCardMenu(true)
+    // Set a default time:
+    setActiveCard(prev => ({ ...prev, 
+      start: currentTime.toFixed(2), 
+      end: (currentTime + 5).toFixed(2) 
+    }))
   }
 
   useEffect(() => {
