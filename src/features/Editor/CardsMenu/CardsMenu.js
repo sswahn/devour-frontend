@@ -3,9 +3,9 @@ import * as config from '../../../config'
 import useCards from '../../../hooks/useCards'
 // import usePhoto from '../../../hooks/usePhoto'
 import storage from '../../../utilities/storage'
-import styles from './CardMenu.module.css'
+import styles from './CardsMenu.module.css'
 
-function CardMenu({ activeCard, setActiveCard, closeCardMenu }) {
+function CardsMenu({ activeCard, setActiveCard, closeCardMenu }) {
   const { cards, createCard } = useCards()
   const photo = { url: ''} // usePhoto()
   // create cards provider and store cards in array there.
@@ -130,23 +130,33 @@ function CardMenu({ activeCard, setActiveCard, closeCardMenu }) {
       document.removeEventListener('click', offClickToClose)
     }
   }, [offClickToClose])
+
+  {/*
+  - text input
+  - text positioning
+  
+  - choose background color (default black and white text)
+  - take photo (replaces background)
+  
+  - time length (how long to display card)
+  
+  - upload and position image/logo (maybe for pro plan)
+  */}
   
   return (
-    <div ref={cardRef} className={styles.cardMenu}>
-      <p>A card menu</p>
-      {/*
-        - text input
-        - text positioning
-        
-        - choose background color (default black and white text)
-        - take photo (replaces background)
-        
-        - time length (how long to display card)
-
-        - upload and position image/logo (maybe for pro plan)
-      */}
-    </div>
+    <section ref={cardRef} className={styles.cardsMenu}>
+      <Input 
+        id="text"
+        type="text"
+        label="Add a card"
+        value={activeCard.text}
+        error={errors.text}
+        onChange={updateActiveCard} />
+      <CaptionTimeButton setCaptionTime={setCaptionTime} />
+      {captionTime && <CaptionTime activeCaption={activeCaption} updateActiveCaption={updateActiveCaption} errors={errors} />}
+      <TextToolbar style={activeCaption.style} setStyle={updateActiveCaptionStyle} />
+    </section>
   )
 }
 
-export default CardMenu
+export default CardsMenu
