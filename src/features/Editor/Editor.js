@@ -40,11 +40,6 @@ function Editor({ openCamera, openPublisher }) {
       id: crypto.randomUUID(),
       start: startTime,
       end: startTime + 5,
-      background: {
-        style: {
-          backgroundColor: 'black'
-        }
-      }
     }
   )
   const [captionsMenu, setCaptionsMenu] = useState(false)
