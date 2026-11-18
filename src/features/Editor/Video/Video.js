@@ -5,11 +5,10 @@ import { concatenateVideos } from '../../../utilities/videoEditor'
 import LoadingSpinner from '../../../components/LoadingSpinner/LoadingSpinner'
 import styles from './Video.module.css'
 
-function Video({ videoRef }) {
+function Video({ videoRef, setLoading }) {
   const { composition, setComposition } = useComposition()
   const { footage } = useFootage()
   const [source, setSource] = useState(null)
-  const [loading, setLoading] = useState(false)
 
   const getBlob = async () => {
     const ids = footage.map(item => item.id)
@@ -54,15 +53,10 @@ function Video({ videoRef }) {
     }
   }, [footage])
 
-  // currentCaption figcation should be clicable to open edit/delete form
-  // consider moving loadind spinner up to parent
   return (
-    <Fragment>
-      <video className={styles.video} ref={videoRef} src={source} autoPlay playsInline 
-        onError={e => console.error('Video error:', e.currentTarget.error)}
-      />
-      {loading && <LoadingSpinner />}
-    </Fragment>
+    <video className={styles.video} ref={videoRef} src={source} autoPlay playsInline 
+      onError={e => console.error('Video error:', e.currentTarget.error)}
+    />
   )
 }
 
