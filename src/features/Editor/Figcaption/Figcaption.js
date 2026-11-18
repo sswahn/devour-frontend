@@ -4,6 +4,37 @@ function Figcaption({ videoRef, activeCaption }) {
   const { captions } = useCaptions()
   const [currentCaption, setCurrentCaption] = useState({})
 
+  const renderSegments = () => {
+    
+    console.log('rendering segments...')
+    
+    const { text, segments, style } = activeCaption
+    let position = 0
+  
+    const html = segments.map((segment, index) => {
+      const start = position
+      if (position < segment.start) {
+        return <span>text.slice(position, segment.start)</span>
+      }
+      position = segment.end                     
+      return (
+        <span key={`segment-${index}`} style={index === 0 ? undefined : segment.style}>
+          {text.slice(start, segment.end)}
+        </span>
+      )
+    })
+    const last = (
+      <span key="remaining">
+        {text.slice(position)}
+      </span>
+    )
+    const result = [...html, last]
+  
+    console.log('concatted segments: ', result)
+  
+    return result
+  }
+
   const onTimeUpdate = event => {
     const { currentTime } = event.currentTarget
     const matchingCaption = captions.find(caption => {
@@ -35,8 +66,11 @@ function Figcaption({ videoRef, activeCaption }) {
           {activeCaption.segments.length ? renderSegments() : activeCaption.text}
         </figcaption>
       }
-      {/* break out into figcaptions component */}
-      {currentCaption?.text && <figcaption style={currentCaption.style}>{currentCaption.text}</figcaption>}
+      {currentCaption?.text && 
+        <figcaption style={currentCaption.style}>
+          {currentCaption.text}
+        </figcaption>
+      }
     </Fragment>
   )
 }
