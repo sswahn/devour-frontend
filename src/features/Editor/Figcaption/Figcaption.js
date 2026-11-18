@@ -1,4 +1,5 @@
 import { useState, useEffect, Fragment } from 'react'
+import styles from './Figcaption.module.css'
 
 function Figcaption({ videoRef, activeCaption }) {
   const { captions } = useCaptions()
@@ -62,12 +63,12 @@ function Figcaption({ videoRef, activeCaption }) {
   return (
     <Fragment>
       {activeCaption?.text && 
-        <figcaption style={activeCaption.style}>
+        <figcaption className={styles.figcaption} style={activeCaption.style}>
           {activeCaption.segments.length ? renderSegments() : activeCaption.text}
         </figcaption>
       }
       {currentCaption?.text && 
-        <figcaption style={currentCaption.style}>
+        <figcaption className={styles.figcaption} style={currentCaption.style}>
           {currentCaption.text}
         </figcaption>
       }
