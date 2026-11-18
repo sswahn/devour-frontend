@@ -19,7 +19,7 @@ function Card({ videoRef, activeCard }) {
   }
 
   useEffect(() => {
-    const video = videoRef.current
+    const video = videoRef?.current
     if (!video) {
       return
     }
