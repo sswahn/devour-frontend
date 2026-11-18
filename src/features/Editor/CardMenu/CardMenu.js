@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from 'react'
 import styles from './CardMenu.module.css'
 
 function CardMenu({ startTime, closeCardMenu }) {
+  // create a photo provider const { photo } = usePhoto()
+  const [url, setUrl] = useState(null)
   const [cardText, setCardText] = useState({
     start: startTime,
     end: startTime + 5,
