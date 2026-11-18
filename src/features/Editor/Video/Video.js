@@ -6,44 +6,13 @@ import { concatenateVideos } from '../../../utilities/videoEditor'
 import LoadingSpinner from '../../../components/LoadingSpinner/LoadingSpinner'
 import styles from './Video.module.css'
 
-function Video({ videoRef, activeCaption, activeCard }) {
+function Video({ videoRef }) {
   const { composition, setComposition } = useComposition()
   const { footage } = useFootage()
   const { captions } = useCaptions()
   const [source, setSource] = useState(null)
   const [currentCaption, setCurrentCaption] = useState({})
   const [loading, setLoading] = useState(false)
-
-  const renderSegments = () => {
-    
-    console.log('rendering segments...')
-    
-    const { text, segments, style } = activeCaption
-    let position = 0
-  
-    const html = segments.map((segment, index) => {
-      const start = position
-      if (position < segment.start) {
-        return <span>text.slice(position, segment.start)</span>
-      }
-      position = segment.end                     
-      return (
-        <span key={`segment-${index}`} style={index === 0 ? undefined : segment.style}>
-          {text.slice(start, segment.end)}
-        </span>
-      )
-    })
-    const last = (
-      <span key="remaining">
-        {text.slice(position)}
-      </span>
-    )
-    const result = [...html, last]
-  
-    console.log('concatted segments: ', result)
-  
-    return result
-  }
 
   const getBlob = async () => {
     const ids = footage.map(item => item.id)
