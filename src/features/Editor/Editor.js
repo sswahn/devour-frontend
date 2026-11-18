@@ -82,7 +82,7 @@ function Editor({ openCamera, openPublisher }) {
 
   useEffect(() => {
     storage.local.set(config.storage.activeCard, activeCard)
-  }, [activeCaption])
+  }, [activeCard])
   
   // ultimately might want a <SideNav /> component above <SubmitButton />
   
