@@ -93,6 +93,7 @@ function CardsMenu({ activeCard, setActiveCard, closeCardMenu }) {
       ...prev,
       upload: {
         url: '',
+        alt: '',
         style: {
           position: 'absolute',
           bottom: 'auto',
