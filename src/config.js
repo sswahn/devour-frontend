@@ -24,6 +24,7 @@ export const api = {
 
 export const storage = {
   activeCaption: 'activeCaption',
+  activeCard: 'activeCard',
   composition: 'composition',
   captions: 'captions',
   card: 'card',
