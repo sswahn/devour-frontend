@@ -24,7 +24,7 @@ function CardMenu({ closeCardMenu }) {
         - text input
         - text positioning
         - choose background color (default black and white text)
-        - upload and position image (maybe for pro plan)
+        - upload and position image/logo (maybe for pro plan)
         - take photo (replaces background)
       */}
     </div>
