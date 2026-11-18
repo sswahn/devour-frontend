@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import useCards from '../../../hooks/useCards'
 import styles from './Card.module.css'
 
 function Card({ videoRef, activeCard }) {
@@ -6,14 +7,14 @@ function Card({ videoRef, activeCard }) {
 
   const onTimeUpdate = event => {
     const { currentTime } = event.currentTarget
-    const matchingCaption = captions.find(caption => {
-      return (currentTime >= Number(caption.start) && currentTime <= Number(caption.end))
+    const matchingCard = cards.find(card => {
+      return (currentTime >= Number(card.start) && currentTime <= Number(card.end))
     })
     setCurrentCaption(prev => {
-      if (matchingCaption?.id === prev?.id) {
+      if (matchingCard?.id === prev?.id) {
         return prev
       }
-      return matchingCaption ?? {}
+      return matchingCard ?? {}
     })
   }
 
