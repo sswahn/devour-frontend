@@ -1,6 +1,7 @@
 import { useState, Fragment } from 'react'
 
 function Figcaption({ activeCaption }) {
+  const { captions } = useCaptions()
   const [currentCaption, setCurrentCaption] = useState({})
   
   return (
