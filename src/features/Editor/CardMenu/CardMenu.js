@@ -18,7 +18,16 @@ function CardMenu({ closeCardMenu }) {
   }, [offClickToClose])
   
   return (
-    <div ref={cardRef} className={styles.cardMenu}>A card menu</div>
+    <div ref={cardRef} className={styles.cardMenu}>
+      <p>A card menu</p>
+      {/*
+        - text input
+        - text positioning
+        - choose background color (default black and white text)
+        - upload and position image (maybe for pro plan)
+        - take photo (replaces background)
+      */}
+    </div>
   )
 }
 
