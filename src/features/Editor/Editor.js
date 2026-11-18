@@ -93,7 +93,7 @@ function Editor({ openCamera, openPublisher }) {
   return (
     <figure className={styles.editor}>
       <TopNav videoRef={videoRef} openCamera={openCamera} programmaticPause={programmaticPause} /> 
-      <CardMenuButton openCardMenu={openCardMenu} />
+      <CardsMenuButton openCardMenu={openCardMenu} />
       <CaptionsMenuButton openCaptionsMenu={openCaptionsMenu} />
       <SubmitButton openPublisher={openPublisher} />
       <Video videoRef={videoRef} setLoading={setLoading} />
