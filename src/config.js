@@ -25,9 +25,9 @@ export const api = {
 export const storage = {
   activeCaption: 'activeCaption',
   activeCard: 'activeCard',
-  composition: 'composition',
   captions: 'captions',
   cards: 'cards',
+  composition: 'composition',
   footage: 'footage',
   publisher: 'publisher',
   queue: 'queue'
