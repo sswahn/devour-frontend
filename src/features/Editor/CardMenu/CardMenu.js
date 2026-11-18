@@ -8,33 +8,84 @@ function CardMenu({ startTime, closeCardMenu }) {
     id: crypto.randomUUID(),
     start: startTime,
     end: startTime + 5,
-    upload: { // you dont want defaults if these optional components arent used.
-      url: '',
-      style: {
-        
-      }
-    },
     background: {
       style: {
-        backgroundImage: url ? `url('${url}')` : 'none',
         backgroundColor: 'black'
-      }
-    },
-    text: {
-      value: '',
-      style: {
-        // fontFamily: '',
-        color: 'white',
-        position: 'absolute', // the text must be in a separate div from background in order to position anywhere
-        bottom: 'auto',
-        left: 'auto',
-        right: 'auto',
-        top: 'auto',
-        textAlign: 'center'
       }
     }
   })
   const cardRef = useRef(null)
+
+  const addText = event => {
+    setCard(prev => ({
+      ...prev,
+      text: {
+        value: event.target.value,
+        style: {
+          // fontFamily: '',
+          color: 'white',
+          position: 'absolute',
+          bottom: 'auto',
+          left: 'auto',
+          right: 'auto',
+          top: 'auto',
+          textAlign: 'center'
+        }
+      })
+    )
+  }
+
+  const removeText = event => {
+    setCard(prev => {
+      const { text, ...card } = prev
+      return card
+    })
+  }
+
+  const addPhoto = event => {
+    setCard(prev => ({
+      ...prev,
+      background: {
+        style: {
+          backgroundImage: `url('${url}')`
+        }
+      }
+    }))
+  }
+
+  const removePhoto = event => {
+    setCard(prev => ({
+      ...prev,
+      background: {
+        style: {
+          backgroundColor: 'black'
+        }
+      }
+    }))
+  }
+
+  const addUpload = event => {
+    setCard(prev => ({
+      ...prev,
+      upload: {
+        url: '',
+        style: {
+          position: 'absolute',
+          bottom: 'auto',
+          left: 'auto',
+          right: 'auto',
+          top: 'auto',
+        }
+      })
+    )
+  }
+
+  const removeUpload = event => {
+    setCard(prev => {
+      const { upload, ...card } = prev
+      return card
+    })
+  }
 
   const offClickToClose = event => {
     if (cardRef.current && !cardRef.current.contains(event.target)) {
