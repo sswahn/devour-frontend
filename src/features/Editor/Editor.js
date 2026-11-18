@@ -96,7 +96,7 @@ function Editor({ openCamera, openPublisher }) {
     <section className={styles.editor}>
       <TopNav videoRef={videoRef} openCamera={openCamera} programmaticPause={programmaticPause} /> 
       <VideoTimeline videoRef={videoRef} />
-      <Video videoRef={videoRef} activeCaption={activeCaption} />
+      <Video videoRef={videoRef} activeCaption={activeCaption} activeCard={activeCard} />
       <CardMenuButton openCardMenu={openCardMenu} />
       <CaptionsMenuButton openCaptionsMenu={openCaptionsMenu} />
       <SubmitButton openPublisher={openPublisher} />
