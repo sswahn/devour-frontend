@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import * as config from '../../../config'
 import useCards from '../../../hooks/useCards'
 // import usePhoto from '../../../hooks/usePhoto'
+import { errorHandler } from '../../../utilities/errorHandler'
 import storage from '../../../utilities/storage'
 import Input from '../../../components/Input/Input'
 import CardTime from './CardTime/CardTime'
@@ -12,6 +13,7 @@ function CardsMenu({ activeCard, setActiveCard, closeCardMenu }) {
   const photo = { url: ''} // create a usePhoto() hook/provider
   const [cardTime, setCardTime] = useState(false)
   const cardRef = useRef(null)
+  const [errors, setErrors] = useState({})
 
   const updateActiveCardTime = ({ target: { id, value} }) => {
     setActiveCard(prev => ({ ...prev, [id]: value }))
@@ -114,6 +116,7 @@ function CardsMenu({ activeCard, setActiveCard, closeCardMenu }) {
   }
 
   const saveCard = () => {
+    try {
     // if text, validate text
     // if upload, validate upload
     
@@ -127,6 +130,9 @@ function CardsMenu({ activeCard, setActiveCard, closeCardMenu }) {
       end: ''
     })
     */
+    } catch (error) {
+      errorHandler(errors, setErrors)
+    }
   }
 
   const offClickToClose = event => {
