@@ -3,6 +3,7 @@ import * as config from '../../../config'
 import useCards from '../../../hooks/useCards'
 // import usePhoto from '../../../hooks/usePhoto'
 import storage from '../../../utilities/storage'
+import Input from '../../../components/Input/Input'
 import CardTime from './CardTime/CardTime'
 import styles from './CardsMenu.module.css'
 
