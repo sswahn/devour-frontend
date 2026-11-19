@@ -106,9 +106,9 @@ function Editor({ openCamera, openPublisher }) {
       {captionsMenu &&
         <CaptionsMenu activeCaption={activeCaption} setActiveCaption={setActiveCaption} closeCaptionsMenu={closeCaptionsMenu} />
       }
-      {cardMenu &&
+      {/* cardMenu && */}
         <CardsMenu activeCard={activeCard} setActiveCard={setActiveCard} closeCardMenu={closeCardMenu} />
-      }
+      
       {loading && <LoadingSpinner />}
     </figure>
   )
