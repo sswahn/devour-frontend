@@ -100,7 +100,7 @@ function Editor({ openCamera, openPublisher }) {
       <Video videoRef={videoRef} setLoading={setLoading} />
       <Figcaption videoRef={videoRef} activeCaption={activeCaption} />
       <VideoTimeline videoRef={videoRef} />
-      {activeCard && 
+      {activeCard.start && 
         <Card activeCard={activeCard} />
       }
       {captionsMenu &&
