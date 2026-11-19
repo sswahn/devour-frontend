@@ -6,7 +6,7 @@ function CardTime({ activeCard, updateActiveCardTime, errors }) {
   const [errorMessage, setErrorMessage] = useState('')
   
   return (
-    <div className={styles.captionTime}>
+    <div className={styles.cardTime}>
       <Input
         id="start"
         inputMode="decimal"
