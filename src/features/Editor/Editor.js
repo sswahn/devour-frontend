@@ -13,6 +13,7 @@ import CardsMenuButton from './CardsMenuButton/CardsMenuButton'
 import SubmitButton from './SubmitButton/SubmitButton'
 import styles from './Editor.module.css'
 
+
 function Editor({ openCamera, openPublisher }) {
   const [activeCaption, setActiveCaption] = useState(() => 
     storage.local.get(config.storage.activeCaption) ?? {
