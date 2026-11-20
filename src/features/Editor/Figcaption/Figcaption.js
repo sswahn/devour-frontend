@@ -16,7 +16,7 @@ function Figcaption({ videoRef, activeCaption }) {
     const html = segments.map((segment, index) => {
       const start = position
       if (position < segment.start) {
-        return <span>text.slice(position, segment.start)</span>
+        return <span>{text.slice(position, segment.start)}</span>
       }
       position = segment.end                     
       return (
