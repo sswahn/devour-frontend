@@ -60,7 +60,7 @@ function CardsMenu({ activeCard, setActiveCard, closeCardMenu }) {
           position: 'absolute',
           right: 'auto',
           top: 'auto',
-          textAlign: 'center'
+          textAlign: 'center',
           textDecoration: 'none',
           WebkitTextStrokeWidth: '0px',
           WebkitTextStrokeColor: 'transparent'
