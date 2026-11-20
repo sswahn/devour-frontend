@@ -94,7 +94,7 @@ function Editor({ openCamera, openPublisher }) {
     <figure className={styles.editor}>
       <TopNav videoRef={videoRef} openCamera={openCamera} programmaticPause={programmaticPause} /> 
       <SideNav 
-        openSpliceTool={openSpliceTool} 
+        openSpliceToolMenu={openSpliceToolMenu} 
         openCardMenu={openCardMenu} 
         openCaptionsMenu={openCaptionsMenu} 
         openPublisher={openPublisher} 
