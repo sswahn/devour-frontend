@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { DEFAULT_TEXT_STYLE } from '../../constants/defaultTextStyle'
+import { DEFAULT_TEXT_STYLE } from '../../../constants/defaultTextStyle'
 import * as config from '../../../config'
 import useCards from '../../../hooks/useCards'
 // import usePhoto from '../../../hooks/usePhoto'
