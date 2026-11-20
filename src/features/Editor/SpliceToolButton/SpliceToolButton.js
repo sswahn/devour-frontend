@@ -4,7 +4,7 @@ import styles from './SpliceToolButton.module.css'
 function SpliceToolButton({ openSpliceTool }) {
 
   const onClick = event => {
-    // haptic response code
+    navigator.vibrate?.(50)
     openSpliceTool()
   }
 
