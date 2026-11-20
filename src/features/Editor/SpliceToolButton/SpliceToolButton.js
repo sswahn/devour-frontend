@@ -1,18 +1,18 @@
 import ScissorsIcon from '../../../components/Icons/ScissorsIcon/ScissorsIcon'
-import styles from './SpliceToolButton.module.css'
+import styles from './SpliceToolMenuButton.module.css'
 
-function SpliceToolButton({ openSpliceTool }) {
+function SpliceToolMenuButton({ openSpliceToolMenu }) {
 
   const onClick = event => {
     navigator.vibrate?.(50)
-    openSpliceTool()
+    openSpliceToolMenu()
   }
 
   return (
-    <button className={styles.spliceToolButton} onClick={onClick} type="button" aria-label="open splice tool">
+    <button className={styles.spliceToolMenuButton} onClick={onClick} type="button" aria-label="open splice tool">
       <ScissorsIcon />
     </button>
   )
 }
 
-export default SpliceToolButton
+export default SpliceToolMenuButton
