@@ -1,7 +1,7 @@
 /* Editor Side Nav */
 
 .sideNav {
-  bottom: 8px;
+  bottom: 16px;
   display: flex;
   flex-direction: column;
   position: absolute;
