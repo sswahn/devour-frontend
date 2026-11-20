@@ -14,7 +14,7 @@ import CardsMenuButton from './CardsMenuButton/CardsMenuButton'
 import SubmitButton from './SubmitButton/SubmitButton'
 import styles from './Editor.module.css'
 
-// find a place for default text style.
+// videoRef.current.playbackRate = 0.5 // 50% speed slow motion
 
 function Editor({ openCamera, openPublisher }) {
   const [activeCaption, setActiveCaption] = useState(() => 
