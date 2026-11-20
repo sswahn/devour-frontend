@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { DEFAULT_TEXT_STYLE } from '../../constants/defaultTextStyle'
+import { DEFAULT_TEXT_STYLE } from '../../../constants/defaultTextStyle'
 import useCaptions from '../../../hooks/useCaptions'
 import * as config from '../../../config'
 import { errorHandler } from '../../../utilities/errorHandler'
