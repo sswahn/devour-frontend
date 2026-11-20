@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import { errorHandler } from '../../utilities/errorHandler'
 import Input from '../../components/Input/Input'
-import styles from './SpliceTool.module.css'
+import styles from './SpliceToolMenu.module.css'
 
-function SpliceTool() {
+function SpliceToolMenu() {
   const [splice, setSplice] = useState({
     start: '', // might want to get from current location in timeline, which means moving state up a level
     end: '',
@@ -33,7 +33,7 @@ function SpliceTool() {
   // start, end, insert
   
   return (
-    <section className={styles.spliceTool}>
+    <section className={styles.spliceToolMenu}>
       <form onSubmit={onSubmit}>
         <Input
           id="start"
@@ -71,4 +71,4 @@ function SpliceTool() {
   )
 }
 
-export default SpliceTool
+export default SpliceToolMenu
