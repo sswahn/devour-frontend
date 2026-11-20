@@ -32,7 +32,7 @@ function Editor({ openCamera, openPublisher }) {
       end: '',
     }
   )
-  const [spliceToolIsOpen, setSpliceToolIsOpen]
+  const [spliceToolIsOpen, setSpliceToolIsOpen] = useState(false)
   const [captionsMenuIsOpen, setCaptionsMenuIsOpen] = useState(false)
   const [cardsMenuIsOpen, setCardsMenuIsOpen] = useState(false)
   const [programmaticPause, setProgrammaticPause] = useState(null)
