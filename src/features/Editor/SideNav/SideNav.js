@@ -1,4 +1,4 @@
-import SpliceToolMenuButton from '../SpliceToolButton/SpliceToolButton'
+import SpliceToolMenuButton from '../SpliceToolMenuButton/SpliceToolMenuButton'
 import CardsMenuButton from '../CardsMenuButton/CardsMenuButton'
 import CaptionsMenuButton from '../CaptionsMenuButton/CaptionsMenuButton'
 import PublisherButton from '../PublisherButton/PublisherButton'
