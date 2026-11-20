@@ -44,7 +44,7 @@ function Editor({ openCamera, openPublisher }) {
     }
   )
   const [captionsMenu, setCaptionsMenu] = useState(false)
-  const [cardMenu, setCardMenu] = useState(false)
+  const [cardsMenu, setCardsMenu] = useState(false)
   const [programmaticPause, setProgrammaticPause] = useState(null)
   const [loading, setLoading] = useState(false)
   const videoRef = useRef(null)
@@ -69,7 +69,7 @@ function Editor({ openCamera, openPublisher }) {
     const { currentTime } = videoRef.current
     videoRef.current.pause()
     setProgrammaticPause(performance.now())
-    setCardMenu(true)
+    setCardsMenu(true)
     // Set a default time:
     setActiveCard(prev => ({ ...prev, 
       start: currentTime.toFixed(2), 
@@ -78,7 +78,7 @@ function Editor({ openCamera, openPublisher }) {
   }
 
   const closeCardMenu = () => {
-    setCardMenu(false)
+    setCardsMenu(false)
   }
 
   useEffect(() => {
@@ -100,13 +100,15 @@ function Editor({ openCamera, openPublisher }) {
       <Video videoRef={videoRef} setLoading={setLoading} />
       <Figcaption videoRef={videoRef} activeCaption={activeCaption} />
       <VideoTimeline videoRef={videoRef} />
+      {/* consider an appropriate place for this component: (Overlays?)*/}
       {activeCard.start && 
         <Card activeCard={activeCard} />
       }
+  
       {captionsMenu &&
         <CaptionsMenu activeCaption={activeCaption} setActiveCaption={setActiveCaption} closeCaptionsMenu={closeCaptionsMenu} />
       }
-      {cardMenu &&
+      {cardsMenu &&
         <CardsMenu activeCard={activeCard} setActiveCard={setActiveCard} closeCardMenu={closeCardMenu} />
       }
       {loading && <LoadingSpinner />}
