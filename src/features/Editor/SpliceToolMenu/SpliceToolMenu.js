@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { errorHandler } from '../../utilities/errorHandler'
-import Input from '../../components/Input/Input'
+import Input from '../../../components/Input/Input'
 import styles from './SpliceToolMenu.module.css'
 
 function SpliceToolMenu() {
