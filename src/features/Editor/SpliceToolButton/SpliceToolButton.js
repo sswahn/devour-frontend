@@ -1,4 +1,4 @@
-import SiccorsIcon from '../../../components/Icons/SiccorsIcon/SiccorsIcon'
+import ScissorsIcon from '../../../components/Icons/SiccorsIcon/SiccorsIcon'
 
 function SpliceToolButton({ openSpliceTool }) {
 
@@ -9,7 +9,7 @@ function SpliceToolButton({ openSpliceTool }) {
 
   return (
     <button className={styles.spliceToolButton} onClick={onClick} type="button" aria-label="open splice tool">
-      <SiccorsIcon />
+      <ScissorsIcon />
     </button>
   )
 }
