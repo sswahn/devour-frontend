@@ -6,8 +6,6 @@ function CaptionsMenuButton({ openCaptionsMenu }) {
   const onClick = event => {
     event.stopPropagation()
     
-    console.log('in CaptionsMenuButton onClick.')
-    
     navigator.vibrate?.(50)
     openCaptionsMenu()
   }
