@@ -7,21 +7,20 @@ function Figcaption({ videoRef, activeCaption }) {
   const [currentCaption, setCurrentCaption] = useState({})
 
   const renderSegments = () => {
-    
-    console.log('rendering segments...')
-    
     const { text, segments, style } = activeCaption
     let position = 0
-  
     const html = segments.map((segment, index) => {
-      const start = position
       if (position < segment.start) {
-        return <span>{text.slice(position, segment.start)}</span>
+        return (
+          <span key={`segment-${index}`}>
+            {text.slice(position, segment.start)}
+          </span>
+        )
       }
       position = segment.end                     
       return (
-        <span key={`segment-${index}`} style={index === 0 ? undefined : segment.style}>
-          {text.slice(start, segment.end)}
+        <span key={`segment-${index}`} style={segment.style}>
+          {text.slice(segment.start, segment.end)}
         </span>
       )
     })
@@ -30,11 +29,7 @@ function Figcaption({ videoRef, activeCaption }) {
         {text.slice(position)}
       </span>
     )
-    const result = [...html, last]
-  
-    console.log('concatted segments: ', result)
-  
-    return result
+    return [...html, last]
   }
 
   const onTimeUpdate = event => {
