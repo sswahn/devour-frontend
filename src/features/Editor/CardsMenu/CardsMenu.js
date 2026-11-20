@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { DEFAULT_TEXT_STYLE } from '../../constants/defaultTextStyle'
 import * as config from '../../../config'
 import useCards from '../../../hooks/useCards'
 // import usePhoto from '../../../hooks/usePhoto'
@@ -48,7 +49,7 @@ function CardsMenu({ activeCard, setActiveCard, closeCardMenu }) {
       ...prev,
       text: {
         value: event.target.value,
-        style: {
+        style: DEFAULT_TEXT_STYLE || { // toolbar expects defaults already
           bottom: 'auto',
           color: 'white',
           // fontFamily: '',
