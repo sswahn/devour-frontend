@@ -49,22 +49,7 @@ function CardsMenu({ activeCard, setActiveCard, closeCardMenu }) {
       ...prev,
       text: {
         value: event.target.value,
-        style: DEFAULT_TEXT_STYLE || { // toolbar expects defaults already
-          bottom: 'auto',
-          color: 'white',
-          // fontFamily: '',
-          fontSize: 16,
-          fontStyle: 'normal',
-          fontWeight: 'normal',
-          left: 'auto',
-          position: 'absolute',
-          right: 'auto',
-          top: 'auto',
-          textAlign: 'center',
-          textDecoration: 'none',
-          WebkitTextStrokeWidth: '0px',
-          WebkitTextStrokeColor: 'transparent'
-        }
+        style: { ...DEFAULT_TEXT_STYLE, textAlign: 'center' }
       }
     }))
   }
