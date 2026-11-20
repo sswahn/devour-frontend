@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import { DEFAULT_TEXT_STYLE } from '../../constants/defaultTextStyle'
 import useCaptions from '../../../hooks/useCaptions'
 import * as config from '../../../config'
 import { errorHandler } from '../../../utilities/errorHandler'
@@ -93,18 +94,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
         text: '',
         start: '',
         end: '',
-        style: {
-          backgroundColor: 'transparent',
-          color: '#ffffff',
-          // fontFamily: '',
-          fontSize: 16,
-          fontStyle: 'normal',
-          fontWeight: 'normal',
-          textAlign: 'left',
-          textDecoration: 'none',
-          WebkitTextStrokeWidth: '0px',
-          WebkitTextStrokeColor: 'transparent'
-        },
+        style: DEFAULT_TEXT_STYLE,
         segments: []
       })
     } catch (error) {
