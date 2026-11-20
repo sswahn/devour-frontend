@@ -13,6 +13,7 @@ import CardsMenuButton from './CardsMenuButton/CardsMenuButton'
 import SubmitButton from './SubmitButton/SubmitButton'
 import styles from './Editor.module.css'
 
+// find a place for default text style.
 
 function Editor({ openCamera, openPublisher }) {
   const [activeCaption, setActiveCaption] = useState(() => 
@@ -104,6 +105,8 @@ function Editor({ openCamera, openPublisher }) {
       {activeCard.start && 
         <Card activeCard={activeCard} />
       }
+
+      {/* both theses menus are nearly the same, consider consolidating: <Menu />*/}
   
       {captionsMenu &&
         <CaptionsMenu activeCaption={activeCaption} setActiveCaption={setActiveCaption} closeCaptionsMenu={closeCaptionsMenu} />
