@@ -87,7 +87,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
         start: validate.caption.start(activeCaption.start.trim()),
         end: validate.caption.end(activeCaption.end.trim()),
         style: activeCaption.style,
-        segments: activeCaption.segments.toSorted((a, b) => a.start - b.start)
+        segments: activeCaption.segments //.toSorted((a, b) => a.start - b.start) // this sort is redundant
       })
       setActiveCaption({
         id: crypto.randomUUID(),
