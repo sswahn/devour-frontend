@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Input from '../../components/Input/Input'
+import styles from './SpliceTool.module.css'
 
 function SpliceTool() {
 
@@ -11,7 +12,7 @@ function SpliceTool() {
   // start, end, insert
   
   return (
-    <></>
+    <section className={styles.spliceTool}></section>
   )
 }
 
