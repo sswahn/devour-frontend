@@ -3,15 +3,13 @@ import { DEFAULT_TEXT_STYLE } from '../../constants/defaultTextStyle'
 import * as config from '../../config'
 import storage from '../../utilities/storage'
 import TopNav from './TopNav/TopNav'
+import SideNav from './SideNav/SideNav'
 import VideoTimeline from './VideoTimeline/VideoTimeline'
 import Video from './Video/Video'
 import Figcaption from './Figcaption/Figcaption'
 import CaptionsMenu from './CaptionsMenu/CaptionsMenu'
-import CaptionsMenuButton from './CaptionsMenuButton/CaptionsMenuButton'
 import Card from './Card/Card'
 import CardsMenu from './CardsMenu/CardsMenu'
-import CardsMenuButton from './CardsMenuButton/CardsMenuButton'
-import SubmitButton from './SubmitButton/SubmitButton'
 import styles from './Editor.module.css'
 
 // videoRef.current.playbackRate = 0.5 // 50% speed slow motion
@@ -34,17 +32,26 @@ function Editor({ openCamera, openPublisher }) {
       end: '',
     }
   )
-  const [captionsMenu, setCaptionsMenu] = useState(false)
-  const [cardsMenu, setCardsMenu] = useState(false)
+  const [spliceToolIsOpen, setSpliceToolIsOpen]
+  const [captionsMenuIsOpen, setCaptionsMenuIsOpen] = useState(false)
+  const [cardsMenuIsOpen, setCardsMenuIsOpen] = useState(false)
   const [programmaticPause, setProgrammaticPause] = useState(null)
   const [loading, setLoading] = useState(false)
   const videoRef = useRef(null)
+
+  const openSpliceTool = () => {
+    setSpliceToolIsOpen(true)
+  }
+
+  const closeSpliceTool = () => {
+    setSpliceToolIsOpen(false)
+  }
 
   const openCaptionsMenu = () => {
     const { currentTime } = videoRef.current
     videoRef.current.pause()
     setProgrammaticPause(performance.now())
-    setCaptionsMenu(true)
+    setCaptionsMenuIsOpen(true)
     // Set a default time:
     setActiveCaption(prev => ({ ...prev, 
       start: currentTime.toFixed(2), 
@@ -53,14 +60,14 @@ function Editor({ openCamera, openPublisher }) {
   }
   
   const closeCaptionsMenu = () => {
-    setCaptionsMenu(false)
+    setCaptionsMenuIsOpen(false)
   }
 
   const openCardMenu = () => {
     const { currentTime } = videoRef.current
     videoRef.current.pause()
     setProgrammaticPause(performance.now())
-    setCardsMenu(true)
+    setCardsMenuIsOpen(true)
     // Set a default time:
     setActiveCard(prev => ({ ...prev, 
       start: currentTime.toFixed(2), 
@@ -69,7 +76,7 @@ function Editor({ openCamera, openPublisher }) {
   }
 
   const closeCardMenu = () => {
-    setCardsMenu(false)
+    setCardsMenuIsOpen(false)
   }
 
   useEffect(() => {
@@ -85,23 +92,25 @@ function Editor({ openCamera, openPublisher }) {
   return (
     <figure className={styles.editor}>
       <TopNav videoRef={videoRef} openCamera={openCamera} programmaticPause={programmaticPause} /> 
-      <CardsMenuButton openCardMenu={openCardMenu} />
-      <CaptionsMenuButton openCaptionsMenu={openCaptionsMenu} />
-      <SubmitButton openPublisher={openPublisher} />
+      <SideNav 
+        openSpliceTool={openSpliceTool} 
+        openCardMenu={openCardMenu} 
+        openCaptionsMenu={openCaptionsMenu} 
+        openPublisher={openPublisher} 
+      />
       <Video videoRef={videoRef} setLoading={setLoading} />
       <Figcaption videoRef={videoRef} activeCaption={activeCaption} />
       <VideoTimeline videoRef={videoRef} />
+      
       {/* consider an appropriate place for this component: (Overlays?)*/}
       {activeCard.start && 
         <Card activeCard={activeCard} />
       }
 
-      {/* both theses menus are nearly the same, consider consolidating: <Menu />*/}
-  
-      {captionsMenu &&
+      {captionsMenuIsOpen &&
         <CaptionsMenu activeCaption={activeCaption} setActiveCaption={setActiveCaption} closeCaptionsMenu={closeCaptionsMenu} />
       }
-      {cardsMenu &&
+      {cardsMenuIsOpen &&
         <CardsMenu activeCard={activeCard} setActiveCard={setActiveCard} closeCardMenu={closeCardMenu} />
       }
       {loading && <LoadingSpinner />}
