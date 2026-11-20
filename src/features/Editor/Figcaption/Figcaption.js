@@ -47,8 +47,6 @@ function Figcaption({ videoRef, activeCaption }) {
     return elements
   }
 
-
-
   const onTimeUpdate = event => {
     const { currentTime } = event.currentTarget
     const matchingCaption = captions.find(caption => {
