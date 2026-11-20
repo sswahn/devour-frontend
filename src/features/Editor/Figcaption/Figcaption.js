@@ -7,14 +7,11 @@ function Figcaption({ videoRef, activeCaption }) {
   const [currentCaption, setCurrentCaption] = useState({})
 
 const renderSegments = () => {
-  const { text = '', segments = [] } = activeCaption || {}
+  const { text, segments } = activeCaption || {}
   const elements = []
   let position = 0
 
-  // Ensure segments are processed in order
-  const sortedSegments = [...segments].sort((a, b) => a.start - b.start)
-
-  sortedSegments.forEach((segment, index) => {
+  segments.forEach((segment, index) => {
     // 1. Render unstyled text before the segment, if any
     if (position < segment.start) {
       elements.push(
