@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { createElevatorController, generateSongFromSeed, renderSongToWav } from './elevatorSynth'
 
-function AddMusicMenu() {
+function MusicMenu() {
   const [seed, setSeed] = useState(101)
   const [song, setSong] = useState(() => generateSongFromSeed(101))
   const [isPlaying, setIsPlaying] = useState(false)
@@ -182,4 +182,4 @@ function AddMusicMenu() {
   )
 }
 
-export default AddMusicMenu
+export default MusicMenu
