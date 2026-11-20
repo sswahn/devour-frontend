@@ -29,7 +29,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
 
   const updateActiveCaptionStyle = update => {
     setActiveCaption(prev => {
-      if (!selection) {
+      if (!Object.keys(selection).length) {
         return { ...prev, style: update(prev.style) }
       }
       const index = prev.segments.findIndex(segment =>
