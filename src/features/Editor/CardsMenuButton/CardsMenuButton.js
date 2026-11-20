@@ -4,6 +4,7 @@ import styles from './CardsMenuButton.module.css'
 function CardsMenuButton({ openCardMenu }) {
 
   const onClick = event => {
+    navigator.vibrate?.(50)
     openCardMenu()
   }
   
