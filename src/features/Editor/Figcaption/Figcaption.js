@@ -7,21 +7,19 @@ function Figcaption({ videoRef, activeCaption }) {
   const [currentCaption, setCurrentCaption] = useState({})
 
   const renderSegments = () => {
-    const { text = '', segments = [] } = activeCaption || {}
+    const { text, segments } = activeCaption
     const elements = []
     let position = 0
-  
     // Filter out invalid/empty segments and sort by start index
     const sortedSegments = [...segments]
       .filter((seg) => seg.start < seg.end)
       .sort((a, b) => a.start - b.start)
-  
     sortedSegments.forEach((segment) => {
       const start = Math.max(position, segment.start)
       const end = Math.min(text.length, segment.end)
-  
-      if (start >= end) return
-  
+      if (start >= end) {
+        return
+      }
       // 1. Unstyled text before the segment
       if (position < start) {
         elements.push(
@@ -30,17 +28,14 @@ function Figcaption({ videoRef, activeCaption }) {
           </span>
         )
       }
-  
       // 2. Styled segment with position-based key
       elements.push(
         <span key={`seg-${start}-${end}`} style={segment.style}>
           {text.slice(start, end)}
         </span>
       )
-  
       position = end
     })
-  
     // 3. Remaining trailing text
     if (position < text.length) {
       elements.push(
@@ -49,7 +44,6 @@ function Figcaption({ videoRef, activeCaption }) {
         </span>
       )
     }
-  
     return elements
   }
 
