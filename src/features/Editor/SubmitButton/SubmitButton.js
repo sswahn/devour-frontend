@@ -1,7 +1,7 @@
 import PaperPlaneIcon from '../../../components/Icons/PaperPlaneIcon/PaperPlaneIcon'
-import styles from './SubmitButton.module.css'
+import styles from './PublisherButton.module.css'
 
-function SubmitButton({ openPublisher }) {
+function PublisherButton({ openPublisher }) {
 
   const onClick = event => {
     navigator.vibrate?.(50)
@@ -9,10 +9,10 @@ function SubmitButton({ openPublisher }) {
   }
 
   return (
-    <button className={styles.submitButton} onClick={onClick} type="button" aria-label="submit video">
+    <button className={styles.publisherButton} onClick={onClick} type="button" aria-label="continue to publish video">
       <PaperPlaneIcon />
     </button>
   )
 }
 
-export default SubmitButton
+export default PublisherButton
