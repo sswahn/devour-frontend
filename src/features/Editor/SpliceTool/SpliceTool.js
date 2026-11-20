@@ -19,7 +19,7 @@ function SpliceTool() {
   const onSubmit = event => {
     event.preventDefault()
     try {
-      // videoCreateSplice(splice)
+      // spliceVideoClips(splice)
     } catch (error) {
       errorHandler(errors, setErrors)
     }
