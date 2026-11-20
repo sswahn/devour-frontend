@@ -1,7 +1,7 @@
 import ClosedCaptioningIcon from '../../../components/Icons/ClosedCaptioningIcon/ClosedCaptioningIcon'
-import styles from './CaptionsMenuButton.module.css'
+import styles from './CaptionsButton.module.css'
 
-function CaptionsMenuButton({ openCaptionsMenu }) {
+function CaptionsButton({ openCaptionsMenu }) {
 
   const onClick = event => {
     event.stopPropagation()
@@ -11,10 +11,10 @@ function CaptionsMenuButton({ openCaptionsMenu }) {
   }
   
   return (
-    <button className={styles.captionsMenuButton} onClick={onClick} type="button" aria-label="open captions menu">
+    <button className={styles.captionsButton} onClick={onClick} type="button" aria-label="open captions menu">
       <ClosedCaptioningIcon />
     </button>
   )
 }
 
-export default CaptionsMenuButton
+export default CaptionsButton
