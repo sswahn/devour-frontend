@@ -5,6 +5,9 @@ import Captions from '../Captions/Captions'
 import Cards from '../Cards/Cards'
 import styles from './Menu.module.css'
 
+// TODO: Flagged for deletion.
+// Code no longer in use.
+
 function Menu({ closeMenu }) {
   const { openDialog } = useDialog()
   const [errorMessage, setErrorMessage] = useState('')
