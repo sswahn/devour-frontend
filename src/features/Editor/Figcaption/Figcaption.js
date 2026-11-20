@@ -6,31 +6,47 @@ function Figcaption({ videoRef, activeCaption }) {
   const { captions } = useCaptions()
   const [currentCaption, setCurrentCaption] = useState({})
 
-  const renderSegments = () => {
-    const { text, segments, style } = activeCaption
-    let position = 0
-    const html = segments.map((segment, index) => {
-      if (position < segment.start) {
-        return (
-          <span key={`segment-${index}`}>
-            {text.slice(position, segment.start)}
-          </span>
-        )
-      }
-      position = segment.end                     
-      return (
-        <span key={`segment-${index}`} style={segment.style}>
-          {text.slice(segment.start, segment.end)}
+const renderSegments = () => {
+  const { text = '', segments = [] } = activeCaption || {}
+  const elements = []
+  let position = 0
+
+  // Ensure segments are processed in order
+  const sortedSegments = [...segments].sort((a, b) => a.start - b.start)
+
+  sortedSegments.forEach((segment, index) => {
+    // 1. Render unstyled text before the segment, if any
+    if (position < segment.start) {
+      elements.push(
+        <span key={`gap-${index}`}>
+          {text.slice(position, segment.start)}
         </span>
       )
-    })
-    const last = (
+    }
+
+    // 2. Render the styled segment itself
+    elements.push(
+      <span key={`segment-${index}`} style={segment.style}>
+        {text.slice(segment.start, segment.end)}
+      </span>
+    )
+
+    // 3. Advance the pointer
+    position = Math.max(position, segment.end)
+  })
+
+  // 4. Render any remaining text only if characters are left
+  if (position < text.length) {
+    elements.push(
       <span key="remaining">
         {text.slice(position)}
       </span>
     )
-    return [...html, last]
   }
+
+  return elements
+}
+
 
   const onTimeUpdate = event => {
     const { currentTime } = event.currentTarget
