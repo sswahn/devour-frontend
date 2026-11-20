@@ -1,4 +1,4 @@
-import ScissorsIcon from '../../../components/Icons/SiccorsIcon/SiccorsIcon'
+import ScissorsIcon from '../../../components/Icons/ScissorsIcon/ScissorsIcon'
 import styles from './SpliceToolButton.module.css'
 
 function SpliceToolButton({ openSpliceTool }) {
