@@ -8,6 +8,7 @@ import VideoTimeline from './VideoTimeline/VideoTimeline'
 import Video from './Video/Video'
 import Figcaption from './Figcaption/Figcaption'
 import Card from './Card/Card'
+import SpliceToolMenu from './SpliceToolMenu/SpliceToolMenu'
 import CaptionsMenu from './CaptionsMenu/CaptionsMenu'
 import CardsMenu from './CardsMenu/CardsMenu'
 import styles from './Editor.module.css'
@@ -32,19 +33,19 @@ function Editor({ openCamera, openPublisher }) {
       end: '',
     }
   )
-  const [spliceToolIsOpen, setSpliceToolIsOpen] = useState(false)
+  const [spliceToolMenuIsOpen, setSpliceToolMenuIsOpen] = useState(false)
   const [captionsMenuIsOpen, setCaptionsMenuIsOpen] = useState(false)
   const [cardsMenuIsOpen, setCardsMenuIsOpen] = useState(false)
   const [programmaticPause, setProgrammaticPause] = useState(null)
   const [loading, setLoading] = useState(false)
   const videoRef = useRef(null)
 
-  const openSpliceTool = () => {
-    setSpliceToolIsOpen(true)
+  const openSpliceToolMenu = () => {
+    setSpliceToolMenuIsOpen(true)
   }
 
-  const closeSpliceTool = () => {
-    setSpliceToolIsOpen(false)
+  const closeSpliceToolMenu = () => {
+    setSpliceToolMenuIsOpen(false)
   }
 
   const openCaptionsMenu = () => {
@@ -106,7 +107,10 @@ function Editor({ openCamera, openPublisher }) {
       {activeCard.start && 
         <Card activeCard={activeCard} />
       }
-
+  
+      {spliceToolMenuIsOpen && 
+        <SpliceToolMenu closeSpliceToolMenu={closeSpliceToolMenu} />
+      }
       {captionsMenuIsOpen &&
         <CaptionsMenu activeCaption={activeCaption} setActiveCaption={setActiveCaption} closeCaptionsMenu={closeCaptionsMenu} />
       }
