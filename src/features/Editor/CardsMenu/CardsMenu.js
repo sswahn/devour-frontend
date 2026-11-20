@@ -49,14 +49,20 @@ function CardsMenu({ activeCard, setActiveCard, closeCardMenu }) {
       text: {
         value: event.target.value,
         style: {
-          // fontFamily: '',
-          color: 'white',
-          position: 'absolute',
           bottom: 'auto',
+          color: 'white',
+          // fontFamily: '',
+          fontSize: 16,
+          fontStyle: 'normal',
+          fontWeight: 'normal',
           left: 'auto',
+          position: 'absolute',
           right: 'auto',
           top: 'auto',
           textAlign: 'center'
+          textDecoration: 'none',
+          WebkitTextStrokeWidth: '0px',
+          WebkitTextStrokeColor: 'transparent'
         }
       }
     }))
