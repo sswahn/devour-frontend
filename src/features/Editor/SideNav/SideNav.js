@@ -5,7 +5,14 @@ import CaptionsButton from '../CaptionsButton/CaptionsButton'
 import PublisherButton from '../PublisherButton/PublisherButton'
 import styles from './SideNav.module.css'
 
-function SideNav({ openMusicMenu, openSpliceToolMenu, openCardsMenu, openCaptionsMenu, openPublisher }) {
+function SideNav({ 
+  openMusicMenu, 
+  openMusicMenu, 
+  openSpliceToolMenu, 
+  openCardsMenu, 
+  openCaptionsMenu, 
+  openPublisher 
+}) {
   return (
     <nav className={styles.sideNav} aria-label="editor actions">
       <MusicButton openMusicMenu={openMusicMenu} />
