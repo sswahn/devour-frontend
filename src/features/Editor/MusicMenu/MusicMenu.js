@@ -130,7 +130,7 @@ function MusicMenu() {
   }
 
   return (
-    <div style={{ padding: '24px', border: '1px solid #ddd', borderRadius: '12px', maxWidth: '420px', fontFamily: 'sans-serif', zIndex: 9999 }}>
+    <div style={{ padding: '24px', border: '1px solid #ddd', borderRadius: '12px', maxWidth: '420px', fontFamily: 'sans-serif', zIndex: 400 }}>
 
      {/* Live Frequency Spectrum Visualizer */}
       <div
