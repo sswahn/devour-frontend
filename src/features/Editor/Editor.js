@@ -8,6 +8,7 @@ import VideoTimeline from './VideoTimeline/VideoTimeline'
 import Video from './Video/Video'
 import Figcaption from './Figcaption/Figcaption'
 import Card from './Card/Card'
+import MusicMenu from './MusicMenu/MusicMenu'
 import SpliceToolMenu from './SpliceToolMenu/SpliceToolMenu'
 import CaptionsMenu from './CaptionsMenu/CaptionsMenu'
 import CardsMenu from './CardsMenu/CardsMenu'
@@ -117,7 +118,10 @@ function Editor({ openCamera, openPublisher }) {
       {activeCard.start && 
         <Card activeCard={activeCard} />
       }
-  
+
+      {musicMenuIsOpen && 
+        <MusicMenu closeMusicMenu={closeMusicMenu} />
+      }
       {spliceToolMenuIsOpen && 
         <SpliceToolMenu closeSpliceToolMenu={closeSpliceToolMenu} />
       }
