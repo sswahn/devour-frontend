@@ -49,11 +49,7 @@ function MusicMenu() {
 
           ctx.fillStyle = barColor
           ctx.beginPath()
-          if (ctx.roundRect) {
-            ctx.roundRect(x, y, barWidth, barHeight, 3)
-          } else {
-            ctx.rect(x, y, barWidth, barHeight)
-          }
+          ctx.roundRect(x, y, barWidth, barHeight, 3)
           ctx.fill()
         }
       } else {
@@ -62,11 +58,7 @@ function MusicMenu() {
         for (let i = 0; i < barCount; i++) {
           const x = i * (barWidth + gap)
           ctx.beginPath()
-          if (ctx.roundRect) {
-            ctx.roundRect(x, height - 4, barWidth, 4, 2)
-          } else {
-            ctx.rect(x, height - 4, barWidth, 4)
-          }
+          ctx.roundRect(x, height - 4, barWidth, 4, 2)
           ctx.fill()
         }
       }
@@ -96,7 +88,9 @@ function MusicMenu() {
   }
 
   const handleTogglePlay = () => {
-    if (!controllerRef.current) return
+    if (!controllerRef.current) {
+      return
+    }
     if (isPlaying) {
       controllerRef.current.stop()
       setIsPlaying(false)
