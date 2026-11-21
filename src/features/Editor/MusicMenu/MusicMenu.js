@@ -91,15 +91,16 @@ function MusicMenu() {
   }
 
   const handleTogglePlay = () => {
-    if (!controllerRef.current) {
+    const controller = controllerRef.current
+    if (!controller) {
       return
     }
     if (isPlaying) {
-      controllerRef.current.stop()
+      controller.stop()
       setIsPlaying(false)
     } else {
-      controllerRef.current.setSong(song)
-      controllerRef.current.start()
+      controller.setSong(song)
+      controller.start()
       setIsPlaying(true)
     }
   }
@@ -160,8 +161,7 @@ function MusicMenu() {
       <div style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
         <button
           onClick={() => changeSeed(seed - 1)}
-          disabled={seed <= 1}
-          style={{ padding: '10px 14px', cursor: seed <= 1 ? 'not-allowed' : 'pointer' }}
+          style={{ padding: '10px 14px', cursor: 'pointer' }}
         >
           ⏮ Prev
         </button>
