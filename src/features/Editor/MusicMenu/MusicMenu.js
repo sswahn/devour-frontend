@@ -80,6 +80,9 @@ function MusicMenu() {
   }, [isPlaying])
 
   const changeSeed = (newSeed) => {
+
+    console.log('Changing seed:', newSeed)
+    
     const validSeed = Math.max(1, newSeed)
     const updatedSong = generateSongFromSeed(validSeed)
     setSeed(validSeed)
