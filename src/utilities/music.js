@@ -168,7 +168,7 @@ function getNoiseBuffer(ctx) {
   const bufferSize = ctx.sampleRate * 1 // 1 second of white noise
   const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate)
   const data = buffer.getChannelData(0)
-  for (let i = 0 i < bufferSize i++) {
+  for (let i = 0; i < bufferSize; i++) {
     data[i] = Math.random() * 2 - 1
   }
   noiseBufferCache.set(ctx, buffer)
@@ -298,7 +298,7 @@ function audioBufferToWavBlob(buffer) {
   const view = new DataView(arrayBuffer)
 
   const writeString = (offset, str) => {
-    for (let i = 0 i < str.length i++) {
+    for (let i = 0; i < str.length; i++) {
       view.setUint8(offset + i, str.charCodeAt(i))
     }
   }
@@ -318,13 +318,13 @@ function audioBufferToWavBlob(buffer) {
   view.setUint32(40, length, true)
 
   const channels = []
-  for (let i = 0 i < numChannels i++) {
+  for (let i = 0; i < numChannels; i++) {
     channels.push(buffer.getChannelData(i))
   }
 
   let offset = 44
-  for (let i = 0 i < buffer.length i++) {
-    for (let ch = 0 ch < numChannels ch++) {
+  for (let i = 0; i < buffer.length; i++) {
+    for (let ch = 0; ch < numChannels; ch++) {
       const sample = Math.max(-1, Math.min(1, channels[ch][i]))
       view.setInt16(offset, sample < 0 ? sample * 0x8000 : sample * 0x7fff, true)
       offset += 2
@@ -344,7 +344,7 @@ export async function renderSongToWav(song) {
   const OfflineCtx = window.OfflineAudioContext || window.webkitOfflineAudioContext
   const offlineCtx = new OfflineCtx(2, Math.ceil(sampleRate * loopDurationSec), sampleRate)
 
-  for (let step = 0 step < totalSteps step++) {
+  for (let step = 0; step < totalSteps; step++) {
     playSongStep(offlineCtx, step * eighthNoteSec, step, song)
   }
 
