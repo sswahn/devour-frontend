@@ -4,6 +4,9 @@ import styles from './MusicButton.module.css'
 function MusicButton({ openMusicMenu }) {
 
   const onClick = event => {
+
+    console.log('music button clicked.')
+    
     navigator.vibrate?.(50)
     openMusicMenu()
   }
