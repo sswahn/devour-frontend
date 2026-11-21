@@ -43,7 +43,6 @@ function SpliceToolMenu() {
           label="Start"
           value={splice.start}
           error={errors.start}
-          onChange={updateSplice}
           required />
         <Input
           id="end"
@@ -53,7 +52,6 @@ function SpliceToolMenu() {
           label="End"
           value={splice.end}
           error={errors.end}
-          onChange={updateSplice}
           required />
         <Input
           id="insert"
@@ -63,7 +61,6 @@ function SpliceToolMenu() {
           label="Insert"
           value={splice.insert}
           error={errors.end}
-          onChange={updateSplice}
           required />
         <button disabled={loading} type="submit">Submit</button>
       </form>
