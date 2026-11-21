@@ -33,7 +33,7 @@ function MusicMenu() {
         const dataArray = new Uint8Array(bufferLength)
         analyser.getByteFrequencyData(dataArray)
 
-        for (let i = 0 i < barCount i++) {
+        for (let i = 0; i < barCount; i++) {
           // Focus on the most musically active lower-to-mid frequency bins
           const dataIndex = Math.floor((i / barCount) * (bufferLength * 0.75))
           const value = dataArray[dataIndex] || 0
