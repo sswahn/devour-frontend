@@ -92,6 +92,10 @@ function MusicMenu() {
 
   const handleTogglePlay = () => {
     console.log('play pressed.')
+
+    if (!controllerRef.current) {
+      controllerRef.current = createController()
+    }
     const controller = controllerRef.current
     if (!controller) {
       return
