@@ -353,7 +353,7 @@ export async function renderSongToWav(song) {
 }
 
 // 10. Live Playback Controller for React
-export function createElevatorController() {
+export function createController() {
   let audioCtx = null
   let timerId = null
   let isPlaying = false
