@@ -33,12 +33,21 @@ function Editor({ openCamera, openPublisher }) {
       end: '',
     }
   )
+  const [musicMenuIsOpen, setMusicMenuIsOpen] = useState(false)
   const [spliceToolMenuIsOpen, setSpliceToolMenuIsOpen] = useState(false)
   const [captionsMenuIsOpen, setCaptionsMenuIsOpen] = useState(false)
   const [cardsMenuIsOpen, setCardsMenuIsOpen] = useState(false)
   const [programmaticPause, setProgrammaticPause] = useState(null)
   const [loading, setLoading] = useState(false)
   const videoRef = useRef(null)
+
+  const openMusicMenu = () => {
+    setMusicMenuIsOpen(true)
+  }
+
+  const closeMusicMenu = () => {
+    setMusicMenuIsOpen(false)
+  }
 
   const openSpliceToolMenu = () => {
     setSpliceToolMenuIsOpen(true)
@@ -94,6 +103,7 @@ function Editor({ openCamera, openPublisher }) {
     <figure className={styles.editor}>
       <TopNav videoRef={videoRef} openCamera={openCamera} programmaticPause={programmaticPause} /> 
       <SideNav 
+        openMusicMenu={openMusicMenu}
         openSpliceToolMenu={openSpliceToolMenu} 
         openCardsMenu={openCardsMenu} 
         openCaptionsMenu={openCaptionsMenu} 
@@ -115,7 +125,7 @@ function Editor({ openCamera, openPublisher }) {
         <CaptionsMenu activeCaption={activeCaption} setActiveCaption={setActiveCaption} closeCaptionsMenu={closeCaptionsMenu} />
       }
       {cardsMenuIsOpen &&
-        <CardsMenu activeCard={activeCard} setActiveCard={setActiveCard} closeCardMenu={closeCardMenu} />
+        <CardsMenu activeCard={activeCard} setActiveCard={setActiveCard} closeCardsMenu={closeCardsMenu} />
       }
       {loading && <LoadingSpinner />}
     </figure>
