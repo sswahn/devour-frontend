@@ -13,6 +13,13 @@ function MusicMenu() {
   const animationRef = useRef(null)
   const controllerRef = useRef(null)
 
+  useEffect(() => {
+    controllerRef.current = createElevatorController()
+    return () => {
+      controllerRef.current?.destroy()
+    }
+  }, [])
+
   // Real-time 60 FPS Canvas Frequency Spectrum Visualizer
   useEffect(() => {
     const canvas = canvasRef.current
@@ -71,13 +78,6 @@ function MusicMenu() {
       cancelAnimationFrame(animationRef.current)
     }
   }, [isPlaying])
-
-  useEffect(() => {
-    controllerRef.current = createElevatorController()
-    return () => {
-      controllerRef.current?.destroy()
-    }
-  }, [])
 
   const changeSeed = (newSeed) => {
     const validSeed = Math.max(1, newSeed)
