@@ -89,6 +89,8 @@ const PROGRESSIONS = [
 const MAJOR_MELODY = [523.25, 587.33, 659.25, 783.99, 880.00, 1046.50, 1174.66]
 const MINOR_MELODY = [523.25, 622.25, 698.46, 783.99, 932.33, 1046.50, 1174.66]
 
+let analyser = null
+
 function transposeFreq(freq, semitones) {
   return freq * Math.pow(2, semitones / 12)
 }
@@ -361,16 +363,24 @@ export function createElevatorController() {
   let currentSong = generateSongFromSeed(101)
 
   function tick() {
-    if (!audioCtx) return
-    playSongStep(audioCtx, audioCtx.currentTime, step, currentSong)
+    if (!audioCtx) {
+      return
+    }
+    playSongStep(audioCtx, analyzer, audioCtx.currentTime, step, currentSong)
     step++
   }
 
   function start() {
-    if (isPlaying) return
+    if (isPlaying) {
+      return
+    }
     if (!audioCtx) {
       const AudioCtx = window.AudioContext || window.webkitAudioContext
       audioCtx = new AudioCtx()
+        
+      analyser = audioCtx.createAnalyser()
+      analyser.fftSize = 256
+      analyser.connect(audioCtx.destination)
     }
     if (audioCtx.state === 'suspended') {
       audioCtx.resume()
@@ -398,13 +408,18 @@ export function createElevatorController() {
     }
   }
 
+  function getAnalyser() {
+    return analyser
+  }
+
   function destroy() {
     stop()
     if (audioCtx) {
       audioCtx.close()
       audioCtx = null
+      analyser = null
     }
   }
 
-  return { start, stop, setSong, destroy }
+  return { start, stop, setSong, getAnalyser, destroy }
 }
