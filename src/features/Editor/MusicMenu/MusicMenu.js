@@ -1,6 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 import { createElevatorController, generateSongFromSeed, renderSongToWav } from '../../../utilities/music'
 
+const barColor = '#2c5e4f'
+const darkMode = true
+
 function MusicMenu() {
   const [seed, setSeed] = useState(101)
   const [song, setSong] = useState(() => generateSongFromSeed(101))
@@ -44,7 +47,7 @@ function MusicMenu() {
           const x = i * (barWidth + gap)
           const y = height - barHeight
 
-          ctx.fillStyle = theme.bar
+          ctx.fillStyle = barColor
           ctx.beginPath()
           if (ctx.roundRect) {
             ctx.roundRect(x, y, barWidth, barHeight, 3)
@@ -55,7 +58,7 @@ function MusicMenu() {
         }
       } else {
         // Idle resting baseline bars
-        ctx.fillStyle = theme.dark ? 'rgba(255, 255, 255, 0.18)' : 'rgba(0, 0, 0, 0.12)'
+        ctx.fillStyle = darkMode ? 'rgba(255, 255, 255, 0.18)' : 'rgba(0, 0, 0, 0.12)'
         for (let i = 0; i < barCount; i++) {
           const x = i * (barWidth + gap)
           ctx.beginPath()
@@ -73,7 +76,7 @@ function MusicMenu() {
 
     drawVisualizer()
     return () => cancelAnimationFrame(animationRef.current)
-  }, [isPlaying, theme])
+  }, [isPlaying])
 
   useEffect(() => {
     controllerRef.current = createElevatorController()
@@ -124,11 +127,11 @@ function MusicMenu() {
      {/* Live Frequency Spectrum Visualizer */}
       <div
         style={{
-          backgroundColor: theme.bg,
+          backgroundColor: 'blue',
           borderRadius: '10px',
           padding: '12px',
           marginBottom: '16px',
-          border: theme.dark ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(0,0,0,0.06)',
+          border: darkMode ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(0,0,0,0.06)',
         }}
       >
         <canvas
