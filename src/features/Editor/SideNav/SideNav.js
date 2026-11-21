@@ -7,7 +7,6 @@ import styles from './SideNav.module.css'
 
 function SideNav({ 
   openMusicMenu, 
-  openMusicMenu, 
   openSpliceToolMenu, 
   openCardsMenu, 
   openCaptionsMenu, 
