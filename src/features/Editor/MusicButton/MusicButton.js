@@ -1,4 +1,5 @@
 import MusicIcon from '../../../components/Icons/MusicIcon/MusicIcon'
+import styles from './MusicButton.module.css'
 
 function MusicButton({ openMusicMenu }) {
 
