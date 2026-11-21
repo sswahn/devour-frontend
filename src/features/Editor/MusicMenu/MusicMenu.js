@@ -55,7 +55,7 @@ function MusicMenu() {
       } else {
         // Idle resting baseline bars
         ctx.fillStyle = theme.dark ? 'rgba(255, 255, 255, 0.18)' : 'rgba(0, 0, 0, 0.12)'
-        for (let i = 0 i < barCount i++) {
+        for (let i = 0; i < barCount; i++) {
           const x = i * (barWidth + gap)
           ctx.beginPath()
           if (ctx.roundRect) {
