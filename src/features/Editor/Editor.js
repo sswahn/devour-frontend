@@ -119,9 +119,9 @@ function Editor({ openCamera, openPublisher }) {
         <Card activeCard={activeCard} />
       }
 
-      {musicMenuIsOpen && 
+      {/* musicMenuIsOpen &&  */}
         <MusicMenu closeMusicMenu={closeMusicMenu} />
-      }
+      
       {spliceToolMenuIsOpen && 
         <SpliceToolMenu closeSpliceToolMenu={closeSpliceToolMenu} />
       }
