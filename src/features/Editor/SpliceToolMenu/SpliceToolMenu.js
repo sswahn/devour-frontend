@@ -12,10 +12,6 @@ function SpliceToolMenu() {
   const [loading, setLoading] = useState(false)
   const [errors, setErrors] = useState({})
 
-  const updateSplice = ({ target: { id, value } }) => {
-    setSplice(prev => ({ ...prev, [id]: value })) // do i want to store locally?
-  }
-
   const onSubmit = event => {
     event.preventDefault()
     try {
