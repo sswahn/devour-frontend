@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { createElevatorController, generateSongFromSeed, renderSongToWav } from './elevatorSynth'
+import { createElevatorController, generateSongFromSeed, renderSongToWav } from '../../../utilities/music'
 
 function MusicMenu() {
   const [seed, setSeed] = useState(101)
