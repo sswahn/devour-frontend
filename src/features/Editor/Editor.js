@@ -64,7 +64,7 @@ function Editor({ openCamera, openPublisher }) {
     setCaptionsMenuIsOpen(false)
   }
 
-  const openCardMenu = () => {
+  const openCardsMenu = () => {
     const { currentTime } = videoRef.current
     videoRef.current.pause()
     setProgrammaticPause(performance.now())
@@ -76,7 +76,7 @@ function Editor({ openCamera, openPublisher }) {
     }))
   }
 
-  const closeCardMenu = () => {
+  const closeCardsMenu = () => {
     setCardsMenuIsOpen(false)
   }
 
@@ -95,7 +95,7 @@ function Editor({ openCamera, openPublisher }) {
       <TopNav videoRef={videoRef} openCamera={openCamera} programmaticPause={programmaticPause} /> 
       <SideNav 
         openSpliceToolMenu={openSpliceToolMenu} 
-        openCardMenu={openCardMenu} 
+        openCardsMenu={openCardsMenu} 
         openCaptionsMenu={openCaptionsMenu} 
         openPublisher={openPublisher} 
       />
