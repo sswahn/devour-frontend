@@ -159,24 +159,15 @@ function MusicMenu() {
       </p>
 
       <div style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
-        <button
-          onClick={() => changeSeed(seed - 1)}
-          style={{ padding: '10px 14px', cursor: 'pointer' }}
-        >
+        <button onClick={() => changeSeed(seed - 1)} type="button" style={{ padding: '10px 14px', cursor: 'pointer' }}>
           ⏮ Prev
         </button>
 
-        <button
-          onClick={handleTogglePlay}
-          style={{ flex: 1, padding: '10px', fontWeight: 'bold', cursor: 'pointer' }}
-        >
+        <button onClick={handleTogglePlay} type="button" style={{ flex: 1, padding: '10px', fontWeight: 'bold', cursor: 'pointer' }}>
           {isPlaying ? '⏹ Stop' : '▶ Play'}
         </button>
 
-        <button
-          onClick={() => changeSeed(seed + 1)}
-          style={{ padding: '10px 14px', cursor: 'pointer' }}
-        >
+        <button onClick={() => changeSeed(seed + 1)} type="button" style={{ padding: '10px 14px', cursor: 'pointer' }}>
           Next ⏭
         </button>
       </div>
