@@ -7,6 +7,7 @@ function MusicMenu() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [isExporting, setIsExporting] = useState(false)
   const canvasRef = useRef(null)
+  const animationRef = useRef(null)
   const controllerRef = useRef(null)
 
   // Real-time 60 FPS Canvas Frequency Spectrum Visualizer
