@@ -1,11 +1,11 @@
 import LayerGroupIcon from '../../../components/Icons/LayerGroupIcon/LayerGroupIcon'
 import styles from './CardsButton.module.css'
 
-function CardsButton({ openCardMenu }) {
+function CardsButton({ openCardsMenu }) {
 
   const onClick = event => {
     navigator.vibrate?.(50)
-    openCardMenu()
+    openCardsMenu()
   }
   
   return (
