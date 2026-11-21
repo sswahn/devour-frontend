@@ -12,6 +12,7 @@ import MusicMenu from './MusicMenu/MusicMenu'
 import SpliceToolMenu from './SpliceToolMenu/SpliceToolMenu'
 import CaptionsMenu from './CaptionsMenu/CaptionsMenu'
 import CardsMenu from './CardsMenu/CardsMenu'
+import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner'
 import styles from './Editor.module.css'
 
 // videoRef.current.playbackRate = 0.5 // 50% speed slow motion
