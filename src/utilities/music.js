@@ -89,8 +89,6 @@ const PROGRESSIONS = [
 const MAJOR_MELODY = [523.25, 587.33, 659.25, 783.99, 880.00, 1046.50, 1174.66]
 const MINOR_MELODY = [523.25, 622.25, 698.46, 783.99, 932.33, 1046.50, 1174.66]
 
-let analyser = null
-
 function transposeFreq(freq, semitones) {
   return freq * Math.pow(2, semitones / 12)
 }
@@ -360,6 +358,7 @@ export function createElevatorController() {
   let timerId = null
   let isPlaying = false
   let step = 0
+  let analyser = null
   let currentSong = generateSongFromSeed(101)
 
   function tick() {
