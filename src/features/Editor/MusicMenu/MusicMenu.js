@@ -75,12 +75,16 @@ function MusicMenu() {
     }
 
     drawVisualizer()
-    return () => cancelAnimationFrame(animationRef.current)
+    return () => {
+      cancelAnimationFrame(animationRef.current)
+    }
   }, [isPlaying])
 
   useEffect(() => {
     controllerRef.current = createElevatorController()
-    return () => controllerRef.current?.destroy()
+    return () => {
+      controllerRef.current?.destroy()
+    }
   }, [])
 
   const changeSeed = (newSeed) => {
