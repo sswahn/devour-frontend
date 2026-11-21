@@ -366,7 +366,7 @@ export function createElevatorController() {
     if (!audioCtx) {
       return
     }
-    playSongStep(audioCtx, analyzer, audioCtx.currentTime, step, currentSong)
+    playSongStep(audioCtx, analyser, audioCtx.currentTime, step, currentSong)
     step++
   }
 
