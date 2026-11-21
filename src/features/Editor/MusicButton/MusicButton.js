@@ -3,7 +3,7 @@ import MusicIcon from '../../../components/Icons/MusicIcon/MusicIcon'
 function MusicButton({ openMusicMenu }) {
 
   const onClick = event => {
-    // haptic
+    navigator.vibrate?.(50)
     openMusicMenu()
   }
 
