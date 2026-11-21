@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { createElevatorController, generateSongFromSeed, renderSongToWav } from '../../../utilities/music'
+import { createController, generateSongFromSeed, renderSongToWav } from '../../../utilities/music'
 
 const barColor = '#2c5e4f'
 const darkMode = true
@@ -14,7 +14,7 @@ function MusicMenu() {
   const controllerRef = useRef(null)
 
   useEffect(() => {
-    controllerRef.current = createElevatorController()
+    controllerRef.current = createController()
     return () => {
       controllerRef.current?.destroy()
     }
