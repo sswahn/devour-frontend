@@ -117,18 +117,18 @@ function Editor({ openCamera, openPublisher }) {
       <VideoTimeline videoRef={videoRef} />
       <LiveCaptions videoRef={videoRef} activeCaption={activeCaption} />
       <LiveCards videoRef={videoRef} activeCard={activeCard} />
-      {musicMenuIsOpen && 
+      {/*musicMenuIsOpen && 
         <MusicMenu closeMusicMenu={closeMusicMenu} />
       }
       {spliceToolMenuIsOpen && 
         <SpliceToolMenu closeSpliceToolMenu={closeSpliceToolMenu} />
-      }
+      */}
       {captionsMenuIsOpen &&
         <CaptionsMenu activeCaption={activeCaption} setActiveCaption={setActiveCaption} closeCaptionsMenu={closeCaptionsMenu} />
       }
-      {cardsMenuIsOpen &&
+      {/*cardsMenuIsOpen &&
         <CardsMenu activeCard={activeCard} setActiveCard={setActiveCard} closeCardsMenu={closeCardsMenu} />
-      }
+      */}
       {loading && <LoadingSpinner />}
     </figure>
   )
