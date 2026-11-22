@@ -1,6 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 import { createController, generateSongFromSeed, renderSongToWav } from '../../../utilities/music'
 import RightToLineIcon from '../../../components/Icons/RightToLineIcon/RightToLineIcon'
+import LeftToLineIcon from '../../../components/Icons/LeftToLineIcon/LeftToLineIcon'
+import PlayIcon from '../../../components/Icons/PlayIcon/PlayIcon'
+import PauseIcon from '../../../components/Icons/PauseIcon/PauseIcon'
 
 const barColor = '#2c5e4f'
 const darkMode = true
@@ -173,15 +176,15 @@ function MusicMenu() {
 
       <div style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
         <button onClick={() => changeSeed(seed - 1)} type="button" style={{ padding: '10px 14px', cursor: 'pointer' }}>
-          ⏮ Prev
+          <LeftToLineIcon />
         </button>
 
         <button onClick={handleTogglePlay} type="button" style={{ flex: 1, padding: '10px', fontWeight: 'bold', cursor: 'pointer' }}>
-          {isPlaying ? '⏹ Stop' : '▶ Play'}
+          {isPlaying ? <PauseIcon /> : <PlayIcon />}
         </button>
 
         <button onClick={() => changeSeed(seed + 1)} type="button" style={{ padding: '10px 14px', cursor: 'pointer' }}>
-          Next ⏭
+          <RightToLineIcon />
         </button>
       </div>
 
