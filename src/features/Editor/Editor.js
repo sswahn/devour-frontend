@@ -114,11 +114,7 @@ function Editor({ openCamera, openPublisher }) {
       <Video videoRef={videoRef} setLoading={setLoading} />
       <VideoTimeline videoRef={videoRef} />
       <LiveCaptions videoRef={videoRef} activeCaption={activeCaption} />
-          
-      {/* consider an appropriate place for this component: (Overlays?)*/}
-      {activeCard.start && 
-        <LiveCards activeCard={activeCard} />
-      }
+      <LiveCards activeCard={activeCard} />
 
       {/* musicMenuIsOpen &&  */}
         <MusicMenu closeMusicMenu={closeMusicMenu} />
