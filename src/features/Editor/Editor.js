@@ -6,8 +6,8 @@ import TopNav from './TopNav/TopNav'
 import SideNav from './SideNav/SideNav'
 import VideoTimeline from './VideoTimeline/VideoTimeline'
 import Video from './Video/Video'
-import Figcaption from './Figcaption/Figcaption'
-import Card from './Card/Card'
+import LiveCaptions from './LiveCaptions/LiveCaptions'
+import LiveCards from './LiveCards/LiveCards'
 import MusicMenu from './MusicMenu/MusicMenu'
 import SpliceToolMenu from './SpliceToolMenu/SpliceToolMenu'
 import CaptionsMenu from './CaptionsMenu/CaptionsMenu'
@@ -112,12 +112,12 @@ function Editor({ openCamera, openPublisher }) {
         openPublisher={openPublisher} 
       />
       <Video videoRef={videoRef} setLoading={setLoading} />
-      <Figcaption videoRef={videoRef} activeCaption={activeCaption} />
       <VideoTimeline videoRef={videoRef} />
-      
+      <LiveCaptions videoRef={videoRef} activeCaption={activeCaption} />
+          
       {/* consider an appropriate place for this component: (Overlays?)*/}
       {activeCard.start && 
-        <Card activeCard={activeCard} />
+        <LiveCards activeCard={activeCard} />
       }
 
       {/* musicMenuIsOpen &&  */}
