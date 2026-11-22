@@ -114,7 +114,7 @@ function Editor({ openCamera, openPublisher }) {
       <Video videoRef={videoRef} setLoading={setLoading} />
       <VideoTimeline videoRef={videoRef} />
       <LiveCaptions videoRef={videoRef} activeCaption={activeCaption} />
-      <LiveCards activeCard={activeCard} />
+      <LiveCards videoRef={videoRef} activeCard={activeCard} />
 
       {/* musicMenuIsOpen &&  */}
         <MusicMenu closeMusicMenu={closeMusicMenu} />
