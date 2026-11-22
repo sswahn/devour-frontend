@@ -175,6 +175,7 @@ function MusicMenu() {
       </p>
 
       <div style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
+          
         <button onClick={() => changeSeed(seed - 1)} type="button" style={{ padding: '10px 14px', cursor: 'pointer' }}>
           <LeftToLineIcon />
         </button>
@@ -186,6 +187,7 @@ function MusicMenu() {
         <button onClick={() => changeSeed(seed + 1)} type="button" style={{ padding: '10px 14px', cursor: 'pointer' }}>
           <RightToLineIcon />
         </button>
+          
       </div>
 
       <button onClick={handleDownloadWav} disabled={isExporting} style={{ width: '100%', padding: '10px', cursor: 'pointer' }}>
