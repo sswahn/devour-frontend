@@ -1,4 +1,4 @@
-import { useEffect, Fragment } from 'react'
+import { useState, useEffect, Fragment } from 'react'
 import useCards from '../../../hooks/useCards'
 import styles from './LiveCards.module.css'
 
