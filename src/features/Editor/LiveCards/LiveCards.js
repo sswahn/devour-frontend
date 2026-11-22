@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 import useCards from '../../../hooks/useCards'
-import styles from './Card.module.css'
+import styles from './LiveCards.module.css'
 
-function Card({ videoRef, activeCard }) {
+function LiveCards({ videoRef, activeCard }) {
   const { cards } = useCards()
 
   const onTimeUpdate = event => {
@@ -30,11 +30,11 @@ function Card({ videoRef, activeCard }) {
   }, [])
 
   return (
-    <div className={styles.card} style={activeCard.background?.style}>
+    <div className={styles.liveCards} style={activeCard.background?.style}>
       {activeCard.text && <p style={activeCard.text?.style}>{activeCard.text?.value}</p>}
       {activeCard.upload && <img src={activeCard.upload?.url} alt={activeCard.upload?.alt} style={activeCard.upload?.style} />}
     </div>
   )
 }
 
-export default Card
+export default LiveCards
