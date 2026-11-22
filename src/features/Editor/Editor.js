@@ -99,6 +99,9 @@ function Editor({ openCamera, openPublisher }) {
     storage.local.set(config.storage.activeCard, activeCard)
   }, [activeCard])
 
+  // clicking video should toggle pause/play
+  // pause/play button should default to pause when playing
+
   return (
     <figure className={styles.editor}>
       <TopNav videoRef={videoRef} openCamera={openCamera} programmaticPause={programmaticPause} /> 
