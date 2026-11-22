@@ -1,8 +1,8 @@
 import { useState, useEffect, Fragment } from 'react'
 import useCaptions from '../../../hooks/useCaptions'
-import styles from './Figcaption.module.css'
+import styles from './LiveCaptions.module.css'
 
-function Figcaption({ videoRef, activeCaption }) {
+function LiveCaptions({ videoRef, activeCaption }) {
   const { captions } = useCaptions()
   const [currentCaption, setCurrentCaption] = useState({})
 
@@ -76,12 +76,12 @@ function Figcaption({ videoRef, activeCaption }) {
   return (
     <Fragment>
       {activeCaption?.text && 
-        <figcaption className={styles.figcaption} style={activeCaption.style}>
+        <figcaption className={styles.liveCaptions} style={activeCaption.style}>
           {activeCaption.segments.length ? renderSegments() : activeCaption.text}
         </figcaption>
       }
       {currentCaption?.text && 
-        <figcaption className={styles.figcaption} style={currentCaption.style}>
+        <figcaption className={styles.liveCaptions} style={currentCaption.style}>
           {currentCaption.text}
         </figcaption>
       }
@@ -89,4 +89,4 @@ function Figcaption({ videoRef, activeCaption }) {
   )
 }
 
-export default Figcaption
+export default LiveCaptions
