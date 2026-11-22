@@ -99,8 +99,6 @@ function Editor({ openCamera, openPublisher }) {
     storage.local.set(config.storage.activeCard, activeCard)
   }, [activeCard])
 
-  // ultimately might want a <SideNav /> component above <SubmitButton />
-  
   return (
     <figure className={styles.editor}>
       <TopNav videoRef={videoRef} openCamera={openCamera} programmaticPause={programmaticPause} /> 
@@ -115,10 +113,9 @@ function Editor({ openCamera, openPublisher }) {
       <VideoTimeline videoRef={videoRef} />
       <LiveCaptions videoRef={videoRef} activeCaption={activeCaption} />
       <LiveCards videoRef={videoRef} activeCard={activeCard} />
-
-      {/* musicMenuIsOpen &&  */}
+      {musicMenuIsOpen && 
         <MusicMenu closeMusicMenu={closeMusicMenu} />
-      
+      }
       {spliceToolMenuIsOpen && 
         <SpliceToolMenu closeSpliceToolMenu={closeSpliceToolMenu} />
       }
