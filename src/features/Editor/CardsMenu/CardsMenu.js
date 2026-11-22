@@ -11,7 +11,7 @@ import CardTime from './CardTime/CardTime'
 import TextToolbar from '../../../components/TextToolbar/TextToolbar'
 import styles from './CardsMenu.module.css'
 
-function CardsMenu({ activeCard, setActiveCard, closeCardMenu }) {
+function CardsMenu({ activeCard, setActiveCard, closeCardsMenu }) {
   const { cards, createCard } = useCards()
   const photo = { url: ''} // create a usePhoto() hook/provider
   const [cardTime, setCardTime] = useState(false)
@@ -131,7 +131,7 @@ function CardsMenu({ activeCard, setActiveCard, closeCardMenu }) {
 
   const offClickToClose = event => {
     if (cardRef.current && !cardRef.current.contains(event.target)) {
-      closeCardMenu()
+      closeCardsMenu()
     }
   }
 
