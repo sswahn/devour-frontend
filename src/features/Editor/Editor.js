@@ -17,6 +17,8 @@ import styles from './Editor.module.css'
 
 // videoRef.current.playbackRate = 0.5 // 50% speed slow motion
 
+// consider moving activeCaptions/activeCards state to their menus and display them there
+
 function Editor({ openCamera, openPublisher }) {
   const [activeCaption, setActiveCaption] = useState(() => 
     storage.local.get(config.storage.activeCaption) ?? {
