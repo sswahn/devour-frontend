@@ -1,3 +1,11 @@
-timer must "remember" remaining duration when toggling between camera and editor.
+timer flashes when camera stops.
 
-use caption overlay, instead of burn in, by default.
+For AI code review:
+Look at:
+
+Security
+Performance
+Logic
+Testing
+Consistancy
+Styling approach
