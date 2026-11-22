@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { errorHandler } from '../../../utilities/errorHandler'
 import Input from '../../../components/Input/Input'
 import styles from './SpliceToolMenu.module.css'
 
-function SpliceToolMenu() {
+function SpliceToolMenu({ closeSpliceToolMenu }) {
   const [splice, setSplice] = useState({
     start: '', // might want to get from current location in timeline, which means moving state up a level
     end: '',
@@ -11,6 +11,7 @@ function SpliceToolMenu() {
   })
   const [loading, setLoading] = useState(false)
   const [errors, setErrors] = useState({})
+  const spliceToolRef = useRef(null)
 
   const onSubmit = event => {
     event.preventDefault()
@@ -20,6 +21,19 @@ function SpliceToolMenu() {
       errorHandler(errors, setErrors)
     }
   }
+
+  const offClickToClose = event => {
+    if (spliceToolRef.current && !spliceToolRef.current.contains(event.target)) {
+      closeSpliceToolMenu()
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('click', offClickToClose)
+    return () => {
+      document.removeEventListener('click', offClickToClose)
+    }
+  }, [offClickToClose])
   
   // reqires a new ffmpeg function
   // getting a segment of the blob via start/end time
@@ -29,7 +43,7 @@ function SpliceToolMenu() {
   // start, end, insert
   
   return (
-    <section className={styles.spliceToolMenu}>
+    <section ref={spliceToolRef} className={styles.spliceToolMenu}>
       <form onSubmit={onSubmit}>
         <Input
           id="start"
