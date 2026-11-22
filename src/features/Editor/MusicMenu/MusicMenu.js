@@ -8,7 +8,7 @@ import PauseIcon from '../../../components/Icons/PauseIcon/PauseIcon'
 const barColor = '#2c5e4f'
 const darkMode = true
 
-function MusicMenu() {
+function MusicMenu({ closeMusicMenu }) {
   const [seed, setSeed] = useState(101)
   const [song, setSong] = useState(() => generateSongFromSeed(101))
   const [isPlaying, setIsPlaying] = useState(false)
@@ -16,6 +16,7 @@ function MusicMenu() {
   const canvasRef = useRef(null)
   const animationRef = useRef(null)
   const controllerRef = useRef(null)
+  const musicMenuRef = useRef(null)
 
   useEffect(() => {
     controllerRef.current = createController()
@@ -133,8 +134,21 @@ function MusicMenu() {
     }
   }
 
+  const offClickToClose = event => {
+    if (musicMenuRef.current && !musicMenuRef.current.contains(event.target)) {
+      closeMusicMenu()
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('click', offClickToClose)
+    return () => {
+      document.removeEventListener('click', offClickToClose)
+    }
+  }, [offClickToClose])
+
   return (
-    <div style={{ 
+    <div ref={musicMenuRef} style={{ 
       padding: '24px', 
       border: '1px solid #ddd', 
       borderRadius: '12px', 
