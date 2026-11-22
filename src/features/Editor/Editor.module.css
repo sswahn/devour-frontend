@@ -2,7 +2,7 @@
 
 .editor {
   background-color: var(--surface-raised);
- /* contain: content; */
+  contain: content;
   height: 100dvh;
   inset: 0;
   margin: 0 auto;
@@ -10,13 +10,3 @@
   position: fixed;
   z-index: 200;
 }
-
-/*
-.editor video {
-  object-fit: cover;
-  height: 100dvh;
-  inset: 0;
-  position: absolute;
-  z-index: 250;
-}
-*/
