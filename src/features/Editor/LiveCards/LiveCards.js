@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, Fragment } from 'react'
 import useCards from '../../../hooks/useCards'
 import styles from './LiveCards.module.css'
 
@@ -30,10 +30,14 @@ function LiveCards({ videoRef, activeCard }) {
   }, [])
 
   return (
-    <div className={styles.liveCards} style={activeCard.background?.style}>
-      {activeCard.text && <p style={activeCard.text?.style}>{activeCard.text?.value}</p>}
-      {activeCard.upload && <img src={activeCard.upload?.url} alt={activeCard.upload?.alt} style={activeCard.upload?.style} />}
-    </div>
+    <Fragment>
+      {activeCard?.start &&
+        <div className={styles.liveCards} style={activeCard.background?.style}>
+          {activeCard.text && <p style={activeCard.text?.style}>{activeCard.text?.value}</p>}
+          {activeCard.upload && <img src={activeCard.upload?.url} alt={activeCard.upload?.alt} style={activeCard.upload?.style} />}
+        </div>
+      }
+    </Fragment>
   )
 }
 
