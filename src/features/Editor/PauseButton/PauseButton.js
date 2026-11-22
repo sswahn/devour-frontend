@@ -17,7 +17,9 @@ function PauseButton({ videoRef, programmaticPause }) {
   }
 
   useEffect(() => {
-    setIsPaused(true)
+    if (programmaticPause !== null) {
+      setIsPaused(true)
+    }
   }, [programmaticPause])
 
   useEffect(() => {
