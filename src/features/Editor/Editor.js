@@ -99,8 +99,7 @@ function Editor({ openCamera, openPublisher }) {
     storage.local.set(config.storage.activeCard, activeCard)
   }, [activeCard])
 
-  // clicking video should toggle pause/play
-  // pause/play button should default to pause when playing
+  // clicking video should toggle pause/play?
 
   return (
     <figure className={styles.editor}>
