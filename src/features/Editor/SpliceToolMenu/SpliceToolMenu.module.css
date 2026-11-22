@@ -1,5 +1,6 @@
 /* Editor Splice Tool */
 
 .spliceToolMenu {
-  
+  position: fixed;
+  z-index: 400;
 }
