@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { createController, generateSongFromSeed, renderSongToWav } from '../../../utilities/music'
+import RightToLineIcon from '../../../components/Icons/RightToLineIcon/RightToLineIcon'
 
 const barColor = '#2c5e4f'
 const darkMode = true
