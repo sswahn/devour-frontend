@@ -78,10 +78,6 @@ function Editor({ openCamera, openPublisher }) {
   }
 
   useEffect(() => {
-    storage.local.set(config.storage.activeCaption, activeCaption)
-  }, [activeCaption])
-
-  useEffect(() => {
     storage.local.set(config.storage.activeCard, activeCard)
   }, [activeCard])
 
