@@ -1,7 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
-import { DEFAULT_TEXT_STYLE } from '../../constants/defaultTextStyle'
-import * as config from '../../config'
-import storage from '../../utilities/storage'
+import { useState, useRef } from 'react'
 import TopNav from './TopNav/TopNav'
 import SideNav from './SideNav/SideNav'
 import VideoTimeline from './VideoTimeline/VideoTimeline'
@@ -17,8 +14,6 @@ import styles from './Editor.module.css'
 
 // videoRef.current.playbackRate = 0.5 // 50% speed slow motion
 
-// consider moving activeCaptions/activeCards state to their menus and display them there
-
 function Editor({ openCamera, openPublisher }) {
   const [musicMenuIsOpen, setMusicMenuIsOpen] = useState(false)
   const [spliceToolMenuIsOpen, setSpliceToolMenuIsOpen] = useState(false)
@@ -28,6 +23,7 @@ function Editor({ openCamera, openPublisher }) {
   const [loading, setLoading] = useState(false)
   const videoRef = useRef(null)
 
+  // make toggles ?
   const openMusicMenu = () => {
     setMusicMenuIsOpen(true)
   }
@@ -63,10 +59,6 @@ function Editor({ openCamera, openPublisher }) {
   const closeCardsMenu = () => {
     setCardsMenuIsOpen(false)
   }
-
-  useEffect(() => {
-    storage.local.set(config.storage.activeCard, activeCard)
-  }, [activeCard])
 
   // clicking video should toggle pause/play?
 
