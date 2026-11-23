@@ -24,3 +24,12 @@
   width: auto;
   margin: 0; /* Removes any default browser margins (especially on buttons) */
 }
+
+.liveCaptions {
+  bottom: 16px;
+  left: 8px;
+  position: fixed;
+  width: calc(100% - 16px);
+  word-break: break-word;
+  z-index: 300;
+}
