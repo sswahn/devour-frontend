@@ -17,7 +17,7 @@ function CardsMenu({ activeCard, setActiveCard, closeCardsMenu }) {
     const { currentTime, duration } = videoRef.current
     return storage.local.get(config.storage.activeCard) ?? {
       id: crypto.randomUUID(),
-      start: currentTime,
+      start: currentTime, 
       end: Math.min(currentTime + 3, duration)
     }
   })
