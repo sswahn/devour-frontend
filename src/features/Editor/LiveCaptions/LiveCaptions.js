@@ -30,7 +30,7 @@ function LiveCaptions({ videoRef }) {
     }
   }, [onTimeUpdate])
 
-  return currentCaption?.text && (
+  return currentCaption?.render && (
     <figcaption className={styles.liveCaptions} style={currentCaption.style}>
       {currentCaption.render}
     </figcaption>
