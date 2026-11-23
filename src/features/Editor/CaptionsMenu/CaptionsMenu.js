@@ -86,7 +86,7 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
     return caption
   }
 
-    const renderSegments = () => {
+  const renderSegments = () => {
     const { text, segments } = activeCaption
     const elements = []
     let position = 0
@@ -204,7 +204,7 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
       </section>
       {activeCaption?.text && 
         <figcaption className={styles.liveCaptions} style={activeCaption.style}>
-          {activeCaption.text}
+          {activeCaption.segments.length ? renderSegments() : activeCaption.text}
         </figcaption>
       }
     </Fragment>
