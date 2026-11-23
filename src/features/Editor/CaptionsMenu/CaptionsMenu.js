@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, Fragment } from 'react'
+import { normalizeSegments } from '../../../utilities/captions'
 import { DEFAULT_TEXT_STYLE } from '../../../constants/defaultTextStyle'
 import useCaptions from '../../../hooks/useCaptions'
 import * as config from '../../../config'
