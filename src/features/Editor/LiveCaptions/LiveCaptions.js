@@ -2,7 +2,7 @@ import { useState, useEffect, Fragment } from 'react'
 import useCaptions from '../../../hooks/useCaptions'
 import styles from './LiveCaptions.module.css'
 
-function LiveCaptions({ videoRef, activeCaption }) {
+function LiveCaptions({ videoRef }) {
   const { captions } = useCaptions()
   const [currentCaption, setCurrentCaption] = useState({})
 
@@ -30,14 +30,10 @@ function LiveCaptions({ videoRef, activeCaption }) {
     }
   }, [onTimeUpdate])
 
-  return (
-    <Fragment>
-      {currentCaption?.text && 
-        <figcaption className={styles.liveCaptions} style={currentCaption.style}>
-          {currentCaption.text}
-        </figcaption>
-      }
-    </Fragment>
+  return currentCaption?.text && (
+    <figcaption className={styles.liveCaptions} style={currentCaption.style}>
+      {currentCaption.text}
+    </figcaption>
   )
 }
 
