@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, Fragment } from 'react'
-import { normalizeSegments } from '../../../utilities/captions'
+import { normalizeSegments, updateSegments } from '../../../utilities/captions'
 import { DEFAULT_TEXT_STYLE } from '../../../constants/defaultTextStyle'
 import useCaptions from '../../../hooks/useCaptions'
 import * as config from '../../../config'
@@ -42,28 +42,19 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
   const updateActiveCaptionStyle = update => {
     setActiveCaption(prev => {
       if (!selection) {
-        return { ...prev, style: update(prev.style) }
-      }
-      const index = prev.segments.findIndex(segment =>
-        segment.start === selection.start && segment.end === selection.end
-      )
-      if (index === -1) {
-        return { 
-          ...prev, 
-          segments: [ 
-            ...prev.segments, 
-            { 
-              ...selection, 
-              style: update({})
-            }
-          ]
+        return {
+          ...prev,
+          style: update(prev.style)
         }
       }
-
+  
       return {
         ...prev,
-        segments: prev.segments.map((segment, i) =>
-          i === index ? { ...segment, style: update(segment.style) } : segment
+        segments: updateSegments(
+          prev.text,
+          prev.segments,
+          selection,
+          update
         )
       }
     })
