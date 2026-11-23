@@ -69,7 +69,7 @@ function Editor({ openCamera, openPublisher }) {
     // Set a default time:
     setActiveCaption(prev => ({ ...prev, 
       start: currentTime.toFixed(2), 
-      end: currentTime + 3 < duration ? (currentTime + 3).toFixed(2) : duration
+      end: Math.min(currentTime + 3, duration)
     }))
   }
   
