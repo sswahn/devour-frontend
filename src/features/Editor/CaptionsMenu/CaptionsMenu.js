@@ -96,8 +96,9 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
     }
     const elements = []
     let position = 0
+    const normalized = normalizeSegments(segments)
     // Filter out invalid/empty segments and sort by start index
-    const sortedSegments = [...segments]
+    const sortedSegments = [...normalized]
       .filter((seg) => seg.start < seg.end)
       .sort((a, b) => a.start - b.start)
     sortedSegments.forEach((segment) => {
