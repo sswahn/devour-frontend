@@ -63,7 +63,6 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
           style: update(prev.style)
         }
       }
-  
       return {
         ...prev,
         segments: updateSegments(
