@@ -76,7 +76,8 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   }
   
   const saveCaption = () => {
-    if (!activeCaption.text?.trim() || !activeCaption.text?.length) {
+    const text = activeCaption?.text
+    if (!text || (typeof text === 'string' && !text.trim()) || (Array.isArray(text) && !text.length)) {
       return
     }
     try {
