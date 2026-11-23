@@ -20,16 +20,6 @@ import styles from './Editor.module.css'
 // consider moving activeCaptions/activeCards state to their menus and display them there
 
 function Editor({ openCamera, openPublisher }) {
-  const [activeCaption, setActiveCaption] = useState(() => 
-    storage.local.get(config.storage.activeCaption) ?? {
-      id: crypto.randomUUID(),
-      text: '',
-      start: '',
-      end: '',
-      style: DEFAULT_TEXT_STYLE,
-      segments: []
-    }
-  )
   const [activeCard, setActiveCard] = useState(() => 
     storage.local.get(config.storage.activeCard) ?? {
       id: crypto.randomUUID(),
