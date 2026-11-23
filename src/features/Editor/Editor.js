@@ -55,15 +55,9 @@ function Editor({ openCamera, openPublisher }) {
   }
 
   const openCardsMenu = () => {
-    const { currentTime, duration } = videoRef.current
     videoRef.current.pause()
     setProgrammaticPause(performance.now())
     setCardsMenuIsOpen(true)
-    // Set a default time:
-    setActiveCard(prev => ({ ...prev, 
-      start: currentTime, 
-      end: Math.min(currentTime + 3, duration)
-    }))
   }
 
   const closeCardsMenu = () => {
