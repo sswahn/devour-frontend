@@ -30,7 +30,7 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
     }
   })
   const [captionTimeIsOpen, setCaptionTimeIsOpen] = useState(false) 
-  const [selection, setSelection] = useState({})
+  const [selection, setSelection] = useState(null)
   const [errors, setErrors] = useState({})
   const captionsRef = useRef(null)
 
@@ -40,7 +40,7 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
 
   const updateActiveCaptionStyle = update => {
     setActiveCaption(prev => {
-      if (!Object.keys(selection).length) {
+      if (!selection) {
         return { ...prev, style: update(prev.style) }
       }
       const index = prev.segments.findIndex(segment =>
