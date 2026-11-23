@@ -52,7 +52,6 @@ function Editor({ openCamera, openPublisher }) {
   }
 
   const openCaptionsMenu = () => {
-    const { currentTime, duration } = videoRef.current
     videoRef.current.pause()
     setProgrammaticPause(performance.now())
     setCaptionsMenuIsOpen(true)
