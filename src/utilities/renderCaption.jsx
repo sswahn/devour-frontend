@@ -6,6 +6,17 @@ export const renderCaption = caption => {
     return text
   }
   const normalized = normalizeSegments(text, segments)
+
+  console.log({
+    text,
+    segments,
+    normalized,
+    renderedRanges: normalized.map(segment => ({
+      text: text.slice(segment.start, segment.end),
+      style: segment.style
+    }))
+  })
+  
   const elements = []
   let position = 0
 
