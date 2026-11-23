@@ -64,6 +64,13 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
         }
       }
 
+      const segments = updateSegments(
+        prev.text,
+        prev.segments,
+        selection,
+        update
+      )
+
       console.log({
         text: prev.text,
         selection,
@@ -75,12 +82,7 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
       
       return {
         ...prev,
-        segments: updateSegments(
-          prev.text,
-          prev.segments,
-          selection,
-          update
-        )
+        segments
       }
     })
   }
