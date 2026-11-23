@@ -88,8 +88,11 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
 
 
   // TODO: this function should handle any kind of user manipulation edgecase, including overlapping segments, etc.
-  const renderSegments = () => {
-    const { text, segments } = activeCaption
+  const renderCaption = caption => {
+    const { text, segments } = caption
+    if (!segments.length) {
+      return text
+    }
     const elements = []
     let position = 0
     // Filter out invalid/empty segments and sort by start index
@@ -206,7 +209,7 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
       </section>
       {activeCaption?.text && 
         <figcaption className={styles.liveCaptions} style={activeCaption.style}>
-          {activeCaption.segments.length ? renderSegments() : activeCaption.text}
+          {renderCaption(activeCaption)}
         </figcaption>
       }
     </Fragment>
