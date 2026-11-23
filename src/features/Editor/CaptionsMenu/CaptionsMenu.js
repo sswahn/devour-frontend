@@ -138,7 +138,7 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
         start: Number(activeCaption.start.toFixed(2)), // validate.caption.start(activeCaption.start),
         end: Number(activeCaption.end.toFixed(2)), // validate.caption.end(activeCaption.end.trim()),
         style: activeCaption.style,
-        segments: activeCaption.segments
+        segments: normalizeSegments(activeCaption.text, activeCaption.segments)
       })
       setActiveCaption({
         id: crypto.randomUUID(),
