@@ -87,8 +87,8 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
   }
   
   const saveCaption = () => {
-    const text = activeCaption?.text
-    if (!text || (typeof text === 'string' && !text.trim()) || (Array.isArray(text) && !text.length)) {
+    const { text } = activeCaption
+    if (!(typeof text === 'string' ? text.trim() : text?.length)) {
       return
     }
     try {
