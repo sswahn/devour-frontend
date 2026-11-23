@@ -29,7 +29,7 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
       segments: []
     }
   })
-  const [captionTime, setCaptionTime] = useState(false) // user updates time...
+  const [captionTimeIsOpen, setCaptionTimeIsOpen] = useState(false) 
   const [selection, setSelection] = useState({})
   const [errors, setErrors] = useState({})
   const captionsRef = useRef(null)
@@ -198,8 +198,8 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
           onChange={updateActiveCaption}
           onSelect={onSelect}
           required />
-        <CaptionTimeButton setCaptionTime={setCaptionTime} />
-        {captionTime && <CaptionTime activeCaption={activeCaption} updateActiveCaption={updateActiveCaption} errors={errors} />}
+        <CaptionTimeButton setCaptionTimeIsOpen={setCaptionTimeIsOpen} />
+        {captionTimeIsOpen && <CaptionTime activeCaption={activeCaption} updateActiveCaption={updateActiveCaption} errors={errors} />}
         <TextToolbar style={activeCaption.style} setStyle={updateActiveCaptionStyle} />
       </section>
       {activeCaption?.text && 
