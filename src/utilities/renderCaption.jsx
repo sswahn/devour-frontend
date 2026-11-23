@@ -1,1 +1,3 @@
-//
+import { normalizeSegments } from './captions'
+
+
