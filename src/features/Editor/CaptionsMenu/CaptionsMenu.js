@@ -204,7 +204,7 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
       </section>
       {activeCaption?.text && 
         <figcaption className={styles.liveCaptions} style={activeCaption.style}>
-          {activeCaption.render}
+          {activeCaption.text}
         </figcaption>
       }
     </Fragment>
