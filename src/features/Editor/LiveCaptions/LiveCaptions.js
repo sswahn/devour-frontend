@@ -32,11 +32,6 @@ function LiveCaptions({ videoRef, activeCaption }) {
 
   return (
     <Fragment>
-      {/*activeCaption?.text && 
-        <figcaption className={styles.liveCaptions} style={activeCaption.style}>
-          {activeCaption.segments.length ? renderSegments() : activeCaption.text}
-        </figcaption>
-      */}
       {currentCaption?.text && 
         <figcaption className={styles.liveCaptions} style={currentCaption.style}>
           {currentCaption.text}
