@@ -86,6 +86,8 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
     return caption
   }
 
+
+  // TODO: this function should handle any kind of user manipulation edgecase, including overlapping segments, etc.
   const renderSegments = () => {
     const { text, segments } = activeCaption
     const elements = []
