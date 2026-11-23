@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, Fragment } from 'react'
 import { DEFAULT_TEXT_STYLE } from '../../../constants/defaultTextStyle'
 import useCaptions from '../../../hooks/useCaptions'
 import * as config from '../../../config'
@@ -172,25 +172,27 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   }, [offClickToClose])
 
   return (
-    <section ref={captionsRef} className={styles.captionsMenu}>
-      <Input 
-        id="text"
-        type="text"
-        label="Add a caption"
-        value={activeCaption.text}
-        error={errors.text}
-        onChange={updateActiveCaption}
-        onSelect={onSelect}
-        required />
-      <CaptionTimeButton setCaptionTime={setCaptionTime} />
-      {captionTime && <CaptionTime activeCaption={activeCaption} updateActiveCaption={updateActiveCaption} errors={errors} />}
-      <TextToolbar style={activeCaption.style} setStyle={updateActiveCaptionStyle} />
+    <Fragment>
+      <section ref={captionsRef} className={styles.captionsMenu}>
+        <Input 
+          id="text"
+          type="text"
+          label="Add a caption"
+          value={activeCaption.text}
+          error={errors.text}
+          onChange={updateActiveCaption}
+          onSelect={onSelect}
+          required />
+        <CaptionTimeButton setCaptionTime={setCaptionTime} />
+        {captionTime && <CaptionTime activeCaption={activeCaption} updateActiveCaption={updateActiveCaption} errors={errors} />}
+        <TextToolbar style={activeCaption.style} setStyle={updateActiveCaptionStyle} />
+      </section>
       {activeCaption?.text && 
         <figcaption className={styles.liveCaptions} style={activeCaption.style}>
           {activeCaption.segments.length ? renderSegments() : activeCaption.text}
         </figcaption>
       }
-    </section>
+    </Fragment>
   )
 }
 
