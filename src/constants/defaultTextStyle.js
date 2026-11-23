@@ -1,13 +1,13 @@
 
 export const DEFAULT_TEXT_STYLE = {
   backgroundColor: 'transparent',
-  bottom: 'auto',
+  bottom: '16px',
   color: '#ffffff',
   // fontFamily: '',
   fontSize: 16,
   fontStyle: 'normal',
   fontWeight: 'normal',
-  left: 'auto',
+  left: '8px',
   position: 'absolute',
   right: 'auto',
   top: 'auto',
