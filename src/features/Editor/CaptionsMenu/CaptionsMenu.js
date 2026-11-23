@@ -83,14 +83,16 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
     try {
       validateCaption(activeCaption)
       // validation needs rework, text can now be an array, and start/end are Numbers.
-      createCaption({
+      const data = {
         id: activeCaption.id,
         text: activeCaption.text, // validate.caption.text(activeCaption.text.trim()),
         start: activeCaption.start, // validate.caption.start(activeCaption.start),
         end: activeCaption.end, // validate.caption.end(activeCaption.end.trim()),
         style: activeCaption.style,
         segments: activeCaption.segments //.toSorted((a, b) => a.start - b.start) // this sort is redundant
-      })
+      }
+      console.log('data for createCaption: ', data)
+      createCaption(data)
       setActiveCaption({
         id: crypto.randomUUID(),
         text: '',
