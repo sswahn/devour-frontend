@@ -186,6 +186,10 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
     }
   }, [offClickToClose])
 
+  useEffect(() => {
+    storage.local.set(config.storage.activeCaption, activeCaption)
+  }, [activeCaption])
+
   return (
     <Fragment>
       <section ref={captionsRef} className={styles.captionsMenu}>
