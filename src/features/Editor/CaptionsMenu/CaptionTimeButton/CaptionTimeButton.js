@@ -1,11 +1,11 @@
 import ClockIcon from '../../../../components/Icons/ClockIcon/ClockIcon'
 import styles from './CaptionTimeButton.module.css'
 
-function CaptionTimeButton({ setCaptionTime }) {
+function CaptionTimeButton({ setCaptionTimeIsOpen }) {
 
   const onClick = event => {
     navigator.vibrate?.(50)
-    setCaptionTime(prev => !prev)
+    setCaptionTimeIsOpen(prev => !prev)
   }
   
   return (
