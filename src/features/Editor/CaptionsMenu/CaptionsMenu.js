@@ -16,18 +16,19 @@ import styles from './CaptionsMenu.module.css'
   // consider keypress (enter/esxapq) and focus controls.
   // if designed for mobile it may not need
 
-function CaptionsMenu({ closeCaptionsMenu }) {
+function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
   const { captions, createCaption } = useCaptions()
-  const [activeCaption, setActiveCaption] = useState(() => 
-    storage.local.get(config.storage.activeCaption) ?? {
+  const [activeCaption, setActiveCaption] = useState(() => {
+    const { currentTime, duration } = videoRef.current
+    return storage.local.get(config.storage.activeCaption) ?? {
       id: crypto.randomUUID(),
       text: '',
-      start: '',
-      end: '',
+      start: currentTime, 
+      end: Math.min(currentTime + 3, duration),
       style: DEFAULT_TEXT_STYLE,
       segments: []
     }
-  )
+  })
   const [captionTime, setCaptionTime] = useState(false)
   const [selection, setSelection] = useState({})
   const [errors, setErrors] = useState({})
@@ -184,14 +185,6 @@ function CaptionsMenu({ closeCaptionsMenu }) {
       document.removeEventListener('click', offClickToClose)
     }
   }, [offClickToClose])
-
-  useEffect(() => {
-    const { currentTime, duration } = videoRef.current
-    setActiveCaption(prev => ({ ...prev, 
-      start: currentTime, 
-      end: Math.min(currentTime + 3, duration)
-    }))
-  }, [])
 
   return (
     <Fragment>
