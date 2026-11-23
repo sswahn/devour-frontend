@@ -28,7 +28,7 @@ function LiveCards({ videoRef, activeCard }) {
     return () => {
       video.removeEventListener('timeupdate', onTimeUpdate)
     }
-  }, [])
+  }, [onTimeUpdate])
 
   return (
     <Fragment>
