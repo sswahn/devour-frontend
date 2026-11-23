@@ -10,6 +10,11 @@ function Video({ videoRef, setLoading }) {
   const { footage } = useFootage()
   const [source, setSource] = useState(null)
 
+  const onClick = event => {
+    const video = event.currentTarget
+    video.paused ? video.play() : video.pause()
+  }
+
   const getBlob = async () => {
     const ids = footage.map(item => item.id)
     const match = composition.contents?.join() === ids.join()
@@ -54,7 +59,7 @@ function Video({ videoRef, setLoading }) {
   }, [footage])
 
   return (
-    <video className={styles.video} ref={videoRef} src={source} autoPlay playsInline 
+    <video className={styles.video} ref={videoRef} onClick={onClick} src={source} autoPlay playsInline 
       onError={e => console.error('Video error:', e.currentTarget.error)}
     />
   )
