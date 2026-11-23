@@ -129,7 +129,7 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
   const onSelect = ({ target }) => {
     const { selectionStart, selectionEnd } = target
     if (selectionStart === selectionEnd) {
-      return setSelection(null)
+      return
     }
     setSelection({
       start: selectionStart,
