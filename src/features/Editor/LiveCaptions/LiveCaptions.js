@@ -1,4 +1,5 @@
 import { useState, useEffect, Fragment } from 'react'
+import { renderCaption } from '../../../utilities/renderCaption'
 import useCaptions from '../../../hooks/useCaptions'
 import styles from './LiveCaptions.module.css'
 
@@ -32,7 +33,7 @@ function LiveCaptions({ videoRef }) {
 
   return currentCaption?.render && (
     <figcaption className={styles.liveCaptions} style={currentCaption.style}>
-      {currentCaption.render}
+      {renderCaption(currentCaption)}
     </figcaption>
   )
 }
