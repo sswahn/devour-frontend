@@ -35,7 +35,22 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
   const [errors, setErrors] = useState({})
   const captionsRef = useRef(null)
 
+  const updateActiveCaptionText = text => {
+    setActiveCaption(prev => ({
+      ...prev,
+      text,
+      segments: updateSegmentsForTextChange(
+        prev.text,
+        text,
+        prev.segments
+      )
+    }))
+  }
+
   const updateActiveCaption = ({ target: { id, value } }) => {
+    if (id === 'text') {
+      return updateActiveCaptionText(value)
+    }
     setActiveCaption(prev => ({ ...prev, [id]: value }))
   }
 
