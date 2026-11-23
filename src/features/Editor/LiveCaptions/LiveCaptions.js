@@ -50,7 +50,7 @@ function LiveCaptions({ videoRef, activeCaption }) {
   const onTimeUpdate = event => {
     const { currentTime } = event.currentTarget
 
-    console.log('captions: ', captions)
+    console.log('LiveCaptions - captions: ', captions)
     
     const matchingCaption = captions.find(caption => {
       return (currentTime >= Number(caption.start) && currentTime <= Number(caption.end))
