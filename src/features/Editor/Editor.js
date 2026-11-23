@@ -68,8 +68,8 @@ function Editor({ openCamera, openPublisher }) {
     setCaptionsMenuIsOpen(true)
     // Set a default time:
     setActiveCaption(prev => ({ ...prev, 
-      start: currentTime //.toFixed(2), 
-      end: Math.min(currentTime + 3, duration) //.toFixed(2)
+      start: currentTime, 
+      end: Math.min(currentTime + 3, duration)
     }))
   }
   
@@ -84,8 +84,8 @@ function Editor({ openCamera, openPublisher }) {
     setCardsMenuIsOpen(true)
     // Set a default time:
     setActiveCard(prev => ({ ...prev, 
-      start: currentTime.toFixed(2), 
-      end: Math.min(currentTime + 3, duration) // (currentTime + 5).toFixed(2) 
+      start: currentTime, 
+      end: Math.min(currentTime + 3, duration)
     }))
   }
 
