@@ -144,11 +144,6 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
       <CaptionTimeButton setCaptionTime={setCaptionTime} />
       {captionTime && <CaptionTime activeCaption={activeCaption} updateActiveCaption={updateActiveCaption} errors={errors} />}
       <TextToolbar style={activeCaption.style} setStyle={updateActiveCaptionStyle} />
-      {activeCaption?.text && 
-        <figcaption className={styles.liveCaptions} style={activeCaption.style}>
-          {activeCaption.segments.length ? renderSegments() : activeCaption.text}
-        </figcaption>
-      }
     </section>
   )
 }
