@@ -105,3 +105,78 @@ export const normalizeSegments = (text, segments = []) => {
 
   return mergeAdjacentSegments(normalized)
 }
+
+export const updateSegments = (
+  text,
+  segments,
+  selection,
+  update
+) => {
+  if (!selection) {
+    return normalizeSegments(text, segments)
+  }
+
+  const textLength = text.length
+
+  const start = Math.max(
+    0,
+    Math.min(textLength, Number(selection.start))
+  )
+
+  const end = Math.max(
+    0,
+    Math.min(textLength, Number(selection.end))
+  )
+
+  if (!isValidRange(start, end)) {
+    return normalizeSegments(text, segments)
+  }
+
+  const normalized = normalizeSegments(text, segments)
+
+  const boundaries = new Set([0, textLength, start, end])
+
+  normalized.forEach(segment => {
+    boundaries.add(segment.start)
+    boundaries.add(segment.end)
+  })
+
+  const points = [...boundaries].sort((a, b) => a - b)
+  const updated = []
+
+  for (let i = 0; i < points.length - 1; i++) {
+    const rangeStart = points[i]
+    const rangeEnd = points[i + 1]
+
+    if (rangeStart === rangeEnd) {
+      continue
+    }
+
+    const existing = normalized.find(segment =>
+      segment.start <= rangeStart &&
+      segment.end >= rangeEnd
+    )
+
+    const isSelected =
+      rangeStart >= start &&
+      rangeEnd <= end
+
+    let style = existing?.style ?? {}
+
+    if (isSelected) {
+      style = update(style)
+    }
+
+    style = cleanStyle(style)
+
+    if (Object.keys(style).length) {
+      updated.push({
+        start: rangeStart,
+        end: rangeEnd,
+        style
+      })
+    }
+  }
+
+  return mergeAdjacentSegments(updated)
+}
