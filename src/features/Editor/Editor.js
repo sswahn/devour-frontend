@@ -20,13 +20,6 @@ import styles from './Editor.module.css'
 // consider moving activeCaptions/activeCards state to their menus and display them there
 
 function Editor({ openCamera, openPublisher }) {
-  const [activeCard, setActiveCard] = useState(() => 
-    storage.local.get(config.storage.activeCard) ?? {
-      id: crypto.randomUUID(),
-      start: '',
-      end: '',
-    }
-  )
   const [musicMenuIsOpen, setMusicMenuIsOpen] = useState(false)
   const [spliceToolMenuIsOpen, setSpliceToolMenuIsOpen] = useState(false)
   const [captionsMenuIsOpen, setCaptionsMenuIsOpen] = useState(false)
