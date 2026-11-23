@@ -63,6 +63,16 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
           style: update(prev.style)
         }
       }
+
+      console.log({
+        text: prev.text,
+        selection,
+        segments: segments.map(segment => ({
+          ...segment,
+          text: prev.text.slice(segment.start, segment.end)
+        }))
+      })
+      
       return {
         ...prev,
         segments: updateSegments(
