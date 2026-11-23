@@ -140,6 +140,13 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
 
   const onSelect = ({ target }) => {
     const { selectionStart, selectionEnd } = target
+
+    console.log('INPUT SELECT:', {
+      selectionStart,
+      selectionEnd,
+      value: target.value
+    })
+    
     if (selectionStart === selectionEnd) {
       return
     }
