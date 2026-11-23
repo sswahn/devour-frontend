@@ -11,7 +11,7 @@ import CardTime from './CardTime/CardTime'
 import TextToolbar from '../../../components/TextToolbar/TextToolbar'
 import styles from './CardsMenu.module.css'
 
-function CardsMenu({ activeCard, setActiveCard, closeCardsMenu }) {
+function CardsMenu({ videoRef, closeCardsMenu }) {
   const { cards, createCard } = useCards()
   const [activeCard, setActiveCard] = useState(() => {
     const { currentTime, duration } = videoRef.current
