@@ -137,7 +137,7 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
       })
     } catch (error) {
       if (error?.field === 'start' || error?.field === 'end') {
-        setCaptionTime(true) // open dropdown to display inputs
+        setCaptionTimeIsOpen(true) // open dropdown to display inputs
       }
       errorHandler(error, setErrors)
     }
