@@ -13,6 +13,13 @@ import styles from './CardsMenu.module.css'
 
 function CardsMenu({ activeCard, setActiveCard, closeCardsMenu }) {
   const { cards, createCard } = useCards()
+  const [activeCard, setActiveCard] = useState(() => 
+    storage.local.get(config.storage.activeCard) ?? {
+      id: crypto.randomUUID(),
+      start: '',
+      end: '',
+    }
+  )
   const photo = { url: ''} // create a usePhoto() hook/provider
   const [cardTime, setCardTime] = useState(false)
   const cardRef = useRef(null)
