@@ -20,11 +20,7 @@ import { normalizeSegments } from './captionSegments'
       position = segment.end
     })
     if (position < text.length) {
-      elements.push(
-        <span key={`text-${position}-${text.length}`}>
-          {text.slice(position)}
-        </span>
-      )
+      elements.push(text.slice(position))
     }
     return elements
   }
