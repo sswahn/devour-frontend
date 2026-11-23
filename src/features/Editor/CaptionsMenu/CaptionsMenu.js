@@ -85,40 +85,8 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
     // need duration prop from the concatenated blob created in Editor
     return caption
   }
-  
-  const saveCaption = () => {
-    const { text } = activeCaption
-    if (!(typeof text === 'string' ? text.trim() : text?.length)) {
-      return
-    }
-    try {
-      validateCaption(activeCaption)
-      // validation needs rework, text can now be an array, and start/end are Numbers.
-      createCaption({
-        id: activeCaption.id,
-        text: activeCaption.text, // validate.caption.text(activeCaption.text.trim()),
-        start: activeCaption.start, // validate.caption.start(activeCaption.start),
-        end: activeCaption.end, // validate.caption.end(activeCaption.end.trim()),
-        style: activeCaption.style,
-        segments: activeCaption.segments //.toSorted((a, b) => a.start - b.start) // this sort is redundant
-      })
-      setActiveCaption({
-        id: crypto.randomUUID(),
-        text: '',
-        start: '',
-        end: '',
-        style: DEFAULT_TEXT_STYLE,
-        segments: []
-      })
-    } catch (error) {
-      if (error?.field === 'start' || error?.field === 'end') {
-        setCaptionTime(true) // open dropdown to display inputs
-      }
-      errorHandler(error, setErrors)
-    }
-  }
 
-  const renderSegments = () => {
+    const renderSegments = () => {
     const { text, segments } = activeCaption
     const elements = []
     let position = 0
@@ -156,7 +124,38 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
         </span>
       )
     }
-    setActiveCaption(prev => ({ ...prev, text: elements }))
+    return elements
+  }
+  
+  const saveCaption = () => {
+    const { text } = activeCaption
+    if (!(typeof text === 'string' ? text.trim() : text?.length)) {
+      return
+    }
+    try {
+      validateCaption(activeCaption)
+      // validation needs rework, text can now be an array, and start/end are Numbers.
+      createCaption({
+        id: activeCaption.id,
+        render: activeCaption.segments.length ? renderSegments() : activeCaption.text, // validate.caption.text(activeCaption.text.trim()),
+        start: activeCaption.start, // validate.caption.start(activeCaption.start),
+        end: activeCaption.end, // validate.caption.end(activeCaption.end.trim()),
+        style: activeCaption.style,
+      })
+      setActiveCaption({
+        id: crypto.randomUUID(),
+        text: '',
+        start: '',
+        end: '',
+        style: DEFAULT_TEXT_STYLE,
+        segments: []
+      })
+    } catch (error) {
+      if (error?.field === 'start' || error?.field === 'end') {
+        setCaptionTime(true) // open dropdown to display inputs
+      }
+      errorHandler(error, setErrors)
+    }
   }
 
   const onSelect = ({ target }) => {
@@ -206,7 +205,7 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
       </section>
       {activeCaption?.text && 
         <figcaption className={styles.liveCaptions} style={activeCaption.style}>
-          {activeCaption.text}
+          {activeCaption.render}
         </figcaption>
       }
     </Fragment>
