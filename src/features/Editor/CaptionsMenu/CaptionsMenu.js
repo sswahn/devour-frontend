@@ -138,13 +138,14 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
     }
     try {
       validateCaption(activeCaption)
-      // validation needs rework: start/end are Numbers?
+      // validation needs rework: start/end are Numbers
       createCaption({
         id: activeCaption.id,
-        render: activeCaption.segments.length ? renderSegments() : activeCaption.text, // validate.caption.text(activeCaption.text.trim()),
+        text: validate.caption.text(activeCaption.text.trim()),
         start: Number(activeCaption.start.toFixed(2)), // validate.caption.start(activeCaption.start),
         end: Number(activeCaption.end.toFixed(2)), // validate.caption.end(activeCaption.end.trim()),
         style: activeCaption.style,
+        segments: activeCaption.segments
       })
       setActiveCaption({
         id: crypto.randomUUID(),
