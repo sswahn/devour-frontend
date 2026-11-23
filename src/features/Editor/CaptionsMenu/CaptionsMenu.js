@@ -135,7 +135,7 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
     }
     try {
       validateCaption(activeCaption)
-      // validation needs rework, text can now be an array, and start/end are Numbers.
+      // validation needs rework: start/end are Numbers?
       createCaption({
         id: activeCaption.id,
         render: activeCaption.segments.length ? renderSegments() : activeCaption.text, // validate.caption.text(activeCaption.text.trim()),
