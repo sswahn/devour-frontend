@@ -29,7 +29,7 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
       segments: []
     }
   })
-  const [captionTime, setCaptionTime] = useState(false)
+  const [captionTime, setCaptionTime] = useState(false) // user updates time...
   const [selection, setSelection] = useState({})
   const [errors, setErrors] = useState({})
   const captionsRef = useRef(null)
