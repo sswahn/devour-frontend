@@ -16,8 +16,18 @@ import styles from './CaptionsMenu.module.css'
   // consider keypress (enter/esxapq) and focus controls.
   // if designed for mobile it may not need
 
-function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
+function CaptionsMenu({ closeCaptionsMenu }) {
   const { captions, createCaption } = useCaptions()
+  const [activeCaption, setActiveCaption] = useState(() => 
+    storage.local.get(config.storage.activeCaption) ?? {
+      id: crypto.randomUUID(),
+      text: '',
+      start: '',
+      end: '',
+      style: DEFAULT_TEXT_STYLE,
+      segments: []
+    }
+  )
   const [captionTime, setCaptionTime] = useState(false)
   const [selection, setSelection] = useState({})
   const [errors, setErrors] = useState({})
