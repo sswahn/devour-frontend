@@ -185,6 +185,14 @@ function CaptionsMenu({ closeCaptionsMenu }) {
     }
   }, [offClickToClose])
 
+  useEffect(() => {
+    const { currentTime, duration } = videoRef.current
+    setActiveCaption(prev => ({ ...prev, 
+      start: currentTime, 
+      end: Math.min(currentTime + 3, duration)
+    }))
+  }, [])
+
   return (
     <Fragment>
       <section ref={captionsRef} className={styles.captionsMenu}>
