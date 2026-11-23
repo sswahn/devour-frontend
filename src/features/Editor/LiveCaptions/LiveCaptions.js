@@ -34,7 +34,7 @@ function LiveCaptions({ videoRef, activeCaption }) {
     return () => {
       video.removeEventListener('timeupdate', onTimeUpdate)
     }
-  }, [])
+  }, [onTimeUpdate])
 
   return (
     <Fragment>
