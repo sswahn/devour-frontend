@@ -1,4 +1,4 @@
-import { normalizeSegments } from './captions'
+import { normalizeSegments } from './captionSegments'
 
  export const renderCaption = caption => {
     const { text, segments } = caption
