@@ -75,7 +75,9 @@ function Editor({ openCamera, openPublisher }) {
       <Video videoRef={videoRef} setLoading={setLoading} />
       <VideoTimeline videoRef={videoRef} />
       <LiveCaptions videoRef={videoRef} />
-      <LiveCards videoRef={videoRef} activeCard={activeCard} />
+      {/*
+        <LiveCards videoRef={videoRef} activeCard={activeCard} />
+      */}
       {/*musicMenuIsOpen && 
         <MusicMenu closeMusicMenu={closeMusicMenu} />
       }
@@ -86,7 +88,7 @@ function Editor({ openCamera, openPublisher }) {
         <CaptionsMenu videoRef={videoRef} closeCaptionsMenu={closeCaptionsMenu} />
       }
       {/*cardsMenuIsOpen &&
-        <CardsMenu activeCard={activeCard} setActiveCard={setActiveCard} closeCardsMenu={closeCardsMenu} />
+        <CardsMenu videoRef={videoRef} closeCardsMenu={closeCardsMenu} />
       */}
       {loading && <LoadingSpinner />}
     </figure>
