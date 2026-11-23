@@ -8,15 +8,9 @@ function LiveCaptions({ videoRef, activeCaption }) {
 
   const onTimeUpdate = event => {
     const { currentTime } = event.currentTarget
-
-    console.log('LiveCaptions - captions: ', captions)
-    
     const matchingCaption = captions.find(caption => {
       return (currentTime >= caption.start && currentTime <= caption.end)
     })
-
-    console.log('matchingCaption: ', matchingCaption)
-    
     setCurrentCaption(prev => {
       if (matchingCaption?.id === prev?.id) {
         return prev
