@@ -150,6 +150,10 @@ function CardsMenu({ activeCard, setActiveCard, closeCardsMenu }) {
     }
   }, [offClickToClose])
 
+  useEffect(() => {
+    storage.local.set(config.storage.activeCard, activeCard)
+  }, [activeCard])
+
   {/*
   - text input
   - text positioning
