@@ -68,8 +68,8 @@ function Editor({ openCamera, openPublisher }) {
     setCaptionsMenuIsOpen(true)
     // Set a default time:
     setActiveCaption(prev => ({ ...prev, 
-      start: currentTime.toFixed(2), 
-      end: Math.min(currentTime + 3, duration)
+      start: currentTime //.toFixed(2), 
+      end: Math.min(currentTime + 3, duration) //.toFixed(2)
     }))
   }
   
