@@ -5,6 +5,7 @@
   left: 8px;
   position: fixed;
   width: calc(100% - 16px);
+  white-space: pre-wrap;
   word-break: break-word;
   z-index: 300;
 }
