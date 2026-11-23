@@ -76,7 +76,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
   }
   
   const saveCaption = () => {
-    if (!activeCaption.text.trim()) {
+    if (!activeCaption.text?.trim() || !activeCaption.text?.length) {
       return
     }
     try {
@@ -143,7 +143,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
         </span>
       )
     }
-    return elements
+    setActiveCaption(prev => ({ ...prev, text: elements }))
   }
 
   const onSelect = ({ target }) => {
@@ -189,7 +189,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
       </section>
       {activeCaption?.text && 
         <figcaption className={styles.liveCaptions} style={activeCaption.style}>
-          {activeCaption.segments.length ? renderSegments() : activeCaption.text}
+          {activeCaption.text}
         </figcaption>
       }
     </Fragment>
