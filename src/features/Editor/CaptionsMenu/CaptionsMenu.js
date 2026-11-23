@@ -139,8 +139,8 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
       createCaption({
         id: activeCaption.id,
         render: activeCaption.segments.length ? renderSegments() : activeCaption.text, // validate.caption.text(activeCaption.text.trim()),
-        start: activeCaption.start, // validate.caption.start(activeCaption.start),
-        end: activeCaption.end, // validate.caption.end(activeCaption.end.trim()),
+        start: Number(activeCaption.start.toFixed(2)), // validate.caption.start(activeCaption.start),
+        end: Number(activeCaption.end.toFixed(2)), // validate.caption.end(activeCaption.end.trim()),
         style: activeCaption.style,
       })
       setActiveCaption({
