@@ -56,11 +56,6 @@ function Editor({ openCamera, openPublisher }) {
     videoRef.current.pause()
     setProgrammaticPause(performance.now())
     setCaptionsMenuIsOpen(true)
-    // Set a default time:
-    setActiveCaption(prev => ({ ...prev, 
-      start: currentTime, 
-      end: Math.min(currentTime + 3, duration)
-    }))
   }
   
   const closeCaptionsMenu = () => {
@@ -114,7 +109,7 @@ function Editor({ openCamera, openPublisher }) {
         <SpliceToolMenu closeSpliceToolMenu={closeSpliceToolMenu} />
       */}
       {captionsMenuIsOpen &&
-        <CaptionsMenu closeCaptionsMenu={closeCaptionsMenu} />
+        <CaptionsMenu videoRef={videoRef} closeCaptionsMenu={closeCaptionsMenu} />
       }
       {/*cardsMenuIsOpen &&
         <CardsMenu activeCard={activeCard} setActiveCard={setActiveCard} closeCardsMenu={closeCardsMenu} />
