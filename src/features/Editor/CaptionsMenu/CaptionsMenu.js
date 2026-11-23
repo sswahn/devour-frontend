@@ -78,46 +78,32 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
     return caption
   }
 
-
-  // TODO: this function should handle any kind of user manipulation edgecase, including overlapping segments, etc.
   const renderCaption = caption => {
     const { text, segments } = caption
     if (!segments.length) {
       return text
     }
+    const normalized = normalizeSegments(text, segments)
     const elements = []
     let position = 0
-    const normalized = normalizeSegments(segments)
-    // Filter out invalid/empty segments and sort by start index
-    const sortedSegments = [...normalized]
-      .filter((seg) => seg.start < seg.end)
-      .sort((a, b) => a.start - b.start)
-    sortedSegments.forEach((segment) => {
-      const start = Math.max(position, segment.start)
-      const end = Math.min(text.length, segment.end)
-      if (start >= end) {
-        return
-      }
-      // 1. Unstyled text before the segment
-      if (position < start) {
+    normalized.forEach((segment, index) => {
+      if (position < segment.start) {
         elements.push(
-          <span key={`gap-${position}-${start}`}>
-            {text.slice(position, start)}
+          <span key={`text-${position}-${segment.start}`}>
+            {text.slice(position, segment.start)}
           </span>
         )
       }
-      // 2. Styled segment with position-based key
       elements.push(
-        <span key={`seg-${start}-${end}`} style={segment.style}>
-          {text.slice(start, end)}
+        <span key={`segment-${segment.start}-${segment.end}-${index}`} style={segment.style}>
+          {text.slice(segment.start, segment.end)}
         </span>
       )
-      position = end
+      position = segment.end
     })
-    // 3. Remaining trailing text
     if (position < text.length) {
       elements.push(
-        <span key={`rem-${position}-${text.length}`}>
+        <span key={`text-${position}-${text.length}`}>
           {text.slice(position)}
         </span>
       )
