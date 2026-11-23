@@ -84,7 +84,7 @@ function CaptionsMenu({ activeCaption, setActiveCaption, closeCaptionsMenu }) {
       validateCaption(activeCaption)
       createCaption({
         id: activeCaption.id,
-        text: validate.caption.text(activeCaption.text.trim()),
+        text: activeCaption.text, // validate.caption.text(activeCaption.text.trim()),
         start: validate.caption.start(activeCaption.start.trim()),
         end: validate.caption.end(activeCaption.end.trim()),
         style: activeCaption.style,
