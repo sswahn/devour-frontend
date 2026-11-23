@@ -10,11 +10,7 @@ import { normalizeSegments } from './captionSegments'
     let position = 0
     normalized.forEach((segment, index) => {
       if (position < segment.start) {
-        elements.push(
-          <span key={`text-${position}-${segment.start}`}>
-            {text.slice(position, segment.start)}
-          </span>
-        )
+        elements.push(text.slice(position, segment.start))
       }
       elements.push(
         <span key={`segment-${segment.start}-${segment.end}-${index}`} style={segment.style}>
