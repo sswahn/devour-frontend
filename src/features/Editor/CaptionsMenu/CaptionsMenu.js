@@ -128,8 +128,7 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
   }
   
   const saveCaption = () => {
-    const { text } = activeCaption
-    if (!(typeof text === 'string' ? text.trim() : text?.length)) {
+    if (!activeCaption.text.trim()) {
       return
     }
     try {
