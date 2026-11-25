@@ -107,6 +107,7 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
   */
   const validateCaption = caption => {
     // This validates start/end dont overlap
+    // Also validate that caption end isnt outside or past the end of the video.
     
     const sorted = [...captions].sort((a, b) => a.start - b.start)
 
