@@ -2571,7 +2571,6 @@ function Interface() {
     isFullscreen
   } = (0,_hooks_useFullscreen__WEBPACK_IMPORTED_MODULE_2__["default"])();
   (0,_hooks_useScrollLock__WEBPACK_IMPORTED_MODULE_3__["default"])(isActive);
-  (0,_hooks_useSelectionToSpeech__WEBPACK_IMPORTED_MODULE_5__["default"])();
   (0,_hooks_useContextMenu__WEBPACK_IMPORTED_MODULE_6__["default"])();
   let t0;
   if ($[0] === Symbol.for("react.memo_cache_sentinel")) {
@@ -7903,4 +7902,4 @@ __webpack_require__.r(__webpack_exports__);
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=main.e4fb0bdb4d23b225ddde.js.map
+//# sourceMappingURL=main.802eb5c469bfd6a3c3c7.js.map
