@@ -95,18 +95,25 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
     })
   }
 
+  /*
+   What should really handle this is:
+   if a user clicks to create a caption, the existing caption
+   should populate the form and allow editing relacement of existing caption.
+   A user can still manipluate manually the time of the caption, so validation below
+   is still required.
+  */
   const validateCaption = caption => {
     // This validates start/end dont overlap
-    // break this out into its own function:
-    /*
+    
     const sorted = [...captions].sort((a, b) => a.start - b.start)
-    const conflicted = sorted.some((caption, index) =>
-      index > 0 && caption.start < sorted[index - 1].end
+
+    const hasOverlap = sorted.some(existing => 
+      caption.start < existing.end && caption.end > existing.start
     )
-    if (conflicted) {
-      throw new Error('This caption conflicts with an existing caption.')
+    
+    if (hasOverlap) {
+      throw new Error('This caption overlaps with an existing caption.')
     }
-    */
 
     // need to check end isnt outside video duration
     // need duration prop from the concatenated blob created in Editor
