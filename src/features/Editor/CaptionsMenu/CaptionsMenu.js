@@ -122,7 +122,7 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
         segments: normalizeSegments(text, activeCaption.segments)
       }
       createCaption(data)
-      setActiveCaption({
+      setActiveCaption({ // doesnt work perhaps because the persitence doesnt fire before unmounting
         id: crypto.randomUUID(),
         text: '',
         start: '',
