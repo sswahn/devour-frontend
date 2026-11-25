@@ -32,7 +32,6 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
     }
   })
   const [captionTimeIsOpen, setCaptionTimeIsOpen] = useState(false) 
-  const [selection, setSelection] = useState(null)
   const [errors, setErrors] = useState({})
   const captionsRef = useRef(null)
   const inputRef = useRef(null)
