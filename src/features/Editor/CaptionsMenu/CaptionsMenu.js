@@ -147,24 +147,6 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
     }
   }
 
-  const onSelect = ({ target }) => {
-    const { selectionStart, selectionEnd } = target
-
-    console.log('INPUT SELECT:', {
-      selectionStart,
-      selectionEnd,
-      value: target.value
-    })
-    
-    if (selectionStart === selectionEnd) {
-      return
-    }
-    setSelection({
-      start: selectionStart,
-      end: selectionEnd
-    })
-  }
-
   const offClickToClose = event => {
     if (captionsRef.current && !captionsRef.current.contains(event.target)) {
       saveCaption()
@@ -194,7 +176,6 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
           value={activeCaption.text}
           error={errors.text}
           onChange={updateActiveCaption}
-          onSelect={onSelect}
           required />
         <CaptionTimeButton setCaptionTimeIsOpen={setCaptionTimeIsOpen} />
         {captionTimeIsOpen && <CaptionTime activeCaption={activeCaption} updateActiveCaption={updateActiveCaption} errors={errors} />}
