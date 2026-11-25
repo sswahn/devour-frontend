@@ -35,6 +35,7 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
   const [selection, setSelection] = useState(null)
   const [errors, setErrors] = useState({})
   const captionsRef = useRef(null)
+  const inputRef = useRef(null)
 
   const updateActiveCaptionText = text => {
     setActiveCaption(prev => ({
@@ -56,11 +57,14 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
   }
 
   const updateActiveCaptionStyle = update => {
-
-    // consider: instead of using onSelect, just check if there is a selection here using,
-    // window.getSelection()
-    // because dragging/manipulating the selection with touch does not trigger onSelect
-    
+    const { selectionStart, selectionEnd } = inputRef.current
+    let selection = null
+    if (selectionStart !== selectionEnd) {
+      selection = {
+        start: selectionStart,
+        end: selectionEnd
+      }
+    }
     setActiveCaption(prev => {
       if (!selection) {
         return {
@@ -183,6 +187,7 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
     <Fragment>
       <section ref={captionsRef} className={styles.captionsMenu}>
         <Input 
+          ref={inputRef}
           id="text"
           type="text"
           label="Add a caption"
