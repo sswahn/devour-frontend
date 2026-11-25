@@ -48,6 +48,9 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
     }))
   }
 
+  // selection needs to be reset to default somewhere.
+  //
+
   const updateActiveCaption = ({ target: { id, value } }) => {
     if (id === 'text') {
       return updateActiveCaptionText(value)
