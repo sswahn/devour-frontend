@@ -56,6 +56,11 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
   }
 
   const updateActiveCaptionStyle = update => {
+
+    // consider: instead of using onSelect, just check if there is a selection here using,
+    // window.getSelection()
+    // because dragging/manipulating the selection with touch does not trigger onSelect
+    
     setActiveCaption(prev => {
       if (!selection) {
         return {
