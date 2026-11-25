@@ -108,7 +108,6 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
   const validateCaption = caption => {
     // This validates start/end dont overlap
     // Also validate that caption end isnt outside or past the end of the video.
-    
     const sorted = [...captions].sort((a, b) => a.start - b.start)
 
     const hasOverlap = sorted.some(existing => 
@@ -117,6 +116,10 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
     
     if (hasOverlap) {
       throw new Error('This caption overlaps with an existing caption.')
+    }
+
+    if (caption.end > videoRef.current.duration) {
+      throw new Error('Caption end time exceeds the video duration.')
     }
 
     // need to check end isnt outside video duration
