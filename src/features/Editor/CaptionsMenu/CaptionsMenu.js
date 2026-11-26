@@ -173,6 +173,7 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
     }
   }, [offClickToClose])
 
+  // leaning toward removing this, or make a submit button?
   useEffect(() => {
     storage.local.set(config.storage.activeCaption, activeCaption)
   }, [activeCaption])
