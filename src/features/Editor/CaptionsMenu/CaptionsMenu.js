@@ -98,6 +98,7 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
     })
   }
 
+  // move this to validator (under start and/or end):
   const validateCaption = caption => {
     // check min/max for each,
     // check min distance between start and end to prevent flicker
