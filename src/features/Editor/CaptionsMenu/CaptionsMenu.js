@@ -106,6 +106,9 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
    is still required.
   */
   const validateCaption = caption => {
+    if (caption.start < 0) {
+      throw new Error('Caption start time must be a non-negative number.')
+    }
     if (caption.start >= caption.end) {
       throw new Error('Caption start time must be less than end time.')
     }
