@@ -116,11 +116,13 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
       throw new Error('Caption start time must be a non-negative number.')
     }
     if (caption.start >= caption.end) {
-      throw new Error('Caption start time must be less than end time.')
+      throw new Error('Caption start time must be before end time.')
     }
-    const sorted = [...captions].sort((a, b) => a.start - b.start)
-    const hasOverlap = sorted.some(existing => 
-      caption.start < existing.end && caption.end > existing.start
+    const hasOverlap = captions.some(existing => {
+      if (existing.id === caption.id) {
+        return false
+      }
+      return caption.start < existing.end && caption.end > existing.start
     )
     if (hasOverlap) {
       throw new Error('Caption overlaps with an existing caption.')
