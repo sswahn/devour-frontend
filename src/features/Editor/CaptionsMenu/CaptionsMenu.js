@@ -111,6 +111,9 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
     if (caption.start >= caption.end) {
       throw new Error('Caption start time must be before end time.')
     }
+    if (caption.end > videoRef.current.duration) {
+      throw new Error('Caption end time exceeds the video duration.')
+    }
     const hasOverlap = captions.some(existing => {
       if (existing.id === caption.id) {
         return false
@@ -119,9 +122,6 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
     )
     if (hasOverlap) {
       throw new Error('Caption overlaps with an existing caption.')
-    }
-    if (caption.end > videoRef.current.duration) {
-      throw new Error('Caption end time exceeds the video duration.')
     }
     return caption
   }
