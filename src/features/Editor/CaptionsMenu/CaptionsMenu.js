@@ -106,6 +106,9 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
    is still required.
   */
   const validateCaption = caption => {
+    // check min/max for each,
+    // check min distance between start and end to prevent flicker
+    
     if (caption.start < 0) {
       throw new Error('Caption start time must be a non-negative number.')
     }
