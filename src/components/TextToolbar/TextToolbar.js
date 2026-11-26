@@ -33,7 +33,7 @@ function TextToolbar({ style, setStyle }) {
   
   return (
     <div className={styles.textToolbar}>
-      <BoldButton bold={style.fontWeight} setBold={setStyle} />
+      <BoldButton fontWeight={style.fontWeight} setFontWeight={setStyle} />
       <ItalicButton setStyle={setStyle} />
       <UnderlineButton setStyle={setStyle} />
       <FontColorButton openDropdown={openDropdown} />
