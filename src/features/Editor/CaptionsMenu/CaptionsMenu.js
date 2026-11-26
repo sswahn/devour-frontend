@@ -98,13 +98,6 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
     })
   }
 
-  /*
-   What should really handle this is:
-   if a user clicks to create a caption, the existing caption
-   should populate the form and allow editing relacement of existing caption.
-   A user can still manipluate manually the time of the caption, so validation below
-   is still required.
-  */
   const validateCaption = caption => {
     // check min/max for each,
     // check min distance between start and end to prevent flicker
