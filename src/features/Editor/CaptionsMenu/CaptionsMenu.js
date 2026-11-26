@@ -120,7 +120,7 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
         return false
       }
       return caption.start < existing.end && caption.end > existing.start
-    )
+    })
     if (hasOverlap) {
       throw new Error('Caption overlaps with an existing caption.')
     }
