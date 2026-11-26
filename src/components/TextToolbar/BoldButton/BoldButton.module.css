@@ -14,6 +14,6 @@
   z-index: 300;
 }
 
-.boldButton:active {
+.active {
   background-color: var(--purple);
 }
