@@ -940,7 +940,7 @@ its the element within as well, whose height and position need adjusting.
   --lighter-gray: #e8e8e8;
   --white: white; /* #f9fafb; */
   
-  --purple: #663399; 
+  --purple: #663399; /* rebeccapurple */
   --purple-alt: #8a2be2;
 
   --complementary: orange;
