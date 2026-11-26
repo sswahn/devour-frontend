@@ -108,6 +108,8 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
   const validateCaption = caption => {
     // check min/max for each,
     // check min distance between start and end to prevent flicker
+
+    // maximum of 42 characters per line, 2 lines max
     
     if (caption.start < 0) {
       throw new Error('Caption start time must be a non-negative number.')
