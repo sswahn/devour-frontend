@@ -15,7 +15,6 @@ function TextToolbar({ style, setStyle }) {
   const [activeDropdown, setActiveDropdown] = useState(null)
 
   const openDropdown = id => {
-    console.log('opening TextToolbar dropdown.')
     setActiveDropdown(prev => prev === id ? null : id)
   }
 
@@ -34,7 +33,7 @@ function TextToolbar({ style, setStyle }) {
   
   return (
     <div className={styles.textToolbar}>
-      <BoldButton setStyle={setStyle} />
+      <BoldButton bold={style.fontWeight} setBold={setStyle} />
       <ItalicButton setStyle={setStyle} />
       <UnderlineButton setStyle={setStyle} />
       <FontColorButton openDropdown={openDropdown} />
