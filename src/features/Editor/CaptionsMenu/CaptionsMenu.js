@@ -110,6 +110,7 @@ function CaptionsMenu({ videoRef, closeCaptionsMenu }) {
     // check min distance between start and end to prevent flicker
 
     // maximum of 42 characters per line, 2 lines max
+    // and a reading speed around 15–20 characters per second (CPS) so viewers have time to read.
     
     if (caption.start < 0) {
       throw new Error('Caption start time must be a non-negative number.')
