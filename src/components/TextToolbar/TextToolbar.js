@@ -10,7 +10,7 @@ import TextAlignButton from './TextAlignButton/TextAlignButton'
 import FontSizeSlider from './FontSizeSlider/FontSizeSlider'
 import AlignText from './AlignText/AlignText'
 import ColorPicker from '../ColorPicker/ColorPicker'
-import CartesianPlane from '../CartesianPlane'
+import CartesianPlane from '../CartesianPlane/CartesianPlane'
 import styles from './TextToolbar.module.css'
 
 function TextToolbar({ style, setStyle }) {
