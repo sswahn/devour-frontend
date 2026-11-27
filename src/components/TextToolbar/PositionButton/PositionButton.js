@@ -1,15 +1,17 @@
 import BoldIcon from '../../Icons/BoldIcon/BoldIcon'
 import styles from './BoldButton.module.css'
 
-function PositionButton({ fontWeight, setFontWeight }) {
+function PositionButton({ openDropdown }) {
 
   const onClick = event => {
     navigator.vibrate?.(50)
-    setFontWeight(prev => ({ ...prev, fontWeight: prev.fontWeight === 'bold' ? 'normal' : 'bold' }))
+    openDropdown()
   }
+
+// change icon
   
   return (
-    <button className={`${styles.positionButton} ${fontWeight === 'bold' ? styles.isActive : ''} `} onClick={onClick} type="button" aria-label="bold">
+    <button className={styles.positionButton} onClick={onClick} type="button" aria-label="open cartesian plane">
       <BoldIcon />
     </button>
   )
