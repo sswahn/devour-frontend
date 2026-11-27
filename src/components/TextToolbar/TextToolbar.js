@@ -41,6 +41,7 @@ function TextToolbar({ style, setStyle }) {
       <BackgroundColorButton openDropdown={openDropdown} />
       <FontSizeButton openDropdown={openDropdown} />
       <TextAlignButton openDropdown={openDropdown} />
+      <PositionButton openDropdown={openDropdown} />
       {activeDropdown === 'fontSize' && <FontSizeSlider fontSize={style.fontSize} setFontSize={setStyle} />}
       {activeDropdown === 'textAlign' && <AlignText textAlign={style.textAlign} setTextAlign={setStyle} />}
       {activeDropdown === 'color' && <ColorPicker color={style.color} onChange={val => setStyle(prev => ({ ...prev, color: val }))} />}
