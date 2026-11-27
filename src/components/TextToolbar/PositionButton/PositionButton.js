@@ -1,5 +1,5 @@
 import BoldIcon from '../../Icons/BoldIcon/BoldIcon'
-import styles from './BoldButton.module.css'
+import styles from './PositionButton.module.css'
 
 function PositionButton({ openDropdown }) {
 
