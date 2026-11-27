@@ -1,6 +1,6 @@
 import styles from './ColorPalette.module.css'
 
-function ColorPalette({ color, setColor }) {
+function ColorPalette({ colorPaletteRef, color, setColor }) {
 
   const onChange = event => {
     setColor(event.target.value)
@@ -9,7 +9,7 @@ function ColorPalette({ color, setColor }) {
   return (
     <div className={styles.colorPalette}>
       <label htmlFor="color-palette">Color:</label>
-      <input id="color-palette" type="color" onChange={onChange} value={color === 'transparent' ? '#ffffff' : color} />
+      <input ref={colorPaletteRef} id="color-palette" type="color" onChange={onChange} value={color === 'transparent' ? '#ffffff' : color} />
     </div>
   )
 }
