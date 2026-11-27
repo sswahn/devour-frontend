@@ -3,8 +3,8 @@ import styles from './ColorPicker.module.css'
 
 // --- Color Conversion Helpers ---
 function hsvToRgb(h, s, v) {
-  s /= 100;
-  v /= 100;
+  s /= 100
+  v /= 100
   const c = v * s;
   const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
   const m = v - c;
@@ -63,11 +63,11 @@ function rgbToHsv({ r, g, b }) {
 }
 
 // --- Main Component ---
-export default function ColorPicker({ initialColor = '#3B82F6', onChange }) {
+function ColorPicker({ initialColor = '#3B82F6', onChange }) {
   const [hsv, setHsv] = useState(() => {
     const rgb = hexToRgb(initialColor) || { r: 59, g: 130, b: 246 };
     return rgbToHsv(rgb);
-  });
+  })
   const [hexInput, setHexInput] = useState(initialColor.toUpperCase());
   const [copied, setCopied] = useState(false);
 
@@ -196,3 +196,46 @@ export default function ColorPicker({ initialColor = '#3B82F6', onChange }) {
 }
 
 export default ColorPicker
+
+/* Example Usage: 
+
+import React, { useState } from 'react';
+import ColorPicker from './ColorPicker';
+
+export default function App() {
+  const [selectedColor, setSelectedColor] = useState('#3B82F6');
+
+  return (
+    <div
+      style={{
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#f3f4f6',
+        gap: '24px',
+        fontFamily: 'ui-sans-serif, system-ui, -apple-system, sans-serif',
+      }}
+    >
+      <ColorPicker
+        initialColor={selectedColor}
+        onChange={(hex) => setSelectedColor(hex)}
+      />
+
+      <div style={{ fontSize: '14px', color: '#4b5563' }}>
+        Active Color:{' '}
+        <span
+          style={{
+            fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
+            fontWeight: 700,
+          }}
+        >
+          {selectedColor}
+        </span>
+      </div>
+    </div>
+  );
+}
+
+*/
