@@ -9,7 +9,7 @@ function BoldButton({ fontWeight, setFontWeight }) {
   }
   
   return (
-    <button className={`${styles.boldButton} ${fontWeight === 'bold' ? styles.active : ''} `} onClick={onClick} type="button" aria-label="bold">
+    <button className={`${styles.boldButton} ${fontWeight === 'bold' ? styles.isActive : ''} `} onClick={onClick} type="button" aria-label="bold">
       <BoldIcon />
     </button>
   )
