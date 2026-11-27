@@ -1,7 +1,10 @@
 /* TextToolbar Dropdown */
 
 .dropdown {
+  background-color: gray; 
+  bottom: -48px;
   left: 0;
   padding: 8px;
   position: absolute;
+  width: 100%;
 }
