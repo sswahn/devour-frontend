@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from  'react'
+import { useState, useEffect } from  'react'
 import BoldButton from './BoldButton/BoldButton'
 import ItalicButton from './ItalicButton/ItalicButton'
 import UnderlineButton from './UnderlineButton/UnderlineButton'
@@ -13,7 +13,6 @@ import styles from './TextToolbar.module.css'
 
 function TextToolbar({ style, setStyle }) {
   const [activeDropdown, setActiveDropdown] = useState(null)
-  const colorPaletteRef = useRef(null)
 
   const openDropdown = id => {
     setActiveDropdown(prev => prev === id ? null : id)
@@ -37,14 +36,14 @@ function TextToolbar({ style, setStyle }) {
       <BoldButton fontWeight={style.fontWeight} setFontWeight={setStyle} />
       <ItalicButton setStyle={setStyle} />
       <UnderlineButton setStyle={setStyle} />
-      <FontColorButton colorPaletteRef={colorPaletteRef} openDropdown={openDropdown} />
-      <BackgroundColorButton colorPaletteRef={colorPaletteRef} openDropdown={openDropdown} />
+      <FontColorButton openDropdown={openDropdown} />
+      <BackgroundColorButton openDropdown={openDropdown} />
       <FontSizeButton openDropdown={openDropdown} />
       <TextAlignButton openDropdown={openDropdown} />
       {activeDropdown === 'fontSize' && <FontSizeSlider fontSize={style.fontSize} setStyle={setStyle} />}
       {activeDropdown === 'textAlign' && <AlignText textAlign={style.textAlign} setStyle={setStyle} />}
       {activeDropdown?.toLowerCase().includes('color') && 
-        <ColorPalette colorPaletteRef={colorPaletteRef} color={style[activeDropdown]} setColor={val => setStyle(prev => ({ ...prev, [activeDropdown]: val }))} />
+        <ColorPalette color={style[activeDropdown]} setColor={val => setStyle(prev => ({ ...prev, [activeDropdown]: val }))} />
       }
     </div>
   )
