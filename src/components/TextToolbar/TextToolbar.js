@@ -10,6 +10,7 @@ import TextAlignButton from './TextAlignButton/TextAlignButton'
 import FontSizeSlider from './FontSizeSlider/FontSizeSlider'
 import AlignText from './AlignText/AlignText'
 import ColorPicker from '../ColorPicker/ColorPicker'
+import CartesianPlane from '../CartesianPlane'
 import styles from './TextToolbar.module.css'
 
 function TextToolbar({ style, setStyle }) {
@@ -46,6 +47,7 @@ function TextToolbar({ style, setStyle }) {
       {activeDropdown === 'textAlign' && <AlignText textAlign={style.textAlign} setTextAlign={setStyle} />}
       {activeDropdown === 'color' && <ColorPicker color={style.color} onChange={val => setStyle(prev => ({ ...prev, color: val }))} />}
       {activeDropdown === 'backgroundColor' && <ColorPicker color={style.backgroundColor} onChange={val => setStyle(prev => ({ ...prev, backgroundColor: val }))} />}
+      {activeDropdown === 'position' && <CartesianPlane />}
     </div>
   )
 }
