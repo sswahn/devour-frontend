@@ -1,4 +1,4 @@
-import BoldIcon from '../../Icons/BoldIcon/BoldIcon'
+import ArrowsUpDownLeftRightIcon from '../../Icons/ArrowsUpDownLeftRightIcon/ArrowsUpDownLeftRightIcon'
 import styles from './PositionButton.module.css'
 
 function PositionButton({ openDropdown }) {
@@ -12,7 +12,7 @@ function PositionButton({ openDropdown }) {
   
   return (
     <button className={styles.positionButton} onClick={onClick} type="button" aria-label="open cartesian plane">
-      <BoldIcon />
+      <ArrowsUpDownLeftRightIcon />
     </button>
   )
 }
