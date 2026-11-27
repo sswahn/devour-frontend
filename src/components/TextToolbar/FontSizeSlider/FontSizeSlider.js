@@ -3,8 +3,7 @@ import styles from './FontSizeSlider.module.css'
 function FontSizeSlider({ fontSize, setFontSize }) {
 
   const onChange = event => {
-    const value = Number(event.target.value)
-    setFontSize(prev => ({ ...prev, fontSize: value }))
+    setFontSize(prev => ({ ...prev, fontSize: `${event.target.value}px` }))
   }
 
   // consider adding line height slider as well.
