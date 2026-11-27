@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, useCallback } from 'react'
 import styles from './ColorPicker.module.css'
 
 // --- Color Conversion Helpers ---
+// move to a utility:
 function hsvToRgb(h, s, v) {
   s /= 100
   v /= 100
