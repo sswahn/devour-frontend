@@ -9,6 +9,7 @@ import FontSizeSlider from './FontSizeSlider/FontSizeSlider'
 import BackgroundColorButton from './BackgroundColorButton/BackgroundColorButton'
 import TextAlignButton from './TextAlignButton/TextAlignButton'
 import AlignText from './AlignText/AlignText'
+import ColorPicker from '../ColorPicker/ColorPicker'
 import styles from './TextToolbar.module.css'
 
 function TextToolbar({ style, setStyle }) {
@@ -34,16 +35,17 @@ function TextToolbar({ style, setStyle }) {
   return (
     <div className={styles.textToolbar}>
       <BoldButton fontWeight={style.fontWeight} setFontWeight={setStyle} />
-      <ItalicButton setStyle={setStyle} />
-      <UnderlineButton setStyle={setStyle} />
+      <ItalicButton fontStyle={style.fontStyle} setFontStyle={setStyle} />
+      <UnderlineButton textDecoration={style.textDecoration} setTextDecoration={setStyle} />
       <FontColorButton openDropdown={openDropdown} />
       <BackgroundColorButton openDropdown={openDropdown} />
       <FontSizeButton openDropdown={openDropdown} />
       <TextAlignButton openDropdown={openDropdown} />
-      {activeDropdown === 'fontSize' && <FontSizeSlider fontSize={style.fontSize} setStyle={setStyle} />}
-      {activeDropdown === 'textAlign' && <AlignText textAlign={style.textAlign} setStyle={setStyle} />}
+      {activeDropdown === 'fontSize' && <FontSizeSlider fontSize={style.fontSize} setFontSize={setStyle} />}
+      {activeDropdown === 'textAlign' && <AlignText textAlign={style.textAlign} setTextAlign={setStyle} />}
+      {/* use ColorPicker component instead of the following: */}
       {activeDropdown?.toLowerCase().includes('color') && 
-        <ColorPalette color={style[activeDropdown]} setColor={val => setStyle(prev => ({ ...prev, [activeDropdown]: val }))} />
+        <ColorPicker color={style[activeDropdown]} onChange={val => setStyle(prev => ({ ...prev, [activeDropdown]: val }))} />
       }
     </div>
   )
