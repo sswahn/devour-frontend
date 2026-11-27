@@ -1,12 +1,11 @@
 import FontIcon from '../../Icons/FontIcon/FontIcon'
 import styles from './FontColorButton.module.css'
 
-function FontColorButton({ colorPaletteRef, openDropdown }) {
+function FontColorButton({ openDropdown }) {
 
   const onClick = event => {
     navigator.vibrate?.(50)
     openDropdown(event.target.id)
-    colorPaletteRef.current.showPicker()
   }
 
   return (
