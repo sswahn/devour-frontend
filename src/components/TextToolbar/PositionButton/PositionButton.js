@@ -5,13 +5,13 @@ function PositionButton({ openDropdown }) {
 
   const onClick = event => {
     navigator.vibrate?.(50)
-    openDropdown()
+    openDropdown(event.target.id)
   }
 
 // change icon
   
   return (
-    <button className={styles.positionButton} onClick={onClick} type="button" aria-label="open cartesian plane">
+    <button id="position" className={styles.positionButton} onClick={onClick} type="button" aria-label="open cartesian plane">
       <ArrowsUpDownLeftRightIcon />
     </button>
   )
