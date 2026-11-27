@@ -13,17 +13,17 @@ function AlignText({ textAlign, setStyle }) {
   return (
     <menu className={styles.alignText}>
       <li>
-        <button id="left" className={textAlign === 'left' ? styles.active : undefined} onClick={onClick} type="button" aria-label="align left">
+        <button id="left" className={textAlign === 'left' ? styles.isActive : undefined} onClick={onClick} type="button" aria-label="align left">
           <AlignLeftIcon />
         </button>
       </li>
       <li>
-        <button id="center" className={textAlign === 'center' ? styles.active : undefined} onClick={onClick} type="button" aria-label="align center">
+        <button id="center" className={textAlign === 'center' ? styles.isActive : undefined} onClick={onClick} type="button" aria-label="align center">
           <AlignCenterIcon />
         </button>
       </li>
       <li>
-        <button id="right" className={textAlign === 'right' ? styles.active : undefined} onClick={onClick} type="button" aria-label="align right">
+        <button id="right" className={textAlign === 'right' ? styles.isActive : undefined} onClick={onClick} type="button" aria-label="align right">
           <AlignRightIcon />
         </button>
       </li>
