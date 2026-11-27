@@ -7,6 +7,8 @@ function FontSizeSlider({ fontSize, setStyle }) {
     setStyle(prev => ({ ...prev, fontSize: value }))
   }
 
+  // consider adding line height slider as well.
+  
   return (
     <div className={styles.fontSizeSlider}>
       <label htmlFor="font-size-slider">
