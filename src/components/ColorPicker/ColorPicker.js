@@ -147,58 +147,52 @@ export default function ColorPicker({ initialColor = '#3B82F6', onChange }) {
   const pureHueHex = `hsl(${hsv.h}, 100%, 50%)`;
 
   return (
-    <div className="cp-card">
+    <div className={styles.colorPicker}>
       {/* 2D Saturation & Value Swatch */}
-      <div
-        ref={swatchRef}
+      <div 
+        ref={swatchRef} 
+        className={styles.swatch}
         onMouseDown={handlePointerDown}
         onTouchStart={handlePointerDown}
-        className="cp-swatch"
-        style={{ backgroundColor: pureHueHex }}
-      >
-        <div className="cp-swatch-white" />
-        <div className="cp-swatch-black" />
-        <div
-          className="cp-thumb"
-          style={{
-            left: `${hsv.s}%`,
-            top: `${100 - hsv.v}%`,
-            backgroundColor: currentHex,
-          }}
-        />
+        style={{ backgroundColor: pureHueHex }}>
+        <div className={styles.swatchWhite} />
+        <div className={styles.swatchBlack} />
+        <div className={styles.thumb} style={{
+          left: `${hsv.s}%`,
+          top: `${100 - hsv.v}%`,
+          backgroundColor: currentHex,
+        }} />
       </div>
 
       {/* Hue Slider */}
-      <div className="cp-slider-container">
+      <div className={styles.slider}>
         <input
-          className="cp-hue-slider"
+          className={styles.sliderHue}
           type="range"
           min="0"
           max="359"
           value={hsv.h}
-          onChange={(e) => updateColor({ ...hsv, h: Number(e.target.value) })}
-          
+          onChange={event => updateColor({ ...hsv, h: Number(event.target.value) })}
         />
       </div>
 
       {/* Preview Swatch & Hex Input */}
-      <div className="cp-controls">
-        <div
-          className="cp-preview"
-          style={{ backgroundColor: currentHex }}
-        />
+      <div className={styles.controls}>
+        <div className={styles.preview} style={{ backgroundColor: currentHex }} />
         <input
+          className={styles.input}
           type="text"
           value={hexInput}
           onChange={handleHexChange}
           maxLength={7}
-          className="cp-hex-input"
           placeholder="#000000"
         />
-        <button onClick={handleCopy} className="cp-copy-btn">
+        <button className={styles.btn} onClick={handleCopy}>
           {copied ? 'Copied' : 'Copy'}
         </button>
       </div>
     </div>
-  );
+  )
 }
+
+export default ColorPicker
