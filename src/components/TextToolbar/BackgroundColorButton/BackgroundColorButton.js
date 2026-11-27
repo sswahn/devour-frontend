@@ -1,12 +1,11 @@
 import PaletteIcon from '../../Icons/PaletteIcon/PaletteIcon'
 import styles from './BackgroundColorButton.module.css'
 
-function BackgroundColorButton({ colorPaletteRef, openDropdown }) {
+function BackgroundColorButton({ openDropdown }) {
 
   const onClick = event => {
     navigator.vibrate?.(50)
     openDropdown(event.target.id)
-    colorPaletteRef.current.showPicker()
   }
 
   return (
