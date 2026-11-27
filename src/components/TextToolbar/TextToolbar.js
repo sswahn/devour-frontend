@@ -7,6 +7,7 @@ import PositionButton from './PositionButton/PositionButton'
 import FontSizeButton from './FontSizeButton/FontSizeButton'
 import BackgroundColorButton from './BackgroundColorButton/BackgroundColorButton'
 import TextAlignButton from './TextAlignButton/TextAlignButton'
+import Dropdown from './Dropdown/Dropdown'
 import FontSizeSlider from './FontSizeSlider/FontSizeSlider'
 import AlignText from './AlignText/AlignText'
 import ColorPicker from '../ColorPicker/ColorPicker'
@@ -43,11 +44,15 @@ function TextToolbar({ style, setStyle }) {
       <FontSizeButton openDropdown={openDropdown} />
       <TextAlignButton openDropdown={openDropdown} />
       <PositionButton openDropdown={openDropdown} />
-      {activeDropdown === 'fontSize' && <FontSizeSlider fontSize={style.fontSize} setFontSize={setStyle} />}
-      {activeDropdown === 'textAlign' && <AlignText textAlign={style.textAlign} setTextAlign={setStyle} />}
-      {activeDropdown === 'color' && <ColorPicker color={style.color} onChange={val => setStyle(prev => ({ ...prev, color: val }))} />}
-      {activeDropdown === 'backgroundColor' && <ColorPicker color={style.backgroundColor} onChange={val => setStyle(prev => ({ ...prev, backgroundColor: val }))} />}
-      {activeDropdown === 'position' && <CartesianPlane />}
+      {activeDropdown !== null && 
+        <Dropdown>
+          {activeDropdown === 'fontSize' && <FontSizeSlider fontSize={style.fontSize} setFontSize={setStyle} />}
+          {activeDropdown === 'textAlign' && <AlignText textAlign={style.textAlign} setTextAlign={setStyle} />}
+          {activeDropdown === 'color' && <ColorPicker color={style.color} onChange={val => setStyle(prev => ({ ...prev, color: val }))} />}
+          {activeDropdown === 'backgroundColor' && <ColorPicker color={style.backgroundColor} onChange={val => setStyle(prev => ({ ...prev, backgroundColor: val }))} />}
+          {activeDropdown === 'position' && <CartesianPlane />}
+        </Dropdown>
+      }
     </div>
   )
 }
